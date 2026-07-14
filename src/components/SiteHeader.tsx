@@ -1,17 +1,18 @@
 import { useEffect, useRef, useState } from 'react'
+import { navigate } from '../routing'
 import { ExternalLinkIcon, MenuIcon } from './Icons'
 
 const primaryLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'Work', href: '#work' },
-  { label: 'Writing', href: '#writing' },
-  { label: 'Videos', href: '#videos' },
-  { label: 'About', href: '#about' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '/' },
+  { label: 'Work', href: '/work' },
+  { label: 'Writing', href: '/articles' },
+  { label: 'Videos', href: '/videos' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
 ]
 
 const secondaryLinks = [
-  { label: 'Résumé', href: 'https://nabauer.com/resume', external: false },
+  { label: 'Résumé', href: '/resume', external: false },
   {
     label: 'LinkedIn',
     href: 'https://www.linkedin.com/in/nabauer/',
@@ -19,11 +20,52 @@ const secondaryLinks = [
   },
 ]
 
-export function SiteHeader() {
+interface SiteHeaderProps {
+  currentPath?: string
+}
+
+function linkIsCurrent(href: string, currentPath: string) {
+  if (href === '/') return currentPath === '/'
+  if (href === '/articles') return currentPath.startsWith('/articles')
+  return currentPath === href || currentPath.startsWith(`${href}/`)
+}
+
+export function SiteHeader({ currentPath = '/' }: SiteHeaderProps) {
   const [isOpen, setIsOpen] = useState(false)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
   const restoreMenuFocusRef = useRef(false)
+  const logoHoldTimerRef = useRef<number | null>(null)
+  const logoTransitionTimerRef = useRef<number | null>(null)
+  const logoWasHeldRef = useRef(false)
+
+  const cancelLogoHold = () => {
+    if (logoHoldTimerRef.current !== null) window.clearTimeout(logoHoldTimerRef.current)
+    logoHoldTimerRef.current = null
+  }
+
+  const startLogoHold = () => {
+    cancelLogoHold()
+    logoWasHeldRef.current = false
+    logoHoldTimerRef.current = window.setTimeout(() => {
+      logoHoldTimerRef.current = null
+      logoWasHeldRef.current = true
+      document.documentElement.classList.add('wb-leaving')
+      logoTransitionTimerRef.current = window.setTimeout(() => {
+        logoTransitionTimerRef.current = null
+        navigate('/whiteboard')
+      }, 300)
+    }, 1500)
+  }
+
+  useEffect(
+    () => () => {
+      if (logoHoldTimerRef.current !== null) window.clearTimeout(logoHoldTimerRef.current)
+      if (logoTransitionTimerRef.current !== null) window.clearTimeout(logoTransitionTimerRef.current)
+      document.documentElement.classList.remove('wb-leaving')
+    },
+    [],
+  )
 
   useEffect(() => {
     if (!isOpen) return undefined
@@ -91,24 +133,19 @@ export function SiteHeader() {
 
       if (restoreMenuFocusRef.current) {
         restoreMenuFocusRef.current = false
-        window.requestAnimationFrame(() => menuButton?.focus())
+        window.requestAnimationFrame(() => {
+          const activeElement = document.activeElement
+          if (activeElement instanceof HTMLElement && activeElement.closest('#mobile-navigation')) {
+            menuButton?.focus()
+          }
+        })
       }
     }
   }, [isOpen])
 
-  const closeMenu = (href?: string) => {
+  const closeMenu = () => {
+    restoreMenuFocusRef.current = true
     setIsOpen(false)
-
-    if (!href?.startsWith('#')) return
-
-    window.requestAnimationFrame(() => {
-      const selector = href === '#home' ? '#main-content' : href
-      const target = document.querySelector<HTMLElement>(selector)
-      if (!target) return
-
-      if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1')
-      target.focus({ preventScroll: true })
-    })
   }
 
   return (
@@ -121,17 +158,30 @@ export function SiteHeader() {
           <a
             aria-label="Nate Bauer — Home"
             className="brand"
-            href="#home"
-            onClick={() => closeMenu('#home')}
+            href="/"
+            onClick={(event) => {
+              if (logoWasHeldRef.current) {
+                event.preventDefault()
+                logoWasHeldRef.current = false
+              }
+              closeMenu()
+            }}
+            onPointerCancel={cancelLogoHold}
+            onPointerDown={startLogoHold}
+            onPointerLeave={cancelLogoHold}
+            onPointerUp={cancelLogoHold}
             tabIndex={isOpen ? -1 : 0}
           >
-            <img alt="" height="28" src="/assets/logo.webp" width="140" />
+            <picture>
+              <source sizes="140px" srcSet="/images/ui/logo.480.webp 480w" type="image/webp" />
+              <img alt="" decoding="async" height="28" src="/images/ui/logo.png" width="140" />
+            </picture>
           </a>
 
           <nav aria-label="Primary navigation" className="desktop-nav desktop-nav--primary">
-            {primaryLinks.map((link, index) => (
+            {primaryLinks.map((link) => (
               <a
-                aria-current={index === 0 ? 'page' : undefined}
+                aria-current={linkIsCurrent(link.href, currentPath) ? 'page' : undefined}
                 className="nav-link"
                 href={link.href}
                 key={link.label}
@@ -144,7 +194,10 @@ export function SiteHeader() {
           <nav aria-label="Secondary navigation" className="desktop-nav desktop-nav--secondary">
             {secondaryLinks.map((link) => (
               <a
-                aria-label={link.external ? `${link.label} (opens in new tab)` : undefined}
+                aria-label={
+                  link.external ? `Nate Bauer on ${link.label} (opens in new tab)` : undefined
+                }
+                aria-current={linkIsCurrent(link.href, currentPath) ? 'page' : undefined}
                 className="nav-link-muted"
                 href={link.href}
                 key={link.label}
@@ -160,7 +213,7 @@ export function SiteHeader() {
           <button
             aria-controls="mobile-navigation"
             aria-expanded={isOpen}
-            aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
             className="menu-button"
             onClick={() => {
               if (isOpen) restoreMenuFocusRef.current = true
@@ -184,9 +237,10 @@ export function SiteHeader() {
           <div className="mobile-menu__primary">
             {primaryLinks.map((link) => (
               <a
+                aria-current={linkIsCurrent(link.href, currentPath) ? 'page' : undefined}
                 href={link.href}
                 key={link.label}
-                onClick={() => closeMenu(link.href)}
+                onClick={closeMenu}
                 tabIndex={isOpen ? 0 : -1}
               >
                 {link.label}
@@ -198,7 +252,7 @@ export function SiteHeader() {
               <a
                 href={link.href}
                 key={link.label}
-                onClick={() => closeMenu(link.href)}
+                onClick={closeMenu}
                 rel={link.external ? 'noreferrer' : undefined}
                 tabIndex={isOpen ? 0 : -1}
                 target={link.external ? '_blank' : undefined}

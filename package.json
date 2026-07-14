@@ -9,14 +9,18 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && node scripts/prerender-routes.mjs",
+    "check": "pnpm lint && pnpm typecheck && pnpm check:routes && pnpm build",
+    "check:routes": "node scripts/check-routes.mjs",
     "lint": "eslint . --max-warnings 0",
+    "sync:reference": "node scripts/sync-reference.mjs",
     "typecheck": "tsc -b --pretty false",
     "preview": "vite preview"
   },
   "dependencies": {
     "react": "19.2.7",
-    "react-dom": "19.2.7"
+    "react-dom": "19.2.7",
+    "tldraw": "5.2.4"
   },
   "devDependencies": {
     "@eslint/js": "9.39.2",

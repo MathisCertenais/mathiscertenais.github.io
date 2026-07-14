@@ -1,20 +1,6 @@
-@font-face {
-  font-family: 'Outfit';
-  font-style: normal;
-  font-weight: 300 700;
-  font-display: swap;
-  src: url('/assets/fonts/outfit-latin.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Libre Baskerville';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('/assets/fonts/libre-baskerville-latin.woff2') format('woff2');
-}
-
 :root {
+  --font-outfit: 'Outfit', 'Outfit Fallback';
+  --font-libre-baskerville: 'Libre Baskerville', 'Libre Baskerville Fallback';
   --bg: #eef2f5;
   --surface: #e0e6ec;
   --surface-card: rgba(255, 255, 255, 0.4);
@@ -34,81 +20,81 @@
   --radius-xl: 20px;
   color: var(--text-dark);
   background: var(--bg);
-  font-family: 'Outfit', Arial, sans-serif;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
+  font-family: var(--font-outfit), system-ui, sans-serif;
 }
 
-* {
-  box-sizing: border-box;
-}
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
 
-html {
-  min-width: 320px;
-  scroll-behavior: smooth;
-  scroll-padding-top: 92px;
-  background: var(--bg);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  html {
+    min-width: 320px;
+    scroll-behavior: smooth;
+    scroll-padding-top: 92px;
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-body {
-  min-width: 320px;
-  min-height: 100vh;
-  margin: 0;
-  color: var(--text-dark);
-  background: var(--bg);
-  font-size: 17px;
-  font-weight: 300;
-  line-height: 1.6;
-}
+  body {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+    color: var(--text-dark);
+    background: var(--bg);
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.6;
+  }
 
-body,
-button {
-  font-family: 'Outfit', Arial, sans-serif;
-}
+  body,
+  button {
+    font-family: var(--font-outfit), system-ui, sans-serif;
+  }
 
-button,
-input,
-textarea,
-select {
-  font: inherit;
-}
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
 
-button,
-a {
-  -webkit-tap-highlight-color: transparent;
-}
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
 
-button {
-  margin: 0;
-}
+  button {
+    margin: 0;
+  }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 
-img,
-svg {
-  display: block;
-}
+  img,
+  svg {
+    display: block;
+  }
 
-img {
-  max-width: 100%;
-}
+  img {
+    max-width: 100%;
+  }
 
-h1,
-h2,
-h3,
-p,
-ul {
-  margin: 0;
-}
+  h1,
+  h2,
+  h3,
+  p,
+  ul {
+    margin: 0;
+  }
 
-ul {
-  padding: 0;
-  list-style: none;
+  ul {
+    padding: 0;
+    list-style: none;
+  }
 }
 
 :focus-visible {
@@ -151,12 +137,13 @@ ul {
   display: flex;
   justify-content: center;
   padding-inline: 16px;
+  pointer-events: none;
 }
 
 .site-header__inner {
-  display: grid;
-  grid-template-columns: minmax(180px, 1fr) auto minmax(180px, 1fr);
+  display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
   max-width: 1280px;
   min-height: 54px;
@@ -164,15 +151,18 @@ ul {
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: var(--radius-xl);
   background: rgba(252, 252, 250, 0.8);
-  box-shadow: 0 1px 1px rgba(28, 28, 26, 0.02);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  pointer-events: auto;
 }
 
 .brand {
   display: inline-flex;
   width: fit-content;
+  flex-shrink: 0;
   align-items: center;
+  user-select: none;
+  touch-action: manipulation;
 }
 
 .brand img {
@@ -190,6 +180,7 @@ ul {
 }
 
 .desktop-nav--secondary {
+  flex-shrink: 0;
   justify-self: end;
   gap: 4px;
 }
@@ -477,6 +468,15 @@ button:hover .cta-arrow {
   border-top: 1px solid var(--border);
 }
 
+.reference-page .proof-strip {
+  display: flex;
+  width: auto;
+  min-height: 0;
+  margin-inline: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
 .proof-item {
   display: flex;
   min-width: 0;
@@ -499,25 +499,6 @@ button:hover .cta-arrow {
   border-radius: 10px;
   color: var(--accent);
   background: var(--accent-light);
-}
-
-.proof-item h2 {
-  margin-bottom: 2px;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 20px;
-}
-
-.proof-item p {
-  color: var(--text-mid);
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 19.5px;
-}
-
-.home-section {
-  padding-top: 96px;
-  padding-bottom: 96px;
 }
 
 .section-heading {
@@ -985,11 +966,10 @@ button:hover .cta-arrow {
 }
 
 .section-label {
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   color: var(--accent);
   font-size: 13px;
   font-weight: 500;
-  line-height: 20.8px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -1127,14 +1107,10 @@ button:hover .cta-arrow {
     scroll-padding-top: 88px;
   }
 
-  .section {
-    padding-inline: 20px;
-  }
-
   .site-header__inner {
     display: flex;
     min-height: 56px;
-    padding: 8px 16px;
+    padding: 8px 24px;
     justify-content: space-between;
   }
 
@@ -1326,6 +1302,10 @@ button:hover .cta-arrow {
     gap: 28px;
   }
 
+  .footer-cta .section-label {
+    margin-bottom: 16px;
+  }
+
   .footer-cta h2 {
     font-size: 36px;
   }
@@ -1410,5 +1390,109 @@ button:hover .cta-arrow {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+.reference-page {
+  min-height: 1px;
+}
+
+.reference-page [hidden] {
+  display: none !important;
+}
+
+.route-loading {
+  display: grid;
+  min-height: calc(100vh - 56px);
+  place-items: center;
+  color: var(--text-mid);
+  font-size: 15px;
+}
+
+.route-error {
+  text-align: center;
+}
+
+.route-error button {
+  margin-top: 16px;
+  padding: 9px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-dark);
+  background: var(--surface-card-solid);
+  cursor: pointer;
+}
+
+.not-found-page {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 160px 32px;
+  text-align: center;
+}
+
+.not-found-page h1 {
+  margin-bottom: 20px;
+  color: var(--text-dark);
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.not-found-page > p:not(.section-label) {
+  max-width: 440px;
+  margin: 0 auto 40px;
+  color: var(--text-mid);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.not-found-page nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 40px;
+  color: var(--text-light);
+  font-size: 16px;
+}
+
+.not-found-page nav > span {
+  margin-right: 8px;
+}
+
+.contact-form-status {
+  margin: 0;
+  border-radius: 8px;
+  padding: 11px 13px;
+  color: var(--text-mid);
+  background: var(--surface);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.contact-form-status.is-success {
+  color: #27583c;
+  background: #dcecdf;
+}
+
+.contact-form-status.is-error {
+  color: #7a3035;
+  background: #f2dfe1;
+}
+
+.whiteboard-page {
+  position: fixed;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+  background: #fff;
+}
+
+@media (max-width: 600px) {
+  .not-found-page {
+    padding: 120px 20px;
   }
 }

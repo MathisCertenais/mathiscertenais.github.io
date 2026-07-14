@@ -13,18 +13,18 @@ const footerGroups: FooterGroup[] = [
   {
     title: 'Navigation',
     links: [
-      { label: 'Work', href: '#work' },
-      { label: 'About', href: '#about' },
-      { label: 'Contact', href: '#contact' },
-      { label: 'Résumé', href: 'https://nabauer.com/resume' },
+      { label: 'Work', href: '/work' },
+      { label: 'About', href: '/about' },
+      { label: 'Contact', href: '/contact' },
+      { label: 'Résumé', href: '/resume' },
     ],
   },
   {
     title: 'Reading',
     links: [
-      { label: 'Writing', href: '#writing' },
-      { label: 'Archive', href: 'https://nabauer.com/archive' },
-      { label: 'Resources', href: 'https://nabauer.com/resources' },
+      { label: 'Writing', href: '/articles' },
+      { label: 'Archive', href: '/archive' },
+      { label: 'Resources', href: '/resources' },
     ],
   },
   {
@@ -49,7 +49,7 @@ export function SiteFooter() {
           </h2>
         </div>
         <div className="footer-cta__actions">
-          <a className="button button--primary" href="https://nabauer.com/contact">
+          <a className="button button--primary" href="/contact">
             Get in touch <ArrowIcon />
           </a>
           <a
@@ -65,8 +65,18 @@ export function SiteFooter() {
 
       <div className="footer-links section">
         <div className="footer-brand">
-          <a aria-label="Nate Bauer — Home" href="#home">
-            <img alt="" height="24" loading="lazy" src="/assets/logo.webp" width="120" />
+          <a aria-label="Nate Bauer — Home" href="/">
+            <picture>
+              <source sizes="140px" srcSet="/images/ui/logo.480.webp 480w" type="image/webp" />
+              <img
+                alt=""
+                decoding="async"
+                height="24"
+                loading="lazy"
+                src="/images/ui/logo.png"
+                width="120"
+              />
+            </picture>
           </a>
           <p>
             Lead Product Designer focused on healthcare systems and scalable design infrastructure.
