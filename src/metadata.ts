@@ -1,4 +1,5 @@
 export interface PageMetadata {
+  canonicalPath?: string
   description: string
   ogDescription?: string
   ogImage?: string
@@ -56,7 +57,7 @@ export function applyPageMetadata(metadata: PageMetadata) {
     typeof configuredSiteUrl === 'string' && /^https?:\/\//.test(configuredSiteUrl.trim())
       ? configuredSiteUrl.trim().replace(/\/$/, '')
       : window.location.origin
-  const canonical = new URL(metadata.path, `${siteOrigin}/`).href
+  const canonical = new URL(metadata.canonicalPath || metadata.path, `${siteOrigin}/`).href
   const ogTitle = metadata.ogTitle || metadata.title
   const ogDescription = metadata.ogDescription || metadata.description
   const twitterTitle = metadata.twitterTitle || ogTitle
@@ -71,7 +72,7 @@ export function applyPageMetadata(metadata: PageMetadata) {
   ensureNamedMeta('twitter:description', twitterDescription)
   ensurePropertyMeta('og:title', ogTitle)
   ensurePropertyMeta('og:description', ogDescription)
-  ensurePropertyMeta('og:site_name', 'Nate Bauer')
+  ensurePropertyMeta('og:site_name', 'Mathis Certenais')
   ensurePropertyMeta('og:locale', 'en_US')
   ensurePropertyMeta('og:type', 'website')
   ensurePropertyMeta('og:url', canonical)
@@ -97,16 +98,16 @@ export function applyPageMetadata(metadata: PageMetadata) {
 
 export const homeMetadata: PageMetadata = {
   path: '/',
-  title: 'Nate Bauer | Lead Product Designer',
+  title: 'Mathis Certenais | HPC & Scientific Workflows',
   description:
-    'Lead Product Designer with 15+ years of experience in enterprise healthcare innovation and design systems.',
-  ogImage: '/images/meta/home.png',
-  ogImageAlt: 'Nate Bauer — Lead Product Designer',
+    'Mathis Certenais is a computer scientist and PhD researcher working on HPC, data logistics, and cross-facility scientific workflows.',
+  ogImage: '/images/mathis/social-card.svg',
+  ogImageAlt: 'Mathis Certenais — HPC and scientific workflows',
 }
 
 export const notFoundMetadata: PageMetadata = {
-  path: window.location.pathname,
-  title: 'Page not found | Nate Bauer',
+  path: '/404',
+  title: 'Page not found | Mathis Certenais',
   description: "The page you're looking for doesn't exist or has been moved.",
   robots: 'noindex',
 }

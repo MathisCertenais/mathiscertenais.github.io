@@ -10,10 +10,10 @@ export function NotFoundPage() {
         </a>
         <nav aria-label="Suggested pages">
           <span>Or jump to:</span>
-          <a className="nav-link" href="/work">
-            Work
+          <a className="nav-link" href="/research">
+            Research
           </a>
-          <a className="nav-link" href="/articles">
+          <a className="nav-link" href="/writing">
             Writing
           </a>
           <a className="nav-link" href="/about">

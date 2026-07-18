@@ -4,36 +4,51 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#eef2f5" />
+    <script>
+      ;(() => {
+        try {
+          const stored = localStorage.getItem('mathis-personal-website:theme')
+          const theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light'
+          document.documentElement.dataset.theme = theme
+          document.documentElement.style.colorScheme = theme
+          document.querySelector('meta[name="theme-color"]').content =
+            theme === 'dark' ? '#15181c' : '#eef2f5'
+        } catch {
+          document.documentElement.dataset.theme = 'light'
+        }
+      })()
+    </script>
     <meta name="robots" content="index, follow" />
     <meta
       name="description"
-      content="Lead Product Designer with 15+ years of experience in enterprise healthcare innovation and design systems."
+      content="Mathis Certenais is a computer scientist and PhD researcher working on HPC, data logistics, and cross-facility scientific workflows."
     />
-    <meta property="og:title" content="Nate Bauer | Lead Product Designer" />
+    <meta property="og:title" content="Mathis Certenais | HPC &amp; Scientific Workflows" />
     <meta
       property="og:description"
-      content="Lead Product Designer with 15+ years of experience in enterprise healthcare innovation and design systems."
+      content="Mathis Certenais is a computer scientist and PhD researcher working on HPC, data logistics, and cross-facility scientific workflows."
     />
-    <meta property="og:site_name" content="Nate Bauer" />
+    <meta property="og:site_name" content="Mathis Certenais" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/images/meta/home.png" />
-    <meta property="og:image:alt" content="Nate Bauer — Lead Product Designer" />
+    <meta property="og:image" content="/images/mathis/social-card.svg" />
+    <meta property="og:image:alt" content="Mathis Certenais — HPC and scientific workflows" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Nate Bauer | Lead Product Designer" />
+    <meta name="twitter:title" content="Mathis Certenais | HPC &amp; Scientific Workflows" />
     <meta
       name="twitter:description"
-      content="Lead Product Designer with 15+ years of experience in enterprise healthcare innovation and design systems."
+      content="Mathis Certenais is a computer scientist and PhD researcher working on HPC, data logistics, and cross-facility scientific workflows."
     />
-    <meta name="twitter:image" content="/images/meta/home.png" />
-    <meta name="twitter:image:alt" content="Nate Bauer — Lead Product Designer" />
-    <link rel="preload" href="/images/ui/logo.png" as="image" />
-    <link rel="preload" href="/images/home/nate-bauer-portrait.webp" as="image" />
-    <link rel="manifest" href="/manifest.webmanifest" />
-    <link rel="icon" href="/favicon.ico" sizes="any" media="(prefers-color-scheme: light)" />
-    <link rel="icon" href="/favicon-dark.png" type="image/png" media="(prefers-color-scheme: dark)" />
-    <link rel="apple-touch-icon" href="/apple-icon.png" sizes="180x180" type="image/png" />
-    <title>Nate Bauer | Lead Product Designer</title>
+    <meta name="twitter:image" content="/images/mathis/social-card.svg" />
+    <meta name="twitter:image:alt" content="Mathis Certenais — HPC and scientific workflows" />
+    <link rel="preload" href="/images/mathis/mathis-portrait.webp" as="image" type="image/webp" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Mathis Certenais | HPC &amp; Scientific Workflows</title>
   </head>
   <body>
     <div id="root"></div>

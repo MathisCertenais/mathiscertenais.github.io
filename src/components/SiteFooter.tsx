@@ -1,11 +1,12 @@
 import { ArrowIcon } from './Icons'
+import { identity } from '../content'
 
 interface FooterGroup {
   title: string
   links: Array<{
     label: string
     href: string
-    external?: boolean
+    newTab?: boolean
   }>
 }
 
@@ -13,16 +14,16 @@ const footerGroups: FooterGroup[] = [
   {
     title: 'Navigation',
     links: [
-      { label: 'Work', href: '/work' },
+      { label: 'Research', href: '/research' },
       { label: 'About', href: '/about' },
       { label: 'Contact', href: '/contact' },
-      { label: 'Résumé', href: '/resume' },
+      { label: 'Profile', href: '/resume' },
     ],
   },
   {
     title: 'Reading',
     links: [
-      { label: 'Writing', href: '/articles' },
+      { label: 'Writing', href: '/writing' },
       { label: 'Archive', href: '/archive' },
       { label: 'Resources', href: '/resources' },
     ],
@@ -30,8 +31,8 @@ const footerGroups: FooterGroup[] = [
   {
     title: 'Elsewhere',
     links: [
-      { label: 'LinkedIn ↗', href: 'https://www.linkedin.com/in/nabauer/', external: true },
-      { label: 'ADPList ↗', href: 'https://adplist.org/mentors/nate-bauer', external: true },
+      { label: 'LinkedIn ↗', href: identity.linkedin, newTab: true },
+      { label: 'Email', href: `mailto:${identity.email}` },
     ],
   },
 ]
@@ -43,9 +44,9 @@ export function SiteFooter() {
         <div>
           <p className="section-label">Let&apos;s connect</p>
           <h2>
-            Interested in working
+            Interested in research
             <br />
-            together?
+            collaboration?
           </h2>
         </div>
         <div className="footer-cta__actions">
@@ -54,32 +55,22 @@ export function SiteFooter() {
           </a>
           <a
             className="button button--secondary"
-            href="https://adplist.org/mentors/nate-bauer"
+            href={identity.linkedin}
             rel="noreferrer"
             target="_blank"
           >
-            Book a mentoring session <ArrowIcon external />
+            Connect on LinkedIn <ArrowIcon external />
           </a>
         </div>
       </div>
 
       <div className="footer-links section">
         <div className="footer-brand">
-          <a aria-label="Nate Bauer — Home" href="/">
-            <picture>
-              <source sizes="140px" srcSet="/images/ui/logo.480.webp 480w" type="image/webp" />
-              <img
-                alt=""
-                decoding="async"
-                height="24"
-                loading="lazy"
-                src="/images/ui/logo.png"
-                width="120"
-              />
-            </picture>
+          <a aria-label="Mathis Certenais — Home" className="footer-wordmark" href="/">
+            <span aria-hidden="true">M.</span> Mathis Certenais
           </a>
           <p>
-            Lead Product Designer focused on healthcare systems and scalable design infrastructure.
+            Computer scientist researching HPC, data logistics, and cross-facility scientific workflows.
           </p>
         </div>
 
@@ -91,8 +82,8 @@ export function SiteFooter() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    rel={link.external ? 'noreferrer' : undefined}
-                    target={link.external ? '_blank' : undefined}
+                    rel={link.newTab ? 'noreferrer' : undefined}
+                    target={link.newTab ? '_blank' : undefined}
                   >
                     {link.label}
                   </a>

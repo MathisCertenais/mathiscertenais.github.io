@@ -1,21 +1,22 @@
 import { useEffect, useRef, useState } from 'react'
 import { navigate } from '../routing'
+import { ThemeToggle } from '../theme/ThemeToggle'
 import { ExternalLinkIcon, MenuIcon } from './Icons'
 
 const primaryLinks = [
   { label: 'Home', href: '/' },
-  { label: 'Work', href: '/work' },
-  { label: 'Writing', href: '/articles' },
+  { label: 'Research', href: '/research' },
+  { label: 'Writing', href: '/writing' },
   { label: 'Videos', href: '/videos' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ]
 
 const secondaryLinks = [
-  { label: 'Résumé', href: '/resume', external: false },
+  { label: 'Profile', href: '/resume', external: false },
   {
     label: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/nabauer/',
+    href: 'https://www.linkedin.com/in/mathiscertenais/',
     external: true,
   },
 ]
@@ -26,7 +27,12 @@ interface SiteHeaderProps {
 
 function linkIsCurrent(href: string, currentPath: string) {
   if (href === '/') return currentPath === '/'
-  if (href === '/articles') return currentPath.startsWith('/articles')
+  if (href === '/research') {
+    return currentPath.startsWith('/research') || currentPath.startsWith('/work')
+  }
+  if (href === '/writing') {
+    return currentPath.startsWith('/writing') || currentPath.startsWith('/articles')
+  }
   return currentPath === href || currentPath.startsWith(`${href}/`)
 }
 
@@ -156,7 +162,7 @@ export function SiteHeader({ currentPath = '/' }: SiteHeaderProps) {
       <header className="site-header">
         <div className="site-header__inner">
           <a
-            aria-label="Nate Bauer — Home"
+            aria-label="Mathis Certenais — Home"
             className="brand"
             href="/"
             onClick={(event) => {
@@ -172,10 +178,10 @@ export function SiteHeader({ currentPath = '/' }: SiteHeaderProps) {
             onPointerUp={cancelLogoHold}
             tabIndex={isOpen ? -1 : 0}
           >
-            <picture>
-              <source sizes="140px" srcSet="/images/ui/logo.480.webp 480w" type="image/webp" />
-              <img alt="" decoding="async" height="28" src="/images/ui/logo.png" width="140" />
-            </picture>
+            <span aria-hidden="true" className="brand-symbol">
+              M.
+            </span>
+            <span className="brand-name">Mathis Certenais</span>
           </a>
 
           <nav aria-label="Primary navigation" className="desktop-nav desktop-nav--primary">
@@ -195,7 +201,7 @@ export function SiteHeader({ currentPath = '/' }: SiteHeaderProps) {
             {secondaryLinks.map((link) => (
               <a
                 aria-label={
-                  link.external ? `Nate Bauer on ${link.label} (opens in new tab)` : undefined
+                  link.external ? `Mathis Certenais on ${link.label} (opens in new tab)` : undefined
                 }
                 aria-current={linkIsCurrent(link.href, currentPath) ? 'page' : undefined}
                 className="nav-link-muted"
@@ -208,8 +214,13 @@ export function SiteHeader({ currentPath = '/' }: SiteHeaderProps) {
                 {link.external ? <ExternalLinkIcon /> : null}
               </a>
             ))}
+            <ThemeToggle className="theme-toggle--desktop" />
           </nav>
 
+          <ThemeToggle
+            className="theme-toggle--mobile"
+            tabIndex={isOpen ? -1 : 0}
+          />
           <button
             aria-controls="mobile-navigation"
             aria-expanded={isOpen}

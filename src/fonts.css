@@ -1,0 +1,33 @@
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 300 600;
+  font-display: swap;
+  src: url('/assets/fonts/outfit-latin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Outfit Fallback';
+  src: local('Arial');
+  ascent-override: 100.18%;
+  descent-override: 26.05%;
+  line-gap-override: 0%;
+  size-adjust: 99.82%;
+}
+
+@font-face {
+  font-family: 'Libre Baskerville';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/fonts/libre-baskerville-latin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Libre Baskerville Fallback';
+  src: local('Times New Roman');
+  ascent-override: 76.22%;
+  descent-override: 21.22%;
+  line-gap-override: 0%;
+  size-adjust: 127.26%;
+}

@@ -1,8 +1,9 @@
 import { useEffect } from 'react'
 import { Tldraw } from 'tldraw'
 import 'tldraw/tldraw.css'
+import type { ResolvedTheme } from '../theme/ThemeProvider'
 
-export default function WhiteboardPage() {
+export default function WhiteboardPage({ resolvedTheme }: { resolvedTheme: ResolvedTheme }) {
   useEffect(() => {
     document.documentElement.classList.remove('wb-leaving')
     document.documentElement.classList.add('wb-active')
@@ -15,9 +16,10 @@ export default function WhiteboardPage() {
   return (
     <main className="whiteboard-page" id="main-content" tabIndex={-1}>
       <Tldraw
+        colorScheme={resolvedTheme}
         components={{ PageMenu: null }}
         options={{ maxPages: 1 }}
-        persistenceKey="nabauer-whiteboard"
+        persistenceKey="mathis-certenais-whiteboard"
       />
     </main>
   )

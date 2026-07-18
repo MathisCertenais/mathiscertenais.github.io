@@ -1,37 +1,38 @@
 import { lazy, Suspense, useEffect, useRef } from 'react'
 import { NotFoundPage } from './components/NotFoundPage'
+import { PortfolioPage } from './components/PortfolioPage'
 import { SiteFooter } from './components/SiteFooter'
 import { SiteHeader } from './components/SiteHeader'
-import { ReferencePage } from './reference/ReferencePage'
-import { getReferenceEntry } from './reference/referenceData'
-import { LegacyShortsRedirect } from './reference/LegacyShortsRedirect'
 import { useAppLocation } from './routing'
-import { applyPageMetadata, homeMetadata, notFoundMetadata } from './metadata'
+import { applyPageMetadata, notFoundMetadata } from './metadata'
+import { getRouteEntry } from './routeManifest'
+import { useTheme } from './theme/ThemeProvider'
 
 const WhiteboardPage = lazy(() => import('./whiteboard/WhiteboardPage'))
 
 function App() {
   const location = useAppLocation()
+  const { resolvedTheme } = useTheme()
   const previousPathRef = useRef(location.pathname)
-  const isHome = location.pathname === '/'
-  const isWhiteboard = location.pathname === '/whiteboard'
-  const isLegacyShorts = location.pathname === '/articles/shorts'
-  const entry = getReferenceEntry(location.pathname)
+  const route = getRouteEntry(location.pathname)
+  const isHome = route?.page === 'home'
+  const isWhiteboard = route?.page === 'whiteboard'
 
   useEffect(() => {
-    if (isHome) {
-      applyPageMetadata(homeMetadata)
-    } else if (isWhiteboard) {
+    if (route) {
       applyPageMetadata({
-        path: '/whiteboard',
-        title: 'Whiteboard | Nate Bauer',
-        description: 'A browser-based whiteboard stored locally in this browser.',
-        robots: 'noindex, nofollow',
+        canonicalPath: route.canonical,
+        description: route.description,
+        ogImage: route.ogImage,
+        ogImageAlt: route.ogImageAlt,
+        path: route.path,
+        robots: route.robots,
+        title: route.title,
       })
-    } else if (!entry && !isLegacyShorts) {
+    } else {
       applyPageMetadata({ ...notFoundMetadata, path: location.pathname })
     }
-  }, [entry, isHome, isLegacyShorts, isWhiteboard, location.pathname])
+  }, [location.pathname, route])
 
   useEffect(() => {
     const routeChanged = previousPathRef.current !== location.pathname
@@ -63,12 +64,10 @@ function App() {
             </main>
           }
         >
-          <WhiteboardPage />
+          <WhiteboardPage resolvedTheme={resolvedTheme} />
         </Suspense>
-      ) : isLegacyShorts ? (
-        <LegacyShortsRedirect hash={location.hash} />
-      ) : entry?.file ? (
-        <ReferencePage key={location.pathname} pathname={location.pathname} />
+      ) : route ? (
+        <PortfolioPage key={location.pathname} page={route.page} />
       ) : (
         <NotFoundPage />
       )}
