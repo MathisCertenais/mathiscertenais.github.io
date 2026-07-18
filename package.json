@@ -10,10 +10,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build && node scripts/prerender-routes.mjs",
-    "check": "pnpm lint && pnpm typecheck && pnpm check:routes && pnpm build",
+    "check": "pnpm lint && pnpm typecheck && pnpm check:routes && pnpm build && pnpm check:dist",
+    "check:dist": "node scripts/check-routes.mjs --dist",
     "check:routes": "node scripts/check-routes.mjs",
     "lint": "eslint . --max-warnings 0",
-    "sync:reference": "node scripts/sync-reference.mjs",
     "typecheck": "tsc -b --pretty false",
     "preview": "vite preview"
   },
