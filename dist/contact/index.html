@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#eef2f5" />
+    <script>
+      ;(() => {
+        try {
+          const stored = localStorage.getItem('mathis-personal-website:theme')
+          const theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light'
+          document.documentElement.dataset.theme = theme
+          document.documentElement.style.colorScheme = theme
+          document.querySelector('meta[name="theme-color"]').content =
+            theme === 'dark' ? '#15181c' : '#eef2f5'
+        } catch {
+          document.documentElement.dataset.theme = 'light'
+        }
+      })()
+    </script>
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Contact Mathis Certenais about HPC, scientific workflows, research, and collaboration." />
+    <meta property="og:title" content="Contact | Mathis Certenais" />
+    <meta property="og:description" content="Contact Mathis Certenais about HPC, scientific workflows, research, and collaboration." />
+    <meta property="og:site_name" content="Mathis Certenais" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/images/mathis/social-card.svg" />
+    <meta property="og:image:alt" content="Contact Mathis Certenais" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Contact | Mathis Certenais" />
+    <meta name="twitter:description" content="Contact Mathis Certenais about HPC, scientific workflows, research, and collaboration." />
+    <meta name="twitter:image" content="/images/mathis/social-card.svg" />
+    <meta name="twitter:image:alt" content="Contact Mathis Certenais" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Contact | Mathis Certenais</title>
+    <script type="module" crossorigin src="/assets/index-3J3tv20o.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/rolldown-runtime-QTnfLwEv.js">
+    <link rel="modulepreload" crossorigin href="/assets/tldraw-D8tQCFtn.js">
+    <link rel="stylesheet" crossorigin href="/assets/tldraw-DC-J32Ny.css">
+    <link rel="stylesheet" crossorigin href="/assets/index-C-CQcdoF.css">
+    <meta property="og:url" content="/contact" />
+    <link rel="canonical" href="/contact" />
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

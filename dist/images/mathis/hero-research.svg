@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="866" height="948" viewBox="0 0 866 948" role="img" aria-labelledby="title desc">
+  <title id="title">Scientific computing network</title>
+  <desc id="desc">An abstract scientific workflow connects instruments, data, high-performance computing, and research results.</desc>
+  <defs>
+    <linearGradient id="bg" x1="90" y1="60" x2="790" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F5F7F9"/>
+      <stop offset="0.58" stop-color="#E4EBF1"/>
+      <stop offset="1" stop-color="#D7E0E9"/>
+    </linearGradient>
+    <linearGradient id="orb" x1="260" y1="260" x2="640" y2="720" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7E5071"/>
+      <stop offset="1" stop-color="#4E6FA3"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop stop-color="#FFFFFF" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#18283C" flood-opacity="0.16"/>
+    </filter>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#4E6FA3" stroke-opacity="0.09"/>
+    </pattern>
+  </defs>
+  <rect width="866" height="948" rx="44" fill="url(#bg)"/>
+  <rect x="28" y="28" width="810" height="892" rx="28" fill="url(#grid)" stroke="#FFFFFF" stroke-opacity="0.7"/>
+  <circle cx="433" cy="474" r="360" fill="url(#glow)" opacity="0.75"/>
+
+  <g fill="none" stroke-linecap="round">
+    <ellipse cx="433" cy="470" rx="286" ry="170" stroke="#4E6FA3" stroke-width="2" stroke-opacity="0.26" transform="rotate(-19 433 470)"/>
+    <ellipse cx="433" cy="470" rx="282" ry="166" stroke="#7E5071" stroke-width="2" stroke-opacity="0.22" transform="rotate(39 433 470)"/>
+    <ellipse cx="433" cy="470" rx="254" ry="124" stroke="#17243B" stroke-width="2" stroke-opacity="0.14" transform="rotate(79 433 470)"/>
+    <path d="M157 618C258 506 307 347 433 314C561 280 630 390 709 287" stroke="#4E6FA3" stroke-width="5" stroke-dasharray="2 15"/>
+    <path d="M146 386C274 390 288 566 431 594C557 619 643 561 732 640" stroke="#7E5071" stroke-width="4" stroke-dasharray="2 14"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="294" y="333" width="278" height="278" rx="54" fill="#17243B"/>
+    <rect x="318" y="357" width="230" height="230" rx="38" fill="url(#orb)"/>
+    <circle cx="433" cy="472" r="79" fill="#F5F7F9" fill-opacity="0.96"/>
+    <circle cx="433" cy="472" r="51" fill="#17243B"/>
+    <path d="M408 476L426 494L461 448" fill="none" stroke="#F5F7F9" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g fill="#F7F9FB" stroke="#4E6FA3" stroke-width="3" filter="url(#shadow)">
+    <rect x="87" y="239" width="154" height="128" rx="24"/>
+    <rect x="625" y="164" width="154" height="128" rx="24"/>
+    <rect x="628" y="667" width="154" height="128" rx="24"/>
+    <rect x="84" y="696" width="154" height="128" rx="24"/>
+  </g>
+  <g fill="#17243B">
+    <circle cx="137" cy="291" r="17"/>
+    <circle cx="190" cy="291" r="17"/>
+    <path d="M121 333H207" stroke="#7E5071" stroke-width="10" stroke-linecap="round"/>
+    <path d="M660 249L702 207L744 249" fill="none" stroke="#17243B" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="705" cy="732" r="39" fill="none" stroke="#17243B" stroke-width="10"/>
+    <path d="M687 734L700 747L725 717" fill="none" stroke="#7E5071" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M123 756H199M123 781H174" stroke="#17243B" stroke-width="10" stroke-linecap="round"/>
+  </g>
+
+  <g fill="#7E5071" stroke="#F7F9FB" stroke-width="6">
+    <circle cx="187" cy="488" r="18"/>
+    <circle cx="351" cy="213" r="18"/>
+    <circle cx="616" cy="361" r="18"/>
+    <circle cx="548" cy="697" r="18"/>
+    <circle cx="314" cy="672" r="18"/>
+  </g>
+  <g fill="#4E6FA3" stroke="#F7F9FB" stroke-width="6">
+    <circle cx="270" cy="402" r="14"/>
+    <circle cx="520" cy="251" r="14"/>
+    <circle cx="694" cy="511" r="14"/>
+    <circle cx="407" cy="746" r="14"/>
+  </g>
+
+  <g font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="650" fill="#17243B" text-anchor="middle">
+    <text x="164" y="410">INSTRUMENTS</text>
+    <text x="702" y="335">DATA</text>
+    <text x="705" y="838">RESULTS</text>
+    <text x="161" y="867">WORKFLOWS</text>
+  </g>
+</svg>

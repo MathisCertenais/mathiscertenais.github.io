@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="960" viewBox="0 0 1280 960" role="img" aria-labelledby="title desc">
+  <title id="title">Distributed data facility pipeline</title>
+  <desc id="desc">A diagram showing instrument data flowing through a distributed data facility into compute and research outcomes.</desc>
+  <defs>
+    <linearGradient id="bg" x1="80" y1="60" x2="1180" y2="900" gradientUnits="userSpaceOnUse"><stop stop-color="#F3F6F8"/><stop offset="1" stop-color="#DDE5EC"/></linearGradient>
+    <linearGradient id="core" x1="520" y1="310" x2="760" y2="650" gradientUnits="userSpaceOnUse"><stop stop-color="#7E5071"/><stop offset="1" stop-color="#4E6FA3"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-30%" width="140%" height="170%"><feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#17243B" flood-opacity="0.14"/></filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#4E6FA3"/></marker>
+  </defs>
+  <rect width="1280" height="960" rx="36" fill="url(#bg)"/>
+  <path d="M220 480H465M815 480H1060" fill="none" stroke="#4E6FA3" stroke-width="10" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <path d="M640 218V310M640 650V742" fill="none" stroke="#7E5071" stroke-width="8" stroke-linecap="round" stroke-dasharray="3 18"/>
+
+  <g filter="url(#shadow)">
+    <rect x="70" y="335" width="300" height="290" rx="32" fill="#F9FAFB" stroke="#CDD8E1" stroke-width="3"/>
+    <rect x="465" y="280" width="350" height="400" rx="46" fill="#17243B"/>
+    <rect x="500" y="315" width="280" height="330" rx="34" fill="url(#core)"/>
+    <rect x="910" y="335" width="300" height="290" rx="32" fill="#F9FAFB" stroke="#CDD8E1" stroke-width="3"/>
+  </g>
+
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M129 473C166 422 218 422 255 473C291 524 328 522 347 491" stroke="#4E6FA3" stroke-width="12"/>
+    <path d="M129 526C172 479 217 487 256 530C292 570 321 561 347 536" stroke="#7E5071" stroke-width="7"/>
+    <circle cx="640" cy="462" r="83" stroke="#F7F9FB" stroke-width="12"/>
+    <path d="M640 379V545M557 462H723" stroke="#F7F9FB" stroke-width="8"/>
+    <path d="M970 533L1017 486L1054 516L1144 423" stroke="#7E5071" stroke-width="13"/>
+    <path d="M970 561H1145" stroke="#4E6FA3" stroke-width="7"/>
+  </g>
+  <g fill="#F7F9FB">
+    <circle cx="640" cy="379" r="14"/><circle cx="640" cy="545" r="14"/><circle cx="557" cy="462" r="14"/><circle cx="723" cy="462" r="14"/><circle cx="640" cy="462" r="22"/>
+  </g>
+
+  <g font-family="system-ui, -apple-system, sans-serif" text-anchor="middle">
+    <text x="640" y="112" fill="#7E5071" font-size="28" font-weight="750" letter-spacing="4">SCIENTIFIC DATA FLOW</text>
+    <text x="220" y="685" fill="#17243B" font-size="32" font-weight="700">INSTRUMENTS</text>
+    <text x="640" y="730" fill="#17243B" font-size="36" font-weight="750">DISTRIBUTED DATA FACILITY</text>
+    <text x="640" y="778" fill="#526176" font-size="26">INGEST · ORCHESTRATE · COMPUTE</text>
+    <text x="1060" y="685" fill="#17243B" font-size="32" font-weight="700">INSIGHT</text>
+  </g>
+  <g fill="#7E5071"><circle cx="220" cy="480" r="16"/><circle cx="1060" cy="480" r="16"/></g>
+</svg>

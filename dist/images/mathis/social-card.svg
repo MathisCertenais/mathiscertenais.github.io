@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Mathis Certenais — HPC and scientific workflows</title>
+  <desc id="desc">A branded social sharing card with an abstract network linking scientific instruments, data, and compute.</desc>
+  <defs>
+    <linearGradient id="bg" x1="35" y1="18" x2="1160" y2="620" gradientUnits="userSpaceOnUse"><stop stop-color="#F4F6F8"/><stop offset="1" stop-color="#DCE5EC"/></linearGradient>
+    <linearGradient id="orb" x1="760" y1="100" x2="1100" y2="550" gradientUnits="userSpaceOnUse"><stop stop-color="#7E5071"/><stop offset="1" stop-color="#4E6FA3"/></linearGradient>
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="190%"><feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#17243B" flood-opacity="0.18"/></filter>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M36 0H0V36" fill="none" stroke="#4E6FA3" stroke-opacity="0.09"/></pattern>
+  </defs>
+  <rect width="1200" height="630" rx="30" fill="url(#bg)"/>
+  <rect x="24" y="24" width="1152" height="582" rx="20" fill="url(#grid)" stroke="#FFFFFF" stroke-opacity="0.7"/>
+  <text x="74" y="112" fill="#7E5071" font-family="system-ui, -apple-system, sans-serif" font-size="25" font-weight="750" letter-spacing="5">SCIENTIFIC COMPUTING</text>
+  <text x="72" y="248" fill="#17243B" font-family="Georgia, serif" font-size="76" font-weight="700">Mathis</text>
+  <text x="72" y="337" fill="#17243B" font-family="Georgia, serif" font-size="76" font-weight="700">Certenais.</text>
+  <path d="M74 362H478" stroke="#D8B9CC" stroke-width="18"/>
+  <text x="76" y="430" fill="#4D5E72" font-family="system-ui, -apple-system, sans-serif" font-size="32">HPC &amp; scientific workflows</text>
+  <text x="76" y="483" fill="#667589" font-family="system-ui, -apple-system, sans-serif" font-size="26">Infrastructure that turns data into discovery.</text>
+
+  <g fill="none" stroke-linecap="round">
+    <ellipse cx="918" cy="314" rx="227" ry="120" stroke="#4E6FA3" stroke-width="3" stroke-opacity="0.35" transform="rotate(-20 918 314)"/>
+    <ellipse cx="918" cy="314" rx="218" ry="112" stroke="#7E5071" stroke-width="3" stroke-opacity="0.3" transform="rotate(34 918 314)"/>
+    <path d="M712 408C789 321 846 206 952 211C1042 216 1075 318 1121 242" stroke="#4E6FA3" stroke-width="5" stroke-dasharray="2 14"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="819" y="215" width="198" height="198" rx="45" fill="#17243B"/>
+    <rect x="848" y="244" width="140" height="140" rx="32" fill="url(#orb)"/>
+    <circle cx="918" cy="314" r="41" fill="#F3F6F8"/>
+    <path d="M901 315L914 328L939 298" fill="none" stroke="#17243B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g fill="#7E5071" stroke="#F5F7F9" stroke-width="6"><circle cx="745" cy="232" r="15"/><circle cx="1047" cy="163" r="15"/><circle cx="1090" cy="420" r="15"/><circle cx="799" cy="466" r="15"/></g>
+  <g fill="#4E6FA3" stroke="#F5F7F9" stroke-width="5"><circle cx="705" cy="357" r="12"/><circle cx="1124" cy="315" r="12"/><circle cx="950" cy="500" r="12"/></g>
+  <rect x="74" y="545" width="1052" height="2" fill="#C5D1DC"/>
+</svg>
