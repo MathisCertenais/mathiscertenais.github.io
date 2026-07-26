@@ -14,5 +14,7 @@ License 1.1. Their names and font software remain the property of their respecti
 The whiteboard uses `tldraw`, which retains its own license and notices in the installed package.
 
 Linked research pages and embedded external media remain subject to the terms and copyright of
-their respective publishers and creators. They are linked or embedded for attribution and research
-context; they are not relicensed by this repository.
+their respective publishers and creators. Official thumbnail stills from ECLAT and AstroTube are
+included only to identify the corresponding interview, webinar, and hackathon videos. Those images
+and media are used with source links for attribution and research context; they are not relicensed
+by this repository.

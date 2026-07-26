@@ -721,7 +721,7 @@ button:hover .cta-arrow {
   display: block;
   width: 100%;
   overflow: hidden;
-  aspect-ratio: 9 / 16;
+  aspect-ratio: 16 / 9;
   background: #d7d8db;
 }
 
@@ -738,6 +738,7 @@ button:hover .cta-arrow {
 }
 
 .video-card__thumbnail img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;

@@ -73,7 +73,13 @@ export function ArticlePage({ articleId }: { articleId: string }) {
                       title={video.title}
                     />
                   ) : (
-                    <video controls playsInline preload="metadata" src={video.src}>
+                    <video
+                      controls
+                      playsInline
+                      poster={video.image}
+                      preload="metadata"
+                      src={video.src}
+                    >
                       Your browser does not support the video element.
                     </video>
                   )}

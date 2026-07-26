@@ -13,6 +13,8 @@ export const sourceLinks = {
   arxiv: 'https://arxiv.org/abs/2509.03075',
   eclatInterview:
     'https://eclat-lab.fr/en/at-the-heart-of-data-logistics-for-astronomy-interview-with-mathis/',
+  eclatHackathon:
+    'https://eclat-lab.fr/en/international-hackathon-in-rennes-on-ddfacet-and-rims/',
   eclatPartners: 'https://eclat-lab.fr/en/partners/',
   eclatWorkshop: 'https://eclat-lab.fr/en/technical-workshop-2025-and-hackathon/',
   eclatWebinar: 'https://eclat-lab.fr/webinaire-hpc-as-a-service-for-radio-astronomy/',
@@ -141,7 +143,7 @@ export const videoItems: VideoItem[] = [
     kind: 'video',
     src: 'https://eclat-lab.fr/wp-content/uploads/2025/09/ECLAT-interview-matthis-2025-Website-v3.mp4',
     externalHref: sourceLinks.eclatInterview,
-    image: '/images/mathis/interview.svg',
+    image: '/images/mathis/videos/interview.jpg',
   },
   {
     id: 'hpc-service-webinar',
@@ -150,7 +152,7 @@ export const videoItems: VideoItem[] = [
     kind: 'iframe',
     src: 'https://astrotube.obspm.fr/videos/embed/35dTv8mmaSdm36uEFtCnZz',
     externalHref: sourceLinks.eclatWebinar,
-    image: '/images/mathis/webinar.svg',
+    image: '/images/mathis/videos/webinar.jpg',
   },
   {
     id: 'astronomy-hackathon',
@@ -158,8 +160,8 @@ export const videoItems: VideoItem[] = [
     description: 'Highlights from a collaborative ECLAT research event in Rennes.',
     kind: 'video',
     src: 'https://eclat-lab.fr/wp-content/uploads/2026/04/ECLAT-hackathon-Rennes-2026.mp4',
-    externalHref: sourceLinks.eclatWorkshop,
-    image: '/images/mathis/hackathon.svg',
+    externalHref: sourceLinks.eclatHackathon,
+    image: '/images/mathis/videos/hackathon.jpg',
   },
 ]
 
@@ -196,8 +198,8 @@ export const articleItems: ArticleItem[] = [
       'Radio-astronomy applications increasingly need the throughput, fast I/O, and parallelism of national supercomputers. Accessing those machines, however, still requires operational knowledge that many domain researchers should not need to reproduce for every run.',
       'This webinar presents HPC applications as a service through a practical DDF Pipeline scenario. The focus is on integrating scientific data logistics, intensive imaging, and distributed workflow orchestration while keeping the researcher-facing interface understandable.',
     ],
-    image: '/images/mathis/webinar.svg',
-    imageAlt: 'Abstract illustration of a webinar connecting a researcher to an HPC service',
+    image: '/images/mathis/videos/webinar.jpg',
+    imageAlt: 'Mathis presenting the differences between cloud computing and HPC during the webinar',
     href: '/writing/webinar-hpc-applications-as-a-service',
     sourceHref: sourceLinks.eclatWebinar,
   },
@@ -213,10 +215,10 @@ export const articleItems: ArticleItem[] = [
       'Scientific software becomes more useful when the people who build infrastructure and the people who interpret astronomical data can work on the same problems together.',
       'The international hackathon in Rennes created space for that collaboration: participants worked across disciplines on radio-astronomy data processing, portability, distributed storage, and the practical constraints of multiple computing facilities.',
     ],
-    image: '/images/mathis/hackathon.svg',
-    imageAlt: 'Abstract illustration of an international scientific hackathon',
+    image: '/images/mathis/videos/hackathon.jpg',
+    imageAlt: 'Participants in the international DDFacet and RIMS hackathon in Rennes',
     href: '/writing/international-hackathon-for-astronomy',
-    sourceHref: sourceLinks.eclatWorkshop,
+    sourceHref: sourceLinks.eclatHackathon,
   },
   {
     id: 'hpc-applications-as-a-service',

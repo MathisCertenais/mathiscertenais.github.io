@@ -139,7 +139,13 @@ export function VideoSection({ heading = 'Videos', showAllLink = true }: VideoSe
                       title={activeVideo.title}
                     />
                   ) : (
-                    <video autoPlay controls playsInline src={activeVideo.src}>
+                    <video
+                      autoPlay
+                      controls
+                      playsInline
+                      poster={activeVideo.image}
+                      src={activeVideo.src}
+                    >
                       Your browser does not support the video element.
                     </video>
                   )}

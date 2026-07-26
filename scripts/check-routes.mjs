@@ -94,13 +94,13 @@ const requiredAssets = new Set([
   '/favicon.svg',
   '/images/mathis/cross-facility-workflows.svg',
   '/images/mathis/ddf-pipeline.svg',
-  '/images/mathis/hackathon.svg',
   '/images/mathis/hero-research.svg',
   '/images/mathis/hpc-as-a-service.svg',
-  '/images/mathis/interview.svg',
   '/images/mathis/mathis-portrait.webp',
   '/images/mathis/social-card.svg',
-  '/images/mathis/webinar.svg',
+  '/images/mathis/videos/hackathon.jpg',
+  '/images/mathis/videos/interview.jpg',
+  '/images/mathis/videos/webinar.jpg',
 ])
 
 const retiredPaths = [
