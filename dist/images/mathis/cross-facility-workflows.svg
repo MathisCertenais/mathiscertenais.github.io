@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="960" viewBox="0 0 1280 960" role="img" aria-labelledby="title desc">
+  <title id="title">Cross-facility scientific workflows</title>
+  <desc id="desc">Three research facilities share data and compute through a connected, observable workflow.</desc>
+  <defs>
+    <linearGradient id="bg" x1="80" y1="80" x2="1180" y2="880" gradientUnits="userSpaceOnUse"><stop stop-color="#F5F7F9"/><stop offset="1" stop-color="#DFE7EE"/></linearGradient>
+    <linearGradient id="route" x1="150" y1="600" x2="1120" y2="330" gradientUnits="userSpaceOnUse"><stop stop-color="#7E5071"/><stop offset="1" stop-color="#4E6FA3"/></linearGradient>
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="190%"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#17243B" flood-opacity="0.16"/></filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#4E6FA3"/></marker>
+  </defs>
+  <rect width="1280" height="960" rx="36" fill="url(#bg)"/>
+  <path d="M105 677C257 414 384 679 565 449C716 257 858 367 1169 222" fill="none" stroke="#CBD6E0" stroke-width="50" stroke-linecap="round"/>
+  <path d="M105 677C257 414 384 679 565 449C716 257 858 367 1169 222" fill="none" stroke="url(#route)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3 20" marker-end="url(#arrow)"/>
+
+  <g filter="url(#shadow)">
+    <circle cx="223" cy="565" r="112" fill="#F8FAFB" stroke="#7E5071" stroke-width="6"/>
+    <circle cx="640" cy="386" r="126" fill="#17243B" stroke="#728CB0" stroke-width="6"/>
+    <circle cx="1031" cy="333" r="112" fill="#F8FAFB" stroke="#4E6FA3" stroke-width="6"/>
+  </g>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M160 597V541L223 502L286 541V597" stroke="#17243B" stroke-width="12"/>
+    <path d="M190 596V552H256V596M599 338H681V434H599Z" stroke="#17243B" stroke-width="10"/>
+    <path d="M599 338H681V434H599Z" stroke="#F5F7F9"/>
+    <path d="M618 366H662M618 392H662" stroke="#7E5071" stroke-width="9"/>
+    <circle cx="1031" cy="333" r="47" stroke="#17243B" stroke-width="11"/>
+    <path d="M995 370L1067 296" stroke="#7E5071" stroke-width="10"/>
+  </g>
+  <g fill="#7E5071" stroke="#F8FAFB" stroke-width="7"><circle cx="374" cy="550" r="19"/><circle cx="770" cy="340" r="19"/></g>
+  <g fill="#4E6FA3" stroke="#F8FAFB" stroke-width="7"><circle cx="526" cy="481" r="19"/><circle cx="900" cy="356" r="19"/></g>
+
+  <g font-family="system-ui, -apple-system, sans-serif" text-anchor="middle">
+    <text x="640" y="110" fill="#7E5071" font-size="28" font-weight="750" letter-spacing="4">ONE WORKFLOW · MANY FACILITIES</text>
+    <text x="223" y="741" fill="#17243B" font-size="30" font-weight="700">EXPERIMENT</text>
+    <text x="223" y="780" fill="#59687A" font-size="25">ACQUIRE</text>
+    <text x="640" y="584" fill="#17243B" font-size="30" font-weight="700">DATA FACILITY</text>
+    <text x="640" y="623" fill="#59687A" font-size="25">ORCHESTRATE</text>
+    <text x="1031" y="508" fill="#17243B" font-size="30" font-weight="700">COMPUTE</text>
+    <text x="1031" y="547" fill="#59687A" font-size="25">ANALYZE</text>
+  </g>
+</svg>
