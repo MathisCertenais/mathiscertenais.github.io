@@ -1,7 +1,75 @@
-import { articleItems, getArticle, videoItems } from '../content'
+import type { ReactNode } from 'react'
+import { articleItems, getArticle, videoItems, type ArticleBlock } from '../content'
 import { ArrowIcon } from './Icons'
 import { PageHero } from './PageHero'
 import { WritingSection } from './WritingSection'
+
+const INLINE_TOKEN = /(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g
+
+function renderInline(text: string): ReactNode[] {
+  const nodes: ReactNode[] = []
+  let match: RegExpExecArray | null
+  let cursor = 0
+  INLINE_TOKEN.lastIndex = 0
+  while ((match = INLINE_TOKEN.exec(text))) {
+    if (match.index > cursor) nodes.push(text.slice(cursor, match.index))
+    const token = match[0]
+    const key = nodes.length
+    if (token.startsWith('**')) {
+      nodes.push(<strong key={key}>{token.slice(2, -2)}</strong>)
+    } else {
+      const opening = token.indexOf('](')
+      nodes.push(
+        <a href={token.slice(opening + 2, -1)} key={key} rel="noreferrer" target="_blank">
+          {token.slice(1, opening)}
+        </a>,
+      )
+    }
+    cursor = match.index + token.length
+  }
+  if (cursor < text.length) nodes.push(text.slice(cursor))
+  return nodes
+}
+
+function ArticleBlocks({ blocks }: { blocks: ArticleBlock[] }) {
+  return (
+    <>
+      {blocks.map((block, index) => {
+        switch (block.type) {
+          case 'paragraph':
+            return <p key={index}>{renderInline(block.text)}</p>
+          case 'heading':
+            return block.level === 2 ? (
+              <h2 key={index}>{renderInline(block.text)}</h2>
+            ) : (
+              <h3 key={index}>{renderInline(block.text)}</h3>
+            )
+          case 'list':
+            return block.ordered ? (
+              <ol key={index}>
+                {block.items.map((item, itemIndex) => (
+                  <li key={itemIndex}>{renderInline(item)}</li>
+                ))}
+              </ol>
+            ) : (
+              <ul key={index}>
+                {block.items.map((item, itemIndex) => (
+                  <li key={itemIndex}>{renderInline(item)}</li>
+                ))}
+              </ul>
+            )
+          case 'figure':
+            return (
+              <figure className="article-figure" key={index}>
+                <img alt={block.alt} loading="lazy" src={block.image} />
+                {block.caption ? <figcaption>{block.caption}</figcaption> : null}
+              </figure>
+            )
+        }
+      })}
+    </>
+  )
+}
 
 export function WritingPage() {
   return (
@@ -57,9 +125,7 @@ export function ArticlePage({ articleId }: { articleId: string }) {
             </div>
           ) : (
             <>
-              {article.body.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
+              <ArticleBlocks blocks={article.body} />
 
               {video ? (
                 <figure className="article-media">

@@ -1972,6 +1972,85 @@ figure {
   margin-top: 28px;
 }
 
+.article-prose h2 {
+  margin-top: 56px;
+  margin-bottom: 20px;
+  font-family: var(--font-libre-baskerville), Georgia, serif;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.article-prose h3 {
+  margin-top: 40px;
+  margin-bottom: 16px;
+  color: var(--text-dark);
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.article-prose ul,
+.article-prose ol {
+  margin: 24px 0;
+  padding-left: 24px;
+}
+
+.article-prose li {
+  margin-top: 12px;
+  color: var(--text-mid);
+  font-family: var(--font-libre-baskerville), Georgia, serif;
+  font-size: 18px;
+  line-height: 1.9;
+}
+
+.article-prose ul > li::marker {
+  color: var(--accent);
+}
+
+.article-prose ol > li::marker {
+  color: var(--text-light);
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  font-weight: 500;
+}
+
+.article-prose strong {
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.article-prose a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.article-prose a:hover {
+  text-decoration-color: var(--accent);
+}
+
+.article-figure {
+  margin-top: 48px;
+  margin-bottom: 48px;
+}
+
+.article-figure img {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface-card-solid);
+}
+
+.article-figure figcaption {
+  margin-top: 12px;
+  color: var(--text-light);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
 .article-source {
   margin-top: 40px;
 }
@@ -2736,7 +2815,8 @@ html.wb-active .tlui-layout {
 :root[data-theme='dark'] .page-hero__art,
 :root[data-theme='dark'] .detail-hero__art,
 :root[data-theme='dark'] .detail-figure img,
-:root[data-theme='dark'] .article-cover img {
+:root[data-theme='dark'] .article-cover img,
+:root[data-theme='dark'] .article-figure img {
   border-color: rgba(255, 255, 255, 0.14);
   box-shadow: 0 28px 74px -50px #000;
 }
@@ -2745,7 +2825,8 @@ html.wb-active .tlui-layout {
 :root[data-theme='dark'] .page-hero__art,
 :root[data-theme='dark'] .detail-hero__art,
 :root[data-theme='dark'] .detail-figure img,
-:root[data-theme='dark'] .article-cover img {
+:root[data-theme='dark'] .article-cover img,
+:root[data-theme='dark'] .article-figure img {
   filter: brightness(0.86) saturate(0.9);
 }
 
@@ -2983,6 +3064,21 @@ html.wb-active .tlui-layout {
   }
 
   .article-prose > p:not(.article-source) {
+    font-size: 16px;
+    line-height: 1.85;
+  }
+
+  .article-prose h2 {
+    margin-top: 44px;
+    font-size: 26px;
+  }
+
+  .article-prose h3 {
+    margin-top: 32px;
+    font-size: 19px;
+  }
+
+  .article-prose li {
     font-size: 16px;
     line-height: 1.85;
   }
