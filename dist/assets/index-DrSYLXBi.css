@@ -69,6 +69,7 @@
 
   html {
     min-width: 320px;
+    overflow-x: hidden;
     scroll-behavior: smooth;
     scroll-padding-top: 92px;
     background: var(--bg);
@@ -1186,7 +1187,8 @@ button:hover .cta-arrow {
   }
 
   .hero__eyebrow {
-    white-space: nowrap;
+    white-space: normal;
+    text-wrap: balance;
   }
 
   .hero__title {
