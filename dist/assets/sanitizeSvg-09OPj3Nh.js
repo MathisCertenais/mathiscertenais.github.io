@@ -1,0 +1,1 @@
+import{t as e}from"./WhiteboardPage-CbSyKep2.js";export{e as sanitizeSvg};
