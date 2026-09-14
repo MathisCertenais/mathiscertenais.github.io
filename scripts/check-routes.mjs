@@ -31,6 +31,7 @@ const requiredCanonicalPaths = new Set([
   '/writing/hpc-applications-as-a-service',
   '/writing/international-hackathon-for-astronomy',
   '/writing/webinar-hpc-applications-as-a-service',
+  '/writing/exascale-astronomy-cybersecurity',
 ])
 
 const requiredLegacyPaths = new Set([
@@ -71,6 +72,7 @@ const allowedPages = new Set([
   'article:hpc-applications-as-a-service',
   'article:international-hackathon-for-astronomy',
   'article:webinar-hpc-applications-as-a-service',
+  'article:exascale-astronomy-cybersecurity',
   'contact',
   'home',
   'research',
@@ -89,6 +91,7 @@ const allowedPages = new Set([
 
 const requiredAssets = new Set([
   '/_redirects',
+  '/CNAME',
   '/assets/fonts/libre-baskerville-latin.woff2',
   '/assets/fonts/outfit-latin.woff2',
   '/favicon.svg',
