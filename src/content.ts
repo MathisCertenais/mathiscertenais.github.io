@@ -249,7 +249,7 @@ export const articleItems: ArticleItem[] = [
         type: 'figure',
         image: '/images/mathis/mcp-server-software-ontology/ddf-survey.webp',
         alt: 'Re-projection of the LoTSS-DR3 mosaic images and corresponding RMS image',
-        caption: 'Top: re-projection of the LoTSS-DR3 mosaic images. Bottom: the corresponding RMS image. The yellow and blue outlines show the LoTSS-DR1 and LoTSS-DR2 areas, covering 2% and 27% of the northern sky, respectively; the black outline shows the LoTSS-DR3 coverage of 88%. The small grey dots mark the 3168 LoTSS pointings, of which 2551 are included in this release.',
+        caption: 'Top: re-projection of the LoTSS-DR3 mosaic images. Bottom: the corresponding RMS image. The yellow and blue outlines show the LoTSS-DR1 and LoTSS-DR2 areas, covering 2% and 27% of the northern sky, respectively; the black outline shows the LoTSS-DR3 coverage of 88%. The small grey dots mark the 3168 LoTSS pointings, of which 2551 are included in this release. Source: [LoTSS Data Release 3](https://ui.adsabs.harvard.edu/abs/2026A%26A...707A.198S/abstract)',
       },
       {
         type: 'figure',
