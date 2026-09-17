@@ -62,7 +62,7 @@ function ArticleBlocks({ blocks }: { blocks: ArticleBlock[] }) {
             return (
               <figure className="article-figure" key={index}>
                 <img alt={block.alt} loading="lazy" src={block.image} />
-                {block.caption ? <figcaption>{block.caption}</figcaption> : null}
+                {block.caption ? <figcaption>{renderInline(block.caption)}</figcaption> : null}
               </figure>
             )
         }
