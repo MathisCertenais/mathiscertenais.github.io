@@ -92,7 +92,9 @@ export function ArticlePage({ articleId }: { articleId: string }) {
       ? videoItems.find((item) => item.id === 'hpc-service-webinar')
       : article.id === 'international-hackathon-for-astronomy'
         ? videoItems.find((item) => item.id === 'astronomy-hackathon')
-        : undefined
+        : article.id === 'mcp-server-software-ontology'
+          ? videoItems.find((item) => item.id === 'mcp-demo-video')
+          : undefined
 
   return (
     <main className="article-page" id="main-content" tabIndex={-1}>
