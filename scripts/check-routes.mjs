@@ -28,10 +28,12 @@ const requiredCanonicalPaths = new Set([
   '/videos',
   '/whiteboard',
   '/writing',
+  '/writing/predicting-for-sizing',
   '/writing/hpc-applications-as-a-service',
   '/writing/international-hackathon-for-astronomy',
   '/writing/webinar-hpc-applications-as-a-service',
   '/writing/exascale-astronomy-cybersecurity',
+  '/writing/mcp-server-software-ontology',
 ])
 
 const requiredLegacyPaths = new Set([
@@ -69,10 +71,12 @@ const requiredLegacyPaths = new Set([
 const allowedPages = new Set([
   'about',
   'archive',
+  'article:predicting-for-sizing',
   'article:hpc-applications-as-a-service',
   'article:international-hackathon-for-astronomy',
   'article:webinar-hpc-applications-as-a-service',
   'article:exascale-astronomy-cybersecurity',
+  'article:mcp-server-software-ontology',
   'contact',
   'home',
   'research',
