@@ -175,6 +175,7 @@ export const videoItems: VideoItem[] = [
 ]
 
 export type ArticleId =
+  | 'predicting-for-sizing'
   | 'webinar-hpc-applications-as-a-service'
   | 'international-hackathon-for-astronomy'
   | 'hpc-applications-as-a-service'
@@ -204,8 +205,157 @@ export interface ArticleItem {
 
 export const articleItems: ArticleItem[] = [
   {
-    id: 'mcp-server-software-ontology',
+    id: 'predicting-for-sizing',
     number: '01',
+    category: 'Research note',
+    date: 'September 18, 2026',
+    title:
+      'Predicting for Sizing: Teaching Supercomputers Their Own Execution Footprint',
+    description:
+      'A continuous-learning predictive model that estimates the execution time, memory, and energy of scientific applications on supercomputers — so researchers can size their allocations instead of guessing.',
+    body: [
+      {
+        type: 'heading',
+        level: 2,
+        text: 'The Sizing Problem',
+      },
+      {
+        type: 'paragraph',
+        text: 'Every scientific campaign on a supercomputer begins with a **bet**. How many nodes? How much memory? How long will this run take? For the **DDF Pipeline** — the self-calibration and imaging software behind the **LOFAR** radio telescope — the stakes are enormous: the latest LoTSS (LOFAR Two-metre Sky Survey) data release alone consumed **16 million core-hours**. And behind every one of those hours hides a sizing decision made, more often than not, in the dark.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The astronomers who use DDF Pipeline are scientists, not HPC experts. They allocate their project’s precious computing hours through **SLURM**, a scheduler that asks them to state their needs up front (--time, --cpus-per-task, --mem) and then enforces a **fairness policy** that rewards projects which consume less than they were granted. Over-allocate and you waste resources, lose priority, and wait in longer queues; under-allocate and your job simply fails. Translating scientific parameters into correct sizing is a guessing game with real costs on both sides.',
+      },
+      {
+        type: 'figure',
+        image: '/images/mathis/predicting-for-sizing/ddf-workflow.png',
+        alt: 'The DDF Pipeline workflow: download data, run the pipeline, upload results',
+        caption: 'The DDF Pipeline workflow — three steps for which we would like to know the most suitable site for executing them.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        text: 'Why Guessing Is So Expensive',
+      },
+      {
+        type: 'paragraph',
+        text: 'The difficulty is not a lack of experience — it is a lack of predictability. DDF Pipeline runs vary along **several dimensions at once**, and a single change can move the resource footprint by an order of magnitude:',
+      },
+      {
+        type: 'list',
+        ordered: false,
+        items: [
+          '**Application parameters.** The output image resolution can ranges from **5,000×5,000 to 20,000×20,000 pixels**, pulling peak memory from **~10 GB to ~400 GB**.',
+          '**Input data volume.** From hundreds of megabytes to several gigabytes, stretching runtime from **minutes to several days** on a single node.',
+          '**Data structure.** Between **1 and 24 frequency sub-bands**, each of which changes how the workload scales — and how energy-efficient it is — across the allocated nodes.',
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'Add a **multi-site dimension** and the problem compounds. In cross-facility workflows, resource sizing drives task placement decisions: disk space, queue wait times, and where a job can go all depend on the footprint you predict. Hardware constraints differ from site to site — **768 GB per node** on Adastra, **192 GB of memory per node** on Jean Zay, **228 GB per node** on Irene — so a configuration that fits one machine may be hopeless on another.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The configuration space is simply **too large to test exhaustively**. This is not a problem you can solve once: it demands a model that **keeps learning** as executions accumulate.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        text: 'What We Need to Succeed',
+      },
+      {
+        type: 'paragraph',
+        text: 'Building a continuous-learning predictor is a team effort across five pieces, each developed by a different specialist and designed to fit together:',
+      },
+      {
+        type: 'list',
+        ordered: true,
+        items: [
+          '**Structured knowledge map** — a description of the supercomputer-specific runtime environment, mapped onto SLURM metrics.',
+          '**Job Performance Indicators Set, JoPInS** — the structure containing the measurements of the formal descriptor applications jobs performance indicator relative to their executions.',
+          '**Monitoring plugin** — the collector that captures evidence from real jobs.',
+          '**Database** — the central store where all executions accumulate in the JoPInS format.',
+          '**Machine learning exposed as HAPS** — a model trained by application version and by runtime environment, with access to HPC resources and applications for its continuous learning.',
+        ],
+      },
+      {
+        type: 'heading',
+        level: 3,
+        text: 'Step one — A structured knowledge map of the runtime environment',
+      },
+      {
+        type: 'paragraph',
+        text: 'Before we can predict, we must be able to **describe**. The structured knowledge map (or ontology) formalizes the supercomputer-specific runtime environment in which jobs execute. Its value lies in the mapping: aligning the **job structured knowledge map** with the raw **SLURM metrics** so that a conceptual description — “this job needed a large-memory node” — becomes a measurable, comparable quantity.',
+      },
+      {
+        type: 'figure',
+        image: '/images/mathis/predicting-for-sizing/job-ontology.png',
+        alt: 'Visualization of the Job Ontology describing the supercomputer runtime environment',
+        caption: 'The job structured knowledge map — the bridge between how researchers think about their runs and how SLURM measures them. Credit: Gaëlle Richet.',
+      },
+      {
+        type: 'heading',
+        level: 3,
+        text: 'Step two — Describing every execution with JKPP',
+      },
+      {
+        type: 'paragraph',
+        text: 'Every execution is captured by a set of **Job Performance Indicators, JoPI**. This formalizes both sides of a run: the **input parameters** — application settings and system choices — and the **output metrics** — time, memory, energy. Each measure is structured as a triple: **JoPI = (value, type of value, description)**, a structure simple enough to collect at scale and rich enough to train on.',
+      },
+      {
+        type: 'heading',
+        level: 3,
+        text: 'Step three — Collecting evidence from the field',
+      },
+      {
+        type: 'paragraph',
+        text: 'A pair of plugins turns real jobs into training data. The command-line client, **cli-monitoring-haps**, collects information about jobs from a specific application, exposed as HAPS, in the context of a **data release campaign**. The server-side collector, **server-monitoring-haps**, reads **system metrics** from SLURM (sacct -j &lt;JOB_ID&gt;), pulls **application-specific metrics** from the HAPS database. Each execution is then formalized into JoPInS and sent to the database.',
+      },
+      {
+        type: 'heading',
+        level: 3,
+        text: 'Step four — Centralizing in Database',
+      },
+      {
+        type: 'paragraph',
+        text: 'All of those JoPInS records land in the database — the single source of truth for how applications actually behave on real machines. It is the memory of the system, and the fuel for the model.',
+      },
+      {
+        type: 'heading',
+        level: 3,
+        text: 'Step five — Connecting the machine learning to the system',
+      },
+      {
+        type: 'paragraph',
+        text: 'The loop is closed around **HAPS** (HPC Application Services), in a setup that remains **compliant with the ZRR security requirements** imposed on French supercomputers, which are considered national strategic assets. Step 1: campaign execution of scientific applications on supercomputers. Step 2: data collection through the monitoring plugin. Step 3: model training and testing — an **machine learning model** is trained on a specific dataset campaign, tested, its accuracy measured, and only then exposed as HAPS itself.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        text: 'From Execution to Prediction',
+      },
+      {
+        type: 'paragraph',
+        text: 'Once the loop is running, the pieces produce something new: a **machine-learning model exposed as a service**. Train an expert model on a campaign dataset, measure its accuracy, and the model becomes an oracle that predicts, for any new configuration, the **execution time**, **memory usage**, and **energy consumption** of the application. The goal is practical: given the variability of application parameters and input data, identify the **allocation configurations that offer the best trade-off between execution time and energy consumption** — before a single core-hour is spent.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        text: 'From Guessing to Knowing',
+      },
+      {
+        type: 'paragraph',
+        text: 'A scheduler asks you to predict your own future — and traditionally, that prediction has been a judgment call. With a continuously learning model fed by real executions, the conversation changes. The supercomputer stops asking its users to guess and starts telling them what they need. **Sizing stops being a bet** — and scientists can spend their core-hours on science, not on hunches.',
+      },
+    ],
+    image: '/images/mathis/predicting-for-sizing/cover.webp',
+    imageAlt: 'A conceptual illustration contrasting the initial phase of "guessing" with the clarity offered by a continuous learning model.',
+    href: '/writing/predicting-for-sizing',
+  },
+  {
+    id: 'mcp-server-software-ontology',
+    number: '02',
     category: 'Research note',
     date: 'September 16, 2026',
     title:
@@ -366,7 +516,7 @@ export const articleItems: ArticleItem[] = [
   },
   {
     id: 'exascale-astronomy-cybersecurity',
-    number: '02',
+    number: '03',
     category: 'Publication',
     date: 'September 13, 2026',
     title:
@@ -562,7 +712,7 @@ export const articleItems: ArticleItem[] = [
 
   {
     id: 'webinar-hpc-applications-as-a-service',
-    number: '03',
+    number: '04',
     category: 'Webinar',
     date: 'February 26, 2026',
     title: 'Webinar: HPC Applications as a Service',
@@ -585,7 +735,7 @@ export const articleItems: ArticleItem[] = [
   },
   {
     id: 'international-hackathon-for-astronomy',
-    number: '04',
+    number: '05',
     category: 'Collaboration',
     date: 'April 1, 2026',
     title: 'International Hackathon for Astronomy',
@@ -608,7 +758,7 @@ export const articleItems: ArticleItem[] = [
   },
   {
     id: 'hpc-applications-as-a-service',
-    number: '05',
+    number: '06',
     category: 'Research note',
     date: 'June 18, 2026',
     title: 'HPC Applications as a Service: Enabling Radio Astronomy',
