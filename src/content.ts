@@ -34,17 +34,19 @@ export const proofPoints: ProofPoint[] = [
   {
     kind: 'community',
     title: 'Doctoral Research',
-    description: 'Data logistics and collaborative systems of systems at IRISA and Université de Rennes',
+    description: 'Specializing in workflow data management, with a focus on governance and cybersecurity in supercomputing environments',
   },
   {
     kind: 'mentor',
     title: 'Published Work',
-    description: 'Co-author of a 2025 technical description and performance profile of the DDF Pipeline',
+    description:
+      "Author of a full paper titled “Enabling Radio Astronomy to Use French Supercomputers,“ accepted for the Supercomputing Conference",
   },
   {
     kind: 'speaker',
     title: 'Scientific Collaboration',
-    description: 'Working across HPC, radio astronomy, NumPEx, ECLAT, and the YoungPEx community',
+    description:
+      'Working for the NumPEx "Digital for Exascale" research program and the ECLAT joint laboratory to co-design future radio astronomy workflows',
   },
 ]
 
@@ -178,7 +180,6 @@ export type ArticleId =
   | 'predicting-for-sizing'
   | 'webinar-hpc-applications-as-a-service'
   | 'international-hackathon-for-astronomy'
-  | 'hpc-applications-as-a-service'
   | 'exascale-astronomy-cybersecurity'
   | 'mcp-server-software-ontology'
 
@@ -310,7 +311,7 @@ export const articleItems: ArticleItem[] = [
       },
       {
         type: 'paragraph',
-        text: 'A pair of plugins turns real jobs into training data. The command-line client, **cli-monitoring-haps**, collects information about jobs from a specific application, exposed as HAPS, in the context of a **data release campaign**. The server-side collector, **server-monitoring-haps**, reads **system metrics** from SLURM (sacct -j &lt;JOB_ID&gt;), pulls **application-specific metrics** from the HAPS database. Each execution is then formalized into JoPInS and sent to the database.',
+        text: 'A pair of plugins turns real jobs into training data. The command-line client, **cli-monitoring-haps**, collects information about jobs from a specific application, exposed as HAPS, in the context of a **data release campaign**. The server-side collector, **server-monitoring-haps**, reads **system metrics** from SLURM (sacct -j <JOB_ID>), pulls **application-specific metrics** from the HAPS database. Each execution is then formalized into JoPInS and sent to the database.',
       },
       {
         type: 'heading',
@@ -700,10 +701,6 @@ export const articleItems: ArticleItem[] = [
         type: 'paragraph',
         text: 'Security should be an enabler of science, not a barrier. By shifting from a "user-access" model to a "service-access" model, we can open the doors of the world\'s most powerful supercomputers to the scientific communities that need them most.',
       },
-      {
-        type: 'paragraph',
-        text: 'Want to dive deeper into the technical details? [Read the full paper accepted at SC26 here](https://supercomputing.org/)',
-      },
     ],
     image: '/images/mathis/exascale-astronomy/ska.webp',
     imageAlt: 'The Square Kilometre Array radio telescope',
@@ -755,20 +752,6 @@ export const articleItems: ArticleItem[] = [
     imageAlt: 'Participants in the international DDFacet and RIMS hackathon in Rennes',
     href: '/writing/international-hackathon-for-astronomy',
     sourceHref: sourceLinks.eclatHackathon,
-  },
-  {
-    id: 'hpc-applications-as-a-service',
-    number: '06',
-    category: 'Research note',
-    date: 'June 18, 2026',
-    title: 'HPC Applications as a Service: Enabling Radio Astronomy',
-    description:
-      'A forthcoming research note on bridging radio astronomy and French high-performance computing infrastructure.',
-    body: [],
-    image: '/images/mathis/hpc-as-a-service.svg',
-    imageAlt: 'Diagram connecting radio astronomy data to a high-performance computing service',
-    href: '/writing/hpc-applications-as-a-service',
-    status: 'coming-soon',
   },
 ]
 
