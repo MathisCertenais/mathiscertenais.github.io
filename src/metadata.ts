@@ -98,7 +98,7 @@ export function applyPageMetadata(metadata: PageMetadata) {
 
 export const homeMetadata: PageMetadata = {
   path: '/',
-  title: 'Mathis Certenais | HPC & Scientific Workflows',
+  title: "Mathis Certenais' Portfolio",
   description:
     'Mathis Certenais is a computer scientist and PhD researcher working on HPC, data logistics, and cross-facility scientific workflows.',
   ogImage: '/images/mathis/social-card.svg',

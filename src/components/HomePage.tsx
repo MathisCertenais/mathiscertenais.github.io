@@ -7,9 +7,9 @@ export function HomePage() {
   return (
     <main id="main-content" tabIndex={-1}>
       <Hero />
-      <WorkSection />
-      <VideoSection />
       <WritingSection />
+      <VideoSection />
+      <WorkSection />
     </main>
   )
 }
