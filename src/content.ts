@@ -140,7 +140,7 @@ export interface VideoItem {
 export const videoItems: VideoItem[] = [
   {
     id: 'eclat-interview',
-    title: 'At the heart of data logistics for astronomy',
+    title: 'Interview: At the Heart of Data Logistics for Radio Astronomy',
     description: 'An ECLAT interview about Mathis’s path, doctoral research, and multidisciplinary work.',
     kind: 'video',
     src: 'https://eclat-lab.fr/wp-content/uploads/2025/09/ECLAT-interview-matthis-2025-Website-v3.mp4',
@@ -149,16 +149,16 @@ export const videoItems: VideoItem[] = [
   },
   {
     id: 'hpc-service-webinar',
-    title: 'HPC Applications as a Service',
+    title: 'Webinar: HPC Application Services for Radio Astronomy',
     description: 'A webinar on data logistics, intensive imaging, and large-scale workflow orchestration.',
     kind: 'iframe',
     src: 'https://astrotube.obspm.fr/videos/embed/35dTv8mmaSdm36uEFtCnZz',
     externalHref: sourceLinks.eclatWebinar,
-    image: '/images/mathis/videos/webinar.jpg',
+    image: '/images/mathis/videos/webinar.webp',
   },
   {
     id: 'astronomy-hackathon',
-    title: 'International Hackathon for Astronomy',
+    title: 'Event: International Hackathon for Radio Astronomy',
     description: 'Highlights from a collaborative ECLAT research event in Rennes.',
     kind: 'video',
     src: 'https://eclat-lab.fr/wp-content/uploads/2026/04/ECLAT-hackathon-Rennes-2026.mp4',
@@ -167,7 +167,7 @@ export const videoItems: VideoItem[] = [
   },
   {
     id: 'mcp-demo-video',
-    title: 'MCP Server Demo',
+    title: 'Demo: MCP Server Exposing the Structured Knowledge Map of the DDF Pipeline Software',
     description: 'Demo of the MCP server exposing the software ontology for DDF Pipeline.',
     kind: 'video',
     src: '/images/mathis/videos/ddf-mcp-demo.mp4',
@@ -180,6 +180,7 @@ export type ArticleId =
   | 'predicting-for-sizing'
   | 'webinar-hpc-applications-as-a-service'
   | 'international-hackathon-for-astronomy'
+  | 'rennes-hackathon-for-astronomy'
   | 'exascale-astronomy-cybersecurity'
   | 'mcp-server-software-ontology'
 
@@ -209,7 +210,7 @@ export const articleItems: ArticleItem[] = [
     id: 'predicting-for-sizing',
     number: '01',
     category: 'Research note',
-    date: 'September 18, 2026',
+    date: 'September 23, 2026',
     title:
       'Predicting for Sizing: Teaching Supercomputers Their Own Execution Footprint',
     description:
@@ -712,9 +713,9 @@ export const articleItems: ArticleItem[] = [
     number: '04',
     category: 'Webinar',
     date: 'February 26, 2026',
-    title: 'Webinar: HPC Applications as a Service',
+    title: 'Webinar: HPC Application Services for Radio Astronomy',
     description:
-      'How service-oriented access can connect radio-astronomy workloads with high-performance computing.',
+      'This webinar uses radio astronomy to demonstrate how HPC Application Services can manage scientific data, accelerate imaging, and support next-generation instruments such as the SKA through architectures and tools for cross-facility workflows.',
     body: [
       {
         type: 'paragraph',
@@ -725,8 +726,8 @@ export const articleItems: ArticleItem[] = [
         text: 'This webinar presents HPC applications as a service through a practical DDF Pipeline scenario. The focus is on integrating scientific data logistics, intensive imaging, and distributed workflow orchestration while keeping the researcher-facing interface understandable.',
       },
     ],
-    image: '/images/mathis/videos/webinar.jpg',
-    imageAlt: 'Mathis presenting the differences between cloud computing and HPC during the webinar',
+    image: '/images/mathis/videos/webinar.webp',
+    imageAlt: 'Mathis presenting "HPC as a Service for Radio Astronomy: A Practical Case Study with the DDF Pipeline" during the webinar',
     href: '/writing/webinar-hpc-applications-as-a-service',
     sourceHref: sourceLinks.eclatWebinar,
   },
@@ -735,23 +736,95 @@ export const articleItems: ArticleItem[] = [
     number: '05',
     category: 'Collaboration',
     date: 'April 1, 2026',
-    title: 'International Hackathon for Astronomy',
+    title: 'International Hackathon for Radio Astronomy',
     description:
-      'A research event bringing computer scientists and astrophysicists together around shared technical challenges.',
+      'A research event bringing together computer scientists and astrophysicists from France, England, and South Africa to address the shared technical challenges of radio astronomical data.',
     body: [
       {
         type: 'paragraph',
         text: 'Scientific software becomes more useful when the people who build infrastructure and the people who interpret astronomical data can work on the same problems together.',
       },
       {
+        type: 'heading',
+        level: 2,
+        text: 'What are the goals of this hackathon?',
+      },
+      {
         type: 'paragraph',
-        text: 'The international hackathon in Rennes created space for that collaboration: participants worked across disciplines on radio-astronomy data processing, portability, distributed storage, and the practical constraints of multiple computing facilities.',
+        text: 'The international hackathon in Rennes created space for that collaboration: participants worked during one week to create a participatory research network called RIMS Network and to continue work on the DDF Pipeline data-processing software.',
+      },
+      {
+        type: 'paragraph',
+        text: 'RIMS Network is a distributed storage system that hosts dynamic spectra and their metadata for studying rare events. It enables collaborative data production and can be accessed by users via a web service.',
+      },
+      {
+        type: 'paragraph',
+        text: 'For the DDF Pipeline, we worked on portability of the parallel version: it is now installed and running on the French supercomputers Jean Zay hosted at the Institut du Développement et des Ressources en Informatique Scientifique (IDRIS), Adastra at the Centre Informatique National de l`Enseignement Supérieur (CINES), at the University of Hertfordshire (UK), and with our industry partner Bull.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        text: 'What is the benefit of this international collaboration?',
+      },
+      {
+        type: 'paragraph',
+        text: 'These technical events are crucial for bringing our community together to align on shared goals and turn them into reality. During this hackathon, we successfully validated the deployment of the DDF Pipeline on the supercomputers of all participating partners, finalizing this stable version so we can now focus on developing new features. For RIMS, this international gathering allowed us to collectively finalize the general distributed architecture across France, South Africa, and the UK, as well as agree on usage conditions and deliver a proof-of-concept to validate the core idea.',
       },
     ],
     image: '/images/mathis/videos/hackathon.jpg',
-    imageAlt: 'Participants in the international DDFacet and RIMS hackathon in Rennes',
+    imageAlt: 'Participants in the international DDF Pipeline and RIMS hackathon in Rennes',
     href: '/writing/international-hackathon-for-astronomy',
     sourceHref: sourceLinks.eclatHackathon,
+  },
+  {
+    id: 'rennes-hackathon-for-astronomy',
+    number: '06',
+    category: 'Collaboration',
+    date: 'October 1, 2025',
+    title: 'From Supercomputers to Tutorials: Strengthening Our Community Through Shared Expertise ',
+    description:
+      'A technical research event bringing together computer scientists and astrophysicists to tackle challenges of radio astronomy.',
+    body: [
+      {
+        type: 'paragraph',
+        text: 'We often talk about code and data, but the best part of our hackathon was the people. It was a chance to learn from each other and solve hard problems face-to-face. In radio astronomy, tools are complex. Working together makes them easier to master.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        text: 'Mastering Spack with the Help of an Industrial Partner',
+      },
+      {
+        type: 'paragraph',
+        text: 'One of our main goals was to get our data processing software, DDF Pipeline, running smoothly on supercomputers using Spack. Spack is a powerful tool for managing software on high-performance machines, but it has a steep learning curve. It can be tricky to set up correctly.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Our partner at Bull stepped in to help. Instead of just sending us documentation, their engineer sat down with us. They showed us exactly how to configure Spack for our machines. This hands-on guidance turned a difficult technical hurdle into a clear, manageable process. We didn’t just get software installed; we learned how to maintain it ourselves.'
+      },
+      {
+        type: 'figure',
+        image: '/images/mathis/rennes-hackathon/rennes-hackathon-back.webp',
+        alt: 'Participants listening to Cyril',
+        caption: 'Participants listening to Cyril Tasse presenting the results of a sky survey obtained by processing data from the Low Frequency Array (LOFAR) radio telescope using the DDF Pipeline. Credit: Jacques Tissot.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        text: 'Helping Participants with Tutorials',
+      },
+      {
+        type: 'paragraph',
+        text: 'We also focused on the users. Good code is useless if people don’t know how to use it. During the event, we wrote detailed [tutorials for DDFacet](https://hackmd.io/l8fw0PYRQv6dm9i6KpZWPA), the imaging software in our pipeline.'
+      },
+      {
+        type: 'paragraph',
+        text: 'Writing these guides was about clarity and simplicity. We wanted to explain not just the steps, but the logic behind them. By creating this documentation, we are making it easier for other astronomers to use our tools. This support extends beyond the hackathon, helping the wider community succeed.'
+      },
+    ],
+    image: '/images/mathis/rennes-hackathon/rennes-hackathon-front.webp',
+    imageAlt: 'Participants in the hackathon in Rennes',
+    href: '/writing/rennes-hackathon-for-astronomy',
   },
 ]
 

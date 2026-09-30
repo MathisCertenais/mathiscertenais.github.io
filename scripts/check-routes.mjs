@@ -30,6 +30,7 @@ const requiredCanonicalPaths = new Set([
   '/writing',
   '/writing/predicting-for-sizing',
   '/writing/international-hackathon-for-astronomy',
+  '/writing/rennes-hackathon-for-astronomy',
   '/writing/webinar-hpc-applications-as-a-service',
   '/writing/exascale-astronomy-cybersecurity',
   '/writing/mcp-server-software-ontology',
@@ -72,6 +73,7 @@ const allowedPages = new Set([
   'archive',
   'article:predicting-for-sizing',
   'article:international-hackathon-for-astronomy',
+  'article:rennes-hackathon-for-astronomy',
   'article:webinar-hpc-applications-as-a-service',
   'article:exascale-astronomy-cybersecurity',
   'article:mcp-server-software-ontology',
@@ -105,7 +107,9 @@ const requiredAssets = new Set([
   '/images/mathis/social-card.svg',
   '/images/mathis/videos/hackathon.jpg',
   '/images/mathis/videos/interview.jpg',
-  '/images/mathis/videos/webinar.jpg',
+  '/images/mathis/videos/webinar.webp',
+  '/images/mathis/rennes-hackathon/rennes-hackathon-front.webp',
+  '/images/mathis/rennes-hackathon/rennes-hackathon-back.webp',
 ])
 
 const retiredPaths = [
