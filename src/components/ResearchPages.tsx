@@ -1,7 +1,17 @@
-import { getResearchProject, researchProjects } from '../content'
+import {
+  researchApplications,
+  researchCase,
+  researchChapters,
+  researchChain,
+  researchContribution,
+  researchFigures,
+  researchMethods,
+  researchPerspectives,
+  researchThesis,
+  sourceLinks,
+} from '../content'
 import { ArrowIcon } from './Icons'
 import { PageHero } from './PageHero'
-import { WorkSection } from './WorkSection'
 
 export function ResearchPage() {
   return (
@@ -12,95 +22,152 @@ export function ResearchPage() {
           alt: 'Network connecting a scientific instrument, shared data, and computing facilities',
           src: '/images/mathis/cross-facility-workflows.svg',
         }}
-        intro="Methods and tools for moving scientific applications and data across heterogeneous, federated infrastructure — with radio astronomy as a demanding real-world setting."
-        title="HPC for connected science."
+        intro={researchThesis.summary}
+        title={researchThesis.title}
       />
-      <WorkSection
-        heading="Research areas"
-        intro="Three connected threads structure the work: understanding an important radio-astronomy pipeline, reducing the complexity of HPC access, and coordinating workflows across facilities."
-        showAllLink={false}
-      />
-    </main>
-  )
-}
 
-export function ResearchDetailPage({ projectId }: { projectId: string }) {
-  const project = getResearchProject(projectId)
+      <section className="research-thesis section">
+        <p className="section-label">{researchThesis.label}</p>
+        <p className="research-thesis__meta">{researchThesis.context}</p>
+        <p className="research-thesis__meta">{researchThesis.programme}</p>
+        <ul aria-label="Research themes" className="tag-list">
+          <li>Data logistics</li>
+          <li>Cross-facility workflows</li>
+          <li>Governance and security</li>
+          <li>Provenance and FAIR</li>
+          <li>HPC as a service</li>
+        </ul>
+      </section>
 
-  if (!project) return null
-  const currentIndex = researchProjects.findIndex((item) => item.id === project.id)
-  const previous = researchProjects[(currentIndex + researchProjects.length - 1) % researchProjects.length]
-  const next = researchProjects[(currentIndex + 1) % researchProjects.length]
+      {researchChapters.map((chapter) => (
+        <section className="research-story section" key={chapter.label}>
+          <div>
+            <p className="section-label">{chapter.label}</p>
+            <h2>{chapter.heading}</h2>
+          </div>
+          <div className="research-story__copy">
+            {chapter.paragraphs.map((paragraph) => (
+              <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+            ))}
+          </div>
+        </section>
+      ))}
 
-  return (
-    <main className="detail-page" id="main-content" tabIndex={-1}>
-      <section className="detail-hero section">
-        <div className="detail-hero__copy">
-          <p className="section-label">
-            Research {project.number} · {project.eyebrow}
-          </p>
-          <h1>{project.title}</h1>
-          <p>{project.description}</p>
-          <ul aria-label="Research themes" className="tag-list">
-            {project.tags.map((tag) => (
-              <li key={tag}>{tag}</li>
+      <section className="research-figures">
+        <div className="section">
+          <ul className="research-figures__list">
+            {researchFigures.map((figure) => (
+              <li key={figure.value}>
+                <strong>{figure.value}</strong>
+                <span>{figure.label}</span>
+              </li>
             ))}
           </ul>
         </div>
-        <img alt={project.imageAlt} className="detail-hero__art" src={project.image} />
       </section>
 
-      <div className="detail-body section">
-        <aside className="detail-aside">
-          <p className="detail-aside__label">In context</p>
-          <p>IRISA · Université de Rennes</p>
-          <p>NumPEx · ECLAT</p>
-          <a href={project.sourceHref} rel="noreferrer" target="_blank">
-            {project.sourceLabel} <ArrowIcon external />
+      <section className="research-section section">
+        <div className="section-heading">
+          <p className="section-label">Perspectives</p>
+          <h2>Five perspectives on one logistics problem.</h2>
+        </div>
+        <div className="research-perspectives">
+          {researchPerspectives.map((perspective) => (
+            <article key={perspective.number}>
+              <span>{perspective.number}</span>
+              <h3>{perspective.title}</h3>
+              <p>{perspective.text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="research-section research-section--surface section">
+        <div className="section-heading">
+          <p className="section-label">{researchMethods.label}</p>
+          <h2>{researchMethods.heading}</h2>
+        </div>
+        <div className="research-methods">
+          <ol className="research-chain">
+            {researchChain.map((step) => (
+              <li key={step.site}>
+                <p className="research-chain__role">{step.role}</p>
+                <h3>{step.site}</h3>
+                <p>{step.detail}</p>
+              </li>
+            ))}
+          </ol>
+          <div className="research-methods__copy">
+            {researchMethods.paragraphs.map((paragraph) => (
+              <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+            ))}
+          </div>
+        </div>
+        <figure className="detail-figure">
+          <img
+            alt="Network connecting a scientific instrument, shared data, and computing facilities"
+            loading="lazy"
+            src="/images/mathis/cross-facility-workflows.svg"
+          />
+          <figcaption>
+            The processing chain studied throughout the thesis, from the LOFAR reference site to
+            national supercomputers and on to European research storage.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section className="research-story section">
+        <div>
+          <p className="section-label">{researchCase.label}</p>
+          <h2>{researchCase.heading}</h2>
+        </div>
+        <div className="research-story__copy">
+          {researchCase.paragraphs.map((paragraph) => (
+            <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+          ))}
+          <a href={sourceLinks.arxiv} rel="noreferrer" target="_blank">
+            Read the DDF Pipeline paper on arXiv <ArrowIcon external />
           </a>
-        </aside>
+        </div>
+      </section>
 
-        <article className="detail-prose">
-          <section id="challenge">
-            <p className="section-label">The challenge</p>
-            <h2>Scientific computing spans more than one machine.</h2>
-            <p>{project.challenge}</p>
-          </section>
-          <section id="approach">
-            <p className="section-label">Research approach</p>
-            <h2>Connect computation, data movement, and domain practice.</h2>
-            <p>{project.description}</p>
-            <p>
-              The work treats infrastructure as part of the scientific workflow: instruments,
-              applications, storage, security constraints, and computing facilities must cooperate
-              without hiding the requirements that make results reproducible.
-            </p>
-          </section>
-          <figure className="detail-figure">
-            <img alt={project.imageAlt} loading="lazy" src={project.image} />
-            <figcaption>A visual model of the research area and its connected systems.</figcaption>
-          </figure>
-          <section id="evidence">
-            <p className="section-label">Evidence & direction</p>
-            <h2>Ground the systems question in a real scientific application.</h2>
-            <p>{project.outcome}</p>
-            <a className="button button--secondary" href={project.sourceHref} rel="noreferrer" target="_blank">
-              Open primary source <ArrowIcon external />
-            </a>
-          </section>
-        </article>
-      </div>
+      <section className="research-contribution section">
+        <div className="research-contribution__list">
+          <p className="section-label">{researchContribution.label}</p>
+          <h2>{researchContribution.heading}</h2>
+          <ol>
+            {researchContribution.paragraphs.map((paragraph) => (
+              <li key={paragraph.slice(0, 32)}>{paragraph}</li>
+            ))}
+          </ol>
+        </div>
+        <div className="research-contribution__aside">
+          <p className="section-label">{researchApplications.label}</p>
+          <h3>{researchApplications.heading}</h3>
+          {researchApplications.paragraphs.map((paragraph) => (
+            <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+          ))}
+          <a href={sourceLinks.numpex} rel="noreferrer" target="_blank">
+            Read the NumPEx research profile <ArrowIcon external />
+          </a>
+        </div>
+      </section>
 
-      <nav aria-label="Research pagination" className="detail-pagination section">
-        <a href={previous?.href}>
-          <span>Previous research</span>
-          <strong>← {previous?.title}</strong>
-        </a>
-        <a href={next?.href}>
-          <span>Next research</span>
-          <strong>{next?.title} →</strong>
-        </a>
-      </nav>
+      <section className="research-next section">
+        <p className="section-label">Where this continues</p>
+        <h2>The reasoning is written up in public.</h2>
+        <div className="research-next__actions">
+          <a className="button button--primary" href="/writing">
+            Read research notes <ArrowIcon />
+          </a>
+          <a className="button button--secondary" href="/resources/publications">
+            Publications <ArrowIcon />
+          </a>
+          <a className="button button--secondary" href="/contact">
+            Get in touch <ArrowIcon />
+          </a>
+        </div>
+      </section>
     </main>
   )
 }
