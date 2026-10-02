@@ -14,7 +14,7 @@ export function NotFoundPage() {
             Research
           </a>
           <a className="nav-link" href="/writing">
-            Writing
+            Insights
           </a>
           <a className="nav-link" href="/about">
             About
