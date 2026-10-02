@@ -6,7 +6,7 @@ import { ExternalLinkIcon, MenuIcon } from './Icons'
 const primaryLinks = [
   { label: 'Home', href: '/' },
   { label: 'Research', href: '/research' },
-  { label: 'Writing', href: '/writing' },
+  { label: 'Insights', href: '/writing' },
   { label: 'Videos', href: '/videos' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },

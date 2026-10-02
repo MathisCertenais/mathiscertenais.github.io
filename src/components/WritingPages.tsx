@@ -75,7 +75,7 @@ export function WritingPage() {
   return (
     <main id="main-content" tabIndex={-1}>
       <PageHero
-        eyebrow="Writing & updates"
+        eyebrow="Insights"
         intro="Notes and recorded moments from research at the intersection of high-performance computing, scientific workflows, and radio astronomy."
         title="Explaining systems through their use."
       />
@@ -167,8 +167,8 @@ export function ArticlePage({ articleId }: { articleId: string }) {
         </div>
       </article>
 
-      <nav aria-label="More writing" className="related-writing section">
-        <p className="section-label">More writing</p>
+      <nav aria-label="More insights" className="related-writing section">
+        <p className="section-label">More insights</p>
         {articleItems
           .filter((item) => item.id !== article.id)
           .map((item) => (

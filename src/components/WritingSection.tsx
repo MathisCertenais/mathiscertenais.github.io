@@ -6,14 +6,14 @@ interface WritingSectionProps {
   showAllLink?: boolean
 }
 
-export function WritingSection({ heading = 'Writing & updates', showAllLink = true }: WritingSectionProps) {
+export function WritingSection({ heading = 'Insights', showAllLink = true }: WritingSectionProps) {
   return (
     <section className="home-section section writing-section" id="writing">
       <div className="section-heading">
         <h2>{heading}</h2>
         {showAllLink ? (
           <a href="/writing">
-            All writing <ArrowIcon />
+            All insights <ArrowIcon />
           </a>
         ) : null}
       </div>
