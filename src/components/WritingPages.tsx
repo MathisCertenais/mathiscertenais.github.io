@@ -121,7 +121,7 @@ export function ArticlePage({ articleId }: { articleId: string }) {
                 body. It is intentionally presented as forthcoming instead of publishing invented
                 content under Mathis’s name.
               </p>
-              <a className="button button--primary" href="/research/hpc-as-a-service">
+              <a className="button button--primary" href="/research">
                 Explore the research area <ArrowIcon />
               </a>
             </div>

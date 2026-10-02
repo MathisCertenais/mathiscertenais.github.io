@@ -50,80 +50,160 @@ export const proofPoints: ProofPoint[] = [
   },
 ]
 
-export type ResearchProjectId = 'ddf-pipeline' | 'hpc-as-a-service' | 'cross-facility-workflows'
+export const researchThesis = {
+  label: 'Doctoral thesis',
+  title: 'Collaborative System of Systems for Scientific Data Logistics',
+  context: 'IRISA · Université de Rennes',
+  programme: 'NumPEx “Digital for Exascale” · ECLAT joint laboratory',
+  summary:
+    'Large scientific instruments now emit more data than any single site can receive, process, or keep. Turning those flows into science-ready products means running processing chains that cross instruments, supercomputing centres, storage platforms, and research networks — each under a different administration, in a different country, and under a different law. This thesis studies how to design that data logistics: how to model it, how to optimise it, what metadata it requires, and how to expose it to users without hiding the requirements that keep results secure and reproducible.',
+} as const
 
-export interface ResearchProject {
-  challenge: string
-  description: string
-  eyebrow: string
-  href: string
-  id: ResearchProjectId
-  image: string
-  imageAlt: string
+export interface ResearchChapter {
+  heading: string
+  label: string
+  paragraphs: string[]
+}
+
+export interface ResearchPerspective {
   number: string
-  outcome: string
-  sourceHref: string
-  sourceLabel: string
-  tags: string[]
+  text: string
   title: string
 }
 
-export const researchProjects: ResearchProject[] = [
+export interface ResearchFigure {
+  label: string
+  value: string
+}
+
+export interface ResearchChainStep {
+  detail: string
+  role: string
+  site: string
+}
+
+export const researchChapters: ResearchChapter[] = [
   {
-    id: 'ddf-pipeline',
-    number: '01',
-    eyebrow: 'Radio-astronomy data processing',
-    title: 'Understanding the DDF Pipeline',
-    description:
-      'Describing and profiling a composite imaging and calibration pipeline designed for LOFAR and considered for future SKA data processing.',
-    challenge:
-      'Next-generation radio telescopes create data volumes that demand careful characterization of scientific software before it can move reliably onto large computing facilities.',
-    outcome:
-      'The published profile documents a 68.87-hour execution over 134.4 GB of decompressed input data, producing 594 GB of output and a clear baseline for future HPC deployment work.',
-    tags: ['HPC', 'Performance profiling', 'Radio astronomy'],
-    image: '/images/mathis/ddf-pipeline.svg',
-    imageAlt: 'Diagram of radio telescope data flowing through calibration and imaging stages',
-    href: '/research/ddf-pipeline',
-    sourceHref: sourceLinks.arxiv,
-    sourceLabel: 'Read the paper on arXiv',
+    label: 'The problem',
+    heading: 'Volume is the visible constraint. Governance is the real one.',
+    paragraphs: [
+      'Scientific instruments and industrial platforms alike — CERN, the SKA, but equally the data flows companies process for their customers — produce continuous streams that have to be transformed: into science-ready data in the first case, into customer answers in the second. Read at the surface, this is a throughput problem. How much data, at what rate, over which links.',
+      'It is not. Every site involved in a processing chain applies its own security policy, is hosted in its own country, and is therefore subject to that country’s law. A chain only functions if it can be authorised, traced and trusted from end to end. The logistics of scientific data is first a question of governance, and only then a question of bandwidth.',
+    ],
   },
   {
-    id: 'hpc-as-a-service',
-    number: '02',
-    eyebrow: 'Making supercomputers usable',
-    title: 'HPC applications as a service',
-    description:
-      'Exploring service-oriented access to scientific applications so domain researchers can use HPC without carrying every operational detail themselves.',
-    challenge:
-      'Supercomputers offer fast I/O and massive parallelism, but machine-specific constraints and operating models remain a barrier for many radio-astronomy researchers.',
-    outcome:
-      'The approach combines application services with data logistics and uses the DDF Pipeline as a practical cross-facility deployment scenario, including work around the Jean Zay supercomputer.',
-    tags: ['HPC as a Service', 'Data logistics', 'Scientific workflows'],
-    image: '/images/mathis/hpc-as-a-service.svg',
-    imageAlt: 'Diagram showing a service layer connecting researchers with an HPC system',
-    href: '/research/hpc-as-a-service',
-    sourceHref: sourceLinks.eclatWebinar,
-    sourceLabel: 'View the ECLAT webinar page',
-  },
-  {
-    id: 'cross-facility-workflows',
-    number: '03',
-    eyebrow: 'Federated scientific infrastructure',
-    title: 'Cross-facility workflows',
-    description:
-      'Designing methods and tools that coordinate instruments, storage, data centers, and computing facilities as one scientific workflow.',
-    challenge:
-      'Scientific processes increasingly span heterogeneous and federated infrastructure. Moving data and computation between those environments must remain understandable, secure, and reproducible.',
-    outcome:
-      'The research connects HPC with the broader digital continuum and contributes practical use cases through ECLAT, NumPEx, the DDF Pipeline, and collaborative research networks.',
-    tags: ['Distributed systems', 'Exascale', 'Federated infrastructure'],
-    image: '/images/mathis/cross-facility-workflows.svg',
-    imageAlt: 'Network diagram connecting an instrument, storage, and multiple computing facilities',
-    href: '/research/cross-facility-workflows',
-    sourceHref: sourceLinks.numpex,
-    sourceLabel: 'Read the NumPEx research profile',
+    label: 'Why it matters',
+    heading: 'Exascale instruments make the gap impossible to ignore.',
+    paragraphs: [
+      'The Square Kilometre Array will operate continuously and produce far more data than can be stored. Celestial radio signals have to be turned into science-ready products largely in real time, at rates comparable to a hundred million 4K streams at the very start of the data journey, reduced on the fly to a few thousand streams’ worth, and ultimately archiving on the order of 700 petabytes every year. There is no alternative to processing at scale.',
+      'In France, that scale is provided by the national HPC infrastructure coordinated by GENCI: Adastra at CINES, Jean Zay at IDRIS, and Joliot-Curie at TGCC. Because these centres are strategic national assets, they fall under the framework protecting the Nation’s scientific and technical potential (PPST) and under the restrictive zone regime (ZRR).',
+      'The consequence is structural rather than technical. Inside a ZRR, access is nominative, personal responsibility cannot be delegated, movements are regulated and traced, and disclosure to unauthorised third parties must be assessed and controlled. Add the ordinary constraints of shared supercomputers — SLURM scheduling, wall-clock limits of 24 hours on Adastra, 100 on Jean Zay and 72 on Joliot-Curie, internet access confined to frontend nodes — and community-driven scientific software runs into a regime it was never designed for. The barrier is not silicon. It is the operating model.',
+    ],
   },
 ]
+
+export const researchFigures: ResearchFigure[] = [
+  {
+    value: '~700 PB',
+    label: 'of SKA science-ready data archived every year',
+  },
+  {
+    value: '3',
+    label: 'French national supercomputing centres, all subject to PPST and ZRR',
+  },
+  {
+    value: '~7.9×',
+    label: 'measured DDF Pipeline speedup on 24 nodes — 68.9 h down to 8.7 h',
+  },
+]
+
+export const researchPerspectives: ResearchPerspective[] = [
+  {
+    number: '01',
+    title: 'Data logistics modelling',
+    text: 'Describe the whole chain — instrument, transport, HPC and HPDA resources, storage, laboratories — as a single system whose stages can be reasoned about, staged and placed, instead of a series of unrelated site problems.',
+  },
+  {
+    number: '02',
+    title: 'Multi-criteria optimisation',
+    text: 'Placement decisions trade off storage constraints, network and infrastructure capacity (topology, latency, transfer protocols), energy expenditure, and the difficulty of writing, deploying and debugging applications. Any one of these criteria alone gives the wrong answer.',
+  },
+  {
+    number: '03',
+    title: 'Security, governance and sovereignty',
+    text: 'PPST and ZRR rules decide not only what may run, but who may operate it. The Globus question — why a service widely used in the United States cannot manage identities or data flows inside a restrictive zone — is the sharpest illustration that a technical choice can be a legal impossibility.',
+  },
+  {
+    number: '04',
+    title: 'Traceability, provenance and FAIR metadata',
+    text: 'Operations, actors and data must all be attributable. Metadata attached to data and to processes is the lever that makes the other perspectives decidable rather than merely discussable, and it is what turns a collection of runs into reusable science.',
+  },
+  {
+    number: '05',
+    title: 'Usability as a research object',
+    text: 'If the interface demands cluster administration, the astronomy community will not cross it. Scientific applications have to be exposed as services, so that operational complexity lives behind the interface while scientific and security requirements stay visible in front of it.',
+  },
+]
+
+export const researchChain: ResearchChainStep[] = [
+  {
+    role: 'Instrument',
+    site: 'SURFsara',
+    detail:
+      'The Dutch national HPC centre and LOFAR reference site, where the telescope data lands.',
+  },
+  {
+    role: 'Processing',
+    site: 'Jean Zay · Adastra · Joliot-Curie',
+    detail:
+      'The three French national supercomputers, operated by IDRIS, CINES and TGCC within their ZRR perimeters.',
+  },
+  {
+    role: 'Storage and sharing',
+    site: 'EOSC',
+    detail:
+      'The European Open Science Cloud, a distributed research network available to European research users.',
+  },
+]
+
+export const researchMethods: ResearchChapter = {
+  label: 'How the perspectives articulate',
+  heading: 'One workflow, three jurisdictions.',
+  paragraphs: [
+    'These perspectives are not independent research programmes. They meet in a concrete cross-facility workflow: the DDF Pipeline, the self-calibration and imaging software of the LOFAR radio telescope and an SKA precursor, running over heterogeneous, geo-distributed HPC and storage sites.',
+    'Between those points, every stage has to answer the same question in a different administrative language. Where should this step run, under whose authority, with which metadata recorded, and who is accountable for it? That translation is the system of systems the thesis proposes to model.',
+  ],
+}
+
+export const researchCase: ResearchChapter = {
+  label: 'Methods',
+  heading: 'A demanding pipeline as the stress test.',
+  paragraphs: [
+    'The DDF Pipeline is a good ground case precisely because it is both a genuine community need and a hard systems problem. A LoTSS data release consumed around sixteen million core-hours; a single run reaches hundreds of gigabytes of peak memory, image sizes spanning five to twenty thousand pixels per side, between one and twenty-four frequency sub-bands, and runtimes measured in days.',
+    'The work describes and profiles that software, then proposes the operational model that makes it usable at scale: application microservices and ephemeral buffers to move data without direct shell access, a runner that pulls jobs from inside the secure zone rather than pushing them in, and a named service account that reconciles ZRR traceability with a shared community tool.',
+    'Provenance is captured formally rather than narratively — structured knowledge maps of the application and of the runtime environment, and performance indicators recorded for each execution — so that a run can be compared, reproduced, and eventually predicted.',
+  ],
+}
+
+export const researchContribution: ResearchChapter = {
+  label: 'Contribution',
+  heading: 'What the thesis adds.',
+  paragraphs: [
+    'A data-logistics model in which governance and security are constraints of the same rank as capacity and cost, rather than a layer applied once the architecture is already fixed.',
+    'A specification of the metadata required to make large-scale workflow deployment operable: enough to support traceability of operations and the FAIR principles, and enough to feed multi-criteria placement decisions.',
+    'A demonstrated alternative to per-user HPC accounts — scientific applications as a service — validated with the DDF Pipeline on Jean Zay and Adastra, with the named service account model under discussion with French security stakeholders.',
+    'A quantified demand on infrastructure: what these logistics imply for storage, network, energy and emissions in a data-centric scientific landscape.',
+  ],
+}
+
+export const researchApplications = {
+  label: 'Applications',
+  heading: 'Beyond radio astronomy.',
+  paragraphs: [
+    'The same problem appears wherever a scientific chain crosses administrations, which makes the methods relevant to other instrument communities and data-intensive research infrastructures.',
+    'The transport question also extends past networks: one concrete line of work concerns the specification of a device for moving data through road and air transportation networks, where bandwidth, latency and energy behave nothing like a datacentre link.',
+  ],
+} as const
 
 export type VideoKind = 'iframe' | 'video'
 
@@ -886,10 +966,6 @@ export const resources = [
     description: 'Institutions, programs, and collaborations surrounding the work.',
   },
 ] as const
-
-export function getResearchProject(id: string) {
-  return researchProjects.find((project) => project.id === id)
-}
 
 export function getArticle(id: string) {
   return articleItems.find((article) => article.id === id)

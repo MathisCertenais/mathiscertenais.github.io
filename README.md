@@ -34,16 +34,24 @@ mark for 1.5 seconds to open the browser-local whiteboard.
 Verified profile, research, writing, video, and resource data is centralized in `src/content.ts`.
 Route metadata and legacy inbound URL mappings live in `src/data/route-manifest.json`.
 
+`/research` is a single narrative page rather than a list of project entries. Its content is
+modelled in `src/content.ts` as an explicit thesis structure — problem, context, figures,
+perspectives, processing chain, methods, contribution, and applications — so the argument can be
+revised in one place instead of being spread across separate overview pages.
+
+The same thesis summary is surfaced on the home page through `src/components/ResearchSection.tsx`,
+so the research is legible from the portfolio root without visiting `/research`.
+
 Canonical sections include:
 
-- `/research` and three research detail pages
-- `/writing` and three update/detail pages
+- `/research`
+- `/writing` and six update/detail pages
 - `/videos`, `/about`, `/resume`, `/resources`, `/archive`, and `/contact`
 - `/whiteboard`, which is deliberately excluded from search indexing
 
 Legacy portfolio URLs remain available as `noindex, follow` compatibility aliases. Each alias
 points directly to a relevant Mathis canonical route, so existing inbound links keep working
-without creating duplicate search results.
+without creating duplicate search results. The former `/work/*` aliases resolve to `/research`.
 
 ## Configuration
 
