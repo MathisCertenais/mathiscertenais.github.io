@@ -1708,8 +1708,17 @@ figure {
 }
 
 .page-hero--with-art {
+  --hero-art-max: 430px;
   grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.65fr);
   gap: clamp(48px, 7vw, 104px);
+}
+
+/* Landscape art gets a wider column and a taller cap: the default 0.65fr track
+   and 430px cap are sized for a portrait, which leaves a wide photo as a
+   letterboxed sliver. */
+.page-hero--with-landscape-art {
+  --hero-art-max: 560px;
+  grid-template-columns: minmax(0, 1.15fr) minmax(400px, 0.85fr);
 }
 
 .page-hero__copy {
@@ -1745,7 +1754,9 @@ figure {
 
 .page-hero__art {
   width: 100%;
-  max-width: 430px;
+  max-width: var(--hero-art-max, 430px);
+  aspect-ratio: var(--hero-art-ratio, auto);
+  object-fit: cover;
   justify-self: end;
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
@@ -2854,6 +2865,10 @@ html.wb-active .tlui-layout {
     gap: 48px;
   }
 
+  .page-hero--with-landscape-art {
+    grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  }
+
   .detail-hero {
     grid-template-columns: minmax(0, 1fr) minmax(380px, 0.9fr);
   }
@@ -2867,6 +2882,10 @@ html.wb-active .tlui-layout {
 
   .page-hero--with-art {
     grid-template-columns: minmax(0, 1.25fr) minmax(240px, 0.75fr);
+  }
+
+  .page-hero--with-landscape-art {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 1fr);
   }
 
   .detail-body,
