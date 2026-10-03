@@ -243,7 +243,7 @@ export const videoItems: VideoItem[] = [
     kind: 'video',
     src: 'https://eclat-lab.fr/wp-content/uploads/2026/04/ECLAT-hackathon-Rennes-2026.mp4',
     externalHref: sourceLinks.eclatHackathon,
-    image: '/images/mathis/videos/hackathon.webp',
+    image: '/images/mathis/international-hackathon-for-astronomy/cover.webp',
   },
   {
     id: 'mcp-demo-video',
@@ -851,7 +851,7 @@ export const articleItems: ArticleItem[] = [
         text: 'These technical events are crucial for bringing our community together to align on shared goals and turn them into reality. During this hackathon, we successfully validated the deployment of the DDF Pipeline on the supercomputers of all participating partners, finalizing this stable version so we can now focus on developing new features. For RIMS, this international gathering allowed us to collectively finalize the general distributed architecture across France, South Africa, and the UK, as well as agree on usage conditions and deliver a proof-of-concept to validate the core idea.',
       },
     ],
-    image: '/images/mathis/videos/hackathon.webp',
+    image: '/images/mathis/international-hackathon-for-astronomy/cover.webp',
     imageAlt: 'Participants in the international DDF Pipeline and RIMS hackathon in Rennes',
     href: '/writing/international-hackathon-for-astronomy',
     sourceHref: sourceLinks.eclatHackathon,
