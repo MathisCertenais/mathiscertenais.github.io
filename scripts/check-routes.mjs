@@ -93,7 +93,7 @@ const requiredAssets = new Set([
   '/assets/fonts/libre-baskerville-latin.woff2',
   '/assets/fonts/outfit-latin.woff2',
   '/favicon.svg',
-  '/images/mathis/cross-facility-workflows.svg',
+  '/images/mathis/ska-processing-chain.webp',
   '/images/mathis/hero-research.svg',
   '/images/mathis/mathis-portrait.webp',
   '/images/mathis/social-card.svg',

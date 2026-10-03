@@ -19,8 +19,9 @@ export function ResearchPage() {
       <PageHero
         eyebrow="Research"
         illustration={{
-          alt: 'Network connecting a scientific instrument, shared data, and computing facilities',
-          src: '/images/mathis/cross-facility-workflows.svg',
+          alt: 'Diagram of the SKA processing chain: antennas in Australia and South Africa feed on-site pre-processing, then supercomputers in Perth and Cape Town, whose science products are replicated across an international storage network',
+          ratio: '2 / 1',
+          src: '/images/mathis/ska-processing-chain.webp',
         }}
         intro={researchThesis.summary}
         title={researchThesis.title}
@@ -105,13 +106,17 @@ export function ResearchPage() {
         </div>
         <figure className="detail-figure">
           <img
-            alt="Network connecting a scientific instrument, shared data, and computing facilities"
+            alt="Diagram of the SKA processing chain: antennas in Australia and South Africa feed on-site pre-processing, then supercomputers in Perth and Cape Town, whose science products are replicated across an international storage network"
             loading="lazy"
-            src="/images/mathis/cross-facility-workflows.svg"
+            src="/images/mathis/ska-processing-chain.webp"
           />
           <figcaption>
-            The processing chain studied throughout the thesis, from the LOFAR reference site to
-            national supercomputers and on to European research storage.
+            The SKA processing chain. SKA-Low antennas in Australia and SKA-Mid dishes in South
+            Africa emit raw signals at terabits per second. Each array is correlated on site by
+            FPGA and correlator hardware at CSP-Low and CSP-Mid, then handed to the SDP
+            supercomputers in Perth and Cape Town for calibration and imaging. The resulting
+            science products are replicated across SRCNet storage and compute nodes in Europe,
+            Asia and the Americas, where astronomers access them for analysis.
           </figcaption>
         </figure>
       </section>
