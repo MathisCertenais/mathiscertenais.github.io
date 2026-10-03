@@ -225,7 +225,7 @@ export const videoItems: VideoItem[] = [
     kind: 'video',
     src: 'https://eclat-lab.fr/wp-content/uploads/2025/09/ECLAT-interview-matthis-2025-Website-v3.mp4',
     externalHref: sourceLinks.eclatInterview,
-    image: '/images/mathis/videos/interview.jpg',
+    image: '/images/mathis/videos/interview.webp',
   },
   {
     id: 'hpc-service-webinar',
@@ -243,7 +243,7 @@ export const videoItems: VideoItem[] = [
     kind: 'video',
     src: 'https://eclat-lab.fr/wp-content/uploads/2026/04/ECLAT-hackathon-Rennes-2026.mp4',
     externalHref: sourceLinks.eclatHackathon,
-    image: '/images/mathis/videos/hackathon.jpg',
+    image: '/images/mathis/videos/hackathon.webp',
   },
   {
     id: 'mcp-demo-video',
@@ -311,7 +311,7 @@ export const articleItems: ArticleItem[] = [
       },
       {
         type: 'figure',
-        image: '/images/mathis/predicting-for-sizing/ddf-workflow.png',
+        image: '/images/mathis/predicting-for-sizing/ddf-workflow.webp',
         alt: 'The DDF Pipeline workflow: download data, run the pipeline, upload results',
         caption: 'The DDF Pipeline workflow — three steps for which we would like to know the most suitable site for executing them.',
       },
@@ -372,7 +372,7 @@ export const articleItems: ArticleItem[] = [
       },
       {
         type: 'figure',
-        image: '/images/mathis/predicting-for-sizing/job-ontology.png',
+        image: '/images/mathis/predicting-for-sizing/job-ontology.webp',
         alt: 'Visualization of the Job Ontology describing the supercomputer runtime environment',
         caption: 'The job structured knowledge map — the bridge between how researchers think about their runs and how SLURM measures them. Credit: Gaëlle Richet.',
       },
@@ -851,7 +851,7 @@ export const articleItems: ArticleItem[] = [
         text: 'These technical events are crucial for bringing our community together to align on shared goals and turn them into reality. During this hackathon, we successfully validated the deployment of the DDF Pipeline on the supercomputers of all participating partners, finalizing this stable version so we can now focus on developing new features. For RIMS, this international gathering allowed us to collectively finalize the general distributed architecture across France, South Africa, and the UK, as well as agree on usage conditions and deliver a proof-of-concept to validate the core idea.',
       },
     ],
-    image: '/images/mathis/videos/hackathon.jpg',
+    image: '/images/mathis/videos/hackathon.webp',
     imageAlt: 'Participants in the international DDF Pipeline and RIMS hackathon in Rennes',
     href: '/writing/international-hackathon-for-astronomy',
     sourceHref: sourceLinks.eclatHackathon,
