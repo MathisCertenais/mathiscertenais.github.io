@@ -1078,6 +1078,18 @@ button:hover .cta-arrow {
   gap: 10px;
 }
 
+.footer-group--columns {
+  grid-column: span 2;
+}
+
+.footer-group--columns ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(2, auto);
+  grid-auto-flow: column;
+  gap: 10px 20px;
+}
+
 .footer-group a {
   display: block;
   color: var(--text-mid);
@@ -1367,6 +1379,16 @@ button:hover .cta-arrow {
     padding: 40px 24px;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 32px 20px;
+  }
+
+  .footer-group--columns {
+    grid-column: auto;
+  }
+
+  .footer-group--columns ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
   .footer-brand {

@@ -3,6 +3,7 @@ import { identity } from '../content'
 
 interface FooterGroup {
   title: string
+  columns?: boolean
   links: Array<{
     label: string
     href: string
@@ -13,6 +14,7 @@ interface FooterGroup {
 const footerGroups: FooterGroup[] = [
   {
     title: 'Navigation',
+    columns: true,
     links: [
       { label: 'Research', href: '/research' },
       { label: 'Insights', href: '/writing' },
@@ -68,7 +70,11 @@ export function SiteFooter() {
         </div>
 
         {footerGroups.map((group) => (
-          <nav aria-label={`${group.title} links`} className="footer-group" key={group.title}>
+          <nav
+            aria-label={`${group.title} links`}
+            className={group.columns ? 'footer-group footer-group--columns' : 'footer-group'}
+            key={group.title}
+          >
             <h3>{group.title}</h3>
             <ul>
               {group.links.map((link) => (
