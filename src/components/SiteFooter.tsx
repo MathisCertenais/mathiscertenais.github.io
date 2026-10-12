@@ -18,6 +18,7 @@ const footerGroups: FooterGroup[] = [
     links: [
       { label: 'Research', href: '/research' },
       { label: 'Insights', href: '/writing' },
+      { label: 'Videos', href: '/videos' },
       { label: 'About', href: '/about' },
       { label: 'Contact', href: '/contact' },
       { label: 'Profile', href: '/resume' },
