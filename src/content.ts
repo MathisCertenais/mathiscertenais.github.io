@@ -301,7 +301,7 @@ export const articleItems: ArticleItem[] = [
     body: [
       {
         type: 'paragraph',
-        text: 'YoungPEx is the working group of young researchers inside **NumPEx**, the French research programme for exascale computing. With **43 members on its Discord server** and **27 participants at its first General Assembly**, it brings together interns, doctoral students, postdocs, engineers, young contract staff and permanent staff — anyone, at any stage, who wants to take part. Its members discuss the questions that matter to their generation: the environmental impact of computing, interdisciplinarity, and the use of AI in scientific research.',
+        text: 'YoungPEx is the working group of young researchers inside **NumPEx**, the French research programme for exascale computing. With **53 members on its Discord server** and **27 participants at its first General Assembly**, it brings together interns, doctoral students, postdocs, engineers, young contract staff and permanent staff — anyone, at any stage, who wants to take part. Its members discuss the questions that matter to their generation: the environmental impact of computing, interdisciplinarity, and the use of AI in scientific research.',
       },
       {
         type: 'paragraph',
@@ -931,17 +931,25 @@ export const articleItems: ArticleItem[] = [
         text: 'For the radio astronomy community, the path to these machines is blocked — not by a lack of hardware, but by a systemic conflict between scientific collaboration and national security. This is the tension the work we present at the **SC26 Workshops** sets out to resolve: how to let a scientific community share a common application across French HPC systems without breaking the accountability rules those systems are built on.',
       },
       {
+        type: 'paragraph',
+        text: 'This is not a new problem. The **Low-Frequency Array (LOFAR)** [6] is a European network of radio telescopes and a pathfinder to the SKA; the **LOFAR as a service** platform [7] demonstrated the viability of a portal-based approach for on-demand access to computing resources. It enables the radio astronomy community to process LOFAR data through dedicated pipelines deployed on distributed data and compute infrastructures co-located with the LOFAR Long-Term Archive sites, including **SURFsara**, the Dutch national e-infrastructure [8]. But this model was designed for grid environments and did not account for the accountability requirements imposed by the cybersecurity regulations associated with ZRR status.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Recent empirical work [9] identifies barriers to HPC usage in radio astronomy — limited accessibility, heterogeneous systems, gaps in advanced computing expertise, and increasing software complexity. Though this study focuses on commercial HPC in an Australian context, these barriers are relevant to publicly funded national infrastructures, and in the French HPC ecosystem the added cybersecurity rules imposed by the ZRR further widen the gap between radio astronomy practice and HPC operational models.',
+      },
+      {
         type: 'heading',
         level: 2,
         text: 'The Friction: Science vs. ZRR',
       },
       {
         type: 'paragraph',
-        text: 'In France, because supercomputers are classified as **national strategic assets**, the HPC centers that host them operate within the French framework for the protection of the Nation’s scientific and technical potential (**PPST**) [6]. Established by French regulations and described in further detail in recommendations published by **ANSSI** [7], this framework aims to prevent the loss, sabotage, or appropriation of sensitive knowledge and technologies by foreign powers or malicious actors. **GENCI’s access rules** [8] specify how these requirements are implemented in the terms and conditions governing access to national HPC resources.',
+        text: 'In France, because supercomputers are classified as **national strategic assets**, the HPC centers that host them operate within the French framework for the protection of the Nation’s scientific and technical potential (**PPST**) [10]. Established by French regulations and described in further detail in recommendations published by **ANSSI** [11], this framework aims to prevent the loss, sabotage, or appropriation of sensitive knowledge and technologies by foreign powers or malicious actors. **GENCI’s access rules** [12] specify how these requirements are implemented in the terms and conditions governing access to national HPC resources.',
       },
       {
         type: 'paragraph',
-        text: 'To enforce the PPST, a computing center — or part of its infrastructure — is classified as a **Zone à Régime Restrictif (ZRR)** by ministerial order [9]. The ZRR places physical and logical access barriers around sensitive resources, and imposes a set of operational restrictions on their use:',
+        text: 'To enforce the PPST, a computing center — or part of its infrastructure — is classified as a **Zone à Régime Restrictif (ZRR)** by ministerial order [13]. The ZRR places physical and logical access barriers around sensitive resources, and imposes a set of operational restrictions on their use:',
       },
       {
         type: 'list',
@@ -955,7 +963,7 @@ export const articleItems: ArticleItem[] = [
       },
       {
         type: 'paragraph',
-        text: 'On top of those regulatory constraints come the ordinary constraints of shared supercomputers: SLURM scheduling [10], execution time limits of **24 hours on Adastra, 100 hours on Jean Zay, and 72 hours on Joliot-Curie**, and internet access confined to frontend nodes. Together, they make community-driven applications — a single pipeline maintained by a few experts and used by dozens of researchers — very difficult to operate on French machines.',
+        text: 'On top of those regulatory constraints come the ordinary constraints of shared supercomputers: SLURM scheduling [14], execution time limits of **24 hours on Adastra, 100 hours on Jean Zay, and 72 hours on Joliot-Curie**, and internet access confined to frontend nodes. Together, they make community-driven applications — a single pipeline maintained by a few experts and used by dozens of researchers — very difficult to operate on French machines.',
       },
       {
         type: 'paragraph',
@@ -980,10 +988,10 @@ export const articleItems: ArticleItem[] = [
         type: 'list',
         ordered: false,
         items: [
-          '**Workflow management systems** such as Pegasus [11], Nextflow [12], or Snakemake [13] orchestrate directed acyclic graphs across Cloud and HPC and can submit through a local batch scheduler. But they remain, by nature, **per-user engines**: each individual installs, configures, and maintains their own instance under a nominative account, and the deployment is never exposed as a shared, operated service.',
-          '**Web portals and science gateways** [14], [15] hide HPC complexity behind an interface and satisfy nominative access by mapping each portal user to their own HPC account — but they do not remove the operational burden: every user still deploys and maintains the scientific application stack.',
-          '**Grid-era middleware** such as GlideinWMS [16], PanDA [17], or DIRAC [18] combine pilot-based execution with Virtual Organization identities — short-lived proxy certificates issued by VOMS [19]. The incompatibility with the ZRR lies in the **executing identity** — a collective credential — rather than in the pull dispatch mode itself.',
-          '**Programmatic access layers** such as Globus Compute (originally funcX) [20] and FirecREST [21] are the closest to our approach: they expose APIs to submit and monitor tasks on remote supercomputers. In their standard user-facing deployments, however, they authenticate users individually and associate each job with the requesting user’s HPC identity — and provide no centrally operated catalog of validated scientific applications exposed as a community service.',
+          '**Workflow management systems** such as Pegasus [15], Nextflow [16], or Snakemake [17] orchestrate directed acyclic graphs across Cloud and HPC and can submit through a local batch scheduler. But they remain, by nature, **per-user engines**: each individual installs, configures, and maintains their own instance under a nominative account, and the deployment is never exposed as a shared, operated service.',
+          '**Web portals and science gateways** [18], [19] hide HPC complexity behind an interface and satisfy nominative access by mapping each portal user to their own HPC account — but they do not remove the operational burden: every user still deploys and maintains the scientific application stack.',
+          '**Grid-era middleware** such as GlideinWMS [20], PanDA [21], or DIRAC [22] combine pilot-based execution with Virtual Organization identities — short-lived proxy certificates issued by VOMS [23]. The incompatibility with the ZRR lies in the **executing identity** — a collective credential — rather than in the pull dispatch mode itself.',
+          '**Programmatic access layers** such as Globus Compute (originally funcX) [24] and FirecREST [25] are the closest to our approach: they expose APIs to submit and monitor tasks on remote supercomputers. In their standard user-facing deployments, however, they authenticate users individually and associate each job with the requesting user’s HPC identity — and provide no centrally operated catalog of validated scientific applications exposed as a community service.',
         ],
       },
       {
@@ -1008,13 +1016,13 @@ export const articleItems: ArticleItem[] = [
         ordered: true,
         items: [
           '**The infrastructure**: Globus services are hosted on Amazon Web Services and operated by Globus, while storage and computing endpoints remain operated by subscribing organizations.',
-          '**What is stored** [22]: research files are not shared with Globus, but its services store task-related information, temporary credentials, filenames, and directory paths.',
-          '**The French mandate**: any logical access to information protected by the PPST regime is strictly subject to authorization by the supervising Ministry. Externalizing that operational metadata may raise PPST and ZRR compliance concerns — including potential exposure to U.S. legal processes under **18 U.S.C. § 2713** [23]. At the time of writing, we found no publicly documented Globus Compute endpoint operated by a French national HPC center.',
+          '**What is stored** [26]: research files are not shared with Globus, but its services store task-related information, temporary credentials, filenames, and directory paths.',
+          '**The French mandate**: any logical access to information protected by the PPST regime is strictly subject to authorization by the supervising Ministry. Externalizing that operational metadata may raise PPST and ZRR compliance concerns — including potential exposure to U.S. legal processes under **18 U.S.C. § 2713** [27]. At the time of writing, we found no publicly documented Globus Compute endpoint operated by a French national HPC center.',
         ],
       },
       {
         type: 'paragraph',
-        text: 'In short: where Globus offers convenience through cloud-based orchestration, the ZRR requires sovereign control over operational data. This is precisely why our approach relies on **Application Microservices** (AM) and **Ephemeral Buffers** (EB) rather than Globus — to provide Globus-like functionality while remaining compliant with French national security law.',
+        text: 'In short: where Globus offers convenience through cloud-based orchestration, the ZRR requires sovereign control over operational data. This is precisely why our approach does not rely on Globus: it leverages an existing framework for scientific applications as a service, made of **Application Microservices** (AM) for application deployment and **Ephemeral Buffers** (EB) for transient data logistics — providing Globus-like functionality while remaining compliant with French national security law.',
       },
       {
         type: 'heading',
@@ -1023,7 +1031,7 @@ export const articleItems: ArticleItem[] = [
       },
       {
         type: 'paragraph',
-        text: 'To bridge this gap, we propose **decoupling the identity of the user from the identity of the executor**, in a framework that exposes scientific applications as a service [24]. Instead of forcing every astronomer to become an HPC system administrator, we mutualize the use of supercomputers around a small set of precise roles:',
+        text: 'To bridge this gap, we propose **decoupling the identity of the user from the identity of the executor**, in a framework that exposes scientific applications as a service [28]. Instead of forcing every astronomer to become an HPC system administrator, we mutualize the use of supercomputers around a small set of precise roles:',
       },
       {
         type: 'list',
@@ -1053,9 +1061,9 @@ export const articleItems: ArticleItem[] = [
         type: 'list',
         ordered: false,
         items: [
-          '**Application Microservices (AM)** [25] — the catalog of available scientific applications, exposed as microservices. AM orchestrates execution through job and runtime entities; because submission and execution are decoupled, users do not need a persistent connection, enabling a **launch-and-forget** experience for jobs that may run for several days.',
-          '**Ephemeral Buffers (EB)** [26] — a transient data logistics layer providing temporary storage and a data exchange point between users and HPC systems. They are not mandatory, but they ease transfers and are accessible with only a user identity.',
-          '**The Runner** — a Python script (runner.py), executed by a maintainer, that periodically polls AM for pending jobs and executes them on the target HPC system over SSH [27], [28]. This **pull-based** design — rather than a web service pushing jobs into the secure zone — satisfies accountability and traceability, and it enforces the user whitelist before any execution.',
+          '**Application Microservices (AM)** [29] — the catalog of available scientific applications, exposed as microservices. AM orchestrates execution through job and runtime entities; because submission and execution are decoupled, users do not need a persistent connection, enabling a **launch-and-forget** experience for jobs that may run for several days.',
+          '**Ephemeral Buffers (EB)** [30] — a transient data logistics layer providing temporary storage and a data exchange point between users and HPC systems. They are not mandatory, but they ease transfers and are accessible with only a user identity.',
+          '**The Runner** — a Python script (runner.py), executed by a maintainer, that periodically polls AM for pending jobs and executes them on the target HPC system over SSH [31], [32]. This **pull-based** design — rather than a web service pushing jobs into the secure zone — satisfies accountability and traceability, and it enforces the user whitelist before any execution.',
         ],
       },
       {
@@ -1097,19 +1105,19 @@ export const articleItems: ArticleItem[] = [
       },
       {
         type: 'paragraph',
-        text: 'We instantiated this architecture with the **DDF Pipeline** [29], [30], a community-driven radio astronomy application whose memory footprint, multi-day runtime, and reliance on external LOFAR datasets make it a demanding test case for French supercomputers under the ZRR regime.',
+        text: 'We instantiated this architecture with the **DDF Pipeline** [33], [34], a community-driven radio astronomy application whose memory footprint, multi-day runtime, and reliance on external LOFAR datasets make it a demanding test case for French supercomputers under the ZRR regime.',
       },
       {
         type: 'paragraph',
-        text: 'The DDF Pipeline is a composite application integrating **DDFacet** [31], a direction-dependent facets imaging package, and **killMS** [32], a calibration package for radio interferometry. It processes Measurement Sets (MS), a standardized format for interferometer visibilities, and produces sky images in FITS format. Originally a CPU-based, shared-memory application, it requires roughly **400 GB of RAM** to process LOFAR datasets: a representative run over 24 MS input files — 38.72 GB compressed — generated **594 GB of output** after **68.8 hours** on a single node [33].',
+        text: 'The DDF Pipeline is a composite application integrating **DDFacet** [35], a direction-dependent facets imaging package, and **killMS** [36], a calibration package for radio interferometry. It processes Measurement Sets (MS), a standardized format for interferometer visibilities, and produces sky images in FITS format. Originally a CPU-based, shared-memory application, it requires roughly **400 GB of RAM** to process LOFAR datasets: a representative run over 24 MS input files — 38.72 GB compressed — generated **594 GB of output** after **68.8 hours** on a single node [37].',
       },
       {
         type: 'paragraph',
-        text: 'Memory per node shapes what can run where: **Adastra** [34] offers 768 GB per node and is well suited to the pipeline, **Jean Zay** [35] has 192 GB per node and requires limiting the size of the generated sky image (GPU partitions with at least 512 GB can also be used), and **Joliot-Curie** [36] has 228 GB per node — with only 7 fat nodes large enough. A configuration that fits one machine may be hopeless on another.',
+        text: 'Memory per node shapes what can run where: **Adastra** [38] offers 768 GB per node and is well suited to the pipeline, **Jean Zay** [39] has 192 GB per node and requires limiting the size of the generated sky image (GPU partitions with at least 512 GB can also be used), and **Joliot-Curie** [40] has 228 GB per node — with only 7 fat nodes large enough. A configuration that fits one machine may be hopeless on another.',
       },
       {
         type: 'paragraph',
-        text: 'To prepare for SKA data volumes, we co-developed a **parallel version** of the DDF Pipeline with partners from the **ECLAT joint laboratory** [37], integrating the multi-core, multi-node parallelization of DDFacet [38] with a parallel implementation of killMS. This is the version used for the results below.',
+        text: 'To prepare for SKA data volumes, we co-developed a **parallel version** of the DDF Pipeline with partners from the **ECLAT joint laboratory** [41], integrating the multi-core, multi-node parallelization of DDFacet [42] with a parallel implementation of killMS. This is the version used for the results below.',
       },
       {
         type: 'figure',
@@ -1143,7 +1151,7 @@ export const articleItems: ArticleItem[] = [
         type: 'list',
         ordered: false,
         items: [
-          '**Data access** — for the LOFAR LoTSS L234026 8-hour integration dataset, **SURFsara** [39] delivered the highest average download throughput (**137.9 MB/s**, though with the largest variability) ahead of **EOSC** [40] (51.85 MB/s) and **CNRS Drive** (52.36 MB/s). Upload favored EOSC (**28.73 MB/s**, coefficient of variation 34.3%) over CNRS Drive (13.81 MB/s, 84.7%), making SURFsara and EOSC the viable endpoints for this experiment.',
+          '**Data access** — for the LOFAR LoTSS L234026 8-hour integration dataset, **SURFsara** delivered the highest average download throughput (**137.9 MB/s**, though with the largest variability) ahead of **EOSC** [43] (51.85 MB/s) and **CNRS Drive** (52.36 MB/s). Upload favored EOSC (**28.73 MB/s**, coefficient of variation 34.3%) over CNRS Drive (13.81 MB/s, 84.7%), making SURFsara and EOSC the viable endpoints for this experiment.',
           '**Scalability** — elapsed time fell from **68.8 hours on 1 node to 8.7 hours on 24 nodes** (≈7.9× speedup), passing through 14.4 hours on 6 nodes and 10.2 hours on 12 nodes. Average CPU utilization decreased from 63.5% to 31%, primarily because unparallelized DDFacet deconvolution steps limit scaling efficiency — parallelizing them is ongoing work.',
           '**Service overhead** — job submission through the API added only **0.25 to 0.96 seconds** for configurations of 0 (baseline), 1, and 5 ebuffers. This is negligible against workflow executions that range from several hours to several days.',
         ],
@@ -1178,7 +1186,7 @@ export const articleItems: ArticleItem[] = [
       },
       {
         type: 'paragraph',
-        text: 'Cross-center executions of the DDF Pipeline between **Jean Zay and Adastra** have been validated, motivating future integration of cross-facility deployment [41] within the EB/AM framework. The named service account model remains under discussion with French HPC stakeholders, and future work will extend deployment to additional French supercomputers — **Adastra and Joliot-Curie**.',
+        text: 'Cross-center executions of the DDF Pipeline between **Jean Zay and Adastra** have been validated, motivating future integration of cross-facility deployment [44] within the EB/AM framework. The named service account model remains under discussion with French HPC stakeholders, and future work will extend deployment to additional French supercomputers — **Adastra and Joliot-Curie**.',
       },
       {
         type: 'heading',
@@ -1220,146 +1228,158 @@ export const articleItems: ArticleItem[] = [
           },
           {
             id: 'ref-6',
-            text: 'Légifrance, [“Protection du Potentiel Scientifique et Technique (PPST),”](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000049535465) Décret n° 2024-430 du 14 mai 2024.',
+            text: 'M. P. van Haarlem, M. W. Wise, A. W. Gunst, G. Heald, J. P. McKean, J. W. T. Hessels, et al., [“LOFAR: The LOw-Frequency ARray,”](https://www.aanda.org/articles/aa/abs/2013/08/aa20873-12/aa20873-12.html) Astron. Astrophys., vol. 556, p. A2, Aug. 2013.',
           },
           {
             id: 'ref-7',
-            text: 'ANSSI, [“Protection du Potentiel Scientifique et Technique de la Nation (PPST),”](https://cyber.gouv.fr/reglementation/cybersecurite-systemes-dinformation/protection-information-sensible-diffusion-restreinte/protection-du-potentiel-scientifique-et-technique-de-la-nation-ppst/) Agence nationale de la sécurité des systèmes d’information.',
+            text: 'A. P. Mechev, J. B. R. Oonk, A. Plaat, A. Danezi, and T. W. Shimwell, [“Building LOFAR as a Service,”](https://www.aspbooks.org/a/volumes/article_details/?paper_id=39335) in Proc. Astronomical Data Anal. Softw. Syst. XXVIII (ADASS), vol. 523, San Francisco, CA, USA: Astronomical Society of the Pacific, 2019, p. 677.',
           },
           {
             id: 'ref-8',
-            text: 'GENCI, [“Modalités d’accès aux ressources nationales,”](https://www.genci.fr/sites/default/files/brique/fichier/09-2023/Modalitesdacces_1.pdf) Réf. CD230106, version 1.15, May 2023.',
-          },
-          {
-            id: 'ref-9',
-            text: 'Légifrance, [“Zones à Régime Restrictif (ZRR),”](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000024750719/) Code pénal, Art. R413-5-1, 2025.',
-          },
-          {
-            id: 'ref-10',
-            text: 'A. B. Yoo, M. A. Jette, and M. Grondona, [“SLURM: Simple Linux Utility for Resource Management,”](https://link.springer.com/chapter/10.1007/10968987_3) in Proc. Workshop Job Scheduling Strategies for Parallel Processing (JSSPP), vol. 2862, Berlin, Germany: Springer, Jun. 2003, pp. 44–60.',
-          },
-          {
-            id: 'ref-11',
-            text: 'E. Deelman et al., [“The Evolution of the Pegasus Workflow Management Software,”](https://ieeexplore.ieee.org/abstract/document/8725518) Comput. Sci. Eng., vol. 21, no. 4, pp. 22–36, Jul. 2019.',
-          },
-          {
-            id: 'ref-12',
-            text: 'P. Di Tommaso, M. Chatzou, E. W. Floden, P. P. Barja, E. Palumbo, and C. Notredame, [“Nextflow enables reproducible computational workflows,”](https://www.nature.com/articles/nbt.3820) Nat. Biotechnol., vol. 35, no. 4, pp. 316–319, Apr. 2017.',
-          },
-          {
-            id: 'ref-13',
-            text: 'J. Köster and S. Rahmann, [“Snakemake—a scalable bioinformatics workflow engine,”](https://doi.org/10.1093/bioinformatics/bts480) Bioinformatics, vol. 28, no. 19, pp. 2520–2522, Oct. 2012.',
-          },
-          {
-            id: 'ref-14',
-            text: 'P. Calegari, M. Levrier, and P. Balczynski, [“Web Portals for High-performance Computing: A Survey,”](https://dl.acm.org/doi/10.1145/3197385) ACM Trans. Web, vol. 13, no. 1, pp. 5:1–5:36, Feb. 2019.',
-          },
-          {
-            id: 'ref-15',
-            text: 'M. Barker et al., [“The global impact of science gateways, virtual research environments and virtual laboratories,”](https://www.sciencedirect.com/science/article/pii/S0167739X18314018) Future Generation Computer Systems, vol. 95, pp. 240–248, Jun. 2019.',
-          },
-          {
-            id: 'ref-16',
-            text: 'I. Sfiligoi, [“glideinWMS—a generic pilot-based workload management system,”](https://doi.org/10.1088/1742-6596/119/6/062044) J. Phys.: Conf. Ser., vol. 119, no. 6, p. 062044, Jul. 2008.',
-          },
-          {
-            id: 'ref-17',
-            text: 'T. Maeno, [“PanDA: distributed production and distributed analysis system for ATLAS,”](https://doi.org/10.1088/1742-6596/119/6/062036) J. Phys.: Conf. Ser., vol. 119, no. 6, p. 062036, Jul. 2008.',
-          },
-          {
-            id: 'ref-18',
-            text: 'A. Casajus, R. Graciani, S. Paterson, A. Tsaregorodtsev, and LHCb DIRAC Collaboration, [“DIRAC pilot framework and the DIRAC Workload Management System,”](https://doi.org/10.1088/1742-6596/219/6/062049) J. Phys.: Conf. Ser., vol. 219, no. 6, p. 062049, Apr. 2010.',
-          },
-          {
-            id: 'ref-19',
-            text: 'R. Alfieri et al., [“From gridmap-file to VOMS: managing authorization in a Grid environment,”](https://www.sciencedirect.com/science/article/pii/S0167739X04001682) Future Gener. Comput. Syst., vol. 21, no. 4, pp. 549–558, Apr. 2005.',
-          },
-          {
-            id: 'ref-20',
-            text: 'R. Chard et al., [“funcX: A Federated Function Serving Fabric for Science,”](https://dl.acm.org/doi/10.1145/3369583.3392683) in Proc. 29th Int. Symp. High-Perform. Parallel Distrib. Comput. (HPDC ’20), Stockholm, Sweden, Jun. 2020, pp. 65–76.',
-          },
-          {
-            id: 'ref-21',
-            text: 'F. A. Cruz et al., [“FirecREST: a RESTful API to HPC systems,”](https://ieeexplore.ieee.org/abstract/document/9308083) in Proc. IEEE/ACM Int. Workshop Interoperability Supercomput. Cloud Technol. (SuperCompCloud), Nov. 2020, pp. 21–26.',
-          },
-          {
-            id: 'ref-22',
-            text: 'Globus, [“High Assurance Security Overview,”](https://docs.globus.org/guides/overviews/security/high-assurance-overview/) Globus documentation, University of Chicago.',
-          },
-          {
-            id: 'ref-23',
-            text: 'U.S. Code, [“Required preservation and disclosure of communications and records,”](https://www.law.cornell.edu/uscode/text/18/2713) 18 U.S.C. 2713, Legal Information Institute, Cornell Law School, Mar. 2018.',
-          },
-          {
-            id: 'ref-24',
-            text: 'L. Morin, F. Bodin, and G. Nyastikor, [“HPC Software as a Service: A Flexible Approach to Data Logistics,”](https://exatow.fenix.rudi-univ-rennes1.fr/storage/download/7c1d28c2-e963-45e4-b677-4253dfca0e0e) presented at the 3rd Int. Workshop on Scalable Compute Continuum (WSCC 2025), Dresden, Germany, Aug. 2025.',
-          },
-          {
-            id: 'ref-25',
-            text: 'L. Morin and G. Nyastikor, [“Application Microservices (AM),”](https://ebservice.aqmo.org/docs/ui) Online API documentation.',
-          },
-          {
-            id: 'ref-26',
-            text: 'L. Morin and G. Nyastikor, [“Ephemeral Buffers (EB),”](https://ebuffer.aqmo.org/docs/ui) Online API documentation.',
-          },
-          {
-            id: 'ref-27',
-            text: 'CINES, [“Adastra supercomputer user documentation.”](https://dci.dci-gitlab.cines.fr/webextranet/user_support/index.html)',
-          },
-          {
-            id: 'ref-28',
-            text: 'IDRIS, [“SSH access to the Jean Zay supercomputer.”](http://www.idris.fr/docs/jean-zay/gestion-compte/connexion-ssh/)',
-          },
-          {
-            id: 'ref-29',
-            text: 'C. Tasse et al., [“The LOFAR Two-meter Sky Survey: Deep Fields Data Release 1 - I. Direction-dependent calibration and imaging,”](https://www.aanda.org/articles/aa/abs/2021/04/aa38804-20/aa38804-20.html) Astron. Astrophys., vol. 648, p. A1, Apr. 2021.',
-          },
-          {
-            id: 'ref-30',
-            text: 'M. Hardcastle, T. Shimwell, C. Tasse, and W. Williams, [“DDF Pipeline source code,”](https://github.com/mhardcastle/ddf-pipeline) GitHub repository.',
-          },
-          {
-            id: 'ref-31',
-            text: 'C. Tasse, [“DDFacet source code: A facet-based radio imaging package,”](https://github.com/saopicc/DDFacet) GitHub repository.',
-          },
-          {
-            id: 'ref-32',
-            text: 'C. Tasse, [“killMS source code: A Wirtinger-based direction-dependent radio interferometric calibration package,”](https://github.com/saopicc/killMS) GitHub repository.',
-          },
-          {
-            id: 'ref-33',
-            text: 'M. Certenais, F. Bodin, and L. Morin, [“A description of the radio astronomy data processing tool DDF Pipeline,”](https://arxiv.org/abs/2509.03075) arXiv:2509.03075, Sep. 2025.',
-          },
-          {
-            id: 'ref-34',
-            text: 'CINES, [“Adastra supercomputer architecture.”](https://dci.dci-gitlab.cines.fr/webextranet/architecture/index.html)',
-          },
-          {
-            id: 'ref-35',
-            text: 'IDRIS-CNRS, [“Jean Zay supercomputer architecture.”](http://www.idris.fr/docs/jean-zay/jean-zay/jean-zay-hardware)',
-          },
-          {
-            id: 'ref-36',
-            text: 'TGCC-CEA, [“TGCC Public Documentation,”](https://www-hpc.cea.fr/tgcc-public/en/latex/tgcc-public.pdf) Sep. 2026.',
-          },
-          {
-            id: 'ref-37',
-            text: 'ECLAT, [“Extreme Computing Lab for Astronomical Telescopes (ECLAT).”](https://eclat-lab.fr/)',
-          },
-          {
-            id: 'ref-38',
-            text: 'N. Monnier et al., [“Multi-core multi-node parallelization of the radio interferometric imaging pipeline DDFacet,”](https://ieeexplore.ieee.org/document/9919239) in Proc. IEEE Workshop Signal Process. Syst. (SiPS), Rennes, France, Nov. 2022, pp. 1–6.',
-          },
-          {
-            id: 'ref-39',
             text: 'J. Templon and J. Bot, [“The Dutch National e-Infrastructure,”](https://pos.sissa.it/270/020) in Proc. Int. Symp. Grids Clouds (ISGC 2016), vol. 270, Taipei, Taiwan: SISSA Medialab, Jan. 2017, p. 020.',
           },
           {
+            id: 'ref-9',
+            text: 'I. P. Kemp, S. J. Tingay, S. D. Midgely, and D. A. Mitchell, [“Experiences of commercial supercomputing in radio astronomy data processing,”](https://www.sciencedirect.com/science/article/pii/S2213133725000861) Astron. Comput., vol. 54, p. 101013, Jan. 2026.',
+          },
+          {
+            id: 'ref-10',
+            text: 'Légifrance, [“Protection du Potentiel Scientifique et Technique (PPST),”](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000049535465) Décret n° 2024-430 du 14 mai 2024.',
+          },
+          {
+            id: 'ref-11',
+            text: 'ANSSI, [“Protection du Potentiel Scientifique et Technique de la Nation (PPST),”](https://cyber.gouv.fr/reglementation/cybersecurite-systemes-dinformation/protection-information-sensible-diffusion-restreinte/protection-du-potentiel-scientifique-et-technique-de-la-nation-ppst/) Agence nationale de la sécurité des systèmes d’information.',
+          },
+          {
+            id: 'ref-12',
+            text: 'GENCI, [“Modalités d’accès aux ressources nationales,”](https://www.genci.fr/sites/default/files/brique/fichier/09-2023/Modalitesdacces_1.pdf) Réf. CD230106, version 1.15, May 2023.',
+          },
+          {
+            id: 'ref-13',
+            text: 'Légifrance, [“Zones à Régime Restrictif (ZRR),”](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000024750719/) Code pénal, Art. R413-5-1, 2025.',
+          },
+          {
+            id: 'ref-14',
+            text: 'A. B. Yoo, M. A. Jette, and M. Grondona, [“SLURM: Simple Linux Utility for Resource Management,”](https://link.springer.com/chapter/10.1007/10968987_3) in Proc. Workshop Job Scheduling Strategies for Parallel Processing (JSSPP), vol. 2862, Berlin, Germany: Springer, Jun. 2003, pp. 44–60.',
+          },
+          {
+            id: 'ref-15',
+            text: 'E. Deelman et al., [“The Evolution of the Pegasus Workflow Management Software,”](https://ieeexplore.ieee.org/abstract/document/8725518) Comput. Sci. Eng., vol. 21, no. 4, pp. 22–36, Jul. 2019.',
+          },
+          {
+            id: 'ref-16',
+            text: 'P. Di Tommaso, M. Chatzou, E. W. Floden, P. P. Barja, E. Palumbo, and C. Notredame, [“Nextflow enables reproducible computational workflows,”](https://www.nature.com/articles/nbt.3820) Nat. Biotechnol., vol. 35, no. 4, pp. 316–319, Apr. 2017.',
+          },
+          {
+            id: 'ref-17',
+            text: 'J. Köster and S. Rahmann, [“Snakemake—a scalable bioinformatics workflow engine,”](https://doi.org/10.1093/bioinformatics/bts480) Bioinformatics, vol. 28, no. 19, pp. 2520–2522, Oct. 2012.',
+          },
+          {
+            id: 'ref-18',
+            text: 'P. Calegari, M. Levrier, and P. Balczynski, [“Web Portals for High-performance Computing: A Survey,”](https://dl.acm.org/doi/10.1145/3197385) ACM Trans. Web, vol. 13, no. 1, pp. 5:1–5:36, Feb. 2019.',
+          },
+          {
+            id: 'ref-19',
+            text: 'M. Barker et al., [“The global impact of science gateways, virtual research environments and virtual laboratories,”](https://www.sciencedirect.com/science/article/pii/S0167739X18314018) Future Generation Computer Systems, vol. 95, pp. 240–248, Jun. 2019.',
+          },
+          {
+            id: 'ref-20',
+            text: 'I. Sfiligoi, [“glideinWMS—a generic pilot-based workload management system,”](https://doi.org/10.1088/1742-6596/119/6/062044) J. Phys.: Conf. Ser., vol. 119, no. 6, p. 062044, Jul. 2008.',
+          },
+          {
+            id: 'ref-21',
+            text: 'T. Maeno, [“PanDA: distributed production and distributed analysis system for ATLAS,”](https://doi.org/10.1088/1742-6596/119/6/062036) J. Phys.: Conf. Ser., vol. 119, no. 6, p. 062036, Jul. 2008.',
+          },
+          {
+            id: 'ref-22',
+            text: 'A. Casajus, R. Graciani, S. Paterson, A. Tsaregorodtsev, and LHCb DIRAC Collaboration, [“DIRAC pilot framework and the DIRAC Workload Management System,”](https://doi.org/10.1088/1742-6596/219/6/062049) J. Phys.: Conf. Ser., vol. 219, no. 6, p. 062049, Apr. 2010.',
+          },
+          {
+            id: 'ref-23',
+            text: 'R. Alfieri et al., [“From gridmap-file to VOMS: managing authorization in a Grid environment,”](https://www.sciencedirect.com/science/article/pii/S0167739X04001682) Future Gener. Comput. Syst., vol. 21, no. 4, pp. 549–558, Apr. 2005.',
+          },
+          {
+            id: 'ref-24',
+            text: 'R. Chard et al., [“funcX: A Federated Function Serving Fabric for Science,”](https://dl.acm.org/doi/10.1145/3369583.3392683) in Proc. 29th Int. Symp. High-Perform. Parallel Distrib. Comput. (HPDC ’20), Stockholm, Sweden, Jun. 2020, pp. 65–76.',
+          },
+          {
+            id: 'ref-25',
+            text: 'F. A. Cruz et al., [“FirecREST: a RESTful API to HPC systems,”](https://ieeexplore.ieee.org/abstract/document/9308083) in Proc. IEEE/ACM Int. Workshop Interoperability Supercomput. Cloud Technol. (SuperCompCloud), Nov. 2020, pp. 21–26.',
+          },
+          {
+            id: 'ref-26',
+            text: 'Globus, [“High Assurance Security Overview,”](https://docs.globus.org/guides/overviews/security/high-assurance-overview/) Globus documentation, University of Chicago.',
+          },
+          {
+            id: 'ref-27',
+            text: 'U.S. Code, [“Required preservation and disclosure of communications and records,”](https://www.law.cornell.edu/uscode/text/18/2713) 18 U.S.C. 2713, Legal Information Institute, Cornell Law School, Mar. 2018.',
+          },
+          {
+            id: 'ref-28',
+            text: 'L. Morin, F. Bodin, and G. Nyastikor, [“HPC Software as a Service: A Flexible Approach to Data Logistics,”](https://exatow.fenix.rudi-univ-rennes1.fr/storage/download/7c1d28c2-e963-45e4-b677-4253dfca0e0e) presented at the 3rd Int. Workshop on Scalable Compute Continuum (WSCC 2025), Dresden, Germany, Aug. 2025.',
+          },
+          {
+            id: 'ref-29',
+            text: 'L. Morin and G. Nyastikor, [“Application Microservices (AM),”](https://ebservice.aqmo.org/docs/ui) Online API documentation.',
+          },
+          {
+            id: 'ref-30',
+            text: 'L. Morin and G. Nyastikor, [“Ephemeral Buffers (EB),”](https://ebuffer.aqmo.org/docs/ui) Online API documentation.',
+          },
+          {
+            id: 'ref-31',
+            text: 'CINES, [“Adastra supercomputer user documentation.”](https://dci.dci-gitlab.cines.fr/webextranet/user_support/index.html)',
+          },
+          {
+            id: 'ref-32',
+            text: 'IDRIS, [“SSH access to the Jean Zay supercomputer.”](http://www.idris.fr/docs/jean-zay/gestion-compte/connexion-ssh/)',
+          },
+          {
+            id: 'ref-33',
+            text: 'C. Tasse et al., [“The LOFAR Two-meter Sky Survey: Deep Fields Data Release 1 - I. Direction-dependent calibration and imaging,”](https://www.aanda.org/articles/aa/abs/2021/04/aa38804-20/aa38804-20.html) Astron. Astrophys., vol. 648, p. A1, Apr. 2021.',
+          },
+          {
+            id: 'ref-34',
+            text: 'M. Hardcastle, T. Shimwell, C. Tasse, and W. Williams, [“DDF Pipeline source code,”](https://github.com/mhardcastle/ddf-pipeline) GitHub repository.',
+          },
+          {
+            id: 'ref-35',
+            text: 'C. Tasse, [“DDFacet source code: A facet-based radio imaging package,”](https://github.com/saopicc/DDFacet) GitHub repository.',
+          },
+          {
+            id: 'ref-36',
+            text: 'C. Tasse, [“killMS source code: A Wirtinger-based direction-dependent radio interferometric calibration package,”](https://github.com/saopicc/killMS) GitHub repository.',
+          },
+          {
+            id: 'ref-37',
+            text: 'M. Certenais, F. Bodin, and L. Morin, [“A description of the radio astronomy data processing tool DDF Pipeline,”](https://arxiv.org/abs/2509.03075) arXiv:2509.03075, Sep. 2025.',
+          },
+          {
+            id: 'ref-38',
+            text: 'CINES, [“Adastra supercomputer architecture.”](https://dci.dci-gitlab.cines.fr/webextranet/architecture/index.html)',
+          },
+          {
+            id: 'ref-39',
+            text: 'IDRIS-CNRS, [“Jean Zay supercomputer architecture.”](http://www.idris.fr/docs/jean-zay/jean-zay/jean-zay-hardware)',
+          },
+          {
             id: 'ref-40',
-            text: 'P. Budroni, J.-C. Burgelman, and M. Schouppe, [“Architectures of Knowledge: The European Open Science Cloud,”](https://doi.org/10.1515/abitech-2019-2006) ABI Technik, vol. 39, no. 2, pp. 130–141, Jul. 2019.',
+            text: 'TGCC-CEA, [“TGCC Public Documentation,”](https://www-hpc.cea.fr/tgcc-public/en/latex/tgcc-public.pdf) Sep. 2026.',
           },
           {
             id: 'ref-41',
+            text: 'ECLAT, [“Extreme Computing Lab for Astronomical Telescopes (ECLAT).”](https://eclat-lab.fr/)',
+          },
+          {
+            id: 'ref-42',
+            text: 'N. Monnier et al., [“Multi-core multi-node parallelization of the radio interferometric imaging pipeline DDFacet,”](https://ieeexplore.ieee.org/document/9919239) in Proc. IEEE Workshop Signal Process. Syst. (SiPS), Rennes, France, Nov. 2022, pp. 1–6.',
+          },
+          {
+            id: 'ref-43',
+            text: 'P. Budroni, J.-C. Burgelman, and M. Schouppe, [“Architectures of Knowledge: The European Open Science Cloud,”](https://doi.org/10.1515/abitech-2019-2006) ABI Technik, vol. 39, no. 2, pp. 130–141, Jul. 2019.',
+          },
+          {
+            id: 'ref-44',
             text: 'K. B. Antypas et al., [“Enabling discovery data science through cross-facility workflows,”](https://ieeexplore.ieee.org/document/9671421/) in Proc. IEEE Int. Conf. Big Data (Big Data), Orlando, FL, USA, Dec. 2021, pp. 3671–3680.',
           },
         ],
