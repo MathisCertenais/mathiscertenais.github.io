@@ -165,8 +165,8 @@ export function ResearchPage() {
           <a className="button button--primary" href="/writing">
             Read research notes <ArrowIcon />
           </a>
-          <a className="button button--secondary" href="/resources/publications">
-            Publications <ArrowIcon />
+          <a className="button button--secondary" href={sourceLinks.arxiv} rel="noreferrer" target="_blank">
+            Publications <ArrowIcon external />
           </a>
           <a className="button button--secondary" href="/contact">
             Get in touch <ArrowIcon />

@@ -1,5 +1,4 @@
 import { AboutPage, ResumePage } from './ProfilePages'
-import { ArchivePage, ResourceDetailPage, ResourcesPage } from './ResourcePages'
 import { ResearchPage } from './ResearchPages'
 import { ArticlePage, WritingPage } from './WritingPages'
 import { ContactPage } from './ContactPage'
@@ -14,9 +13,6 @@ export function PortfolioPage({ page }: { page: string }) {
   if (page === 'videos') return <VideosPage />
   if (page === 'about') return <AboutPage />
   if (page === 'resume') return <ResumePage />
-  if (page === 'resources') return <ResourcesPage />
-  if (page.startsWith('resource:')) return <ResourceDetailPage resourceId={page.slice(9)} />
-  if (page === 'archive') return <ArchivePage />
   if (page === 'contact') return <ContactPage />
   return null
 }

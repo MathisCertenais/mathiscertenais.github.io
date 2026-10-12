@@ -1557,27 +1557,6 @@ export const expertise = [
   'HPC applications as a service',
 ] as const
 
-export const resources = [
-  {
-    href: '/resources/publications',
-    label: 'Publications',
-    title: 'Research and technical writing',
-    description: 'Published work, preprints, and documented technical contributions.',
-  },
-  {
-    href: '/resources/talks',
-    label: 'Talks',
-    title: 'Webinars and presentations',
-    description: 'Recorded explanations and conference material about HPC and data logistics.',
-  },
-  {
-    href: '/resources/network',
-    label: 'Network',
-    title: 'Research context',
-    description: 'Institutions, programs, and collaborations surrounding the work.',
-  },
-] as const
-
 export function getArticle(id: string) {
   return articleItems.find((article) => article.id === id)
 }
