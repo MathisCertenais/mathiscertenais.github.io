@@ -315,7 +315,7 @@ export const articleItems: ArticleItem[] = [
           '**Exa-SofT (PC2)** — software and tools for HPC',
           '**Exa-DoST (PC3)** — data-oriented tools and software',
           '**Exa-AToW (PC4)** — tools and architectures for large-scale workflows',
-          '**Exa-DI (PC5)** — development and integration of tools through concrete applications',
+          '**Exa-DI (PC5)** — development and integration of tools through applications',
         ],
       },
       {
@@ -415,28 +415,6 @@ export const articleItems: ArticleItem[] = [
         text: 'Community activities',
       },
       {
-        type: 'paragraph',
-        text: 'To encourage cross-cutting dynamics, half a day of the event was dedicated to informal activities designed to create more exchanges between participants.',
-      },
-      {
-        type: 'heading',
-        level: 3,
-        text: 'Antithèse',
-      },
-      {
-        type: 'paragraph',
-        text: 'The playful format of "antithèse" presentations ran through the afternoon as interludes between workshops. In advance, Thomas Saigre, Karmijn Hoogveld, Mathis Certenais and Romain Garbage prepared four deliberately vague slide decks on their research topics. Four different people — Méline Trochon, Ana Hourcau, Catherine Guelque and Thomas Saigre respectively — then improvised a talk to the group five minutes after discovering the slides. As at a conference, the audience was encouraged to ask questions at the end; the person who had prepared the slides then came up to clarify their content. The exercise showed the presenters’ adaptability and communication skills on subjects they did not master, in a relaxed atmosphere that was good for discovery and discussion.',
-      },
-      {
-        type: 'heading',
-        level: 3,
-        text: 'Start-up nation',
-      },
-      {
-        type: 'paragraph',
-        text: 'The "start-up nation" workshop aimed to build links between the participants’ research topics within small groups. With an academic research career in mind, it mirrors the brainstorming needed to create a collaborative research project: each group had 40 minutes to build the pitch of a start-up (or a research project) that would combine everyone’s skills. The session surfaced potential collaborations around I/O, in-situ post-processing and node-failure detection, and revealed a marked interest in the other targeted projects’ work.',
-      },
-      {
         type: 'heading',
         level: 3,
         text: 'Feedback from YoungPEx on the use of LLMs for coding',
@@ -477,10 +455,6 @@ export const articleItems: ArticleItem[] = [
         text: 'Yasmina Asso presented the results of studies by the **Observatoire des inégalités** ([inegalites.fr](https://www.inegalites.fr/)). The organisation offers an adaptation of the famous Monopoly game that makes real inequalities tangible: it is built on data from its studies of inequalities in France, linked in particular to gender, disability, resources and origins. The activity closed with a collective discussion of what participants had observed, and of how economic rules shape social positions and starting inequalities.',
       },
       {
-        type: 'paragraph',
-        text: 'The debrief brought out several patterns. In some groups, a steep rise in the wealth tax (from 100 to 500) highlighted how reluctant the richest characters were to contribute more, while in others the better-off accepted paying more without it really changing their status. Participants playing characters in precarious situations expressed relief at the social support they received, illustrating how important those supports are. The discussions also showed that setbacks hit players unequally: an unlucky situation did not compromise the financial security of the better-off, unlike the least favoured characters.',
-      },
-      {
         type: 'figure',
         image: '/images/mathis/youngpex/general-assembly-monopoly.webp',
         alt: 'Participants playing the Monopoly of inequalities during the YoungPEx General Assembly.',
@@ -488,41 +462,21 @@ export const articleItems: ArticleItem[] = [
       },
       {
         type: 'paragraph',
-        text: 'Where the first workshop clarified the inequalities at play across French society, the following exchanges focused on academia — in particular research in mathematics and computer science. Julie Lesthelle, a student at the Université de Bordeaux, presented her master’s thesis, "Les études en licence de mathématiques sous le prisme du genre : Construction d’un environnement masculin et expériences des étudiantes en situation minoritaire" ([hal-05368894](https://inria.hal.science/hal-05368894)), which grounded the definition of the **leaky pipeline**: minorities are less represented in positions of responsibility than in other positions — the share of research directors, for instance, is lower than the share of research fellows.',
+        text: 'The exchanges then turned to academia — mathematics and computer science in particular. Julie Lesthelle (Université de Bordeaux) presented her master’s thesis, ["Les études en licence de mathématiques sous le prisme du genre"](https://inria.hal.science/hal-05368894), grounding the definition of the **leaky pipeline**: minorities are less represented in positions of responsibility than in others — fewer research directors than research fellows, for instance.',
       },
       {
         type: 'paragraph',
-        text: 'Her work shows how the **fear of making mistakes** is a notable brake on the path of young women in science — fields where experimentation is precisely how knowledge is built, and where voicing doubts to teachers is essential to learning. The teacher’s role is decisive: by observing students’ body language, they can anticipate implicit questions and value error as a constructive step in scientific reasoning. The interviews Julie conducted with mathematics undergraduates also highlighted how gendered socialisation — later contact with computer science than male peers — biases study choices. For the young researchers present, the morning was an occasion to question the values that matter for their own careers, and to remember that **the fight against inequalities is a collective responsibility that requires continuous mobilisation**.',
+        text: 'Her work highlights two brakes on young women in science: the **fear of making mistakes** — in fields where experimentation and voicing doubts are essential to learning — and gendered socialisation, such as later contact with computer science than male peers. Teachers play a decisive role: reading students’ body language lets them value error as a constructive step and anticipate implicit questions. For the young researchers present, **the fight against inequalities is a collective responsibility that requires continuous mobilisation**.',
       },
       {
         type: 'figure',
         image: '/images/mathis/youngpex/general-assembly-back.webp',
-        alt: 'Discussions between the round-table speakers and the participants at the YoungPEx General Assembly.',
-        caption: 'Discussions between the round-table speakers and the participants.',
+        alt: 'Julie Lesthelle speaking in front of the YoungPEx group during the General Assembly.',
+        caption: 'Julie Lesthelle speaking in front of YoungPEx.',
       },
       {
         type: 'heading',
         level: 2,
-        text: 'What comes next',
-      },
-      {
-        type: 'paragraph',
-        text: 'Discussions at the General Assembly also set the group’s direction. A majority of members said they want to discuss the **connections between HPC and society** next, and the working group plans a series of monthly webinars and hands-on tutorials.',
-      },
-      {
-        type: 'list',
-        ordered: false,
-        items: [
-          'A new YoungPEx General Assembly, targeted for late January or early February in Rennes.',
-          'Restarting the webinar series, with new online presentations to kick-start momentum.',
-          'Renewing the consultation of members on whether — and how — they integrate AI models into their working methods, and comparing the results with the previous year.',
-          'Submitting a YoungPEx workshop proposal for the NumPEx General Assembly in March.',
-          'Identifying the students and engineers who recently joined NumPEx, so that they can be included.',
-        ],
-      },
-      {
-        type: 'heading',
-        level: 3,
         text: 'Webinars',
       },
       {
