@@ -92,13 +92,15 @@ export function ArticlePage({ articleId }: { articleId: string }) {
   const article = getArticle(articleId)
   if (!article) return null
   const video =
-    article.id === 'webinar-hpc-applications-as-a-service'
-      ? videoItems.find((item) => item.id === 'hpc-service-webinar')
-      : article.id === 'international-hackathon-for-astronomy'
-        ? videoItems.find((item) => item.id === 'astronomy-hackathon')
-        : article.id === 'mcp-server-software-ontology'
-          ? videoItems.find((item) => item.id === 'mcp-demo-video')
-          : undefined
+    article.id === 'eclat-interview'
+      ? videoItems.find((item) => item.id === 'eclat-interview')
+      : article.id === 'webinar-hpc-applications-as-a-service'
+        ? videoItems.find((item) => item.id === 'hpc-service-webinar')
+        : article.id === 'international-hackathon-for-astronomy'
+          ? videoItems.find((item) => item.id === 'astronomy-hackathon')
+          : article.id === 'mcp-server-software-ontology'
+            ? videoItems.find((item) => item.id === 'mcp-demo-video')
+            : undefined
 
   return (
     <main className="article-page" id="main-content" tabIndex={-1}>
