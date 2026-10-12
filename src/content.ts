@@ -334,7 +334,7 @@ export const articleItems: ArticleItem[] = [
       },
       {
         type: 'paragraph',
-        text: 'ECLAT’s primary objective is to design cyber-physical systems, also known as workflows, for the radio astronomy of tomorrow and thus meet the needs of **SKAO**. For us, radio astronomy is a fantastic playground for experimenting with our data logistics tools. It’s a bit like designing tools (rake, spade, bucket) and the ECLAT laboratory is our sandpit for building things together and seeing if they hold up.',
+        text: 'ECLAT’s primary objective is to design cyber-physical systems, also known as workflows, for the radio astronomy of tomorrow and thus meet the needs of **Square Kilometer Array (SKA)**, a next-generation radio telescope. For us, radio astronomy is a fantastic playground for experimenting with our data logistics tools. It’s a bit like designing tools (rake, spade, bucket) and the ECLAT laboratory is our sandpit for building things together and seeing if they hold up.',
       },
       {
         type: 'heading',
