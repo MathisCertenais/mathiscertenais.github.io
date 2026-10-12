@@ -4,7 +4,7 @@ import { ArrowIcon } from './Icons'
 import { PageHero } from './PageHero'
 import { WritingSection } from './WritingSection'
 
-const INLINE_TOKEN = /(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g
+const INLINE_TOKEN = /(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\)|\[\d+\])/g
 
 function renderInline(text: string): ReactNode[] {
   const nodes: ReactNode[] = []
@@ -17,6 +17,12 @@ function renderInline(text: string): ReactNode[] {
     const key = nodes.length
     if (token.startsWith('**')) {
       nodes.push(<strong key={key}>{token.slice(2, -2)}</strong>)
+    } else if (token.startsWith('[') && !token.includes('](')) {
+      nodes.push(
+        <a href={`#ref-${token.slice(1, -1)}`} key={key}>
+          {token}
+        </a>,
+      )
     } else {
       const opening = token.indexOf('](')
       nodes.push(
@@ -44,20 +50,18 @@ function ArticleBlocks({ blocks }: { blocks: ArticleBlock[] }) {
             ) : (
               <h3 key={index}>{renderInline(block.text)}</h3>
             )
-          case 'list':
-            return block.ordered ? (
-              <ol key={index}>
-                {block.items.map((item, itemIndex) => (
-                  <li key={itemIndex}>{renderInline(item)}</li>
-                ))}
-              </ol>
-            ) : (
-              <ul key={index}>
-                {block.items.map((item, itemIndex) => (
-                  <li key={itemIndex}>{renderInline(item)}</li>
-                ))}
-              </ul>
+          case 'list': {
+            const items = block.items.map((item, itemIndex) =>
+              typeof item === 'string' ? (
+                <li key={itemIndex}>{renderInline(item)}</li>
+              ) : (
+                <li id={item.id} key={itemIndex}>
+                  {renderInline(item.text)}
+                </li>
+              ),
             )
+            return block.ordered ? <ol key={index}>{items}</ol> : <ul key={index}>{items}</ul>
+          }
           case 'figure':
             return (
               <figure className="article-figure" key={index}>

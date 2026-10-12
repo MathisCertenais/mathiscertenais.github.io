@@ -2067,6 +2067,26 @@ figure {
   font-weight: 500;
 }
 
+.article-prose ol > li[id^='ref-'] {
+  margin-top: 16px;
+  scroll-margin-top: 120px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.article-prose :is(p, li) > a[href^='#ref-'] {
+  color: var(--link);
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  font-size: 0.85em;
+  text-decoration: none;
+  vertical-align: 0.15em;
+}
+
+.article-prose :is(p, li) > a[href^='#ref-']:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .article-prose strong {
   color: var(--text-dark);
   font-weight: 600;

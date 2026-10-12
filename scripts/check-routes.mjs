@@ -97,7 +97,6 @@ const requiredAssets = new Set([
   '/images/mathis/hero-research.svg',
   '/images/mathis/mathis-portrait.webp',
   '/images/mathis/social-card.svg',
-  '/images/mathis/videos/hackathon.webp',
   '/images/mathis/videos/interview.webp',
   '/images/mathis/videos/webinar.webp',
   '/images/mathis/rennes-hackathon/rennes-hackathon-front.webp',
