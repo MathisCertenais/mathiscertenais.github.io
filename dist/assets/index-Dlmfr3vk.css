@@ -2960,17 +2960,12 @@ html.wb-active .tlui-layout {
 }
 
 .research-story h2 {
-  max-width: 15ch;
   font-family: var(--font-libre-baskerville), Georgia, serif;
   font-size: clamp(32px, 3.6vw, 46px);
   font-weight: 400;
   line-height: 1.18;
   letter-spacing: -0.03em;
   text-wrap: balance;
-}
-
-.research-story__copy {
-  max-width: 40rem;
 }
 
 .research-story__copy p {
@@ -3556,7 +3551,6 @@ html.wb-active .tlui-layout {
   }
 
   .research-story h2 {
-    max-width: 20ch;
     font-size: 32px;
   }
 
