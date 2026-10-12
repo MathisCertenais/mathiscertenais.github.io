@@ -333,16 +333,16 @@ export const articleItems: ArticleItem[] = [
         items: [
           '**Meet peers** from across the programme, beyond one’s own project and laboratory.',
           '**Discuss scientific challenges** so that exchanges and collaborations between centres and projects are easier to start.',
-          '**Talk about the academic world** — how it works, what careers look like, and everything that is rarely explained.',
+          '**Talk about the academic world** — how it works, and what careers look like.',
         ],
       },
       {
         type: 'paragraph',
-        text: 'The group discusses whatever its members want to bring: the environmental impact of research, the societal impact and acceptability of HPC, social and gender inequalities in academia, academic life and careers, and AI. The working group is coordinated by five young researchers, each representing one targeted project — Thomas Saigre (PC1), Karmijn Hoogveld (PC2), Méline Trochon (PC3), Mathis Certenais (PC4) and Romain Garbage (PC5) — with the representatives renewed at the beginning of 2026. NumPEx leaves the group free to choose the content and format of its events: workshops, thematic schools, general assemblies.',
+        text: 'The group discusses whatever its members want to bring: the environmental impact of research, the societal impact and acceptability of HPC, social and gender inequalities in academia, academic life and careers, and AI.',
       },
       {
         type: 'paragraph',
-        text: 'In 2025 the group held a kick-off session during the NumPEx General Assembly in March, ran its first General Assembly in Toulouse in November, took part in the Trans’Numériques events in Rennes, and published an overview in the Matapli review.',
+        text: 'The working group held a kick-off session during the NumPEx General Assembly in March, ran its first General Assembly in Toulouse in November, took part in the Trans’Numériques events in Rennes, and published an overview in the Matapli review.',
       },
       {
         type: 'heading',
@@ -351,7 +351,7 @@ export const articleItems: ArticleItem[] = [
       },
       {
         type: 'paragraph',
-        text: 'The group’s main event of 2025 was its first General Assembly. **Twenty-seven young researchers** from laboratories across France met from **12 to 14 November 2025** at INP-ENSEEIHT in Toulouse. Across four half-days, the programme combined a workshop on the environmental impact of HPC, a general assembly to discuss the group’s next actions and the renewal of its organising members, and a workshop on social and gender inequalities in research.',
+        text: 'The group’s main event of 2025 was its first General Assembly. **Twenty-seven young researchers** from laboratories across France met from **12 to 14 November 2025** at INP-ENSEEIHT in Toulouse. Across four half-days, the programme combined a workshop on the environmental impact of HPC, a general assembly to discuss the group’s next actions, and a workshop on social and gender inequalities in research.',
       },
       {
         type: 'heading',
@@ -360,7 +360,7 @@ export const articleItems: ArticleItem[] = [
       },
       {
         type: 'paragraph',
-        text: 'The workshop was created at the request of the YoungPEx representatives and led by **Georges Da Costa** (IRIT, Exa-SofT), professor of computer science at the Université de Toulouse, answering a strong interest among young researchers in the environmental impact of their work.',
+        text: 'The workshop was led by **Georges Da Costa** (IRIT, Exa-SofT), professor of computer science at the Université de Toulouse, answering a strong interest among young researchers in the environmental impact of their work.',
       },
       {
         type: 'paragraph',
@@ -368,7 +368,7 @@ export const articleItems: ArticleItem[] = [
       },
       {
         type: 'paragraph',
-        text: 'Software is not exempt. The growing complexity of applications makes global optimisation of energy consumption harder, while the absence of a clear architecture generates dead code and superfluous costs. Removing obsolete features and documenting code rigorously allows it to be "recycled" — rewritten more efficiently, which reduces both debugging time and the resources consumed by CI/CD pipelines. The conclusion was that a **systemic approach** is required: optimise resources, secure infrastructure, and rethink software design for a more sustainable future. A [MOOC on the environmental impacts of digital technology](https://learninglab.inria.fr/mooc-impacts-environnementaux-du-numerique/) from Inria is available for those who want to go further.',
+        text: 'Software is not exempt. The growing complexity of applications makes global optimisation of energy consumption harder, while the absence of a clear architecture generates dead code and superfluous costs. Removing obsolete features and documenting code rigorously allows it to be "recycled" — rewritten more efficiently, which reduces both debugging time and the resources consumed by CI/CD pipelines. The conclusion was that a **systemic approach** is required: optimise resources, secure infrastructure, and rethink software design for a more sustainable future.',
       },
       {
         type: 'heading',
@@ -385,7 +385,7 @@ export const articleItems: ArticleItem[] = [
       },
       {
         type: 'paragraph',
-        text: 'Mathis Certenais closed the workshop with a presentation of **Impacts-HPC**, a tool developed in the Exa-AToW project with the EcoInfo research group. It is a [Python library](https://impacthpc-cc8227.pages.in2p3.fr/index.html) that evaluates the impact of use for the extraction, production and distribution phases, with a full life-cycle assessment to come. The tool computes environmental impact along three criteria: global warming potential, abiotic resource depletion, and primary energy consumption. Impacts-HPC complements the indicators provided by the DARI web portal used to allocate resources on the IDRIS, CINES and TGCC-CEA centres; the portal’s information relies on the method of the [Labos 1point5](https://labos1point5.org/les-rapports/estimation-empreinte-calcul) collective.',
+        text: 'Mathis Certenais closed the workshop with a presentation of **Impacts-HPC**, a tool developed in the Exa-AToW project with the EcoInfo research group. It is a [Python library](https://impacthpc-cc8227.pages.in2p3.fr/index.html) that evaluates the impact of use for the extraction, production and distribution phases, with a full life-cycle assessment to come. The tool computes environmental impact along three criteria: global warming potential, abiotic resource depletion, and primary energy consumption. Impacts-HPC complements the indicators provided by the DARI web portal used to allocate resources on the IDRIS, CINES and TGCC HPC centers; the portal’s information relies on the method of the [Labos 1point5](https://labos1point5.org/les-rapports/estimation-empreinte-calcul) collective.',
       },
       {
         type: 'heading',
@@ -488,31 +488,11 @@ export const articleItems: ArticleItem[] = [
       },
       {
         type: 'paragraph',
-        text: 'Where the first workshop clarified the inequalities at play across French society, the following exchanges focused on academia — in particular research in mathematics and computer science. Julie Lesthelle, a student at the Université de Bordeaux, gave a clear presentation of her master’s thesis work, "Les études en licence de mathématiques sous le prisme du genre : Construction d’un environnement masculin et expériences des étudiantes en situation minoritaire" ([hal-05368894](https://inria.hal.science/hal-05368894)), which grounded the definition of the **leaky pipeline**: the phenomenon whereby minorities are less represented in positions of responsibility than in other positions — the share of research directors, for instance, is lower than the share of research fellows.',
+        text: 'Where the first workshop clarified the inequalities at play across French society, the following exchanges focused on academia — in particular research in mathematics and computer science. Julie Lesthelle, a student at the Université de Bordeaux, presented her master’s thesis, "Les études en licence de mathématiques sous le prisme du genre : Construction d’un environnement masculin et expériences des étudiantes en situation minoritaire" ([hal-05368894](https://inria.hal.science/hal-05368894)), which grounded the definition of the **leaky pipeline**: minorities are less represented in positions of responsibility than in other positions — the share of research directors, for instance, is lower than the share of research fellows.',
       },
       {
         type: 'paragraph',
-        text: 'The discussion gathered researchers and engineers who spoke about their experiences, or about their current commitments: Elsa Cazelles (Chargée de Recherche at IRIT), Sylvie Chambon (Professeure des Universités at INP-ENSEEIHT), Julie Lesthelle (Université de Bordeaux), Lucie Baudouin (Directrice de Recherche at LAAS) and Aline Roc (research engineer at CATIE in Bordeaux). The round table was moderated by Méline Trochon.',
-      },
-      {
-        type: 'paragraph',
-        text: 'Julie’s work shows how the **fear of making mistakes** is a notable brake on the path of young women in science — fields where experimentation is precisely how knowledge is built, and where active participation in class and expressing doubts to teachers are essential to learning. Elsa recalled the decisive role of the teacher: by observing students’ body language, they can anticipate implicit questions and create a climate that values error as a constructive step in scientific reasoning. The interviews Julie conducted for her thesis with mathematics undergraduates highlighted the impact of differences in socialisation, based on gender stereotypes, on study choices: later contact with computer science than their male peers biases that choice.',
-      },
-      {
-        type: 'paragraph',
-        text: 'In response, permanent researchers play a crucial role as role models and mentors. Aline testified to her commitment to supporting the next generation of women, while pointing out the additional workload this represents for those who take it on — time taken away from their own research. The same difficulty appears with quotas for women on academic juries. A fair distribution of these responsibilities among women researchers would keep their commitment to younger generations sustainable without sacrificing their careers, and the speakers encourage established women to identify and recommend emerging female colleagues, building a mentoring network that amplifies their voices.',
-      },
-      {
-        type: 'paragraph',
-        text: 'Recruitment decisions, too, can suffer from gender stereotypes. Before discussing quotas, it is worth remembering that not all candidates fit the traditional profile that is often valued — that of a white, privileged, charismatic man. Lucie recalled that it is fundamental to consider a person in their singularity rather than by their gender, and that selection processes must above all rely on objective criteria, opening the way to varied profiles that genuinely enrich professional environments. Pointing out that someone was hired only thanks to quotas is not only reductive but disrespectful of their skills and their path; institutional training exists to raise recruitment committees’ awareness of equality issues and promote fairer, more representative practices.',
-      },
-      {
-        type: 'paragraph',
-        text: 'Promoting a welcoming research-team dynamic is another essential lever. For Elsa, it means involving all the available members of a research team in welcoming and supporting new candidates — for research fellow or lecturer positions alike. This collective approach strengthens the team’s cohesion and contributes to a harmonious integration of newcomers from all backgrounds.',
-      },
-      {
-        type: 'paragraph',
-        text: 'Through these discussions, the young researchers present were able to question the values that matter for their own careers. The morning made clear that **the fight against inequalities is a collective responsibility that requires continuous mobilisation**.',
+        text: 'Her work shows how the **fear of making mistakes** is a notable brake on the path of young women in science — fields where experimentation is precisely how knowledge is built, and where voicing doubts to teachers is essential to learning. The teacher’s role is decisive: by observing students’ body language, they can anticipate implicit questions and value error as a constructive step in scientific reasoning. The interviews Julie conducted with mathematics undergraduates also highlighted how gendered socialisation — later contact with computer science than male peers — biases study choices. For the young researchers present, the morning was an occasion to question the values that matter for their own careers, and to remember that **the fight against inequalities is a collective responsibility that requires continuous mobilisation**.',
       },
       {
         type: 'figure',
