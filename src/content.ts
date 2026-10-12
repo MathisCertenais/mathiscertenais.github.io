@@ -477,28 +477,6 @@ export const articleItems: ArticleItem[] = [
       {
         type: 'heading',
         level: 2,
-        text: 'Webinars',
-      },
-      {
-        type: 'paragraph',
-        text: 'Three kinds of webinar run in the group:',
-      },
-      {
-        type: 'list',
-        ordered: false,
-        items: [
-          '**"Present your Research"** — a YoungPEx speaker, for a YoungPEx-only audience, of any duration (to present a PhD topic, for example, or rehearse a talk).',
-          '**Public YoungPEx webinars** — an outside speaker, such as a NumPEx researcher; a one-hour talk, and you can invite your team members.',
-          '**YoungPEx Training** — training organised by YoungPEx that can count towards an École Doctorale, over multiple hours or sessions (a tool, or a research topic).',
-        ],
-      },
-      {
-        type: 'paragraph',
-        text: 'Webinars are hybrid: in person if you are on the same site as the speaker, online otherwise. Date and time are chosen at the speaker’s convenience, and talks are recorded when possible.',
-      },
-      {
-        type: 'heading',
-        level: 2,
         text: 'Publications',
       },
       {
