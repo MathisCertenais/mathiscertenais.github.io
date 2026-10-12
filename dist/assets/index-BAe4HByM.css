@@ -1085,8 +1085,6 @@ button:hover .cta-arrow {
 .footer-group--columns ul {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-template-rows: repeat(2, auto);
-  grid-auto-flow: column;
   gap: 10px 20px;
 }
 
