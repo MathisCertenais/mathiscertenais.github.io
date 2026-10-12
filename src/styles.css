@@ -2898,11 +2898,11 @@ html.wb-active .tlui-layout {
 }
 
 .research-story {
-  display: grid;
+  display: flex;
   padding-top: 104px;
   padding-bottom: 112px;
-  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-  gap: clamp(56px, 9vw, 140px);
+  flex-direction: column;
+  gap: 32px;
   border-top: 1px solid var(--border);
 }
 
@@ -2914,6 +2914,10 @@ html.wb-active .tlui-layout {
   line-height: 1.18;
   letter-spacing: -0.03em;
   text-wrap: balance;
+}
+
+.research-story__copy {
+  max-width: 40rem;
 }
 
 .research-story__copy p {
