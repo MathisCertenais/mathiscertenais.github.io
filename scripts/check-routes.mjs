@@ -25,6 +25,7 @@ const requiredCanonicalPaths = new Set([
   '/videos',
   '/whiteboard',
   '/writing',
+  '/writing/youngpex',
   '/writing/predicting-for-sizing',
   '/writing/international-hackathon-for-astronomy',
   '/writing/rennes-hackathon-for-astronomy',
@@ -68,6 +69,7 @@ const requiredLegacyPaths = new Set([
 const allowedPages = new Set([
   'about',
   'archive',
+  'article:youngpex',
   'article:predicting-for-sizing',
   'article:international-hackathon-for-astronomy',
   'article:rennes-hackathon-for-astronomy',

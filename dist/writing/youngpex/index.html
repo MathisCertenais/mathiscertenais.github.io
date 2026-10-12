@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#eef2f5" />
+    <script>
+      ;(() => {
+        try {
+          const stored = localStorage.getItem('mathis-personal-website:theme')
+          const theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light'
+          document.documentElement.dataset.theme = theme
+          document.documentElement.style.colorScheme = theme
+          document.querySelector('meta[name="theme-color"]').content =
+            theme === 'dark' ? '#15181c' : '#eef2f5'
+        } catch {
+          document.documentElement.dataset.theme = 'light'
+        }
+      })()
+    </script>
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Inside YoungPEx, the NumPEx working group connecting young researchers across the French exascale programme — its first General Assembly in Toulouse, its workshops on the environmental impact of HPC and on inequalities in academia, and what comes next." />
+    <meta property="og:title" content="YoungPEx: The New Generation of Digital for Exascale | Mathis Certenais" />
+    <meta property="og:description" content="Inside YoungPEx, the NumPEx working group connecting young researchers across the French exascale programme — its first General Assembly in Toulouse, its workshops on the environmental impact of HPC and on inequalities in academia, and what comes next." />
+    <meta property="og:site_name" content="Mathis Certenais" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/images/mathis/social-card.svg" />
+    <meta property="og:image:alt" content="YoungPEx, the NumPEx working group for young researchers" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="YoungPEx: The New Generation of Digital for Exascale | Mathis Certenais" />
+    <meta name="twitter:description" content="Inside YoungPEx, the NumPEx working group connecting young researchers across the French exascale programme — its first General Assembly in Toulouse, its workshops on the environmental impact of HPC and on inequalities in academia, and what comes next." />
+    <meta name="twitter:image" content="/images/mathis/social-card.svg" />
+    <meta name="twitter:image:alt" content="YoungPEx, the NumPEx working group for young researchers" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>YoungPEx: The New Generation of Digital for Exascale | Mathis Certenais</title>
+    <script type="module" crossorigin src="/assets/index-hFLpg0WK.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-B7CsTZo4.css">
+    <meta property="og:url" content="/writing/youngpex" />
+    <link rel="canonical" href="/writing/youngpex" />
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
