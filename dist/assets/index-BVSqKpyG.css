@@ -3092,6 +3092,10 @@ html.wb-active .tlui-layout {
   align-items: start;
 }
 
+.research-chain {
+  list-style: none;
+}
+
 .research-chain li {
   position: relative;
   padding: 26px 0 26px 74px;
@@ -3176,6 +3180,7 @@ html.wb-active .tlui-layout {
 .research-contribution__list ol {
   margin-top: 44px;
   border-top: 1px solid var(--border);
+  list-style: none;
 }
 
 .research-contribution__list li {
