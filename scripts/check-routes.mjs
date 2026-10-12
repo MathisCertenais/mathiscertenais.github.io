@@ -14,13 +14,8 @@ const issues = []
 const requiredCanonicalPaths = new Set([
   '/',
   '/about',
-  '/archive',
   '/contact',
   '/research',
-  '/resources',
-  '/resources/network',
-  '/resources/publications',
-  '/resources/talks',
   '/resume',
   '/videos',
   '/whiteboard',
@@ -36,9 +31,6 @@ const requiredCanonicalPaths = new Set([
 ])
 
 const requiredLegacyPaths = new Set([
-  '/archive/child-of-light-design-analysis',
-  '/archive/monument-valley-design-analysis',
-  '/archive/superbrothers-sword-and-sworcery-design-analysis',
   '/articles',
   '/articles/ai-will-revolutionize-accessibility',
   '/articles/attitudinal-and-behavioral-research',
@@ -58,9 +50,6 @@ const requiredLegacyPaths = new Set([
   '/articles/what-is-ux-design-in-marketing',
   '/articles/when-to-interview-survey-and-focus-group',
   '/articles/why-build-design-systems',
-  '/resources/mental-models',
-  '/resources/other',
-  '/resources/portfolio',
   '/work',
   '/work/centene-recovery-platform',
   '/work/daily-noodle',
@@ -69,7 +58,6 @@ const requiredLegacyPaths = new Set([
 
 const allowedPages = new Set([
   'about',
-  'archive',
   'article:eclat-interview',
   'article:youngpex',
   'article:predicting-for-sizing',
@@ -81,10 +69,6 @@ const allowedPages = new Set([
   'contact',
   'home',
   'research',
-  'resource:network',
-  'resource:publications',
-  'resource:talks',
-  'resources',
   'resume',
   'videos',
   'whiteboard',
@@ -457,9 +441,6 @@ for (const marker of [
   "page === 'videos'",
   "page === 'about'",
   "page === 'resume'",
-  "page === 'resources'",
-  "page.startsWith('resource:')",
-  "page === 'archive'",
   "page === 'contact'",
 ]) {
   if (!portfolioPageSource.includes(marker)) issues.push(`Missing page renderer contract: ${marker}`)

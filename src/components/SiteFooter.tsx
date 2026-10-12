@@ -22,11 +22,7 @@ const footerGroups: FooterGroup[] = [
   },
   {
     title: 'Reading',
-    links: [
-      { label: 'Insights', href: '/writing' },
-      { label: 'Archive', href: '/archive' },
-      { label: 'Resources', href: '/resources' },
-    ],
+    links: [{ label: 'Insights', href: '/writing' }],
   },
   {
     title: 'Elsewhere',
