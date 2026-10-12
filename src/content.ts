@@ -20,6 +20,7 @@ export const sourceLinks = {
   eclatWebinar: 'https://eclat-lab.fr/webinaire-hpc-as-a-service-for-radio-astronomy/',
   linkedin: identity.linkedin,
   numpex: 'https://numpex.org/data-logistics-for-radio-astronomy/',
+  numpexYoungpex: 'https://numpex.org/youngpex/',
 } as const
 
 export type ProofKind = 'community' | 'mentor' | 'speaker'
@@ -257,6 +258,7 @@ export const videoItems: VideoItem[] = [
 ]
 
 export type ArticleId =
+  | 'youngpex'
   | 'predicting-for-sizing'
   | 'webinar-hpc-applications-as-a-service'
   | 'international-hackathon-for-astronomy'
@@ -289,8 +291,314 @@ export interface ArticleItem {
 
 export const articleItems: ArticleItem[] = [
   {
-    id: 'predicting-for-sizing',
+    id: 'youngpex',
     number: '01',
+    category: 'Community',
+    date: 'October 12, 2026',
+    title: 'YoungPEx: The New Generation of Digital for Exascale',
+    description:
+      'Inside YoungPEx, the NumPEx working group that connects young researchers across the French exascale programme — its first General Assembly in Toulouse, its workshops on the environmental impact of HPC and on inequalities in academia, and what comes next.',
+    body: [
+      {
+        type: 'paragraph',
+        text: 'YoungPEx is the working group of young researchers inside **NumPEx**, the French research programme for exascale computing. With **43 members on its Discord server** and **27 participants at its first General Assembly**, it brings together interns, doctoral students, postdocs, engineers, young contract staff and permanent staff — anyone, at any stage, who wants to take part. Its members discuss the questions that matter to their generation: the environmental impact of computing, interdisciplinarity, and the use of AI in scientific research.',
+      },
+      {
+        type: 'paragraph',
+        text: 'NumPEx — "Numérique pour l’Exascale" — was launched in 2023 to develop the skills and infrastructure needed for exascale computing, at the scale of a quintillion (10¹⁸) operations per second. Its research is organised into five targeted projects:',
+      },
+      {
+        type: 'list',
+        ordered: false,
+        items: [
+          '**Exa-MA (PC1)** — methods and algorithms for exascale computing',
+          '**Exa-SofT (PC2)** — software and tools for HPC',
+          '**Exa-DoST (PC3)** — data-oriented tools and software',
+          '**Exa-AToW (PC4)** — tools and architectures for large-scale workflows',
+          '**Exa-DI (PC5)** — development and integration of tools through concrete applications',
+        ],
+      },
+      {
+        type: 'heading',
+        level: 2,
+        text: 'What is YoungPEx?',
+      },
+      {
+        type: 'paragraph',
+        text: 'Uniting junior researchers in a working group is an innovative initiative within the programme. The goal is to give them room to express their own original ideas: by creating a network of young researchers, new research dynamics emerge across NumPEx. The objectives are to **stimulate exchanges between the different targeted projects**, to **create synergies between researchers**, and to **prepare future collaborations**.',
+      },
+      {
+        type: 'list',
+        ordered: false,
+        items: [
+          '**Meet peers** from across the programme, beyond one’s own project and laboratory.',
+          '**Discuss scientific challenges** so that exchanges and collaborations between centres and projects are easier to start.',
+          '**Talk about the academic world** — how it works, what careers look like, and everything that is rarely explained.',
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'The group discusses whatever its members want to bring: the environmental impact of research, the societal impact and acceptability of HPC, social and gender inequalities in academia, academic life and careers, and AI. The working group is coordinated by five young researchers, each representing one targeted project — Thomas Saigre (PC1), Karmijn Hoogveld (PC2), Méline Trochon (PC3), Mathis Certenais (PC4) and Romain Garbage (PC5) — with the representatives renewed at the beginning of 2026. NumPEx leaves the group free to choose the content and format of its events: workshops, thematic schools, general assemblies.',
+      },
+      {
+        type: 'paragraph',
+        text: 'In 2025 the group held a kick-off session during the NumPEx General Assembly in March, ran its first General Assembly in Toulouse in November, took part in the Trans’Numériques events in Rennes, and published an overview in the Matapli review.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        text: 'The first General Assembly, in Toulouse',
+      },
+      {
+        type: 'paragraph',
+        text: 'The group’s main event of 2025 was its first General Assembly. **Twenty-seven young researchers** from laboratories across France met from **12 to 14 November 2025** at INP-ENSEEIHT in Toulouse. Across four half-days, the programme combined a workshop on the environmental impact of HPC, a general assembly to discuss the group’s next actions and the renewal of its organising members, and a workshop on social and gender inequalities in research.',
+      },
+      {
+        type: 'heading',
+        level: 3,
+        text: 'The environmental impact of HPC',
+      },
+      {
+        type: 'paragraph',
+        text: 'The workshop was created at the request of the YoungPEx representatives and led by **Georges Da Costa** (IRIT, Exa-SofT), professor of computer science at the Université de Toulouse, answering a strong interest among young researchers in the environmental impact of their work.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The introduction made clear that energy production and consumption are a **collective** question rather than an individual one. French energy consumption and emissions are tied to those of its neighbours: European energy resources form an interconnected network. The emissions attributed to a person are not limited to their direct consumption — they include those generated by the public services they benefit from, by imports, and by digital uses such as cloud services, whose carbon footprint is often underestimated. Geopolitical issues also weigh on the Internet itself: strategic infrastructure such as submarine cables conditions digital sovereignty and the security of states, and the dependence on lithium produced outside Europe illustrates the vulnerability of supply chains for materials critical to energy-transition technologies.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Software is not exempt. The growing complexity of applications makes global optimisation of energy consumption harder, while the absence of a clear architecture generates dead code and superfluous costs. Removing obsolete features and documenting code rigorously allows it to be "recycled" — rewritten more efficiently, which reduces both debugging time and the resources consumed by CI/CD pipelines. The conclusion was that a **systemic approach** is required: optimise resources, secure infrastructure, and rethink software design for a more sustainable future. A [MOOC on the environmental impacts of digital technology](https://learninglab.inria.fr/mooc-impacts-environnementaux-du-numerique/) from Inria is available for those who want to go further.',
+      },
+      {
+        type: 'heading',
+        level: 3,
+        text: 'Hands-on: measuring energy consumption',
+      },
+      {
+        type: 'paragraph',
+        text: 'Doctoral students in the programme working on the energy consumption of supercomputers sparked real curiosity among their peers, so Georges Da Costa continued the workshop with a presentation of tools to **measure** the energy consumption of computations in computing centres.',
+      },
+      {
+        type: 'paragraph',
+        text: '**MOJITO/S** is a set of open-source tools for monitoring energy and network usage at the operating-system level, available on [gitlab.irit.fr](https://gitlab.irit.fr/sepia-pub/mojitos). The session also recalled that the French scientific community has the **Grid’5000** environment ([grid5000.fr](https://www.grid5000.fr)) to carry out research in distributed parallel computing, HPC, Big Data and AI — a set of experimental platforms offering great freedom to users, in particular essential access to the wattmeters attached to computing resources.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Mathis Certenais closed the workshop with a presentation of **Impacts-HPC**, a tool developed in the Exa-AToW project with the EcoInfo research group. It is a [Python library](https://impacthpc-cc8227.pages.in2p3.fr/index.html) that evaluates the impact of use for the extraction, production and distribution phases, with a full life-cycle assessment to come. The tool computes environmental impact along three criteria: global warming potential, abiotic resource depletion, and primary energy consumption. Impacts-HPC complements the indicators provided by the DARI web portal used to allocate resources on the IDRIS, CINES and TGCC-CEA centres; the portal’s information relies on the method of the [Labos 1point5](https://labos1point5.org/les-rapports/estimation-empreinte-calcul) collective.',
+      },
+      {
+        type: 'heading',
+        level: 3,
+        text: 'Questions and ideas from the participants',
+      },
+      {
+        type: 'paragraph',
+        text: 'The workshop ended with the participants’ own questions about HPC use — questions the tools above could help answer:',
+      },
+      {
+        type: 'list',
+        ordered: false,
+        items: [
+          'Getting **metrics on the environmental impact** of the simulations carried out — which depends on where the electricity comes from at the moment of execution, nuclear or coal for instance — through meaningful information such as financial cost.',
+          'Having an idea of **how to size jobs** according to actual needs (number of nodes, and so on).',
+          'Finding a **balance between computational cost and the impact of the research**, with interdisciplinary expert advice.',
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'The slides used during the workshop are available on the NumPEx website ([numpex.org](https://numpex.org/the-first-youngpex-general-meeting/)).',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        text: 'Community activities',
+      },
+      {
+        type: 'paragraph',
+        text: 'To encourage cross-cutting dynamics, half a day of the event was dedicated to informal activities designed to create more exchanges between participants.',
+      },
+      {
+        type: 'heading',
+        level: 3,
+        text: 'Antithèse',
+      },
+      {
+        type: 'paragraph',
+        text: 'The playful format of "antithèse" presentations ran through the afternoon as interludes between workshops. In advance, Thomas Saigre, Karmijn Hoogveld, Mathis Certenais and Romain Garbage prepared four deliberately vague slide decks on their research topics. Four different people — Méline Trochon, Ana Hourcau, Catherine Guelque and Thomas Saigre respectively — then improvised a talk to the group five minutes after discovering the slides. As at a conference, the audience was encouraged to ask questions at the end; the person who had prepared the slides then came up to clarify their content. The exercise showed the presenters’ adaptability and communication skills on subjects they did not master, in a relaxed atmosphere that was good for discovery and discussion.',
+      },
+      {
+        type: 'heading',
+        level: 3,
+        text: 'Start-up nation',
+      },
+      {
+        type: 'paragraph',
+        text: 'The "start-up nation" workshop aimed to build links between the participants’ research topics within small groups. With an academic research career in mind, it mirrors the brainstorming needed to create a collaborative research project: each group had 40 minutes to build the pitch of a start-up (or a research project) that would combine everyone’s skills. The session surfaced potential collaborations around I/O, in-situ post-processing and node-failure detection, and revealed a marked interest in the other targeted projects’ work.',
+      },
+      {
+        type: 'heading',
+        level: 3,
+        text: 'Feedback from YoungPEx on the use of LLMs for coding',
+      },
+      {
+        type: 'paragraph',
+        text: 'For the 55th edition of the ORAP forum, on the theme "IA générative pour le HPC : une nouvelle rupture ?", the YoungPEx committee surveyed the working group about its use of LLMs in programming. The results were presented on **28 November 2025**, and the session is described on [orap.irisa.fr](https://orap.irisa.fr/les-grands-modeles-de-langage-une-rupture-de-pratique-pour-le-developpement-de-codes-hpc/).',
+      },
+      {
+        type: 'paragraph',
+        text: 'A 12-question questionnaire, sent by email, showed that **18 of 25** respondents use these models. Among the 18 users, **16 use GPT models** and **72% combine models from different providers**; half use them daily, mainly to understand, generate and debug code. Of those 18, **16 feel that LLMs improve their productivity** and **7 report an improvement in their programming skills**. Satisfaction with the quality of the generated code is more mixed: only **7 are satisfied**, 6 find it average and 4 insufficient. The main challenges identified are **inconsistent results** and a **lack of contextual understanding**.',
+      },
+      {
+        type: 'figure',
+        image: '/images/mathis/youngpex/ai-models.webp',
+        alt: 'Excerpt from the YoungPEx presentation on the use of LLMs for coding, covering the models used by members.',
+        caption:
+          'Excerpt from the YoungPEx presentation on the use of LLMs for coding: the models used by members.',
+      },
+      {
+        type: 'figure',
+        image: '/images/mathis/youngpex/ai-challenges.webp',
+        alt: 'Excerpt from the YoungPEx presentation on the use of LLMs for coding, covering the challenges reported by members.',
+        caption:
+          'Excerpt from the YoungPEx presentation on the use of LLMs for coding: the challenges reported by members.',
+      },
+      {
+        type: 'heading',
+        level: 3,
+        text: 'Social and gender inequalities in academia',
+      },
+      {
+        type: 'paragraph',
+        text: 'Long confined to a narrow social circle, academic research has gradually opened up, notably to women and gender minorities. Aware that there is still a way to go, the group dedicated a morning to raising awareness of social and gender inequalities, hoping to contribute, at its own scale, to a more inclusive workplace.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Yasmina Asso presented the results of studies by the **Observatoire des inégalités** ([inegalites.fr](https://www.inegalites.fr/)). The organisation offers an adaptation of the famous Monopoly game that makes real inequalities tangible: it is built on data from its studies of inequalities in France, linked in particular to gender, disability, resources and origins. The activity closed with a collective discussion of what participants had observed, and of how economic rules shape social positions and starting inequalities.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The debrief brought out several patterns. In some groups, a steep rise in the wealth tax (from 100 to 500) highlighted how reluctant the richest characters were to contribute more, while in others the better-off accepted paying more without it really changing their status. Participants playing characters in precarious situations expressed relief at the social support they received, illustrating how important those supports are. The discussions also showed that setbacks hit players unequally: an unlucky situation did not compromise the financial security of the better-off, unlike the least favoured characters.',
+      },
+      {
+        type: 'figure',
+        image: '/images/mathis/youngpex/general-assembly-monopoly.webp',
+        alt: 'Participants playing the Monopoly of inequalities during the YoungPEx General Assembly.',
+        caption: 'A session of the Monopoly of inequalities during the General Assembly.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Where the first workshop clarified the inequalities at play across French society, the following exchanges focused on academia — in particular research in mathematics and computer science. Julie Lesthelle, a student at the Université de Bordeaux, gave a clear presentation of her master’s thesis work, "Les études en licence de mathématiques sous le prisme du genre : Construction d’un environnement masculin et expériences des étudiantes en situation minoritaire" ([hal-05368894](https://inria.hal.science/hal-05368894)), which grounded the definition of the **leaky pipeline**: the phenomenon whereby minorities are less represented in positions of responsibility than in other positions — the share of research directors, for instance, is lower than the share of research fellows.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The discussion gathered researchers and engineers who spoke about their experiences, or about their current commitments: Elsa Cazelles (Chargée de Recherche at IRIT), Sylvie Chambon (Professeure des Universités at INP-ENSEEIHT), Julie Lesthelle (Université de Bordeaux), Lucie Baudouin (Directrice de Recherche at LAAS) and Aline Roc (research engineer at CATIE in Bordeaux). The round table was moderated by Méline Trochon.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Julie’s work shows how the **fear of making mistakes** is a notable brake on the path of young women in science — fields where experimentation is precisely how knowledge is built, and where active participation in class and expressing doubts to teachers are essential to learning. Elsa recalled the decisive role of the teacher: by observing students’ body language, they can anticipate implicit questions and create a climate that values error as a constructive step in scientific reasoning. The interviews Julie conducted for her thesis with mathematics undergraduates highlighted the impact of differences in socialisation, based on gender stereotypes, on study choices: later contact with computer science than their male peers biases that choice.',
+      },
+      {
+        type: 'paragraph',
+        text: 'In response, permanent researchers play a crucial role as role models and mentors. Aline testified to her commitment to supporting the next generation of women, while pointing out the additional workload this represents for those who take it on — time taken away from their own research. The same difficulty appears with quotas for women on academic juries. A fair distribution of these responsibilities among women researchers would keep their commitment to younger generations sustainable without sacrificing their careers, and the speakers encourage established women to identify and recommend emerging female colleagues, building a mentoring network that amplifies their voices.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Recruitment decisions, too, can suffer from gender stereotypes. Before discussing quotas, it is worth remembering that not all candidates fit the traditional profile that is often valued — that of a white, privileged, charismatic man. Lucie recalled that it is fundamental to consider a person in their singularity rather than by their gender, and that selection processes must above all rely on objective criteria, opening the way to varied profiles that genuinely enrich professional environments. Pointing out that someone was hired only thanks to quotas is not only reductive but disrespectful of their skills and their path; institutional training exists to raise recruitment committees’ awareness of equality issues and promote fairer, more representative practices.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Promoting a welcoming research-team dynamic is another essential lever. For Elsa, it means involving all the available members of a research team in welcoming and supporting new candidates — for research fellow or lecturer positions alike. This collective approach strengthens the team’s cohesion and contributes to a harmonious integration of newcomers from all backgrounds.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Through these discussions, the young researchers present were able to question the values that matter for their own careers. The morning made clear that **the fight against inequalities is a collective responsibility that requires continuous mobilisation**.',
+      },
+      {
+        type: 'figure',
+        image: '/images/mathis/youngpex/general-assembly-back.webp',
+        alt: 'Discussions between the round-table speakers and the participants at the YoungPEx General Assembly.',
+        caption: 'Discussions between the round-table speakers and the participants.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        text: 'What comes next',
+      },
+      {
+        type: 'paragraph',
+        text: 'Discussions at the General Assembly also set the group’s direction. A majority of members said they want to discuss the **connections between HPC and society** next, and the working group plans a series of monthly webinars and hands-on tutorials.',
+      },
+      {
+        type: 'list',
+        ordered: false,
+        items: [
+          'A new YoungPEx General Assembly, targeted for late January or early February in Rennes.',
+          'Restarting the webinar series, with new online presentations to kick-start momentum.',
+          'Renewing the consultation of members on whether — and how — they integrate AI models into their working methods, and comparing the results with the previous year.',
+          'Submitting a YoungPEx workshop proposal for the NumPEx General Assembly in March.',
+          'Identifying the students and engineers who recently joined NumPEx, so that they can be included.',
+        ],
+      },
+      {
+        type: 'heading',
+        level: 3,
+        text: 'Webinars',
+      },
+      {
+        type: 'paragraph',
+        text: 'Three kinds of webinar run in the group:',
+      },
+      {
+        type: 'list',
+        ordered: false,
+        items: [
+          '**"Present your Research"** — a YoungPEx speaker, for a YoungPEx-only audience, of any duration (to present a PhD topic, for example, or rehearse a talk).',
+          '**Public YoungPEx webinars** — an outside speaker, such as a NumPEx researcher; a one-hour talk, and you can invite your team members.',
+          '**YoungPEx Training** — training organised by YoungPEx that can count towards an École Doctorale, over multiple hours or sessions (a tool, or a research topic).',
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'Webinars are hybrid: in person if you are on the same site as the speaker, online otherwise. Date and time are chosen at the speaker’s convenience, and talks are recorded when possible.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        text: 'Publications',
+      },
+      {
+        type: 'paragraph',
+        text: 'YoungPEx also writes. The group contributed an overview to **MATAPLI**, the newsletter of the Société de Mathématiques Appliquées et Industrielles, in [issue 139](https://www.ceremade.dauphine.fr/~chupin/Matapli/139/Matapli139.pdf).',
+      },
+      {
+        type: 'figure',
+        image: '/images/mathis/youngpex/matapli.webp',
+        alt: 'Cover of the YoungPEx overview in the MATAPLI newsletter, issue 139.',
+        caption: 'The YoungPEx overview in MATAPLI, issue 139.',
+      },
+      {
+        type: 'paragraph',
+        text: 'A poster presenting the group — its context and issues, its objectives, and its current advances — was displayed at the [Trans’Numériques 2026](https://numpex.org/trans-numeriques-2026/) event, from 2 to 5 February 2026.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        text: 'Learn more',
+      },
+      {
+        type: 'paragraph',
+        text: 'The official YoungPEx page is at [numpex.org/youngpex](https://numpex.org/youngpex/), and the first General Assembly has its own write-up and slides at [numpex.org/the-first-youngpex-general-meeting](https://numpex.org/the-first-youngpex-general-meeting/).',
+      },
+    ],
+    image: '/images/mathis/youngpex/general-assembly-front.webp',
+    imageAlt: 'Group photo of YoungPEx participants in the hall of INP-ENSEEIHT, Toulouse.',
+    href: '/writing/youngpex',
+    sourceHref: sourceLinks.numpexYoungpex,
+  },
+  {
+    id: 'predicting-for-sizing',
+    number: '02',
     category: 'Research note',
     date: 'September 23, 2026',
     title:
@@ -439,7 +747,7 @@ export const articleItems: ArticleItem[] = [
   },
   {
     id: 'mcp-server-software-ontology',
-    number: '02',
+    number: '03',
     category: 'Research note',
     date: 'September 16, 2026',
     title:
@@ -600,7 +908,7 @@ export const articleItems: ArticleItem[] = [
   },
   {
     id: 'exascale-astronomy-cybersecurity',
-    number: '03',
+    number: '04',
     category: 'Publication',
     date: 'September 13, 2026',
     title:
@@ -1064,7 +1372,7 @@ export const articleItems: ArticleItem[] = [
 
   {
     id: 'webinar-hpc-applications-as-a-service',
-    number: '04',
+    number: '05',
     category: 'Webinar',
     date: 'February 26, 2026',
     title: 'Webinar: HPC Application Services for Radio Astronomy',
@@ -1087,7 +1395,7 @@ export const articleItems: ArticleItem[] = [
   },
   {
     id: 'international-hackathon-for-astronomy',
-    number: '05',
+    number: '06',
     category: 'Collaboration',
     date: 'April 1, 2026',
     title: 'International Hackathon for Radio Astronomy',
@@ -1132,7 +1440,7 @@ export const articleItems: ArticleItem[] = [
   },
   {
     id: 'rennes-hackathon-for-astronomy',
-    number: '06',
+    number: '07',
     category: 'Collaboration',
     date: 'October 1, 2025',
     title: 'From Supercomputers to Tutorials: Strengthening Our Community Through Shared Expertise ',
