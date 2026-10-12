@@ -1,1 +1,0 @@
-import{t as e}from"./WhiteboardPage-DX4shS8K.js";export{e as sanitizeSvg};

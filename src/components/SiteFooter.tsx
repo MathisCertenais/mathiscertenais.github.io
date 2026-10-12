@@ -15,14 +15,11 @@ const footerGroups: FooterGroup[] = [
     title: 'Navigation',
     links: [
       { label: 'Research', href: '/research' },
+      { label: 'Insights', href: '/writing' },
       { label: 'About', href: '/about' },
       { label: 'Contact', href: '/contact' },
       { label: 'Profile', href: '/resume' },
     ],
-  },
-  {
-    title: 'Reading',
-    links: [{ label: 'Insights', href: '/writing' }],
   },
   {
     title: 'Elsewhere',
