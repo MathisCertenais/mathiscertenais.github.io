@@ -339,6 +339,15 @@ export const articleItems: ArticleItem[] = [
       {
         type: 'heading',
         level: 3,
+        text: 'Where did this collaboration come from?',
+      },
+      {
+        type: 'paragraph',
+        text: 'I came across ECLAT while reading a [CNRS news item](https://www.cnrs.fr/fr/actualite/eclat-lalliance-science-industrie-qui-repousse-les-limites-de-lobservation-astronomique) about the joint laboratory uniting science and industry to push back the limits of astronomical observation. We contacted them, then introduced ourselves at the inauguration of the joint laboratory.',
+      },
+      {
+        type: 'heading',
+        level: 3,
         text: 'How do you manage collaboration with other disciplines?',
       },
       {
@@ -361,12 +370,12 @@ export const articleItems: ArticleItem[] = [
       },
       {
         type: 'paragraph',
-        text: 'NumPEx is a French programme that is advancing tomorrow’s IT issues, namely Digital Technology for Exascale Computing. I am active in **YoungPEx**, which is a gathering of all young people involved in NumPEx, working on issues that impact our generation. We are working in particular on topics such as energy footprints, how to conduct research in an environmentally responsible manner, and multidisciplinarity in the context of scientific research.',
+        text: 'NumPEx is a French programme that is advancing tomorrow’s IT issues, namely Digital for Exascale. I am active in **YoungPEx** as a member of the committee, which is a gathering of all young people involved in NumPEx, working on issues that impact our generation. We are working in particular on topics such as energy footprints, how to conduct research in an environmentally responsible manner, multidisciplinarity in the context of scientific research, the acceptability of high-performance computing in society, and the use of AI in our research.',
       },
       {
         type: 'heading',
         level: 3,
-        text: 'Is a PhD a worthwhile endeavour?',
+        text: 'Is it worth doing a Ph.D.?',
       },
       {
         type: 'paragraph',
