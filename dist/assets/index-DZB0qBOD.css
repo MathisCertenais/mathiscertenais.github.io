@@ -2968,6 +2968,10 @@ html.wb-active .tlui-layout {
   text-wrap: balance;
 }
 
+.research-story__copy {
+  max-width: 40rem;
+}
+
 .research-story__copy p {
   color: var(--text-mid);
   font-family: var(--font-libre-baskerville), Georgia, serif;
