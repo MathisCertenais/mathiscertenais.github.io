@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react'
-import { identity } from '../content'
+import { contactPage, identity } from '../content'
 import { ArrowIcon } from './Icons'
 import { BusinessCard } from './BusinessCard'
 import { PageHero } from './PageHero'
@@ -74,9 +74,7 @@ export function ContactPage() {
         <div className="contact-details">
           <p className="section-label">Direct contact</p>
           <h2>Start a conversation.</h2>
-          <p>
-            Mathis is based in Rennes, France and works across computer science, HPC, and radio astronomy.
-          </p>
+          <p>{contactPage.intro}</p>
           <a href={`mailto:${identity.email}`}>
             {identity.email} <ArrowIcon external />
           </a>

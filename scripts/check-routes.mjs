@@ -2,6 +2,7 @@ import { access, readFile, readdir } from 'node:fs/promises'
 import { basename, extname, join, relative, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { loadEnv } from 'vite'
+import { articleItems } from '../src/content.ts'
 
 const projectRoot = fileURLToPath(new URL('..', import.meta.url))
 const manifestPath = join(projectRoot, 'src', 'data', 'route-manifest.json')
@@ -18,7 +19,6 @@ const requiredCanonicalPaths = new Set([
   '/research',
   '/resume',
   '/videos',
-  '/whiteboard',
   '/writing',
   '/writing/eclat-interview',
   '/writing/youngpex',
@@ -71,12 +71,10 @@ const allowedPages = new Set([
   'research',
   'resume',
   'videos',
-  'whiteboard',
   'writing',
 ])
 
-const requiredAssets = new Set([
-  '/_redirects',
+const requiredAssets = new Set([  '/_redirects',
   '/CNAME',
   '/robots.txt',
   '/assets/fonts/libre-baskerville-latin.woff2',
@@ -92,11 +90,61 @@ const requiredAssets = new Set([
   '/images/mathis/rennes-hackathon/rennes-hackathon-back.webp',
 ])
 
+/**
+ * Routes whose shell carries the static text of the page, so a client that never
+ * runs JavaScript still reads it. Each entry lists literal strings the shell must
+ * contain, picked from the page rather than derived from the generator, so that a
+ * generator which silently drops a section fails here. The article routes are
+ * checked against their own title and description. Every prerendered shell must
+ * also carry at least this much readable text.
+ */
+const prerenderedFallbacks = {
+  '/': ['Scientific data logistics.', 'Exascale workflows.', 'Radio astronomy'],
+  '/research': [
+    'Collaborative System of Systems for Scientific Data Logistics',
+    'Scientific instruments and industrial platforms alike',
+    'Five perspectives on one logistics problem.',
+    'The reasoning is written up in public.',
+  ],
+  '/writing': ['Explaining systems through their use.', 'Latest entries'],
+  '/videos': ['Research, explained in context.', 'Watch & listen'],
+  '/about': ['Building infrastructure through collaboration.', 'Working principles'],
+  '/resume': ['arXiv:2509.03075', 'Relevant certifications'],
+  '/contact': ['Let’s connect the systems.', 'The card I hand out.'],
+}
+
+const PRERENDERED_MIN_CHARACTERS = 300
+
+/**
+ * Links a prerendered shell must carry: an internal link a crawler cannot follow
+ * from elsewhere is a page it may never find, and a link that lost its markup —
+ * because it was double-escaped into plain text — helps nobody.
+ */
+const prerenderedMinLinks = {
+  '/': 8,
+  '/research': 3,
+  '/writing': 8,
+  '/videos': 3,
+  '/about': 1,
+  '/resume': 1,
+  '/contact': 3,
+}
+
+const PRERENDERED_ARTICLE_MIN_LINKS = 3
+
+function expectedPrerenderedMarkers(routePath) {
+  if (prerenderedFallbacks[routePath]) return prerenderedFallbacks[routePath]
+
+  const article = articleItems.find((item) => item.href === routePath)
+  return article ? [article.title] : null
+}
+
 const retiredPaths = [
   'scripts/sync-reference.mjs',
   'src/data/reference-shorts.json',
   'src/data/reference-videos.json',
   'src/generated',
+  'src/whiteboard',
   'src/reference',
   'src/reference.css',
 ]
@@ -284,7 +332,7 @@ async function auditSearchFiles(manifest, siteUrl) {
   if (/^\s*disallow:\s*\/\s*$/im.test(robots)) {
     issues.push('robots.txt disallows the whole site')
   }
-  if (/^\s*disallow:\s*\/(?:whiteboard|articles|work)/im.test(robots)) {
+  if (/^\s*disallow:\s*\/(?:articles|work)/im.test(robots)) {
     issues.push('robots.txt blocks a noindex route, so search engines cannot see the noindex')
   }
 }
@@ -372,6 +420,46 @@ async function auditBuiltRoutes(manifest, siteUrl) {
     ) {
       issues.push(`Home-only hero preload present in prerendered route: ${entry.path}`)
     }
+
+    const rootMatch = html.match(/<div id="root">([\s\S]*)<\/div>/)
+    const root = rootMatch?.[1] ?? ''
+    const markers = expectedPrerenderedMarkers(entry.path)
+
+    if (markers) {
+      // Markers are written the way the page reads them, so they are looked for
+      // in the decoded text as well as in the raw markup.
+      const text = decodeHtml(root.replace(/<[^>]+>/g, ' '))
+        .replace(/\s+/g, ' ')
+        .trim()
+      for (const marker of markers) {
+        if (!root.includes(marker) && !text.includes(marker)) {
+          issues.push(`Prerendered text missing from ${entry.path}: ${marker}`)
+        }
+      }
+      if (text.length < PRERENDERED_MIN_CHARACTERS) {
+        issues.push(`Prerendered text is too thin in ${entry.path}: ${text.length} characters`)
+      }
+
+      const links = (root.match(/<a\s/g) ?? []).length
+      const minimum = prerenderedMinLinks[entry.path] ?? PRERENDERED_ARTICLE_MIN_LINKS
+      if (links < minimum) {
+        issues.push(
+          `Prerendered text in ${entry.path} carries ${links} links, fewer than the ${minimum} expected`,
+        )
+      }
+    } else if (root.includes('class="prerendered"')) {
+      issues.push(
+        `Route ${entry.path} carries prerendered text but declares no expected markers, so nothing checks it`,
+      )
+    }
+
+    if (
+      entry.path === entry.canonical &&
+      !/noindex/i.test(entry.robots || '') &&
+      !root.includes('class="prerendered"')
+    ) {
+      issues.push(`Indexable route ${entry.path} carries no prerendered text`)
+    }
   }
 
   const notFoundPath = join(distRoot, '404.html')
@@ -445,16 +533,13 @@ for (const entry of manifest) {
   if (entry.path !== entry.canonical && normalizeRobots(entry.robots) !== 'noindex,follow') {
     issues.push(`Legacy alias must use noindex, follow: ${entry.path}`)
   }
-  if (entry.path === entry.canonical && entry.path !== '/whiteboard') {
+  if (entry.path === entry.canonical) {
     if (normalizeRobots(entry.robots) !== 'index,follow') {
       issues.push(`Canonical public route must be indexable: ${entry.path}`)
     }
     if (!entry.ogImage || !entry.ogImageAlt) {
       issues.push(`Canonical public route needs social image metadata: ${entry.path}`)
     }
-  }
-  if (entry.path === '/whiteboard' && normalizeRobots(entry.robots) !== 'noindex,nofollow') {
-    issues.push('The local whiteboard must use noindex, nofollow')
   }
 }
 
@@ -470,15 +555,7 @@ for (const rule of forbiddenContent) {
 }
 await auditTextTree(sourceRoot, 'source', referencedAssets)
 
-const appSource = await readFile(join(sourceRoot, 'App.tsx'), 'utf8')
 const portfolioPageSource = await readFile(join(sourceRoot, 'components', 'PortfolioPage.tsx'), 'utf8')
-const whiteboardSource = await readFile(join(sourceRoot, 'whiteboard', 'WhiteboardPage.tsx'), 'utf8')
-if (!appSource.includes("route?.page === 'whiteboard'")) {
-  issues.push('The /whiteboard page is not registered in App.tsx')
-}
-if (!/<main\b[^>]*\bid=["']main-content["']/i.test(whiteboardSource)) {
-  issues.push('WhiteboardPage.tsx is missing its accessible #main-content landmark')
-}
 for (const marker of [
   "page === 'home'",
   "page === 'research'",

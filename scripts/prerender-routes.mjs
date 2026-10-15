@@ -2,6 +2,31 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { loadEnv } from 'vite'
+import {
+  aboutPage,
+  articleItems,
+  businessCard,
+  contactPage,
+  expertise,
+  identity,
+  profileTimeline,
+  proofPoints,
+  researchApplications,
+  researchCase,
+  researchChain,
+  researchChapters,
+  researchContribution,
+  researchFeature,
+  researchFigures,
+  researchMethods,
+  researchPerspectives,
+  researchThesis,
+  resumePage,
+  sourceLinks,
+  videoItems,
+  videosPage,
+  writingPage,
+} from '../src/content.ts'
 
 const projectRoot = fileURLToPath(new URL('..', import.meta.url))
 const distRoot = join(projectRoot, 'dist')
@@ -62,8 +87,8 @@ function absoluteUrl(value) {
 
 /**
  * Only canonical routes that are meant to be indexed belong in the sitemap. The
- * legacy aliases are `noindex, follow` and /whiteboard is `noindex, nofollow`,
- * so listing them would send Search Console a contradictory signal.
+ * legacy aliases are `noindex, follow`, so listing them would send Search Console a
+ * contradictory signal.
  */
 function indexableRoutes() {
   return manifest.filter(
@@ -135,6 +160,322 @@ function removeHomePreload(html) {
   )
 }
 
+/**
+ * Static text of a route, written into the shell so a crawler that never runs
+ * JavaScript still reads the page: Google in its first pass, Bing, the answer
+ * engines behind GPTBot, ClaudeBot and PerplexityBot, and every plain parser.
+ *
+ * React clears `#root` when it mounts, so visitors see the app and only the app.
+ * The markup is deliberately plain — it is the text of the page, generated from
+ * the same `src/content.ts` the components read, in the order the page presents
+ * it, so the two cannot drift apart.
+ */
+
+/** The inline syntax the article components understand: `**bold**`, links, refs. */
+function inline(text) {
+  return escapeHtml(text)
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(
+      /\[([^\]]+)\]\(([^)]+)\)/g,
+      '<a href="$2" rel="noreferrer" target="_blank">$1</a>',
+    )
+    .replace(/\[(\d+)\]/g, '<a href="#ref-$1">[$1]</a>')
+}
+
+const label = (text) => `<p class="prerendered__label">${escapeHtml(text)}</p>`
+const meta = (text) => `<p class="prerendered__meta">${inline(text)}</p>`
+const h1 = (text) => `<h1>${inline(text)}</h1>`
+const h2 = (text) => `<h2>${inline(text)}</h2>`
+const h3 = (text) => `<h3>${inline(text)}</h3>`
+const p = (text) => `<p>${inline(text)}</p>`
+const link = (href, text, external = false) =>
+  `<a href="${escapeHtml(href)}"${external ? ' rel="noreferrer" target="_blank"' : ''}>${escapeHtml(text)}</a>`
+
+/** A paragraph whose whole content is a link. `p()` escapes, so the anchor is
+    built here rather than passed through it. */
+const linkParagraph = (href, text) =>
+  `<p>${link(href, text)}</p>`
+
+function list(items, ordered = false) {
+  const tag = ordered ? 'ol' : 'ul'
+  return `<${tag}>\n${items.map((item) => `        <li>${item}</li>`).join('\n')}\n      </${tag}>`
+}
+
+/** A chapter of the research narrative: label, heading, paragraphs. */
+function chapter({ heading, label: chapterLabel, paragraphs }) {
+  return [label(chapterLabel), h2(heading), ...paragraphs.map(p)].join('\n      ')
+}
+
+/** A figure with a caption keeps the caption; the image itself is React's job. */
+function articleBlock(block) {
+  switch (block.type) {
+    case 'paragraph':
+      return p(block.text)
+    case 'heading':
+      return block.level === 2 ? h2(block.text) : h3(block.text)
+    case 'list':
+      return list(
+        block.items.map((item) => {
+          const text = typeof item === 'string' ? item : item.text
+          const id = typeof item === 'string' || !item.id ? '' : ` id="${escapeHtml(item.id)}"`
+          return `<li${id}>${inline(text)}</li>`
+        }).map((item) => item.replace(/^<li/, '<li')),
+        block.ordered,
+      )
+    case 'figure':
+      return block.caption ? `<p class="prerendered__caption">${inline(block.caption)}</p>` : ''
+    default:
+      return ''
+  }
+}
+
+function renderResearch() {
+  return `<main class="prerendered" id="main-content">
+      ${label(researchThesis.label)}
+      ${h1(researchThesis.title)}
+      ${meta([researchThesis.context, researchThesis.programme].join(' · '))}
+      ${p(researchThesis.summary)}
+      ${researchChapters.map(chapter).join('\n      ')}
+      ${h2('What the thesis measures')}
+      ${list(researchFigures.map((figure) => `<strong>${escapeHtml(figure.value)}</strong> — ${escapeHtml(figure.label)}`))}
+      ${h2('Five perspectives on one logistics problem.')}
+      ${list(
+        researchPerspectives.map(
+          (perspective) =>
+            `${label(perspective.number)}${h3(perspective.title)}${p(perspective.text)}`,
+        ),
+        true,
+      )}
+      ${chapter(researchMethods)}
+      ${h2('A cross-facility chain')}
+      ${list(
+        researchChain.map(
+          (step) =>
+            `<strong>${escapeHtml(step.role)}</strong> — ${escapeHtml(step.site)}: ${escapeHtml(step.detail)}`,
+        ),
+      )}
+      ${chapter(researchCase)}
+      ${chapter(researchContribution)}
+      ${chapter(researchApplications)}
+      ${h2('The reasoning is written up in public.')}
+      ${list([
+        link('/writing', 'Research notes'),
+        `<a href="${escapeHtml(sourceLinks.arxiv)}" rel="noreferrer" target="_blank">Publications on arXiv</a>`,
+        `<a href="${escapeHtml(sourceLinks.numpex)}" rel="noreferrer" target="_blank">NumPEx research profile</a>`,
+        link('/contact', 'Get in touch'),
+      ])}
+    </main>`
+}
+
+function renderHome() {
+  return `<main class="prerendered" id="main-content">
+      ${meta(`${identity.name} · ${identity.shortRole}`)}
+      ${h1(identity.headline.join(' '))}
+      ${p(identity.description)}
+      ${meta(`PhD researcher at IRISA — based in ${identity.location}`)}
+      ${list([
+        link('/research', 'View research'),
+        link('/resume', 'View profile'),
+        link('/contact', 'Get in touch'),
+      ])}
+      ${h2(researchFeature.heading)}
+      ${label(researchThesis.label)}
+      ${h3(researchThesis.title)}
+      ${researchFeature.leads.map(p).join('\n      ')}
+      ${list(
+        [
+          ...researchFigures.map(
+            (figure) => `<strong>${escapeHtml(figure.value)}</strong> — ${escapeHtml(figure.label)}`,
+          ),
+          `<strong>${escapeHtml(researchFeature.context.label)}</strong> — ${escapeHtml(researchFeature.context.text)}`,
+        ],
+        false,
+      )}
+      ${linkParagraph('/research', 'Explore the research')}
+      ${h2(videosPage.sectionHeading)}
+      ${list(
+        videoItems.map(
+          (video) =>
+            `<a href="${escapeHtml(video.externalHref)}" rel="noreferrer" target="_blank">${escapeHtml(video.title)}</a> — ${escapeHtml(video.description)}`,
+        ),
+      )}
+      ${linkParagraph('/videos', 'See every video')}
+      ${h2(writingPage.sectionHeading)}
+      ${list(
+        articleItems.map(
+          (article) =>
+            `${link(article.href, article.title)} — ${escapeHtml(article.description)}`,
+        ),
+      )}
+      ${linkParagraph('/writing', 'Read every entry')}
+      ${h2('In short')}
+      ${list(proofPoints.map((point) => `<strong>${escapeHtml(point.title)}</strong> — ${escapeHtml(point.description)}`))}
+    </main>`
+}
+
+function renderWriting() {
+  return `<main class="prerendered" id="main-content">
+      ${label(writingPage.eyebrow)}
+      ${h1(writingPage.title)}
+      ${p(writingPage.intro)}
+      ${h2(writingPage.sectionHeading)}
+      ${list(
+        articleItems.map((article) =>
+          [
+            label(`${article.category} · ${article.date}`),
+            h3(article.title),
+            p(article.description),
+            linkParagraph(article.href, `Read: ${article.title}`),
+          ].join(''),
+        ),
+      )}
+    </main>`
+}
+
+function renderArticle(article) {
+  const blocks = article.body.map(articleBlock).filter(Boolean)
+
+  return `<main class="prerendered" id="main-content">
+      ${label(`${article.category} · ${article.date}`)}
+      ${h1(article.title)}
+      ${p(article.description)}
+      <figure class="prerendered__figure">
+        <img alt="${escapeHtml(article.imageAlt)}" src="${escapeHtml(article.image)}" />
+      </figure>
+      ${blocks.join('\n      ')}
+      ${
+        article.sourceHref
+          ? `${h2('Source')}${linkParagraph(article.sourceHref, 'Original publication')}`
+          : ''
+      }
+      ${h2('Keep reading')}
+      ${list([
+        link('/writing', 'All entries'),
+        link('/research', 'The research'),
+        link('/contact', 'Get in touch'),
+      ])}
+    </main>`
+}
+
+function renderVideos() {
+  return `<main class="prerendered" id="main-content">
+      ${label(videosPage.eyebrow)}
+      ${h1(videosPage.title)}
+      ${p(videosPage.intro)}
+      ${h2(videosPage.sectionHeading)}
+      ${list(
+        videoItems.map(
+          (video) =>
+            `<a href="${escapeHtml(video.externalHref)}" rel="noreferrer" target="_blank">${escapeHtml(video.title)}</a> — ${escapeHtml(video.description)}`,
+        ),
+      )}
+    </main>`
+}
+
+function renderAbout() {
+  return `<main class="prerendered" id="main-content">
+      ${label(aboutPage.eyebrow)}
+      ${h1(aboutPage.title)}
+      ${p(aboutPage.intro)}
+      ${label(aboutPage.story.label)}
+      ${h2(aboutPage.story.heading)}
+      ${aboutPage.story.paragraphs.map(p).join('\n      ')}
+      ${h2('Background')}
+      ${list(
+        profileTimeline.map(
+          (entry) => `${label(entry.label)}${h3(entry.title)}${p(entry.detail)}`,
+        ),
+      )}
+      ${h2('Research themes')}
+      ${list(expertise.map((item) => escapeHtml(item)))}
+      ${linkParagraph(sourceLinks.eclatInterview, 'Read the ECLAT interview')}
+      ${label(aboutPage.principles.label)}
+      ${list(
+        aboutPage.principles.items.map(
+          (principle) =>
+            `${label(principle.number)}${h3(principle.title)}${p(principle.text)}`,
+        ),
+      )}
+    </main>`
+}
+
+function renderResume() {
+  return `<main class="prerendered" id="main-content">
+      ${label(resumePage.eyebrow)}
+      ${h1(identity.name)}
+      ${p(resumePage.intro)}
+      ${h2('Contact')}
+      ${list([
+        `<a href="mailto:${escapeHtml(identity.email)}">${escapeHtml(identity.email)}</a>`,
+        `<a href="${escapeHtml(identity.linkedin)}" rel="noreferrer" target="_blank">LinkedIn</a>`,
+        escapeHtml(identity.location),
+      ])}
+      ${h2('Research themes')}
+      ${list(expertise.map((item) => escapeHtml(item)))}
+      ${h2(resumePage.profile.heading)}
+      ${p(resumePage.profile.text)}
+      ${h2(resumePage.experienceLabel)}
+      ${list(
+        profileTimeline.map(
+          (entry) => `${label(entry.label)}${h3(entry.title)}${p(entry.detail)}`,
+        ),
+      )}
+      ${h2(resumePage.publication.label)}
+      ${list([
+        `${label(resumePage.publication.date)}${h3(resumePage.publication.title)}${p(resumePage.publication.authors)}${linkParagraph(resumePage.publication.href, `${resumePage.publication.linkLabel} on arXiv`)}`,
+      ])}
+      ${h2('Selected presentations')}
+      ${list(
+        resumePage.presentations.map(
+          (item) => `${label(item.date)}${h3(item.title)}${p(item.text)}`,
+        ),
+      )}
+      ${h2('Relevant certifications')}
+      ${list(
+        resumePage.certifications.map((item) => `${label(item.date)}${h3(item.title)}`),
+      )}
+    </main>`
+}
+
+function renderContact() {
+  return `<main class="prerendered" id="main-content">
+      ${label('Contact')}
+      ${h1('Let’s connect the systems.')}
+      ${p(contactPage.intro)}
+      ${h2('Start a conversation.')}
+      ${list([
+        `<a href="mailto:${escapeHtml(identity.email)}">${escapeHtml(identity.email)}</a>`,
+        `<a href="${escapeHtml(identity.linkedin)}" rel="noreferrer" target="_blank">LinkedIn</a>`,
+      ])}
+      ${p(
+        'For research conversations, collaboration, talks, or questions about HPC and scientific workflows, the simplest route is email or LinkedIn.',
+      )}
+      ${h2('The card I hand out.')}
+      ${list([
+        escapeHtml(businessCard.affiliation),
+        `${escapeHtml(businessCard.phone)} — <a href="${escapeHtml(businessCard.phoneHref)}">call</a>`,
+        `<a href="${escapeHtml(businessCard.website)}">${escapeHtml(businessCard.websiteLabel)}</a>`,
+      ])}
+      ${label('Scan')}
+      ${p(
+        'A QR code on the card opens mathiscertenais.com on another device. It is generated locally and served from this domain.',
+      )}
+    </main>`
+}
+
+function fallbackFor(routePath) {
+  if (routePath === '/') return renderHome()
+  if (routePath === '/research') return renderResearch()
+  if (routePath === '/writing') return renderWriting()
+  if (routePath === '/videos') return renderVideos()
+  if (routePath === '/about') return renderAbout()
+  if (routePath === '/resume') return renderResume()
+  if (routePath === '/contact') return renderContact()
+
+  const article = articleItems.find((item) => item.href === routePath)
+  return article ? renderArticle(article) : null
+}
+
 function renderMetadata(entry) {
   const title = entry.title || 'Mathis Certenais'
   const description = entry.description || ''
@@ -166,6 +507,17 @@ function renderMetadata(entry) {
   html = setCanonical(html, canonicalPath)
 
   if (entry.path !== '/') html = removeHomePreload(html)
+
+  const fallback = fallbackFor(entry.path)
+  if (fallback) {
+    const shell = /<div id="root"><\/div>/
+    if (!shell.test(html)) {
+      throw new TypeError(`The shell for ${entry.path} no longer has an empty #root to fill.`)
+    }
+    html = html.replace(shell, `<div id="root">${fallback}</div>`)
+  } else if (entry.path === entry.canonical && !/noindex/i.test(entry.robots || '')) {
+    throw new TypeError(`The indexable route ${entry.path} has no prerendered fallback.`)
+  }
 
   return `${html.trim()}\n`
 }

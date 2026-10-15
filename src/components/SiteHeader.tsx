@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import { navigate } from '../routing'
 import { ThemeToggle } from '../theme/ThemeToggle'
 import { ExternalLinkIcon, MenuIcon } from './Icons'
 
@@ -41,37 +40,6 @@ export function SiteHeader({ currentPath = '/' }: SiteHeaderProps) {
   const menuButtonRef = useRef<HTMLButtonElement>(null)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
   const restoreMenuFocusRef = useRef(false)
-  const logoHoldTimerRef = useRef<number | null>(null)
-  const logoTransitionTimerRef = useRef<number | null>(null)
-  const logoWasHeldRef = useRef(false)
-
-  const cancelLogoHold = () => {
-    if (logoHoldTimerRef.current !== null) window.clearTimeout(logoHoldTimerRef.current)
-    logoHoldTimerRef.current = null
-  }
-
-  const startLogoHold = () => {
-    cancelLogoHold()
-    logoWasHeldRef.current = false
-    logoHoldTimerRef.current = window.setTimeout(() => {
-      logoHoldTimerRef.current = null
-      logoWasHeldRef.current = true
-      document.documentElement.classList.add('wb-leaving')
-      logoTransitionTimerRef.current = window.setTimeout(() => {
-        logoTransitionTimerRef.current = null
-        navigate('/whiteboard')
-      }, 300)
-    }, 1500)
-  }
-
-  useEffect(
-    () => () => {
-      if (logoHoldTimerRef.current !== null) window.clearTimeout(logoHoldTimerRef.current)
-      if (logoTransitionTimerRef.current !== null) window.clearTimeout(logoTransitionTimerRef.current)
-      document.documentElement.classList.remove('wb-leaving')
-    },
-    [],
-  )
 
   useEffect(() => {
     if (!isOpen) return undefined
@@ -165,17 +133,7 @@ export function SiteHeader({ currentPath = '/' }: SiteHeaderProps) {
             aria-label="Mathis Certenais — Home"
             className="brand"
             href="/"
-            onClick={(event) => {
-              if (logoWasHeldRef.current) {
-                event.preventDefault()
-                logoWasHeldRef.current = false
-              }
-              closeMenu()
-            }}
-            onPointerCancel={cancelLogoHold}
-            onPointerDown={startLogoHold}
-            onPointerLeave={cancelLogoHold}
-            onPointerUp={cancelLogoHold}
+            onClick={closeMenu}
             tabIndex={isOpen ? -1 : 0}
           >
             <span aria-hidden="true" className="brand-symbol">

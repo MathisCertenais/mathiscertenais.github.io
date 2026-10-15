@@ -39,12 +39,72 @@
     <meta name="twitter:image:alt" content="Mathis Certenais research" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <title>Research | Mathis Certenais</title>
-    <script type="module" crossorigin src="/assets/index-pEplc18U.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-D4oFr5rB.css">
+    <script type="module" crossorigin src="/assets/index-jV7gpeQl.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Cu550E6u.css">
     <meta property="og:url" content="https://mathiscertenais.com/research" />
     <link rel="canonical" href="https://mathiscertenais.com/research" />
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"><main class="prerendered" id="main-content">
+      <p class="prerendered__label">Doctoral thesis</p>
+      <h1>Collaborative System of Systems for Scientific Data Logistics</h1>
+      <p class="prerendered__meta">IRISA · Université de Rennes · NumPEx “Digital for Exascale” · ECLAT joint laboratory</p>
+      <p>Large scientific instruments now emit more data than any single site can receive, process, or keep. Turning those flows into science-ready products means running processing chains that cross instruments, supercomputing centres, storage platforms, and research networks — each under a different administration, in a different country, and under a different law. This thesis studies how to design that data logistics: how to model it, how to optimise it, what metadata it requires, and how to expose it to users without hiding the requirements that keep results secure and reproducible.</p>
+      <p class="prerendered__label">The problem</p>
+      <h2>Volume is the visible constraint. Governance is the real one.</h2>
+      <p>Scientific instruments and industrial platforms alike — CERN, the SKA, but equally the data flows companies process for their customers — produce continuous streams that have to be transformed: into science-ready data in the first case, into customer answers in the second. Read at the surface, this is a throughput problem. How much data, at what rate, over which links.</p>
+      <p>It is not. Every site involved in a processing chain applies its own security policy, is hosted in its own country, and is therefore subject to that country’s law. A chain only functions if it can be authorised, traced and trusted from end to end. The logistics of scientific data is first a question of governance, and only then a question of bandwidth.</p>
+      <p class="prerendered__label">Why it matters</p>
+      <h2>Exascale instruments make the gap impossible to ignore.</h2>
+      <p>The Square Kilometre Array will operate continuously and produce far more data than can be stored. Celestial radio signals have to be turned into science-ready products largely in real time, at rates comparable to a hundred million 4K streams at the very start of the data journey, reduced on the fly to a few thousand streams’ worth, and ultimately archiving on the order of 700 petabytes every year. There is no alternative to processing at scale.</p>
+      <p>In France, that scale is provided by the national HPC infrastructure coordinated by GENCI: Adastra at CINES, Jean Zay at IDRIS, and Joliot-Curie at TGCC. Because these centres are strategic national assets, they fall under the framework protecting the Nation’s scientific and technical potential (PPST) and under the restrictive zone regime (ZRR).</p>
+      <p>The consequence is structural rather than technical. Inside a ZRR, access is nominative, personal responsibility cannot be delegated, movements are regulated and traced, and disclosure to unauthorised third parties must be assessed and controlled. Add the ordinary constraints of shared supercomputers — SLURM scheduling, wall-clock limits of 24 hours on Adastra, 100 on Jean Zay and 72 on Joliot-Curie, internet access confined to frontend nodes — and community-driven scientific software runs into a regime it was never designed for. The barrier is not silicon. It is the operating model.</p>
+      <h2>What the thesis measures</h2>
+      <ul>
+        <li><strong>~700 PB</strong> — of SKA science-ready data archived every year</li>
+        <li><strong>3</strong> — French national supercomputing centres, all subject to PPST and ZRR</li>
+        <li><strong>~7.9×</strong> — measured DDF Pipeline speedup on 24 nodes — 68.8 h down to 8.7 h</li>
+      </ul>
+      <h2>Five perspectives on one logistics problem.</h2>
+      <ol>
+        <li><p class="prerendered__label">01</p><h3>Data logistics modelling</h3><p>Describe the whole chain — instrument, transport, HPC and HPDA resources, storage, laboratories — as a single system whose stages can be reasoned about, staged and placed, instead of a series of unrelated site problems.</p></li>
+        <li><p class="prerendered__label">02</p><h3>Multi-criteria optimisation</h3><p>Placement decisions trade off storage constraints, network and infrastructure capacity (topology, latency, transfer protocols), energy expenditure, and the difficulty of writing, deploying and debugging applications. Any one of these criteria alone gives the wrong answer.</p></li>
+        <li><p class="prerendered__label">03</p><h3>Security, governance and sovereignty</h3><p>PPST and ZRR rules decide not only what may run, but who may operate it. The Globus question — why a service widely used in the United States cannot manage identities or data flows inside a restrictive zone — is the sharpest illustration that a technical choice can be a legal impossibility.</p></li>
+        <li><p class="prerendered__label">04</p><h3>Traceability, provenance and FAIR metadata</h3><p>Operations, actors and data must all be attributable. Metadata attached to data and to processes is the lever that makes the other perspectives decidable rather than merely discussable, and it is what turns a collection of runs into reusable science.</p></li>
+        <li><p class="prerendered__label">05</p><h3>Usability as a research object</h3><p>If the interface demands cluster administration, the astronomy community will not cross it. Scientific applications have to be exposed as services, so that operational complexity lives behind the interface while scientific and security requirements stay visible in front of it.</p></li>
+      </ol>
+      <p class="prerendered__label">How the perspectives articulate</p>
+      <h2>One workflow, three jurisdictions.</h2>
+      <p>These perspectives are not independent research programmes. They meet in a concrete cross-facility workflow: the DDF Pipeline, the self-calibration and imaging software of the LOFAR radio telescope and an SKA precursor, running over heterogeneous, geo-distributed HPC and storage sites.</p>
+      <p>Between those points, every stage has to answer the same question in a different administrative language. Where should this step run, under whose authority, with which metadata recorded, and who is accountable for it? That translation is the system of systems the thesis proposes to model.</p>
+      <h2>A cross-facility chain</h2>
+      <ul>
+        <li><strong>Instrument</strong> — SURFsara: The Dutch national HPC centre and LOFAR reference site, where the telescope data lands.</li>
+        <li><strong>Processing</strong> — Jean Zay · Adastra · Joliot-Curie: The three French national supercomputers, operated by IDRIS, CINES and TGCC within their ZRR perimeters.</li>
+        <li><strong>Storage and sharing</strong> — EOSC: The European Open Science Cloud, a distributed research network available to European research users.</li>
+      </ul>
+      <p class="prerendered__label">Methods</p>
+      <h2>A demanding pipeline as the stress test.</h2>
+      <p>The DDF Pipeline is a good ground case precisely because it is both a genuine community need and a hard systems problem. A LoTSS data release consumed around sixteen million core-hours; a single run reaches hundreds of gigabytes of peak memory, image sizes spanning five to twenty thousand pixels per side, between one and twenty-four frequency sub-bands, and runtimes measured in days.</p>
+      <p>The work describes and profiles that software, then proposes the operational model that makes it usable at scale: application microservices and ephemeral buffers to move data without direct shell access, a runner that pulls jobs from inside the secure zone rather than pushing them in, and a named service account that reconciles ZRR traceability with a shared community tool.</p>
+      <p>Provenance is captured formally rather than narratively — structured knowledge maps of the application and of the runtime environment, and performance indicators recorded for each execution — so that a run can be compared, reproduced, and eventually predicted.</p>
+      <p class="prerendered__label">Contribution</p>
+      <h2>What the thesis adds.</h2>
+      <p>A data-logistics model in which governance and security are constraints of the same rank as capacity and cost, rather than a layer applied once the architecture is already fixed.</p>
+      <p>A specification of the metadata required to make large-scale workflow deployment operable: enough to support traceability of operations and the FAIR principles, and enough to feed multi-criteria placement decisions.</p>
+      <p>A demonstrated alternative to per-user HPC accounts — scientific applications as a service — validated with the DDF Pipeline on Jean Zay and Adastra, with the named service account model under discussion with French security stakeholders.</p>
+      <p>A quantified demand on infrastructure: what these logistics imply for storage, network, energy and emissions in a data-centric scientific landscape.</p>
+      <p class="prerendered__label">Applications</p>
+      <h2>Beyond radio astronomy.</h2>
+      <p>The same problem appears wherever a scientific chain crosses administrations, which makes the methods relevant to other instrument communities and data-intensive research infrastructures.</p>
+      <p>The transport question also extends past networks: one concrete line of work concerns the specification of a device for moving data through road and air transportation networks, where bandwidth, latency and energy behave nothing like a datacentre link.</p>
+      <h2>The reasoning is written up in public.</h2>
+      <ul>
+        <li><a href="/writing">Research notes</a></li>
+        <li><a href="https://arxiv.org/abs/2509.03075" rel="noreferrer" target="_blank">Publications on arXiv</a></li>
+        <li><a href="https://numpex.org/data-logistics-for-radio-astronomy/" rel="noreferrer" target="_blank">NumPEx research profile</a></li>
+        <li><a href="/contact">Get in touch</a></li>
+      </ul>
+    </main></div>
   </body>
 </html>
