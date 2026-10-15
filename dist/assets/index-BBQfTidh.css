@@ -2761,37 +2761,14 @@ figure {
   text-underline-offset: 3px;
 }
 
-.contact-share {
-  display: grid;
-  padding: clamp(28px, 4vw, 48px);
-  grid-column: 1 / -1;
-  grid-template-columns: auto minmax(0, 1fr);
-  align-items: center;
-  gap: clamp(24px, 4vw, 56px);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  background: var(--surface-card);
-}
-
-/* A QR code needs a light background and a clear margin in every theme, so the
-   white plate stays white instead of following the surface tokens. */
-.contact-share__code {
-  width: clamp(128px, 16vw, 168px);
-  height: auto;
-  padding: 10px;
-  border-radius: var(--radius-md);
-  background: #ffffff;
-  box-shadow: 0 14px 36px -28px var(--soft-shadow);
-}
-
-.contact-share__copy {
+.contact-card {
   display: flex;
-  max-width: 560px;
+  grid-column: 1 / -1;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
-.contact-share__copy h2 {
+.contact-card h2 {
   font-family: var(--font-libre-baskerville), Georgia, serif;
   font-size: 26px;
   font-weight: 400;
@@ -2799,20 +2776,214 @@ figure {
   letter-spacing: -0.02em;
 }
 
-.contact-share__copy > p:not(.section-label) {
+.contact-card__intro {
+  max-width: 560px;
   color: var(--text-mid);
   font-size: 15px;
   line-height: 1.7;
 }
 
-.contact-share__copy a {
-  display: inline-flex;
-  width: fit-content;
-  align-items: center;
-  gap: 6px;
-  color: var(--link);
-  font-size: 15px;
-  font-weight: 500;
+.contact-card__frame {
+  width: min(100%, 620px);
+  margin-top: 10px;
+}
+
+@supports (container-type: inline-size) {
+  .contact-card__frame {
+    container-type: inline-size;
+  }
+}
+
+/* The business card -------------------------------------------------------
+   Drawn at the exact proportions of an 85 x 55 mm card. Every measurement is a
+   multiple of --u, which is one percent of the card width on screen (1cqw) and
+   0.85 mm — one percent of 85 mm — once printed. The screen and print versions
+   therefore keep the same geometry, and the print block below only has to add
+   the bleed. */
+
+.business-card {
+  --u: 4.6px;
+  /* A card is a printed object: it keeps the site's palette but not its theme
+     tokens, so it never inverts in dark mode. */
+  --card-ink: #1c1c1a;
+  --card-muted: #5c5b56;
+  --card-accent: #7e5071;
+  --card-link: #365c8a;
+  display: grid;
+  width: calc(100 * var(--u));
+  height: calc(64.71 * var(--u));
+  padding: calc(6 * var(--u));
+  grid-template-areas:
+    'identity portrait'
+    'identity code';
+  grid-template-columns: minmax(0, 1fr) calc(30 * var(--u));
+  /* The portrait keeps its full band: 28u in the grid plus the 6u it bleeds
+     into the top margin, so it spans 0 to 34u from the card's top edge. The
+     code below it then gets 64.71u − 34u − 24u = 6.71u of free height, split
+     evenly: 3.355u above it and 3.355u down to the bottom edge. */
+  grid-template-rows: calc(28 * var(--u)) minmax(0, 1fr);
+  gap: calc(3.355 * var(--u)) calc(4 * var(--u));
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  color: var(--card-ink);
+  background: #ffffff;
+  box-shadow: 0 30px 70px -50px var(--soft-shadow);
+  font-family: var(--font-outfit), system-ui, sans-serif;
+}
+
+@supports (container-type: inline-size) {
+  .business-card {
+    --u: 1cqw;
+  }
+}
+
+/* The panel bleeds to the top and right edges of the card, and multiply lets
+   the sketch keep a transparent, tinted background everywhere. */
+/* The portrait sits on the card's own white: its sketch background is
+   transparent at the top and opaque white below, so a tinted panel behind it
+   would print as a two tone patch with a visible edge. Keeping the panel white
+   also means the paper edge holds nothing but the card's background, which is
+   what a print shop wants in the bleed — and it means the drawing needs no
+   bleed of its own. */
+.business-card__portrait {
+  width: calc(36 * var(--u));
+  height: calc(34 * var(--u));
+  margin: calc(-6 * var(--u)) calc(-6 * var(--u)) 0 0;
+  grid-area: portrait;
+  /* The card sizes this image itself: the site-wide `img { max-width: 100% }`
+     would otherwise clamp it to its grid column. */
+  max-width: none;
+  /* The whole sketch, exactly as the home page shows it: `contain` never cuts
+     the head or the torso, and the white card hides the leftover width. */
+  object-fit: contain;
+  object-position: 50% 0%;
+}
+
+.business-card__identity {
+  display: flex;
+  grid-area: identity;
+  flex-direction: column;
+}
+
+.business-card__name {
+  font-family: var(--font-libre-baskerville), Georgia, serif;
+  font-size: calc(6.0 * var(--u));
+  line-height: 1.14;
+  letter-spacing: -0.015em;
+}
+
+.business-card__role {
+  margin-top: calc(1.3 * var(--u));
+  color: var(--card-muted);
+  font-size: calc(2.4 * var(--u));
+  line-height: 1.45;
+}
+
+.business-card__rule {
+  width: calc(11 * var(--u));
+  height: calc(0.5 * var(--u));
+  margin: calc(3.4 * var(--u)) 0 calc(3 * var(--u));
+  background: var(--card-accent);
+}
+
+.business-card__tagline {
+  max-width: calc(46 * var(--u));
+  font-size: calc(3 * var(--u));
+  line-height: 1.4;
+}
+
+.business-card__contacts {
+  display: flex;
+  margin-top: auto;
+  padding-top: calc(4 * var(--u));
+  flex-direction: column;
+  gap: calc(1 * var(--u));
+  font-size: calc(2.35 * var(--u));
+  line-height: 1.5;
+}
+
+.business-card__contacts a {
+  color: var(--card-muted);
+  transition: color 140ms ease;
+}
+
+.business-card__contacts a:hover {
+  color: var(--card-link);
+}
+
+.business-card__code {
+  width: calc(24 * var(--u));
+  height: calc(24 * var(--u));
+  /* Down into the card's bottom margin, which is what makes the space above the
+     code equal to the space below it. The black modules still sit 5.05 mm from
+     the trim once printed: 2.85 mm of margin plus the code's own quiet zone. */
+  margin-bottom: calc(-2.645 * var(--u));
+  grid-area: code;
+  place-self: end end;
+}
+
+/* Printing /contact yields the card alone: 85 x 55 mm of card inside 91 x 61 mm
+   of paper, which leaves the 3 mm of bleed a print shop asks for. The named page
+   keeps that paper size scoped to the card, so printing another page of the site
+   still uses the visitor's own format. */
+@page card {
+  size: 91mm 61mm;
+  margin: 0;
+}
+
+@media print {
+  html,
+  body,
+  body * {
+    /* Everything that survives printing belongs to the card's page. Without a
+       single page name, the export emits an extra empty default-sized page. */
+    page: card;
+  }
+
+  html,
+  body {
+    background: #ffffff;
+  }
+
+  body > :not(#root),
+  #root > div > :not(main),
+  main > :not(.contact-layout),
+  .contact-layout > :not(.contact-card) {
+    display: none !important;
+  }
+
+  .contact-layout {
+    display: block;
+    padding: 0;
+  }
+
+  .contact-card > .section-label,
+  .contact-card > h2,
+  .contact-card__intro {
+    display: none;
+  }
+
+  .contact-card__frame {
+    /* Out of flow: nothing can push the card onto a second page. */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 91mm;
+    height: 61mm;
+    padding: 3mm;
+    margin: 0;
+    page: card;
+  }
+
+  .business-card {
+    --u: 0.85mm;
+    page: card;
+    overflow: visible;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
 }
 
 /* Video collection and player ----------------------------------------- */
@@ -3850,16 +4021,6 @@ html.wb-active .tlui-layout {
 
   .contact-form {
     padding: 24px;
-  }
-
-  .contact-share {
-    padding: 24px;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 22px;
-  }
-
-  .contact-share__code {
-    width: 148px;
   }
 
   .video-grid--research {

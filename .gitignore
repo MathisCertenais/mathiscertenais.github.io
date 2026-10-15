@@ -9,3 +9,8 @@ node_modules
 coverage
 playwright-report
 test-results
+
+# Business card: the local design mock-up and the print exports ($ pnpm card:pdf, card:jpg)
+mathis-certenais-card.png
+mathis-certenais-card.pdf
+mathis-certenais-card.jpg
