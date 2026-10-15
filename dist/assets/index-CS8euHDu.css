@@ -2787,12 +2787,14 @@ figure {
 
 .business-card {
   --u: 4.6px;
-  /* A card is a printed object: it keeps the site's palette but not its theme
-     tokens, so it never inverts in dark mode. */
-  --card-ink: #1c1c1a;
-  --card-muted: #5c5b56;
+  /* A card is a printed object, so it keeps its own palette instead of simply
+     following the theme tokens. The dark theme overrides these below, on screen
+     only, and the print and share renders stay white on purpose. */
   --card-accent: #7e5071;
+  --card-ink: #1c1c1a;
   --card-link: #365c8a;
+  --card-muted: #5c5b56;
+  --card-plate: #ffffff;
   display: grid;
   width: calc(100 * var(--u));
   height: calc(64.71 * var(--u));
@@ -2811,7 +2813,7 @@ figure {
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   color: var(--card-ink);
-  background: #ffffff;
+  background: var(--card-plate);
   box-shadow: 0 30px 70px -50px var(--soft-shadow);
   font-family: var(--font-outfit), system-ui, sans-serif;
 }
@@ -3059,6 +3061,29 @@ figure {
   text-underline-offset: 3px;
 }
 
+/* In the dark theme the card becomes a dark panel rather than a bright plate on
+   the page: the sketch inverts into white chalk on it, and the QR keeps its own
+   white plate because scanners read dark modules on a light ground.
+   The share variant is excluded — link previews have no theme — and the whole
+   rule is scoped to the screen, so printing in dark mode still yields the white
+   card a print shop expects. */
+@media screen {
+  :root[data-theme='dark'] .business-card:not(.business-card--share) {
+    --card-accent: #d5a6c6;
+    --card-ink: #f2efe9;
+    --card-link: #94b9ed;
+    --card-muted: #c2c0ba;
+    --card-plate: #20252b;
+  }
+
+  :root[data-theme='dark'] .business-card:not(.business-card--share) .business-card__portrait {
+    /* The sketch is ink on paper, not a line drawing: inverting it turns the
+       face into a white mask. It keeps its own light plate instead — exactly
+       like the QR code beside it, which also stays dark on light. */
+    background: #ffffff;
+  }
+}
+
 /* Printing /contact yields the card alone: 85 x 55 mm of card inside 91 x 61 mm
    of paper, which leaves the 3 mm of bleed a print shop asks for. The named page
    keeps that paper size scoped to the card, so printing another page of the site
@@ -3114,6 +3139,12 @@ figure {
 
   .business-card {
     --u: 0.85mm;
+    /* The printed card is white whatever theme the visitor prints from. */
+    --card-accent: #7e5071;
+    --card-ink: #1c1c1a;
+    --card-link: #365c8a;
+    --card-muted: #5c5b56;
+    --card-plate: #ffffff;
     page: card;
     overflow: visible;
     border: 0;

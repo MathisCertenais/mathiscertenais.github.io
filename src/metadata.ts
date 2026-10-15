@@ -51,13 +51,19 @@ function ensureCanonical(href: string) {
   link.href = href
 }
 
+/** The canonical form of a route: with the trailing slash the host serves. */
+function canonicalHref(path: string, origin: string) {
+  const url = new URL(path, `${origin}/`).href
+  return url.endsWith('/') ? url : `${url}/`
+}
+
 export function applyPageMetadata(metadata: PageMetadata) {
   const configuredSiteUrl: unknown = import.meta.env.VITE_SITE_URL
   const siteOrigin =
     typeof configuredSiteUrl === 'string' && /^https?:\/\//.test(configuredSiteUrl.trim())
       ? configuredSiteUrl.trim().replace(/\/$/, '')
       : window.location.origin
-  const canonical = new URL(metadata.canonicalPath || metadata.path, `${siteOrigin}/`).href
+  const canonical = canonicalHref(metadata.canonicalPath || metadata.path, siteOrigin)
   const ogTitle = metadata.ogTitle || metadata.title
   const ogDescription = metadata.ogDescription || metadata.description
   const twitterTitle = metadata.twitterTitle || ogTitle

@@ -191,6 +191,11 @@ function isValidRoutePath(value) {
   return value === '/' || /^\/(?:[a-z0-9]+(?:-[a-z0-9]+)*)(?:\/[a-z0-9]+(?:-[a-z0-9]+)*)*$/.test(value)
 }
 
+/** Mirrors canonicalUrl() in scripts/prerender-routes.mjs. */
+function withTrailingSlash(url) {
+  return url.endsWith('/') ? url : `${url}/`
+}
+
 function toProjectPath(filePath) {
   return relative(projectRoot, filePath).split(sep).join('/')
 }
@@ -304,7 +309,7 @@ function routeDestination(root, routePath) {
 async function auditSearchFiles(manifest, siteUrl) {
   const expected = manifest
     .filter((entry) => entry.path === entry.canonical && !/noindex/i.test(entry.robots || ''))
-    .map((entry) => new URL(entry.path, `${siteUrl}/`).href)
+    .map((entry) => withTrailingSlash(new URL(entry.path, `${siteUrl}/`).href))
 
   const sitemapPath = join(distRoot, 'sitemap.xml')
   if (!(await pathExists(sitemapPath))) {
@@ -357,7 +362,7 @@ async function auditBuiltRoutes(manifest, siteUrl) {
     const title = decodeHtml(html.match(/<title>([\s\S]*?)<\/title>/i)?.[1])
     const canonicalTag = findTag(html, 'link', 'rel', 'canonical')
     const expectedCanonical = siteUrl
-      ? new URL(entry.canonical, `${siteUrl}/`).href
+      ? withTrailingSlash(new URL(entry.canonical, `${siteUrl}/`).href)
       : entry.canonical
     const expectedImage =
       entry.ogImage && siteUrl ? new URL(entry.ogImage, `${siteUrl}/`).href : entry.ogImage || ''

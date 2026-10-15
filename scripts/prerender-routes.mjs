@@ -86,6 +86,22 @@ function absoluteUrl(value) {
 }
 
 /**
+ * The URL a crawler should treat as canonical: the form the host actually
+ * serves, which carries a trailing slash on every route but the root. Declaring
+ * the slashless form would point the canonical at a URL that redirects.
+ */
+function canonicalUrl(path) {
+  const absolute = absoluteUrl(path)
+  if (!absolute || absolute.endsWith('/')) return absolute
+  return `${absolute}/`
+}
+
+/** An internal link to a route, in the form the host serves it. */
+function routeHref(path) {
+  return path === '/' ? '/' : `${path}/`
+}
+
+/**
  * Only canonical routes that are meant to be indexed belong in the sitemap. The
  * legacy aliases are `noindex, follow`, so listing them would send Search Console a
  * contradictory signal.
@@ -98,7 +114,7 @@ function indexableRoutes() {
 
 function renderSitemap() {
   const urls = indexableRoutes().map(
-    (entry) => `  <url>\n    <loc>${escapeHtml(absoluteUrl(entry.path))}</loc>\n  </url>`,
+    (entry) => `  <url>\n    <loc>${escapeHtml(canonicalUrl(entry.path))}</loc>\n  </url>`,
   )
 
   return [
@@ -259,10 +275,10 @@ function renderResearch() {
       ${chapter(researchApplications)}
       ${h2('The reasoning is written up in public.')}
       ${list([
-        link('/writing', 'Research notes'),
+        link(routeHref('/writing'), 'Research notes'),
         `<a href="${escapeHtml(sourceLinks.arxiv)}" rel="noreferrer" target="_blank">Publications on arXiv</a>`,
         `<a href="${escapeHtml(sourceLinks.numpex)}" rel="noreferrer" target="_blank">NumPEx research profile</a>`,
-        link('/contact', 'Get in touch'),
+        link(routeHref('/contact'), 'Get in touch'),
       ])}
     </main>`
 }
@@ -274,9 +290,9 @@ function renderHome() {
       ${p(identity.description)}
       ${meta(`PhD researcher at IRISA — based in ${identity.location}`)}
       ${list([
-        link('/research', 'View research'),
-        link('/resume', 'View profile'),
-        link('/contact', 'Get in touch'),
+        link(routeHref('/research'), 'View research'),
+        link(routeHref('/resume'), 'View profile'),
+        link(routeHref('/contact'), 'Get in touch'),
       ])}
       ${h2(researchFeature.heading)}
       ${label(researchThesis.label)}
@@ -304,7 +320,7 @@ function renderHome() {
       ${list(
         articleItems.map(
           (article) =>
-            `${link(article.href, article.title)} — ${escapeHtml(article.description)}`,
+            `${link(routeHref(article.href), article.title)} — ${escapeHtml(article.description)}`,
         ),
       )}
       ${linkParagraph('/writing', 'Read every entry')}
@@ -350,9 +366,9 @@ function renderArticle(article) {
       }
       ${h2('Keep reading')}
       ${list([
-        link('/writing', 'All entries'),
-        link('/research', 'The research'),
-        link('/contact', 'Get in touch'),
+        link(routeHref('/writing'), 'All entries'),
+        link(routeHref('/research'), 'The research'),
+        link(routeHref('/contact'), 'Get in touch'),
       ])}
     </main>`
 }
@@ -486,7 +502,7 @@ function renderMetadata(entry) {
   const ogImage = absoluteUrl(entry.ogImage)
   const twitterImage = absoluteUrl(entry.twitterImage || entry.ogImage)
   const canonicalPath = entry.canonical || entry.path
-  const canonical = absoluteUrl(canonicalPath)
+  const canonical = canonicalUrl(canonicalPath)
   let html = template.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(title)}</title>`)
 
   html = setNamedMeta(html, 'description', description)
@@ -504,7 +520,7 @@ function renderMetadata(entry) {
   html = setPropertyMeta(html, 'og:image', ogImage)
   html = setPropertyMeta(html, 'og:image:alt', entry.ogImageAlt)
   html = setPropertyMeta(html, 'og:url', canonical)
-  html = setCanonical(html, canonicalPath)
+  html = setCanonical(html, canonical)
 
   if (entry.path !== '/') html = removeHomePreload(html)
 
