@@ -26,6 +26,12 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
+        env:
+          # Absolute canonical, Open Graph and sitemap URLs. Without it the build
+          # skips the sitemap and emits relative og:image paths, which link
+          # previews cannot resolve. A local build that needs to match production
+          # passes it the same way: VITE_SITE_URL=https://mathiscertenais.com pnpm build
+          VITE_SITE_URL: https://mathiscertenais.com
 
       - uses: actions/upload-pages-artifact@v3
         with:
