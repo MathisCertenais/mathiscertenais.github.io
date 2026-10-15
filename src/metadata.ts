@@ -101,7 +101,7 @@ export const homeMetadata: PageMetadata = {
   title: "Mathis Certenais' Portfolio",
   description:
     'Mathis Certenais is a computer scientist and PhD researcher working on HPC, data logistics, and cross-facility scientific workflows.',
-  ogImage: '/images/mathis/social-card.svg',
+  ogImage: '/images/mathis/social-card.png',
   ogImageAlt: 'Mathis Certenais — HPC and scientific workflows',
 }
 

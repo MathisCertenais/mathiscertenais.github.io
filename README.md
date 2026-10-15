@@ -97,6 +97,26 @@ files come from the same markup and stylesheet as the page, the card in the brow
 paper cannot drift apart. The phone number on the card is also rendered as text on the page, so it is
 publicly readable there.
 
+## Search indexing
+
+`public/robots.txt` allows crawling and points at the sitemap. `sitemap.xml` is not committed: the
+build writes it from `src/data/route-manifest.json`, listing only the canonical routes that are
+meant to be indexed — today 15 of them. The 23 legacy aliases (`noindex, follow`) and `/whiteboard`
+(`noindex, nofollow`) are deliberately left out, because asking Google to index a noindex page sends
+a contradictory signal. `pnpm check:dist` fails if the sitemap and the manifest ever disagree.
+
+Both the sitemap and the Open Graph URLs need an absolute origin, which comes from
+`VITE_SITE_URL` in the committed `.env.production`. Without it the build skips the sitemap and emits
+relative `og:image` paths, which link previews cannot resolve.
+
+Link previews also cannot decode SVG, so `og:image` and `twitter:image` point at
+`public/images/mathis/social-card.png` — a 1200 × 630 PNG rendered from the editable
+`social-card.svg` next to it:
+
+```bash
+pnpm social:png   # after editing the SVG
+```
+
 ## Configuration
 
 Copy `.env.example` to `.env.local` when local overrides are needed:

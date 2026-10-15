@@ -15,6 +15,7 @@
     "check:routes": "node scripts/check-routes.mjs",
     "card:pdf": "node scripts/export-card.mjs --format pdf",
     "card:jpg": "node scripts/export-card.mjs --format jpg",
+    "social:png": "node scripts/export-social-card.mjs",
     "lint": "eslint . --max-warnings 0",
     "typecheck": "tsc -b --pretty false",
     "qr:generate": "node scripts/generate-qr.mjs",

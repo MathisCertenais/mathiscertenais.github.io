@@ -78,12 +78,14 @@ const allowedPages = new Set([
 const requiredAssets = new Set([
   '/_redirects',
   '/CNAME',
+  '/robots.txt',
   '/assets/fonts/libre-baskerville-latin.woff2',
   '/assets/fonts/outfit-latin.woff2',
   '/favicon.svg',
   '/images/mathis/ska-processing-chain.webp',
   '/images/mathis/hero-research.svg',
   '/images/mathis/mathis-portrait.webp',
+  '/images/mathis/social-card.png',
   '/images/mathis/social-card.svg',
   '/images/mathis/videos/interview.webp',
   '/images/mathis/videos/webinar.webp',
@@ -245,6 +247,49 @@ function routeDestination(root, routePath) {
     : join(root, ...routePath.split('/').filter(Boolean), 'index.html')
 }
 
+/**
+ * The sitemap and robots.txt are what search engines actually read, so they are
+ * audited against the manifest: every canonical, indexable route must appear,
+ * no alias and no noindex route may appear, and robots.txt must point at the
+ * sitemap. A stale sitemap asking Google to index a noindex page fails here
+ * rather than in Search Console.
+ */
+async function auditSearchFiles(manifest, siteUrl) {
+  const expected = manifest
+    .filter((entry) => entry.path === entry.canonical && !/noindex/i.test(entry.robots || ''))
+    .map((entry) => new URL(entry.path, `${siteUrl}/`).href)
+
+  const sitemapPath = join(distRoot, 'sitemap.xml')
+  if (!(await pathExists(sitemapPath))) {
+    issues.push('Missing dist/sitemap.xml even though the build had an origin configured')
+  } else {
+    const sitemap = await readFile(sitemapPath, 'utf8')
+    const declared = [...sitemap.matchAll(/<loc>([^<]*)<\/loc>/g)].map((match) => decodeHtml(match[1]))
+    if (declared.length !== new Set(declared).size) issues.push('Sitemap lists the same URL twice')
+    for (const url of expected) {
+      if (!declared.includes(url)) issues.push(`Sitemap is missing an indexable route: ${url}`)
+    }
+    for (const url of declared) {
+      if (!expected.includes(url)) issues.push(`Sitemap lists a URL that is not indexable: ${url}`)
+    }
+  }
+
+  const robotsPath = join(distRoot, 'robots.txt')
+  if (!(await pathExists(robotsPath))) {
+    issues.push('Missing dist/robots.txt')
+    return
+  }
+
+  const robots = await readFile(robotsPath, 'utf8')
+  if (!robots.includes(`${siteUrl}/sitemap.xml`)) issues.push('robots.txt does not point at the sitemap')
+  if (/^\s*disallow:\s*\/\s*$/im.test(robots)) {
+    issues.push('robots.txt disallows the whole site')
+  }
+  if (/^\s*disallow:\s*\/(?:whiteboard|articles|work)/im.test(robots)) {
+    issues.push('robots.txt blocks a noindex route, so search engines cannot see the noindex')
+  }
+}
+
 async function auditBuiltRoutes(manifest, siteUrl) {
   const builtAssetReferences = new Set()
   await auditTextTree(distRoot, 'dist', builtAssetReferences)
@@ -342,6 +387,8 @@ async function auditBuiltRoutes(manifest, siteUrl) {
       issues.push('Incorrect robots metadata in dist/404.html')
     }
   }
+
+  if (siteUrl) await auditSearchFiles(manifest, siteUrl)
 }
 
 let manifest
