@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react'
 import { identity } from '../content'
 import { ArrowIcon } from './Icons'
+import { BusinessCard } from './BusinessCard'
 import { PageHero } from './PageHero'
 
 type FormStatus = 'error' | 'idle' | 'sending' | 'success'
@@ -112,27 +113,15 @@ export function ContactPage() {
           ) : null}
         </form>
 
-        <div className="contact-share">
-          <img
-            alt="QR code that opens https://mathiscertenais.com"
-            className="contact-share__code"
-            height={1024}
-            src="/images/mathis/qr/mathiscertenais-com.svg"
-            width={1024}
-          />
-          <div className="contact-share__copy">
-            <p className="section-label">Scan</p>
-            <h2>Open this site on another device.</h2>
-            <p>
-              Point a phone camera at the code to reach mathiscertenais.com. The image is generated
-              locally and served from this domain, so no third-party QR service is involved.
-            </p>
-            <a
-              download="mathiscertenais-com-qr.svg"
-              href="/images/mathis/qr/mathiscertenais-com.svg"
-            >
-              Download the QR code <ArrowIcon />
-            </a>
+        <div className="contact-card">
+          <p className="section-label">Business card</p>
+          <h2>The card I hand out.</h2>
+          <p className="contact-card__intro">
+            The card on screen is the card that goes to print: role, affiliation and direct
+            contacts at the standard 85 × 55 mm size.
+          </p>
+          <div className="contact-card__frame">
+            <BusinessCard />
           </div>
         </div>
       </section>

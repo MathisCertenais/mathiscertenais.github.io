@@ -55,10 +55,10 @@ without creating duplicate search results. The former `/work/*` aliases resolve 
 
 ## Self-hosted QR code
 
-`public/images/mathis/qr/mathiscertenais-com.svg` is the QR code displayed on `/contact`. It encodes
-`https://mathiscertenais.com` and is served from this origin, so no third-party QR service ever sees
-the URL or the visitors who scan it. The asset is committed as a plain SVG, so the site makes no
-request to a QR provider at build time or at runtime.
+`public/images/mathis/qr/mathiscertenais-com.svg` is the QR code shown on the business card on
+`/contact`. It encodes `https://mathiscertenais.com` and is served from this origin, so no
+third-party QR service ever sees the URL or the visitors who scan it. The asset is committed as a
+plain SVG, so the site makes no request to a QR provider at build time or at runtime.
 
 Regenerate it with the dependency-free encoder in `scripts/generate-qr.mjs`:
 
@@ -72,6 +72,30 @@ the smallest version that fits, and writes to `public/images/mathis/qr/<host>.sv
 `--out` are available when a fixed symbol size or destination is needed. Keep the file name stable
 or update the reference on the contact page, since the route validator rejects unreferenced public
 assets.
+
+## Business card
+
+The card on `/contact` is HTML and CSS rather than an exported bitmap: it stays sharp at any zoom,
+reuses the portrait and the QR code the site already serves, and keeps its own colours so it stays
+readable in the dark theme. Its geometry is driven by a single `--u` unit — one percent of the card
+width on screen, 0.85 mm once printed — so the screen version and the printed version are the same
+layout, at the same proportions. Copy and contacts live in `businessCard` in `src/content.ts`.
+
+Printing `/contact` from a browser yields the card alone, on a 91 × 61 mm page: the standard
+85 × 55 mm card plus the 3 mm of bleed a print shop asks for. Two commands write the files shops ask
+for, one for each kind:
+
+```bash
+pnpm card:pdf   # mathis-certenais-card.pdf — 91 × 61 mm, vector text
+pnpm card:jpg   # mathis-certenais-card.jpg — 1376 × 924 px, 384 dpi, sRGB
+```
+
+`--format both` writes the two of them in a single pass. The export starts Vite itself and drives a
+local Chromium build over the DevTools protocol (set `CHROME_PATH` to choose one), then writes the
+files named by the first argument, or `mathis-certenais-card.<ext>` in the project root. Because both
+files come from the same markup and stylesheet as the page, the card in the browser and the card on
+paper cannot drift apart. The phone number on the card is also rendered as text on the page, so it is
+publicly readable there.
 
 ## Configuration
 

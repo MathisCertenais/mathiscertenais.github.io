@@ -1,0 +1,1 @@
+import{t as e}from"./WhiteboardPage-CVg1LWt0.js";export{e as sanitizeSvg};

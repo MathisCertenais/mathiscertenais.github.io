@@ -5,8 +5,26 @@ export const identity = {
   description:
     'Computer scientist researching high-performance computing and cross-facility scientific workflows for radio astronomy.',
   location: 'Rennes, Brittany, France',
-  email: 'mathis.certenais@irisa.fr',
+  email: 'mathiscertenais@gmail.com',
   linkedin: 'https://www.linkedin.com/in/mathiscertenais/',
+} as const
+
+/**
+ * The business card shown on the contact page. It is rendered from the same
+ * markup and styles that the print export uses, so what visitors see is what
+ * the printer receives.
+ */
+export const businessCard = {
+  affiliation:
+    'Ph.D. Candidate · IRISA, Université de Rennes · Computer Science Engineer M.Sc.',
+  tagline: 'High-Performance Computing · Workflows · Data Logistics · AI',
+  phone: '+33 6 48 22 83 30',
+  phoneHref: 'tel:+3364822830',
+  linkedinLabel: 'linkedin.com/in/mathiscertenais',
+  website: 'https://mathiscertenais.com',
+  websiteLabel: 'mathiscertenais.com',
+  portrait: '/images/mathis/mathis-portrait.webp',
+  qr: '/images/mathis/qr/mathiscertenais-com.svg',
 } as const
 
 export const sourceLinks = {
