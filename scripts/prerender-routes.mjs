@@ -60,6 +60,31 @@ function absoluteUrl(value) {
   return new URL(value, `${siteUrl}/`).href
 }
 
+/**
+ * Only canonical routes that are meant to be indexed belong in the sitemap. The
+ * legacy aliases are `noindex, follow` and /whiteboard is `noindex, nofollow`,
+ * so listing them would send Search Console a contradictory signal.
+ */
+function indexableRoutes() {
+  return manifest.filter(
+    (entry) => entry.path === entry.canonical && !/noindex/i.test(entry.robots || ''),
+  )
+}
+
+function renderSitemap() {
+  const urls = indexableRoutes().map(
+    (entry) => `  <url>\n    <loc>${escapeHtml(absoluteUrl(entry.path))}</loc>\n  </url>`,
+  )
+
+  return [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ...urls,
+    '</urlset>',
+    '',
+  ].join('\n')
+}
+
 function replaceOrInsert(html, pattern, tag) {
   if (pattern.test(html)) return html.replace(pattern, tag)
   return html.replace(
@@ -167,3 +192,14 @@ await writeFile(
 )
 
 console.log(`Prerendered metadata shells for ${manifest.length} routes plus 404.html.`)
+
+// A sitemap needs absolute URLs, so it is only written when the deployed origin
+// is configured. The deploy workflow sets VITE_SITE_URL for exactly this reason.
+if (siteUrl) {
+  await writeFile(join(distRoot, 'sitemap.xml'), renderSitemap())
+  console.log(`Wrote dist/sitemap.xml listing ${indexableRoutes().length} indexable routes.`)
+} else {
+  console.warn(
+    'VITE_SITE_URL is not set, so dist/sitemap.xml was skipped: a sitemap needs absolute URLs.',
+  )
+}

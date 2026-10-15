@@ -6,6 +6,9 @@ node_modules
 .env
 .env.*
 !.env.example
+# The production origin is public configuration, not a secret: the build needs it
+# to emit absolute canonical, Open Graph and sitemap URLs. See the README.
+!.env.production
 coverage
 playwright-report
 test-results
