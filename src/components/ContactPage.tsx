@@ -111,6 +111,30 @@ export function ContactPage() {
             </div>
           ) : null}
         </form>
+
+        <div className="contact-share">
+          <img
+            alt="QR code that opens https://mathiscertenais.com"
+            className="contact-share__code"
+            height={1024}
+            src="/images/mathis/qr/mathiscertenais-com.svg"
+            width={1024}
+          />
+          <div className="contact-share__copy">
+            <p className="section-label">Scan</p>
+            <h2>Open this site on another device.</h2>
+            <p>
+              Point a phone camera at the code to reach mathiscertenais.com. The image is generated
+              locally and served from this domain, so no third-party QR service is involved.
+            </p>
+            <a
+              download="mathiscertenais-com-qr.svg"
+              href="/images/mathis/qr/mathiscertenais-com.svg"
+            >
+              Download the QR code <ArrowIcon />
+            </a>
+          </div>
+        </div>
       </section>
     </main>
   )

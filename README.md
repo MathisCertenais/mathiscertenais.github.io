@@ -53,6 +53,26 @@ Legacy portfolio URLs remain available as `noindex, follow` compatibility aliase
 points directly to a relevant Mathis canonical route, so existing inbound links keep working
 without creating duplicate search results. The former `/work/*` aliases resolve to `/research`.
 
+## Self-hosted QR code
+
+`public/images/mathis/qr/mathiscertenais-com.svg` is the QR code displayed on `/contact`. It encodes
+`https://mathiscertenais.com` and is served from this origin, so no third-party QR service ever sees
+the URL or the visitors who scan it. The asset is committed as a plain SVG, so the site makes no
+request to a QR provider at build time or at runtime.
+
+Regenerate it with the dependency-free encoder in `scripts/generate-qr.mjs`:
+
+```bash
+pnpm qr:generate
+pnpm qr:generate https://mathiscertenais.com/contact --ecc Q
+```
+
+The generator implements ISO/IEC 18004 byte mode directly, defaults to error-correction level M and
+the smallest version that fits, and writes to `public/images/mathis/qr/<host>.svg`. `--version` and
+`--out` are available when a fixed symbol size or destination is needed. Keep the file name stable
+or update the reference on the contact page, since the route validator rejects unreferenced public
+assets.
+
 ## Configuration
 
 Copy `.env.example` to `.env.local` when local overrides are needed:

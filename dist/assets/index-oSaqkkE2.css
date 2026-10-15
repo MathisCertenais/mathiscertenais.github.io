@@ -2761,6 +2761,60 @@ figure {
   text-underline-offset: 3px;
 }
 
+.contact-share {
+  display: grid;
+  padding: clamp(28px, 4vw, 48px);
+  grid-column: 1 / -1;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(24px, 4vw, 56px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  background: var(--surface-card);
+}
+
+/* A QR code needs a light background and a clear margin in every theme, so the
+   white plate stays white instead of following the surface tokens. */
+.contact-share__code {
+  width: clamp(128px, 16vw, 168px);
+  height: auto;
+  padding: 10px;
+  border-radius: var(--radius-md);
+  background: #ffffff;
+  box-shadow: 0 14px 36px -28px var(--soft-shadow);
+}
+
+.contact-share__copy {
+  display: flex;
+  max-width: 560px;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-share__copy h2 {
+  font-family: var(--font-libre-baskerville), Georgia, serif;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.contact-share__copy > p:not(.section-label) {
+  color: var(--text-mid);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.contact-share__copy a {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 6px;
+  color: var(--link);
+  font-size: 15px;
+  font-weight: 500;
+}
+
 /* Video collection and player ----------------------------------------- */
 
 .video-grid--research {
@@ -3796,6 +3850,16 @@ html.wb-active .tlui-layout {
 
   .contact-form {
     padding: 24px;
+  }
+
+  .contact-share {
+    padding: 24px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+  }
+
+  .contact-share__code {
+    width: 148px;
   }
 
   .video-grid--research {
