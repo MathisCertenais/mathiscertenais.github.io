@@ -123,6 +123,9 @@ export function ContactPage() {
           <div className="contact-card__frame">
             <BusinessCard />
           </div>
+          <div className="share-card">
+            <BusinessCard variant="share" />
+          </div>
         </div>
       </section>
     </main>

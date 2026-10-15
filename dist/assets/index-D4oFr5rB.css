@@ -2923,6 +2923,75 @@ figure {
   place-self: end end;
 }
 
+/* The share variant: the same card at the 1200 x 630 shape link previews render
+   (1.905:1), with the QR dropped and the contacts trimmed to the domain. It is
+   hidden on the page — it exists so `pnpm social:png` can render it — and shows
+   only while the capture runs. Its portrait panel is 48u x 52.5u, which is the
+   sketch's own 0.914 ratio, so nothing is cropped at either size. */
+.share-card {
+  display: none;
+}
+
+.business-card--share {
+  --u: 12px;
+  width: calc(100 * var(--u));
+  height: calc(52.5 * var(--u));
+  grid-template-areas: 'identity portrait';
+  grid-template-columns: minmax(0, 1fr) calc(48 * var(--u));
+  grid-template-rows: minmax(0, 1fr);
+  gap: 0;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.business-card--share .business-card__portrait {
+  width: calc(48 * var(--u));
+  height: calc(52.5 * var(--u));
+  margin: calc(-6 * var(--u)) calc(-6 * var(--u)) calc(-6 * var(--u)) 0;
+  object-fit: contain;
+}
+
+.business-card--share .business-card__name {
+  font-size: calc(5.2 * var(--u));
+}
+
+.business-card--share .business-card__role {
+  margin-top: calc(1.4 * var(--u));
+  font-size: calc(2.1 * var(--u));
+}
+
+.business-card--share .business-card__rule {
+  width: calc(12 * var(--u));
+  height: calc(0.6 * var(--u));
+  margin: calc(2.6 * var(--u)) 0 calc(2 * var(--u));
+}
+
+.business-card--share .business-card__tagline {
+  max-width: calc(40 * var(--u));
+  font-size: calc(2.4 * var(--u));
+}
+
+.business-card--share .business-card__contacts {
+  padding-top: calc(1.5 * var(--u));
+  font-size: calc(2.2 * var(--u));
+}
+
+/* While the share capture runs, nothing but the share card is on screen. */
+.share-capture .site-header,
+.share-capture .nav-spacer,
+.share-capture .site-footer,
+.share-capture main > *:not(.contact-layout),
+.share-capture .contact-layout > *:not(.contact-card),
+.share-capture .contact-card > *:not(.share-card) {
+  display: none !important;
+}
+
+.share-capture .share-card {
+  display: block;
+}
+
 /* Printing /contact yields the card alone: 85 x 55 mm of card inside 91 x 61 mm
    of paper, which leaves the 3 mm of bleed a print shop asks for. The named page
    keeps that paper size scoped to the card, so printing another page of the site
