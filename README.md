@@ -117,12 +117,17 @@ Without it the build skips `dist/sitemap.xml` and emits relative `og:image` path
 previews cannot resolve. `pnpm check` therefore only audits the sitemap when the origin is set.
 
 Link previews also cannot decode SVG, so `og:image` and `twitter:image` point at
-`public/images/mathis/social-card.png` — a 1200 × 630 PNG rendered from the editable
-`social-card.svg` next to it:
+`public/images/mathis/social-card.png`: the card's `share` variant — the same design at 1200 × 630,
+the 1.905:1 shape LinkedIn and Facebook render — without the QR, which is pointless in a preview
+where the reader already has the link, and with the contacts trimmed to the domain. Regenerate it
+after any change to the card:
 
 ```bash
-pnpm social:png   # after editing the SVG
+pnpm social:png
 ```
+
+The export refuses to write the file if the copy outgrows the card, so a clipped share image fails
+loudly instead of shipping.
 
 ## Configuration
 

@@ -1,19 +1,22 @@
 #!/usr/bin/env node
 /**
- * Exports the contact page business card as the files a print shop asks for: a
- * PDF for most printers, and a JPEG for the ones that only take images.
+ * Exports the contact page business card as the files a print shop asks for — a
+ * PDF, a JPEG — and as the image link previews need.
  *
- * The card is HTML and CSS, so both files come from the browser's own rendering
+ * The card is HTML and CSS, so every file comes from the browser's own rendering
  * of the very same markup and styles the page uses: no second design to keep in
  * sync, and nothing to redraw when the copy changes. The print stylesheet on
  * /contact isolates the card and sizes the paper to 91 x 61 mm, which is a
- * 85 x 55 mm card plus 3 mm of bleed on each side.
+ * 85 x 55 mm card plus 3 mm of bleed on each side. The share image renders the
+ * card's `share` variant instead: the same design at 1200 x 630, the shape
+ * LinkedIn and Facebook render.
  *
  * Usage:
- *   node scripts/export-card.mjs [output-path] [--format pdf|jpg|both]
+ *   node scripts/export-card.mjs [output-path] [--format pdf|jpg|both|social]
  *
  * Defaults to --format pdf and mathis-certenais-card.<ext> in the project root.
- * Set CHROME_PATH to use a specific Chromium build.
+ * `social` always writes public/images/mathis/social-card.png, which the site
+ * references. Set CHROME_PATH to use a specific Chromium build.
  */
 
 import { spawn } from 'node:child_process'
@@ -26,13 +29,23 @@ import { createServer } from 'vite'
 
 const projectRoot = fileURLToPath(new URL('..', import.meta.url))
 const MM = 1 / 25.4 // millimetres to inches, for the printToPDF paper size
-const FORMATS = ['pdf', 'jpg', 'both']
+const FORMATS = ['pdf', 'jpg', 'both', 'social']
 
 /* The card is 91 x 61 mm. A JPEG at four device pixels per CSS pixel lands at
    1376 x 922 px, which is 384 dpi — comfortably above the 300 dpi floor print
    shops ask for — and needs no resampling step afterwards. */
 const JPEG_SCALE = 4
 const JPEG_QUALITY = 95
+
+/* The share image is the size LinkedIn and Facebook render into: 1200 x 630,
+   which is what the `share` variant of the card is drawn at. */
+const SHARE_WIDTH = 1200
+const SHARE_HEIGHT = 630
+const SHARE_DESTINATION = join(projectRoot, 'public', 'images', 'mathis', 'social-card.png')
+
+function pngSize(buffer) {
+  return { height: buffer.readUInt32BE(20), width: buffer.readUInt32BE(16) }
+}
 
 /** Pixel dimensions of a JPEG, read from its start-of-frame segment. */
 function jpegSize(buffer) {
@@ -184,7 +197,6 @@ function parseArguments(argv) {
 const { base, format } = parseArguments(process.argv.slice(2))
 const wanted = format === 'both' ? ['pdf', 'jpg'] : [format]
 const written = []
-
 const server = await createServer({
   root: projectRoot,
   logLevel: 'warn',
@@ -356,6 +368,76 @@ if (wanted.includes('jpg')) {
     detail: pixels ? `${pixels.width} x ${pixels.height} px, ${dpi} dpi` : 'JPEG',
     kb: Math.round(data.length / 1024),
     path,
+  })
+}
+
+if (wanted.includes('social')) {
+  // Back to screen media: the share variant is a page element, not a print one.
+  await send('Emulation.setEmulatedMedia', {
+    features: [{ name: 'prefers-color-scheme', value: 'light' }],
+    media: '',
+  })
+  await evaluate(`document.documentElement.classList.add('share-capture')`)
+  await new Promise((done) => setTimeout(done, 400))
+
+  const share = await evaluate(`(() => {
+    const card = document.querySelector('.business-card--share')
+    if (!card) return null
+    const rect = card.getBoundingClientRect()
+    // Anything drawn outside the card would be silently clipped by the capture,
+    // which is how a share image ends up missing its last line.
+    const escapes = []
+    for (const node of card.querySelectorAll('*')) {
+      const box = node.getBoundingClientRect()
+      if (box.width === 0 && box.height === 0) continue
+      if (box.right > rect.right + 1 || box.bottom > rect.bottom + 1) {
+        escapes.push(
+          (node.className || node.tagName) + ' ' + Math.round(box.right - rect.left) + 'x' + Math.round(box.bottom - rect.top),
+        )
+      }
+    }
+    return {
+      escapes,
+      height: Math.round(rect.height),
+      offsetX: rect.left + window.scrollX,
+      offsetY: rect.top + window.scrollY,
+      width: Math.round(rect.width),
+    }
+  })()`)
+
+  if (!share) throw new Error('The page rendered no share variant of the card.')
+  if (share.width !== SHARE_WIDTH || share.height !== SHARE_HEIGHT) {
+    throw new Error(
+      `The share card rendered at ${share.width}x${share.height} instead of ${SHARE_WIDTH}x${SHARE_HEIGHT}.`,
+    )
+  }
+  if (share.escapes.length > 0) {
+    throw new Error(
+      `Content runs outside the share card, so the image would be clipped: ${share.escapes.join(', ')}`,
+    )
+  }
+
+  const shot = await send('Page.captureScreenshot', {
+    // Flatten onto white: the card's rounded corners would otherwise stay
+    // transparent, and previews composite PNG alpha inconsistently.
+    backgroundColor: { a: 1, b: 255, g: 255, r: 255 },
+    captureBeyondViewport: true,
+    clip: {
+      height: SHARE_HEIGHT,
+      scale: 1,
+      width: SHARE_WIDTH,
+      x: share.offsetX,
+      y: share.offsetY,
+    },
+    format: 'png',
+    optimizeForSpeed: false,
+  })
+  const data = Buffer.from(shot.data, 'base64')
+  await writeFile(SHARE_DESTINATION, data)
+  written.push({
+    detail: `${pngSize(data).width} x ${pngSize(data).height} px`,
+    kb: Math.round(data.length / 1024),
+    path: SHARE_DESTINATION,
   })
 }
 
