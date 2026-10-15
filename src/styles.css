@@ -3044,10 +3044,11 @@ figure {
   }
 
   :root[data-theme='dark'] .business-card:not(.business-card--share) .business-card__portrait {
-    /* The sketch is ink on paper, not a line drawing: inverting it turns the
-       face into a white mask. It keeps its own light plate instead — exactly
-       like the QR code beside it, which also stays dark on light. */
-    background: #ffffff;
+    /* Same treatment as the home page's portrait: the sketch keeps its
+       transparent ground, so the panel shows through and the pencil reads as
+       light strokes on it, dimmed so it does not glare. */
+    background: transparent;
+    filter: brightness(0.86) saturate(0.9);
   }
 }
 
