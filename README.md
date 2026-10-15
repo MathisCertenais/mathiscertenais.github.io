@@ -10,7 +10,6 @@ system and interaction quality of the original UI.
 - React 19 and TypeScript
 - Vite 8
 - Plain CSS with light, dark, and system-aware themes
-- `tldraw` for the local whiteboard
 - Static metadata shells for every public route and compatibility alias
 
 ## Requirements
@@ -26,8 +25,7 @@ pnpm dev
 ```
 
 Vite serves every route through the client-side router. The theme control persists the visitor's
-explicit preference in local storage and otherwise follows the operating system. Hold the header
-mark for 1.5 seconds to open the browser-local whiteboard.
+explicit preference in local storage and otherwise follows the operating system.
 
 ## Content and routes
 
@@ -45,9 +43,8 @@ so the research is legible from the portfolio root without visiting `/research`.
 Canonical sections include:
 
 - `/research`
-- `/writing` and six update/detail pages
-- `/videos`, `/about`, `/resume`, `/resources`, `/archive`, and `/contact`
-- `/whiteboard`, which is deliberately excluded from search indexing
+- `/writing` and eight article pages
+- `/videos`, `/about`, `/resume`, and `/contact`
 
 Legacy portfolio URLs remain available as `noindex, follow` compatibility aliases. Each alias
 points directly to a relevant Mathis canonical route, so existing inbound links keep working
@@ -101,9 +98,8 @@ publicly readable there.
 
 `public/robots.txt` allows crawling and points at the sitemap. `sitemap.xml` is not committed: the
 build writes it from `src/data/route-manifest.json`, listing only the canonical routes that are
-meant to be indexed — today 15 of them. The 23 legacy aliases (`noindex, follow`) and `/whiteboard`
-(`noindex, nofollow`) are deliberately left out, because asking Google to index a noindex page sends
-a contradictory signal. `pnpm check:dist` fails if the sitemap and the manifest ever disagree.
+meant to be indexed — today 15 of them. The 23 legacy aliases (`noindex, follow`) are deliberately
+left out, because asking Google to index a noindex page sends a contradictory signal. `pnpm check:dist` fails if the sitemap and the manifest ever disagree.
 
 Both the sitemap and the Open Graph URLs need an absolute origin, which comes from
 `VITE_SITE_URL`: the deploy workflow sets it, and a local build that needs to match production passes
@@ -128,6 +124,22 @@ pnpm social:png
 
 The export refuses to write the file if the copy outgrows the card, so a clipped share image fails
 loudly instead of shipping.
+
+## Prerendered content
+
+Every indexable route ships its text inside `#root`, written at build time from `src/content.ts` by
+`scripts/prerender-routes.mjs`. A client that never runs JavaScript — Google's first pass, Bing, the
+crawlers behind answer engines, any plain parser — therefore reads the page instead of an empty div.
+React clears `#root` when it mounts, so visitors see the app and only the app.
+
+The fallbacks are generated from the same content the components render, which is why the prose of
+the profile pages lives in `content.ts` rather than inside the components. Adding a route means
+adding a generator in `prerender-routes.mjs`: the build fails if an indexable canonical route has
+none.
+
+`pnpm check:dist` then verifies every shell: expected strings, a minimum amount of readable text and
+a minimum number of links, so a fallback that silently loses a section — or a link that got escaped
+into plain text — fails the build rather than the search results.
 
 ## Configuration
 

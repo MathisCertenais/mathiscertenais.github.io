@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { NotFoundPage } from './components/NotFoundPage'
 import { PortfolioPage } from './components/PortfolioPage'
 import { SiteFooter } from './components/SiteFooter'
@@ -6,17 +6,12 @@ import { SiteHeader } from './components/SiteHeader'
 import { useAppLocation } from './routing'
 import { applyPageMetadata, notFoundMetadata } from './metadata'
 import { getRouteEntry } from './routeManifest'
-import { useTheme } from './theme/ThemeProvider'
-
-const WhiteboardPage = lazy(() => import('./whiteboard/WhiteboardPage'))
 
 function App() {
   const location = useAppLocation()
-  const { resolvedTheme } = useTheme()
   const previousPathRef = useRef(location.pathname)
   const route = getRouteEntry(location.pathname)
   const isHome = route?.page === 'home'
-  const isWhiteboard = route?.page === 'whiteboard'
 
   useEffect(() => {
     if (route) {
@@ -56,22 +51,12 @@ function App() {
     <div id={isHome ? 'home' : undefined}>
       <SiteHeader currentPath={location.pathname} />
       <div aria-hidden="true" className="nav-spacer" />
-      {isWhiteboard ? (
-        <Suspense
-          fallback={
-            <main className="route-loading" id="main-content" tabIndex={-1}>
-              <p>Loading whiteboard…</p>
-            </main>
-          }
-        >
-          <WhiteboardPage resolvedTheme={resolvedTheme} />
-        </Suspense>
-      ) : route ? (
+      {route ? (
         <PortfolioPage key={location.pathname} page={route.page} />
       ) : (
         <NotFoundPage />
       )}
-      {isWhiteboard ? null : <SiteFooter />}
+      <SiteFooter />
     </div>
   )
 }

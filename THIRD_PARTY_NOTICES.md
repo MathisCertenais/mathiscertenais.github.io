@@ -11,8 +11,6 @@ the portfolio without permission.
 The bundled Outfit and Libre Baskerville font files are distributed under the SIL Open Font
 License 1.1. Their names and font software remain the property of their respective authors.
 
-The whiteboard uses `tldraw`, which retains its own license and notices in the installed package.
-
 Linked research pages and embedded external media remain subject to the terms and copyright of
 their respective publishers and creators. Official thumbnail stills from ECLAT and AstroTube are
 included only to identify the corresponding interview, webinar, and hackathon videos. Those images

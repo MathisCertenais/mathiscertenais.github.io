@@ -1575,6 +1575,121 @@ export const expertise = [
   'HPC applications as a service',
 ] as const
 
+/**
+ * Prose of the profile pages. It lives here rather than inside the components so
+ * the prerendered fallback of each route can be generated from the same strings
+ * the page renders, and so the two can never drift apart.
+ */
+export const aboutPage = {
+  eyebrow: 'About',
+  title: 'Building infrastructure through collaboration.',
+  intro:
+    'A computer scientist from Brittany working across high-performance computing, data logistics, and radio astronomy.',
+  story: {
+    heading: 'From parallel architectures to scientific data logistics.',
+    label: 'Research profile',
+    paragraphs: [
+      'Mathis studies methods and tools for cross-facility workflows at IRISA and Université de Rennes. His doctoral research sits within the NumPEx French exascale program and uses ECLAT’s radio-astronomy collaborations as a demanding practical context.',
+      'His background spans engineering studies at ESIR, a one-year double-degree program at UQAC in Canada, and earlier research-engineering work on artificial intelligence, including large language models and retrieval-augmented generation.',
+      'The common thread is making complex computing infrastructure useful to people outside systems research: connecting domain scientists, software, data, and facilities without losing reproducibility or scientific meaning.',
+    ],
+  },
+  principles: {
+    label: 'Working principles',
+    items: [
+      {
+        number: '01',
+        title: 'Multidisciplinary by design',
+        text: 'Computer scientists, astrophysicists, engineers, and infrastructure teams solve better problems together.',
+      },
+      {
+        number: '02',
+        title: 'Complexity belongs behind a useful interface',
+        text: 'High-level services can reduce operational friction while keeping scientific requirements visible.',
+      },
+      {
+        number: '03',
+        title: 'Research should remain responsible',
+        text: 'YoungPEx conversations include energy footprints, interdisciplinarity, and environmentally responsible research.',
+      },
+    ],
+  },
+} as const
+
+export const resumePage = {
+  eyebrow: 'Research profile',
+  intro:
+    'Verified professional and academic information drawn from Mathis’s supplied website, LinkedIn profile, and public institutional research pages.',
+  profile: {
+    heading: 'Computer scientist researching HPC and scientific workflows.',
+    label: 'Profile',
+    text: 'Doctoral researcher at IRISA and Université de Rennes working on data logistics and collaborative systems of systems in the NumPEx and ECLAT context.',
+  },
+  experienceLabel: 'Experience & education',
+  certifications: [
+    { date: 'October 2025 · EOSC Association', title: 'Bulk Data Transfer Service · Certificate of Completion' },
+    { date: 'October 2025 · EOSC Association', title: 'Starting Guide · Certificate of Completion' },
+  ],
+  presentations: [
+    {
+      date: 'February 2026 · ECLAT webinar',
+      text: 'A practical case study with the DDF software.',
+      title: 'HPC as a Service for Radio Astronomy',
+    },
+    {
+      date: 'December 2025 · ECLAT technical workshop',
+      text: 'A data-logistics approach with the DDF Pipeline as a practical deployment scenario.',
+      title: 'HPC Software as a Service',
+    },
+  ],
+  publication: {
+    authors: 'Mathis Certenais, François Bodin, and Laurent Morin.',
+    date: '2025 · Preprint',
+    href: 'https://arxiv.org/abs/2509.03075',
+    label: 'Selected publication',
+    linkLabel: 'arXiv:2509.03075',
+    title: 'A description of the radio astronomy data processing tool DDF Pipeline',
+  },
+} as const
+
+export const contactPage = {
+  intro:
+    'Mathis is based in Rennes, France and works across computer science, HPC, and radio astronomy.',
+} as const
+
+/**
+ * The home page's research feature. Kept here for the same reason as the profile
+ * pages: the prerendered fallback of the home page reads the same strings the
+ * section renders.
+ */
+export const researchFeature = {
+  heading: 'Research',
+  leads: [
+    'Scientific instruments produce more data than any single site can receive, process, or keep. Turning those flows into science-ready products means running chains that cross instruments, supercomputers, storage platforms, and research networks — each under a different administration and a different law.',
+    'That is a governance problem before it is a bandwidth problem. The thesis models this data logistics, optimises it against competing criteria, specifies the metadata it needs, and exposes it to scientists without hiding the requirements that keep results secure and reproducible.',
+  ],
+  context: {
+    label: 'Radio astronomy',
+    text: 'Grounded in the DDF Pipeline for LOFAR, an SKA precursor, running across the French national supercomputers and European research storage.',
+  },
+} as const
+
+export const writingPage = {
+  eyebrow: 'Insights',
+  intro:
+    'Notes and recorded moments from research at the intersection of high-performance computing, scientific workflows, and radio astronomy.',
+  sectionHeading: 'Latest entries',
+  title: 'Explaining systems through their use.',
+} as const
+
+export const videosPage = {
+  eyebrow: 'Videos',
+  intro:
+    'Interviews, webinars, and collaborative research events from Mathis’s work with ECLAT and the radio-astronomy community.',
+  sectionHeading: 'Watch & listen',
+  title: 'Research, explained in context.',
+} as const
+
 export function getArticle(id: string) {
   return articleItems.find((article) => article.id === id)
 }

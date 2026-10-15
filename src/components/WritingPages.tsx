@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { articleItems, getArticle, videoItems, type ArticleBlock } from '../content'
+import { articleItems, getArticle, videoItems, writingPage, type ArticleBlock } from '../content'
 import { ArrowIcon } from './Icons'
 import { PageHero } from './PageHero'
 import { WritingSection } from './WritingSection'
@@ -79,11 +79,11 @@ export function WritingPage() {
   return (
     <main id="main-content" tabIndex={-1}>
       <PageHero
-        eyebrow="Insights"
-        intro="Notes and recorded moments from research at the intersection of high-performance computing, scientific workflows, and radio astronomy."
-        title="Explaining systems through their use."
+        eyebrow={writingPage.eyebrow}
+        intro={writingPage.intro}
+        title={writingPage.title}
       />
-      <WritingSection heading="Latest entries" showAllLink={false} />
+      <WritingSection heading={writingPage.sectionHeading} showAllLink={false} />
     </main>
   )
 }
