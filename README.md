@@ -106,8 +106,15 @@ meant to be indexed — today 15 of them. The 23 legacy aliases (`noindex, follo
 a contradictory signal. `pnpm check:dist` fails if the sitemap and the manifest ever disagree.
 
 Both the sitemap and the Open Graph URLs need an absolute origin, which comes from
-`VITE_SITE_URL` in the committed `.env.production`. Without it the build skips the sitemap and emits
-relative `og:image` paths, which link previews cannot resolve.
+`VITE_SITE_URL`: the deploy workflow sets it, and a local build that needs to match production passes
+it the same way:
+
+```bash
+VITE_SITE_URL=https://mathiscertenais.com pnpm build
+```
+
+Without it the build skips `dist/sitemap.xml` and emits relative `og:image` paths, which link
+previews cannot resolve. `pnpm check` therefore only audits the sitemap when the origin is set.
 
 Link previews also cannot decode SVG, so `og:image` and `twitter:image` point at
 `public/images/mathis/social-card.png` — a 1200 × 630 PNG rendered from the editable
