@@ -184,7 +184,7 @@ export function ArticlePage({ articleId }: { articleId: string }) {
         {articleItems
           .filter((item) => item.id !== article.id)
           .map((item) => (
-            <a href={item.href} key={item.id}>
+            <a href={localeHref(item.href)} key={item.id}>
               <span>{item.category}</span>
               <strong>{item.title}</strong>
             </a>

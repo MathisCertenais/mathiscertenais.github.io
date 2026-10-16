@@ -24,7 +24,7 @@ export function WritingSection({ heading, showAllLink = true }: WritingSectionPr
 
       <div className="article-list">
         {articleItems.map((article) => (
-          <a className="article-row" href={article.href} key={article.id}>
+          <a className="article-row" href={localeHref(article.href)} key={article.id}>
             <span className="article-row__number">{article.number}</span>
             <span className="article-row__copy">
               <span className="article-row__category">
