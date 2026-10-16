@@ -544,6 +544,21 @@ function renderMetadata(entry) {
 
   if (entry.path !== '/') html = removeHomePreload(html)
 
+  // Each page declares its translation, and the English one is the default for
+  // readers whose language is neither. Aliases get none: they are noindex.
+  if (entry.path === entry.canonical) {
+    const isFrench = entry.path === '/fr' || entry.path.startsWith('/fr/')
+    const bare = entry.path === '/fr' ? '/' : isFrench ? entry.path.slice(3) : entry.path
+    const englishPath = bare
+    const frenchPath = bare === '/' ? '/fr' : `/fr${bare}`
+    const alternates = [
+      `<link rel="alternate" hreflang="en" href="${escapeHtml(canonicalUrl(englishPath))}" />`,
+      `<link rel="alternate" hreflang="fr" href="${escapeHtml(canonicalUrl(frenchPath))}" />`,
+      `<link rel="alternate" hreflang="x-default" href="${escapeHtml(canonicalUrl(englishPath))}" />`,
+    ].join('\n    ')
+    html = html.replace('</head>', `    ${alternates}\n  </head>`)
+  }
+
   const fallback = fallbacksByLanguage[language](entry.path)
   if (fallback) {
     const shell = /<div id="root"><\/div>/

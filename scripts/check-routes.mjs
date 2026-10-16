@@ -3,6 +3,7 @@ import { basename, extname, join, relative, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { loadEnv } from 'vite'
 import { articleItems } from '../src/content/en.ts'
+import { articleItems as frenchArticles } from '../src/content/fr.ts'
 
 const projectRoot = fileURLToPath(new URL('..', import.meta.url))
 const manifestPath = join(projectRoot, 'src', 'data', 'route-manifest.json')
@@ -120,6 +121,17 @@ const prerenderedFallbacks = {
   '/about': ['Building infrastructure through collaboration.', 'Working principles'],
   '/resume': ['arXiv:2509.03075', 'Relevant certifications'],
   '/contact': ['Let’s connect the systems.', 'The card I hand out.'],
+  '/fr': ['Logistique des données', 'En bref'],
+  '/fr/research': [
+    'Ce que la thèse mesure',
+    'Cinq perspectives sur un même problème',
+    'Le raisonnement est publié',
+  ],
+  '/fr/insights': ['Expliquer les systèmes par leur usage.', 'Derniers articles'],
+  '/fr/videos': ['La recherche, expliquée en contexte.', 'À regarder et à écouter'],
+  '/fr/about': ['Construire des infrastructures par la collaboration.', 'Principes de travail'],
+  '/fr/resume': ['Certifications pertinentes', 'Interventions sélectionnées'],
+  '/fr/contact': ['Relions les systèmes.', 'La carte que je distribue.'],
 }
 
 const PRERENDERED_MIN_CHARACTERS = 300
@@ -144,7 +156,10 @@ const PRERENDERED_ARTICLE_MIN_LINKS = 3
 function expectedPrerenderedMarkers(routePath) {
   if (prerenderedFallbacks[routePath]) return prerenderedFallbacks[routePath]
 
-  const article = articleItems.find((item) => item.href === routePath)
+  const isFrench = routePath === '/fr' || routePath.startsWith('/fr/')
+  const bare = routePath === '/fr' ? '/' : isFrench ? routePath.slice(3) : routePath
+  const article = (isFrench ? frenchArticles : articleItems).find((item) => item.href === bare)
+
   return article ? [article.title] : null
 }
 
@@ -457,7 +472,10 @@ async function auditBuiltRoutes(manifest, siteUrl) {
       }
 
       const links = (root.match(/<a\s/g) ?? []).length
-      const minimum = prerenderedMinLinks[entry.path] ?? PRERENDERED_ARTICLE_MIN_LINKS
+      // The expectations are keyed by the English page, which its French twin renders.
+      const barePath =
+        entry.path === '/fr' ? '/' : entry.path.startsWith('/fr/') ? entry.path.slice(3) : entry.path
+      const minimum = prerenderedMinLinks[barePath] ?? PRERENDERED_ARTICLE_MIN_LINKS
       if (links < minimum) {
         issues.push(
           `Prerendered text in ${entry.path} carries ${links} links, fewer than the ${minimum} expected`,
@@ -545,15 +563,7 @@ for (const entry of manifest) {
   if (entry.path !== entry.canonical && normalizeRobots(entry.robots) !== 'noindex,follow') {
     issues.push(`Legacy alias must use noindex, follow: ${entry.path}`)
   }
-  const isFrench = entry.path === '/fr' || entry.path.startsWith('/fr/')
-
-  if (entry.path === entry.canonical && isFrench && normalizeRobots(entry.robots) !== 'noindex,follow') {
-    // Transitional: a French page goes indexable only once its prerendered
-    // fallback exists, otherwise Google would index an empty shell.
-    issues.push(`French route must stay noindex until it has a prerendered fallback: ${entry.path}`)
-  }
-
-  if (entry.path === entry.canonical && !isFrench) {
+  if (entry.path === entry.canonical) {
     if (normalizeRobots(entry.robots) !== 'index,follow') {
       issues.push(`Canonical public route must be indexable: ${entry.path}`)
     }
