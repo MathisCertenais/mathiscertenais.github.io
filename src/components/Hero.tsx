@@ -2,7 +2,7 @@ import { useLanguage } from '../language/LanguageProvider'
 import { ArrowIcon, ProofIcon } from './Icons'
 
 export function Hero() {
-  const { content, localeHref } = useLanguage()
+  const { content, localeHref, strings } = useLanguage()
   const { identity, proofPoints } = content
 
   return (
@@ -24,15 +24,15 @@ export function Hero() {
 
           <div className="availability-pill">
             <span aria-hidden="true" className="availability-pill__dot" />
-            <span>PhD researcher at IRISA — based in {identity.location}</span>
+            <span>{strings.pages.availability}{identity.location}</span>
           </div>
 
           <div className="hero__actions">
             <a className="button button--primary" href={localeHref('/research')}>
-              View research <ArrowIcon />
+              {strings.pages.viewResearch} <ArrowIcon />
             </a>
             <a className="button button--secondary" href={localeHref('/resume')}>
-              View profile <ArrowIcon />
+              {strings.pages.viewProfile} <ArrowIcon />
             </a>
           </div>
         </div>

@@ -87,7 +87,7 @@ export const researchThesis = {
   label: 'Thèse de doctorat',
   title: 'Systèmes de systèmes collaboratifs pour la logistique des données scientifiques',
   context: 'IRISA · Université de Rennes',
-  programme: 'NumPEx « Digital for Exascale » · laboratoire commun ECLAT',
+  programme: 'NumPEx « Numérique pour l’Exascale » · laboratoire commun ECLAT',
   summary:
     'Les grands instruments scientifiques produisent aujourd’hui plus de données qu’un site unique ne peut en recevoir, en traiter ou en conserver. Transformer ces flux en produits exploitables suppose des chaînes de traitement qui traversent des instruments, des centres de calcul, des plateformes de stockage et des réseaux de recherche — chacun sous une administration différente, dans un pays différent et sous une loi différente. Cette thèse étudie la conception de cette logistique des données : comment la modéliser, comment l’optimiser, de quelles métadonnées elle a besoin, et comment l’exposer aux utilisateurs sans masquer les exigences qui garantissent des résultats sûrs et reproductibles.',
 } as const

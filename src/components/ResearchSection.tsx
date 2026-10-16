@@ -2,7 +2,7 @@ import { useLanguage } from '../language/LanguageProvider'
 import { ArrowIcon } from './Icons'
 
 export function ResearchSection() {
-  const { content, localeHref } = useLanguage()
+  const { content, localeHref, strings } = useLanguage()
   const { researchFeature, researchFigures, researchThesis } = content
 
   return (
@@ -10,7 +10,7 @@ export function ResearchSection() {
       <div className="section-heading">
         <h2>{researchFeature.heading}</h2>
         <a href={localeHref('/research')}>
-          Read the research <ArrowIcon />
+          {strings.pages.readResearch} <ArrowIcon />
         </a>
       </div>
 
@@ -24,7 +24,7 @@ export function ResearchSection() {
             </p>
           ))}
           <a className="button button--primary" href={localeHref('/research')}>
-            Explore the research <ArrowIcon />
+            {strings.pages.exploreResearch} <ArrowIcon />
           </a>
         </div>
 

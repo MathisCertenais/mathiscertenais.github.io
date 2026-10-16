@@ -93,7 +93,7 @@ export function WritingPage() {
 }
 
 export function ArticlePage({ articleId }: { articleId: string }) {
-  const { content, getArticle, localeHref } = useLanguage()
+  const { content, getArticle, localeHref, strings } = useLanguage()
   const { articleItems, videoItems } = content
   const article = getArticle(articleId)
   if (!article) return null
@@ -134,7 +134,7 @@ export function ArticlePage({ articleId }: { articleId: string }) {
                 content under Mathis’s name.
               </p>
               <a className="button button--primary" href={localeHref('/research')}>
-                Explore the research area <ArrowIcon />
+                {strings.pages.exploreResearchArea} <ArrowIcon />
               </a>
             </div>
           ) : (
