@@ -470,6 +470,124 @@ Object.assign(articleBodies, {
       text: 'Une thèse, c’est avant tout un **choix de vie**. Il faut une certaine indépendance, parce que nous décidons de nos journées, et bien sûr un minimum de passion pour son sujet. Ce que je trouve incroyable, c’est l’humain et l’échange de savoirs. Travailler avec des spécialistes de domaines aussi différents que les astrophysiciens est une occasion unique d’apprendre des sujets très pointus.',
     },
   ],
+  'predicting-for-sizing': [
+    { type: 'heading', level: 2, text: 'Le problème du dimensionnement' },
+    {
+      type: 'paragraph',
+      text: 'Toute campagne scientifique sur un supercalculateur commence par un **pari**. Combien de nœuds ? Combien de mémoire ? Combien de temps l’exécution va-t-elle durer ? Pour la **chaîne DDF** — le logiciel d’auto-calibration et d’imagerie du radiotélescope **LOFAR** — l’enjeu est considérable : la dernière publication de données LoTSS (LOFAR Two-metre Sky Survey) a consommé à elle seule **16 millions d’heures de calcul**. Et derrière chacune de ces heures se cache une décision de dimensionnement prise, le plus souvent, à l’aveugle.',
+    },
+    {
+      type: 'paragraph',
+      text: 'Les astronomes qui utilisent la chaîne DDF sont des scientifiques, pas des spécialistes du calcul intensif. Ils allouent les précieuses heures de calcul de leur projet par l’intermédiaire de **SLURM**, un ordonnanceur qui leur demande de déclarer leurs besoins à l’avance (--time, --cpus-per-task, --mem) puis applique une **politique d’équité** qui récompense les projets consommant moins que ce qui leur a été accordé. Surdimensionnez, et vous gaspillez des ressources, perdez de la priorité et attendez plus longtemps dans les files ; sous-dimensionnez, et votre tâche échoue. Traduire des paramètres scientifiques en dimensionnement correct relève du jeu de devinettes, avec un coût réel des deux côtés.',
+    },
+    {
+      type: 'figure',
+      image: '/images/mathis/predicting-for-sizing/ddf-workflow.webp',
+      alt: 'La chaîne DDF : télécharger les données, exécuter la chaîne, déposer les résultats',
+      caption:
+        'La chaîne DDF — trois étapes pour lesquelles nous aimerions connaître le site le plus adapté à leur exécution.',
+    },
+    { type: 'heading', level: 2, text: 'Pourquoi deviner coûte si cher' },
+    {
+      type: 'paragraph',
+      text: 'La difficulté ne vient pas d’un manque d’expérience, mais d’un manque de prévisibilité. Les exécutions de la chaîne DDF varient selon **plusieurs dimensions à la fois**, et un seul changement peut déplacer l’empreinte de ressources d’un ordre de grandeur :',
+    },
+    {
+      type: 'list',
+      ordered: false,
+      items: [
+        '**Paramètres de l’application.** La résolution de l’image de sortie va de **5 000×5 000 à 20 000×20 000 pixels**, ce qui fait passer la mémoire au pic de **~10 Go à ~400 Go**.',
+        '**Volume des données d’entrée.** De quelques centaines de mégaoctets à plusieurs gigaoctets, ce qui étire le temps d’exécution de **quelques minutes à plusieurs jours** sur un seul nœud.',
+        '**Structure des données.** Entre **1 et 24 sous-bandes de fréquence**, chacune modifiant la façon dont la charge se répartit — et son efficacité énergétique — sur les nœuds alloués.',
+      ],
+    },
+    {
+      type: 'paragraph',
+      text: 'Ajoutez une **dimension multi-sites** et le problème se complexifie. Dans les chaînes réparties entre plusieurs centres, le dimensionnement conditionne le placement des tâches : espace disque, attente en file et site d’exécution dépendent tous de l’empreinte que vous avez prédite. Les contraintes matérielles diffèrent d’un site à l’autre — **768 Go par nœud** sur Adastra, **192 Go de mémoire par nœud** sur Jean Zay, **228 Go par nœud** sur Joliot-Curie — et une configuration qui tient sur une machine peut être impossible sur une autre.',
+    },
+    {
+      type: 'paragraph',
+      text: 'L’espace des configurations est tout simplement **trop vaste pour être testé exhaustivement**. Ce n’est pas un problème que l’on résout une fois pour toutes : il appelle un modèle qui **continue d’apprendre** à mesure que les exécutions s’accumulent.',
+    },
+    { type: 'heading', level: 2, text: 'Ce qu’il faut pour y parvenir' },
+    {
+      type: 'paragraph',
+      text: 'Construire un modèle prédictif à apprentissage continu est un travail d’équipe en cinq pièces, chacune portée par un spécialiste différent et conçue pour s’emboîter avec les autres :',
+    },
+    {
+      type: 'list',
+      ordered: true,
+      items: [
+        '**Carte de connaissances structurée** — une description de l’environnement d’exécution propre au supercalculateur, mise en correspondance avec les métriques SLURM.',
+        '**Jeu d’indicateurs de performance des tâches, JoPInS** — la structure qui contient les mesures des indicateurs de performance des tâches des applications descripteurs formelles, relativement à leurs exécutions.',
+        '**Greffon de supervision** — le collecteur qui capture les preuves des tâches réelles.',
+        '**Base de données** — le magasin central où toutes les exécutions s’accumulent au format JoPInS.',
+        '**Apprentissage automatique exposé en tant que HAPS** — un modèle entraîné par version d’application et par environnement d’exécution, avec accès aux ressources et aux applications de calcul intensif pour son apprentissage continu.',
+      ],
+    },
+    {
+      type: 'heading',
+      level: 3,
+      text: 'Première étape — une carte de connaissances structurée de l’environnement d’exécution',
+    },
+    {
+      type: 'paragraph',
+      text: 'Avant de pouvoir prédire, il faut pouvoir **décrire**. La carte de connaissances structurée (ou ontologie) formalise l’environnement d’exécution propre au supercalculateur dans lequel les tâches s’exécutent. Sa valeur tient à la mise en correspondance : aligner la **carte de connaissances structurée des tâches** sur les **métriques SLURM** brutes, pour qu’une description conceptuelle — « cette tâche avait besoin d’un nœud à grande mémoire » — devienne une grandeur mesurable et comparable.',
+    },
+    {
+      type: 'figure',
+      image: '/images/mathis/predicting-for-sizing/job-ontology.webp',
+      alt: 'Visualisation de l’ontologie des tâches décrivant l’environnement d’exécution du supercalculateur',
+      caption:
+        'La carte de connaissances structurée des tâches — le pont entre la façon dont les chercheurs pensent leurs exécutions et la façon dont SLURM les mesure. Crédit : Gaëlle Richet.',
+    },
+    {
+      type: 'heading',
+      level: 3,
+      text: 'Deuxième étape — décrire chaque exécution avec JKPP',
+    },
+    {
+      type: 'paragraph',
+      text: 'Chaque exécution est capturée par un ensemble d’**indicateurs de performance des tâches, JoPI**. Cela formalise les deux faces d’une exécution : les **paramètres d’entrée** — réglages de l’application et choix système — et les **métriques de sortie** — temps, mémoire, énergie. Chaque mesure prend la forme d’un triplet : **JoPI = (valeur, type de valeur, description)**, une structure assez simple pour être collectée à grande échelle et assez riche pour servir à l’apprentissage.',
+    },
+    {
+      type: 'heading',
+      level: 3,
+      text: 'Troisième étape — recueillir les preuves du terrain',
+    },
+    {
+      type: 'paragraph',
+      text: 'Une paire de greffons transforme les tâches réelles en données d’apprentissage. Le client en ligne de commande, **cli-monitoring-haps**, collecte les informations sur les tâches d’une application donnée, exposée en tant que HAPS, dans le contexte d’une **campagne de publication de données**. Le collecteur côté serveur, **server-monitoring-haps**, lit les **métriques système** de SLURM (sacct -j <JOB_ID>) et récupère les **métriques propres à l’application** dans la base HAPS. Chaque exécution est ensuite formalisée en JoPInS et envoyée à la base de données.',
+    },
+    {
+      type: 'heading',
+      level: 3,
+      text: 'Quatrième étape — centraliser dans la base de données',
+    },
+    {
+      type: 'paragraph',
+      text: 'Tous ces enregistrements JoPInS atterrissent dans la base de données — la source unique de vérité sur le comportement réel des applications sur de vraies machines. C’est la mémoire du système, et le carburant du modèle.',
+    },
+    {
+      type: 'heading',
+      level: 3,
+      text: 'Cinquième étape — relier l’apprentissage automatique au système',
+    },
+    {
+      type: 'paragraph',
+      text: 'La boucle se referme autour de **HAPS** (services applicatifs de calcul intensif), dans un dispositif qui reste **conforme aux exigences de sécurité des ZRR** imposées aux supercalculateurs français, considérés comme des actifs stratégiques nationaux. Étape 1 : exécution de campagnes d’applications scientifiques sur les supercalculateurs. Étape 2 : collecte des données par le greffon de supervision. Étape 3 : entraînement et évaluation du modèle — un **modèle d’apprentissage automatique** est entraîné sur le jeu de données d’une campagne, testé, sa précision mesurée, et seulement alors exposé lui-même en tant que HAPS.',
+    },
+    { type: 'heading', level: 2, text: 'De l’exécution à la prédiction' },
+    {
+      type: 'paragraph',
+      text: 'Une fois la boucle en marche, les pièces produisent quelque chose de nouveau : un **modèle d’apprentissage automatique exposé comme un service**. Entraînez un modèle expert sur les données d’une campagne, mesurez sa précision, et le modèle devient un oracle qui prédit, pour toute nouvelle configuration, le **temps d’exécution**, la **mémoire utilisée** et la **consommation d’énergie** de l’application. L’objectif est pratique : compte tenu de la variabilité des paramètres et des données d’entrée, identifier les **configurations d’allocation qui offrent le meilleur compromis entre temps d’exécution et consommation d’énergie** — avant qu’une seule heure de calcul ne soit dépensée.',
+    },
+    { type: 'heading', level: 2, text: 'De la devinette à la connaissance' },
+    {
+      type: 'paragraph',
+      text: 'Un ordonnanceur vous demande de prédire votre propre avenir — et traditionnellement, cette prédiction relevait du jugement personnel. Avec un modèle qui apprend en continu, nourri par les exécutions réelles, la conversation change. Le supercalculateur cesse de demander à ses utilisateurs de deviner et se met à leur dire ce dont ils ont besoin. **Le dimensionnement cesse d’être un pari** — et les scientifiques peuvent consacrer leurs heures de calcul à la science, pas aux intuitions.',
+    },
+  ],
 })
 
 export const articleItems: ArticleItem[] = englishArticles.map((article) => ({
