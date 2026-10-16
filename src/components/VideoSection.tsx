@@ -10,7 +10,7 @@ interface VideoSectionProps {
 }
 
 export function VideoSection({ heading, showAllLink = true }: VideoSectionProps) {
-  const { content, localeHref } = useLanguage()
+  const { content, localeHref, strings } = useLanguage()
   const { videoItems, videosPage } = content
   const sectionHeading = heading ?? videosPage.sectionHeading
   const [activeVideo, setActiveVideo] = useState<VideoItem | null>(null)
@@ -76,14 +76,13 @@ export function VideoSection({ heading, showAllLink = true }: VideoSectionProps)
           <h2>{sectionHeading}</h2>
           {showAllLink ? (
             <a href={localeHref('/videos')}>
-              All videos <ArrowIcon />
+              {strings.pages.allVideos} <ArrowIcon />
             </a>
           ) : null}
         </div>
 
         <p className="videos-section__intro">
-          Interviews, webinars, and research events exploring scientific data logistics, HPC, and
-          radio astronomy. Select a video to watch it here.
+          {strings.pages.videosIntro}
         </p>
 
         <div className="video-grid video-grid--research">

@@ -3,7 +3,7 @@ import { ArrowIcon } from './Icons'
 import { PageHero } from './PageHero'
 
 export function ResearchPage() {
-  const { content, localeHref } = useLanguage()
+  const { content, localeHref, strings } = useLanguage()
   const {
     researchApplications,
     researchCase,
@@ -34,7 +34,7 @@ export function ResearchPage() {
         <p className="section-label">{researchThesis.label}</p>
         <p className="research-thesis__meta">{researchThesis.context}</p>
         <p className="research-thesis__meta">{researchThesis.programme}</p>
-        <ul aria-label="Research themes" className="tag-list">
+        <ul aria-label={strings.pages.researchThemes} className="tag-list">
           <li>Data logistics</li>
           <li>Cross-facility workflows</li>
           <li>Governance and security</li>
@@ -73,7 +73,7 @@ export function ResearchPage() {
       <section className="research-section section">
         <div className="section-heading">
           <p className="section-label">Perspectives</p>
-          <h2>Five perspectives on one logistics problem.</h2>
+          <h2>{strings.pages.perspectives}</h2>
         </div>
         <div className="research-perspectives">
           {researchPerspectives.map((perspective) => (
@@ -114,12 +114,7 @@ export function ResearchPage() {
             src="/images/mathis/ska-processing-chain.webp"
           />
           <figcaption>
-            The SKA processing chain. SKA-Low antennas in Australia and SKA-Mid dishes in South
-            Africa emit raw signals at terabits per second. Each array is correlated on site by
-            FPGA and correlator hardware at CSP-Low and CSP-Mid, then handed to the SDP
-            supercomputers in Perth and Cape Town for calibration and imaging. The resulting
-            science products are replicated across SRCNet storage and compute nodes in Europe,
-            Asia and the Americas, where astronomers access them for analysis.
+            {strings.pages.skaCaption}
           </figcaption>
         </figure>
       </section>
@@ -134,7 +129,7 @@ export function ResearchPage() {
             <p key={paragraph.slice(0, 32)}>{paragraph}</p>
           ))}
           <a href={sourceLinks.arxiv} rel="noreferrer" target="_blank">
-            Read the DDF Pipeline paper on arXiv <ArrowIcon external />
+            {strings.pages.arxivPaper} <ArrowIcon external />
           </a>
         </div>
       </section>
@@ -156,23 +151,23 @@ export function ResearchPage() {
             <p key={paragraph.slice(0, 32)}>{paragraph}</p>
           ))}
           <a href={sourceLinks.numpex} rel="noreferrer" target="_blank">
-            Read the NumPEx research profile <ArrowIcon external />
+            {strings.pages.numpexProfile} <ArrowIcon external />
           </a>
         </div>
       </section>
 
       <section className="research-next section">
-        <p className="section-label">Where this continues</p>
-        <h2>The reasoning is written up in public.</h2>
+        <p className="section-label">{strings.pages.whereThisContinues}</p>
+        <h2>{strings.pages.reasoningPublic}</h2>
         <div className="research-next__actions">
           <a className="button button--primary" href={localeHref('/writing')}>
-            Read research notes <ArrowIcon />
+            {strings.pages.readNotes} <ArrowIcon />
           </a>
           <a className="button button--secondary" href={sourceLinks.arxiv} rel="noreferrer" target="_blank">
-            Publications <ArrowIcon external />
+            {strings.pages.publications} <ArrowIcon external />
           </a>
           <a className="button button--secondary" href={localeHref('/contact')}>
-            Get in touch <ArrowIcon />
+            {strings.pages.getInTouch} <ArrowIcon />
           </a>
         </div>
       </section>

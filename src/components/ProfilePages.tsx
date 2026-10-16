@@ -3,7 +3,7 @@ import { ArrowIcon } from './Icons'
 import { PageHero } from './PageHero'
 
 export function AboutPage() {
-  const { content } = useLanguage()
+  const { content, strings } = useLanguage()
   const { aboutPage, expertise, profileTimeline, sourceLinks } = content
 
   return (
@@ -28,14 +28,14 @@ export function AboutPage() {
             <p key={paragraph.slice(0, 32)}>{paragraph}</p>
           ))}
           <a href={sourceLinks.eclatInterview} rel="noreferrer" target="_blank">
-            Read the ECLAT interview <ArrowIcon external />
+            {strings.pages.readInterview} <ArrowIcon external />
           </a>
         </div>
       </section>
 
       <section className="profile-section section">
         <div className="section-heading">
-          <h2>Background</h2>
+          <h2>{strings.pages.background}</h2>
         </div>
         <div className="profile-timeline">
           {profileTimeline.map((entry) => (
@@ -78,7 +78,7 @@ export function AboutPage() {
 }
 
 export function ResumePage() {
-  const { content } = useLanguage()
+  const { content, strings } = useLanguage()
   const { expertise, identity, profileTimeline, resumePage } = content
 
   return (
@@ -87,10 +87,10 @@ export function ResumePage() {
         actions={
           <>
             <button className="button button--primary print-hide" onClick={() => window.print()} type="button">
-              Print profile
+              {strings.pages.printProfile}
             </button>
             <a className="button button--secondary" href={`mailto:${identity.email}`}>
-              Email Mathis <ArrowIcon external />
+              {strings.pages.emailMathis} <ArrowIcon external />
             </a>
           </>
         }
@@ -150,7 +150,7 @@ export function ResumePage() {
           </section>
 
           <section>
-            <p className="section-label">Selected presentations</p>
+            <p className="section-label">{strings.pages.selectedPresentations}</p>
             {resumePage.presentations.map((presentation) => (
               <article className="resume-entry" key={presentation.title}>
                 <p>{presentation.date}</p>
