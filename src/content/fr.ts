@@ -131,7 +131,7 @@ export const researchFigures: ResearchFigure[] = [
   },
   {
     value: '~7,9×',
-    label: 'accélération mesurée de la chaîne DDF sur 24 nœuds — de 68,8 h à 8,7 h',
+    label: 'accélération mesurée du DDF Pipeline sur 24 nœuds — de 68,8 h à 8,7 h',
   },
 ]
 
@@ -188,7 +188,7 @@ export const researchMethods: ResearchChapter = {
   label: 'Comment les perspectives s’articulent',
   heading: 'Un seul workflow, trois juridictions.',
   paragraphs: [
-    'Ces perspectives ne sont pas des programmes de recherche indépendants. Elles se rejoignent dans un workflow inter-sites concret : la chaîne DDF, le logiciel d’auto-calibration et d’imagerie du radiotélescope LOFAR, précurseur du SKA, exécuté sur des sites de calcul et de stockage hétérogènes et géodistribués.',
+    'Ces perspectives ne sont pas des programmes de recherche indépendants. Elles se rejoignent dans un workflow inter-sites concret : le DDF Pipeline, le logiciel d’auto-calibration et d’imagerie du radiotélescope LOFAR, précurseur du SKA, exécuté sur des sites de calcul et de stockage hétérogènes et géodistribués.',
     'Entre ces points, chaque étape doit répondre à la même question dans une langue administrative différente. Où cette étape doit-elle s’exécuter, sous quelle autorité, avec quelles métadonnées enregistrées, et qui en est responsable ? Cette traduction est le système de systèmes que la thèse propose de modéliser.',
   ],
 }
@@ -197,7 +197,7 @@ export const researchCase: ResearchChapter = {
   label: 'Méthodes',
   heading: 'Un workflow exigeant comme banc d’essai.',
   paragraphs: [
-    'La chaîne DDF est un bon cas d’étude précisément parce qu’elle répond à la fois à un vrai besoin de la communauté et à un problème système difficile. Une publication de données LoTSS a consommé environ seize millions d’heures de calcul ; une seule exécution atteint plusieurs centaines de gigaoctets de mémoire au pic, des images de cinq à vingt mille pixels de côté, entre une et vingt-quatre sous-bandes de fréquence, et des temps d’exécution mesurés en jours.',
+    'Le DDF Pipeline est un bon cas d’étude précisément parce qu’elle répond à la fois à un vrai besoin de la communauté et à un problème système difficile. Une publication de données LoTSS a consommé environ seize millions d’heures de calcul ; une seule exécution atteint plusieurs centaines de gigaoctets de mémoire au pic, des images de cinq à vingt mille pixels de côté, entre une et vingt-quatre sous-bandes de fréquence, et des temps d’exécution mesurés en jours.',
     'Le travail décrit et profile ce logiciel, puis propose le modèle d’exploitation qui le rend utilisable à grande échelle : microservices applicatifs et tampons éphémères pour déplacer les données sans accès direct au shell, un exécutant qui tire les tâches depuis l’intérieur de la zone sécurisée plutôt que de les y pousser, et un compte de service nommé qui concilie la traçabilité ZRR avec un outil communautaire partagé.',
     'La traçabilité est capturée formellement plutôt que narrativement — cartes de connaissances structurées de l’application et de l’environnement d’exécution, et indicateurs de performance enregistrés à chaque exécution — afin qu’une exécution puisse être comparée, reproduite et, à terme, prédite.',
   ],
@@ -209,7 +209,7 @@ export const researchContribution: ResearchChapter = {
   paragraphs: [
     'Un modèle de logistique des données dans lequel la gouvernance et la sécurité sont des contraintes de même rang que la capacité et le coût, et non une couche appliquée une fois l’architecture figée.',
     'Une spécification des métadonnées nécessaires pour rendre opérationnel le déploiement d’un workflow à grande échelle : de quoi assurer la traçabilité des opérations et respecter les principes FAIR, et de quoi alimenter des décisions de placement multicritères.',
-    'Une alternative démontrée aux comptes de calcul par utilisateur — les applications scientifiques comme service — validée avec la chaîne DDF sur Jean Zay et Adastra, le modèle du compte de service nommé étant en discussion avec les acteurs français de la sécurité.',
+    'Une alternative démontrée aux comptes de calcul par utilisateur — les applications scientifiques comme service — validée avec le DDF Pipeline sur Jean Zay et Adastra, le modèle du compte de service nommé étant en discussion avec les acteurs français de la sécurité.',
     'Une demande quantifiée envers l’infrastructure : ce que cette logistique implique en stockage, en réseau, en énergie et en émissions dans un paysage scientifique centré sur les données.',
   ],
 }
@@ -246,7 +246,7 @@ const videoTranslations: Record<string, { description: string; title: string }> 
   },
   'mcp-demo-video': {
     description:
-      'Démonstration du serveur MCP qui expose l’ontologie logicielle de la chaîne DDF.',
+      'Démonstration du serveur MCP qui expose l’ontologie logicielle du DDF Pipeline.',
     title:
       'Démonstration : un serveur MCP qui expose la carte de connaissances structurée du logiciel DDF Pipeline',
   },
@@ -342,7 +342,7 @@ const articleBodies: Record<string, ArticleBlock[]> = {
     },
     {
       type: 'paragraph',
-      text: 'Ce webinaire présente les applications de calcul intensif comme un service, à travers un scénario concret autour de la chaîne DDF. L’accent est mis sur l’intégration de la logistique des données scientifiques, de l’imagerie intensive et de l’orchestration de workflows distribués, tout en gardant compréhensible l’interface offerte aux chercheurs.',
+      text: 'Ce webinaire présente les applications de calcul intensif comme un service, à travers un scénario concret autour du DDF Pipeline. L’accent est mis sur l’intégration de la logistique des données scientifiques, de l’imagerie intensive et de l’orchestration de workflows distribués, tout en gardant compréhensible l’interface offerte aux chercheurs.',
     },
   ],
   'international-hackathon-for-astronomy': [
@@ -365,7 +365,7 @@ const articleBodies: Record<string, ArticleBlock[]> = {
     },
     {
       type: 'paragraph',
-      text: 'Pour la chaîne DDF, nous avons travaillé à la portabilité de la version parallèle : elle est désormais installée et fonctionnelle sur les supercalculateurs français Jean Zay, hébergé à l’Institut du développement et des ressources en informatique scientifique (IDRIS), Adastra au Centre informatique national de l’enseignement supérieur (CINES), à l’université du Hertfordshire au Royaume-Uni, et chez notre partenaire industriel Bull.',
+      text: 'Pour le DDF Pipeline, nous avons travaillé à la portabilité de la version parallèle : elle est désormais installée et fonctionnelle sur les supercalculateurs français Jean Zay, hébergé à l’Institut du développement et des ressources en informatique scientifique (IDRIS), Adastra au Centre informatique national de l’enseignement supérieur (CINES), à l’université du Hertfordshire au Royaume-Uni, et chez notre partenaire industriel Bull.',
     },
     {
       type: 'heading',
@@ -374,7 +374,7 @@ const articleBodies: Record<string, ArticleBlock[]> = {
     },
     {
       type: 'paragraph',
-      text: 'Ces événements techniques sont essentiels pour rassembler notre communauté, nous aligner sur des objectifs partagés et les transformer en réalité. Pendant ce hackathon, nous avons validé le déploiement de la chaîne DDF sur les supercalculateurs de tous les partenaires, ce qui clôt cette version stable et nous permet de nous consacrer aux nouvelles fonctionnalités. Pour RIMS, cette rencontre internationale a permis de finaliser collectivement l’architecture distribuée générale entre la France, l’Afrique du Sud et le Royaume-Uni, de nous accorder sur les conditions d’usage et de livrer une preuve de concept validant l’idée.',
+      text: 'Ces événements techniques sont essentiels pour rassembler notre communauté, nous aligner sur des objectifs partagés et les transformer en réalité. Pendant ce hackathon, nous avons validé le déploiement du DDF Pipeline sur les supercalculateurs de tous les partenaires, ce qui clôt cette version stable et nous permet de nous consacrer aux nouvelles fonctionnalités. Pour RIMS, cette rencontre internationale a permis de finaliser collectivement l’architecture distribuée générale entre la France, l’Afrique du Sud et le Royaume-Uni, de nous accorder sur les conditions d’usage et de livrer une preuve de concept validant l’idée.',
     },
   ],
 }
@@ -403,7 +403,7 @@ Object.assign(articleBodies, {
       image: '/images/mathis/rennes-hackathon/rennes-hackathon-back.webp',
       alt: 'Participants écoutant une présentation',
       caption:
-        'Participants écoutant Cyril Tasse présenter les résultats d’un relevé du ciel obtenu en traitant les données du radiotélescope Low Frequency Array (LOFAR) avec la chaîne DDF. Crédit : Jacques Tissot.',
+        'Participants écoutant Cyril Tasse présenter les résultats d’un relevé du ciel obtenu en traitant les données du radiotélescope Low Frequency Array (LOFAR) avec le DDF Pipeline. Crédit : Jacques Tissot.',
     },
     {
       type: 'heading',
@@ -412,7 +412,7 @@ Object.assign(articleBodies, {
     },
     {
       type: 'paragraph',
-      text: 'Nous nous sommes aussi occupés des utilisateurs. Un bon code ne sert à rien si personne ne sait s’en servir. Pendant l’événement, nous avons écrit des [tutoriels détaillés pour DDFacet](https://hackmd.io/l8fw0PYRQv6dm9i6KpZWPA), le logiciel d’imagerie de notre workflow.',
+      text: 'Nous nous sommes aussi occupés des utilisateurs. Un bon code ne sert à rien si personne ne sait s’en servir. Pendant l’événement, nous avons écrit des [tutoriels détaillés pour DDFacet](https://hackmd.io/l8fw0PYRQv6dm9i6KpZWPA), le logiciel d’imagerie de notre pipeline.',
     },
     {
       type: 'paragraph',
@@ -482,23 +482,23 @@ Object.assign(articleBodies, {
     { type: 'heading', level: 2, text: 'Le problème du dimensionnement' },
     {
       type: 'paragraph',
-      text: 'Toute campagne scientifique sur un supercalculateur commence par un **pari**. Combien de nœuds ? Combien de mémoire ? Combien de temps l’exécution va-t-elle durer ? Pour la **chaîne DDF** — le logiciel d’auto-calibration et d’imagerie du radiotélescope **LOFAR** — l’enjeu est considérable : la dernière publication de données LoTSS (LOFAR Two-metre Sky Survey) a consommé à elle seule **16 millions d’heures de calcul**. Et derrière chacune de ces heures se cache une décision de dimensionnement prise, le plus souvent, à l’aveugle.',
+      text: 'Toute campagne scientifique sur un supercalculateur commence par un **pari**. Combien de nœuds ? Combien de mémoire ? Combien de temps l’exécution va-t-elle durer ? Pour le **DDF Pipeline** — le logiciel d’auto-calibration et d’imagerie du radiotélescope **LOFAR** — l’enjeu est considérable : la dernière publication de données LoTSS (LOFAR Two-metre Sky Survey) a consommé à elle seule **16 millions d’heures de calcul**. Et derrière chacune de ces heures se cache une décision de dimensionnement prise, le plus souvent, à l’aveugle.',
     },
     {
       type: 'paragraph',
-      text: 'Les astronomes qui utilisent la chaîne DDF sont des scientifiques, pas des spécialistes du calcul intensif. Ils allouent les précieuses heures de calcul de leur projet par l’intermédiaire de **SLURM**, un ordonnanceur qui leur demande de déclarer leurs besoins à l’avance (--time, --cpus-per-task, --mem) puis applique une **politique d’équité** qui récompense les projets consommant moins que ce qui leur a été accordé. Surdimensionnez, et vous gaspillez des ressources, perdez de la priorité et attendez plus longtemps dans les files ; sous-dimensionnez, et votre tâche échoue. Traduire des paramètres scientifiques en dimensionnement correct relève du jeu de devinettes, avec un coût réel des deux côtés.',
+      text: 'Les astronomes qui utilisent le DDF Pipeline sont des scientifiques, pas des spécialistes du calcul intensif. Ils allouent les précieuses heures de calcul de leur projet par l’intermédiaire de **SLURM**, un ordonnanceur qui leur demande de déclarer leurs besoins à l’avance (--time, --cpus-per-task, --mem) puis applique une **politique d’équité** qui récompense les projets consommant moins que ce qui leur a été accordé. Surdimensionnez, et vous gaspillez des ressources, perdez de la priorité et attendez plus longtemps dans les files ; sous-dimensionnez, et votre tâche échoue. Traduire des paramètres scientifiques en dimensionnement correct relève du jeu de devinettes, avec un coût réel des deux côtés.',
     },
     {
       type: 'figure',
       image: '/images/mathis/predicting-for-sizing/ddf-workflow.webp',
-      alt: 'La chaîne DDF : télécharger les données, exécuter le workflow, déposer les résultats',
+      alt: 'Le workflow du DDF Pipeline : télécharger les données, exécuter le pipeline, déposer les résultats',
       caption:
-        'La chaîne DDF — trois étapes pour lesquelles nous aimerions connaître le site le plus adapté à leur exécution.',
+        'Le workflow du DDF Pipeline — trois étapes pour lesquelles nous aimerions connaître le site le plus adapté à leur exécution.',
     },
     { type: 'heading', level: 2, text: 'Pourquoi deviner coûte si cher' },
     {
       type: 'paragraph',
-      text: 'La difficulté ne vient pas d’un manque d’expérience, mais d’un manque de prévisibilité. Les exécutions de la chaîne DDF varient selon **plusieurs dimensions à la fois**, et un seul changement peut déplacer l’empreinte de ressources d’un ordre de grandeur :',
+      text: 'La difficulté ne vient pas d’un manque d’expérience, mais d’un manque de prévisibilité. Les exécutions du DDF Pipeline varient selon **plusieurs dimensions à la fois**, et un seul changement peut déplacer l’empreinte de ressources d’un ordre de grandeur :',
     },
     {
       type: 'list',
@@ -600,14 +600,14 @@ Object.assign(articleBodies, {
     { type: 'heading', level: 2, text: 'Le problème silencieux du logiciel' },
     {
       type: 'paragraph',
-      text: 'Derrière chaque application scientifique complexe se cache un **labyrinthe de paramètres de configuration** — souvent compris par une poignée de développeurs principaux seulement. C’est particulièrement vrai pour la **chaîne DDF**, un logiciel d’auto-calibration et d’imagerie conçu pour le radiotélescope **LOFAR** (Low Frequency Array). Une seule exécution y mobilise **des centaines de paramètres**, et en modifier un peut changer des semaines de coûts de calcul ou le résultat scientifique final.',
+      text: 'Derrière chaque application scientifique complexe se cache un **labyrinthe de paramètres de configuration** — souvent compris par une poignée de développeurs principaux seulement. C’est particulièrement vrai pour le **DDF Pipeline**, un logiciel d’auto-calibration et d’imagerie conçu pour le radiotélescope **LOFAR** (Low Frequency Array). Une seule exécution y mobilise **des centaines de paramètres**, et en modifier un peut changer des semaines de coûts de calcul ou le résultat scientifique final.',
     },
     {
       type: 'figure',
       image: '/images/mathis/mcp-server-software-ontology/ddf-sourcecode.webp',
-      alt: 'Capture d’écran du dépôt de code source de la chaîne DDF',
+      alt: 'Capture d’écran du dépôt de code source du DDF Pipeline',
       caption:
-        'Le code source de la chaîne DDF — aujourd’hui, le seul endroit où réside réellement la signification de ces centaines de paramètres.',
+        'Le code source du DDF Pipeline — aujourd’hui, le seul endroit où réside réellement la signification de ces centaines de paramètres.',
     },
     {
       type: 'paragraph',
@@ -620,7 +620,7 @@ Object.assign(articleBodies, {
     { type: 'heading', level: 2, text: 'Le cas d’étude : ce que les paramètres commandent réellement' },
     {
       type: 'paragraph',
-      text: 'La chaîne DDF transforme les observations de LOFAR en relevés du ciel à grand champ. Ses sorties sont les images qui illustrent les articles d’astronomie — et chacune porte l’empreinte des décisions prises en amont sur les paramètres : échelle de pixels, faisceau de restauration, masquage, compression, allocation de processeurs. Les figures ci-dessous proviennent de **LoTSS-DR3**, une publication de données produite avec le logiciel même dont nous voulons expliquer les paramètres.',
+      text: 'Le DDF Pipeline transforme les observations de LOFAR en relevés du ciel à grand champ. Ses sorties sont les images qui illustrent les articles d’astronomie — et chacune porte l’empreinte des décisions prises en amont sur les paramètres : échelle de pixels, faisceau de restauration, masquage, compression, allocation de processeurs. Les figures ci-dessous proviennent de **LoTSS-DR3**, une publication de données produite avec le logiciel même dont nous voulons expliquer les paramètres.',
     },
     {
       type: 'figure',
@@ -660,9 +660,9 @@ Object.assign(articleBodies, {
     {
       type: 'figure',
       image: '/images/mathis/mcp-server-software-ontology/ddf-ontology.webp',
-      alt: 'Visualisation de la structure de connaissances de la chaîne DDF',
+      alt: 'Visualisation de la structure de connaissances du DDF Pipeline',
       caption:
-        'Visualisation de la structure de connaissances de la chaîne DDF : paramètres regroupés en sections, avec leurs types de données, valeurs par défaut, unités et descriptions.',
+        'Visualisation de la structure de connaissances du DDF Pipeline : paramètres regroupés en sections, avec leurs types de données, valeurs par défaut, unités et descriptions.',
     },
     {
       type: 'paragraph',
@@ -1054,28 +1054,28 @@ const cybersecurityTranslated: ArticleBlock[] = [
     type: 'paragraph',
     text: 'Les quatre durées de vie sont **imbriquées** : la tâche SLURM s’exécute dans la tâche de l’exécutant, elle-même dans la tâche globale, que l’utilisateur suit.',
   },
-  { type: 'heading', level: 2, text: 'Preuve de concept : la chaîne DDF sur Jean Zay' },
+  { type: 'heading', level: 2, text: 'Preuve de concept : le DDF Pipeline sur Jean Zay' },
   {
     type: 'paragraph',
-    text: 'Nous avons instancié cette architecture avec la **chaîne DDF** [33], [34], une application de radioastronomie portée par la communauté, dont l’empreinte mémoire, les exécutions de plusieurs jours et la dépendance à des jeux de données LOFAR externes en font un cas de test exigeant pour les supercalculateurs français soumis au régime ZRR.',
+    text: 'Nous avons instancié cette architecture avec le **DDF Pipeline** [33], [34], une application de radioastronomie portée par la communauté, dont l’empreinte mémoire, les exécutions de plusieurs jours et la dépendance à des jeux de données LOFAR externes en font un cas de test exigeant pour les supercalculateurs français soumis au régime ZRR.',
   },
   {
     type: 'paragraph',
-    text: 'La chaîne DDF est une application composite intégrant **DDFacet** [35], un logiciel d’imagerie par facettes dépendant de la direction, et **killMS** [36], un logiciel de calibration pour l’interférométrie radio. Elle traite des Measurement Sets (MS), un format normalisé pour les visibilités d’interféromètre, et produit des images du ciel au format FITS. À l’origine application à mémoire partagée sur processeurs, elle requiert environ **400 Go de RAM** pour traiter des jeux de données LOFAR : une exécution représentative sur 24 fichiers MS d’entrée — 38,72 Go compressés — a produit **594 Go de sortie** après **68,8 heures** sur un seul nœud [37].',
+    text: 'Le DDF Pipeline est une application composite intégrant **DDFacet** [35], un logiciel d’imagerie par facettes dépendant de la direction, et **killMS** [36], un logiciel de calibration pour l’interférométrie radio. Elle traite des Measurement Sets (MS), un format normalisé pour les visibilités d’interféromètre, et produit des images du ciel au format FITS. À l’origine application à mémoire partagée sur processeurs, elle requiert environ **400 Go de RAM** pour traiter des jeux de données LOFAR : une exécution représentative sur 24 fichiers MS d’entrée — 38,72 Go compressés — a produit **594 Go de sortie** après **68,8 heures** sur un seul nœud [37].',
   },
   {
     type: 'paragraph',
-    text: 'La mémoire par nœud détermine ce qui peut tourner où : **Adastra** [38] offre 768 Go par nœud et convient bien au workflow, **Jean Zay** [39] dispose de 192 Go par nœud et impose de limiter la taille de l’image du ciel générée (les partitions GPU dotées d’au moins 512 Go peuvent aussi être utilisées), et **Joliot-Curie** [40] offre 228 Go par nœud — avec seulement 7 nœuds à grande mémoire suffisants. Une configuration qui tient sur une machine peut être impossible sur une autre.',
+    text: 'La mémoire par nœud détermine ce qui peut tourner où : **Adastra** [38] offre 768 Go par nœud et convient bien au pipeline, **Jean Zay** [39] dispose de 192 Go par nœud et impose de limiter la taille de l’image du ciel générée (les partitions GPU dotées d’au moins 512 Go peuvent aussi être utilisées), et **Joliot-Curie** [40] offre 228 Go par nœud — avec seulement 7 nœuds à grande mémoire suffisants. Une configuration qui tient sur une machine peut être impossible sur une autre.',
   },
   {
     type: 'paragraph',
-    text: 'Pour nous préparer aux volumes de données du SKA, nous avons co-développé une **version parallèle** de la chaîne DDF avec des partenaires du **laboratoire commun ECLAT** [41], en intégrant la parallélisation multi-cœur et multi-nœud de DDFacet [42] à une implémentation parallèle de killMS. C’est la version utilisée pour les résultats ci-dessous.',
+    text: 'Pour nous préparer aux volumes de données du SKA, nous avons co-développé une **version parallèle** du DDF Pipeline avec des partenaires du **laboratoire commun ECLAT** [41], en intégrant la parallélisation multi-cœur et multi-nœud de DDFacet [42] à une implémentation parallèle de killMS. C’est la version utilisée pour les résultats ci-dessous.',
   },
   {
     type: 'figure',
     image: '/images/mathis/exascale-astronomy/ddf-workflow.webp',
-    alt: 'La chaîne DDF : télécharger les données, exécuter le workflow, déposer les résultats',
-    caption: 'La chaîne DDF — trois étapes, chacune exposée comme un microservice distinct.',
+    alt: 'Le workflow du DDF Pipeline : télécharger les données, exécuter le pipeline, déposer les résultats',
+    caption: 'Le workflow du DDF Pipeline — trois étapes, chacune exposée comme un microservice distinct.',
   },
   {
     type: 'paragraph',
@@ -1086,14 +1086,14 @@ const cybersecurityTranslated: ArticleBlock[] = [
     ordered: true,
     items: [
       '**Télécharger les données** — les entrées sont des fichiers MS donnés par chemin local ou URL, un supercalculateur cible et son identifiant. Le microservice vérifie la compatibilité avec le supercalculateur en s’assurant que le domaine de l’URL figure dans la liste blanche attribuée au compte de service nommé ; les chemins locaux sont mis en place par les tampons éphémères. La sortie est un identifiant de tâche globale.',
-      '**Exécuter la chaîne DDF** — les entrées sont un fichier de configuration ou des options précises (par exemple la taille de l’image) et l’identifiant de tâche globale. Le microservice valide la configuration et l’accès aux données d’entrée, prépare le répertoire d’exécution et soumet une tâche à SLURM, en renvoyant l’identifiant de tâche globale pour que l’utilisateur puisse suivre son état.',
+      '**Exécuter le DDF Pipeline** — les entrées sont un fichier de configuration ou des options précises (par exemple la taille de l’image) et l’identifiant de tâche globale. Le microservice valide la configuration et l’accès aux données d’entrée, prépare le répertoire d’exécution et soumet une tâche à SLURM, en renvoyant l’identifiant de tâche globale pour que l’utilisateur puisse suivre son état.',
       '**Déposer les résultats** — les entrées sont la destination (chemin local ou URL) et l’identifiant de tâche globale. Le microservice dépose les données par les tampons éphémères pour un chemin local, ou par l’API pour un dépôt distant.',
     ],
   },
   { type: 'heading', level: 3, text: 'Les résultats' },
   {
     type: 'paragraph',
-    text: 'Le workflow a été mis à l’épreuve sur le supercalculateur Jean Zay pour valider l’architecture. Nous avons mesuré trois choses : où les données peuvent résider, comment le workflow passe à l’échelle, et ce que coûte la couche de service.',
+    text: 'Le workflow a été mis à l’épreuve sur le supercalculateur Jean Zay pour valider l’architecture. Nous avons mesuré trois choses : où les données peuvent résider, comment le pipeline passe à l’échelle, et ce que coûte la couche de service.',
   },
   {
     type: 'list',
@@ -1118,7 +1118,7 @@ const cybersecurityTranslated: ArticleBlock[] = [
   },
   {
     type: 'paragraph',
-    text: 'Exploiter la chaîne DDF comme un service sur une infrastructure nationale a également fait apparaître trois conséquences pratiques :',
+    text: 'Exploiter le DDF Pipeline comme un service sur une infrastructure nationale a également fait apparaître trois conséquences pratiques :',
   },
   {
     type: 'list',
@@ -1126,12 +1126,12 @@ const cybersecurityTranslated: ArticleBlock[] = [
     items: [
       '**Qualité de service** — SLURM priorise les comptes dont l’usage récent est faible. Tous les utilisateurs accédant aux ressources par un compte unique, cela crée des délais d’allocation importants : la politique de partage équitable du compte de service nommé devra donc être adaptée.',
       '**Stockage** — une seule exécution génère des centaines de gigaoctets, alors que les quotas des supercalculateurs sont limités. Les résultats doivent être transférés vers une source externe et les répertoires de travail nettoyés après chaque exécution, ce qui limite aussi le nombre de tâches menées en parallèle et motive la répartition des tâches entre plusieurs systèmes de calcul.',
-      '**Reproductibilité** — la reproductibilité étape par étape est irréaliste pour des workflows qui produisent des centaines de gigaoctets de produits intermédiaires par exécution. Nous visons plutôt la **reproductibilité du workflow entier**, en conservant les références des entrées, les paramètres d’exécution et les spécifications de l’environnement.',
+      '**Reproductibilité** — la reproductibilité étape par étape est irréaliste pour des pipelines qui produisent des centaines de gigaoctets de produits intermédiaires par exécution. Nous visons plutôt la **reproductibilité du workflow entier**, en conservant les références des entrées, les paramètres d’exécution et les spécifications de l’environnement.',
     ],
   },
   {
     type: 'paragraph',
-    text: 'Des exécutions de la chaîne DDF entre centres, **entre Jean Zay et Adastra**, ont été validées, ce qui motive l’intégration future d’un déploiement inter-sites [44] dans le cadre EB/AM. Le modèle du compte de service nommé reste en discussion avec les acteurs français du calcul intensif, et les travaux à venir étendront le déploiement à d’autres supercalculateurs français — **Adastra et Joliot-Curie**.',
+    text: 'Des exécutions du DDF Pipeline entre centres, **entre Jean Zay et Adastra**, ont été validées, ce qui motive l’intégration future d’un déploiement inter-sites [44] dans le cadre EB/AM. Le modèle du compte de service nommé reste en discussion avec les acteurs français du calcul intensif, et les travaux à venir étendront le déploiement à d’autres supercalculateurs français — **Adastra et Joliot-Curie**.',
   },
   { type: 'heading', level: 2, text: 'Conclusion' },
   {
@@ -1263,7 +1263,7 @@ export const resumePage = {
     },
     {
       date: 'Décembre 2025 · atelier technique ECLAT',
-      text: 'Une approche de logistique des données avec la chaîne DDF comme scénario de déploiement concret.',
+      text: 'Une approche de logistique des données avec le DDF Pipeline comme scénario de déploiement concret.',
       title: 'Le logiciel de calcul intensif comme service',
     },
   ],
@@ -1290,7 +1290,7 @@ export const researchFeature = {
   ],
   context: {
     label: 'Radioastronomie',
-    text: 'Ancré dans la chaîne DDF pour LOFAR, précurseur du SKA, exécutée sur les supercalculateurs nationaux français et le stockage de recherche européen.',
+    text: 'Ancré dans le DDF Pipeline pour LOFAR, précurseur du SKA, exécutée sur les supercalculateurs nationaux français et le stockage de recherche européen.',
   },
 } as const
 

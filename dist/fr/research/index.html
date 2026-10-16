@@ -39,7 +39,7 @@
     <meta name="twitter:image:alt" content="Mathis Certenais — Recherche" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <title>Recherche | Mathis Certenais</title>
-    <script type="module" crossorigin src="/assets/index-BwoiOahV.js"></script>
+    <script type="module" crossorigin src="/assets/index-C8MB0U_c.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BxBSK4vT.css">
     <meta property="og:url" content="https://mathiscertenais.com/fr/research/" />
     <link rel="canonical" href="https://mathiscertenais.com/fr/research/" />
@@ -73,7 +73,7 @@
       <ul>
         <li><strong>~700 Po</strong> — de données exploitables du SKA archivées chaque année</li>
         <li><strong>3</strong> — centres nationaux de calcul intensif, tous soumis au PPST et au régime ZRR</li>
-        <li><strong>~7,9×</strong> — accélération mesurée de la chaîne DDF sur 24 nœuds — de 68,8 h à 8,7 h</li>
+        <li><strong>~7,9×</strong> — accélération mesurée du DDF Pipeline sur 24 nœuds — de 68,8 h à 8,7 h</li>
       </ul>
       <h2>Cinq perspectives sur un même problème de logistique.</h2>
       <ol>
@@ -85,7 +85,7 @@
       </ol>
       <p class="prerendered__label">Comment les perspectives s’articulent</p>
       <h2>Un seul workflow, trois juridictions.</h2>
-      <p>Ces perspectives ne sont pas des programmes de recherche indépendants. Elles se rejoignent dans un workflow inter-sites concret : la chaîne DDF, le logiciel d’auto-calibration et d’imagerie du radiotélescope LOFAR, précurseur du SKA, exécuté sur des sites de calcul et de stockage hétérogènes et géodistribués.</p>
+      <p>Ces perspectives ne sont pas des programmes de recherche indépendants. Elles se rejoignent dans un workflow inter-sites concret : le DDF Pipeline, le logiciel d’auto-calibration et d’imagerie du radiotélescope LOFAR, précurseur du SKA, exécuté sur des sites de calcul et de stockage hétérogènes et géodistribués.</p>
       <p>Entre ces points, chaque étape doit répondre à la même question dans une langue administrative différente. Où cette étape doit-elle s’exécuter, sous quelle autorité, avec quelles métadonnées enregistrées, et qui en est responsable ? Cette traduction est le système de systèmes que la thèse propose de modéliser.</p>
       <h2>Un workflow réparti entre plusieurs centres</h2>
       <ul>
@@ -95,14 +95,14 @@
       </ul>
       <p class="prerendered__label">Méthodes</p>
       <h2>Un workflow exigeant comme banc d’essai.</h2>
-      <p>La chaîne DDF est un bon cas d’étude précisément parce qu’elle répond à la fois à un vrai besoin de la communauté et à un problème système difficile. Une publication de données LoTSS a consommé environ seize millions d’heures de calcul ; une seule exécution atteint plusieurs centaines de gigaoctets de mémoire au pic, des images de cinq à vingt mille pixels de côté, entre une et vingt-quatre sous-bandes de fréquence, et des temps d’exécution mesurés en jours.</p>
+      <p>Le DDF Pipeline est un bon cas d’étude précisément parce qu’elle répond à la fois à un vrai besoin de la communauté et à un problème système difficile. Une publication de données LoTSS a consommé environ seize millions d’heures de calcul ; une seule exécution atteint plusieurs centaines de gigaoctets de mémoire au pic, des images de cinq à vingt mille pixels de côté, entre une et vingt-quatre sous-bandes de fréquence, et des temps d’exécution mesurés en jours.</p>
       <p>Le travail décrit et profile ce logiciel, puis propose le modèle d’exploitation qui le rend utilisable à grande échelle : microservices applicatifs et tampons éphémères pour déplacer les données sans accès direct au shell, un exécutant qui tire les tâches depuis l’intérieur de la zone sécurisée plutôt que de les y pousser, et un compte de service nommé qui concilie la traçabilité ZRR avec un outil communautaire partagé.</p>
       <p>La traçabilité est capturée formellement plutôt que narrativement — cartes de connaissances structurées de l’application et de l’environnement d’exécution, et indicateurs de performance enregistrés à chaque exécution — afin qu’une exécution puisse être comparée, reproduite et, à terme, prédite.</p>
       <p class="prerendered__label">Contribution</p>
       <h2>Ce qu’apporte la thèse.</h2>
       <p>Un modèle de logistique des données dans lequel la gouvernance et la sécurité sont des contraintes de même rang que la capacité et le coût, et non une couche appliquée une fois l’architecture figée.</p>
       <p>Une spécification des métadonnées nécessaires pour rendre opérationnel le déploiement d’un workflow à grande échelle : de quoi assurer la traçabilité des opérations et respecter les principes FAIR, et de quoi alimenter des décisions de placement multicritères.</p>
-      <p>Une alternative démontrée aux comptes de calcul par utilisateur — les applications scientifiques comme service — validée avec la chaîne DDF sur Jean Zay et Adastra, le modèle du compte de service nommé étant en discussion avec les acteurs français de la sécurité.</p>
+      <p>Une alternative démontrée aux comptes de calcul par utilisateur — les applications scientifiques comme service — validée avec le DDF Pipeline sur Jean Zay et Adastra, le modèle du compte de service nommé étant en discussion avec les acteurs français de la sécurité.</p>
       <p>Une demande quantifiée envers l’infrastructure : ce que cette logistique implique en stockage, en réseau, en énergie et en émissions dans un paysage scientifique centré sur les données.</p>
       <p class="prerendered__label">Applications</p>
       <h2>Au-delà de la radioastronomie.</h2>
