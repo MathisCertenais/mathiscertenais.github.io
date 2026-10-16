@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#eef2f5" />
+    <script>
+      ;(() => {
+        try {
+          const stored = localStorage.getItem('mathis-personal-website:theme')
+          const theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light'
+          document.documentElement.dataset.theme = theme
+          document.documentElement.style.colorScheme = theme
+          document.querySelector('meta[name="theme-color"]').content =
+            theme === 'dark' ? '#15181c' : '#eef2f5'
+        } catch {
+          document.documentElement.dataset.theme = 'light'
+        }
+      })()
+    </script>
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="In this ECLAT interview, Mathis Certenais talks about his path from an engineering school in Rennes to doctoral research on data logistics — and why multidisciplinarity is key to tomorrow's radio astronomy." />
+    <meta property="og:title" content="Interview: At the Heart of Data Logistics for Radio Astronomy | Mathis Certenais" />
+    <meta property="og:description" content="In this ECLAT interview, Mathis Certenais talks about his path from an engineering school in Rennes to doctoral research on data logistics — and why multidisciplinarity is key to tomorrow's radio astronomy." />
+    <meta property="og:site_name" content="Mathis Certenais" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://mathiscertenais.com/images/mathis/social-card.png" />
+    <meta property="og:image:alt" content="ECLAT interview on data logistics for radio astronomy" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Interview: At the Heart of Data Logistics for Radio Astronomy | Mathis Certenais" />
+    <meta name="twitter:description" content="In this ECLAT interview, Mathis Certenais talks about his path from an engineering school in Rennes to doctoral research on data logistics — and why multidisciplinarity is key to tomorrow's radio astronomy." />
+    <meta name="twitter:image" content="https://mathiscertenais.com/images/mathis/social-card.png" />
+    <meta name="twitter:image:alt" content="ECLAT interview on data logistics for radio astronomy" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Interview: At the Heart of Data Logistics for Radio Astronomy | Mathis Certenais</title>
+    <script type="module" crossorigin src="/assets/index-v9vZK_me.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BxBSK4vT.css">
+    <meta property="og:url" content="https://mathiscertenais.com/insights/eclat-interview/" />
+    <link rel="canonical" href="https://mathiscertenais.com/insights/eclat-interview/" />
+  </head>
+  <body>
+    <div id="root"><main class="prerendered" id="main-content">
+      <p class="prerendered__label">Interview · September 2025</p>
+      <h1>Interview: At the Heart of Data Logistics for Radio Astronomy</h1>
+      <p>In this ECLAT interview, Mathis Certenais talks about his path from an engineering school in Rennes to doctoral research on data logistics — and why multidisciplinarity is key to tomorrow’s radio astronomy.</p>
+      <figure class="prerendered__figure">
+        <img alt="The ECLAT interview with Mathis Certenais on data logistics for radio astronomy." src="/images/mathis/videos/interview.webp" />
+      </figure>
+      <p>In this interview with ECLAT, Mathis Certenais — doctoral student at IRISA specialising in data logistics — talks about his career, his research on the information flows of exascale computing, and the importance of multidisciplinarity in tomorrow’s radio astronomy.</p>
+      <h2>The interview</h2>
+      <h3>First of all, could you introduce yourself and tell us a little about your background?</h3>
+      <p>My name is Mathis Certenais, I’m 25 years old. I joined ESIR, an engineering school in Rennes, and at the same time, I completed a double degree at UQAC in Canada for one year. This programme focused on topics related to artificial intelligence, connected objects, cloud computing and programming on parallel architectures. Back in Brittany, I worked at the IRISA laboratory as an engineer on artificial intelligence topics, particularly LLMs and RAGs. Today, I continue to work in the same team as a PhD student on a topic related to collaborative systems of systems for scientific data logistics.</p>
+      <h3>So what exactly is data logistics, and why is it crucial for radio astronomy today?</h3>
+      <p><strong>Data logistics</strong> refers to the management of information flows generated by scientific instruments and complex simulations. It is essential for scaling up in the context of exascale computing. Previously, each institution managed these flows internally: data was collected, processed and analysed locally. However, with the new generation of radio telescopes, the volume of information is exploding. It is therefore necessary to design this logistics within workflows, but also to integrate imaging techniques on high-performance machines and distribute the processing of these information flows across different infrastructures.</p>
+      <h3>Let’s talk about ECLAT. What is its purpose?</h3>
+      <p>ECLAT’s primary objective is to design cyber-physical systems, also known as workflows, for the radio astronomy of tomorrow and thus meet the needs of <strong>Square Kilometer Array (SKA)</strong>, a next-generation radio telescope. For us, radio astronomy is a fantastic playground for experimenting with our data logistics tools. It’s a bit like designing tools (rake, spade, bucket) and the ECLAT laboratory is our sandpit for building things together and seeing if they hold up.</p>
+      <h3>Where did this collaboration come from?</h3>
+      <p>I came across ECLAT while reading a <a href="https://www.cnrs.fr/fr/actualite/eclat-lalliance-science-industrie-qui-repousse-les-limites-de-lobservation-astronomique" rel="noreferrer" target="_blank">CNRS news item</a> about the joint laboratory uniting science and industry to push back the limits of astronomical observation. We contacted them, then introduced ourselves at the inauguration of the joint laboratory.</p>
+      <h3>How do you manage collaboration with other disciplines?</h3>
+      <p>ECLAT’s strength lies in bringing together a diverse range of professionals — computer scientists like myself, astrophysicists, engineers, researchers — to tackle the challenges of tomorrow’s astrophysics research. We work hand in hand, in co-development, to understand their subjects and adapt our technical tools while ensuring that the final product, such as an image of the sky, remains consistent and scientifically valid. This <strong>multidisciplinary</strong> approach is key: it is about stepping outside our comfort zone to innovate together.</p>
+      <h3>ECLAT also involves private partners. Do you consider this to be beneficial?</h3>
+      <p>Yes, absolutely. Within ECLAT, there are public and private partners, but personally, we do not perceive any differences. Everyone is here for science, with personal goals but also, and above all, common goals: to advance science and meet the challenges of tomorrow’s radio astronomy. This comprehensive ecosystem is necessary to achieve this.</p>
+      <h3>You are involved in the NumPEx project. Can you tell us more about it?</h3>
+      <p>NumPEx is a French programme that is advancing tomorrow’s IT issues, namely Digital for Exascale. I am active in <strong>YoungPEx</strong> as a member of the committee, which is a gathering of all young people involved in NumPEx, working on issues that impact our generation. We are working in particular on topics such as energy footprints, how to conduct research in an environmentally responsible manner, multidisciplinarity in the context of scientific research, the acceptability of high-performance computing in society, and the use of AI in our research.</p>
+      <h3>Is it worth doing a Ph.D.?</h3>
+      <p>A PhD is, above all, a <strong>lifestyle choice</strong>. You need a certain amount of independence because we decide how we spend our days, and of course, you need to be at least somewhat passionate about your subject. What I find incredible is the human aspect and the exchange of knowledge. Working with specialists from backgrounds as diverse as astrophysicists is a unique opportunity to learn about highly specialized subjects.</p>
+      <h2>Source</h2><p><a href="https://eclat-lab.fr/en/at-the-heart-of-data-logistics-for-astronomy-interview-with-mathis/">Original publication</a></p>
+      <h2>Keep reading</h2>
+      <ul>
+        <li><a href="/insights/">All entries</a></li>
+        <li><a href="/research/">The research</a></li>
+        <li><a href="/contact/">Get in touch</a></li>
+      </ul>
+    </main></div>
+  </body>
+</html>

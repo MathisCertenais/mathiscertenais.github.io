@@ -38,8 +38,8 @@
   "title": "Recherche | Mathis Certenais"
  },
  {
-  "path": "/writing",
-  "canonical": "/writing",
+  "path": "/insights",
+  "canonical": "/insights",
   "page": "writing",
   "title": "Insights & Updates | Mathis Certenais",
   "description": "Research notes, webinars, and events spanning HPC, data logistics, and radio astronomy.",
@@ -47,18 +47,28 @@
   "ogImageAlt": "Insights and updates from Mathis Certenais"
  },
  {
-  "canonical": "/fr/writing",
+  "path": "/writing",
+  "canonical": "/insights",
+  "page": "writing",
+  "title": "Insights & Updates | Mathis Certenais",
+  "description": "Research notes, webinars, and events spanning HPC, data logistics, and radio astronomy.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "Insights and updates from Mathis Certenais",
+  "robots": "noindex, follow"
+ },
+ {
+  "canonical": "/fr/insights",
   "description": "Notes de recherche, webinaires et \u00e9v\u00e9nements autour du calcul haute performance, de la logistique des donn\u00e9es et de la radioastronomie.",
   "ogImage": "/images/mathis/social-card.png",
   "ogImageAlt": "Mathis Certenais \u2014 Articles et actualit\u00e9s",
   "page": "writing",
-  "path": "/fr/writing",
+  "path": "/fr/insights",
   "robots": "noindex, follow",
   "title": "Articles et actualit\u00e9s | Mathis Certenais"
  },
  {
-  "path": "/writing/predicting-for-sizing",
-  "canonical": "/writing/predicting-for-sizing",
+  "path": "/insights/predicting-for-sizing",
+  "canonical": "/insights/predicting-for-sizing",
   "page": "article:predicting-for-sizing",
   "title": "Predicting for Sizing: Teaching Supercomputers Their Own Execution Footprint | Mathis Certenais",
   "description": "A continuous-learning predictive model that estimates the execution time, memory, and energy of scientific applications \u2014 so researchers can size their allocations instead of guessing.",
@@ -66,18 +76,28 @@
   "ogImageAlt": "Predicting for sizing on supercomputers"
  },
  {
-  "canonical": "/fr/writing/predicting-for-sizing",
+  "path": "/writing/predicting-for-sizing",
+  "canonical": "/insights/predicting-for-sizing",
+  "page": "article:predicting-for-sizing",
+  "title": "Predicting for Sizing: Teaching Supercomputers Their Own Execution Footprint | Mathis Certenais",
+  "description": "A continuous-learning predictive model that estimates the execution time, memory, and energy of scientific applications \u2014 so researchers can size their allocations instead of guessing.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "Predicting for sizing on supercomputers",
+  "robots": "noindex, follow"
+ },
+ {
+  "canonical": "/fr/insights/predicting-for-sizing",
   "description": "Un mod\u00e8le pr\u00e9dictif \u00e0 apprentissage continu qui estime le temps d\u2019ex\u00e9cution, la m\u00e9moire et l\u2019\u00e9nergie des applications scientifiques sur supercalculateur.",
   "ogImage": "/images/mathis/social-card.png",
   "ogImageAlt": "Mathis Certenais \u2014 Pr\u00e9dire pour dimensionner : apprendre aux supercalculateurs leur propre empreinte d\u2019ex\u00e9cution",
   "page": "article:predicting-for-sizing",
-  "path": "/fr/writing/predicting-for-sizing",
+  "path": "/fr/insights/predicting-for-sizing",
   "robots": "noindex, follow",
   "title": "Pr\u00e9dire pour dimensionner : apprendre aux supercalculateurs leur propre empreinte d\u2019ex\u00e9cution | Mathis Certenais"
  },
  {
-  "path": "/writing/eclat-interview",
-  "canonical": "/writing/eclat-interview",
+  "path": "/insights/eclat-interview",
+  "canonical": "/insights/eclat-interview",
   "page": "article:eclat-interview",
   "title": "Interview: At the Heart of Data Logistics for Radio Astronomy | Mathis Certenais",
   "description": "In this ECLAT interview, Mathis Certenais talks about his path from an engineering school in Rennes to doctoral research on data logistics \u2014 and why multidisciplinarity is key to tomorrow's radio astronomy.",
@@ -85,18 +105,28 @@
   "ogImageAlt": "ECLAT interview on data logistics for radio astronomy"
  },
  {
-  "canonical": "/fr/writing/eclat-interview",
+  "path": "/writing/eclat-interview",
+  "canonical": "/insights/eclat-interview",
+  "page": "article:eclat-interview",
+  "title": "Interview: At the Heart of Data Logistics for Radio Astronomy | Mathis Certenais",
+  "description": "In this ECLAT interview, Mathis Certenais talks about his path from an engineering school in Rennes to doctoral research on data logistics \u2014 and why multidisciplinarity is key to tomorrow's radio astronomy.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "ECLAT interview on data logistics for radio astronomy",
+  "robots": "noindex, follow"
+ },
+ {
+  "canonical": "/fr/insights/eclat-interview",
   "description": "Dans cet entretien pour ECLAT, Mathis Certenais raconte son parcours depuis une \u00e9cole d\u2019ing\u00e9nieurs \u00e0 Rennes jusqu\u2019\u00e0 la recherche doctorale sur la logistique des donn\u00e9es.",
   "ogImage": "/images/mathis/social-card.png",
   "ogImageAlt": "Mathis Certenais \u2014 Entretien : au c\u0153ur de la logistique des donn\u00e9es pour la radioastronomie",
   "page": "article:eclat-interview",
-  "path": "/fr/writing/eclat-interview",
+  "path": "/fr/insights/eclat-interview",
   "robots": "noindex, follow",
   "title": "Entretien : au c\u0153ur de la logistique des donn\u00e9es pour la radioastronomie | Mathis Certenais"
  },
  {
-  "path": "/writing/youngpex",
-  "canonical": "/writing/youngpex",
+  "path": "/insights/youngpex",
+  "canonical": "/insights/youngpex",
   "page": "article:youngpex",
   "title": "YoungPEx: The New Generation of Digital for Exascale | Mathis Certenais",
   "description": "Inside YoungPEx, the NumPEx working group connecting young researchers across the French exascale programme \u2014 its first General Assembly in Toulouse, its workshops on the environmental impact of HPC and on inequalities in academia, and what comes next.",
@@ -104,18 +134,28 @@
   "ogImageAlt": "YoungPEx, the NumPEx working group for young researchers"
  },
  {
-  "canonical": "/fr/writing/youngpex",
+  "path": "/writing/youngpex",
+  "canonical": "/insights/youngpex",
+  "page": "article:youngpex",
+  "title": "YoungPEx: The New Generation of Digital for Exascale | Mathis Certenais",
+  "description": "Inside YoungPEx, the NumPEx working group connecting young researchers across the French exascale programme \u2014 its first General Assembly in Toulouse, its workshops on the environmental impact of HPC and on inequalities in academia, and what comes next.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "YoungPEx, the NumPEx working group for young researchers",
+  "robots": "noindex, follow"
+ },
+ {
+  "canonical": "/fr/insights/youngpex",
   "description": "Dans les coulisses de YoungPEx, le groupe de travail de NumPEx qui relie les jeunes chercheurs du programme fran\u00e7ais exascale.",
   "ogImage": "/images/mathis/social-card.png",
   "ogImageAlt": "Mathis Certenais \u2014 YoungPEx : la nouvelle g\u00e9n\u00e9ration du num\u00e9rique pour l\u2019exascale",
   "page": "article:youngpex",
-  "path": "/fr/writing/youngpex",
+  "path": "/fr/insights/youngpex",
   "robots": "noindex, follow",
   "title": "YoungPEx : la nouvelle g\u00e9n\u00e9ration du num\u00e9rique pour l\u2019exascale | Mathis Certenais"
  },
  {
-  "path": "/writing/webinar-hpc-applications-as-a-service",
-  "canonical": "/writing/webinar-hpc-applications-as-a-service",
+  "path": "/insights/webinar-hpc-applications-as-a-service",
+  "canonical": "/insights/webinar-hpc-applications-as-a-service",
   "page": "article:webinar-hpc-applications-as-a-service",
   "title": "Webinar: HPC Applications as a Service | Mathis Certenais",
   "description": "A webinar connecting radio-astronomy workloads with high-performance computing services.",
@@ -123,18 +163,28 @@
   "ogImageAlt": "HPC Applications as a Service webinar"
  },
  {
-  "canonical": "/fr/writing/webinar-hpc-applications-as-a-service",
+  "path": "/writing/webinar-hpc-applications-as-a-service",
+  "canonical": "/insights/webinar-hpc-applications-as-a-service",
+  "page": "article:webinar-hpc-applications-as-a-service",
+  "title": "Webinar: HPC Applications as a Service | Mathis Certenais",
+  "description": "A webinar connecting radio-astronomy workloads with high-performance computing services.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "HPC Applications as a Service webinar",
+  "robots": "noindex, follow"
+ },
+ {
+  "canonical": "/fr/insights/webinar-hpc-applications-as-a-service",
   "description": "Un webinaire sur la logistique des donn\u00e9es, l\u2019imagerie intensive et l\u2019orchestration de cha\u00eenes de traitement \u00e0 grande \u00e9chelle.",
   "ogImage": "/images/mathis/social-card.png",
   "ogImageAlt": "Mathis Certenais \u2014 Webinaire : les services applicatifs de calcul haute performance pour la radioastronomie",
   "page": "article:webinar-hpc-applications-as-a-service",
-  "path": "/fr/writing/webinar-hpc-applications-as-a-service",
+  "path": "/fr/insights/webinar-hpc-applications-as-a-service",
   "robots": "noindex, follow",
   "title": "Webinaire : les services applicatifs de calcul haute performance pour la radioastronomie | Mathis Certenais"
  },
  {
-  "path": "/writing/international-hackathon-for-astronomy",
-  "canonical": "/writing/international-hackathon-for-astronomy",
+  "path": "/insights/international-hackathon-for-astronomy",
+  "canonical": "/insights/international-hackathon-for-astronomy",
   "page": "article:international-hackathon-for-astronomy",
   "title": "International Hackathon for Astronomy | Mathis Certenais",
   "description": "A collaborative research event joining computer scientists and astrophysicists around shared technical challenges.",
@@ -142,18 +192,28 @@
   "ogImageAlt": "International Hackathon for Astronomy"
  },
  {
-  "canonical": "/fr/writing/international-hackathon-for-astronomy",
+  "path": "/writing/international-hackathon-for-astronomy",
+  "canonical": "/insights/international-hackathon-for-astronomy",
+  "page": "article:international-hackathon-for-astronomy",
+  "title": "International Hackathon for Astronomy | Mathis Certenais",
+  "description": "A collaborative research event joining computer scientists and astrophysicists around shared technical challenges.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "International Hackathon for Astronomy",
+  "robots": "noindex, follow"
+ },
+ {
+  "canonical": "/fr/insights/international-hackathon-for-astronomy",
   "description": "Un \u00e9v\u00e9nement de recherche qui r\u00e9unit informaticiens et astrophysiciens de France, d\u2019Angleterre et d\u2019Afrique du Sud.",
   "ogImage": "/images/mathis/social-card.png",
   "ogImageAlt": "Mathis Certenais \u2014 Hackathon international de radioastronomie",
   "page": "article:international-hackathon-for-astronomy",
-  "path": "/fr/writing/international-hackathon-for-astronomy",
+  "path": "/fr/insights/international-hackathon-for-astronomy",
   "robots": "noindex, follow",
   "title": "Hackathon international de radioastronomie | Mathis Certenais"
  },
  {
-  "path": "/writing/rennes-hackathon-for-astronomy",
-  "canonical": "/writing/rennes-hackathon-for-astronomy",
+  "path": "/insights/rennes-hackathon-for-astronomy",
+  "canonical": "/insights/rennes-hackathon-for-astronomy",
   "page": "article:rennes-hackathon-for-astronomy",
   "title": "From Supercomputers to Tutorials: Strengthening Our Community Through Shared Expertise | Mathis Certenais",
   "description": "A technical research event bringing together computer scientists and astrophysicists to tackle challenges of radio astronomy.",
@@ -161,18 +221,28 @@
   "ogImageAlt": "From supercomputers to tutorials at the Rennes hackathon"
  },
  {
-  "canonical": "/fr/writing/rennes-hackathon-for-astronomy",
+  "path": "/writing/rennes-hackathon-for-astronomy",
+  "canonical": "/insights/rennes-hackathon-for-astronomy",
+  "page": "article:rennes-hackathon-for-astronomy",
+  "title": "From Supercomputers to Tutorials: Strengthening Our Community Through Shared Expertise | Mathis Certenais",
+  "description": "A technical research event bringing together computer scientists and astrophysicists to tackle challenges of radio astronomy.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "From supercomputers to tutorials at the Rennes hackathon",
+  "robots": "noindex, follow"
+ },
+ {
+  "canonical": "/fr/insights/rennes-hackathon-for-astronomy",
   "description": "Un \u00e9v\u00e9nement de recherche technique qui r\u00e9unit informaticiens et astrophysiciens pour s\u2019attaquer aux d\u00e9fis de la radioastronomie.",
   "ogImage": "/images/mathis/social-card.png",
   "ogImageAlt": "Mathis Certenais \u2014 Des supercalculateurs aux travaux pratiques",
   "page": "article:rennes-hackathon-for-astronomy",
-  "path": "/fr/writing/rennes-hackathon-for-astronomy",
+  "path": "/fr/insights/rennes-hackathon-for-astronomy",
   "robots": "noindex, follow",
   "title": "Des supercalculateurs aux travaux pratiques | Mathis Certenais"
  },
  {
-  "path": "/writing/mcp-server-software-ontology",
-  "canonical": "/writing/mcp-server-software-ontology",
+  "path": "/insights/mcp-server-software-ontology",
+  "canonical": "/insights/mcp-server-software-ontology",
   "page": "article:mcp-server-software-ontology",
   "title": "Ask Your Pipeline Anything: An MCP Server That Makes Scientific Software Explainable | Mathis Certenais",
   "description": "An ontology, a vector database, and an MCP server that turn hundreds of scientific-software parameters into a conversation with the AI in your coding interface.",
@@ -180,18 +250,28 @@
   "ogImageAlt": "Making scientific software conversational with an MCP server"
  },
  {
-  "canonical": "/fr/writing/mcp-server-software-ontology",
+  "path": "/writing/mcp-server-software-ontology",
+  "canonical": "/insights/mcp-server-software-ontology",
+  "page": "article:mcp-server-software-ontology",
+  "title": "Ask Your Pipeline Anything: An MCP Server That Makes Scientific Software Explainable | Mathis Certenais",
+  "description": "An ontology, a vector database, and an MCP server that turn hundreds of scientific-software parameters into a conversation with the AI in your coding interface.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "Making scientific software conversational with an MCP server",
+  "robots": "noindex, follow"
+ },
+ {
+  "canonical": "/fr/insights/mcp-server-software-ontology",
   "description": "Un serveur MCP qui transforme des centaines de param\u00e8tres de configuration complexes en r\u00e9ponses en langage naturel.",
   "ogImage": "/images/mathis/social-card.png",
   "ogImageAlt": "Mathis Certenais \u2014 Faire parler un logiciel scientifique : un serveur MCP",
   "page": "article:mcp-server-software-ontology",
-  "path": "/fr/writing/mcp-server-software-ontology",
+  "path": "/fr/insights/mcp-server-software-ontology",
   "robots": "noindex, follow",
   "title": "Faire parler un logiciel scientifique : un serveur MCP | Mathis Certenais"
  },
  {
-  "path": "/writing/exascale-astronomy-cybersecurity",
-  "canonical": "/writing/exascale-astronomy-cybersecurity",
+  "path": "/insights/exascale-astronomy-cybersecurity",
+  "canonical": "/insights/exascale-astronomy-cybersecurity",
   "page": "article:exascale-astronomy-cybersecurity",
   "title": "Exascale Astronomy vs. Cybersecurity: Unlocking French Supercomputers for the Radio Astronomy Community | Mathis Certenais",
   "description": "A service-based access model that unlocks French national supercomputers for radio astronomy without compromising cybersecurity.",
@@ -199,12 +279,22 @@
   "ogImageAlt": "Exascale astronomy and French HPC"
  },
  {
-  "canonical": "/fr/writing/exascale-astronomy-cybersecurity",
+  "path": "/writing/exascale-astronomy-cybersecurity",
+  "canonical": "/insights/exascale-astronomy-cybersecurity",
+  "page": "article:exascale-astronomy-cybersecurity",
+  "title": "Exascale Astronomy vs. Cybersecurity: Unlocking French Supercomputers for the Radio Astronomy Community | Mathis Certenais",
+  "description": "A service-based access model that unlocks French national supercomputers for radio astronomy without compromising cybersecurity.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "Exascale astronomy and French HPC",
+  "robots": "noindex, follow"
+ },
+ {
+  "canonical": "/fr/insights/exascale-astronomy-cybersecurity",
   "description": "Comment un mod\u00e8le d\u2019acc\u00e8s par service peut ouvrir les supercalculateurs nationaux fran\u00e7ais \u00e0 la radioastronomie sans compromettre la cybers\u00e9curit\u00e9.",
   "ogImage": "/images/mathis/social-card.png",
   "ogImageAlt": "Mathis Certenais \u2014 Astronomie exascale contre cybers\u00e9curit\u00e9",
   "page": "article:exascale-astronomy-cybersecurity",
-  "path": "/fr/writing/exascale-astronomy-cybersecurity",
+  "path": "/fr/insights/exascale-astronomy-cybersecurity",
   "robots": "noindex, follow",
   "title": "Astronomie exascale contre cybers\u00e9curit\u00e9 | Mathis Certenais"
  },
@@ -318,7 +408,7 @@
  },
  {
   "path": "/articles",
-  "canonical": "/writing",
+  "canonical": "/insights",
   "page": "writing",
   "title": "Insights & Updates | Mathis Certenais",
   "description": "Research notes, webinars, and events from Mathis Certenais.",
@@ -326,7 +416,7 @@
  },
  {
   "path": "/articles/shorts",
-  "canonical": "/writing",
+  "canonical": "/insights",
   "page": "writing",
   "title": "Insights & Updates | Mathis Certenais",
   "description": "Research notes, webinars, and events from Mathis Certenais.",
@@ -334,7 +424,7 @@
  },
  {
   "path": "/articles/ai-will-revolutionize-accessibility",
-  "canonical": "/writing/webinar-hpc-applications-as-a-service",
+  "canonical": "/insights/webinar-hpc-applications-as-a-service",
   "page": "article:webinar-hpc-applications-as-a-service",
   "title": "Webinar: HPC Applications as a Service | Mathis Certenais",
   "description": "A webinar connecting radio astronomy with HPC services.",
@@ -342,7 +432,7 @@
  },
  {
   "path": "/articles/attitudinal-and-behavioral-research",
-  "canonical": "/writing/international-hackathon-for-astronomy",
+  "canonical": "/insights/international-hackathon-for-astronomy",
   "page": "article:international-hackathon-for-astronomy",
   "title": "International Hackathon for Astronomy | Mathis Certenais",
   "description": "A collaborative research event for computer scientists and astrophysicists.",
@@ -350,7 +440,7 @@
  },
  {
   "path": "/articles/capturing-brand-drivers",
-  "canonical": "/writing",
+  "canonical": "/insights",
   "page": "writing",
   "title": "Insights & Updates | Mathis Certenais",
   "description": "Research notes, webinars, and events from Mathis Certenais.",
@@ -358,7 +448,7 @@
  },
  {
   "path": "/articles/designing-the-perfect-game-show",
-  "canonical": "/writing/webinar-hpc-applications-as-a-service",
+  "canonical": "/insights/webinar-hpc-applications-as-a-service",
   "page": "article:webinar-hpc-applications-as-a-service",
   "title": "Webinar: HPC Applications as a Service | Mathis Certenais",
   "description": "A webinar connecting radio astronomy with HPC services.",
@@ -366,7 +456,7 @@
  },
  {
   "path": "/articles/how-ladders-alter-your-marketing-strategies",
-  "canonical": "/writing/international-hackathon-for-astronomy",
+  "canonical": "/insights/international-hackathon-for-astronomy",
   "page": "article:international-hackathon-for-astronomy",
   "title": "International Hackathon for Astronomy | Mathis Certenais",
   "description": "A collaborative research event for computer scientists and astrophysicists.",
@@ -374,7 +464,7 @@
  },
  {
   "path": "/articles/how-ux-fits-in-an-agile-framework",
-  "canonical": "/writing",
+  "canonical": "/insights",
   "page": "writing",
   "title": "Insights & Updates | Mathis Certenais",
   "description": "Research notes, webinars, and events from Mathis Certenais.",
@@ -382,7 +472,7 @@
  },
  {
   "path": "/articles/lean-agile-and-scrum",
-  "canonical": "/writing/webinar-hpc-applications-as-a-service",
+  "canonical": "/insights/webinar-hpc-applications-as-a-service",
   "page": "article:webinar-hpc-applications-as-a-service",
   "title": "Webinar: HPC Applications as a Service | Mathis Certenais",
   "description": "A webinar connecting radio astronomy with HPC services.",
@@ -390,7 +480,7 @@
  },
  {
   "path": "/articles/memories-on-a-graph",
-  "canonical": "/writing/international-hackathon-for-astronomy",
+  "canonical": "/insights/international-hackathon-for-astronomy",
   "page": "article:international-hackathon-for-astronomy",
   "title": "International Hackathon for Astronomy | Mathis Certenais",
   "description": "A collaborative research event for computer scientists and astrophysicists.",
@@ -398,7 +488,7 @@
  },
  {
   "path": "/articles/my-5-most-influential-books",
-  "canonical": "/writing",
+  "canonical": "/insights",
   "page": "writing",
   "title": "Insights & Updates | Mathis Certenais",
   "description": "Research notes, webinars, and events from Mathis Certenais.",
@@ -406,7 +496,7 @@
  },
  {
   "path": "/articles/proto-personas",
-  "canonical": "/writing/webinar-hpc-applications-as-a-service",
+  "canonical": "/insights/webinar-hpc-applications-as-a-service",
   "page": "article:webinar-hpc-applications-as-a-service",
   "title": "Webinar: HPC Applications as a Service | Mathis Certenais",
   "description": "A webinar connecting radio astronomy with HPC services.",
@@ -414,7 +504,7 @@
  },
  {
   "path": "/articles/slicing",
-  "canonical": "/writing/international-hackathon-for-astronomy",
+  "canonical": "/insights/international-hackathon-for-astronomy",
   "page": "article:international-hackathon-for-astronomy",
   "title": "International Hackathon for Astronomy | Mathis Certenais",
   "description": "A collaborative research event for computer scientists and astrophysicists.",
@@ -422,7 +512,7 @@
  },
  {
   "path": "/articles/three-principles-of-persuasion",
-  "canonical": "/writing",
+  "canonical": "/insights",
   "page": "writing",
   "title": "Insights & Updates | Mathis Certenais",
   "description": "Research notes, webinars, and events from Mathis Certenais.",
@@ -430,7 +520,7 @@
  },
  {
   "path": "/articles/ux-agile-and-healthcare-innovation-projects",
-  "canonical": "/writing/webinar-hpc-applications-as-a-service",
+  "canonical": "/insights/webinar-hpc-applications-as-a-service",
   "page": "article:webinar-hpc-applications-as-a-service",
   "title": "Webinar: HPC Applications as a Service | Mathis Certenais",
   "description": "A webinar connecting radio astronomy with HPC services.",
@@ -438,7 +528,7 @@
  },
  {
   "path": "/articles/what-aristotle-can-teach-us-about-marketing",
-  "canonical": "/writing/international-hackathon-for-astronomy",
+  "canonical": "/insights/international-hackathon-for-astronomy",
   "page": "article:international-hackathon-for-astronomy",
   "title": "International Hackathon for Astronomy | Mathis Certenais",
   "description": "A collaborative research event for computer scientists and astrophysicists.",
@@ -446,7 +536,7 @@
  },
  {
   "path": "/articles/what-is-ux-design-in-marketing",
-  "canonical": "/writing",
+  "canonical": "/insights",
   "page": "writing",
   "title": "Insights & Updates | Mathis Certenais",
   "description": "Research notes, webinars, and events from Mathis Certenais.",
@@ -454,7 +544,7 @@
  },
  {
   "path": "/articles/when-to-interview-survey-and-focus-group",
-  "canonical": "/writing/webinar-hpc-applications-as-a-service",
+  "canonical": "/insights/webinar-hpc-applications-as-a-service",
   "page": "article:webinar-hpc-applications-as-a-service",
   "title": "Webinar: HPC Applications as a Service | Mathis Certenais",
   "description": "A webinar connecting radio astronomy with HPC services.",
@@ -462,7 +552,7 @@
  },
  {
   "path": "/articles/why-build-design-systems",
-  "canonical": "/writing/international-hackathon-for-astronomy",
+  "canonical": "/insights/international-hackathon-for-astronomy",
   "page": "article:international-hackathon-for-astronomy",
   "title": "International Hackathon for Astronomy | Mathis Certenais",
   "description": "A collaborative research event for computer scientists and astrophysicists.",

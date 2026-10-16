@@ -402,7 +402,7 @@ export const articleItems: ArticleItem[] = [
     ],
     image: '/images/mathis/videos/interview.webp',
     imageAlt: 'The ECLAT interview with Mathis Certenais on data logistics for radio astronomy.',
-    href: '/writing/eclat-interview',
+    href: '/insights/eclat-interview',
     sourceHref: sourceLinks.eclatInterview,
   },
   {
@@ -620,7 +620,7 @@ export const articleItems: ArticleItem[] = [
     ],
     image: '/images/mathis/youngpex/general-assembly-front.webp',
     imageAlt: 'Group photo of YoungPEx participants in the hall of INP-ENSEEIHT, Toulouse.',
-    href: '/writing/youngpex',
+    href: '/insights/youngpex',
     sourceHref: sourceLinks.numpexYoungpex,
   },
   {
@@ -770,7 +770,7 @@ export const articleItems: ArticleItem[] = [
     ],
     image: '/images/mathis/predicting-for-sizing/cover.webp',
     imageAlt: 'A conceptual illustration contrasting the initial phase of "guessing" with the clarity offered by a continuous learning model.',
-    href: '/writing/predicting-for-sizing',
+    href: '/insights/predicting-for-sizing',
   },
   {
     id: 'mcp-server-software-ontology',
@@ -930,7 +930,7 @@ export const articleItems: ArticleItem[] = [
     ],
     image: '/images/mathis/mcp-server-software-ontology/cover.webp',
     imageAlt: 'A conversation between a researcher and an AI assistant about scientific software parameters',
-    href: '/writing/mcp-server-software-ontology',
+    href: '/insights/mcp-server-software-ontology',
     sourceHref: 'https://github.com/mhardcastle/ddf-pipeline',
   },
   {
@@ -1414,7 +1414,7 @@ export const articleItems: ArticleItem[] = [
     ],
     image: '/images/mathis/exascale-astronomy/ska.webp',
     imageAlt: 'The Square Kilometre Array radio telescope',
-    href: '/writing/exascale-astronomy-cybersecurity',
+    href: '/insights/exascale-astronomy-cybersecurity',
   },
 
   {
@@ -1437,7 +1437,7 @@ export const articleItems: ArticleItem[] = [
     ],
     image: '/images/mathis/videos/webinar.webp',
     imageAlt: 'Mathis presenting "HPC as a Service for Radio Astronomy: A Practical Case Study with the DDF Pipeline" during the webinar',
-    href: '/writing/webinar-hpc-applications-as-a-service',
+    href: '/insights/webinar-hpc-applications-as-a-service',
     sourceHref: sourceLinks.eclatWebinar,
   },
   {
@@ -1482,7 +1482,7 @@ export const articleItems: ArticleItem[] = [
     ],
     image: '/images/mathis/international-hackathon-for-astronomy/cover.webp',
     imageAlt: 'Participants in the international DDF Pipeline and RIMS hackathon in Rennes',
-    href: '/writing/international-hackathon-for-astronomy',
+    href: '/insights/international-hackathon-for-astronomy',
     sourceHref: sourceLinks.eclatHackathon,
   },
   {
@@ -1533,7 +1533,7 @@ export const articleItems: ArticleItem[] = [
     ],
     image: '/images/mathis/rennes-hackathon/rennes-hackathon-front.webp',
     imageAlt: 'Participants in the hackathon in Rennes',
-    href: '/writing/rennes-hackathon-for-astronomy',
+    href: '/insights/rennes-hackathon-for-astronomy',
   },
 ]
 

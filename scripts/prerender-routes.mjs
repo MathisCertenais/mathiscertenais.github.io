@@ -288,7 +288,7 @@ function renderResearch() {
       ${chapter(researchApplications)}
       ${h2(t.thesisOutro)}
       ${list([
-        link(href('/writing'), t.notes),
+        link(href('/insights'), t.notes),
         `<a href="${escapeHtml(sourceLinks.arxiv)}" rel="noreferrer" target="_blank">${t.publications}</a>`,
         `<a href="${escapeHtml(sourceLinks.numpex)}" rel="noreferrer" target="_blank">${t.numpex}</a>`,
         link(href('/contact'), t.getInTouch),
@@ -379,7 +379,7 @@ function renderArticle(article) {
       }
       ${h2(t.keepReading)}
       ${list([
-        link(href('/writing'), t.allEntries),
+        link(href('/insights'), t.allEntries),
         link(href('/research'), t.theResearch),
         link(href('/contact'), 'Get in touch'),
       ])}
@@ -497,7 +497,7 @@ function fallbackFor(routePath) {
 
   if (routePath === '/') return renderHome()
   if (routePath === '/research') return renderResearch()
-  if (routePath === '/writing') return renderWriting()
+  if (routePath === '/insights') return renderWriting()
   if (routePath === '/videos') return renderVideos()
   if (routePath === '/about') return renderAbout()
   if (routePath === '/resume') return renderResume()

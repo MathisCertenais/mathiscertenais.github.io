@@ -19,18 +19,27 @@ const requiredCanonicalPaths = new Set([
   '/research',
   '/resume',
   '/videos',
+  '/insights',
+  '/insights/eclat-interview',
+  '/insights/youngpex',
+  '/insights/predicting-for-sizing',
+  '/insights/international-hackathon-for-astronomy',
+  '/insights/rennes-hackathon-for-astronomy',
+  '/insights/webinar-hpc-applications-as-a-service',
+  '/insights/exascale-astronomy-cybersecurity',
+  '/insights/mcp-server-software-ontology',
+])
+
+const requiredLegacyPaths = new Set([
   '/writing',
   '/writing/eclat-interview',
   '/writing/youngpex',
   '/writing/predicting-for-sizing',
+  '/writing/webinar-hpc-applications-as-a-service',
   '/writing/international-hackathon-for-astronomy',
   '/writing/rennes-hackathon-for-astronomy',
-  '/writing/webinar-hpc-applications-as-a-service',
   '/writing/exascale-astronomy-cybersecurity',
   '/writing/mcp-server-software-ontology',
-])
-
-const requiredLegacyPaths = new Set([
   '/articles',
   '/articles/ai-will-revolutionize-accessibility',
   '/articles/attitudinal-and-behavioral-research',
@@ -106,7 +115,7 @@ const prerenderedFallbacks = {
     'Five perspectives on one logistics problem.',
     'The reasoning is written up in public.',
   ],
-  '/writing': ['Explaining systems through their use.', 'Latest entries'],
+  '/insights': ['Explaining systems through their use.', 'Latest entries'],
   '/videos': ['Research, explained in context.', 'Watch & listen'],
   '/about': ['Building infrastructure through collaboration.', 'Working principles'],
   '/resume': ['arXiv:2509.03075', 'Relevant certifications'],
