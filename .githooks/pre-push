@@ -1,0 +1,55 @@
+#!/bin/sh
+# Refuses a push that would ship an incomplete or unverified state.
+#
+# Three checks, each one earned by a real mistake:
+#
+#   1. `pnpm check` — lint, types, routes, a fresh build, and the dist audit.
+#      A failing build once went unnoticed because its output was piped into a
+#      filter, and a pipeline reports the status of its last command, not of the
+#      one being tested.
+#   2. A clean working tree — a modified file left out of the commit shipped a
+#      correct dist with a source that could not reproduce it, which the CI would
+#      have caught only after the push.
+#   3. The committed dist must match that same fresh build, since this repository
+#      commits its build output.
+#
+# Bypass with `git push --no-verify` when you know what you are doing.
+
+set -eu
+
+root=$(git rev-parse --show-toplevel)
+cd "$root"
+
+log=$(mktemp)
+trap 'rm -f "$log"' EXIT
+
+# Build the way the deployment does: the committed dist is generated with the
+# production origin, so checking it against a build without one would always fail.
+origin="https://$(cat "$root/public/CNAME")"
+
+echo "[pre-push] pnpm check, which rebuilds dist for $origin…"
+if ! VITE_SITE_URL="$origin" pnpm check >"$log" 2>&1; then
+  echo "[pre-push] pnpm check failed:" >&2
+  tail -25 "$log" >&2
+  exit 1
+fi
+
+echo "[pre-push] working tree…"
+# tasks/ is a scratch folder that is deliberately never committed.
+staged_leftovers=$(git status --porcelain | grep -v '^?? tasks/' || true)
+if [ -n "$staged_leftovers" ]; then
+  echo "[pre-push] these files are not part of the commit:" >&2
+  echo "$staged_leftovers" >&2
+  echo "[pre-push] stage and commit them, or add them to .gitignore." >&2
+  exit 1
+fi
+
+echo "[pre-push] dist matches the build…"
+if ! git diff --quiet -- dist; then
+  echo "[pre-push] the committed dist differs from a fresh build:" >&2
+  git status --short -- dist >&2
+  echo "[pre-push] run git add dist and commit, then push again." >&2
+  exit 1
+fi
+
+echo "[pre-push] all three checks passed."

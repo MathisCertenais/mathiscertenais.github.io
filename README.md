@@ -166,6 +166,16 @@ and a second audit of every prerendered route shell and the final `dist` output.
 protects the repository from stale snapshot content, synthetic portrait watermarks, unfinished
 placeholder copy, broken canonical targets, missing social images, and unreferenced public media.
 
+Pushing runs the same checks again, from the hook in `.githooks/`:
+
+```bash
+git config core.hooksPath .githooks   # once per clone
+```
+
+It refuses a push when `pnpm check` fails, when a file is left out of the commit, or when the
+committed `dist` no longer matches a fresh build — three failures this repository has already
+produced once. Bypass it with `git push --no-verify` when you know why.
+
 For a faster source-only route and asset audit:
 
 ```bash

@@ -10,7 +10,9 @@ export function ResearchPage() {
     researchChapters,
     researchChain,
     researchContribution,
+    researchFeature,
     researchFigures,
+    researchKeywords,
     researchMethods,
     researchPerspectives,
     researchThesis,
@@ -20,7 +22,7 @@ export function ResearchPage() {
   return (
     <main id="main-content" tabIndex={-1}>
       <PageHero
-        eyebrow="Research"
+        eyebrow={researchFeature.heading}
         illustration={{
           alt: 'Diagram of the SKA processing chain: antennas in Australia and South Africa feed on-site pre-processing, then supercomputers in Perth and Cape Town, whose science products are replicated across an international storage network',
           ratio: '2 / 1',
@@ -35,11 +37,9 @@ export function ResearchPage() {
         <p className="research-thesis__meta">{researchThesis.context}</p>
         <p className="research-thesis__meta">{researchThesis.programme}</p>
         <ul aria-label={strings.pages.researchThemes} className="tag-list">
-          <li>Data logistics</li>
-          <li>Cross-facility workflows</li>
-          <li>Governance and security</li>
-          <li>Provenance and FAIR</li>
-          <li>HPC as a service</li>
+          {researchKeywords.map((keyword) => (
+            <li key={keyword}>{keyword}</li>
+          ))}
         </ul>
       </section>
 

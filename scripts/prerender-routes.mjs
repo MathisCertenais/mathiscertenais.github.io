@@ -248,6 +248,7 @@ function createFallbacks(content, t, href) {
     researchContribution,
     researchFeature,
     researchFigures,
+    researchKeywords,
     researchMethods,
     researchPerspectives,
     researchThesis,
@@ -264,6 +265,7 @@ function renderResearch() {
       ${h1(researchThesis.title)}
       ${meta([researchThesis.context, researchThesis.programme].join(' · '))}
       ${p(researchThesis.summary)}
+      ${list(researchKeywords.map((keyword) => escapeHtml(keyword)))}
       ${researchChapters.map(chapter).join('\n      ')}
       ${h2(t.thesisFigures)}
       ${list(researchFigures.map((figure) => `<strong>${escapeHtml(figure.value)}</strong> — ${escapeHtml(figure.label)}`))}
