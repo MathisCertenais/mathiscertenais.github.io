@@ -15,7 +15,7 @@ const primaryLinks = [
 
 const secondaryLinks = [
   { external: false, href: '/resume', key: 'profile' },
-  { external: true, href: 'https://www.linkedin.com/in/mathiscertenais/', key: 'linkedin' },
+  { external: true, href: 'https://www.linkedin.com/in/mathiscertenais', key: 'linkedin' },
 ] as const
 
 interface SiteHeaderProps {

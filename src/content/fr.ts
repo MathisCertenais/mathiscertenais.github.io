@@ -33,7 +33,7 @@ export const identity = {
     'Chercheur en informatique travaillant sur le calcul haute performance et les workflows scientifiques répartis entre plusieurs centres, pour la radioastronomie.',
   location: 'Rennes, Bretagne, France',
   email: 'mathiscertenais@gmail.com',
-  linkedin: 'https://www.linkedin.com/in/mathiscertenais/',
+  linkedin: 'https://www.linkedin.com/in/mathiscertenais',
 } as const
 
 export const businessCard = {

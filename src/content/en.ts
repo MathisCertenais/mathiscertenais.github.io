@@ -6,7 +6,7 @@ export const identity = {
     'Computer scientist researching high-performance computing and cross-facility scientific workflows for radio astronomy.',
   location: 'Rennes, Brittany, France',
   email: 'mathiscertenais@gmail.com',
-  linkedin: 'https://www.linkedin.com/in/mathiscertenais/',
+  linkedin: 'https://www.linkedin.com/in/mathiscertenais',
 } as const
 
 /**
