@@ -371,6 +371,107 @@ const articleBodies: Record<string, ArticleBlock[]> = {
   ],
 }
 
+Object.assign(articleBodies, {
+  'rennes-hackathon-for-astronomy': [
+    {
+      type: 'paragraph',
+      text: 'On parle souvent de code et de données, mais le meilleur de notre hackathon, ce sont les personnes. C’était l’occasion d’apprendre les uns des autres et de résoudre des problèmes difficiles en face à face. En radioastronomie, les outils sont complexes. Les aborder ensemble permet de mieux les maîtriser.',
+    },
+    {
+      type: 'heading',
+      level: 2,
+      text: 'Maîtriser Spack avec l’aide d’un partenaire industriel',
+    },
+    {
+      type: 'paragraph',
+      text: 'L’un de nos objectifs principaux était de faire tourner sans accroc notre logiciel de traitement de données, DDF Pipeline, sur les supercalculateurs grâce à Spack. Spack est un outil puissant pour gérer les logiciels sur les machines de calcul intensif, mais sa prise en main est rude et sa configuration délicate.',
+    },
+    {
+      type: 'paragraph',
+      text: 'Notre partenaire chez Bull est venu nous aider. Plutôt que de nous envoyer de la documentation, son ingénieur s’est installé avec nous et nous a montré précisément comment configurer Spack pour nos machines. Cet accompagnement a transformé un obstacle technique en un processus clair et maîtrisable. Nous n’avons pas seulement installé un logiciel : nous avons appris à le maintenir nous-mêmes.',
+    },
+    {
+      type: 'figure',
+      image: '/images/mathis/rennes-hackathon/rennes-hackathon-back.webp',
+      alt: 'Participants écoutant une présentation',
+      caption:
+        'Participants écoutant Cyril Tasse présenter les résultats d’un relevé du ciel obtenu en traitant les données du radiotélescope Low Frequency Array (LOFAR) avec la chaîne DDF. Crédit : Jacques Tissot.',
+    },
+    {
+      type: 'heading',
+      level: 2,
+      text: 'Aider les participants avec des tutoriels',
+    },
+    {
+      type: 'paragraph',
+      text: 'Nous nous sommes aussi occupés des utilisateurs. Un bon code ne sert à rien si personne ne sait s’en servir. Pendant l’événement, nous avons écrit des [tutoriels détaillés pour DDFacet](https://hackmd.io/l8fw0PYRQv6dm9i6KpZWPA), le logiciel d’imagerie de notre chaîne de traitement.',
+    },
+    {
+      type: 'paragraph',
+      text: 'Écrire ces guides, c’était une affaire de clarté et de simplicité. Nous voulions expliquer non seulement les étapes, mais la logique qui les sous-tend. En produisant cette documentation, nous facilitons l’usage de nos outils par d’autres astronomes. Ce soutien dépasse le hackathon et aide la communauté au sens large.',
+    },
+  ],
+  'eclat-interview': [
+    {
+      type: 'paragraph',
+      text: 'Dans cet entretien pour ECLAT, Mathis Certenais — doctorant à l’IRISA spécialisé en logistique des données — raconte son parcours, sa recherche sur les flux d’information du calcul exascale et l’importance de la multidisciplinarité pour la radioastronomie de demain.',
+    },
+    { type: 'heading', level: 2, text: 'L’entretien' },
+    {
+      type: 'heading',
+      level: 3,
+      text: 'Pour commencer, pouvez-vous vous présenter et nous parler un peu de votre parcours ?',
+    },
+    {
+      type: 'paragraph',
+      text: 'Je m’appelle Mathis Certenais, j’ai 25 ans. J’ai rejoint l’ESIR, une école d’ingénieurs à Rennes, et j’ai suivi en parallèle un double diplôme d’un an à l’UQAC, au Canada. Ce cursus portait sur l’intelligence artificielle, les objets connectés, l’informatique en nuage et la programmation pour architectures parallèles. De retour en Bretagne, j’ai travaillé au laboratoire IRISA comme ingénieur sur des sujets d’intelligence artificielle, en particulier les grands modèles de langue et la génération augmentée par recherche. Aujourd’hui, je poursuis dans la même équipe en tant que doctorant, sur un sujet lié aux systèmes de systèmes collaboratifs pour la logistique des données scientifiques.',
+    },
+    {
+      type: 'heading',
+      level: 3,
+      text: 'Qu’est-ce que la logistique des données, exactement, et pourquoi est-elle cruciale pour la radioastronomie aujourd’hui ?',
+    },
+    {
+      type: 'paragraph',
+      text: 'La **logistique des données** désigne la gestion des flux d’information produits par les instruments scientifiques et les simulations complexes. Elle est indispensable pour passer à l’échelle dans le contexte du calcul exascale. Auparavant, chaque institution gérait ces flux en interne : les données étaient collectées, traitées et analysées localement. Avec la nouvelle génération de radiotélescopes, le volume d’information explose. Il faut donc concevoir cette logistique au sein des chaînes de traitement, mais aussi intégrer les techniques d’imagerie sur les machines de calcul intensif et répartir le traitement de ces flux entre différentes infrastructures.',
+    },
+    { type: 'heading', level: 3, text: 'Parlons d’ECLAT. Quelle est sa raison d’être ?' },
+    {
+      type: 'paragraph',
+      text: 'L’objectif premier d’ECLAT est de concevoir des systèmes cyber-physiques, autrement dit des chaînes de traitement, pour la radioastronomie de demain, et de répondre ainsi aux besoins du **Square Kilometer Array (SKA)**, un radiotélescope de nouvelle génération. Pour nous, la radioastronomie est un formidable terrain d’essai pour nos outils de logistique des données. C’est un peu comme concevoir des outils — un râteau, une bêche, un seau : le laboratoire ECLAT est notre bac à sable pour construire ensemble et voir ce qui tient.',
+    },
+    { type: 'heading', level: 3, text: 'D’où vient cette collaboration ?' },
+    {
+      type: 'paragraph',
+      text: 'J’ai découvert ECLAT en lisant un [article du CNRS](https://www.cnrs.fr/fr/actualite/eclat-lalliance-science-industrie-qui-repousse-les-limites-de-lobservation-astronomique) sur ce laboratoire commun qui unit science et industrie pour repousser les limites de l’observation astronomique. Nous les avons contactés, puis nous nous sommes présentés à l’inauguration du laboratoire commun.',
+    },
+    { type: 'heading', level: 3, text: 'Comment gérez-vous la collaboration avec d’autres disciplines ?' },
+    {
+      type: 'paragraph',
+      text: 'La force d’ECLAT est de réunir des profils très divers — des informaticiens comme moi, des astrophysiciens, des ingénieurs, des chercheurs — pour s’attaquer aux défis de la recherche astrophysique de demain. Nous travaillons main dans la main, en co-développement, pour comprendre leurs sujets et adapter nos outils techniques, tout en veillant à ce que le produit final, une image du ciel par exemple, reste cohérent et scientifiquement valide. Cette approche **multidisciplinaire** est la clé : il s’agit de sortir de notre zone de confort pour innover ensemble.',
+    },
+    {
+      type: 'heading',
+      level: 3,
+      text: 'ECLAT implique aussi des partenaires privés. Y voyez-vous un avantage ?',
+    },
+    {
+      type: 'paragraph',
+      text: 'Oui, tout à fait. Dans ECLAT, il y a des partenaires publics et privés, mais personnellement, nous ne faisons aucune différence. Tout le monde est là pour la science, avec des objectifs personnels mais aussi, et surtout, des objectifs communs : faire avancer la science et relever les défis de la radioastronomie de demain. Cet écosystème complet est nécessaire pour y parvenir.',
+    },
+    { type: 'heading', level: 3, text: 'Vous participez au projet NumPEx. Pouvez-vous nous en dire plus ?' },
+    {
+      type: 'paragraph',
+      text: 'NumPEx est un programme français qui fait avancer les enjeux informatiques de demain : le numérique pour l’exascale. Je suis actif au sein de **YoungPEx** comme membre du comité, un rassemblement de tous les jeunes impliqués dans NumPEx qui travaillent sur des questions touchant notre génération. Nous nous penchons notamment sur l’empreinte énergétique, la manière de mener une recherche respectueuse de l’environnement, la multidisciplinarité dans la recherche scientifique, l’acceptabilité du calcul haute performance dans la société et l’usage de l’IA dans nos travaux.',
+    },
+    { type: 'heading', level: 3, text: 'Cela vaut-il la peine de faire une thèse ?' },
+    {
+      type: 'paragraph',
+      text: 'Une thèse, c’est avant tout un **choix de vie**. Il faut une certaine indépendance, parce que nous décidons de nos journées, et bien sûr un minimum de passion pour son sujet. Ce que je trouve incroyable, c’est l’humain et l’échange de savoirs. Travailler avec des spécialistes de domaines aussi différents que les astrophysiciens est une occasion unique d’apprendre des sujets très pointus.',
+    },
+  ],
+})
+
 export const articleItems: ArticleItem[] = englishArticles.map((article) => ({
   ...article,
   ...(articleTranslations[article.id] ?? {}),
