@@ -39,7 +39,7 @@
     <meta name="twitter:image:alt" content="Predicting for sizing on supercomputers" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <title>Predicting for Sizing: Teaching Supercomputers Their Own Execution Footprint | Mathis Certenais</title>
-    <script type="module" crossorigin src="/assets/index-B5esyhFR.js"></script>
+    <script type="module" crossorigin src="/assets/index--Ifh-cf2.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BxBSK4vT.css">
     <meta property="og:url" content="https://mathiscertenais.com/insights/predicting-for-sizing/" />
     <link rel="canonical" href="https://mathiscertenais.com/insights/predicting-for-sizing/" />
@@ -80,8 +80,8 @@
       <h3>Step one — A structured knowledge map of the runtime environment</h3>
       <p>Before we can predict, we must be able to <strong>describe</strong>. The structured knowledge map (or ontology) formalizes the supercomputer-specific runtime environment in which jobs execute. Its value lies in the mapping: aligning the <strong>job structured knowledge map</strong> with the raw <strong>SLURM metrics</strong> so that a conceptual description — “this job needed a large-memory node” — becomes a measurable, comparable quantity.</p>
       <p class="prerendered__caption">The job structured knowledge map — the bridge between how researchers think about their runs and how SLURM measures them. Credit: Gaëlle Richet.</p>
-      <h3>Step two — Describing every execution with JKPP</h3>
-      <p>Every execution is captured by a set of <strong>Job Performance Indicators, JoPI</strong>. This formalizes both sides of a run: the <strong>input parameters</strong> — application settings and system choices — and the <strong>output metrics</strong> — time, memory, energy. Each measure is structured as a triple: <strong>JoPI = (value, type of value, description)</strong>, a structure simple enough to collect at scale and rich enough to train on.</p>
+      <h3>Step two — Describing every execution with JoPInS</h3>
+      <p>Every execution is captured by a <strong>Job Performance Indicators Set, JoPInS</strong>. The descriptor defines the <strong>input parameters</strong> — application settings and system choices — and the <strong>output metrics</strong> — time, memory, energy — for each job. Each indicator is represented as a triple: <strong>JoPInS = (value, type of value, description)</strong>, a structure simple enough to collect at scale and rich enough to train on.</p>
       <h3>Step three — Collecting evidence from the field</h3>
       <p>A pair of plugins turns real jobs into training data. The command-line client, <strong>cli-monitoring-haps</strong>, collects information about jobs from a specific application, exposed as HAPS, in the context of a <strong>data release campaign</strong>. The server-side collector, <strong>server-monitoring-haps</strong>, reads <strong>system metrics</strong> from SLURM (sacct -j &lt;JOB_ID&gt;), pulls <strong>application-specific metrics</strong> from the HAPS database. Each execution is then formalized into JoPInS and sent to the database.</p>
       <h3>Step four — Centralizing in Database</h3>
