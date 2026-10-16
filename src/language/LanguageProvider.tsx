@@ -59,8 +59,15 @@ function readLanguageFromPath(): Language | null {
  * A route in a given language, in the form the host actually serves: every path
  * but the root carries a trailing slash, which is what the canonical tag and the
  * sitemap declare. One function so links and the toggle cannot disagree.
+ *
+ * Only site routes are localized. Anything that is not a site-absolute path —
+ * an https: address, a mailto:, a bare fragment — is handed back untouched, so
+ * the language prefix and the trailing slash never land in an address the site
+ * does not serve (`/frhttps://…`, `/frmailto:…`).
  */
 export function localizedHref(path: string, language: Language) {
+  if (!path.startsWith('/')) return path
+
   const bare = path === '/' ? '/' : path.replace(/\/+$/, '')
 
   if (language === 'fr') return bare === '/' ? '/fr/' : `/fr${bare}/`
