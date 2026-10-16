@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url'
 import { loadEnv } from 'vite'
 import { locales } from '../src/locales.ts'
 import * as contentEn from '../src/content/en.ts'
+import * as contentFr from '../src/content/fr.ts'
 
 const projectRoot = fileURLToPath(new URL('..', import.meta.url))
 const distRoot = join(projectRoot, 'dist')
@@ -73,9 +74,11 @@ function canonicalUrl(path) {
   return `${absolute}/`
 }
 
-/** An internal link to a route, in the form the host serves it. */
-function routeHref(path) {
-  return path === '/' ? '/' : `${path}/`
+/** An internal link to a route, in the form the host serves it, in one language. */
+function routeHref(path, language = 'en') {
+  const bare = path === '/' ? '/' : `${path.replace(/\/+$/, '')}/`
+  if (language !== 'fr') return bare
+  return bare === '/' ? '/fr/' : `/fr${bare}`
 }
 
 /**
@@ -228,7 +231,7 @@ function articleBlock(block) {
  * Section headings are still literals here; they move into the locale strings
  * with the French pass.
  */
-function createFallbacks(content, t) {
+function createFallbacks(content, t, href) {
   const {
     aboutPage,
     articleItems,
@@ -285,10 +288,10 @@ function renderResearch() {
       ${chapter(researchApplications)}
       ${h2(t.thesisOutro)}
       ${list([
-        link(routeHref('/writing'), t.notes),
+        link(href('/writing'), t.notes),
         `<a href="${escapeHtml(sourceLinks.arxiv)}" rel="noreferrer" target="_blank">${t.publications}</a>`,
         `<a href="${escapeHtml(sourceLinks.numpex)}" rel="noreferrer" target="_blank">${t.numpex}</a>`,
-        link(routeHref('/contact'), t.getInTouch),
+        link(href('/contact'), t.getInTouch),
       ])}
     </main>`
 }
@@ -300,9 +303,9 @@ function renderHome() {
       ${p(identity.description)}
       ${meta(`${t.researcherAt}${identity.location}`)}
       ${list([
-        link(routeHref('/research'), t.viewResearch),
-        link(routeHref('/resume'), t.viewProfile),
-        link(routeHref('/contact'), 'Get in touch'),
+        link(href('/research'), t.viewResearch),
+        link(href('/resume'), t.viewProfile),
+        link(href('/contact'), 'Get in touch'),
       ])}
       ${h2(researchFeature.heading)}
       ${label(researchThesis.label)}
@@ -330,7 +333,7 @@ function renderHome() {
       ${list(
         articleItems.map(
           (article) =>
-            `${link(routeHref(article.href), article.title)} — ${escapeHtml(article.description)}`,
+            `${link(href(article.href), article.title)} — ${escapeHtml(article.description)}`,
         ),
       )}
       ${linkParagraph('/writing', t.readEntries)}
@@ -376,9 +379,9 @@ function renderArticle(article) {
       }
       ${h2(t.keepReading)}
       ${list([
-        link(routeHref('/writing'), t.allEntries),
-        link(routeHref('/research'), t.theResearch),
-        link(routeHref('/contact'), 'Get in touch'),
+        link(href('/writing'), t.allEntries),
+        link(href('/research'), t.theResearch),
+        link(href('/contact'), 'Get in touch'),
       ])}
     </main>`
 }
@@ -482,14 +485,16 @@ function renderContact() {
         `${escapeHtml(businessCard.phone)} — <a href="${escapeHtml(businessCard.phoneHref)}">${t.callLink}</a>`,
         `<a href="${escapeHtml(businessCard.website)}">${escapeHtml(businessCard.websiteLabel)}</a>`,
       ])}
-      ${label(t.scan)}
-      ${p(
-        t.qrNote,
-      )}
+      ${p(t.qrNote)}
     </main>`
 }
 
 function fallbackFor(routePath) {
+  // French pages live under /fr and render the same pages as their English twin.
+  const bare =
+    routePath === '/fr' ? '/' : routePath.startsWith('/fr/') ? routePath.slice(3) : routePath
+  routePath = bare
+
   if (routePath === '/') return renderHome()
   if (routePath === '/research') return renderResearch()
   if (routePath === '/writing') return renderWriting()
@@ -528,7 +533,9 @@ function renderMetadata(entry) {
   html = setPropertyMeta(html, 'og:title', ogTitle)
   html = setPropertyMeta(html, 'og:description', ogDescription)
   html = setPropertyMeta(html, 'og:site_name', 'Mathis Certenais')
-  html = setPropertyMeta(html, 'og:locale', 'en_US')
+  const language = languageFor(entry.path)
+  html = setPropertyMeta(html, 'og:locale', language === 'fr' ? 'fr_FR' : 'en_US')
+  html = html.replace(/<html lang="[^"]*"/, `<html lang="${language}"`)
   html = setPropertyMeta(html, 'og:type', 'website')
   html = setPropertyMeta(html, 'og:image', ogImage)
   html = setPropertyMeta(html, 'og:image:alt', entry.ogImageAlt)
@@ -537,7 +544,7 @@ function renderMetadata(entry) {
 
   if (entry.path !== '/') html = removeHomePreload(html)
 
-  const fallback = fallbackFor(entry.path)
+  const fallback = fallbacksByLanguage[language](entry.path)
   if (fallback) {
     const shell = /<div id="root"><\/div>/
     if (!shell.test(html)) {
@@ -551,7 +558,15 @@ function renderMetadata(entry) {
   return `${html.trim()}\n`
 }
 
-const fallbackFor = createFallbacks(contentEn, locales.en.fallbacks)
+const fallbacksByLanguage = {
+  en: createFallbacks(contentEn, locales.en.fallbacks, (path) => routeHref(path, 'en')),
+  fr: createFallbacks(contentFr, locales.fr.fallbacks, (path) => routeHref(path, 'fr')),
+}
+
+/** French pages live under /fr; everything else is English. */
+function languageFor(routePath) {
+  return routePath === '/fr' || routePath.startsWith('/fr/') ? 'fr' : 'en'
+}
 
 async function writeRoute(entry) {
   const destination =

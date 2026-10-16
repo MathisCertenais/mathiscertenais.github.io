@@ -1,7 +1,7 @@
-import * as en from './en'
-import * as fr from './fr'
+import * as en from './en.ts'
+import * as fr from './fr.ts'
 
-export * from './en'
+export * from './en.ts'
 
 export type { Language } from '../locales'
 

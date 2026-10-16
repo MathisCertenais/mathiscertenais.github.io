@@ -428,6 +428,8 @@ async function auditBuiltRoutes(manifest, siteUrl) {
 
     const rootMatch = html.match(/<div id="root">([\s\S]*)<\/div>/)
     const root = rootMatch?.[1] ?? ''
+    const indexableCanonical =
+      entry.path === entry.canonical && !/noindex/i.test(entry.robots || '')
     const markers = expectedPrerenderedMarkers(entry.path)
 
     if (markers) {
@@ -452,17 +454,13 @@ async function auditBuiltRoutes(manifest, siteUrl) {
           `Prerendered text in ${entry.path} carries ${links} links, fewer than the ${minimum} expected`,
         )
       }
-    } else if (root.includes('class="prerendered"')) {
+    } else if (root.includes('class="prerendered"') && indexableCanonical) {
       issues.push(
         `Route ${entry.path} carries prerendered text but declares no expected markers, so nothing checks it`,
       )
     }
 
-    if (
-      entry.path === entry.canonical &&
-      !/noindex/i.test(entry.robots || '') &&
-      !root.includes('class="prerendered"')
-    ) {
+    if (indexableCanonical && !root.includes('class="prerendered"')) {
       issues.push(`Indexable route ${entry.path} carries no prerendered text`)
     }
   }
