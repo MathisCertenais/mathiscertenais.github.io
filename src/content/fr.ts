@@ -85,7 +85,7 @@ export const proofPoints: ProofPoint[] = [
 
 export const researchKeywords = [
   'Logistique des données',
-  'Chaînes de traitement inter-sites',
+  'Workflows inter-sites',
   'Gouvernance et sécurité',
   'Traçabilité et FAIR',
   'Calcul intensif comme service',
@@ -1191,7 +1191,7 @@ export const profileTimeline = [
 export const expertise = [
   'Calcul haute performance',
   'Logistique des données scientifiques',
-  'Chaînes de traitement inter-sites',
+  'Workflows inter-sites',
   'Systèmes distribués et fédérés',
   'Calcul pour la radioastronomie',
   'Recherche exascale',
