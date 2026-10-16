@@ -39,7 +39,7 @@
     <meta name="twitter:image:alt" content="Mathis Certenais — Prédire pour dimensionner : apprendre aux supercalculateurs leur propre empreinte d’exécution" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <title>Prédire pour dimensionner : apprendre aux supercalculateurs leur propre empreinte d’exécution | Mathis Certenais</title>
-    <script type="module" crossorigin src="/assets/index-B5esyhFR.js"></script>
+    <script type="module" crossorigin src="/assets/index--Ifh-cf2.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BxBSK4vT.css">
     <meta property="og:url" content="https://mathiscertenais.com/fr/insights/predicting-for-sizing/" />
     <link rel="canonical" href="https://mathiscertenais.com/fr/insights/predicting-for-sizing/" />
@@ -80,8 +80,8 @@
       <h3>Première étape — une carte de connaissances structurée de l’environnement d’exécution</h3>
       <p>Avant de pouvoir prédire, il faut pouvoir <strong>décrire</strong>. La carte de connaissances structurée (ou ontologie) formalise l’environnement d’exécution propre au supercalculateur dans lequel les tâches s’exécutent. Sa valeur tient à la mise en correspondance : aligner la <strong>carte de connaissances structurée des tâches</strong> sur les <strong>métriques SLURM</strong> brutes, pour qu’une description conceptuelle — « cette tâche avait besoin d’un nœud à grande mémoire » — devienne une grandeur mesurable et comparable.</p>
       <p class="prerendered__caption">La carte de connaissances structurée des tâches — le pont entre la façon dont les chercheurs pensent leurs exécutions et la façon dont SLURM les mesure. Crédit : Gaëlle Richet.</p>
-      <h3>Deuxième étape — décrire chaque exécution avec JKPP</h3>
-      <p>Chaque exécution est capturée par un ensemble d’<strong>indicateurs de performance des tâches, JoPI</strong>. Cela formalise les deux faces d’une exécution : les <strong>paramètres d’entrée</strong> — réglages de l’application et choix système — et les <strong>métriques de sortie</strong> — temps, mémoire, énergie. Chaque mesure prend la forme d’un triplet : <strong>JoPI = (valeur, type de valeur, description)</strong>, une structure assez simple pour être collectée à grande échelle et assez riche pour servir à l’apprentissage.</p>
+      <h3>Deuxième étape — décrire chaque exécution avec JoPInS</h3>
+      <p>Chaque exécution est capturée par un <strong>jeu d’indicateurs de performance des tâches, JoPInS</strong>. Le descripteur définit les <strong>paramètres d’entrée</strong> — réglages de l’application et choix système — et les <strong>métriques de sortie</strong> — temps, mémoire, énergie — pour chaque tâche. Chaque indicateur est représenté par un triplet : <strong>JoPInS = (valeur, type de valeur, description)</strong>, une structure assez simple pour être collectée à grande échelle et assez riche pour servir à l’apprentissage.</p>
       <h3>Troisième étape — recueillir les preuves du terrain</h3>
       <p>Une paire de greffons transforme les tâches réelles en données d’apprentissage. Le client en ligne de commande, <strong>cli-monitoring-haps</strong>, collecte les informations sur les tâches d’une application donnée, exposée en tant que HAPS, dans le contexte d’une <strong>campagne de publication de données</strong>. Le collecteur côté serveur, <strong>server-monitoring-haps</strong>, lit les <strong>métriques système</strong> de SLURM (sacct -j &lt;JOB_ID&gt;) et récupère les <strong>métriques propres à l’application</strong> dans la base HAPS. Chaque exécution est ensuite formalisée en JoPInS et envoyée à la base de données.</p>
       <h3>Quatrième étape — centraliser dans la base de données</h3>

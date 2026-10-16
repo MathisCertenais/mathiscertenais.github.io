@@ -544,11 +544,11 @@ Object.assign(articleBodies, {
     {
       type: 'heading',
       level: 3,
-      text: 'Deuxième étape — décrire chaque exécution avec JKPP',
+      text: 'Deuxième étape — décrire chaque exécution avec JoPInS',
     },
     {
       type: 'paragraph',
-      text: 'Chaque exécution est capturée par un ensemble d’**indicateurs de performance des tâches, JoPI**. Cela formalise les deux faces d’une exécution : les **paramètres d’entrée** — réglages de l’application et choix système — et les **métriques de sortie** — temps, mémoire, énergie. Chaque mesure prend la forme d’un triplet : **JoPI = (valeur, type de valeur, description)**, une structure assez simple pour être collectée à grande échelle et assez riche pour servir à l’apprentissage.',
+      text: 'Chaque exécution est capturée par un **jeu d’indicateurs de performance des tâches, JoPInS**. Le descripteur définit les **paramètres d’entrée** — réglages de l’application et choix système — et les **métriques de sortie** — temps, mémoire, énergie — pour chaque tâche. Chaque indicateur est représenté par un triplet : **JoPInS = (valeur, type de valeur, description)**, une structure assez simple pour être collectée à grande échelle et assez riche pour servir à l’apprentissage.',
     },
     {
       type: 'heading',

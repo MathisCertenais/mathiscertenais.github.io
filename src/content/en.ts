@@ -716,11 +716,11 @@ export const articleItems: ArticleItem[] = [
       {
         type: 'heading',
         level: 3,
-        text: 'Step two — Describing every execution with JKPP',
+        text: 'Step two — Describing every execution with JoPInS',
       },
       {
         type: 'paragraph',
-        text: 'Every execution is captured by a set of **Job Performance Indicators, JoPI**. This formalizes both sides of a run: the **input parameters** — application settings and system choices — and the **output metrics** — time, memory, energy. Each measure is structured as a triple: **JoPI = (value, type of value, description)**, a structure simple enough to collect at scale and rich enough to train on.',
+        text: 'Every execution is captured by a **Job Performance Indicators Set, JoPInS**. The descriptor defines the **input parameters** — application settings and system choices — and the **output metrics** — time, memory, energy — for each job. Each indicator is represented as a triple: **JoPInS = (value, type of value, description)**, a structure simple enough to collect at scale and rich enough to train on.',
       },
       {
         type: 'heading',
