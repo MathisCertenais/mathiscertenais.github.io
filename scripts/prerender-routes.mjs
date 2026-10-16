@@ -26,7 +26,7 @@ import {
   videoItems,
   videosPage,
   writingPage,
-} from '../src/content.ts'
+} from '../src/content/en.ts'
 
 const projectRoot = fileURLToPath(new URL('..', import.meta.url))
 const distRoot = join(projectRoot, 'dist')

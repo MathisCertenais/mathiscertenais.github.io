@@ -1,8 +1,11 @@
-import { videosPage } from '../content'
+import { useLanguage } from '../language/LanguageProvider'
 import { PageHero } from './PageHero'
 import { VideoSection } from './VideoSection'
 
 export function VideosPage() {
+  const { content } = useLanguage()
+  const { videosPage } = content
+
   return (
     <main id="main-content" tabIndex={-1}>
       <PageHero

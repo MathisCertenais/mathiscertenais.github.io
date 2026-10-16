@@ -1,4 +1,4 @@
-import { articleItems } from '../content'
+import { useLanguage } from '../language/LanguageProvider'
 import { ArrowIcon } from './Icons'
 
 interface WritingSectionProps {
@@ -6,14 +6,18 @@ interface WritingSectionProps {
   showAllLink?: boolean
 }
 
-export function WritingSection({ heading = 'Insights', showAllLink = true }: WritingSectionProps) {
+export function WritingSection({ heading, showAllLink = true }: WritingSectionProps) {
+  const { content, localeHref, strings } = useLanguage()
+  const { articleItems, writingPage } = content
+  const sectionHeading = heading ?? writingPage.sectionHeading
+
   return (
     <section className="home-section section writing-section" id="writing">
       <div className="section-heading">
-        <h2>{heading}</h2>
+        <h2>{sectionHeading}</h2>
         {showAllLink ? (
-          <a href="/writing">
-            All insights <ArrowIcon />
+          <a href={localeHref('/writing')}>
+            {strings.writing.allInsights} <ArrowIcon />
           </a>
         ) : null}
       </div>

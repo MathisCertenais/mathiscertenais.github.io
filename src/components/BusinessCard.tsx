@@ -1,4 +1,4 @@
-import { businessCard, identity } from '../content'
+import { useLanguage } from '../language/LanguageProvider'
 
 const NAME_ID = 'business-card-name'
 
@@ -17,6 +17,8 @@ type CardVariant = 'page' | 'share'
  * plate below it, so it does not follow the light and dark theme tokens.
  */
 export function BusinessCard({ variant = 'page' }: { variant?: CardVariant }) {
+  const { content } = useLanguage()
+  const { businessCard, identity } = content
   const isShare = variant === 'share'
 
   return (

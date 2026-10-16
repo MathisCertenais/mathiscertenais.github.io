@@ -1,3 +1,4 @@
+import { useLanguage } from '../language/LanguageProvider'
 import { useTheme } from './ThemeProvider'
 
 interface ThemeToggleProps {
@@ -49,8 +50,9 @@ function SunIcon() {
 
 export function ThemeToggle({ className, tabIndex }: ThemeToggleProps) {
   const { resolvedTheme, toggleTheme } = useTheme()
+  const { strings } = useLanguage()
   const isDark = resolvedTheme === 'dark'
-  const label = `Switch to ${isDark ? 'light' : 'dark'} mode`
+  const label = isDark ? strings.theme.toLight : strings.theme.toDark
 
   return (
     <button

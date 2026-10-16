@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react'
-import { contactPage, identity } from '../content'
+import { useLanguage } from '../language/LanguageProvider'
 import { ArrowIcon } from './Icons'
 import { BusinessCard } from './BusinessCard'
 import { PageHero } from './PageHero'
@@ -7,6 +7,8 @@ import { PageHero } from './PageHero'
 type FormStatus = 'error' | 'idle' | 'sending' | 'success'
 
 export function ContactPage() {
+  const { content } = useLanguage()
+  const { contactPage, identity } = content
   const [status, setStatus] = useState<FormStatus>('idle')
   const [statusMessage, setStatusMessage] = useState('')
   const [mailtoHref, setMailtoHref] = useState<string | null>(null)
