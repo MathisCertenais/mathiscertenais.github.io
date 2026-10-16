@@ -38,7 +38,7 @@ export const identity = {
 
 export const businessCard = {
   affiliation: 'Doctorant · IRISA, Université de Rennes · Ingénieur diplômé',
-  tagline: 'Calcul haute performance · Chaînes de traitement · Logistique des données · IA',
+  tagline: 'Calcul haute performance · Workflows · Logistique des données · IA',
   phone: '+33 6 48 22 83 30',
   phoneHref: 'tel:+3364822830',
   linkedinLabel: 'linkedin.com/in/mathiscertenais',
