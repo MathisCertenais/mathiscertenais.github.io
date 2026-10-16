@@ -2,31 +2,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { loadEnv } from 'vite'
-import {
-  aboutPage,
-  articleItems,
-  businessCard,
-  contactPage,
-  expertise,
-  identity,
-  profileTimeline,
-  proofPoints,
-  researchApplications,
-  researchCase,
-  researchChain,
-  researchChapters,
-  researchContribution,
-  researchFeature,
-  researchFigures,
-  researchMethods,
-  researchPerspectives,
-  researchThesis,
-  resumePage,
-  sourceLinks,
-  videoItems,
-  videosPage,
-  writingPage,
-} from '../src/content/en.ts'
+import * as contentEn from '../src/content/en.ts'
 
 const projectRoot = fileURLToPath(new URL('..', import.meta.url))
 const distRoot = join(projectRoot, 'dist')
@@ -244,6 +220,39 @@ function articleBlock(block) {
       return ''
   }
 }
+
+/**
+ * The fallbacks, built for one language: `content` is that language's module and
+ * every generator reads only from it, so one set of generators serves both.
+ * Section headings are still literals here; they move into the locale strings
+ * with the French pass.
+ */
+function createFallbacks(content) {
+  const {
+    aboutPage,
+    articleItems,
+    businessCard,
+    contactPage,
+    expertise,
+    identity,
+    profileTimeline,
+    proofPoints,
+    researchApplications,
+    researchCase,
+    researchChain,
+    researchChapters,
+    researchContribution,
+    researchFeature,
+    researchFigures,
+    researchMethods,
+    researchPerspectives,
+    researchThesis,
+    resumePage,
+    sourceLinks,
+    videoItems,
+    videosPage,
+    writingPage,
+  } = content
 
 function renderResearch() {
   return `<main class="prerendered" id="main-content">
@@ -492,6 +501,9 @@ function fallbackFor(routePath) {
   return article ? renderArticle(article) : null
 }
 
+  return fallbackFor
+}
+
 function renderMetadata(entry) {
   const title = entry.title || 'Mathis Certenais'
   const description = entry.description || ''
@@ -537,6 +549,8 @@ function renderMetadata(entry) {
 
   return `${html.trim()}\n`
 }
+
+const fallbackFor = createFallbacks(contentEn)
 
 async function writeRoute(entry) {
   const destination =
