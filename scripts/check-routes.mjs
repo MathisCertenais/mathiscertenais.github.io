@@ -2,7 +2,7 @@ import { access, readFile, readdir } from 'node:fs/promises'
 import { basename, extname, join, relative, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { loadEnv } from 'vite'
-import { articleItems } from '../src/content.ts'
+import { articleItems } from '../src/content/en.ts'
 
 const projectRoot = fileURLToPath(new URL('..', import.meta.url))
 const manifestPath = join(projectRoot, 'src', 'data', 'route-manifest.json')
@@ -538,7 +538,15 @@ for (const entry of manifest) {
   if (entry.path !== entry.canonical && normalizeRobots(entry.robots) !== 'noindex,follow') {
     issues.push(`Legacy alias must use noindex, follow: ${entry.path}`)
   }
-  if (entry.path === entry.canonical) {
+  const isFrench = entry.path === '/fr' || entry.path.startsWith('/fr/')
+
+  if (entry.path === entry.canonical && isFrench && normalizeRobots(entry.robots) !== 'noindex,follow') {
+    // Transitional: a French page goes indexable only once its prerendered
+    // fallback exists, otherwise Google would index an empty shell.
+    issues.push(`French route must stay noindex until it has a prerendered fallback: ${entry.path}`)
+  }
+
+  if (entry.path === entry.canonical && !isFrench) {
     if (normalizeRobots(entry.robots) !== 'index,follow') {
       issues.push(`Canonical public route must be indexable: ${entry.path}`)
     }
@@ -546,6 +554,13 @@ for (const entry of manifest) {
       issues.push(`Canonical public route needs social image metadata: ${entry.path}`)
     }
   }
+}
+
+/** Every English page needs its French twin, or the language switch breaks. */
+for (const entry of manifest) {
+  if (entry.path !== entry.canonical || entry.path === '/fr' || entry.path.startsWith('/fr/')) continue
+  const twin = entry.path === '/' ? '/fr' : `/fr${entry.path}`
+  if (!routesByPath.has(twin)) issues.push(`Missing French route for ${entry.path}: ${twin}`)
 }
 
 for (const pathname of retiredPaths) {

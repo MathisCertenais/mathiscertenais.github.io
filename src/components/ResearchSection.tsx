@@ -1,12 +1,15 @@
-import { researchFeature, researchFigures, researchThesis } from '../content'
+import { useLanguage } from '../language/LanguageProvider'
 import { ArrowIcon } from './Icons'
 
 export function ResearchSection() {
+  const { content, localeHref } = useLanguage()
+  const { researchFeature, researchFigures, researchThesis } = content
+
   return (
     <section className="home-section research-feature section" id="research">
       <div className="section-heading">
         <h2>{researchFeature.heading}</h2>
-        <a href="/research">
+        <a href={localeHref('/research')}>
           Read the research <ArrowIcon />
         </a>
       </div>
@@ -20,7 +23,7 @@ export function ResearchSection() {
               {lead}
             </p>
           ))}
-          <a className="button button--primary" href="/research">
+          <a className="button button--primary" href={localeHref('/research')}>
             Explore the research <ArrowIcon />
           </a>
         </div>

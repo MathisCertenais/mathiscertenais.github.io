@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#eef2f5" />
+    <script>
+      ;(() => {
+        try {
+          const stored = localStorage.getItem('mathis-personal-website:theme')
+          const theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light'
+          document.documentElement.dataset.theme = theme
+          document.documentElement.style.colorScheme = theme
+          document.querySelector('meta[name="theme-color"]').content =
+            theme === 'dark' ? '#15181c' : '#eef2f5'
+        } catch {
+          document.documentElement.dataset.theme = 'light'
+        }
+      })()
+    </script>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="Un informaticien breton qui travaille à la croisée du calcul haute performance, de la logistique des données et de la radioastronomie." />
+    <meta property="og:title" content="À propos | Mathis Certenais" />
+    <meta property="og:description" content="Un informaticien breton qui travaille à la croisée du calcul haute performance, de la logistique des données et de la radioastronomie." />
+    <meta property="og:site_name" content="Mathis Certenais" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://mathiscertenais.com/images/mathis/social-card.png" />
+    <meta property="og:image:alt" content="Mathis Certenais — À propos" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="À propos | Mathis Certenais" />
+    <meta name="twitter:description" content="Un informaticien breton qui travaille à la croisée du calcul haute performance, de la logistique des données et de la radioastronomie." />
+    <meta name="twitter:image" content="https://mathiscertenais.com/images/mathis/social-card.png" />
+    <meta name="twitter:image:alt" content="Mathis Certenais — À propos" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>À propos | Mathis Certenais</title>
+    <script type="module" crossorigin src="/assets/index-rDkthWjA.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BxBSK4vT.css">
+    <meta property="og:url" content="https://mathiscertenais.com/fr/about/" />
+    <link rel="canonical" href="https://mathiscertenais.com/fr/about/" />
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

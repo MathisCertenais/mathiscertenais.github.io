@@ -1,7 +1,10 @@
-import { identity, proofPoints } from '../content'
+import { useLanguage } from '../language/LanguageProvider'
 import { ArrowIcon, ProofIcon } from './Icons'
 
 export function Hero() {
+  const { content, localeHref } = useLanguage()
+  const { identity, proofPoints } = content
+
   return (
     <section className="hero section">
       <div className="hero__stage">
@@ -25,10 +28,10 @@ export function Hero() {
           </div>
 
           <div className="hero__actions">
-            <a className="button button--primary" href="/research">
+            <a className="button button--primary" href={localeHref('/research')}>
               View research <ArrowIcon />
             </a>
-            <a className="button button--secondary" href="/resume">
+            <a className="button button--secondary" href={localeHref('/resume')}>
               View profile <ArrowIcon />
             </a>
           </div>

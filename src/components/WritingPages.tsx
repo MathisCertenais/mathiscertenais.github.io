@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
-import { articleItems, getArticle, videoItems, writingPage, type ArticleBlock } from '../content'
+import { useLanguage } from '../language/LanguageProvider'
+import type { ArticleBlock } from '../content'
 import { ArrowIcon } from './Icons'
 import { PageHero } from './PageHero'
 import { WritingSection } from './WritingSection'
@@ -76,6 +77,9 @@ function ArticleBlocks({ blocks }: { blocks: ArticleBlock[] }) {
 }
 
 export function WritingPage() {
+  const { content } = useLanguage()
+  const { writingPage } = content
+
   return (
     <main id="main-content" tabIndex={-1}>
       <PageHero
@@ -89,6 +93,8 @@ export function WritingPage() {
 }
 
 export function ArticlePage({ articleId }: { articleId: string }) {
+  const { content, getArticle, localeHref } = useLanguage()
+  const { articleItems, videoItems } = content
   const article = getArticle(articleId)
   if (!article) return null
   const video =
@@ -127,7 +133,7 @@ export function ArticlePage({ articleId }: { articleId: string }) {
                 body. It is intentionally presented as forthcoming instead of publishing invented
                 content under Mathis’s name.
               </p>
-              <a className="button button--primary" href="/research">
+              <a className="button button--primary" href={localeHref('/research')}>
                 Explore the research area <ArrowIcon />
               </a>
             </div>

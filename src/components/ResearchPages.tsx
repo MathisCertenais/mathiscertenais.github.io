@@ -1,19 +1,22 @@
-import {
-  researchApplications,
-  researchCase,
-  researchChapters,
-  researchChain,
-  researchContribution,
-  researchFigures,
-  researchMethods,
-  researchPerspectives,
-  researchThesis,
-  sourceLinks,
-} from '../content'
+import { useLanguage } from '../language/LanguageProvider'
 import { ArrowIcon } from './Icons'
 import { PageHero } from './PageHero'
 
 export function ResearchPage() {
+  const { content, localeHref } = useLanguage()
+  const {
+    researchApplications,
+    researchCase,
+    researchChapters,
+    researchChain,
+    researchContribution,
+    researchFigures,
+    researchMethods,
+    researchPerspectives,
+    researchThesis,
+    sourceLinks,
+  } = content
+
   return (
     <main id="main-content" tabIndex={-1}>
       <PageHero
@@ -162,13 +165,13 @@ export function ResearchPage() {
         <p className="section-label">Where this continues</p>
         <h2>The reasoning is written up in public.</h2>
         <div className="research-next__actions">
-          <a className="button button--primary" href="/writing">
+          <a className="button button--primary" href={localeHref('/writing')}>
             Read research notes <ArrowIcon />
           </a>
           <a className="button button--secondary" href={sourceLinks.arxiv} rel="noreferrer" target="_blank">
             Publications <ArrowIcon external />
           </a>
-          <a className="button button--secondary" href="/contact">
+          <a className="button button--secondary" href={localeHref('/contact')}>
             Get in touch <ArrowIcon />
           </a>
         </div>

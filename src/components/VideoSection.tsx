@@ -1,6 +1,7 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { videoItems, type VideoItem } from '../content'
+import { useLanguage } from '../language/LanguageProvider'
+import type { VideoItem } from '../content'
 import { ArrowIcon, PlayIcon } from './Icons'
 
 interface VideoSectionProps {
@@ -8,7 +9,10 @@ interface VideoSectionProps {
   showAllLink?: boolean
 }
 
-export function VideoSection({ heading = 'Videos', showAllLink = true }: VideoSectionProps) {
+export function VideoSection({ heading, showAllLink = true }: VideoSectionProps) {
+  const { content, localeHref } = useLanguage()
+  const { videoItems, videosPage } = content
+  const sectionHeading = heading ?? videosPage.sectionHeading
   const [activeVideo, setActiveVideo] = useState<VideoItem | null>(null)
   const closeButtonRef = useRef<HTMLButtonElement>(null)
   const modalRef = useRef<HTMLDivElement>(null)
@@ -69,9 +73,9 @@ export function VideoSection({ heading = 'Videos', showAllLink = true }: VideoSe
     <>
       <section className="home-section section videos-section" id="videos">
         <div className="section-heading">
-          <h2>{heading}</h2>
+          <h2>{sectionHeading}</h2>
           {showAllLink ? (
-            <a href="/videos">
+            <a href={localeHref('/videos')}>
               All videos <ArrowIcon />
             </a>
           ) : null}

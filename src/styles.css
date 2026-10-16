@@ -1588,7 +1588,8 @@ figure {
 
 .nav-link:hover,
 .menu-button:hover,
-.theme-toggle:hover {
+.theme-toggle:hover,
+.language-toggle:hover {
   background: color-mix(in srgb, var(--text-dark) 6%, transparent) !important;
 }
 
@@ -1625,6 +1626,14 @@ figure {
 }
 
 .theme-toggle--mobile {
+  display: none !important;
+}
+
+.language-toggle {
+  transition: background-color 150ms ease !important;
+}
+
+.language-toggle--mobile {
   display: none !important;
 }
 
@@ -3771,13 +3780,18 @@ figure {
 }
 
 @media (max-width: 900px) and (min-width: 769px) {
-  .theme-toggle--desktop {
+  .theme-toggle--desktop,
+  .language-toggle--desktop {
     display: none !important;
   }
 
-  .theme-toggle--mobile {
+  .theme-toggle--mobile,
+  .language-toggle--mobile {
     display: inline-flex !important;
     justify-self: end;
+  }
+
+  .theme-toggle--mobile {
     margin-left: 8px;
   }
 
@@ -3816,13 +3830,22 @@ figure {
     font-size: 14px;
   }
 
-  .theme-toggle--desktop {
+  .theme-toggle--desktop,
+  .language-toggle--desktop {
     display: none !important;
   }
 
-  .theme-toggle--mobile {
+  .theme-toggle--mobile,
+  .language-toggle--mobile {
     display: inline-flex !important;
+  }
+
+  .theme-toggle--mobile {
     margin-left: auto;
+  }
+
+  .language-toggle--mobile {
+    margin-left: 4px;
     margin-right: 2px;
   }
 
@@ -4293,5 +4316,28 @@ figure {
   a {
     color: #111 !important;
     text-decoration: none !important;
+  }
+}
+
+/* The mobile header carries four items — brand, theme, language, menu — so it is
+   laid out as a row rather than the three-column grid used on wide screens, and
+   the brand shrinks instead of pushing the menu onto a second line. Declared
+   last so it settles the layout whatever the earlier rules do. */
+@media (max-width: 768px) {
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    justify-content: space-between;
+  }
+
+  .brand {
+    min-width: 0;
+  }
+
+  .brand-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }

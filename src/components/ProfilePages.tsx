@@ -1,8 +1,11 @@
-import { aboutPage, expertise, identity, profileTimeline, resumePage, sourceLinks } from '../content'
+import { useLanguage } from '../language/LanguageProvider'
 import { ArrowIcon } from './Icons'
 import { PageHero } from './PageHero'
 
 export function AboutPage() {
+  const { content } = useLanguage()
+  const { aboutPage, expertise, profileTimeline, sourceLinks } = content
+
   return (
     <main id="main-content" tabIndex={-1}>
       <PageHero
@@ -75,6 +78,9 @@ export function AboutPage() {
 }
 
 export function ResumePage() {
+  const { content } = useLanguage()
+  const { expertise, identity, profileTimeline, resumePage } = content
+
   return (
     <main className="resume-page" id="main-content" tabIndex={-1}>
       <PageHero

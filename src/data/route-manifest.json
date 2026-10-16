@@ -9,6 +9,16 @@
   "ogImageAlt": "Mathis Certenais \u2014 HPC and scientific workflows"
  },
  {
+  "canonical": "/fr",
+  "description": "Mathis Certenais est chercheur en informatique et doctorant, sp\u00e9cialis\u00e9 en calcul haute performance, logistique des donn\u00e9es et cha\u00eenes de traitement scientifiques.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "Mathis Certenais \u2014 Portfolio de Mathis Certenais",
+  "page": "home",
+  "path": "/fr",
+  "robots": "noindex, follow",
+  "title": "Portfolio de Mathis Certenais"
+ },
+ {
   "path": "/research",
   "canonical": "/research",
   "page": "research",
@@ -16,6 +26,16 @@
   "description": "PhD research on scientific data logistics: modelling, optimising and governing cross-facility workflows across national supercomputers and research storage, grounded in radio astronomy.",
   "ogImage": "/images/mathis/social-card.png",
   "ogImageAlt": "Mathis Certenais research"
+ },
+ {
+  "canonical": "/fr/research",
+  "description": "Recherche doctorale sur la logistique des donn\u00e9es scientifiques : mod\u00e9liser, optimiser et gouverner des cha\u00eenes de traitement inter-sites, des instruments de radioastronomie aux supercalculateurs nationaux.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "Mathis Certenais \u2014 Recherche",
+  "page": "research",
+  "path": "/fr/research",
+  "robots": "noindex, follow",
+  "title": "Recherche | Mathis Certenais"
  },
  {
   "path": "/writing",
@@ -27,6 +47,16 @@
   "ogImageAlt": "Insights and updates from Mathis Certenais"
  },
  {
+  "canonical": "/fr/writing",
+  "description": "Notes de recherche, webinaires et \u00e9v\u00e9nements autour du calcul haute performance, de la logistique des donn\u00e9es et de la radioastronomie.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "Mathis Certenais \u2014 Articles et actualit\u00e9s",
+  "page": "writing",
+  "path": "/fr/writing",
+  "robots": "noindex, follow",
+  "title": "Articles et actualit\u00e9s | Mathis Certenais"
+ },
+ {
   "path": "/writing/predicting-for-sizing",
   "canonical": "/writing/predicting-for-sizing",
   "page": "article:predicting-for-sizing",
@@ -34,6 +64,16 @@
   "description": "A continuous-learning predictive model that estimates the execution time, memory, and energy of scientific applications \u2014 so researchers can size their allocations instead of guessing.",
   "ogImage": "/images/mathis/social-card.png",
   "ogImageAlt": "Predicting for sizing on supercomputers"
+ },
+ {
+  "canonical": "/fr/writing/predicting-for-sizing",
+  "description": "Un mod\u00e8le pr\u00e9dictif \u00e0 apprentissage continu qui estime le temps d\u2019ex\u00e9cution, la m\u00e9moire et l\u2019\u00e9nergie des applications scientifiques sur supercalculateur.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "Mathis Certenais \u2014 Pr\u00e9dire pour dimensionner : apprendre aux supercalculateurs leur propre empreinte d\u2019ex\u00e9cution",
+  "page": "article:predicting-for-sizing",
+  "path": "/fr/writing/predicting-for-sizing",
+  "robots": "noindex, follow",
+  "title": "Pr\u00e9dire pour dimensionner : apprendre aux supercalculateurs leur propre empreinte d\u2019ex\u00e9cution | Mathis Certenais"
  },
  {
   "path": "/writing/eclat-interview",
@@ -45,6 +85,16 @@
   "ogImageAlt": "ECLAT interview on data logistics for radio astronomy"
  },
  {
+  "canonical": "/fr/writing/eclat-interview",
+  "description": "Dans cet entretien pour ECLAT, Mathis Certenais raconte son parcours depuis une \u00e9cole d\u2019ing\u00e9nieurs \u00e0 Rennes jusqu\u2019\u00e0 la recherche doctorale sur la logistique des donn\u00e9es.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "Mathis Certenais \u2014 Entretien : au c\u0153ur de la logistique des donn\u00e9es pour la radioastronomie",
+  "page": "article:eclat-interview",
+  "path": "/fr/writing/eclat-interview",
+  "robots": "noindex, follow",
+  "title": "Entretien : au c\u0153ur de la logistique des donn\u00e9es pour la radioastronomie | Mathis Certenais"
+ },
+ {
   "path": "/writing/youngpex",
   "canonical": "/writing/youngpex",
   "page": "article:youngpex",
@@ -52,6 +102,16 @@
   "description": "Inside YoungPEx, the NumPEx working group connecting young researchers across the French exascale programme \u2014 its first General Assembly in Toulouse, its workshops on the environmental impact of HPC and on inequalities in academia, and what comes next.",
   "ogImage": "/images/mathis/social-card.png",
   "ogImageAlt": "YoungPEx, the NumPEx working group for young researchers"
+ },
+ {
+  "canonical": "/fr/writing/youngpex",
+  "description": "Dans les coulisses de YoungPEx, le groupe de travail de NumPEx qui relie les jeunes chercheurs du programme fran\u00e7ais exascale.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "Mathis Certenais \u2014 YoungPEx : la nouvelle g\u00e9n\u00e9ration du num\u00e9rique pour l\u2019exascale",
+  "page": "article:youngpex",
+  "path": "/fr/writing/youngpex",
+  "robots": "noindex, follow",
+  "title": "YoungPEx : la nouvelle g\u00e9n\u00e9ration du num\u00e9rique pour l\u2019exascale | Mathis Certenais"
  },
  {
   "path": "/writing/webinar-hpc-applications-as-a-service",
@@ -63,6 +123,16 @@
   "ogImageAlt": "HPC Applications as a Service webinar"
  },
  {
+  "canonical": "/fr/writing/webinar-hpc-applications-as-a-service",
+  "description": "Un webinaire sur la logistique des donn\u00e9es, l\u2019imagerie intensive et l\u2019orchestration de cha\u00eenes de traitement \u00e0 grande \u00e9chelle.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "Mathis Certenais \u2014 Webinaire : les services applicatifs de calcul haute performance pour la radioastronomie",
+  "page": "article:webinar-hpc-applications-as-a-service",
+  "path": "/fr/writing/webinar-hpc-applications-as-a-service",
+  "robots": "noindex, follow",
+  "title": "Webinaire : les services applicatifs de calcul haute performance pour la radioastronomie | Mathis Certenais"
+ },
+ {
   "path": "/writing/international-hackathon-for-astronomy",
   "canonical": "/writing/international-hackathon-for-astronomy",
   "page": "article:international-hackathon-for-astronomy",
@@ -70,6 +140,16 @@
   "description": "A collaborative research event joining computer scientists and astrophysicists around shared technical challenges.",
   "ogImage": "/images/mathis/social-card.png",
   "ogImageAlt": "International Hackathon for Astronomy"
+ },
+ {
+  "canonical": "/fr/writing/international-hackathon-for-astronomy",
+  "description": "Un \u00e9v\u00e9nement de recherche qui r\u00e9unit informaticiens et astrophysiciens de France, d\u2019Angleterre et d\u2019Afrique du Sud.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "Mathis Certenais \u2014 Hackathon international de radioastronomie",
+  "page": "article:international-hackathon-for-astronomy",
+  "path": "/fr/writing/international-hackathon-for-astronomy",
+  "robots": "noindex, follow",
+  "title": "Hackathon international de radioastronomie | Mathis Certenais"
  },
  {
   "path": "/writing/rennes-hackathon-for-astronomy",
@@ -81,6 +161,16 @@
   "ogImageAlt": "From supercomputers to tutorials at the Rennes hackathon"
  },
  {
+  "canonical": "/fr/writing/rennes-hackathon-for-astronomy",
+  "description": "Un \u00e9v\u00e9nement de recherche technique qui r\u00e9unit informaticiens et astrophysiciens pour s\u2019attaquer aux d\u00e9fis de la radioastronomie.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "Mathis Certenais \u2014 Des supercalculateurs aux travaux pratiques",
+  "page": "article:rennes-hackathon-for-astronomy",
+  "path": "/fr/writing/rennes-hackathon-for-astronomy",
+  "robots": "noindex, follow",
+  "title": "Des supercalculateurs aux travaux pratiques | Mathis Certenais"
+ },
+ {
   "path": "/writing/mcp-server-software-ontology",
   "canonical": "/writing/mcp-server-software-ontology",
   "page": "article:mcp-server-software-ontology",
@@ -88,6 +178,16 @@
   "description": "An ontology, a vector database, and an MCP server that turn hundreds of scientific-software parameters into a conversation with the AI in your coding interface.",
   "ogImage": "/images/mathis/social-card.png",
   "ogImageAlt": "Making scientific software conversational with an MCP server"
+ },
+ {
+  "canonical": "/fr/writing/mcp-server-software-ontology",
+  "description": "Un serveur MCP qui transforme des centaines de param\u00e8tres de configuration complexes en r\u00e9ponses en langage naturel.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "Mathis Certenais \u2014 Faire parler un logiciel scientifique : un serveur MCP",
+  "page": "article:mcp-server-software-ontology",
+  "path": "/fr/writing/mcp-server-software-ontology",
+  "robots": "noindex, follow",
+  "title": "Faire parler un logiciel scientifique : un serveur MCP | Mathis Certenais"
  },
  {
   "path": "/writing/exascale-astronomy-cybersecurity",
@@ -99,6 +199,16 @@
   "ogImageAlt": "Exascale astronomy and French HPC"
  },
  {
+  "canonical": "/fr/writing/exascale-astronomy-cybersecurity",
+  "description": "Comment un mod\u00e8le d\u2019acc\u00e8s par service peut ouvrir les supercalculateurs nationaux fran\u00e7ais \u00e0 la radioastronomie sans compromettre la cybers\u00e9curit\u00e9.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "Mathis Certenais \u2014 Astronomie exascale contre cybers\u00e9curit\u00e9",
+  "page": "article:exascale-astronomy-cybersecurity",
+  "path": "/fr/writing/exascale-astronomy-cybersecurity",
+  "robots": "noindex, follow",
+  "title": "Astronomie exascale contre cybers\u00e9curit\u00e9 | Mathis Certenais"
+ },
+ {
   "path": "/videos",
   "canonical": "/videos",
   "page": "videos",
@@ -106,6 +216,16 @@
   "description": "Interviews, webinars, and research-event videos about HPC, data logistics, and radio astronomy.",
   "ogImage": "/images/mathis/social-card.png",
   "ogImageAlt": "Videos featuring Mathis Certenais"
+ },
+ {
+  "canonical": "/fr/videos",
+  "description": "Entretiens, webinaires et \u00e9v\u00e9nements de recherche collaboratifs issus du travail de Mathis avec ECLAT et la communaut\u00e9 radioastronomique.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "Mathis Certenais \u2014 Vid\u00e9os",
+  "page": "videos",
+  "path": "/fr/videos",
+  "robots": "noindex, follow",
+  "title": "Vid\u00e9os | Mathis Certenais"
  },
  {
   "path": "/about",
@@ -117,6 +237,16 @@
   "ogImageAlt": "About Mathis Certenais"
  },
  {
+  "canonical": "/fr/about",
+  "description": "Un informaticien breton qui travaille \u00e0 la crois\u00e9e du calcul haute performance, de la logistique des donn\u00e9es et de la radioastronomie.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "Mathis Certenais \u2014 \u00c0 propos",
+  "page": "about",
+  "path": "/fr/about",
+  "robots": "noindex, follow",
+  "title": "\u00c0 propos | Mathis Certenais"
+ },
+ {
   "path": "/resume",
   "canonical": "/resume",
   "page": "resume",
@@ -126,6 +256,16 @@
   "ogImageAlt": "Research profile for Mathis Certenais"
  },
  {
+  "canonical": "/fr/resume",
+  "description": "Informations professionnelles et acad\u00e9miques v\u00e9rifi\u00e9es : recherche doctorale \u00e0 l\u2019IRISA, enseignement et publications.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "Mathis Certenais \u2014 Profil",
+  "page": "resume",
+  "path": "/fr/resume",
+  "robots": "noindex, follow",
+  "title": "Profil | Mathis Certenais"
+ },
+ {
   "path": "/contact",
   "canonical": "/contact",
   "page": "contact",
@@ -133,6 +273,16 @@
   "description": "Contact Mathis Certenais about HPC, scientific workflows, research, and collaboration.",
   "ogImage": "/images/mathis/social-card.png",
   "ogImageAlt": "Contact Mathis Certenais"
+ },
+ {
+  "canonical": "/fr/contact",
+  "description": "\u00c9crire \u00e0 Mathis Certenais, chercheur en informatique \u00e0 l\u2019IRISA et \u00e0 l\u2019Universit\u00e9 de Rennes.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "Mathis Certenais \u2014 Contact",
+  "page": "contact",
+  "path": "/fr/contact",
+  "robots": "noindex, follow",
+  "title": "Contact | Mathis Certenais"
  },
  {
   "path": "/work",
