@@ -354,7 +354,7 @@ function renderWriting() {
             label(`${article.category} · ${article.date}`),
             h3(article.title),
             p(article.description),
-            linkParagraph(article.href, `${t.readArticle} ${article.title}`),
+            linkParagraph(href(article.href), `${t.readArticle} ${article.title}`),
           ].join(''),
         ),
       )}

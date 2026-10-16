@@ -8,6 +8,7 @@ import type {
   VideoItem,
 } from './en.ts'
 import { articleItems as englishArticles, videoItems as englishVideos } from './en.ts'
+import type { ArticleBlock } from './en.ts'
 
 /**
  * Contenu français du site.
@@ -321,9 +322,59 @@ const articleTranslations: Record<
   },
 }
 
+/**
+ * Corps déjà traduits. Les autres articles héritent du texte anglais ; chacun
+ * quitte cette dépendance en même temps que sa traduction arrive.
+ */
+const articleBodies: Record<string, ArticleBlock[]> = {
+  'webinar-hpc-applications-as-a-service': [
+    {
+      type: 'paragraph',
+      text: 'Les applications de radioastronomie ont de plus en plus besoin du débit, des entrées-sorties rapides et du parallélisme des supercalculateurs nationaux. Accéder à ces machines exige toutefois des connaissances opérationnelles que de nombreux chercheurs de leur domaine ne devraient pas avoir à reproduire à chaque exécution.',
+    },
+    {
+      type: 'paragraph',
+      text: 'Ce webinaire présente les applications de calcul intensif comme un service, à travers un scénario concret autour de la chaîne DDF. L’accent est mis sur l’intégration de la logistique des données scientifiques, de l’imagerie intensive et de l’orchestration de chaînes de traitement distribuées, tout en gardant compréhensible l’interface offerte aux chercheurs.',
+    },
+  ],
+  'international-hackathon-for-astronomy': [
+    {
+      type: 'paragraph',
+      text: 'Un logiciel scientifique devient plus utile quand les personnes qui construisent l’infrastructure et celles qui interprètent les données astronomiques travaillent ensemble sur les mêmes problèmes.',
+    },
+    {
+      type: 'heading',
+      level: 2,
+      text: 'Quels sont les objectifs de ce hackathon ?',
+    },
+    {
+      type: 'paragraph',
+      text: 'Le hackathon international de Rennes a créé l’espace de cette collaboration : les participants ont travaillé une semaine pour constituer un réseau de recherche participatif, le RIMS Network, et poursuivre le développement du logiciel de traitement de données DDF Pipeline.',
+    },
+    {
+      type: 'paragraph',
+      text: 'RIMS Network est un système de stockage distribué qui héberge des spectres dynamiques et leurs métadonnées pour l’étude d’événements rares. Il rend possible une production collaborative de données, accessible aux utilisateurs par un service web.',
+    },
+    {
+      type: 'paragraph',
+      text: 'Pour la chaîne DDF, nous avons travaillé à la portabilité de la version parallèle : elle est désormais installée et fonctionnelle sur les supercalculateurs français Jean Zay, hébergé à l’Institut du développement et des ressources en informatique scientifique (IDRIS), Adastra au Centre informatique national de l’enseignement supérieur (CINES), à l’université du Hertfordshire au Royaume-Uni, et chez notre partenaire industriel Bull.',
+    },
+    {
+      type: 'heading',
+      level: 2,
+      text: 'Quel est l’apport de cette collaboration internationale ?',
+    },
+    {
+      type: 'paragraph',
+      text: 'Ces événements techniques sont essentiels pour rassembler notre communauté, nous aligner sur des objectifs partagés et les transformer en réalité. Pendant ce hackathon, nous avons validé le déploiement de la chaîne DDF sur les supercalculateurs de tous les partenaires, ce qui clôt cette version stable et nous permet de nous consacrer aux nouvelles fonctionnalités. Pour RIMS, cette rencontre internationale a permis de finaliser collectivement l’architecture distribuée générale entre la France, l’Afrique du Sud et le Royaume-Uni, de nous accorder sur les conditions d’usage et de livrer une preuve de concept validant l’idée.',
+    },
+  ],
+}
+
 export const articleItems: ArticleItem[] = englishArticles.map((article) => ({
   ...article,
   ...(articleTranslations[article.id] ?? {}),
+  ...(articleBodies[article.id] ? { body: articleBodies[article.id] } : {}),
 }))
 
 export const profileTimeline = [
