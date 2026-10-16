@@ -574,8 +574,8 @@ function renderMetadata(entry) {
 }
 
 const fallbacksByLanguage = {
-  en: createFallbacks(contentEn, locales.en.fallbacks, (path) => routeHref(path, 'en')),
-  fr: createFallbacks(contentFr, locales.fr.fallbacks, (path) => routeHref(path, 'fr')),
+  en: createFallbacks(contentEn, { ...locales.en.pages, ...locales.en.fallbacks }, (path) => routeHref(path, 'en')),
+  fr: createFallbacks(contentFr, { ...locales.fr.pages, ...locales.fr.fallbacks }, (path) => routeHref(path, 'fr')),
 }
 
 /** French pages live under /fr; everything else is English. */
