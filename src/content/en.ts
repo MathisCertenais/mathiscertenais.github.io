@@ -69,6 +69,14 @@ export const proofPoints: ProofPoint[] = [
   },
 ]
 
+export const researchKeywords = [
+  'Data logistics',
+  'Cross-facility workflows',
+  'Governance and security',
+  'Provenance and FAIR',
+  'HPC as a service',
+] as const
+
 export const researchThesis = {
   label: 'Doctoral thesis',
   title: 'Collaborative System of Systems for Scientific Data Logistics',

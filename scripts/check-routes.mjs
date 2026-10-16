@@ -385,9 +385,11 @@ async function auditBuiltRoutes(manifest, siteUrl) {
     const html = await readFile(destination, 'utf8')
     const title = decodeHtml(html.match(/<title>([\s\S]*?)<\/title>/i)?.[1])
     const canonicalTag = findTag(html, 'link', 'rel', 'canonical')
+    // The build writes the served form of a route — with the trailing slash —
+    // whether or not an origin is configured, so both branches must expect it.
     const expectedCanonical = siteUrl
       ? withTrailingSlash(new URL(entry.canonical, `${siteUrl}/`).href)
-      : entry.canonical
+      : withTrailingSlash(entry.canonical)
     const expectedImage =
       entry.ogImage && siteUrl ? new URL(entry.ogImage, `${siteUrl}/`).href : entry.ogImage || ''
     const twitterImagePath = entry.twitterImage || entry.ogImage
