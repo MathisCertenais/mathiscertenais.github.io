@@ -15,7 +15,7 @@
   "ogImageAlt": "Mathis Certenais \u2014 Portfolio de Mathis Certenais",
   "page": "home",
   "path": "/fr",
-  "robots": "noindex, follow",
+  "robots": "index, follow",
   "title": "Portfolio de Mathis Certenais"
  },
  {
@@ -34,7 +34,7 @@
   "ogImageAlt": "Mathis Certenais \u2014 Recherche",
   "page": "research",
   "path": "/fr/research",
-  "robots": "noindex, follow",
+  "robots": "index, follow",
   "title": "Recherche | Mathis Certenais"
  },
  {
@@ -63,7 +63,7 @@
   "ogImageAlt": "Mathis Certenais \u2014 Articles et actualit\u00e9s",
   "page": "writing",
   "path": "/fr/insights",
-  "robots": "noindex, follow",
+  "robots": "index, follow",
   "title": "Articles et actualit\u00e9s | Mathis Certenais"
  },
  {
@@ -92,7 +92,7 @@
   "ogImageAlt": "Mathis Certenais \u2014 Pr\u00e9dire pour dimensionner : apprendre aux supercalculateurs leur propre empreinte d\u2019ex\u00e9cution",
   "page": "article:predicting-for-sizing",
   "path": "/fr/insights/predicting-for-sizing",
-  "robots": "noindex, follow",
+  "robots": "index, follow",
   "title": "Pr\u00e9dire pour dimensionner : apprendre aux supercalculateurs leur propre empreinte d\u2019ex\u00e9cution | Mathis Certenais"
  },
  {
@@ -121,7 +121,7 @@
   "ogImageAlt": "Mathis Certenais \u2014 Entretien : au c\u0153ur de la logistique des donn\u00e9es pour la radioastronomie",
   "page": "article:eclat-interview",
   "path": "/fr/insights/eclat-interview",
-  "robots": "noindex, follow",
+  "robots": "index, follow",
   "title": "Entretien : au c\u0153ur de la logistique des donn\u00e9es pour la radioastronomie | Mathis Certenais"
  },
  {
@@ -150,7 +150,7 @@
   "ogImageAlt": "Mathis Certenais \u2014 YoungPEx : la nouvelle g\u00e9n\u00e9ration du num\u00e9rique pour l\u2019exascale",
   "page": "article:youngpex",
   "path": "/fr/insights/youngpex",
-  "robots": "noindex, follow",
+  "robots": "index, follow",
   "title": "YoungPEx : la nouvelle g\u00e9n\u00e9ration du num\u00e9rique pour l\u2019exascale | Mathis Certenais"
  },
  {
@@ -179,7 +179,7 @@
   "ogImageAlt": "Mathis Certenais \u2014 Webinaire : les services applicatifs de calcul haute performance pour la radioastronomie",
   "page": "article:webinar-hpc-applications-as-a-service",
   "path": "/fr/insights/webinar-hpc-applications-as-a-service",
-  "robots": "noindex, follow",
+  "robots": "index, follow",
   "title": "Webinaire : les services applicatifs de calcul haute performance pour la radioastronomie | Mathis Certenais"
  },
  {
@@ -208,7 +208,7 @@
   "ogImageAlt": "Mathis Certenais \u2014 Hackathon international de radioastronomie",
   "page": "article:international-hackathon-for-astronomy",
   "path": "/fr/insights/international-hackathon-for-astronomy",
-  "robots": "noindex, follow",
+  "robots": "index, follow",
   "title": "Hackathon international de radioastronomie | Mathis Certenais"
  },
  {
@@ -237,7 +237,7 @@
   "ogImageAlt": "Mathis Certenais \u2014 Des supercalculateurs aux travaux pratiques",
   "page": "article:rennes-hackathon-for-astronomy",
   "path": "/fr/insights/rennes-hackathon-for-astronomy",
-  "robots": "noindex, follow",
+  "robots": "index, follow",
   "title": "Des supercalculateurs aux travaux pratiques | Mathis Certenais"
  },
  {
@@ -266,7 +266,7 @@
   "ogImageAlt": "Mathis Certenais \u2014 Faire parler un logiciel scientifique : un serveur MCP",
   "page": "article:mcp-server-software-ontology",
   "path": "/fr/insights/mcp-server-software-ontology",
-  "robots": "noindex, follow",
+  "robots": "index, follow",
   "title": "Faire parler un logiciel scientifique : un serveur MCP | Mathis Certenais"
  },
  {
@@ -295,7 +295,7 @@
   "ogImageAlt": "Mathis Certenais \u2014 Astronomie exascale contre cybers\u00e9curit\u00e9",
   "page": "article:exascale-astronomy-cybersecurity",
   "path": "/fr/insights/exascale-astronomy-cybersecurity",
-  "robots": "noindex, follow",
+  "robots": "index, follow",
   "title": "Astronomie exascale contre cybers\u00e9curit\u00e9 | Mathis Certenais"
  },
  {
@@ -314,7 +314,7 @@
   "ogImageAlt": "Mathis Certenais \u2014 Vid\u00e9os",
   "page": "videos",
   "path": "/fr/videos",
-  "robots": "noindex, follow",
+  "robots": "index, follow",
   "title": "Vid\u00e9os | Mathis Certenais"
  },
  {
@@ -333,7 +333,7 @@
   "ogImageAlt": "Mathis Certenais \u2014 \u00c0 propos",
   "page": "about",
   "path": "/fr/about",
-  "robots": "noindex, follow",
+  "robots": "index, follow",
   "title": "\u00c0 propos | Mathis Certenais"
  },
  {
@@ -352,7 +352,7 @@
   "ogImageAlt": "Mathis Certenais \u2014 Profil",
   "page": "resume",
   "path": "/fr/resume",
-  "robots": "noindex, follow",
+  "robots": "index, follow",
   "title": "Profil | Mathis Certenais"
  },
  {
@@ -371,7 +371,7 @@
   "ogImageAlt": "Mathis Certenais \u2014 Contact",
   "page": "contact",
   "path": "/fr/contact",
-  "robots": "noindex, follow",
+  "robots": "index, follow",
   "title": "Contact | Mathis Certenais"
  },
  {
