@@ -845,7 +845,7 @@ Object.assign(articleBodies, {
     },
     {
       type: 'paragraph',
-      text: 'Les échanges se sont ensuite tournés vers le monde académique — les mathématiques et l’informatique en particulier. Julie Lesthelle (Université de Bordeaux) a présenté son mémoire de master, [« Les études en licence de mathématiques sous le prisme du genre »](https://inria.hal.science/hal-05368894), qui fonde la définition du **tuyau percé** : les minorités sont moins représentées dans les postes à responsabilité que dans les autres — moins de directrices et directeurs de recherche que de chargés et chargées de recherche, par exemple.',
+      text: 'Les échanges se sont ensuite tournés vers le monde académique — les mathématiques et l’informatique en particulier. Julie Lesthelle (Université de Bordeaux) a présenté son mémoire de master, [« Les études en licence de mathématiques sous le prisme du genre »](https://inria.hal.science/hal-05368894), qui fonde la définition du **leaky pipeline** : les minorités sont moins représentées dans les postes à responsabilité que dans les autres — moins de directrices et directeurs de recherche que de chargés et chargées de recherche, par exemple.',
     },
     {
       type: 'paragraph',
@@ -880,10 +880,88 @@ Object.assign(articleBodies, {
   ],
 })
 
+/**
+ * L'article de cybersécurité est long et se traduit par morceaux : les blocs
+ * traduits ouvrent le texte, le reste vient encore de l'anglais. La
+ * bibliographie, elle, reste en anglais pour de bon — traduire des titres de
+ * citations les rendrait introuvables.
+ */
+const cybersecurityTranslated: ArticleBlock[] = [
+  {
+    type: 'paragraph',
+    text: 'Les radiotélescopes de nouvelle génération, comme le **Square Kilometre Array** (SKA) [1], produiront des **volumes de données exascale** qu’aucune grappe locale ne peut absorber. Les traiter exige les architectures parallèles des systèmes nationaux de calcul haute performance (HPC) — et en France, cela signifie les machines coordonnées par **GENCI** [2] : Adastra au **CINES** [3], Jean Zay à l’**IDRIS** [4] et Joliot-Curie au **TGCC** [5], où le premier supercalculateur exascale français, Alice Recoque, est en cours d’installation.',
+  },
+  {
+    type: 'figure',
+    image: '/images/mathis/exascale-astronomy/ska.webp',
+    alt: 'Le radiotélescope Square Kilometre Array. Crédit : SKAO.',
+    caption: 'Le radiotélescope Square Kilometre Array. Crédit : SKAO.',
+  },
+  {
+    type: 'paragraph',
+    text: 'Pour la communauté de la radioastronomie, l’accès à ces machines est bloqué — non par un manque de matériel, mais par un conflit systémique entre la collaboration scientifique et la sécurité nationale. C’est la tension que le travail présenté aux **ateliers SC26** entreprend de résoudre : comment permettre à une communauté scientifique de partager une application commune sur les systèmes français de calcul intensif sans enfreindre les règles de responsabilité sur lesquelles ces systèmes reposent.',
+  },
+  {
+    type: 'paragraph',
+    text: 'Le problème n’est pas nouveau. Le **Low-Frequency Array (LOFAR)** [6] est un réseau européen de radiotélescopes et un précurseur du SKA ; la plateforme **LOFAR as a service** [7] a démontré la viabilité d’une approche par portail pour l’accès à la demande aux ressources de calcul. Elle permet à la communauté radioastronomique de traiter des données LOFAR par des chaînes de traitement dédiées, déployées sur des infrastructures de données et de calcul distribuées co-localisées avec les sites de l’archive à long terme de LOFAR, dont **SURFsara**, l’e-infrastructure nationale néerlandaise [8]. Mais ce modèle a été conçu pour des environnements de grille et ne tenait pas compte des exigences de responsabilité imposées par la réglementation de cybersécurité liée au statut ZRR.',
+  },
+  {
+    type: 'paragraph',
+    text: 'Des travaux empiriques récents [9] identifient les obstacles à l’usage du calcul intensif en radioastronomie — accessibilité limitée, systèmes hétérogènes, lacunes dans l’expertise du calcul avancé et complexité logicielle croissante. Bien que cette étude porte sur le calcul commercial dans un contexte australien, ces obstacles valent aussi pour les infrastructures nationales financées publiquement ; et dans l’écosystème français, les règles de cybersécurité supplémentaires imposées par la ZRR creusent encore l’écart entre la pratique de la radioastronomie et les modèles d’exploitation du calcul intensif.',
+  },
+  { type: 'heading', level: 2, text: 'La friction : la science face à la ZRR' },
+  {
+    type: 'paragraph',
+    text: 'En France, parce que les supercalculateurs sont classés **actifs stratégiques nationaux**, les centres de calcul qui les hébergent opèrent dans le cadre français de protection du potentiel scientifique et technique de la Nation (**PPST**) [10]. Établi par la réglementation française et détaillé dans des recommandations publiées par l’**ANSSI** [11], ce cadre vise à prévenir la perte, le sabotage ou l’appropriation de connaissances et de technologies sensibles par des puissances étrangères ou des acteurs malveillants. Les **règles d’accès de GENCI** [12] précisent comment ces exigences se traduisent dans les conditions générales d’accès aux ressources nationales de calcul intensif.',
+  },
+  {
+    type: 'paragraph',
+    text: 'Pour appliquer le PPST, un centre de calcul — ou une partie de son infrastructure — est classé **zone à régime restrictif (ZRR)** par arrêté ministériel [13]. La ZRR place des barrières d’accès physiques et logiques autour des ressources sensibles et impose un ensemble de restrictions opérationnelles à leur usage :',
+  },
+  {
+    type: 'list',
+    ordered: true,
+    items: [
+      '**Accès nominatif** — l’accès est accordé individuellement à une personne nommée, ce qui signifie que chaque utilisateur du calcul intensif doit déployer, configurer et maintenir sa propre pile applicative.',
+      '**Responsabilité personnelle** — l’accès est lié à une personne précise, si bien qu’un usage délégué ou partagé d’un même compte est incompatible avec le régime.',
+      '**Traçabilité** — les accès physiques et logiques, ainsi que toute circulation à l’intérieur de la ZRR, doivent être réglementés et tracés.',
+      '**Transferts de données contrôlés** — la divulgation ou le transfert d’informations à des tiers non autorisés doit être évalué et traçable.',
+    ],
+  },
+  {
+    type: 'paragraph',
+    text: 'À ces contraintes réglementaires s’ajoutent les contraintes ordinaires des supercalculateurs partagés : l’ordonnancement SLURM [14], des limites de temps d’exécution de **24 heures sur Adastra, 100 heures sur Jean Zay et 72 heures sur Joliot-Curie**, et un accès à Internet restreint aux nœuds de connexion. Ensemble, elles rendent les applications portées par la communauté — une chaîne unique, maintenue par quelques experts et utilisée par des dizaines de chercheurs — très difficiles à exploiter sur les machines françaises.',
+  },
+  {
+    type: 'paragraph',
+    text: '**Le résultat est un cauchemar de passage à l’échelle.** Là où un modèle communautaire repose sur quelques experts pour maintenir une chaîne de traitement destinée à des dizaines de chercheurs, la règle du nominatif oblige **chaque chercheur** à déployer, configurer et maintenir lui-même toute la pile sur chaque supercalculateur qu’il utilise. Chaque centre exigeant sa propre inscription nominative, la charge se multiplie à chaque machine.',
+  },
+  {
+    type: 'figure',
+    image: '/images/mathis/exascale-astronomy/jean-zay.webp',
+    alt: 'Le supercalculateur Jean Zay. Crédit : CNRS, Cyril Frésillon.',
+    caption: 'Le supercalculateur Jean Zay. Crédit : CNRS, Cyril Frésillon.',
+  },
+]
+
+/**
+ * Le corps de l'article de cybersécurité se compose : les blocs traduits ouvrent
+ * le texte, le reste vient encore de l'anglais, et cette part diminue à chaque
+ * passage. La bibliographie ferme l'article en anglais, comme demandé.
+ */
+const cybersecurityBody = (() => {
+  const source = englishArticles.find(
+    (article) => article.id === 'exascale-astronomy-cybersecurity',
+  )
+  const translated = cybersecurityTranslated.length
+  return [...cybersecurityTranslated, ...(source?.body.slice(translated) ?? [])]
+})()
+
 export const articleItems: ArticleItem[] = englishArticles.map((article) => ({
   ...article,
   ...(articleTranslations[article.id] ?? {}),
   ...(articleBodies[article.id] ? { body: articleBodies[article.id] } : {}),
+  ...(article.id === 'exascale-astronomy-cybersecurity' ? { body: cybersecurityBody } : {}),
 }))
 
 export const profileTimeline = [
