@@ -39,7 +39,7 @@
     <meta name="twitter:image:alt" content="Mathis Certenais — Recherche" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <title>Recherche | Mathis Certenais</title>
-    <script type="module" crossorigin src="/assets/index-sY6P2Nw5.js"></script>
+    <script type="module" crossorigin src="/assets/index-BwoiOahV.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BxBSK4vT.css">
     <meta property="og:url" content="https://mathiscertenais.com/fr/research/" />
     <link rel="canonical" href="https://mathiscertenais.com/fr/research/" />
@@ -52,7 +52,7 @@
       <p class="prerendered__label">Thèse de doctorat</p>
       <h1>Systèmes de systèmes collaboratifs pour la logistique des données scientifiques</h1>
       <p class="prerendered__meta">IRISA · Université de Rennes · NumPEx « Numérique pour l’Exascale » · laboratoire commun ECLAT</p>
-      <p>Les grands instruments scientifiques produisent aujourd’hui plus de données qu’un site unique ne peut en recevoir, en traiter ou en conserver. Transformer ces flux en produits exploitables suppose des chaînes de traitement qui traversent des instruments, des centres de calcul, des plateformes de stockage et des réseaux de recherche — chacun sous une administration différente, dans un pays différent et sous une loi différente. Cette thèse étudie la conception de cette logistique des données : comment la modéliser, comment l’optimiser, de quelles métadonnées elle a besoin, et comment l’exposer aux utilisateurs sans masquer les exigences qui garantissent des résultats sûrs et reproductibles.</p>
+      <p>Les grands instruments scientifiques produisent aujourd’hui plus de données qu’un site unique ne peut en recevoir, en traiter ou en conserver. Transformer ces flux en produits exploitables suppose des workflows qui traversent des instruments, des centres de calcul, des plateformes de stockage et des réseaux de recherche — chacun sous une administration différente, dans un pays différent et sous une loi différente. Cette thèse étudie la conception de cette logistique des données : comment la modéliser, comment l’optimiser, de quelles métadonnées elle a besoin, et comment l’exposer aux utilisateurs sans masquer les exigences qui garantissent des résultats sûrs et reproductibles.</p>
       <ul>
         <li>Logistique des données</li>
         <li>Chaînes de traitement inter-sites</li>
@@ -63,7 +63,7 @@
       <p class="prerendered__label">Le problème</p>
       <h2>Le volume est la contrainte visible. La gouvernance est la vraie.</h2>
       <p>Les instruments scientifiques comme les plateformes industrielles — le CERN, le SKA, mais tout autant les flux que les entreprises traitent pour leurs clients — produisent des flux continus qu’il faut transformer : en données exploitables dans le premier cas, en réponses pour les clients dans le second. Lu en surface, c’est un problème de débit. Combien de données, à quelle cadence, sur quelles liaisons.</p>
-      <p>Ce n’est pas le cas. Chaque site engagé dans une chaîne de traitement applique sa propre politique de sécurité, est hébergé dans son propre pays, et relève donc de la loi de ce pays. Une chaîne ne fonctionne que si elle peut être autorisée, tracée et digne de confiance de bout en bout. La logistique des données scientifiques est d’abord une question de gouvernance, et seulement ensuite une question de bande passante.</p>
+      <p>Ce n’est pas le cas. Chaque site engagé dans un workflow applique sa propre politique de sécurité, est hébergé dans son propre pays, et relève donc de la loi de ce pays. Un workflow ne fonctionne que s’il peut être autorisé, tracé et digne de confiance de bout en bout. La logistique des données scientifiques est d’abord une question de gouvernance, et seulement ensuite une question de bande passante.</p>
       <p class="prerendered__label">Pourquoi cela compte</p>
       <h2>Les instruments exascale rendent l’écart impossible à ignorer.</h2>
       <p>Le Square Kilometre Array fonctionnera en continu et produira bien plus de données qu’on ne peut en stocker. Les signaux radio célestes doivent être transformés en produits exploitables largement en temps réel, à des débits comparables à cent millions de flux 4K au tout début du parcours, réduits à la volée à l’équivalent de quelques milliers de flux, pour archiver in fine de l’ordre de 700 pétaoctets chaque année. Il n’existe pas d’alternative au traitement à grande échelle.</p>
@@ -77,36 +77,36 @@
       </ul>
       <h2>Cinq perspectives sur un même problème de logistique.</h2>
       <ol>
-        <li><p class="prerendered__label">01</p><h3>Modélisation de la logistique des données</h3><p>Décrire la chaîne entière — instrument, transport, ressources de calcul et d’analyse intensive, stockage, laboratoires — comme un seul système dont les étapes peuvent être raisonnées, organisées et placées, plutôt que comme une série de problèmes de sites sans lien.</p></li>
+        <li><p class="prerendered__label">01</p><h3>Modélisation de la logistique des données</h3><p>Décrire le workflow entier — instrument, transport, ressources de calcul et d’analyse intensive, stockage, laboratoires — comme un seul système dont les étapes peuvent être raisonnées, organisées et placées, plutôt que comme une série de problèmes de sites sans lien.</p></li>
         <li><p class="prerendered__label">02</p><h3>Optimisation multicritère</h3><p>Les décisions de placement arbitrent entre contraintes de stockage, capacité des réseaux et des infrastructures (topologie, latence, protocoles de transfert), dépense énergétique, et difficulté d’écriture, de déploiement et de mise au point des applications. Un seul de ces critères pris isolément donne une mauvaise réponse.</p></li>
         <li><p class="prerendered__label">03</p><h3>Sécurité, gouvernance et souveraineté</h3><p>Les règles PPST et ZRR décident non seulement de ce qui peut s’exécuter, mais de qui peut l’exploiter. La question Globus — pourquoi un service largement utilisé aux États-Unis ne peut gérer les identités ni les flux de données dans une zone à régime restrictif — est l’illustration la plus nette qu’un choix technique peut être une impossibilité juridique.</p></li>
         <li><p class="prerendered__label">04</p><h3>Traçabilité et métadonnées FAIR</h3><p>Les opérations, les acteurs et les données doivent tous être attribuables. Les métadonnées attachées aux données et aux processus sont le levier qui rend les autres perspectives décidables plutôt que seulement discutables, et qui transforme une collection d’exécutions en science réutilisable.</p></li>
         <li><p class="prerendered__label">05</p><h3>L’ergonomie comme objet de recherche</h3><p>Si l’interface exige l’administration d’un cluster, la communauté des astronomes ne la franchira pas. Les applications scientifiques doivent être exposées comme des services, afin que la complexité opérationnelle reste derrière l’interface tandis que les exigences scientifiques et de sécurité restent visibles devant elle.</p></li>
       </ol>
       <p class="prerendered__label">Comment les perspectives s’articulent</p>
-      <h2>Une seule chaîne, trois juridictions.</h2>
-      <p>Ces perspectives ne sont pas des programmes de recherche indépendants. Elles se rejoignent dans une chaîne inter-sites concrète : la chaîne DDF, le logiciel d’auto-calibration et d’imagerie du radiotélescope LOFAR, précurseur du SKA, exécuté sur des sites de calcul et de stockage hétérogènes et géodistribués.</p>
+      <h2>Un seul workflow, trois juridictions.</h2>
+      <p>Ces perspectives ne sont pas des programmes de recherche indépendants. Elles se rejoignent dans un workflow inter-sites concret : la chaîne DDF, le logiciel d’auto-calibration et d’imagerie du radiotélescope LOFAR, précurseur du SKA, exécuté sur des sites de calcul et de stockage hétérogènes et géodistribués.</p>
       <p>Entre ces points, chaque étape doit répondre à la même question dans une langue administrative différente. Où cette étape doit-elle s’exécuter, sous quelle autorité, avec quelles métadonnées enregistrées, et qui en est responsable ? Cette traduction est le système de systèmes que la thèse propose de modéliser.</p>
-      <h2>Une chaîne répartie entre plusieurs centres</h2>
+      <h2>Un workflow réparti entre plusieurs centres</h2>
       <ul>
         <li><strong>Instrument</strong> — SURFsara: Le centre national néerlandais de calcul intensif et site de référence de LOFAR, où arrivent les données du radiotélescope.</li>
         <li><strong>Traitement</strong> — Jean Zay · Adastra · Joliot-Curie: Les trois supercalculateurs nationaux français, exploités par l’IDRIS, le CINES et le TGCC dans leurs périmètres ZRR.</li>
         <li><strong>Stockage et partage</strong> — EOSC: L’European Open Science Cloud, réseau de recherche distribué ouvert aux utilisateurs européens de la recherche.</li>
       </ul>
       <p class="prerendered__label">Méthodes</p>
-      <h2>Une chaîne exigeante comme banc d’essai.</h2>
+      <h2>Un workflow exigeant comme banc d’essai.</h2>
       <p>La chaîne DDF est un bon cas d’étude précisément parce qu’elle répond à la fois à un vrai besoin de la communauté et à un problème système difficile. Une publication de données LoTSS a consommé environ seize millions d’heures de calcul ; une seule exécution atteint plusieurs centaines de gigaoctets de mémoire au pic, des images de cinq à vingt mille pixels de côté, entre une et vingt-quatre sous-bandes de fréquence, et des temps d’exécution mesurés en jours.</p>
       <p>Le travail décrit et profile ce logiciel, puis propose le modèle d’exploitation qui le rend utilisable à grande échelle : microservices applicatifs et tampons éphémères pour déplacer les données sans accès direct au shell, un exécutant qui tire les tâches depuis l’intérieur de la zone sécurisée plutôt que de les y pousser, et un compte de service nommé qui concilie la traçabilité ZRR avec un outil communautaire partagé.</p>
       <p>La traçabilité est capturée formellement plutôt que narrativement — cartes de connaissances structurées de l’application et de l’environnement d’exécution, et indicateurs de performance enregistrés à chaque exécution — afin qu’une exécution puisse être comparée, reproduite et, à terme, prédite.</p>
       <p class="prerendered__label">Contribution</p>
       <h2>Ce qu’apporte la thèse.</h2>
       <p>Un modèle de logistique des données dans lequel la gouvernance et la sécurité sont des contraintes de même rang que la capacité et le coût, et non une couche appliquée une fois l’architecture figée.</p>
-      <p>Une spécification des métadonnées nécessaires pour rendre opérationnel le déploiement d’une chaîne de traitement à grande échelle : de quoi assurer la traçabilité des opérations et respecter les principes FAIR, et de quoi alimenter des décisions de placement multicritères.</p>
+      <p>Une spécification des métadonnées nécessaires pour rendre opérationnel le déploiement d’un workflow à grande échelle : de quoi assurer la traçabilité des opérations et respecter les principes FAIR, et de quoi alimenter des décisions de placement multicritères.</p>
       <p>Une alternative démontrée aux comptes de calcul par utilisateur — les applications scientifiques comme service — validée avec la chaîne DDF sur Jean Zay et Adastra, le modèle du compte de service nommé étant en discussion avec les acteurs français de la sécurité.</p>
       <p>Une demande quantifiée envers l’infrastructure : ce que cette logistique implique en stockage, en réseau, en énergie et en émissions dans un paysage scientifique centré sur les données.</p>
       <p class="prerendered__label">Applications</p>
       <h2>Au-delà de la radioastronomie.</h2>
-      <p>Le même problème apparaît partout où une chaîne scientifique traverse des administrations, ce qui rend ces méthodes pertinentes pour d’autres communautés instrumentales et pour les infrastructures de recherche intensives en données.</p>
+      <p>Le même problème apparaît partout où un workflow scientifique traverse des administrations, ce qui rend ces méthodes pertinentes pour d’autres communautés instrumentales et pour les infrastructures de recherche intensives en données.</p>
       <p>La question du transport dépasse d’ailleurs les réseaux : un axe de travail concret concerne la spécification d’un dispositif de déplacement de données par les réseaux routiers et aériens, où la bande passante, la latence et l’énergie ne se comportent pas du tout comme sur une liaison de centre de données.</p>
       <h2>Le raisonnement est publié.</h2>
       <ul>
