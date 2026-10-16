@@ -1046,6 +1046,91 @@ const cybersecurityTranslated: ArticleBlock[] = [
     type: 'paragraph',
     text: 'Les quatre durées de vie sont **imbriquées** : la tâche SLURM s’exécute dans la tâche de l’exécutant, elle-même dans la tâche globale, que l’utilisateur suit.',
   },
+  { type: 'heading', level: 2, text: 'Preuve de concept : la chaîne DDF sur Jean Zay' },
+  {
+    type: 'paragraph',
+    text: 'Nous avons instancié cette architecture avec la **chaîne DDF** [33], [34], une application de radioastronomie portée par la communauté, dont l’empreinte mémoire, les exécutions de plusieurs jours et la dépendance à des jeux de données LOFAR externes en font un cas de test exigeant pour les supercalculateurs français soumis au régime ZRR.',
+  },
+  {
+    type: 'paragraph',
+    text: 'La chaîne DDF est une application composite intégrant **DDFacet** [35], un logiciel d’imagerie par facettes dépendant de la direction, et **killMS** [36], un logiciel de calibration pour l’interférométrie radio. Elle traite des Measurement Sets (MS), un format normalisé pour les visibilités d’interféromètre, et produit des images du ciel au format FITS. À l’origine application à mémoire partagée sur processeurs, elle requiert environ **400 Go de RAM** pour traiter des jeux de données LOFAR : une exécution représentative sur 24 fichiers MS d’entrée — 38,72 Go compressés — a produit **594 Go de sortie** après **68,8 heures** sur un seul nœud [37].',
+  },
+  {
+    type: 'paragraph',
+    text: 'La mémoire par nœud détermine ce qui peut tourner où : **Adastra** [38] offre 768 Go par nœud et convient bien à la chaîne, **Jean Zay** [39] dispose de 192 Go par nœud et impose de limiter la taille de l’image du ciel générée (les partitions GPU dotées d’au moins 512 Go peuvent aussi être utilisées), et **Joliot-Curie** [40] offre 228 Go par nœud — avec seulement 7 nœuds à grande mémoire suffisants. Une configuration qui tient sur une machine peut être impossible sur une autre.',
+  },
+  {
+    type: 'paragraph',
+    text: 'Pour nous préparer aux volumes de données du SKA, nous avons co-développé une **version parallèle** de la chaîne DDF avec des partenaires du **laboratoire commun ECLAT** [41], en intégrant la parallélisation multi-cœur et multi-nœud de DDFacet [42] à une implémentation parallèle de killMS. C’est la version utilisée pour les résultats ci-dessous.',
+  },
+  {
+    type: 'figure',
+    image: '/images/mathis/exascale-astronomy/ddf-workflow.webp',
+    alt: 'La chaîne DDF : télécharger les données, exécuter la chaîne, déposer les résultats',
+    caption: 'La chaîne DDF — trois étapes, chacune exposée comme un microservice distinct.',
+  },
+  {
+    type: 'paragraph',
+    text: 'Une expérience complète s’exprime en trois étapes, chacune étant un microservice spécifique :',
+  },
+  {
+    type: 'list',
+    ordered: true,
+    items: [
+      '**Télécharger les données** — les entrées sont des fichiers MS donnés par chemin local ou URL, un supercalculateur cible et son identifiant. Le microservice vérifie la compatibilité avec le supercalculateur en s’assurant que le domaine de l’URL figure dans la liste blanche attribuée au compte de service nommé ; les chemins locaux sont mis en place par les tampons éphémères. La sortie est un identifiant de tâche globale.',
+      '**Exécuter la chaîne DDF** — les entrées sont un fichier de configuration ou des options précises (par exemple la taille de l’image) et l’identifiant de tâche globale. Le microservice valide la configuration et l’accès aux données d’entrée, prépare le répertoire d’exécution et soumet une tâche à SLURM, en renvoyant l’identifiant de tâche globale pour que l’utilisateur puisse suivre son état.',
+      '**Déposer les résultats** — les entrées sont la destination (chemin local ou URL) et l’identifiant de tâche globale. Le microservice dépose les données par les tampons éphémères pour un chemin local, ou par l’API pour un dépôt distant.',
+    ],
+  },
+  { type: 'heading', level: 3, text: 'Les résultats' },
+  {
+    type: 'paragraph',
+    text: 'La chaîne a été mise à l’épreuve sur le supercalculateur Jean Zay pour valider l’architecture. Nous avons mesuré trois choses : où les données peuvent résider, comment la chaîne passe à l’échelle, et ce que coûte la couche de service.',
+  },
+  {
+    type: 'list',
+    ordered: false,
+    items: [
+      '**Accès aux données** — pour le jeu de données d’intégration de 8 heures LOFAR LoTSS L234026, **SURFsara** a offert le meilleur débit de téléchargement moyen (**137,9 Mo/s**, mais avec la variabilité la plus forte), devant **EOSC** [43] (51,85 Mo/s) et **CNRS Drive** (52,36 Mo/s). Le dépôt a favorisé EOSC (**28,73 Mo/s**, coefficient de variation 34,3 %) face à CNRS Drive (13,81 Mo/s, 84,7 %), ce qui fait de SURFsara et EOSC les points de terminaison viables pour cette expérience.',
+      '**Passage à l’échelle** — le temps écoulé est passé de **68,8 heures sur 1 nœud à 8,7 heures sur 24 nœuds** (≈7,9× d’accélération), en passant par 14,4 heures sur 6 nœuds et 10,2 heures sur 12 nœuds. L’utilisation moyenne des processeurs a chuté de 63,5 % à 31 %, principalement parce que les étapes de déconvolution de DDFacet, non parallélisées, limitent l’efficacité du passage à l’échelle — leur parallélisation est en cours.',
+      '**Surcoût du service** — la soumission d’une tâche par l’API n’a ajouté que **0,25 à 0,96 seconde** pour des configurations de 0 (référence), 1 et 5 tampons éphémères. C’est négligeable face à des exécutions qui vont de plusieurs heures à plusieurs jours.',
+    ],
+  },
+  {
+    type: 'figure',
+    image: '/images/mathis/exascale-astronomy/sequence-diagram.webp',
+    alt: 'Diagramme de séquence d’une tâche globale : l’utilisateur s’authentifie, choisit une application, soumet la tâche et la suit, tandis que l’exécutant du mainteneur la tire, la soumet à SLURM et récupère les résultats.',
+    caption:
+      'Diagramme de séquence de la soumission d’une tâche. Les quatre durées de vie sont imbriquées : la tâche SLURM (gris) s’exécute dans la tâche de l’exécutant (jaune), elle-même dans la tâche globale (bleu) suivie par l’utilisateur (violet).',
+  },
+  { type: 'heading', level: 2, text: 'La suite : au-delà de la preuve de concept' },
+  {
+    type: 'paragraph',
+    text: 'La limitation centrale de ce travail n’est pas technique mais **réglementaire** : le découplage proposé exige une dérogation formelle à une interdiction explicite de la ZRR, et son acceptation par les autorités françaises de sécurité du calcul intensif reste la prochaine étape vers un déploiement complet.',
+  },
+  {
+    type: 'paragraph',
+    text: 'Exploiter la chaîne DDF comme un service sur une infrastructure nationale a également fait apparaître trois conséquences pratiques :',
+  },
+  {
+    type: 'list',
+    ordered: false,
+    items: [
+      '**Qualité de service** — SLURM priorise les comptes dont l’usage récent est faible. Tous les utilisateurs accédant aux ressources par un compte unique, cela crée des délais d’allocation importants : la politique de partage équitable du compte de service nommé devra donc être adaptée.',
+      '**Stockage** — une seule exécution génère des centaines de gigaoctets, alors que les quotas des supercalculateurs sont limités. Les résultats doivent être transférés vers une source externe et les répertoires de travail nettoyés après chaque exécution, ce qui limite aussi le nombre de tâches menées en parallèle et motive la répartition des tâches entre plusieurs systèmes de calcul.',
+      '**Reproductibilité** — la reproductibilité étape par étape est irréaliste pour des chaînes qui produisent des centaines de gigaoctets de produits intermédiaires par exécution. Nous visons plutôt la **reproductibilité de la chaîne entière**, en conservant les références des entrées, les paramètres d’exécution et les spécifications de l’environnement.',
+    ],
+  },
+  {
+    type: 'paragraph',
+    text: 'Des exécutions de la chaîne DDF entre centres, **entre Jean Zay et Adastra**, ont été validées, ce qui motive l’intégration future d’un déploiement inter-sites [44] dans le cadre EB/AM. Le modèle du compte de service nommé reste en discussion avec les acteurs français du calcul intensif, et les travaux à venir étendront le déploiement à d’autres supercalculateurs français — **Adastra et Joliot-Curie**.',
+  },
+  { type: 'heading', level: 2, text: 'Conclusion' },
+  {
+    type: 'paragraph',
+    text: 'La sécurité devrait être un levier pour la science, pas une barrière. En passant d’un modèle d’« accès utilisateur » à un modèle d’« accès par service » — et en séparant l’identité de l’utilisateur de celle de l’exécutant — nous pouvons concilier les exigences de responsabilité de la ZRR avec la façon dont les communautés scientifiques travaillent réellement, et ouvrir les supercalculateurs français à la communauté de radioastronomie qui en a le plus besoin.',
+  },
+  { type: 'heading', level: 2, text: 'Références' },
 ]
 
 /**
