@@ -187,7 +187,7 @@ export const locales = {
       emailMathis: 'Écrire à Mathis',
       perspectives: 'Cinq perspectives sur un même problème de logistique.',
       skaCaption: 'Le workflow du SKA. Les antennes SKA-Low en Australie et les paraboles SKA-Mid en Afrique du Sud émettent des signaux bruts à des débits de l’ordre du térabit par seconde. Chaque réseau est corrélé sur site par du matériel à FPGA et des corrélateurs à CSP-Low et CSP-Mid, puis confié aux supercalculateurs du SDP à Perth et au Cap pour la calibration et l’imagerie. Les produits scientifiques obtenus sont répliqués sur les nœuds de stockage et de calcul du SRCNet en Europe, en Asie et dans les Amériques, où les astronomes y accèdent pour les analyser.',
-      arxivPaper: 'Lire l’article sur la chaîne DDF sur arXiv',
+      arxivPaper: 'Lire l’article sur le DDF Pipeline sur arXiv',
       numpexProfile: 'Lire le profil de recherche NumPEx',
       whereThisContinues: 'Où cela se poursuit',
       reasoningPublic: 'Le raisonnement est publié.',
