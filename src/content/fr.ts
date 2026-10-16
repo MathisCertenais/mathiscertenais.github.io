@@ -6,8 +6,8 @@ import type {
   ResearchFigure,
   ResearchPerspective,
   VideoItem,
-} from './en'
-import { articleItems as englishArticles, videoItems as englishVideos } from './en'
+} from './en.ts'
+import { articleItems as englishArticles, videoItems as englishVideos } from './en.ts'
 
 /**
  * Contenu français du site.
