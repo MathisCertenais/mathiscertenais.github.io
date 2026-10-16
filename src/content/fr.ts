@@ -14,7 +14,7 @@ import type { ArticleBlock } from './en.ts'
  * Contenu français du site.
  *
  * Deux principes : dire les choses en français plutôt que les calquer, et ne
- * rien inventer. « Workflow » devient « chaîne de traitement », « storage »
+ * rien inventer. « Workflow » reste « workflow », « storage »
  * devient « stockage », « HPC » s'écrit « calcul haute performance » dans la
  * prose. Les noms propres, les sigles institutionnels (IRISA, NumPEx, ECLAT,
  * SKA, LOFAR, GENCI, CINES, IDRIS, TGCC) et les titres d'œuvres restent
@@ -30,7 +30,7 @@ export const identity = {
   shortRole: 'Chercheur en informatique · Doctorant',
   headline: ['Logistique des données.', 'Workflows à l’exascale.'],
   description:
-    'Chercheur en informatique travaillant sur le calcul haute performance et les chaînes de traitement scientifiques réparties entre plusieurs centres, pour la radioastronomie.',
+    'Chercheur en informatique travaillant sur le calcul haute performance et les workflows scientifiques répartis entre plusieurs centres, pour la radioastronomie.',
   location: 'Rennes, Bretagne, France',
   email: 'mathiscertenais@gmail.com',
   linkedin: 'https://www.linkedin.com/in/mathiscertenais/',
@@ -67,7 +67,7 @@ export const proofPoints: ProofPoint[] = [
     kind: 'community',
     title: 'Recherche doctorale',
     description:
-      'Spécialisé dans la gestion des données des chaînes de traitement, avec un accent sur la gouvernance et la cybersécurité dans les environnements de calcul intensif.',
+      'Spécialisé dans la gestion des données des workflows, avec un accent sur la gouvernance et la cybersécurité dans les environnements de calcul intensif.',
   },
   {
     kind: 'mentor',
@@ -79,7 +79,7 @@ export const proofPoints: ProofPoint[] = [
     kind: 'speaker',
     title: 'Collaboration scientifique',
     description:
-      'Travaille pour le programme de recherche NumPEx « Digital for Exascale » et le laboratoire commun ECLAT à la conception des futures chaînes de traitement de la radioastronomie.',
+      'Travaille pour le programme de recherche NumPEx « Digital for Exascale » et le laboratoire commun ECLAT à la conception des futurs workflows de la radioastronomie.',
   },
 ]
 
@@ -97,7 +97,7 @@ export const researchThesis = {
   context: 'IRISA · Université de Rennes',
   programme: 'NumPEx « Numérique pour l’Exascale » · laboratoire commun ECLAT',
   summary:
-    'Les grands instruments scientifiques produisent aujourd’hui plus de données qu’un site unique ne peut en recevoir, en traiter ou en conserver. Transformer ces flux en produits exploitables suppose des chaînes de traitement qui traversent des instruments, des centres de calcul, des plateformes de stockage et des réseaux de recherche — chacun sous une administration différente, dans un pays différent et sous une loi différente. Cette thèse étudie la conception de cette logistique des données : comment la modéliser, comment l’optimiser, de quelles métadonnées elle a besoin, et comment l’exposer aux utilisateurs sans masquer les exigences qui garantissent des résultats sûrs et reproductibles.',
+    'Les grands instruments scientifiques produisent aujourd’hui plus de données qu’un site unique ne peut en recevoir, en traiter ou en conserver. Transformer ces flux en produits exploitables suppose des workflows qui traversent des instruments, des centres de calcul, des plateformes de stockage et des réseaux de recherche — chacun sous une administration différente, dans un pays différent et sous une loi différente. Cette thèse étudie la conception de cette logistique des données : comment la modéliser, comment l’optimiser, de quelles métadonnées elle a besoin, et comment l’exposer aux utilisateurs sans masquer les exigences qui garantissent des résultats sûrs et reproductibles.',
 } as const
 
 export const researchChapters: ResearchChapter[] = [
@@ -106,7 +106,7 @@ export const researchChapters: ResearchChapter[] = [
     heading: 'Le volume est la contrainte visible. La gouvernance est la vraie.',
     paragraphs: [
       'Les instruments scientifiques comme les plateformes industrielles — le CERN, le SKA, mais tout autant les flux que les entreprises traitent pour leurs clients — produisent des flux continus qu’il faut transformer : en données exploitables dans le premier cas, en réponses pour les clients dans le second. Lu en surface, c’est un problème de débit. Combien de données, à quelle cadence, sur quelles liaisons.',
-      'Ce n’est pas le cas. Chaque site engagé dans une chaîne de traitement applique sa propre politique de sécurité, est hébergé dans son propre pays, et relève donc de la loi de ce pays. Une chaîne ne fonctionne que si elle peut être autorisée, tracée et digne de confiance de bout en bout. La logistique des données scientifiques est d’abord une question de gouvernance, et seulement ensuite une question de bande passante.',
+      'Ce n’est pas le cas. Chaque site engagé dans un workflow applique sa propre politique de sécurité, est hébergé dans son propre pays, et relève donc de la loi de ce pays. Un workflow ne fonctionne que s’il peut être autorisé, tracé et digne de confiance de bout en bout. La logistique des données scientifiques est d’abord une question de gouvernance, et seulement ensuite une question de bande passante.',
     ],
   },
   {
@@ -139,7 +139,7 @@ export const researchPerspectives: ResearchPerspective[] = [
   {
     number: '01',
     title: 'Modélisation de la logistique des données',
-    text: 'Décrire la chaîne entière — instrument, transport, ressources de calcul et d’analyse intensive, stockage, laboratoires — comme un seul système dont les étapes peuvent être raisonnées, organisées et placées, plutôt que comme une série de problèmes de sites sans lien.',
+    text: 'Décrire le workflow entier — instrument, transport, ressources de calcul et d’analyse intensive, stockage, laboratoires — comme un seul système dont les étapes peuvent être raisonnées, organisées et placées, plutôt que comme une série de problèmes de sites sans lien.',
   },
   {
     number: '02',
@@ -186,16 +186,16 @@ export const researchChain: ResearchChainStep[] = [
 
 export const researchMethods: ResearchChapter = {
   label: 'Comment les perspectives s’articulent',
-  heading: 'Une seule chaîne, trois juridictions.',
+  heading: 'Un seul workflow, trois juridictions.',
   paragraphs: [
-    'Ces perspectives ne sont pas des programmes de recherche indépendants. Elles se rejoignent dans une chaîne inter-sites concrète : la chaîne DDF, le logiciel d’auto-calibration et d’imagerie du radiotélescope LOFAR, précurseur du SKA, exécuté sur des sites de calcul et de stockage hétérogènes et géodistribués.',
+    'Ces perspectives ne sont pas des programmes de recherche indépendants. Elles se rejoignent dans un workflow inter-sites concret : la chaîne DDF, le logiciel d’auto-calibration et d’imagerie du radiotélescope LOFAR, précurseur du SKA, exécuté sur des sites de calcul et de stockage hétérogènes et géodistribués.',
     'Entre ces points, chaque étape doit répondre à la même question dans une langue administrative différente. Où cette étape doit-elle s’exécuter, sous quelle autorité, avec quelles métadonnées enregistrées, et qui en est responsable ? Cette traduction est le système de systèmes que la thèse propose de modéliser.',
   ],
 }
 
 export const researchCase: ResearchChapter = {
   label: 'Méthodes',
-  heading: 'Une chaîne exigeante comme banc d’essai.',
+  heading: 'Un workflow exigeant comme banc d’essai.',
   paragraphs: [
     'La chaîne DDF est un bon cas d’étude précisément parce qu’elle répond à la fois à un vrai besoin de la communauté et à un problème système difficile. Une publication de données LoTSS a consommé environ seize millions d’heures de calcul ; une seule exécution atteint plusieurs centaines de gigaoctets de mémoire au pic, des images de cinq à vingt mille pixels de côté, entre une et vingt-quatre sous-bandes de fréquence, et des temps d’exécution mesurés en jours.',
     'Le travail décrit et profile ce logiciel, puis propose le modèle d’exploitation qui le rend utilisable à grande échelle : microservices applicatifs et tampons éphémères pour déplacer les données sans accès direct au shell, un exécutant qui tire les tâches depuis l’intérieur de la zone sécurisée plutôt que de les y pousser, et un compte de service nommé qui concilie la traçabilité ZRR avec un outil communautaire partagé.',
@@ -208,7 +208,7 @@ export const researchContribution: ResearchChapter = {
   heading: 'Ce qu’apporte la thèse.',
   paragraphs: [
     'Un modèle de logistique des données dans lequel la gouvernance et la sécurité sont des contraintes de même rang que la capacité et le coût, et non une couche appliquée une fois l’architecture figée.',
-    'Une spécification des métadonnées nécessaires pour rendre opérationnel le déploiement d’une chaîne de traitement à grande échelle : de quoi assurer la traçabilité des opérations et respecter les principes FAIR, et de quoi alimenter des décisions de placement multicritères.',
+    'Une spécification des métadonnées nécessaires pour rendre opérationnel le déploiement d’un workflow à grande échelle : de quoi assurer la traçabilité des opérations et respecter les principes FAIR, et de quoi alimenter des décisions de placement multicritères.',
     'Une alternative démontrée aux comptes de calcul par utilisateur — les applications scientifiques comme service — validée avec la chaîne DDF sur Jean Zay et Adastra, le modèle du compte de service nommé étant en discussion avec les acteurs français de la sécurité.',
     'Une demande quantifiée envers l’infrastructure : ce que cette logistique implique en stockage, en réseau, en énergie et en émissions dans un paysage scientifique centré sur les données.',
   ],
@@ -218,7 +218,7 @@ export const researchApplications = {
   label: 'Applications',
   heading: 'Au-delà de la radioastronomie.',
   paragraphs: [
-    'Le même problème apparaît partout où une chaîne scientifique traverse des administrations, ce qui rend ces méthodes pertinentes pour d’autres communautés instrumentales et pour les infrastructures de recherche intensives en données.',
+    'Le même problème apparaît partout où un workflow scientifique traverse des administrations, ce qui rend ces méthodes pertinentes pour d’autres communautés instrumentales et pour les infrastructures de recherche intensives en données.',
     'La question du transport dépasse d’ailleurs les réseaux : un axe de travail concret concerne la spécification d’un dispositif de déplacement de données par les réseaux routiers et aériens, où la bande passante, la latence et l’énergie ne se comportent pas du tout comme sur une liaison de centre de données.',
   ],
 } as const
@@ -240,7 +240,7 @@ const videoTranslations: Record<string, { description: string; title: string }> 
   },
   'hpc-service-webinar': {
     description:
-      'Un webinaire sur la logistique des données, l’imagerie intensive et l’orchestration de chaînes de traitement à grande échelle.',
+      'Un webinaire sur la logistique des données, l’imagerie intensive et l’orchestration de workflows à grande échelle.',
     title:
       'Webinaire : les services applicatifs de calcul haute performance pour la radioastronomie',
   },
@@ -317,7 +317,7 @@ const articleTranslations: Record<
     category: 'Webinaire',
     date: '26 février 2026',
     description:
-      'Ce webinaire prend la radioastronomie comme exemple pour montrer comment les services applicatifs de calcul haute performance peuvent gérer les données scientifiques, accélérer l’imagerie et accompagner les instruments de nouvelle génération comme le SKA, à travers des architectures et des outils pensés pour les chaînes inter-sites.',
+      'Ce webinaire prend la radioastronomie comme exemple pour montrer comment les services applicatifs de calcul haute performance peuvent gérer les données scientifiques, accélérer l’imagerie et accompagner les instruments de nouvelle génération comme le SKA, à travers des architectures et des outils pensés pour les workflows inter-sites.',
     title:
       'Webinaire : les services applicatifs de calcul haute performance pour la radioastronomie',
   },
@@ -342,7 +342,7 @@ const articleBodies: Record<string, ArticleBlock[]> = {
     },
     {
       type: 'paragraph',
-      text: 'Ce webinaire présente les applications de calcul intensif comme un service, à travers un scénario concret autour de la chaîne DDF. L’accent est mis sur l’intégration de la logistique des données scientifiques, de l’imagerie intensive et de l’orchestration de chaînes de traitement distribuées, tout en gardant compréhensible l’interface offerte aux chercheurs.',
+      text: 'Ce webinaire présente les applications de calcul intensif comme un service, à travers un scénario concret autour de la chaîne DDF. L’accent est mis sur l’intégration de la logistique des données scientifiques, de l’imagerie intensive et de l’orchestration de workflows distribués, tout en gardant compréhensible l’interface offerte aux chercheurs.',
     },
   ],
   'international-hackathon-for-astronomy': [
@@ -412,7 +412,7 @@ Object.assign(articleBodies, {
     },
     {
       type: 'paragraph',
-      text: 'Nous nous sommes aussi occupés des utilisateurs. Un bon code ne sert à rien si personne ne sait s’en servir. Pendant l’événement, nous avons écrit des [tutoriels détaillés pour DDFacet](https://hackmd.io/l8fw0PYRQv6dm9i6KpZWPA), le logiciel d’imagerie de notre chaîne de traitement.',
+      text: 'Nous nous sommes aussi occupés des utilisateurs. Un bon code ne sert à rien si personne ne sait s’en servir. Pendant l’événement, nous avons écrit des [tutoriels détaillés pour DDFacet](https://hackmd.io/l8fw0PYRQv6dm9i6KpZWPA), le logiciel d’imagerie de notre workflow.',
     },
     {
       type: 'paragraph',
@@ -441,12 +441,12 @@ Object.assign(articleBodies, {
     },
     {
       type: 'paragraph',
-      text: 'La **logistique des données** désigne la gestion des flux d’information produits par les instruments scientifiques et les simulations complexes. Elle est indispensable pour passer à l’échelle dans le contexte du calcul exascale. Auparavant, chaque institution gérait ces flux en interne : les données étaient collectées, traitées et analysées localement. Avec la nouvelle génération de radiotélescopes, le volume d’information explose. Il faut donc concevoir cette logistique au sein des chaînes de traitement, mais aussi intégrer les techniques d’imagerie sur les machines de calcul intensif et répartir le traitement de ces flux entre différentes infrastructures.',
+      text: 'La **logistique des données** désigne la gestion des flux d’information produits par les instruments scientifiques et les simulations complexes. Elle est indispensable pour passer à l’échelle dans le contexte du calcul exascale. Auparavant, chaque institution gérait ces flux en interne : les données étaient collectées, traitées et analysées localement. Avec la nouvelle génération de radiotélescopes, le volume d’information explose. Il faut donc concevoir cette logistique au sein des workflows, mais aussi intégrer les techniques d’imagerie sur les machines de calcul intensif et répartir le traitement de ces flux entre différentes infrastructures.',
     },
     { type: 'heading', level: 3, text: 'Parlons d’ECLAT. Quelle est sa raison d’être ?' },
     {
       type: 'paragraph',
-      text: 'L’objectif premier d’ECLAT est de concevoir des systèmes cyber-physiques, autrement dit des chaînes de traitement, pour la radioastronomie de demain, et de répondre ainsi aux besoins du **Square Kilometer Array (SKA)**, un radiotélescope de nouvelle génération. Pour nous, la radioastronomie est un formidable terrain d’essai pour nos outils de logistique des données. C’est un peu comme concevoir des outils — un râteau, une bêche, un seau : le laboratoire ECLAT est notre bac à sable pour construire ensemble et voir ce qui tient.',
+      text: 'L’objectif premier d’ECLAT est de concevoir des systèmes cyber-physiques, autrement dit des workflows, pour la radioastronomie de demain, et de répondre ainsi aux besoins du **Square Kilometer Array (SKA)**, un radiotélescope de nouvelle génération. Pour nous, la radioastronomie est un formidable terrain d’essai pour nos outils de logistique des données. C’est un peu comme concevoir des outils — un râteau, une bêche, un seau : le laboratoire ECLAT est notre bac à sable pour construire ensemble et voir ce qui tient.',
     },
     { type: 'heading', level: 3, text: 'D’où vient cette collaboration ?' },
     {
@@ -491,7 +491,7 @@ Object.assign(articleBodies, {
     {
       type: 'figure',
       image: '/images/mathis/predicting-for-sizing/ddf-workflow.webp',
-      alt: 'La chaîne DDF : télécharger les données, exécuter la chaîne, déposer les résultats',
+      alt: 'La chaîne DDF : télécharger les données, exécuter le workflow, déposer les résultats',
       caption:
         'La chaîne DDF — trois étapes pour lesquelles nous aimerions connaître le site le plus adapté à leur exécution.',
     },
@@ -511,7 +511,7 @@ Object.assign(articleBodies, {
     },
     {
       type: 'paragraph',
-      text: 'Ajoutez une **dimension multi-sites** et le problème se complexifie. Dans les chaînes réparties entre plusieurs centres, le dimensionnement conditionne le placement des tâches : espace disque, attente en file et site d’exécution dépendent tous de l’empreinte que vous avez prédite. Les contraintes matérielles diffèrent d’un site à l’autre — **768 Go par nœud** sur Adastra, **192 Go de mémoire par nœud** sur Jean Zay, **228 Go par nœud** sur Joliot-Curie — et une configuration qui tient sur une machine peut être impossible sur une autre.',
+      text: 'Ajoutez une **dimension multi-sites** et le problème se complexifie. Dans les workflows répartis entre plusieurs centres, le dimensionnement conditionne le placement des tâches : espace disque, attente en file et site d’exécution dépendent tous de l’empreinte que vous avez prédite. Les contraintes matérielles diffèrent d’un site à l’autre — **768 Go par nœud** sur Adastra, **192 Go de mémoire par nœud** sur Jean Zay, **228 Go par nœud** sur Joliot-Curie — et une configuration qui tient sur une machine peut être impossible sur une autre.',
     },
     {
       type: 'paragraph',
@@ -737,7 +737,7 @@ Object.assign(articleBodies, {
         '**Exa-MA (PC1)** — méthodes et algorithmes pour le calcul exascale',
         '**Exa-SofT (PC2)** — logiciels et outils pour le calcul intensif',
         '**Exa-DoST (PC3)** — outils et logiciels orientés données',
-        '**Exa-AToW (PC4)** — outils et architectures pour les chaînes de traitement à grande échelle',
+        '**Exa-AToW (PC4)** — outils et architectures pour les workflows à grande échelle',
         '**Exa-DI (PC5)** — développement et intégration d’outils par les applications',
       ],
     },
@@ -911,7 +911,7 @@ const cybersecurityTranslated: ArticleBlock[] = [
   },
   {
     type: 'paragraph',
-    text: 'Le problème n’est pas nouveau. Le **Low-Frequency Array (LOFAR)** [6] est un réseau européen de radiotélescopes et un précurseur du SKA ; la plateforme **LOFAR as a service** [7] a démontré la viabilité d’une approche par portail pour l’accès à la demande aux ressources de calcul. Elle permet à la communauté radioastronomique de traiter des données LOFAR par des chaînes de traitement dédiées, déployées sur des infrastructures de données et de calcul distribuées co-localisées avec les sites de l’archive à long terme de LOFAR, dont **SURFsara**, l’e-infrastructure nationale néerlandaise [8]. Mais ce modèle a été conçu pour des environnements de grille et ne tenait pas compte des exigences de responsabilité imposées par la réglementation de cybersécurité liée au statut ZRR.',
+    text: 'Le problème n’est pas nouveau. Le **Low-Frequency Array (LOFAR)** [6] est un réseau européen de radiotélescopes et un précurseur du SKA ; la plateforme **LOFAR as a service** [7] a démontré la viabilité d’une approche par portail pour l’accès à la demande aux ressources de calcul. Elle permet à la communauté radioastronomique de traiter des données LOFAR par des workflows dédiés, déployés sur des infrastructures de données et de calcul distribuées co-localisées avec les sites de l’archive à long terme de LOFAR, dont **SURFsara**, l’e-infrastructure nationale néerlandaise [8]. Mais ce modèle a été conçu pour des environnements de grille et ne tenait pas compte des exigences de responsabilité imposées par la réglementation de cybersécurité liée au statut ZRR.',
   },
   {
     type: 'paragraph',
@@ -938,11 +938,11 @@ const cybersecurityTranslated: ArticleBlock[] = [
   },
   {
     type: 'paragraph',
-    text: 'À ces contraintes réglementaires s’ajoutent les contraintes ordinaires des supercalculateurs partagés : l’ordonnancement SLURM [14], des limites de temps d’exécution de **24 heures sur Adastra, 100 heures sur Jean Zay et 72 heures sur Joliot-Curie**, et un accès à Internet restreint aux nœuds de connexion. Ensemble, elles rendent les applications portées par la communauté — une chaîne unique, maintenue par quelques experts et utilisée par des dizaines de chercheurs — très difficiles à exploiter sur les machines françaises.',
+    text: 'À ces contraintes réglementaires s’ajoutent les contraintes ordinaires des supercalculateurs partagés : l’ordonnancement SLURM [14], des limites de temps d’exécution de **24 heures sur Adastra, 100 heures sur Jean Zay et 72 heures sur Joliot-Curie**, et un accès à Internet restreint aux nœuds de connexion. Ensemble, elles rendent les applications portées par la communauté — un workflow unique, maintenu par quelques experts et utilisé par des dizaines de chercheurs — très difficiles à exploiter sur les machines françaises.',
   },
   {
     type: 'paragraph',
-    text: '**Le résultat est un cauchemar de passage à l’échelle.** Là où un modèle communautaire repose sur quelques experts pour maintenir une chaîne de traitement destinée à des dizaines de chercheurs, la règle du nominatif oblige **chaque chercheur** à déployer, configurer et maintenir lui-même toute la pile sur chaque supercalculateur qu’il utilise. Chaque centre exigeant sa propre inscription nominative, la charge se multiplie à chaque machine.',
+    text: '**Le résultat est un cauchemar de passage à l’échelle.** Là où un modèle communautaire repose sur quelques experts pour maintenir un workflow destiné à des dizaines de chercheurs, la règle du nominatif oblige **chaque chercheur** à déployer, configurer et maintenir lui-même toute la pile sur chaque supercalculateur qu’il utilise. Chaque centre exigeant sa propre inscription nominative, la charge se multiplie à chaque machine.',
   },
   {
     type: 'figure',
@@ -959,7 +959,7 @@ const cybersecurityTranslated: ArticleBlock[] = [
     type: 'list',
     ordered: false,
     items: [
-      '**Les systèmes de gestion de chaînes de traitement** comme Pegasus [15], Nextflow [16] ou Snakemake [17] orchestrent des graphes acycliques dirigés sur le nuage et le calcul intensif, et savent soumettre via un ordonnanceur local. Mais ils restent, par nature, des **moteurs par utilisateur** : chacun installe, configure et maintient sa propre instance sous un compte nominatif, et le déploiement n’est jamais exposé comme un service partagé et exploité.',
+      '**Les systèmes de gestion de workflows** comme Pegasus [15], Nextflow [16] ou Snakemake [17] orchestrent des graphes acycliques dirigés sur le nuage et le calcul intensif, et savent soumettre via un ordonnanceur local. Mais ils restent, par nature, des **moteurs par utilisateur** : chacun installe, configure et maintient sa propre instance sous un compte nominatif, et le déploiement n’est jamais exposé comme un service partagé et exploité.',
       '**Les portails web et les passerelles scientifiques** [18], [19] masquent la complexité du calcul intensif derrière une interface et satisfont l’accès nominatif en associant chaque utilisateur du portail à son propre compte — mais ils ne suppriment pas la charge opérationnelle : chaque utilisateur déploie et maintient toujours la pile applicative scientifique.',
       '**Les intergiciels de l’ère des grilles** comme GlideinWMS [20], PanDA [21] ou DIRAC [22] combinent une exécution pilotée par des pilotes avec des identités d’organisation virtuelle — des certificats mandataires à durée limitée émis par VOMS [23]. L’incompatibilité avec la ZRR tient à l’**identité exécutante** — une accréditation collective — et non au mode de distribution par tirage lui-même.',
       '**Les couches d’accès programmatique** comme Globus Compute (à l’origine funcX) [24] et FirecREST [25] sont les plus proches de notre approche : elles exposent des API pour soumettre et surveiller des tâches sur des supercalculateurs distants. Dans leurs déploiements standard, cependant, elles authentifient les utilisateurs individuellement et associent chaque tâche à l’identité de calcul de l’utilisateur demandeur — et n’offrent aucun catalogue centralisé d’applications scientifiques validées, exposé comme un service communautaire.',
@@ -1014,7 +1014,7 @@ const cybersecurityTranslated: ArticleBlock[] = [
   { type: 'heading', level: 3, text: 'L’architecture : comment cela fonctionne' },
   {
     type: 'paragraph',
-    text: 'Le cadre constitue un **point d’entrée unique** pour lancer des tâches d’applications scientifiques sur les supercalculateurs, sans accès direct aux centres sous-jacents. Il enveloppe des chaînes de traitement complexes dans un service fluide :',
+    text: 'Le cadre constitue un **point d’entrée unique** pour lancer des tâches d’applications scientifiques sur les supercalculateurs, sans accès direct aux centres sous-jacents. Il enveloppe des workflows complexes dans un service fluide :',
   },
   {
     type: 'list',
@@ -1065,7 +1065,7 @@ const cybersecurityTranslated: ArticleBlock[] = [
   },
   {
     type: 'paragraph',
-    text: 'La mémoire par nœud détermine ce qui peut tourner où : **Adastra** [38] offre 768 Go par nœud et convient bien à la chaîne, **Jean Zay** [39] dispose de 192 Go par nœud et impose de limiter la taille de l’image du ciel générée (les partitions GPU dotées d’au moins 512 Go peuvent aussi être utilisées), et **Joliot-Curie** [40] offre 228 Go par nœud — avec seulement 7 nœuds à grande mémoire suffisants. Une configuration qui tient sur une machine peut être impossible sur une autre.',
+    text: 'La mémoire par nœud détermine ce qui peut tourner où : **Adastra** [38] offre 768 Go par nœud et convient bien au workflow, **Jean Zay** [39] dispose de 192 Go par nœud et impose de limiter la taille de l’image du ciel générée (les partitions GPU dotées d’au moins 512 Go peuvent aussi être utilisées), et **Joliot-Curie** [40] offre 228 Go par nœud — avec seulement 7 nœuds à grande mémoire suffisants. Une configuration qui tient sur une machine peut être impossible sur une autre.',
   },
   {
     type: 'paragraph',
@@ -1074,7 +1074,7 @@ const cybersecurityTranslated: ArticleBlock[] = [
   {
     type: 'figure',
     image: '/images/mathis/exascale-astronomy/ddf-workflow.webp',
-    alt: 'La chaîne DDF : télécharger les données, exécuter la chaîne, déposer les résultats',
+    alt: 'La chaîne DDF : télécharger les données, exécuter le workflow, déposer les résultats',
     caption: 'La chaîne DDF — trois étapes, chacune exposée comme un microservice distinct.',
   },
   {
@@ -1093,7 +1093,7 @@ const cybersecurityTranslated: ArticleBlock[] = [
   { type: 'heading', level: 3, text: 'Les résultats' },
   {
     type: 'paragraph',
-    text: 'La chaîne a été mise à l’épreuve sur le supercalculateur Jean Zay pour valider l’architecture. Nous avons mesuré trois choses : où les données peuvent résider, comment la chaîne passe à l’échelle, et ce que coûte la couche de service.',
+    text: 'Le workflow a été mis à l’épreuve sur le supercalculateur Jean Zay pour valider l’architecture. Nous avons mesuré trois choses : où les données peuvent résider, comment le workflow passe à l’échelle, et ce que coûte la couche de service.',
   },
   {
     type: 'list',
@@ -1126,7 +1126,7 @@ const cybersecurityTranslated: ArticleBlock[] = [
     items: [
       '**Qualité de service** — SLURM priorise les comptes dont l’usage récent est faible. Tous les utilisateurs accédant aux ressources par un compte unique, cela crée des délais d’allocation importants : la politique de partage équitable du compte de service nommé devra donc être adaptée.',
       '**Stockage** — une seule exécution génère des centaines de gigaoctets, alors que les quotas des supercalculateurs sont limités. Les résultats doivent être transférés vers une source externe et les répertoires de travail nettoyés après chaque exécution, ce qui limite aussi le nombre de tâches menées en parallèle et motive la répartition des tâches entre plusieurs systèmes de calcul.',
-      '**Reproductibilité** — la reproductibilité étape par étape est irréaliste pour des chaînes qui produisent des centaines de gigaoctets de produits intermédiaires par exécution. Nous visons plutôt la **reproductibilité de la chaîne entière**, en conservant les références des entrées, les paramètres d’exécution et les spécifications de l’environnement.',
+      '**Reproductibilité** — la reproductibilité étape par étape est irréaliste pour des workflows qui produisent des centaines de gigaoctets de produits intermédiaires par exécution. Nous visons plutôt la **reproductibilité du workflow entier**, en conservant les références des entrées, les paramètres d’exécution et les spécifications de l’environnement.',
     ],
   },
   {
@@ -1208,7 +1208,7 @@ export const aboutPage = {
     heading: 'Des architectures parallèles à la logistique des données scientifiques.',
     label: 'Profil de recherche',
     paragraphs: [
-      'Mathis étudie les méthodes et les outils des chaînes inter-sites à l’IRISA et à l’Université de Rennes. Sa recherche doctorale s’inscrit dans le programme français exascale NumPEx et prend appui sur les collaborations d’ECLAT en radioastronomie comme contexte pratique exigeant.',
+      'Mathis étudie les méthodes et les outils des workflows inter-sites à l’IRISA et à l’Université de Rennes. Sa recherche doctorale s’inscrit dans le programme français exascale NumPEx et prend appui sur les collaborations d’ECLAT en radioastronomie comme contexte pratique exigeant.',
       'Son parcours couvre des études d’ingénieur à l’ESIR, un double diplôme d’un an à l’UQAC au Canada, et des travaux antérieurs d’ingénierie de recherche en intelligence artificielle, notamment sur les grands modèles de langue et la génération augmentée par recherche.',
       'Le fil conducteur : rendre une infrastructure informatique complexe utile à des personnes extérieures à la recherche en systèmes — relier scientifiques, logiciels, données et centres de calcul sans perdre la reproductibilité ni le sens scientifique.',
     ],
@@ -1240,7 +1240,7 @@ export const resumePage = {
   intro:
     'Informations professionnelles et académiques vérifiées, issues du site fourni par Mathis, de son profil LinkedIn et des pages publiques de recherche institutionnelles.',
   profile: {
-    heading: 'Chercheur en informatique, spécialisé en calcul haute performance et chaînes de traitement scientifiques.',
+    heading: 'Chercheur en informatique, spécialisé en calcul haute performance et workflows scientifiques.',
     label: 'Profil',
     text: 'Chercheur doctoral à l’IRISA et à l’Université de Rennes, travaillant sur la logistique des données et les systèmes de systèmes collaboratifs dans le contexte de NumPEx et d’ECLAT.',
   },
@@ -1285,7 +1285,7 @@ export const contactPage = {
 export const researchFeature = {
   heading: 'Recherche',
   leads: [
-    'Les instruments scientifiques produisent plus de données qu’aucun site ne peut en recevoir, en traiter ou en conserver. Transformer ces flux en produits exploitables suppose des chaînes qui traversent des instruments, des supercalculateurs, des plateformes de stockage et des réseaux de recherche — chacun sous une administration différente et une loi différente.',
+    'Les instruments scientifiques produisent plus de données qu’aucun site ne peut en recevoir, en traiter ou en conserver. Transformer ces flux en produits exploitables suppose des workflows qui traversent des instruments, des supercalculateurs, des plateformes de stockage et des réseaux de recherche — chacun sous une administration différente et une loi différente.',
     'C’est un problème de gouvernance avant d’être un problème de bande passante. La thèse modélise cette logistique des données, l’optimise selon des critères concurrents, spécifie les métadonnées nécessaires et l’expose aux scientifiques sans masquer les exigences qui garantissent des résultats sûrs et reproductibles.',
   ],
   context: {
@@ -1297,7 +1297,7 @@ export const researchFeature = {
 export const writingPage = {
   eyebrow: 'Articles',
   intro:
-    'Notes et moments enregistrés d’une recherche à la croisée du calcul haute performance, des chaînes de traitement scientifiques et de la radioastronomie.',
+    'Notes et moments enregistrés d’une recherche à la croisée du calcul haute performance, des workflows scientifiques et de la radioastronomie.',
   sectionHeading: 'Derniers articles',
   title: 'Expliquer les systèmes par leur usage.',
 } as const

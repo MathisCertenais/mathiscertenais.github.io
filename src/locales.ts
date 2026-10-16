@@ -127,7 +127,7 @@ export const locales = {
     fallbacks: {
       thesisFigures: 'Ce que la thèse mesure',
       thesisPerspectives: 'Cinq perspectives sur un même problème de logistique.',
-      thesisChain: 'Une chaîne répartie entre plusieurs centres',
+      thesisChain: 'Un workflow réparti entre plusieurs centres',
       thesisOutro: 'Le raisonnement est publié.',
       notes: 'Notes de recherche',
       publications: 'Publications sur arXiv',
@@ -158,7 +158,7 @@ export const locales = {
     },
     pages: {
       availability: 'Chercheur doctoral à l’IRISA — basé à ',
-      contactRoutes: 'Pour une discussion de recherche, une collaboration, une intervention ou une question sur le calcul intensif et les chaînes de traitement scientifiques, le plus simple reste un message ou LinkedIn.',
+      contactRoutes: 'Pour une discussion de recherche, une collaboration, une intervention ou une question sur le calcul intensif et les workflows scientifiques, le plus simple reste un message ou LinkedIn.',
       cardHeading: 'La carte que je distribue.',
       contactStart: 'Commençons par un message.',
       contactTitle: 'Relions les systèmes.',
@@ -186,7 +186,7 @@ export const locales = {
       printProfile: 'Imprimer le profil',
       emailMathis: 'Écrire à Mathis',
       perspectives: 'Cinq perspectives sur un même problème de logistique.',
-      skaCaption: 'La chaîne de traitement du SKA. Les antennes SKA-Low en Australie et les paraboles SKA-Mid en Afrique du Sud émettent des signaux bruts à des débits de l’ordre du térabit par seconde. Chaque réseau est corrélé sur site par du matériel à FPGA et des corrélateurs à CSP-Low et CSP-Mid, puis confié aux supercalculateurs du SDP à Perth et au Cap pour la calibration et l’imagerie. Les produits scientifiques obtenus sont répliqués sur les nœuds de stockage et de calcul du SRCNet en Europe, en Asie et dans les Amériques, où les astronomes y accèdent pour les analyser.',
+      skaCaption: 'Le workflow du SKA. Les antennes SKA-Low en Australie et les paraboles SKA-Mid en Afrique du Sud émettent des signaux bruts à des débits de l’ordre du térabit par seconde. Chaque réseau est corrélé sur site par du matériel à FPGA et des corrélateurs à CSP-Low et CSP-Mid, puis confié aux supercalculateurs du SDP à Perth et au Cap pour la calibration et l’imagerie. Les produits scientifiques obtenus sont répliqués sur les nœuds de stockage et de calcul du SRCNet en Europe, en Asie et dans les Amériques, où les astronomes y accèdent pour les analyser.',
       arxivPaper: 'Lire l’article sur la chaîne DDF sur arXiv',
       numpexProfile: 'Lire le profil de recherche NumPEx',
       whereThisContinues: 'Où cela se poursuit',
@@ -204,7 +204,7 @@ export const locales = {
       ctaLabel: 'Prenons contact',
       ctaTitle: 'Un projet de recherche, une collaboration ?',
       description:
-        'Chercheur en informatique : calcul haute performance, logistique des données et chaînes de traitement scientifiques réparties entre plusieurs centres.',
+        'Chercheur en informatique : calcul haute performance, logistique des données et workflows scientifiques répartis entre plusieurs centres.',
       getInTouch: 'M’écrire',
       groups: { elsewhere: 'Ailleurs', navigation: 'Navigation' },
       linksAria: { elsewhere: 'Liens externes', navigation: 'Liens de navigation' },
