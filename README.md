@@ -43,7 +43,7 @@ so the research is legible from the portfolio root without visiting `/research`.
 Canonical sections include:
 
 - `/research`
-- `/writing` and eight article pages
+- `/insights` and eight article pages
 - `/videos`, `/about`, `/resume`, and `/contact`
 
 Legacy portfolio URLs remain available as `noindex, follow` compatibility aliases. Each alias

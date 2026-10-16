@@ -20,7 +20,7 @@ const footerGroups: FooterGroup[] = [
     columns: true,
     links: [
       { href: '/research', key: 'research' },
-      { href: '/writing', key: 'insights' },
+      { href: '/insights', key: 'insights' },
       { href: '/videos', key: 'videos' },
       { href: '/about', key: 'about' },
       { href: '/contact', key: 'contact' },

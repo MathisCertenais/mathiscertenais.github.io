@@ -7,7 +7,7 @@ import { LanguageToggle } from './LanguageToggle'
 const primaryLinks = [
   { href: '/', key: 'home' },
   { href: '/research', key: 'research' },
-  { href: '/writing', key: 'insights' },
+  { href: '/insights', key: 'insights' },
   { href: '/videos', key: 'videos' },
   { href: '/about', key: 'about' },
   { href: '/contact', key: 'contact' },
@@ -27,8 +27,12 @@ function linkIsCurrent(href: string, currentPath: string) {
   if (href === '/research') {
     return currentPath.startsWith('/research') || currentPath.startsWith('/work')
   }
-  if (href === '/writing') {
-    return currentPath.startsWith('/writing') || currentPath.startsWith('/articles')
+  if (href === '/insights') {
+    return (
+      currentPath.startsWith('/insights') ||
+      currentPath.startsWith('/writing') ||
+      currentPath.startsWith('/articles')
+    )
   }
   return currentPath === href || currentPath.startsWith(`${href}/`)
 }
