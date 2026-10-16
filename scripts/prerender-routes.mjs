@@ -2,6 +2,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { loadEnv } from 'vite'
+import { locales } from '../src/locales.ts'
 import * as contentEn from '../src/content/en.ts'
 
 const projectRoot = fileURLToPath(new URL('..', import.meta.url))
@@ -227,7 +228,7 @@ function articleBlock(block) {
  * Section headings are still literals here; they move into the locale strings
  * with the French pass.
  */
-function createFallbacks(content) {
+function createFallbacks(content, t) {
   const {
     aboutPage,
     articleItems,
@@ -261,9 +262,9 @@ function renderResearch() {
       ${meta([researchThesis.context, researchThesis.programme].join(' · '))}
       ${p(researchThesis.summary)}
       ${researchChapters.map(chapter).join('\n      ')}
-      ${h2('What the thesis measures')}
+      ${h2(t.thesisFigures)}
       ${list(researchFigures.map((figure) => `<strong>${escapeHtml(figure.value)}</strong> — ${escapeHtml(figure.label)}`))}
-      ${h2('Five perspectives on one logistics problem.')}
+      ${h2(t.thesisPerspectives)}
       ${list(
         researchPerspectives.map(
           (perspective) =>
@@ -272,7 +273,7 @@ function renderResearch() {
         true,
       )}
       ${chapter(researchMethods)}
-      ${h2('A cross-facility chain')}
+      ${h2(t.thesisChain)}
       ${list(
         researchChain.map(
           (step) =>
@@ -282,12 +283,12 @@ function renderResearch() {
       ${chapter(researchCase)}
       ${chapter(researchContribution)}
       ${chapter(researchApplications)}
-      ${h2('The reasoning is written up in public.')}
+      ${h2(t.thesisOutro)}
       ${list([
-        link(routeHref('/writing'), 'Research notes'),
-        `<a href="${escapeHtml(sourceLinks.arxiv)}" rel="noreferrer" target="_blank">Publications on arXiv</a>`,
-        `<a href="${escapeHtml(sourceLinks.numpex)}" rel="noreferrer" target="_blank">NumPEx research profile</a>`,
-        link(routeHref('/contact'), 'Get in touch'),
+        link(routeHref('/writing'), t.notes),
+        `<a href="${escapeHtml(sourceLinks.arxiv)}" rel="noreferrer" target="_blank">${t.publications}</a>`,
+        `<a href="${escapeHtml(sourceLinks.numpex)}" rel="noreferrer" target="_blank">${t.numpex}</a>`,
+        link(routeHref('/contact'), t.getInTouch),
       ])}
     </main>`
 }
@@ -297,10 +298,10 @@ function renderHome() {
       ${meta(`${identity.name} · ${identity.shortRole}`)}
       ${h1(identity.headline.join(' '))}
       ${p(identity.description)}
-      ${meta(`PhD researcher at IRISA — based in ${identity.location}`)}
+      ${meta(`${t.researcherAt}${identity.location}`)}
       ${list([
-        link(routeHref('/research'), 'View research'),
-        link(routeHref('/resume'), 'View profile'),
+        link(routeHref('/research'), t.viewResearch),
+        link(routeHref('/resume'), t.viewProfile),
         link(routeHref('/contact'), 'Get in touch'),
       ])}
       ${h2(researchFeature.heading)}
@@ -316,7 +317,7 @@ function renderHome() {
         ],
         false,
       )}
-      ${linkParagraph('/research', 'Explore the research')}
+      ${linkParagraph('/research', t.exploreResearch)}
       ${h2(videosPage.sectionHeading)}
       ${list(
         videoItems.map(
@@ -324,7 +325,7 @@ function renderHome() {
             `<a href="${escapeHtml(video.externalHref)}" rel="noreferrer" target="_blank">${escapeHtml(video.title)}</a> — ${escapeHtml(video.description)}`,
         ),
       )}
-      ${linkParagraph('/videos', 'See every video')}
+      ${linkParagraph('/videos', t.seeVideos)}
       ${h2(writingPage.sectionHeading)}
       ${list(
         articleItems.map(
@@ -332,8 +333,8 @@ function renderHome() {
             `${link(routeHref(article.href), article.title)} — ${escapeHtml(article.description)}`,
         ),
       )}
-      ${linkParagraph('/writing', 'Read every entry')}
-      ${h2('In short')}
+      ${linkParagraph('/writing', t.readEntries)}
+      ${h2(t.inShort)}
       ${list(proofPoints.map((point) => `<strong>${escapeHtml(point.title)}</strong> — ${escapeHtml(point.description)}`))}
     </main>`
 }
@@ -350,7 +351,7 @@ function renderWriting() {
             label(`${article.category} · ${article.date}`),
             h3(article.title),
             p(article.description),
-            linkParagraph(article.href, `Read: ${article.title}`),
+            linkParagraph(article.href, `${t.readArticle} ${article.title}`),
           ].join(''),
         ),
       )}
@@ -370,13 +371,13 @@ function renderArticle(article) {
       ${blocks.join('\n      ')}
       ${
         article.sourceHref
-          ? `${h2('Source')}${linkParagraph(article.sourceHref, 'Original publication')}`
+          ? `${h2(t.source)}${linkParagraph(article.sourceHref, t.originalPublication)}`
           : ''
       }
-      ${h2('Keep reading')}
+      ${h2(t.keepReading)}
       ${list([
-        link(routeHref('/writing'), 'All entries'),
-        link(routeHref('/research'), 'The research'),
+        link(routeHref('/writing'), t.allEntries),
+        link(routeHref('/research'), t.theResearch),
         link(routeHref('/contact'), 'Get in touch'),
       ])}
     </main>`
@@ -405,15 +406,15 @@ function renderAbout() {
       ${label(aboutPage.story.label)}
       ${h2(aboutPage.story.heading)}
       ${aboutPage.story.paragraphs.map(p).join('\n      ')}
-      ${h2('Background')}
+      ${h2(t.background)}
       ${list(
         profileTimeline.map(
           (entry) => `${label(entry.label)}${h3(entry.title)}${p(entry.detail)}`,
         ),
       )}
-      ${h2('Research themes')}
+      ${h2(t.researchThemes)}
       ${list(expertise.map((item) => escapeHtml(item)))}
-      ${linkParagraph(sourceLinks.eclatInterview, 'Read the ECLAT interview')}
+      ${linkParagraph(sourceLinks.eclatInterview, t.readInterview)}
       ${label(aboutPage.principles.label)}
       ${list(
         aboutPage.principles.items.map(
@@ -429,7 +430,7 @@ function renderResume() {
       ${label(resumePage.eyebrow)}
       ${h1(identity.name)}
       ${p(resumePage.intro)}
-      ${h2('Contact')}
+      ${h2(t.contactHeading)}
       ${list([
         `<a href="mailto:${escapeHtml(identity.email)}">${escapeHtml(identity.email)}</a>`,
         `<a href="${escapeHtml(identity.linkedin)}" rel="noreferrer" target="_blank">LinkedIn</a>`,
@@ -447,15 +448,15 @@ function renderResume() {
       )}
       ${h2(resumePage.publication.label)}
       ${list([
-        `${label(resumePage.publication.date)}${h3(resumePage.publication.title)}${p(resumePage.publication.authors)}${linkParagraph(resumePage.publication.href, `${resumePage.publication.linkLabel} on arXiv`)}`,
+        `${label(resumePage.publication.date)}${h3(resumePage.publication.title)}${p(resumePage.publication.authors)}${linkParagraph(resumePage.publication.href, `${resumePage.publication.linkLabel} ${t.publicationLink}`)}`,
       ])}
-      ${h2('Selected presentations')}
+      ${h2(t.presentations)}
       ${list(
         resumePage.presentations.map(
           (item) => `${label(item.date)}${h3(item.title)}${p(item.text)}`,
         ),
       )}
-      ${h2('Relevant certifications')}
+      ${h2(t.certifications)}
       ${list(
         resumePage.certifications.map((item) => `${label(item.date)}${h3(item.title)}`),
       )}
@@ -465,25 +466,25 @@ function renderResume() {
 function renderContact() {
   return `<main class="prerendered" id="main-content">
       ${label('Contact')}
-      ${h1('Let’s connect the systems.')}
+      ${h1(t.contactTitle)}
       ${p(contactPage.intro)}
-      ${h2('Start a conversation.')}
+      ${h2(t.contactStart)}
       ${list([
         `<a href="mailto:${escapeHtml(identity.email)}">${escapeHtml(identity.email)}</a>`,
         `<a href="${escapeHtml(identity.linkedin)}" rel="noreferrer" target="_blank">LinkedIn</a>`,
       ])}
       ${p(
-        'For research conversations, collaboration, talks, or questions about HPC and scientific workflows, the simplest route is email or LinkedIn.',
+        t.contactRoutes,
       )}
-      ${h2('The card I hand out.')}
+      ${h2(t.cardHeading)}
       ${list([
         escapeHtml(businessCard.affiliation),
-        `${escapeHtml(businessCard.phone)} — <a href="${escapeHtml(businessCard.phoneHref)}">call</a>`,
+        `${escapeHtml(businessCard.phone)} — <a href="${escapeHtml(businessCard.phoneHref)}">${t.callLink}</a>`,
         `<a href="${escapeHtml(businessCard.website)}">${escapeHtml(businessCard.websiteLabel)}</a>`,
       ])}
-      ${label('Scan')}
+      ${label(t.scan)}
       ${p(
-        'A QR code on the card opens mathiscertenais.com on another device. It is generated locally and served from this domain.',
+        t.qrNote,
       )}
     </main>`
 }
@@ -550,7 +551,7 @@ function renderMetadata(entry) {
   return `${html.trim()}\n`
 }
 
-const fallbackFor = createFallbacks(contentEn)
+const fallbackFor = createFallbacks(contentEn, locales.en.fallbacks)
 
 async function writeRoute(entry) {
   const destination =
