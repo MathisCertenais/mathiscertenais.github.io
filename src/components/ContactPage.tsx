@@ -6,6 +6,42 @@ import { PageHero } from './PageHero'
 
 type FormStatus = 'error' | 'idle' | 'sending' | 'success'
 
+/**
+ * Where a submitted message actually goes.
+ *
+ * `web3forms` posts to the hosted form service, which emails the message to
+ * Mathis: the site has no server of its own, so a hosted transport is what makes
+ * the form deliver rather than merely prepare. `endpoint` is the same contract
+ * against a URL he controls, and `mailto` is the last resort — it hands the
+ * visitor a prefilled draft instead of pretending the site sent anything.
+ */
+type Transport =
+  | { kind: 'web3forms'; accessKey: string }
+  | { kind: 'endpoint'; endpoint: string }
+  | { kind: 'mailto' }
+
+const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit'
+
+/** Trimmed, non-empty string, or null. The env values are `any` in the Vite types. */
+function configured(value: unknown): string | null {
+  return typeof value === 'string' && value.trim() ? value.trim() : null
+}
+
+function resolveTransport(): Transport {
+  const accessKey = configured(import.meta.env.VITE_WEB3FORMS_KEY)
+  if (accessKey) return { kind: 'web3forms', accessKey }
+
+  const endpoint = configured(import.meta.env.VITE_CONTACT_ENDPOINT)
+  if (endpoint && /^https?:\/\//.test(endpoint)) return { kind: 'endpoint', endpoint }
+
+  return { kind: 'mailto' }
+}
+
+function readField(data: FormData, field: string): string {
+  const value = data.get(field)
+  return typeof value === 'string' ? value.trim() : ''
+}
+
 export function ContactPage() {
   const { content, strings } = useLanguage()
   const { contactPage, identity } = content
@@ -23,42 +59,69 @@ export function ContactPage() {
 
   const sendForm = async (form: HTMLFormElement) => {
     const data = new FormData(form)
-    const endpoint: unknown = import.meta.env.VITE_CONTACT_ENDPOINT
-    const configuredEndpoint =
-      typeof endpoint === 'string' && /^https?:\/\//.test(endpoint.trim()) ? endpoint.trim() : null
+    const name = readField(data, 'name')
+    const replyTo = readField(data, 'email')
+    const message = readField(data, 'message')
+    const subject = `Portfolio message from ${name}`
+
+    // Whether no transport is configured or the request failed, the sender keeps
+    // a way to deliver the same message, so a submission is never silently lost.
+    const offerDraft = () => {
+      const body = `${message}\n\nFrom: ${name}\nReply to: ${replyTo}`
+      setMailtoHref(
+        `mailto:${identity.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
+      )
+    }
 
     setStatus('sending')
     setStatusMessage(strings.pages.statusSending)
     setMailtoHref(null)
 
-    if (!configuredEndpoint) {
-      const readTextField = (fieldName: string) => {
-        const value = data.get(fieldName)
-        return typeof value === 'string' ? value.trim() : ''
-      }
-      const name = readTextField('name')
-      const replyTo = readTextField('email')
-      const message = readTextField('message')
-      const subject = encodeURIComponent(`Portfolio message from ${name}`)
-      const body = encodeURIComponent(`${message}\n\nFrom: ${name}\nReply to: ${replyTo}`)
+    const transport = resolveTransport()
 
-      setMailtoHref(`mailto:${identity.email}?subject=${subject}&body=${body}`)
+    if (transport.kind === 'mailto') {
+      offerDraft()
       setStatus('success')
       setStatusMessage(strings.pages.statusReady)
       return
     }
 
     try {
-      const response = await fetch(configuredEndpoint, {
-        body: data,
-        headers: { Accept: 'application/json' },
-        method: 'POST',
-      })
-      if (!response.ok) throw new Error(`Contact endpoint returned ${response.status}`)
+      let response: Response
+      if (transport.kind === 'web3forms') {
+        // Sent as form data with no headers on purpose: that keeps it a simple
+        // request, so the browser skips the CORS preflight. The preflight is what
+        // fails here — the service answers the OPTIONS with a Cloudflare challenge
+        // instead of CORS headers, and a JSON body with a `Content-Type` header
+        // would drag the submission into exactly that failure.
+        const payload = new FormData()
+        payload.set('access_key', transport.accessKey)
+        payload.set('name', name)
+        payload.set('email', replyTo)
+        payload.set('message', message)
+        payload.set('subject', subject)
+        payload.set('from_name', 'mathiscertenais.com')
+        payload.set('replyto', replyTo)
+        // Honeypot: the field is off-screen, so only a bot fills it, and a filled
+        // one tells the service to drop the submission.
+        if (readField(data, 'botcheck')) payload.set('botcheck', 'true')
+
+        response = await fetch(WEB3FORMS_ENDPOINT, { body: payload, method: 'POST' })
+      } else {
+        response = await fetch(transport.endpoint, {
+          body: data,
+          headers: { Accept: 'application/json' },
+          method: 'POST',
+        })
+      }
+
+      if (!response.ok) throw new Error(`Contact transport returned ${response.status}`)
+
       form.reset()
       setStatus('success')
       setStatusMessage(strings.pages.statusSent)
     } catch {
+      offerDraft()
       setStatus('error')
       setStatusMessage(`${strings.pages.statusError} ${identity.email}.`)
     }
@@ -98,6 +161,15 @@ export function ContactPage() {
             <span>{strings.pages.formMessage}</span>
             <textarea name="message" required rows={7} />
           </label>
+          {/*
+            Honeypot. Off-screen and out of the tab order, so no visitor reaches
+            it; its label is deliberately untranslated because no visitor reads
+            it — it only has to look like a field worth filling to a bot.
+          */}
+          <label aria-hidden="true" className="contact-form__trap">
+            <span>Company</span>
+            <input autoComplete="off" name="botcheck" tabIndex={-1} type="checkbox" />
+          </label>
           <button className="button button--primary" disabled={status === 'sending'} type="submit">
             {status === 'sending' ? strings.pages.sending : strings.pages.send} <ArrowIcon />
           </button>
@@ -108,7 +180,11 @@ export function ContactPage() {
               role="status"
             >
               <p>{statusMessage}</p>
-              {mailtoHref ? <a href={mailtoHref}>Open email app <ArrowIcon external /></a> : null}
+              {mailtoHref ? (
+                <a href={mailtoHref}>
+                  {strings.pages.openMailApp} <ArrowIcon external />
+                </a>
+              ) : null}
             </div>
           ) : null}
         </form>

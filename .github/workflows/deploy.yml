@@ -33,6 +33,11 @@ jobs:
           # passes it the same way: VITE_SITE_URL=https://mathiscertenais.com pnpm build
           VITE_SITE_URL: https://mathiscertenais.com
 
+          # Delivers the contact form. The access key is public by design, but it
+          # is read from a secret so a rotation does not need a commit: without it
+          # the form degrades to a prefilled email draft.
+          VITE_WEB3FORMS_KEY: ${{ secrets.VITE_WEB3FORMS_KEY }}
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist

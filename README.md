@@ -150,10 +150,19 @@ cp .env.example .env.local
 ```
 
 - `VITE_SITE_URL` sets the deployed origin used for absolute canonical and social URLs.
-- `VITE_CONTACT_ENDPOINT` enables direct contact-form delivery to an endpoint you control.
+- `VITE_WEB3FORMS_KEY` makes the contact form deliver: submissions post to the
+  Web3Forms service, which emails them to Mathis. The key is public by design — it
+  rides in the bundle and only routes a message to the inbox it was issued for — so
+  the deploy workflow reads it from the `VITE_WEB3FORMS_KEY` repository secret.
+- `VITE_CONTACT_ENDPOINT` is the alternative transport: an endpoint you control,
+  which receives the form as multipart form data.
 
-When no contact endpoint is configured, the form provides a prefilled email-app fallback. No
-private analytics identifier or third-party form secret is bundled.
+The form prefers `VITE_WEB3FORMS_KEY`, then `VITE_CONTACT_ENDPOINT`. With neither,
+or when a delivery fails, it hands the sender a prefilled email draft instead of
+losing the message. A submission is only reported as sent once the transport
+accepted it. The form also carries an off-screen honeypot field, so a submission
+that fills it comes from a bot and is dropped by the service. No private analytics
+identifier is bundled.
 
 ## Quality checks
 
