@@ -2743,6 +2743,15 @@ figure {
   width: fit-content;
 }
 
+/* Honeypot: off-screen and out of the tab order, so only a bot ever fills it. */
+.contact-form .contact-form__trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .contact-form-status a {
   display: inline-flex;
   margin-top: 6px;
