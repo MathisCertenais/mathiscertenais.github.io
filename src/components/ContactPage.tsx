@@ -7,7 +7,7 @@ import { PageHero } from './PageHero'
 type FormStatus = 'error' | 'idle' | 'sending' | 'success'
 
 export function ContactPage() {
-  const { content } = useLanguage()
+  const { content, strings } = useLanguage()
   const { contactPage, identity } = content
   const [status, setStatus] = useState<FormStatus>('idle')
   const [statusMessage, setStatusMessage] = useState('')
@@ -28,7 +28,7 @@ export function ContactPage() {
       typeof endpoint === 'string' && /^https?:\/\//.test(endpoint.trim()) ? endpoint.trim() : null
 
     setStatus('sending')
-    setStatusMessage('Sending your message…')
+    setStatusMessage(strings.pages.statusSending)
     setMailtoHref(null)
 
     if (!configuredEndpoint) {
@@ -44,7 +44,7 @@ export function ContactPage() {
 
       setMailtoHref(`mailto:${identity.email}?subject=${subject}&body=${body}`)
       setStatus('success')
-      setStatusMessage('Your message is ready. Open it in your email app to send it to Mathis.')
+      setStatusMessage(strings.pages.statusReady)
       return
     }
 
@@ -57,10 +57,10 @@ export function ContactPage() {
       if (!response.ok) throw new Error(`Contact endpoint returned ${response.status}`)
       form.reset()
       setStatus('success')
-      setStatusMessage('Thank you — your message has been sent.')
+      setStatusMessage(strings.pages.statusSent)
     } catch {
       setStatus('error')
-      setStatusMessage(`The form could not send right now. Please email ${identity.email} directly.`)
+      setStatusMessage(`${strings.pages.statusError} ${identity.email}.`)
     }
   }
 
@@ -68,14 +68,14 @@ export function ContactPage() {
     <main id="main-content" tabIndex={-1}>
       <PageHero
         eyebrow="Contact"
-        intro="For research conversations, collaboration, talks, or questions about HPC and scientific workflows, the simplest route is email or LinkedIn."
-        title="Let’s connect the systems."
+        intro={strings.pages.contactRoutes}
+        title={strings.pages.contactTitle}
       />
 
       <section className="contact-layout section">
         <div className="contact-details">
-          <p className="section-label">Direct contact</p>
-          <h2>Start a conversation.</h2>
+          <p className="section-label">{strings.pages.directContact}</p>
+          <h2>{strings.pages.contactStart}</h2>
           <p>{contactPage.intro}</p>
           <a href={`mailto:${identity.email}`}>
             {identity.email} <ArrowIcon external />
@@ -87,19 +87,19 @@ export function ContactPage() {
 
         <form className="contact-form" onSubmit={submitForm}>
           <label>
-            <span>Name</span>
+            <span>{strings.pages.formName}</span>
             <input autoComplete="name" name="name" required type="text" />
           </label>
           <label>
-            <span>Email</span>
+            <span>{strings.pages.formEmail}</span>
             <input autoComplete="email" name="email" required type="email" />
           </label>
           <label>
-            <span>Message</span>
+            <span>{strings.pages.formMessage}</span>
             <textarea name="message" required rows={7} />
           </label>
           <button className="button button--primary" disabled={status === 'sending'} type="submit">
-            {status === 'sending' ? 'Sending…' : 'Send message'} <ArrowIcon />
+            {status === 'sending' ? strings.pages.sending : strings.pages.send} <ArrowIcon />
           </button>
           {status !== 'idle' ? (
             <div
@@ -114,11 +114,10 @@ export function ContactPage() {
         </form>
 
         <div className="contact-card">
-          <p className="section-label">Business card</p>
-          <h2>The card I hand out.</h2>
+          <p className="section-label">{strings.pages.cardLabel}</p>
+          <h2>{strings.pages.cardHeading}</h2>
           <p className="contact-card__intro">
-            The card on screen is the card that goes to print: role, affiliation and direct
-            contacts at the standard 85 × 55 mm size.
+            {strings.pages.cardIntro}
           </p>
           <div className="contact-card__frame">
             <BusinessCard />
