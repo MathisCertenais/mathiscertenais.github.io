@@ -713,6 +713,171 @@ Object.assign(articleBodies, {
       text: 'La documentation suppose un lecteur prêt à creuser des pages de texte. Ce système suppose une conversation. En exposant l’espace caché des paramètres d’un logiciel scientifique comme une matière qu’une IA peut lire et expliquer, nous transformons un outil muet en un collègue qui connaît la base de code — et laissons les scientifiques regarder le ciel plutôt que les paramètres.',
     },
   ],
+  youngpex: [
+    {
+      type: 'paragraph',
+      text: 'YoungPEx est le groupe de travail des jeunes chercheurs au sein de **NumPEx**, le programme de recherche français pour le calcul exascale. Avec **53 membres sur son serveur Discord** et **27 participants à sa première assemblée générale**, il rassemble des stagiaires, des doctorants, des postdoctorants, des ingénieurs, de jeunes contractuels et des permanents — toute personne, à n’importe quelle étape de son parcours, qui souhaite s’impliquer. Ses membres y discutent des questions qui comptent pour leur génération : l’impact environnemental du calcul, l’interdisciplinarité et l’usage de l’IA dans la recherche scientifique.',
+    },
+    {
+      type: 'paragraph',
+      text: 'NumPEx — « Numérique pour l’Exascale » — a été lancé en 2023 pour développer les compétences et les infrastructures nécessaires au calcul exascale, à l’échelle du quintillion (10¹⁸) d’opérations par seconde. Sa recherche s’organise en cinq projets ciblés :',
+    },
+    {
+      type: 'list',
+      ordered: false,
+      items: [
+        '**Exa-MA (PC1)** — méthodes et algorithmes pour le calcul exascale',
+        '**Exa-SofT (PC2)** — logiciels et outils pour le calcul intensif',
+        '**Exa-DoST (PC3)** — outils et logiciels orientés données',
+        '**Exa-AToW (PC4)** — outils et architectures pour les chaînes de traitement à grande échelle',
+        '**Exa-DI (PC5)** — développement et intégration d’outils par les applications',
+      ],
+    },
+    { type: 'heading', level: 2, text: 'Qu’est-ce que YoungPEx ?' },
+    {
+      type: 'paragraph',
+      text: 'Réunir de jeunes chercheurs dans un groupe de travail est une initiative novatrice au sein du programme. L’objectif est de leur donner l’espace d’exprimer leurs propres idées : en créant un réseau de jeunes chercheurs, de nouvelles dynamiques de recherche émergent à travers tout NumPEx. Les buts sont de **stimuler les échanges entre les différents projets ciblés**, de **créer des synergies entre chercheurs** et de **préparer les collaborations à venir**.',
+    },
+    {
+      type: 'list',
+      ordered: false,
+      items: [
+        '**Rencontrer ses pairs** de tout le programme, au-delà de son propre projet et de son laboratoire.',
+        '**Discuter des défis scientifiques**, pour que les échanges et les collaborations entre centres et projets se nouent plus facilement.',
+        '**Parler du monde académique** — son fonctionnement, et à quoi ressemblent les carrières.',
+      ],
+    },
+    {
+      type: 'paragraph',
+      text: 'Le groupe aborde tout ce que ses membres souhaitent apporter : l’impact environnemental de la recherche, l’impact sociétal et l’acceptabilité du calcul intensif, les inégalités sociales et de genre dans le monde académique, la vie académique et les carrières, et l’IA.',
+    },
+    {
+      type: 'paragraph',
+      text: 'Le groupe de travail a tenu une session de lancement lors de l’assemblée générale de NumPEx en mars, sa première assemblée générale à Toulouse en novembre, participé aux événements Trans’Numériques à Rennes et publié une présentation dans la revue Matapli.',
+    },
+    { type: 'heading', level: 2, text: 'La première assemblée générale, à Toulouse' },
+    {
+      type: 'paragraph',
+      text: 'L’événement phare de 2025 pour le groupe a été sa première assemblée générale. **Vingt-sept jeunes chercheurs** de laboratoires de toute la France se sont réunis du **12 au 14 novembre 2025** à l’INP-ENSEEIHT de Toulouse. Sur quatre demi-journées, le programme a combiné un atelier sur l’impact environnemental du calcul intensif, une assemblée générale pour discuter des prochaines actions du groupe, et un atelier sur les inégalités sociales et de genre dans la recherche.',
+    },
+    { type: 'heading', level: 3, text: 'L’impact environnemental du calcul intensif' },
+    {
+      type: 'paragraph',
+      text: 'L’atelier était animé par **Georges Da Costa** (IRIT, Exa-SofT), professeur d’informatique à l’Université de Toulouse, en réponse à un vif intérêt des jeunes chercheurs pour l’impact environnemental de leur travail.',
+    },
+    {
+      type: 'paragraph',
+      text: 'L’introduction a rappelé que la production et la consommation d’énergie sont une question **collective** plutôt qu’individuelle. La consommation et les émissions françaises sont liées à celles de ses voisins : les ressources énergétiques européennes forment un réseau interconnecté. Les émissions attribuées à une personne ne se limitent pas à sa consommation directe — elles incluent celles générées par les services publics dont elle bénéficie, par les importations, et par les usages numériques comme les services en nuage, dont l’empreinte carbone est souvent sous-estimée. Les enjeux géopolitiques pèsent aussi sur Internet lui-même : des infrastructures stratégiques comme les câbles sous-marins conditionnent la souveraineté numérique et la sécurité des États, et la dépendance au lithium produit hors d’Europe illustre la vulnérabilité des chaînes d’approvisionnement pour les matériaux critiques des technologies de transition énergétique.',
+    },
+    {
+      type: 'paragraph',
+      text: 'Le logiciel n’est pas épargné. La complexité croissante des applications rend l’optimisation globale de la consommation d’énergie plus difficile, tandis que l’absence d’architecture claire génère du code mort et des coûts superflus. Retirer les fonctionnalités obsolètes et documenter rigoureusement le code permet de le « recycler » — le réécrire plus efficacement, ce qui réduit à la fois le temps de débogage et les ressources consommées par les chaînes d’intégration continue. La conclusion était qu’une **approche systémique** est nécessaire : optimiser les ressources, sécuriser les infrastructures et repenser la conception logicielle pour un avenir plus durable.',
+    },
+    { type: 'heading', level: 3, text: 'Mise en pratique : mesurer la consommation d’énergie' },
+    {
+      type: 'paragraph',
+      text: 'Les doctorants du programme travaillant sur la consommation énergétique des supercalculateurs ont suscité une vraie curiosité chez leurs pairs ; Georges Da Costa a donc prolongé l’atelier par une présentation d’outils pour **mesurer** la consommation d’énergie des calculs dans les centres de calcul.',
+    },
+    {
+      type: 'paragraph',
+      text: '**MOJITO/S** est un ensemble d’outils libres pour surveiller l’usage de l’énergie et du réseau au niveau du système d’exploitation, disponible sur [gitlab.irit.fr](https://gitlab.irit.fr/sepia-pub/mojitos). La session a aussi rappelé que la communauté scientifique française dispose de l’environnement **Grid’5000** ([grid5000.fr](https://www.grid5000.fr)) pour mener des recherches en calcul parallèle distribué, calcul intensif, données massives et IA — un ensemble de plateformes expérimentales offrant une grande liberté à ses utilisateurs, en particulier un accès essentiel aux wattmètres attachés aux ressources de calcul.',
+    },
+    {
+      type: 'paragraph',
+      text: 'Mathis Certenais a clos l’atelier par une présentation d’**Impacts-HPC**, un outil développé dans le projet Exa-AToW avec le groupe de recherche EcoInfo. C’est une [bibliothèque Python](https://impacthpc-cc8227.pages.in2p3.fr/index.html) qui évalue l’impact à l’usage pour les phases d’extraction, de production et de distribution, une analyse complète du cycle de vie étant prévue. L’outil calcule l’impact environnemental selon trois critères : le potentiel de réchauffement global, l’épuisement des ressources abiotiques et la consommation d’énergie primaire. Impacts-HPC complète les indicateurs fournis par le portail web DARI utilisé pour allouer des ressources sur les centres de calcul de l’IDRIS, du CINES et du TGCC ; les informations du portail s’appuient sur la méthode du collectif [Labos 1point5](https://labos1point5.org/les-rapports/estimation-empreinte-calcul).',
+    },
+    { type: 'heading', level: 3, text: 'Questions et idées des participants' },
+    {
+      type: 'paragraph',
+      text: 'L’atelier s’est achevé sur les questions des participants à propos de l’usage du calcul intensif — des questions que les outils ci-dessus peuvent aider à trancher :',
+    },
+    {
+      type: 'list',
+      ordered: false,
+      items: [
+        'Obtenir des **mesures de l’impact environnemental** des simulations réalisées — qui dépend de l’origine de l’électricité au moment de l’exécution, nucléaire ou charbon par exemple — à travers une information parlante comme le coût financier.',
+        'Avoir une idée de **la façon de dimensionner les tâches** en fonction des besoins réels (nombre de nœuds, etc.).',
+        'Trouver un **équilibre entre le coût de calcul et l’impact de la recherche**, avec l’avis d’experts d’autres disciplines.',
+      ],
+    },
+    {
+      type: 'paragraph',
+      text: 'Les diapositives utilisées pendant l’atelier sont disponibles sur le site de NumPEx ([numpex.org](https://numpex.org/the-first-youngpex-general-meeting/)).',
+    },
+    { type: 'heading', level: 2, text: 'Activités de la communauté' },
+    { type: 'heading', level: 3, text: 'Retour de YoungPEx sur l’usage des grands modèles de langue pour la programmation' },
+    {
+      type: 'paragraph',
+      text: 'Pour la 55ᵉ édition du forum ORAP, sur le thème « IA générative pour le HPC : une nouvelle rupture ? », le comité de YoungPEx a interrogé le groupe de travail sur son usage des grands modèles de langue en programmation. Les résultats ont été présentés le **28 novembre 2025**, et la session est décrite sur [orap.irisa.fr](https://orap.irisa.fr/les-grands-modeles-de-langage-une-rupture-de-pratique-pour-le-developpement-de-codes-hpc/).',
+    },
+    {
+      type: 'paragraph',
+      text: 'Un questionnaire de 12 questions, envoyé par courriel, a montré que **18 personnes sur 25** utilisent ces modèles. Parmi ces 18 utilisateurs, **16 utilisent les modèles GPT** et **72 % combinent des modèles de fournisseurs différents** ; la moitié les utilisent quotidiennement, principalement pour comprendre, générer et déboguer du code. Sur ces 18, **16 estiment que les grands modèles améliorent leur productivité** et **7 constatent une amélioration de leurs compétences en programmation**. La satisfaction sur la qualité du code généré est plus mitigée : seuls **7 s’en déclarent satisfaits**, 6 la jugent moyenne et 4 insuffisante. Les principaux obstacles identifiés sont **des résultats inconstants** et **un manque de compréhension du contexte**.',
+    },
+    {
+      type: 'figure',
+      image: '/images/mathis/youngpex/ai-models.webp',
+      alt: 'Extrait de la présentation YoungPEx sur l’usage des grands modèles de langue pour la programmation, portant sur les modèles utilisés par les membres.',
+      caption:
+        'Extrait de la présentation YoungPEx sur l’usage des grands modèles de langue pour la programmation : les modèles utilisés par les membres.',
+    },
+    {
+      type: 'figure',
+      image: '/images/mathis/youngpex/ai-challenges.webp',
+      alt: 'Extrait de la présentation YoungPEx sur l’usage des grands modèles de langue pour la programmation, portant sur les difficultés rapportées par les membres.',
+      caption:
+        'Extrait de la présentation YoungPEx sur l’usage des grands modèles de langue pour la programmation : les difficultés rapportées par les membres.',
+    },
+    { type: 'heading', level: 3, text: 'Inégalités sociales et de genre dans le monde académique' },
+    {
+      type: 'paragraph',
+      text: 'Longtemps réservée à un cercle social étroit, la recherche académique s’est progressivement ouverte, notamment aux femmes et aux minorités de genre. Conscient qu’il reste du chemin, le groupe a consacré une matinée à la sensibilisation aux inégalités sociales et de genre, avec l’espoir de contribuer, à son échelle, à un milieu de travail plus inclusif.',
+    },
+    {
+      type: 'paragraph',
+      text: 'Yasmina Asso a présenté les résultats d’études de l’**Observatoire des inégalités** ([inegalites.fr](https://www.inegalites.fr/)). L’organisme propose une adaptation du célèbre jeu Monopoly qui rend les inégalités réelles tangibles : il est construit sur les données de ses études sur les inégalités en France, liées notamment au genre, au handicap, aux ressources et aux origines. L’activité s’est conclue par une discussion collective sur ce que les participants avaient observé, et sur la façon dont les règles économiques façonnent les positions sociales et les inégalités de départ.',
+    },
+    {
+      type: 'figure',
+      image: '/images/mathis/youngpex/general-assembly-monopoly.webp',
+      alt: 'Participants jouant au Monopoly des inégalités pendant l’assemblée générale de YoungPEx.',
+      caption: 'Une session du Monopoly des inégalités pendant l’assemblée générale.',
+    },
+    {
+      type: 'paragraph',
+      text: 'Les échanges se sont ensuite tournés vers le monde académique — les mathématiques et l’informatique en particulier. Julie Lesthelle (Université de Bordeaux) a présenté son mémoire de master, [« Les études en licence de mathématiques sous le prisme du genre »](https://inria.hal.science/hal-05368894), qui fonde la définition du **tuyau percé** : les minorités sont moins représentées dans les postes à responsabilité que dans les autres — moins de directrices et directeurs de recherche que de chargés et chargées de recherche, par exemple.',
+    },
+    {
+      type: 'paragraph',
+      text: 'Son travail met en évidence deux freins chez les jeunes femmes en science : la **peur de se tromper** — dans des domaines où l’expérimentation et l’expression du doute sont essentielles à l’apprentissage — et la socialisation genrée, comme un contact plus tardif avec l’informatique que leurs pairs masculins. Les enseignants jouent un rôle décisif : lire le langage corporel des étudiants permet de valoriser l’erreur comme une étape constructive et d’anticiper des questions implicites. Pour les jeunes chercheurs présents, **la lutte contre les inégalités est une responsabilité collective qui demande une mobilisation continue**.',
+    },
+    {
+      type: 'figure',
+      image: '/images/mathis/youngpex/general-assembly-back.webp',
+      alt: 'Julie Lesthelle s’exprimant devant le groupe YoungPEx pendant l’assemblée générale.',
+      caption: 'Julie Lesthelle s’exprimant devant YoungPEx.',
+    },
+    { type: 'heading', level: 2, text: 'Publications' },
+    {
+      type: 'paragraph',
+      text: 'YoungPEx écrit aussi. Le groupe a contribué à une présentation dans **MATAPLI**, la revue de la Société de Mathématiques Appliquées et Industrielles, dans le [numéro 139](https://www.ceremade.dauphine.fr/~chupin/Matapli/139/Matapli139.pdf).',
+    },
+    {
+      type: 'figure',
+      image: '/images/mathis/youngpex/matapli.webp',
+      alt: 'Couverture de la présentation YoungPEx dans la revue MATAPLI, numéro 139.',
+      caption: 'La présentation de YoungPEx dans MATAPLI, numéro 139.',
+    },
+    {
+      type: 'paragraph',
+      text: 'Un poster présentant le groupe — son contexte et ses enjeux, ses objectifs et ses avancées actuelles — a été exposé à l’événement [Trans’Numériques 2026](https://numpex.org/trans-numeriques-2026/), du 2 au 5 février 2026.',
+    },
+    { type: 'heading', level: 2, text: 'Pour aller plus loin' },
+    {
+      type: 'paragraph',
+      text: 'La page officielle de YoungPEx est sur [numpex.org/youngpex](https://numpex.org/youngpex/), et la première assemblée générale dispose de son propre compte rendu et de ses diapositives sur [numpex.org/the-first-youngpex-general-meeting](https://numpex.org/the-first-youngpex-general-meeting/).',
+    },
+  ],
 })
 
 export const articleItems: ArticleItem[] = englishArticles.map((article) => ({
