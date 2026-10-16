@@ -942,6 +942,110 @@ const cybersecurityTranslated: ArticleBlock[] = [
     alt: 'Le supercalculateur Jean Zay. Crédit : CNRS, Cyril Frésillon.',
     caption: 'Le supercalculateur Jean Zay. Crédit : CNRS, Cyril Frésillon.',
   },
+  { type: 'heading', level: 2, text: 'Pourquoi les solutions existantes ne conviennent pas' },
+  {
+    type: 'paragraph',
+    text: 'Plusieurs familles d’outils répondent déjà à une partie de ce problème, mais aucune ne satisfait l’exigence de responsabilité personnelle de la ZRR tout en servant une communauté entière :',
+  },
+  {
+    type: 'list',
+    ordered: false,
+    items: [
+      '**Les systèmes de gestion de chaînes de traitement** comme Pegasus [15], Nextflow [16] ou Snakemake [17] orchestrent des graphes acycliques dirigés sur le nuage et le calcul intensif, et savent soumettre via un ordonnanceur local. Mais ils restent, par nature, des **moteurs par utilisateur** : chacun installe, configure et maintient sa propre instance sous un compte nominatif, et le déploiement n’est jamais exposé comme un service partagé et exploité.',
+      '**Les portails web et les passerelles scientifiques** [18], [19] masquent la complexité du calcul intensif derrière une interface et satisfont l’accès nominatif en associant chaque utilisateur du portail à son propre compte — mais ils ne suppriment pas la charge opérationnelle : chaque utilisateur déploie et maintient toujours la pile applicative scientifique.',
+      '**Les intergiciels de l’ère des grilles** comme GlideinWMS [20], PanDA [21] ou DIRAC [22] combinent une exécution pilotée par des pilotes avec des identités d’organisation virtuelle — des certificats mandataires à durée limitée émis par VOMS [23]. L’incompatibilité avec la ZRR tient à l’**identité exécutante** — une accréditation collective — et non au mode de distribution par tirage lui-même.',
+      '**Les couches d’accès programmatique** comme Globus Compute (à l’origine funcX) [24] et FirecREST [25] sont les plus proches de notre approche : elles exposent des API pour soumettre et surveiller des tâches sur des supercalculateurs distants. Dans leurs déploiements standard, cependant, elles authentifient les utilisateurs individuellement et associent chaque tâche à l’identité de calcul de l’utilisateur demandeur — et n’offrent aucun catalogue centralisé d’applications scientifiques validées, exposé comme un service communautaire.',
+    ],
+  },
+  {
+    type: 'paragraph',
+    text: 'La ZRR exige **la responsabilité personnelle et la traçabilité de chaque action** effectuée sur le système. La règle selon laquelle l’utilisateur et l’exécutant doivent être la même identité est une façon de satisfaire cette exigence — et elle interdit aujourd’hui à un compte de calcul intensif d’exécuter des tâches pour le compte d’un tiers.',
+  },
+  { type: 'heading', level: 2, text: 'La « question Globus » : pourquoi ne pas utiliser les standards existants ?' },
+  {
+    type: 'paragraph',
+    text: 'Pour de nombreux chercheurs, surtout aux États-Unis, Globus est la référence pour le transfert de données et la gestion des identités en calcul intensif, et il semble être la réponse évidente. Alors pourquoi Globus n’est-il pas utilisé dans les centres français soumis au PPST et au régime ZRR ?',
+  },
+  {
+    type: 'paragraph',
+    text: 'La réponse tient à l’externalisation des métadonnées opérationnelles.',
+  },
+  {
+    type: 'list',
+    ordered: true,
+    items: [
+      '**L’infrastructure** : les services Globus sont hébergés sur Amazon Web Services et exploités par Globus, tandis que les points de stockage et de calcul restent exploités par les organisations abonnées.',
+      '**Ce qui est stocké** [26] : les fichiers de recherche ne sont pas partagés avec Globus, mais ses services conservent des informations liées aux tâches, des accréditations temporaires, des noms de fichiers et des chemins de répertoires.',
+      '**Le mandat français** : tout accès logique à des informations protégées par le régime PPST est strictement soumis à autorisation du ministère de tutelle. Externaliser ces métadonnées opérationnelles peut soulever des questions de conformité PPST et ZRR — y compris une exposition potentielle à des procédures judiciaires américaines au titre du **18 U.S.C. § 2713** [27]. Au moment de la rédaction, nous n’avons trouvé aucun point de terminaison Globus Compute exploité par un centre national français de calcul intensif qui soit documenté publiquement.',
+    ],
+  },
+  {
+    type: 'paragraph',
+    text: 'En bref : là où Globus offre la commodité d’une orchestration dans le nuage, la ZRR exige un contrôle souverain sur les données opérationnelles. C’est précisément pourquoi notre approche ne repose pas sur Globus : elle s’appuie sur un cadre existant pour les applications scientifiques comme service, composé de **microservices applicatifs** (AM) pour le déploiement des applications et de **tampons éphémères** (EB) pour la logistique de données transitoires — offrant des fonctionnalités comparables à Globus tout en restant conforme au droit français de sécurité nationale.',
+  },
+  { type: 'heading', level: 2, text: 'La solution : les applications scientifiques comme service' },
+  {
+    type: 'paragraph',
+    text: 'Pour combler cet écart, nous proposons de **découpler l’identité de l’utilisateur de l’identité de l’exécutant**, dans un cadre qui expose les applications scientifiques comme un service [28]. Plutôt que de forcer chaque astronome à devenir administrateur de système de calcul intensif, nous mutualisons l’usage des supercalculateurs autour d’un petit ensemble de rôles précis :',
+  },
+  {
+    type: 'list',
+    ordered: false,
+    items: [
+      '**Les utilisateurs** sont identifiés par une fédération d’authentification reconnue (par exemple **EduGAIN**), peuvent être temporaires et n’ont pas besoin de connaître les systèmes de calcul intensif.',
+      '**Les mainteneurs** sont des experts du calcul intensif issus de la communauté scientifique : ils déploient les applications scientifiques et leur environnement d’exécution sur un supercalculateur cible et assument la responsabilité opérationnelle des tâches qui y sont exécutées. Leur responsabilité est découplée du développement : ils n’ont pas besoin d’appartenir au projet qui écrit le logiciel, mais ils valident chaque version qu’ils déploient.',
+      '**Un compte de service nommé** est un compte de calcul intensif détenu par un mainteneur, par lequel les utilisateurs soumettent des tâches sans détenir d’accréditation individuelle. Le limiter à une seule application scientifique prédéfinie simplifie l’audit pour le service de cybersécurité du centre.',
+      '**Une liste blanche d’utilisateurs** est définie pour chaque compte de service nommé. Tenue par le mainteneur, elle recense les utilisateurs autorisés à utiliser les ressources du compte, ce qui satisfait l’exigence de la ZRR en matière de transferts de données contrôlés.',
+      '**Une tâche** est la soumission de données à traiter avec un logiciel fixe et préinstallé. Une fois soumise, elle est tirée et exécutée automatiquement par l’environnement d’exécution du mainteneur, ce qui attribue la responsabilité de l’exécution au mainteneur et satisfait ainsi l’exigence de responsabilité personnelle de la ZRR.',
+    ],
+  },
+  {
+    type: 'paragraph',
+    text: 'La dérogation nécessaire est étroite : autoriser le mainteneur à exécuter des tâches qui traitent des données soumises par un tiers, ce tiers étant identifié par une fédération d’authentification. Cette proposition est actuellement en discussion avec les acteurs français de la sécurité du calcul intensif.',
+  },
+  { type: 'heading', level: 3, text: 'L’architecture : comment cela fonctionne' },
+  {
+    type: 'paragraph',
+    text: 'Le cadre constitue un **point d’entrée unique** pour lancer des tâches d’applications scientifiques sur les supercalculateurs, sans accès direct aux centres sous-jacents. Il enveloppe des chaînes de traitement complexes dans un service fluide :',
+  },
+  {
+    type: 'list',
+    ordered: false,
+    items: [
+      '**Microservices applicatifs (AM)** [29] — le catalogue des applications scientifiques disponibles, exposées comme des microservices. AM orchestre l’exécution via des entités de tâche et d’environnement d’exécution ; la soumission et l’exécution étant découplées, les utilisateurs n’ont pas besoin d’une connexion permanente, ce qui permet une expérience **de type « lancer et oublier »** pour des tâches qui peuvent durer plusieurs jours.',
+      '**Tampons éphémères (EB)** [30] — une couche de logistique de données transitoire offrant un stockage temporaire et un point d’échange entre les utilisateurs et les systèmes de calcul intensif. Ils ne sont pas obligatoires, mais facilitent les transferts et sont accessibles avec une simple identité d’utilisateur.',
+      '**L’exécutant** — un script Python (runner.py), lancé par un mainteneur, qui interroge périodiquement AM pour les tâches en attente et les exécute sur le système cible par SSH [31], [32]. Cette conception **par tirage** — plutôt qu’un service web poussant les tâches dans la zone sécurisée — satisfait les exigences de responsabilité et de traçabilité, et fait respecter la liste blanche avant toute exécution.',
+    ],
+  },
+  {
+    type: 'figure',
+    image: '/images/mathis/exascale-astronomy/architecture.webp',
+    alt: 'L’architecture des applications scientifiques comme service : utilisateurs et développeurs, l’API avec ses microservices applicatifs et ses tampons éphémères, les mainteneurs, et les centres de calcul, chacun sous son propre domaine de gouvernance.',
+    caption:
+      'Architecture des applications scientifiques comme service. Chaque acteur opère sous un domaine de gouvernance distinct — les utilisateurs et développeurs sous la politique de leur laboratoire, l’API sous celle de l’IRISA, et les centres de calcul sous leur politique interne et la réglementation ZRR — tandis que les mainteneurs se situent à l’intersection de l’API et de chaque centre.',
+  },
+  { type: 'heading', level: 3, text: 'Le cycle de vie d’une tâche' },
+  {
+    type: 'paragraph',
+    text: 'Du point de vue de l’utilisateur, une tâche globale est un objet unique à suivre de la soumission à l’achèvement :',
+  },
+  {
+    type: 'list',
+    ordered: true,
+    items: [
+      '**Authentification** — l’utilisateur s’authentifie auprès de l’API AM et reçoit en retour un client authentifié.',
+      '**Choix de l’application** — l’utilisateur liste les applications disponibles, éventuellement filtrées par nom, puis demande le contrat de l’application choisie, qui décrit les entrées et sorties attendues.',
+      '**Soumission d’une tâche globale** — à partir de ce contrat, l’utilisateur prépare la tâche localement, décrit ses entrées en JSON et la soumet. L’API l’enregistre pour exécution.',
+      '**Boucle de suivi** — l’utilisateur interroge l’état de la tâche globale après la soumission, sans attendre le début de l’exécution.',
+      '**Tâche de l’exécutant** — pendant ce temps, l’exécutant du mainteneur prend la tâche en attente, la marque comme en cours, prépare le répertoire de travail, met en place les entrées et soumet une tâche à SLURM.',
+      '**Tâche SLURM** — la tâche globale et la tâche SLURM sont distinctes : la première est gérée par l’API AM, la seconde par l’ordonnanceur qui exécute le calcul. L’exécutant surveille la tâche SLURM jusqu’à sa fin, puis collecte les résultats.',
+      '**Récupération des sorties** — l’exécutant réécrit les résultats collectés dans l’API et marque la tâche globale comme achevée ; l’utilisateur télécharge alors les sorties par l’API, sans jamais se connecter au système de calcul.',
+    ],
+  },
+  {
+    type: 'paragraph',
+    text: 'Les quatre durées de vie sont **imbriquées** : la tâche SLURM s’exécute dans la tâche de l’exécutant, elle-même dans la tâche globale, que l’utilisateur suit.',
+  },
 ]
 
 /**
