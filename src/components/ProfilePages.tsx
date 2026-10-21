@@ -1,5 +1,6 @@
 import { useLanguage } from '../language/LanguageProvider'
 import { ArrowIcon } from './Icons'
+import { NewTabHint } from './NewTabHint'
 import { PageHero } from './PageHero'
 
 export function AboutPage() {
@@ -29,6 +30,7 @@ export function AboutPage() {
           ))}
           <a href={sourceLinks.eclatInterview} rel="noreferrer" target="_blank">
             {strings.pages.readInterview} <ArrowIcon external />
+            <NewTabHint label={strings.a11y.newTab} />
           </a>
         </div>
       </section>
@@ -106,6 +108,7 @@ export function ResumePage() {
             <a href={`mailto:${identity.email}`}>{identity.email}</a>
             <a href={identity.linkedin} rel="noreferrer" target="_blank">
               LinkedIn ↗
+              <NewTabHint label={strings.a11y.newTab} />
             </a>
             <p>{identity.location}</p>
           </section>
@@ -145,6 +148,7 @@ export function ResumePage() {
               <p>{resumePage.publication.authors}</p>
               <a href={resumePage.publication.href} rel="noreferrer" target="_blank">
                 {resumePage.publication.linkLabel} <ArrowIcon external />
+                <NewTabHint label={strings.a11y.newTab} />
               </a>
             </article>
           </section>

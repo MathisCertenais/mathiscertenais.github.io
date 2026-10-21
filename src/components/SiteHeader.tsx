@@ -3,6 +3,7 @@ import { useLanguage } from '../language/LanguageProvider'
 import { ThemeToggle } from '../theme/ThemeToggle'
 import { ExternalLinkIcon, MenuIcon } from './Icons'
 import { LanguageToggle } from './LanguageToggle'
+import { NewTabHint } from './NewTabHint'
 
 const primaryLinks = [
   { href: '/', key: 'home' },
@@ -232,6 +233,7 @@ export function SiteHeader({ currentPath = '/' }: SiteHeaderProps) {
                 target={link.external ? '_blank' : undefined}
               >
                 {t.nav[link.key]} {link.external ? '↗' : ''}
+                {link.external ? <NewTabHint label={t.a11y.newTab} /> : null}
               </a>
             ))}
           </div>

@@ -3,12 +3,13 @@ import { createPortal } from 'react-dom'
 import { useLanguage } from '../language/LanguageProvider'
 import type { ArticleBlock } from '../content'
 import { ArrowIcon } from './Icons'
+import { NewTabHint } from './NewTabHint'
 import { PageHero } from './PageHero'
 import { WritingSection } from './WritingSection'
 
 const INLINE_TOKEN = /(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\)|\[\d+\])/g
 
-function renderInline(text: string): ReactNode[] {
+function renderInline(text: string, newTabLabel?: string): ReactNode[] {
   const nodes: ReactNode[] = []
   let match: RegExpExecArray | null
   let cursor = 0
@@ -30,6 +31,7 @@ function renderInline(text: string): ReactNode[] {
       nodes.push(
         <a href={token.slice(opening + 2, -1)} key={key} rel="noreferrer" target="_blank">
           {token.slice(1, opening)}
+          {newTabLabel ? <NewTabHint label={newTabLabel} /> : null}
         </a>,
       )
     }
@@ -41,9 +43,11 @@ function renderInline(text: string): ReactNode[] {
 
 function ArticleBlocks({
   blocks,
+  newTabLabel,
   onZoom,
 }: {
   blocks: ArticleBlock[]
+  newTabLabel?: string
   onZoom: (image: ArticlePreview) => void
 }) {
   return (
@@ -51,20 +55,20 @@ function ArticleBlocks({
       {blocks.map((block, index) => {
         switch (block.type) {
           case 'paragraph':
-            return <p key={index}>{renderInline(block.text)}</p>
+            return <p key={index}>{renderInline(block.text, newTabLabel)}</p>
           case 'heading':
             return block.level === 2 ? (
-              <h2 key={index}>{renderInline(block.text)}</h2>
+              <h2 key={index}>{renderInline(block.text, newTabLabel)}</h2>
             ) : (
-              <h3 key={index}>{renderInline(block.text)}</h3>
+              <h3 key={index}>{renderInline(block.text, newTabLabel)}</h3>
             )
           case 'list': {
             const items = block.items.map((item, itemIndex) =>
               typeof item === 'string' ? (
-                <li key={itemIndex}>{renderInline(item)}</li>
+                <li key={itemIndex}>{renderInline(item, newTabLabel)}</li>
               ) : (
                 <li id={item.id} key={itemIndex}>
-                  {renderInline(item.text)}
+                  {renderInline(item.text, newTabLabel)}
                 </li>
               ),
             )
@@ -80,7 +84,9 @@ function ArticleBlocks({
                 >
                   <img alt={block.alt} loading="lazy" src={block.image} />
                 </button>
-                {block.caption ? <figcaption>{renderInline(block.caption)}</figcaption> : null}
+                {block.caption ? (
+                  <figcaption>{renderInline(block.caption, newTabLabel)}</figcaption>
+                ) : null}
               </figure>
             )
         }
@@ -218,7 +224,11 @@ export function ArticlePage({ articleId }: { articleId: string }) {
             </div>
           ) : (
             <>
-              <ArticleBlocks blocks={article.body} onZoom={setPreview} />
+              <ArticleBlocks
+                blocks={article.body}
+                newTabLabel={strings.a11y.newTab}
+                onZoom={setPreview}
+              />
 
               {video ? (
                 <figure className="article-media">
@@ -250,6 +260,7 @@ export function ArticlePage({ articleId }: { articleId: string }) {
                 <p className="article-source">
                   <a href={article.sourceHref} rel="noreferrer" target="_blank">
                     View the primary source <ArrowIcon external />
+                    <NewTabHint label={strings.a11y.newTab} />
                   </a>
                 </p>
               ) : null}

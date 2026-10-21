@@ -3,6 +3,7 @@ import { useLanguage } from '../language/LanguageProvider'
    la liste des liens, hors composant, donc hors contexte de langue. */
 import { identity as contactIdentity } from '../content/en'
 import { ArrowIcon } from './Icons'
+import { NewTabHint } from './NewTabHint'
 
 interface FooterGroup {
   key: 'elsewhere' | 'navigation'
@@ -62,6 +63,7 @@ export function SiteFooter() {
             target="_blank"
           >
             {t.footer.connectOnLinkedin} <ArrowIcon external />
+            <NewTabHint label={t.a11y.newTab} />
           </a>
         </div>
       </div>
@@ -90,6 +92,7 @@ export function SiteFooter() {
                     target={link.newTab ? '_blank' : undefined}
                   >
                     {t.nav[link.key]}
+                    {link.newTab ? <NewTabHint label={t.a11y.newTab} /> : null}
                   </a>
                 </li>
               ))}

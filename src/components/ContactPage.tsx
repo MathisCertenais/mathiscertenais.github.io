@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react'
 import { useLanguage } from '../language/LanguageProvider'
 import { ArrowIcon } from './Icons'
 import { BusinessCard } from './BusinessCard'
+import { NewTabHint } from './NewTabHint'
 import { PageHero } from './PageHero'
 
 type FormStatus = 'error' | 'idle' | 'sending' | 'success'
@@ -145,6 +146,7 @@ export function ContactPage() {
           </a>
           <a href={identity.linkedin} rel="noreferrer" target="_blank">
             LinkedIn <ArrowIcon external />
+            <NewTabHint label={strings.a11y.newTab} />
           </a>
         </div>
 

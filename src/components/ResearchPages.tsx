@@ -1,5 +1,6 @@
 import { useLanguage } from '../language/LanguageProvider'
 import { ArrowIcon } from './Icons'
+import { NewTabHint } from './NewTabHint'
 import { PageHero } from './PageHero'
 
 export function ResearchPage() {
@@ -130,6 +131,7 @@ export function ResearchPage() {
           ))}
           <a href={sourceLinks.arxiv} rel="noreferrer" target="_blank">
             {strings.pages.arxivPaper} <ArrowIcon external />
+            <NewTabHint label={strings.a11y.newTab} />
           </a>
         </div>
       </section>
@@ -152,6 +154,7 @@ export function ResearchPage() {
           ))}
           <a href={sourceLinks.numpex} rel="noreferrer" target="_blank">
             {strings.pages.numpexProfile} <ArrowIcon external />
+            <NewTabHint label={strings.a11y.newTab} />
           </a>
         </div>
       </section>
@@ -165,6 +168,7 @@ export function ResearchPage() {
           </a>
           <a className="button button--secondary" href={sourceLinks.arxiv} rel="noreferrer" target="_blank">
             {strings.pages.publications} <ArrowIcon external />
+            <NewTabHint label={strings.a11y.newTab} />
           </a>
           <a className="button button--secondary" href={localeHref('/contact')}>
             {strings.pages.getInTouch} <ArrowIcon />
