@@ -196,9 +196,9 @@ Source : astrotube.obspm.fr — transcription automatique, noms propres et terme
 [12:38] au CINES, à l'IDRIS et au TGCC
 [12:40] donc là on peut voir 2 des 3 machines
 [12:43] donc la première qui est Gensais
-[12:45] la seconde à Dastra qui a Montpellier
+[12:45] la seconde à Adastra qui a Montpellier
 [12:48] et ensuite il y a les centres régionaux
-[12:50] qui sont les mesocentres
+[12:50] qui sont les mésocentres
 [12:54] et donc là où on en est en France
 [12:58] eh bien on a la prochaine machine
 [13:00] et la première machine exascale
@@ -207,11 +207,11 @@ Source : astrotube.obspm.fr — transcription automatique, noms propres et terme
 [13:07] après Jupiter
 [13:08] et là il y a des questions
 [13:11] justement là j'ai repris
-[13:13] la presse relise entre
-[13:15] du coup le contrat signé évident
+[13:13] la press release entre
+[13:15] du coup le contrat signé Eviden
 [13:17] AMD
 [13:17] et qui est maintenant Bull
-[13:20] mais le contrat été signé au nom
+[13:20] mais le contrat a été signé au nom
 [13:22] d'Eviden
 [13:22] où il y a justement
 [13:25] ces cités
@@ -258,7 +258,7 @@ Source : astrotube.obspm.fr — transcription automatique, noms propres et terme
 [14:47] des nœuds de intera de mémoire
 [14:49] et on a aussi
 [14:52] un 2x400 GB
-[14:54] de chez Bull le bxv3
+[14:54] de chez Bull le BXV3
 [14:57] et pour au final
 [14:59] avoir aussi une partition
 [15:00] scalaire de 100 000 coeurs
@@ -572,14 +572,14 @@ Source : astrotube.obspm.fr — transcription automatique, noms propres et terme
 [25:19] avec le logiciel d'EDF
 [25:21] c'est un
 [25:23] un outil de traitement
-[25:24] donné en radio astronomie qui a été initialement
+[25:24] donné en radioastronomie qui a été initialement
 [25:27] défini pour
-[25:29] le radio télescope LOFAR
+[25:29] le radiotélescope LOFAR
 [25:31] pour faire des surveys notamment
 [25:33] c'est une application composite
 [25:35] qui intègre un outil de calibration qui s'appelle KillMS
 [25:38] et un outil d'imagerie qui s'appelle
-[25:39] ddfset
+[25:39] DDFacet
 [25:40] donc les co-developers sont notamment
 [25:43] Martin, Tim, Cyril et Wendy
 [25:46] et on peut voir
@@ -594,7 +594,7 @@ Source : astrotube.obspm.fr — transcription automatique, noms propres et terme
 [26:02] et ici on va avoir
 [26:04] la boucle qu'on avait retrouvée
 [26:07] juste avant sur le fonctionnement du
-[26:08] radio télescope en général
+[26:08] radiotélescope en général
 [26:10] on va avoir une boucle entre la calibration et l'imagerie
 [26:12] on peut voir un zoom justement
 [26:14] ici
@@ -602,7 +602,7 @@ Source : astrotube.obspm.fr — transcription automatique, noms propres et terme
 [26:17] concrètement à quoi ça correspond
 [26:19] on a une reconstruction de l'image qui est faite par
 [26:21] l'imagerie
-[26:23] qui est faite par ddfset
+[26:23] qui est faite par DDFacet
 [26:25] et les calibrations qui va permettre à partir de cette
 [26:27] image
 [26:29] corriger les effets instrumentaux et
