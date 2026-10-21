@@ -16,6 +16,7 @@ const issues = []
 const requiredCanonicalPaths = new Set([
   '/',
   '/about',
+  '/accessibility',
   '/contact',
   '/research',
   '/resume',
@@ -68,6 +69,7 @@ const requiredLegacyPaths = new Set([
 
 const allowedPages = new Set([
   'about',
+  'accessibility',
   'article:eclat-interview',
   'article:youngpex',
   'article:predicting-for-sizing',
@@ -121,6 +123,7 @@ const prerenderedFallbacks = {
   '/about': ['Building infrastructure through collaboration.', 'Working principles'],
   '/resume': ['arXiv:2509.03075', 'Relevant certifications'],
   '/contact': ['Let’s connect the systems.', 'Start a conversation.'],
+  '/accessibility': ['Accessibility statement', 'What has been checked.'],
   '/fr': ['Logistique des données', 'En bref'],
   '/fr/research': [
     'Ce que la thèse mesure',
@@ -132,6 +135,7 @@ const prerenderedFallbacks = {
   '/fr/about': ['Construire des infrastructures par la collaboration.', 'Principes de travail'],
   '/fr/resume': ['Certifications pertinentes', 'Interventions sélectionnées'],
   '/fr/contact': ['Relions les systèmes.', 'Commençons par un message.'],
+  '/fr/accessibility': ['Déclaration d’accessibilité', 'Ce qui a été contrôlé.'],
 }
 
 const PRERENDERED_MIN_CHARACTERS = 300
@@ -147,6 +151,7 @@ const prerenderedMinLinks = {
   '/writing': 8,
   '/videos': 3,
   '/about': 1,
+  '/accessibility': 1,
   '/resume': 1,
   '/contact': 2,
 }
@@ -604,6 +609,7 @@ for (const marker of [
   "page === 'about'",
   "page === 'resume'",
   "page === 'contact'",
+  "page === 'accessibility'",
 ]) {
   if (!portfolioPageSource.includes(marker)) issues.push(`Missing page renderer contract: ${marker}`)
 }

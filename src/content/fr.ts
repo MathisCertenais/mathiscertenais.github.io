@@ -57,6 +57,7 @@ export const sourceLinks = {
   eclatPartners: 'https://eclat-lab.fr/en/partners/',
   eclatWorkshop: 'https://eclat-lab.fr/en/technical-workshop-2025-and-hackathon/',
   eclatWebinar: 'https://eclat-lab.fr/webinaire-hpc-as-a-service-for-radio-astronomy/',
+  astrotubeWebinar: 'https://astrotube.obspm.fr/w/35dTv8mmaSdm36uEFtCnZz',
   linkedin: identity.linkedin,
   numpex: 'https://numpex.org/data-logistics-for-radio-astronomy/',
   numpexYoungpex: 'https://numpex.org/youngpex/',
@@ -1289,6 +1290,57 @@ export const resumePage = {
 export const contactPage = {
   intro:
     'Mathis est basé à Rennes, en France, et travaille à la croisée de l’informatique, du calcul haute performance et de la radioastronomie.',
+} as const
+
+export const accessibilityPage = {
+  eyebrow: 'Accessibilité',
+  title: 'Déclaration d’accessibilité',
+  intro:
+    'Ce site vise le niveau AA des WCAG 2.1 et du RGAA 4.1. Il a fait l’objet d’un audit en octobre 2026, combinant des outils automatiques et des vérifications manuelles. Cette page décrit ce qui a été vérifié, ce qui reste à tester, et comment signaler un problème.',
+  approach: {
+    label: 'Notre approche',
+    heading: 'L’accessibilité fait partie du travail, elle n’est pas un ajout.',
+    paragraphs: [
+      'Le site repose sur du HTML sémantique, un focus visible, un lien d’évitement et des landmarks. Les couleurs ont été choisies pour respecter le contraste AA dans les thèmes clair et sombre.',
+      'Les vidéos proposent des sous-titres synchronisés lorsque la source le permet, et une alternative textuelle pour la démonstration muette. Les animations sont réduites si le visiteur le demande.',
+    ],
+  },
+  verified: {
+    label: 'Vérifié',
+    heading: 'Ce qui a été contrôlé.',
+    items: [
+      'Contraste du texte sur son fond, en thèmes clair et sombre (WCAG 1.4.3, AA).',
+      'Un seul h1 par page, aucune rupture de niveau de titre, et des landmarks étiquetés (WCAG 1.3.1, 2.4.1).',
+      'Accès au clavier, focus visible, lien d’évitement, et gestion du focus dans les menus et les dialogues (WCAG 2.1.1, 2.4.3, 2.4.7).',
+      'Champs de formulaire étiquetés et textes alternatifs descriptifs pour les images (WCAG 1.1.1, 3.3.2).',
+      'Reflow sans défilement horizontal à 320 px (WCAG 1.4.10).',
+      'Sous-titres pour l’entretien et le hackathon, transcription pour la démo MCP muette, et sous-titres natifs du webinaire PeerTube (WCAG 1.2.2).',
+      'Avertissement avant l’ouverture d’un nouvel onglet (RGAA 13.2).',
+    ],
+  },
+  limitations: {
+    label: 'Limites connues',
+    heading: 'Ce qui reste à tester ou à améliorer.',
+    items: [
+      'Une revue complète avec lecteur d’écran (VoiceOver, NVDA) n’a pas encore été réalisée.',
+      'Le zoom à 200 %, l’espacement du texte et la page sans CSS restent à vérifier.',
+      'Les contenus tiers (LinkedIn, PeerTube) ont leur propre accessibilité, que ce site ne maîtrise pas.',
+      'La transcription du webinaire est un brouillon automatique en cours de relecture.',
+    ],
+  },
+  audit: {
+    label: 'Audit',
+    heading: 'Méthode et périmètre.',
+    paragraphs: [
+      'Octobre 2026 — audit automatique avec axe-core (WCAG 2.1 A/AA) sur neuf routes, thèmes clair et sombre, desktop et mobile : aucune violation.',
+      'Les vérifications manuelles ont porté sur le contraste, la structure des titres, la navigation, les formulaires, les images, la langue, le reflow et l’avertissement de nouvel onglet. Il s’agit d’un audit partiel, pas d’une certification RGAA complète.',
+    ],
+  },
+  contact: {
+    label: 'Contact',
+    heading: 'Signaler un problème d’accessibilité.',
+    text: 'Si vous rencontrez un obstacle, écrivez à',
+  },
 } as const
 
 export const researchFeature = {

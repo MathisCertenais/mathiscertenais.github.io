@@ -234,6 +234,7 @@ function articleBlock(block) {
 function createFallbacks(content, t, href) {
   const {
     aboutPage,
+    accessibilityPage,
     articleItems,
     contactPage,
     expertise,
@@ -481,6 +482,30 @@ function renderContact() {
     </main>`
 }
 
+function renderAccessibility() {
+  const page = accessibilityPage
+  return `<main class="prerendered" id="main-content">
+      ${label(page.eyebrow)}
+      ${h1(page.title)}
+      ${p(page.intro)}
+      ${label(page.approach.label)}
+      ${h2(page.approach.heading)}
+      ${page.approach.paragraphs.map(p).join('\n      ')}
+      ${label(page.verified.label)}
+      ${h2(page.verified.heading)}
+      ${list(page.verified.items.map((item) => escapeHtml(item)))}
+      ${label(page.limitations.label)}
+      ${h2(page.limitations.heading)}
+      ${list(page.limitations.items.map((item) => escapeHtml(item)))}
+      ${label(page.audit.label)}
+      ${h2(page.audit.heading)}
+      ${page.audit.paragraphs.map(p).join('\n      ')}
+      ${label(page.contact.label)}
+      ${h2(page.contact.heading)}
+      ${linkParagraph(`mailto:${identity.email}`, identity.email)}
+    </main>`
+}
+
 function fallbackFor(routePath) {
   // French pages live under /fr and render the same pages as their English twin.
   const bare =
@@ -494,6 +519,7 @@ function fallbackFor(routePath) {
   if (routePath === '/about') return renderAbout()
   if (routePath === '/resume') return renderResume()
   if (routePath === '/contact') return renderContact()
+  if (routePath === '/accessibility') return renderAccessibility()
 
   const article = articleItems.find((item) => item.href === routePath)
   return article ? renderArticle(article) : null

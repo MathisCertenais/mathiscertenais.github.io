@@ -84,6 +84,8 @@ export const locales = {
       ctaLabel: "Let's connect",
       ctaTitle: 'Interested in research collaboration?',
       ctaTitleShort: 'Interested in collaboration?',
+      accessibility: 'Accessibility',
+      accessibilityNote: 'Partial RGAA / WCAG AA audit',
       description:
         'Computer scientist researching HPC, data logistics, and cross-facility scientific workflows.',
       getInTouch: 'Get in touch',
@@ -198,6 +200,8 @@ export const locales = {
       ctaLabel: 'Prenons contact',
       ctaTitle: 'Un projet de recherche, une collaboration ?',
       ctaTitleShort: 'Un projet, une collaboration ?',
+      accessibility: 'Accessibilité',
+      accessibilityNote: 'Audit partiel RGAA / WCAG AA',
       description:
         'Chercheur en informatique : calcul haute performance, logistique des données et workflows scientifiques répartis entre plusieurs centres.',
       getInTouch: 'M’écrire',

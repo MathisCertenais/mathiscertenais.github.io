@@ -1,0 +1,1260 @@
+Transcription — Webinaire ECLAT « HPC as a Service for Radio Astronomy »
+Source : astrotube.obspm.fr — sous-titres automatiques, à relire.
+
+[00:01] Et donc bonjour à tous, merci d'être là pour ce nouveau webinaire.
+[00:06] Et aujourd'hui, on a qu'à Ymatis Sertenet qui fait sa thèse, à l'Irisa.
+[00:12] Vas-y, Matis.
+[00:14] Bonjour à tous, merci pour la présentation et pour l'invitation et merci aux participants d'être là.
+[00:22] Moi, c'est Ymatis Sertenet, donc je travaille en tant que doctorant à l'Université de Rennes et à l'Irisa
+[00:28] sur les sujets relatifs à l'informatique et plus spécifiquement sur les sujets du calcul de performance.
+[00:35] Et mon cas d'usage, c'est la radioastronomie.
+[00:37] Donc aujourd'hui, je vais vous faire une présentation qui mélange les deux mondes avec un cas pratique.
+[00:43] Mais avant ça, je vais vous faire vraiment un contexte général sur la radioastronomie
+[00:48] et les centres de calcul de performance et comment les deux évoluent ensemble.
+[00:54] Si on reprend des années en arrière, mais plusieurs décennies en arrière même,
+[01:00] les communautés indigènes du coup observaient le ciel pour la navigation, pour la planification d'agriculture
+[01:10] jusqu'à leur pratique religieuse et spirituelle.
+[01:14] Et on a fait après cela des premières grandes découvertes relatifs au Supernova, au Galaxy, etc.
+[01:25] Et jusqu'à l'invention plus récemment du premier télescope dans les débuts des années 1800
+[01:32] et en 1932, la création du premier radio-télescope par Carl Jenski.
+[01:39] Et tout cela pour dire qu'aujourd'hui les astronomes collègent des données des objets célestes
+[01:47] en utilisant des télescopes qui sont soit sur Terre comme dans les airs, dans l'espace.
+[01:56] On voit en haut à droite l'astrolabe qui était un instrument de navigation.
+[02:02] Et en bas, ce n'est pas le même cas d'usage, mais c'est le James Webb.
+[02:08] On voit une évolution, autant au niveau matériel, de conception au niveau de la conception,
+[02:15] mais aussi en usage et qu'est-ce qu'on observe à la fin, quel est le cas d'usage.
+[02:21] Et moi je vais me concentrer plutôt sur la radio-astronomie, c'est notre cas d'usage.
+[02:26] Donc brièvement pour expliquer comment ça marche un radio-télescope.
+[02:29] Vous avez en fait un réseau d'antennes qui va fonctionner par père.
+[02:33] L'objectif reste même c'est d'observer le ciel et de collecter des informations issues des sources radio,
+[02:42] des sources qui émettent en radio fréquence.
+[02:46] Ces pères d'antennes vont observer le ciel et le corrélateur, juste en bas,
+[02:52] va collecter tous les signaux des baselines pour ensuite synchroniser tous les signaux,
+[03:00] corriger les délais et produire des visibilités.
+[03:04] Donc ça va être ce qu'on peut appeler notre jeu de données.
+[03:06] Et par la suite de ça, on va avoir l'informatique qui va rentrer en jeu,
+[03:12] parce que là c'était plutôt l'aspect électronique.
+[03:15] On va avoir le supercalculateur qui va être en charge de faire la partie flagging,
+[03:21] c'est-à-dire enlever les interférences et enlever les données corrompues.
+[03:24] On va avoir pour à la fin vouloir reconstruire un modèle du ciel le plus fidèle possible,
+[03:34] parce qu'on est en radio fréquence donc on a des signaux.
+[03:37] Et on veut reconstruire des images pour justement que la science soit faite et qu'on puisse étudier le ciel.
+[03:45] Et on va avoir une boucle entre la calibration et l'imagerie.
+[03:48] Donc le premier sert à corriger les effets instrumentaux et environnementaux.
+[03:53] Ça peut être relatif à la ionosphère ou encore au niveau des gains d'antenne,
+[03:58] parce que vu qu'on va avoir un réseau de dizaines de milliers voire centaines de milliers d'antennes,
+[04:02] chacune a ses propriétés et en fait chacune a peut avoir certains défauts,
+[04:07] donc on va vouloir corriger ça.
+[04:09] Et l'imagerie justement ça va être de reconstruire une image du ciel à partir de ces données calibrées.
+[04:16] Ça c'est le fonctionnement assez standard d'un radio-telescope.
+[04:19] Et je vous présentais rapidement l'OFAR, donc la plupart d'entre vous ont déjà vu ces slides là j'imagine.
+[04:27] Mais c'est un radio-telescope qui est en opération depuis 2012, qui est distribué en Europe.
+[04:34] On peut retrouver deux types d'antennes, des antennes basse fréquence et des antennes haute fréquence.
+[04:41] Donc chacune a sa structure propre à elle et ses propriétés.
+[04:45] On peut voir une station, donc une station ça va être un ensemble d'antennes,
+[04:48] on peut voir qu'il y a justement un mélange entre les antennes haute fréquence et les antennes basse fréquence.
+[04:55] Et on va, on peut avoir, on a différents modes d'observation.
+[04:59] Donc ça c'est piloter le troniquement et ça c'est un des grands atouts de la radio-astronomie.
+[05:04] Et notamment les derniers, les derniers radio-telescopes c'est qu'on peut les contrôler
+[05:09] et on peut changer leur direction d'observation électroniquement et non manuellement.
+[05:16] Et donc là on peut voir justement le réseau distribué qui commence à montrer l'envergure et la surface en fait du projet
+[05:25] qui est européenne et ça permet d'avoir une surface collectrice plus importante
+[05:28] et ça va jouer sur la sensibilité du radio-telescope et notamment avoir une meilleure définition de l'image
+[05:34] et donc avoir un résultat plus net et un résultat plus fidèle du ciel en finalité.
+[05:43] On peut voir ici en jaune estation qui sont réparties un peu partout en Europe,
+[05:50] en rouge le centre de traitement et en vert les centres d'archivage.
+[05:56] Donc on voit qu'il y a déjà une distribution du réseau
+[05:57] et on atteint pour l'OFAR 1.0 on est à plus de 60 petabytes de stockage
+[06:04] et avec l'OFAR 2.0 on va aller au-delà.
+[06:09] Et donc là on a parlé de ce qu'il y a actuellement mais ce qui arrive
+[06:12] et ce qui est en construction c'est le SCA, le radio-telescope Square Kilometer Array
+[06:17] qui est selon moi l'OFAR en plus grand avec de plus grandes envergures
+[06:23] puisque là c'est un projet international qui est aussi composé de deux petites antennes
+[06:29] donc des antennes basse-féquence qui sont situées
+[06:34] le site est en construction mais qui sont des antennes basse-féquence
+[06:37] et le site d'Afrique du Sud qui se branche sur un précurseur
+[06:44] et qui accueille des antennes plus hautes-féquence.
+[06:47] L'objectif de ce télescope nouvelle génération c'est comme j'ai dit
+[06:51] c'est d'améliorer la sensibilité du radio-telescope
+[06:54] et donc la résolution des images et ça va jouer directement sur la qualité du produit.
+[06:59] Donc on peut voir que ce projet implique beaucoup de membres
+[07:05] et ça demande justement, c'est un travail pluridisciplinaire
+[07:09] qui demande justement des efforts pour parvenir à ces objectifs.
+[07:13] Je voulais revenir aussi parce que moi j'aime bien avoir le côté informaticien
+[07:18] c'est l'aspect réseau, en fait comment on connecte toutes ces installations
+[07:23] donc ça soit les antennes, les centres de traitement, les centres de stockage
+[07:27] et les centres d'archetivage en fait on doit penser à avoir un réseau
+[07:32] donc là ça sera proposé par le National Research Education Network
+[07:39] qui a pour objectif d'avoir une ligne de 100 GB par seconde en full du Plex
+[07:46] pour justement assurer le volume de données
+[07:51] qui sera le déluge de données qui sera produit par ce radio-telescope
+[07:56] et là on y vient.
+[07:58] Là ce graphique là je pense que tout le monde l'a vu
+[08:01] mais c'est important d'y revenir parce que ça permet de poser les challenges informatiques
+[08:07] donc là si on revient sur l'explication que j'avais expliqué juste avant
+[08:14] on a deux types d'antennes
+[08:17] donc chacun, chaque type d'antenne va produire justement des signaux
+[08:24] qui vont être ensuite convertis en visibilité donc par les CSP
+[08:29] et ces CSP vont permettre aux SDP de produire nos images finales
+[08:37] nos objets, nos produits finaux qui vont être utilisés pour la science
+[08:41] pour faire de l'étude du ciel
+[08:44] et à la fin de ça on a un volume de 700 petabytes de données par an archivées
+[08:52] ça pose des challenges en fait
+[08:54] mais pas que en bout de chaîne
+[08:57] sur toute la chaîne de traitement qu'on a ici
+[09:00] on a des challenges liées à la donnée
+[09:02] j'ai juste mis un challenge par thématique
+[09:05] pour donner le principe faire
+[09:08] pour avoir des données qui sont trouvables, accessibles
+[09:11] et qui sont réutilisables aussi
+[09:15] le stockage il faut assumer la capacité
+[09:18] parce qu'on parle de 700 petabytes par an de données archivées
+[09:22] mais on parle aussi de données qui seront temporairement stockées
+[09:32] pour pouvoir attendre l'étape de traitement
+[09:37] on ne peut pas faire du temps réel
+[09:39] on va devoir faire du quasi temps réel
+[09:41] notamment physiquement parlant
+[09:43] on a des kilomètres et des kilomètres
+[09:44] de fibre optique et de connectique réseau
+[09:48] et même si on aurait la capacité
+[09:53] avec un centre de calcul
+[09:55] d'assumer ce débit
+[09:58] dans tous les cas il y aura un délai
+[10:00] il faut penser à des stockages temporaires
+[10:04] ça c'est les questions au niveau stockage
+[10:07] il y a les questions aussi des centres de calcul
+[10:09] comment on va définir des logiciels
+[10:13] qui permettent de faire le traitement de ces données
+[10:15] mais qui passent à l'échelle
+[10:16] ça c'est pas encore le cas
+[10:17] et ça c'est des travaux effectués
+[10:20] notamment au sein des clas
+[10:21] et à la fin c'est les questions de réseau
+[10:24] comme j'ai présenté tout à l'heure
+[10:25] il y a les questions de cyber sécurité
+[10:27] qui rentrent en jeu
+[10:28] mais ça rentre pour les autres aspects aussi
+[10:30] mais je trouve qu'il est assez critique
+[10:31] parce que là on voit que les lignes
+[10:33] elles sont de différentes natures
+[10:34] on a des caps sous-marins comme des caps terriens
+[10:38] et ça touche tout le globe
+[10:41] donc là il y aura ces questions là
+[10:43] qui se posent en fait aussi
+[10:47] et maintenant je vais passer
+[10:48] sur la partie plus HPC
+[10:51] parce que là on voit le lien
+[10:52] on voit que plus on avance
+[10:54] plus le domaine de la radioastronomie
+[10:56] intègre l'informatique dans son panel
+[11:01] et il prend une place de plus en plus importante
+[11:05] et si on regarde le monde HPC
+[11:08] et la demande
+[11:09] en fait elle est croissante
+[11:10] là j'ai repris des chiffres du top 500
+[11:12] le top 500 c'est un service
+[11:15] qui permet notamment de classifier
+[11:18] les 500 centres de calcul
+[11:21] les plus puissants
+[11:22] en se basant sur le nombre
+[11:24] d'opérations flottantes par seconde
+[11:27] et là j'ai récupéré
+[11:28] justement la liste des 4 premiers centres
+[11:32] qui date de novembre 2025
+[11:36] donc c'est le dernier rapport
+[11:37] on voit qu'il y a une nouvelle
+[11:39] c'est la dernière partition de Jupiter
+[11:41] donc qui est hébergée en Allemagne
+[11:43] chez Agilus
+[11:45] qui devient le 4e centre Exascale
+[11:49] au monde et le premier hors des États-Unis
+[11:52] donc ça c'est une première
+[11:54] et je vais vous parler ensuite
+[11:56] du second européen qui arrive
+[11:58] qui est Alice Rockock
+[11:59] mais on voit une évolution en fait
+[12:01] au niveau de la performance
+[12:02] si on se base sur ce critère là
+[12:06] et si on fait un focus
+[12:08] sur l'écosystème français
+[12:11] on a Gensis
+[12:12] c'est le grand équipement national
+[12:13] de calculs intensifs
+[12:15] qui est une infrastructure
+[12:16] qui permet de coordiner
+[12:18] en fait tous les équipements
+[12:20] tous les centres français
+[12:21] à plusieurs niveaux
+[12:23] donc on peut voir qu'il y a
+[12:25] un système de plusieurs couches
+[12:27] on va avoir les centres européens
+[12:30] qui vont être plutôt coordonnés
+[12:32] par euro-hPC
+[12:33] on va avoir les centres de tier 1
+[12:35] donc là qui sont
+[12:37] les machines qui sont hébergées
+[12:38] au Cinesse, à Liderice et au TGCC
+[12:40] donc là on peut voir 2 des 3 machines
+[12:43] donc la première qui est Gensais
+[12:45] la seconde à Dastra qui a Montpellier
+[12:48] et ensuite il y a les centres régionaux
+[12:50] qui sont les mesocentres
+[12:54] et donc là où on en est en France
+[12:58] eh bien on a la prochaine machine
+[13:00] et la première machine exascale
+[13:03] qui arrive en France
+[13:04] donc ça sera la seconde machine exascale
+[13:07] après Jupiter
+[13:08] et là il y a des questions
+[13:11] justement là j'ai repris
+[13:13] la presse relise entre
+[13:15] du coup le contrat signé évident
+[13:17] AMD
+[13:17] et qui est maintenant bulle
+[13:20] mais le contrat été signé au nom
+[13:22] d'évident
+[13:22] où il y a justement
+[13:25] ces cités
+[13:26] les questions d'efficacité énergétique
+[13:28] et d'où se vrentait
+[13:31] j'ai mis un peu
+[13:32] la description de la machine
+[13:35] donc on est à peu près à quasiment
+[13:36] 100 racks
+[13:37] avec quasiment 300 km de câble
+[13:40] 280 tonnes
+[13:43] réparties sur 174 m2
+[13:46] pour du coup un pic de performance
+[13:49] d'un exoflop par seconde
+[13:51] et ça équivaut à quoi en fait
+[13:53] on ne se rend pas forcément compte
+[13:54] qu'on n'est pas du monde de l'informatique
+[13:56] et même quand on est du monde de l'informatique
+[13:58] on ne prend pas forcément le recul
+[13:59] mais c'est l'équivalent en performance
+[14:01] de quasiment 10 millions de machines
+[14:05] classiques standards
+[14:06] que vous avez chez vous
+[14:08] en poids c'est l'équivalent
+[14:09] de 28 bus
+[14:11] et c'est un budget aussi
+[14:13] de plus de 500 millions sur 5 ans
+[14:16] et pour faire un descriptif
+[14:18] un peu plus technique
+[14:19] on a exactement pour la partie
+[14:21] accélérée 94 racks
+[14:23] évident
+[14:25] xh3500 c'est les derniers
+[14:27] qui sont chacun composés
+[14:29] donc c'est des nœuds unifiés
+[14:30] qui sont chacun composés
+[14:31] d'un cpu AMD vénis 256c
+[14:35] de 4 gpu AMD
+[14:38] mi430x
+[14:39] si je me trompe pas on sera les premiers
+[14:42] à équiper de ces
+[14:43] on a l'exclusivité si je me trompe pas
+[14:45] je suis pas sûr de ça mais je suis quasiment sûr
+[14:47] des nœuds de intera de mémoire
+[14:49] et on a aussi
+[14:52] un 2x400 GB
+[14:54] de chez bulle le bxv3
+[14:57] et pour au final
+[14:59] avoir aussi une partition
+[15:00] scalaire de 100 000 coeurs
+[15:03] du coup avec
+[15:04] des puces normalement RIA2
+[15:06] qui vont arriver bientôt
+[15:08] du coup des puces ARM
+[15:10] un stockage du coup
+[15:12] flash disque du coup
+[15:14] à bandes on a ces 3 types
+[15:17] de stockage
+[15:18] une installation courant 2026
+[15:21] et un système en production
+[15:22] en 2027
+[15:24] donc ça arrive
+[15:26] la machine exascale est en route
+[15:28] et on peut faire le lien
+[15:30] avec justement SCA et la contribution
+[15:32] française ça sera une des machines
+[15:34] qui pourra en plus du contrat
+[15:36] qui a été signé entre évident et SCA
+[15:39] et
+[15:40] sur l'hébergement
+[15:42] de la création de 2
+[15:44] supercalculateurs qui ici je me trompe pas
+[15:48] va
+[15:50] accueillir 3% du stockage
+[15:51] et 3% du traitement
+[15:55] du radiotelescope
+[15:57] ça
+[15:57] cette machine là pour aussi
+[15:59] pour aussi y contribuer
+[16:02] donc là on a parlé
+[16:04] de la radiosronomie avec SCA
+[16:06] qui arrive
+[16:07] à Disroco, côté HPC qui arrive
+[16:09] et comment en fait on fait les nerfs entre les deux
+[16:11] c'est les initiatives
+[16:12] et les initiatives je commencer
+[16:15] par le programme français NUMPEX
+[16:17] qui est un programme
+[16:18] que j'ai intégré
+[16:20] dans le contexte de ma thèse
+[16:22] l'objectif
+[16:23] de cet appel
+[16:25] c'est de concevoir
+[16:28] et de développer
+[16:29] toutes les briques logicielles qui vont équiper
+[16:32] les futures machines avec SCA
+[16:34] notamment à Disroco
+[16:36] et
+[16:39] NUMPEX contribue
+[16:40] à travers ces cinq projets
+[16:42] à préparer les futurs utilisateurs
+[16:44] les scientifiques et les industriels
+[16:46] à exploiter cette machine
+[16:47] à exploiter ces machines justement
+[16:49] ces machines qui vont arriver
+[16:50] à travers du coup
+[16:53] Exama qui travaille sur les méthodes et algorithmes
+[16:56] Exatoft plutôt sur la production
+[16:58] de logiciels et d'outils pour les machines HPC
+[17:01] Exados qui est plutôt orienté
+[17:04] donnée
+[17:04] sur les outils et les logiciels
+[17:06] Exato qui va travailler
+[17:08] à plus haut niveau
+[17:10] sur les outils et les architectures
+[17:12] pour le déploiement de flux de travail
+[17:15] inter-facilité
+[17:16] inter-installation
+[17:17] Exadi qui s'occupe plutôt de l'intégration
+[17:20] de ces outils
+[17:22] sur les centres HPC
+[17:24] et je vais faire un zoom
+[17:26] sur Exato puisque c'est
+[17:28] le projet
+[17:30] que j'ai rejoint
+[17:32] l'objectif c'est
+[17:34] de proposer une solution globale
+[17:37] pour le déploiement de cross-facility workflow
+[17:39] et qu'est-ce que c'est un cross-facility workflow
+[17:42] ça va être une chaîne de traitement
+[17:43] où on peut avoir
+[17:46] la récupération de données
+[17:48] du traitement de données
+[17:49] la post analyse
+[17:50] du post traitement et de l'archivage
+[17:53] ça peut être un workflow
+[17:55] et cross-facility c'est-à-dire
+[17:56] qu'on va vouloir le déployer
+[17:58] sur un ensemble de ressources informatiques
+[18:01] qui peut être
+[18:03] des
+[18:05] répertoires de données
+[18:06] des datacenters
+[18:07] ça peut être des machines
+[18:09] de calcul type HPC
+[18:11] comme de type cloud
+[18:13] on peut avoir des notes visualisation
+[18:15] aussi HPC comme cloud
+[18:17] et on peut avoir des centres d'archivage
+[18:20] géodistribués donc toutes ces
+[18:22] machines vont être hétérogènes
+[18:24] géodistribués et fédérés
+[18:26] chacun à leur manière
+[18:29] et du point de vue
+[18:32] d'Exato, l'objectif c'est d'apporter
+[18:33] des outils et des méthodes
+[18:35] pour que le scientifique
+[18:37] tout en haut ici
+[18:39] il n'est pas
+[18:40] il n'a pas s'occuper
+[18:44] de cette complexité
+[18:45] de ce continuum de ressources
+[18:47] ce qu'il va faire c'est
+[18:49] à la fin d'écrire son expérimentation
+[18:51] et pour être supporté par un agent
+[18:54] IA
+[18:55] et derrière
+[18:56] il y a toute la magie qui s'opère
+[18:58] où on va avoir toutes les briques
+[19:00] qui vont fonctionner ensemble
+[19:02] où on va avoir
+[19:03] un système d'authentification et d'autorisation
+[19:06] qui vont permettre de donner les droits
+[19:08] un orchestrateur
+[19:10] qui va justement
+[19:12] récupérer l'expérimentation
+[19:14] de l'utilisateur
+[19:16] et va transformer la planification
+[19:18] en l'exécution
+[19:20] de la tâche
+[19:22] le système
+[19:24] de gestion du workflow
+[19:26] qui lui va dispatcher chaque tâche
+[19:28] sur différents
+[19:30] centres de calcul
+[19:31] ou différentes ressources informatiques
+[19:34] qu'on retrouve juste ici
+[19:35] et tout ça à l'aide d'un continuum
+[19:37] de digital twins qui eux
+[19:39] vont
+[19:42] nous donner les informations
+[19:44] en temps réel
+[19:45] sur des métriques
+[19:47] qu'on souhaite surveiller
+[19:49] notamment sur la disponibilité des machines
+[19:51] sur les temps d'allocation
+[19:53] ressources etc
+[19:55] et le dernier point c'est d'intégrer
+[19:57] les centres HPC dans ce continuum
+[19:59] ça c'est un des points clés d'Exato
+[20:03] je vais présenter
+[20:05] en avant dernier lieu
+[20:07] Jungpex
+[20:08] ça c'est une initiative donc c'est un groupe de travail
+[20:11] d'un Jungpex qui réunit tous les jeunes
+[20:13] et pourquoi je trouve ça important c'est que
+[20:15] là en fait on parle
+[20:17] là j'ai parlé beaucoup d'avenir
+[20:18] avec Alistre Coq, avec Asuka
+[20:20] mais il faut aussi parler de la nouvelle génération
+[20:23] puisque ça va être
+[20:25] ça va être aussi notre rôle
+[20:26] accompagné aussi des moins jeunes
+[20:28] mais ça va être nous qui vont devoir
+[20:30] prendre le relais et travailler
+[20:32] sur ces questions là et mettre en place
+[20:34] cette science
+[20:36] et Jungpex en fait
+[20:38] c'est tous les jeunes chercheurs
+[20:41] impliqués dans le programme
+[20:42] Jungpex donc on est une cinquantaine
+[20:45] qui discutent
+[20:46] sur des sujets qui sont proches
+[20:48] de notre génération donc ça va être
+[20:50] des sujets de multidisciplinarité
+[20:53] de l'impact environnemental
+[20:55] relatif au HPC
+[20:56] ça a été justement le sujet
+[20:58] de notre assemblée générale à Toulouse
+[21:01] et aussi
+[21:02] l'usage de l'IA
+[21:03] parce que ça c'est quelque chose aussi
+[21:05] qui est arrivé
+[21:08] en 2022
+[21:09] où il y a eu la grande explosion en 2022
+[21:12] de l'usage sur tout des LLM
+[21:14] et comment on intègre tout ça en fait dans la science
+[21:16] comment on fait de la science de manière
+[21:18] écorresponsable, comment on intègre
+[21:19] ces nouveaux outils dans la recherche
+[21:22] à ces questions qu'on se pose
+[21:24] et sur lesquelles on travaille
+[21:25] et l'objectif c'est de faire une synergie
+[21:28] d'avoir une synergie en fait
+[21:30] en créant un réseau interdisciplinaire
+[21:32] parce que comme je l'ai présenté
+[21:33] Jungpex ça regroupe 5 projets
+[21:35] qui travaillent sur des briques logiciels
+[21:37] mais à plusieurs niveaux
+[21:38] et ça va permettre de créer les futures collaborations
+[21:41] ça c'est très important pour
+[21:43] l'avancée des projets scientifiques
+[21:45] et pour finir j'étais obligé
+[21:47] de présenter Ecla
+[21:49] mais c'est un laboratoire commun
+[21:50] qui fait le pont
+[21:52] avec les astrophysiciens et les informaticiens
+[21:55] pour concevoir les futures workflow
+[21:57] pour l'astronomie et les systèmes cyberphysiques
+[22:00] et ça regroupe
+[22:02] des chercheurs
+[22:03] des laboratoires du coup
+[22:05] et aussi des industriels
+[22:06] parce qu'on a besoin des deux
+[22:09] pour faire
+[22:10] pour faire de la recherche
+[22:12] cohérente
+[22:13] et qui va respecter
+[22:15] les délais, les attentes, les besoins
+[22:18] et notamment
+[22:19] en contribuant
+[22:22] au projet SCA
+[22:24] et on représente quand même
+[22:25] la contribution française
+[22:27] que ce soit pour les questions
+[22:28] de design, de supercalculateur
+[22:31] de transport de données
+[22:34] de stockage, de traitement
+[22:35] donc on travaille sur beaucoup d'aspects
+[22:38] et ça c'est clé pour SCA
+[22:42] maintenant je vous ai fait un gros
+[22:45] contexte
+[22:46] je vais vous parler plutôt technique
+[22:48] donc avec HPC as a service
+[22:50] comme j'avais appelé
+[22:52] donc d'où ça vient déjà
+[22:53] le terme as a service
+[22:55] en fait c'est un concept qui vient plutôt
+[22:58] du cloud
+[23:00] et c'est
+[23:03] je voulais comparer cloud et HPC
+[23:05] voir les différences
+[23:06] et pourquoi nous on utilise un concept
+[23:08] qui vient du cloud et qu'on l'intègre
+[23:10] sur le HPC
+[23:11] il y a des grandes différences entre
+[23:13] ces deux systèmes
+[23:15] le cloud qui va proposer un système
+[23:18] à la demande donc très élastique
+[23:20] on va avoir une vision de ressources infinies
+[23:22] contrairement au HPC
+[23:24] en fait on va louer des ressources
+[23:27] et on va avoir
+[23:28] un temps d'allocation
+[23:32] donc on a une nature complètement différente
+[23:37] le modèle aussi
+[23:38] est différent le cloud c'est plutôt basé
+[23:40] sur des services
+[23:42] donc software as a service
+[23:44] platform as a service ou encore infrastructure
+[23:45] as a service donc ça a plusieurs niveaux
+[23:47] on peut proposer
+[23:49] des infrastructures jusqu'à des applications
+[23:51] clé en main utilisées par
+[23:54] n'importe quel utilisateur
+[23:55] depuis son ordinateur
+[23:57] alors que le HPC c'est plutôt
+[24:00] du matériel
+[24:02] qui est dédié à une science
+[24:04] et avec
+[24:06] des logiciels qui vont être
+[24:08] propres à la machine donc on le voit
+[24:10] déjà sur les différents
+[24:12] de centres HPC on a différents logiciels
+[24:14] et différentes versions de logiciels qui sont disponibles
+[24:16] ça dépend aussi des besoins
+[24:18] utilisateurs, fonction des scientifiques
+[24:20] qu'est ce qu'ils ont
+[24:22] soulevé comme besoin pour définir
+[24:24] la machine HPC
+[24:26] la dernière machine HPC
+[24:28] je pense que la question d'expertise
+[24:30] ça va dans les deux sens
+[24:32] il faut de l'expertise
+[24:33] à plusieurs niveaux
+[24:36] et la question
+[24:37] d'accessibilité aussi
+[24:39] des ressources cloud c'est quasiment
+[24:42] instantané en fait c'est comme je dis
+[24:43] en coup c'est pay as ugo
+[24:46] alors que la HPC on a
+[24:47] question d'allocation ressources donc on est dans une
+[24:49] on est dans une queue
+[24:51] parce que c'est la machine
+[24:53] HPC c'est justement gratuit pour la recherche
+[24:56] scientifique et forcément c'est
+[24:57] la machine partagée donc on va avoir
+[24:59] de la tente en fonction
+[25:00] de l'utilisation de la machine
+[25:02] et il y a les points de cyber sécurité
+[25:04] j'ai pas mis plus de détails mais je vais montrer un cas concret
+[25:06] juste après
+[25:09] donc nous ce qu'on a
+[25:11] ce qu'on a fait c'est
+[25:13] de prendre ce concept du cloud
+[25:15] le mettre dans le monde HPC
+[25:17] et d'avoir un cas d'usage
+[25:19] avec le logiciel d'EDF
+[25:21] c'est un
+[25:23] un outil de traitement
+[25:24] donné en radio astronomie qui a été initialement
+[25:27] défini pour
+[25:29] le radio télescope lofar
+[25:31] pour faire des surveys notamment
+[25:33] c'est une application composite
+[25:35] qui intègre un outil de calibration qui s'appelle KillMS
+[25:38] et un outil d'imagerie qui s'appelle
+[25:39] ddfset
+[25:40] donc les co-developers sont notamment
+[25:43] Martin, Tim, Cyril et Wendy
+[25:46] et on peut voir
+[25:48] juste en bas
+[25:49] les différentes étapes
+[25:51] de ddf
+[25:52] on va avoir la préparation des données qui
+[25:54] est composée du téléchargement
+[25:57] de la décompression des données
+[25:58] et de la mise en cas de catalogage
+[26:00] on prépare les données avant exécution
+[26:02] et ici on va avoir
+[26:04] la boucle qu'on avait retrouvée
+[26:07] juste avant sur le fonctionnement du
+[26:08] radio télescope en général
+[26:10] on va avoir une boucle entre la calibration et l'imagerie
+[26:12] on peut voir un zoom justement
+[26:14] ici
+[26:16] du résultat
+[26:17] concrètement à quoi ça correspond
+[26:19] on a une reconstruction de l'image qui est faite par
+[26:21] l'imagerie
+[26:23] qui est faite par ddfset
+[26:25] et les calibrations qui va permettre à partir de cette
+[26:27] image
+[26:29] corriger les effets instrumentaux et
+[26:31] environnementaux
+[26:33] pour construire
+[26:34] des visibilités
+[26:37] des modèles de visibilité
+[26:40] et on voit bien
+[26:41] qu'au passage
+[26:43] au fur et à mesure du passage de la calibration
+[26:45] de l'imagerie on a une image de plus en plus net
+[26:47] de plus en plus fidèle du sel et qui vont permettre
+[26:49] aux astrophysiciens notamment de faire
+[26:51] une étude
+[26:52] justement de ces images pour faire
+[26:54] de la science
+[26:55] pour générer l'image de fin
+[26:59] justement
+[27:01] donc là je vous ai présenté
+[27:03] le cas
+[27:05] d'usage mais pour faire du HPC as a service
+[27:07] nous on a proposé
+[27:09] une solution à partir
+[27:10] de services
+[27:12] il faut en fait deux services de mise en place
+[27:15] pour
+[27:16] pour avoir accès
+[27:18] ou HPC as a service
+[27:20] tel qu'on l'entend
+[27:21] donc on a un support
+[27:24] de logistique des données qu'on a appelé buffer
+[27:26] fmr
+[27:27] ou l'objectif c'est
+[27:28] donc c'est un concept
+[27:31] qui en fait
+[27:33] permet d'écrire des données
+[27:36] sur
+[27:37] dans un espace
+[27:40] sur un espace de stockage
+[27:42] disque ou mémoire
+[27:43] de manière temporaire
+[27:45] avec une taille
+[27:47] limitée donc une taille fixée
+[27:49] de base
+[27:51] qui va permettre notamment
+[27:53] de simplifier les process
+[27:55] d'authentification
+[27:57] et
+[27:57] de
+[28:01] répondre aux problèmes
+[28:04] cyber sécurité qu'on a
+[28:05] notamment sur les centres HPC
+[28:06] donc comme j'ai dit
+[28:08] les points clés
+[28:10] des buffer fmr
+[28:12] ça va être
+[28:13] la taille maximale qui est définie de base
+[28:15] par exemple ça peut être
+[28:16] un temps limité ça peut être 72 heures
+[28:20] par exemple
+[28:22] une accessibility
+[28:23] qui va être
+[28:24] une disponibilité qui va être finie
+[28:27] en fait on peut créer une chaîne de buffer
+[28:30] on peut faire des liens entre les buffers
+[28:32] mais on va avoir pour éviter
+[28:33] justement la congestion
+[28:36] du service on va
+[28:37] limiter justement le nombre de buffer
+[28:40] et le nombre de chaîne de buffer à créer
+[28:41] et bien sûr un identifiant unique
+[28:44] qui va permettre de
+[28:45] traquer chaque buffer
+[28:47] de pouvoir les repérer plus facilement
+[28:49] et aussi faire de l'approvenance
+[28:51] d'informations c'est très important
+[28:55] et là c'est un cas d'usage
+[28:57] c'est un exemple qui
+[28:59] permet de mettre un peu
+[29:01] en oeuvre les buffer fmr
+[29:03] à quoi ça pourrait servir
+[29:05] de servir déjà ce service en lui-même
+[29:08] là on pourrait avoir
+[29:09] le centre qui
+[29:11] en fait
+[29:12] stock tous les centres
+[29:14] tous les measurement set
+[29:16] donc les jeux de données
+[29:19] et ici ça serait le workflow
+[29:21] qui est un workflow classique
+[29:23] qui est composé de la collecte
+[29:25] de données, du traitement de la données
+[29:27] et de la publication de la données
+[29:29] et l'utilisateur
+[29:31] lui va faire une expérimentation
+[29:33] de ce workflow
+[29:34] en se basant sur la collection
+[29:36] des données qui sont sourcées ici
+[29:39] du traitement qui va s'effectuer
+[29:42] sur ce centre HPC
+[29:43] avec le logiciel ddf
+[29:46] et la publication
+[29:48] sur un centre de
+[29:50] visualisation ça peut être par exemple
+[29:52] un centre
+[29:55] qui va être hébergé
+[29:57] chez EOSC
+[29:58] une initiative européenne
+[30:00] pour le cloud
+[30:02] et derrière
+[30:03] le service de buffer fmr
+[30:05] il supporte la logistique de données
+[30:08] c'est à dire que
+[30:09] à toutes ces étapes
+[30:11] le service de buffer
+[30:12] va récolter
+[30:16] et va stocker temporairement
+[30:18] toutes les
+[30:20] toutes les informations
+[30:22] toutes les données qui sont nécessaires
+[30:24] pour le workflow
+[30:25] donc
+[30:26] il y a 2 systèmes
+[30:28] on va avoir le système de push et de pull
+[30:30] qui vont être nécessaires
+[30:32] notamment pour la collecte des données
+[30:34] et l'accessibilité des données
+[30:36] à partir du centre
+[30:38] de stockage 1
+[30:40] vers justement la tâche 1
+[30:42] qui va être nécessaire pour traiter par exemple
+[30:43] une partie du jeu donné
+[30:46] et commencer à faire le traitement
+[30:47] de ddf
+[30:49] et ensuite on va avoir justement
+[30:51] 2 pulsantes de calcul
+[30:53] on va avoir une poussée
+[30:55] des informations
+[30:55] que ce soit les informations de suivi
+[30:58] avec les logs
+[30:58] ou alors les informations plutôt
+[31:00] relatifs aux jeux de données finales
+[31:02] donc avec les images
+[31:05] ça c'est comment on peut utiliser
+[31:06] les buffer fmr seuls
+[31:08] et on peut le coupler avec
+[31:10] le second service
+[31:12] qui est application micro services
+[31:14] qui permet de déployer
+[31:17] des microservices
+[31:17] l'idée c'est un mécanisme
+[31:20] de publication d'application
+[31:22] qui peut être exécutée
+[31:24] en tant que tâche par la suite
+[31:25] il faut vraiment voir ça comme un store
+[31:28] d'application un peu comme steam
+[31:30] ou Apple store
+[31:31] ou Android store
+[31:32] ou en fait le développeur
+[31:34] par exemple de ddf ou ddf a7
+[31:38] WSkin etc
+[31:39] va publier son application
+[31:40] en tant que micro service sur ce service là
+[31:44] le maintenance
+[31:45] c'est celui qui apporte
+[31:47] les ressources
+[31:48] de calcul notamment les ressources HPC
+[31:51] lui va apporter
+[31:53] les ressources à la communauté
+[31:54] et lui va déployer ce logiciel
+[31:57] du développeur sur sa machine
+[31:59] et ensuite le troisième rôle
+[32:01] c'est l'utilisateur en fait
+[32:03] il va pouvoir publier depuis le service
+[32:04] depuis l'interface des jobs
+[32:07] d'une application
+[32:08] donc il va pouvoir choisir son application
+[32:10] la version qui est disponible
+[32:12] et va pouvoir faire son expérimentation
+[32:14] donc il va avoir des pré-requis
+[32:16] qui vont être demandés par chaque
+[32:17] qui va être propre à chaque application
+[32:19] par exemple mentionner la source
+[32:22] du jeu de données
+[32:24] mentionner le fixé de configuration
+[32:26] des choses comme ça
+[32:28] et le maintenance lui de son côté
+[32:30] en fait ça sera automatisé mais il va
+[32:32] collecter les jobs
+[32:34] qui seront envoyés par les utilisateurs
+[32:35] il va s'occuper du
+[32:37] de l'exécution des applications
+[32:39] et de renvoyer les résultats aussi
+[32:43] on peut voir les différents concepts
+[32:45] que j'avais déjà un peu expliqué
+[32:46] mais là c'est un peu plus clair
+[32:48] il y a pas mal de textes mais je vais l'expliquer
+[32:52] le premier point
+[32:53] c'est la fédération
+[32:54] c'est une identité globale
+[32:55] ou les utilisateurs
+[32:57] comme les maintenance
+[32:59] vont être authentifiés
+[33:01] au sein d'une fédération
+[33:02] pour être reconnus
+[33:05] à travers ce système
+[33:08] et donc avoir accès
+[33:09] aux infrastructures de calcul
+[33:12] on va avoir aussi
+[33:13] le maintenance qui
+[33:15] a une responsabilité
+[33:17] et déjà il doit avoir
+[33:19] dans un premier temps accès
+[33:21] aux ressources de calcul, à au moins une ressource
+[33:23] et il va avoir
+[33:25] la responsabilité de faire la comptabilité
+[33:27] parce qu'il est responsable
+[33:29] déjà dans un premier temps
+[33:32] il va mettre à disposition
+[33:33] les ressources donc il doit gérer
+[33:34] les potentiels abus que peuvent faire certains utilisateurs
+[33:37] en utilisant de manière assez
+[33:40] intensive les ressources
+[33:41] et il y a les questions aussi
+[33:43] de
+[33:46] sécurité dans son sens
+[33:48] quand il a signé
+[33:49] justement c'est
+[33:52] un contrat avec le centre HPC
+[33:54] il a la responsabilité
+[33:55] de ce qui tourne
+[33:57] avec son compte sur la machine
+[33:59] donc le tracking est très important
+[34:01] dans ce côté là et c'est ce que permet les buffers fmr1
+[34:04] en fait on a la question de traçabilité
+[34:05] qui est là
+[34:07] ensuite il y a
+[34:08] le mode pool
+[34:11] qui en fait est compatible avec
+[34:13] les règles zdr
+[34:15] ça c'est des discussions qu'on a eu
+[34:17] avec les responsables de sécurité
+[34:18] notamment à l'hydrice avec l'hydrice
+[34:21] en fait c'est
+[34:25] il faut
+[34:26] je vais l'expliquer juste après il y aura un cas concret
+[34:29] mais on est obligé
+[34:31] de faire avec
+[34:32] les règles cyber sécurité
+[34:34] qui sont imposées par le centre de calcul
+[34:36] et
+[34:38] en fait on peut pas
+[34:40] autoriser à n'importe qui
+[34:42] d'exécuter n'importe quoi
+[34:44] sur n'importe quelle machine
+[34:46] quand on demande
+[34:48] des ressources informatiques
+[34:50] en centre HPC
+[34:51] on a
+[34:53] une preuve comme quoi notre
+[34:56] machine allait
+[34:58] sécuriser et respecter
+[35:01] certaines règles
+[35:03] on a une signature
+[35:04] côté
+[35:06] RSSI de son laboratoire
+[35:07] côté
+[35:09] aussi son directeur de laboratoire
+[35:11] et le centre aussi
+[35:12] donc déjà il y a
+[35:16] une responsabilité
+[35:18] de ce côté-là
+[35:21] et en fait
+[35:22] on a accès à des ressources
+[35:24] limitées bien sûr
+[35:25] mais on a accès à des ressources parce qu'on l'a justifié
+[35:27] à travers un cas d'usage par exemple
+[35:29] la radioastronomie et on ne peut pas
+[35:31] si on a des heures relatifs
+[35:33] à de l'expérimentation pour la radioastronomie
+[35:35] on ne peut pas
+[35:37] l'utiliser pour un autre cas d'usage
+[35:39] donc il y a vraiment cette partie-là
+[35:41] qu'il faut pas oublier
+[35:43] et pour finir on a la partie
+[35:46] transfert de données
+[35:46] donc il faut que ça soit contrôlé et limité
+[35:50] il y a la question
+[35:51] justement de traceabilité qui est très en lien
+[35:53] mais il faut que ça soit à plusieurs niveaux
+[35:56] autant au niveau de l'utilisateur
+[35:58] comme au niveau du système
+[35:59] et pour finir on a l'architecture micro-service
+[36:02] pourquoi on fait du DDF
+[36:04] du HPC as a service
+[36:05] c'est que c'est pour utilisateur
+[36:07] même pour le maintenance c'est plus simple et plus modulaire
+[36:09] et on le verra par la suite
+[36:12] ça permet de déployer
+[36:14] des workflows inter-centres
+[36:17] beaucoup plus simplement
+[36:20] donc si on est dans le cas d'usage concret
+[36:23] HPC software as a service
+[36:24] donc là on est passé à la couche
+[36:26] donc là on a été
+[36:28] à HPC as a service maintenant c'est software as a service
+[36:30] donc là on a
+[36:33] on veut donner un logiciel cléanoment
+[36:35] utilisateur donc il y a plusieurs rôles
+[36:36] il y a le développeur qui lui code la science
+[36:38] par exemple ça va être celui qui va
+[36:40] faire
+[36:42] des DFS, des DDF
+[36:44] qui est MS etc
+[36:46] il y a le maintenance qui lui va
+[36:49] s'occuper du déploiement
+[36:50] de l'application en tant que service
+[36:52] donc ça lui demande de
+[36:53] configurer la machine et les accès
+[36:56] le suivi et la comptabilité
+[36:58] et l'utilisateur
+[37:00] les utilisateurs qui vont pouvoir
+[37:02] depuis l'interface
+[37:04] envoyer
+[37:05] des jobs
+[37:06] avec
+[37:10] en fonction de l'application
+[37:12] qui va l'utiliser
+[37:13] et ils peuvent collecter le résultat
+[37:17] aussi depuis cette interface
+[37:19] là c'est les transactions
+[37:20] ça va peut-être
+[37:21] permettre de vous éclaircer un petit peu
+[37:24] mais l'utilisateur il est ici
+[37:25] il se connecte à travers un service
+[37:28] qui permet de l'authentifier et lui donner
+[37:30] certains droits
+[37:33] et si on passe
+[37:34] directement à ces étapes là
+[37:36] en fait il va envoyer
+[37:37] un job, il va envoyer une expérimentation
+[37:41] avec
+[37:43] justement
+[37:44] la position de là où sont les données
+[37:46] de là où
+[37:48] par exemple son fichier
+[37:50] son fichier de configuration
+[37:52] son fichier de configuration peut être en local
+[37:54] sur sa machine
+[37:54] et son jeu donné peut être sur un centre
+[37:57] d'archivage comme EOS
+[38:00] ou surfsara etc
+[38:02] et tout ça c'est le buffer fmr
+[38:04] qui va s'occuper de la logistique
+[38:06] et de l'autre côté le centre HPC
+[38:08] en fait avec un runtime
+[38:10] va collecter
+[38:12] les jobs en fait il va écouter le service
+[38:14] de buffer fmr qui est juste ici
+[38:16] et le service d'application services
+[38:18] pour voir s'il y a un utilisateur qui demande
+[38:20] là d'exécuter une
+[38:22] expérimentation et si oui
+[38:24] où se trouvent les données, où je peux les piocher
+[38:26] donc tout se situe dans le service
+[38:28] de buffer fmr
+[38:29] donc le centre HPC, le service
+[38:32] le runtime va récupérer
+[38:34] les informations
+[38:36] issu de l'expérimentation
+[38:38] va exécuter sur le centre HPC
+[38:40] l'expérimentation et va retourner
+[38:43] au service de buffer fmr
+[38:45] le résultat
+[38:46] ou du moins le suivi si c'est en cours
+[38:48] donc toutes les 5 minutes par exemple
+[38:49] et derrière donc lui on peut le voir
+[38:53] à la suite ça peut être
+[38:55] toutes les minutes ou toutes les secondes
+[38:56] mais ça c'est propre à chaque centre
+[38:59] en fait on a des contrats
+[39:00] à ce niveau là au niveau du nombre de requêtes
+[39:02] en fait il va être en
+[39:06] écoute continue
+[39:06] parce qu'il peut exécuter plusieurs expérimentations
+[39:08] en parallèle ça le but des machines HPC
+[39:10] c'est aussi de faire du traitement en parallèle
+[39:13] et de l'autre côté
+[39:14] en fait l'utilisateur quand il veut
+[39:16] lui c'est du launch and forget
+[39:17] il lance son expérimentation
+[39:19] il prend son café ou plutôt pour ddf
+[39:22] il part en vacances et il revient
+[39:25] et derrière
+[39:26] si ça fait 4 jours qu'il est parti
+[39:29] il peut
+[39:30] consulter l'interface
+[39:32] et demander là où on est rendu
+[39:34] l'expérimentation
+[39:35] et il peut du coup faire
+[39:37] un get
+[39:39] des informations et ça peut retourner
+[39:41] soit le suivi soit si l'expérimentation est terminée
+[39:44] les résultats donc directement
+[39:46] les images et l'utilisateur peut spécifier
+[39:48] là où il veut stocker l'image directement
+[39:50] et ne pas passer par son laptop
+[39:51] en fait il peut spécifier directement
+[39:53] que l'information il veut
+[39:56] la transférer du service de buffer fmr
+[39:58] vers son centre d'archivage
+[40:00] ça c'est important aussi
+[40:01] pour simplifier la logistique et l'automatiser
+[40:05] là c'est un cas d'usage
+[40:06] de HPC software as a service
+[40:09] avec ddf
+[40:10] ça reprend
+[40:11] exactement le concept que je vous ai expliqué
+[40:14] mais il se connecte
+[40:15] c'est notre vue en fait
+[40:16] où il se connecte
+[40:18] au service d'authentification
+[40:20] il récupère un token
+[40:22] ce token lui donne des droits
+[40:23] et derrière il lance une expérimentation
+[40:26] cette expérimentation ensuite
+[40:28] elle est récupérée par le centre HPC
+[40:30] et qui écoute justement
+[40:32] le service de buffer fmr
+[40:35] et d'application services
+[40:38] il se rend compte que
+[40:39] l'utilisateur en fait
+[40:41] son fichier de configuration était en local
+[40:43] et son répertoire de données
+[40:46] était du coup
+[40:48] sur un autre répertoire
+[40:50] sur internet
+[40:51] du coup tout va être transféré
+[40:53] sur le service de buffer fmr
+[40:55] et lui le centre HPC il va récupérer
+[40:57] toutes ces informations depuis le service
+[40:59] des buffer fmr
+[41:00] il va faire son traitement
+[41:01] et il va pouvoir envoyer
+[41:03] le service de buffer fmr le statut
+[41:07] donc si c'est en cours d'exécution
+[41:09] renvoyer les logs et envoyer les résultats
+[41:12] et ça
+[41:12] ça permet aussi de
+[41:15] en fait on peut déployer l'application
+[41:16] sur plusieurs run time
+[41:19] et du coup qui vont tourner sur plusieurs centres de calcul
+[41:21] et en fait l'utilisateur lui
+[41:23] s'occupe plus de rien
+[41:24] lui derrière il fait son exécution
+[41:26] de DDF
+[41:27] et imaginons que
+[41:29] la machine Gen Z en ce moment
+[41:31] elle est en maintenance
+[41:32] et bien en fait le workflow manager
+[41:36] lui va transmettre
+[41:37] la tâche
+[41:39] au centre HPC numéro 2
+[41:41] du moins c'est comme ça que ça va se passer
+[41:43] quand ça sera déployé
+[41:46] et pour finir
+[41:47] cette présentation
+[41:50] je voulais vous présenter
+[41:51] le retour
+[41:52] que j'ai en tant que maintenance
+[41:54] celui qui a pour rôle
+[41:56] de déployer les applications
+[41:58] de les déployer en tant que service
+[42:00] il y a plusieurs
+[42:03] il y a plusieurs
+[42:05] challenges
+[42:06] le premier c'est
+[42:08] les questions
+[42:11] administratives donc comme je vous l'ai dit
+[42:12] pour avoir accès à une ressource
+[42:14] et d'ailleurs je n'ai pas spécifié
+[42:16] mais là
+[42:17] ce DDF
+[42:19] HPC software as a service
+[42:20] ça permet aussi d'utilisateur
+[42:22] qui se connecte à travers
+[42:25] le service d'autorisation et d'autorisation
+[42:27] en fait il n'a pas de compte
+[42:29] sur ces machines en fait
+[42:30] c'est ça la force
+[42:31] qui n'a pas à créer de compte
+[42:34] sur tous les centres
+[42:35] parce que là on peut brancher du cloud
+[42:38] ou sur les centres HPC
+[42:40] ça c'est le rôle du maintenant
+[42:42] et ça on le voit
+[42:43] ça c'est clairement un challenge
+[42:45] parce que
+[42:46] en fonction de la demande
+[42:48] les délais sont variables
+[42:50] ça m'avait pris un mois et demi pour l'hydrice et le CNES
+[42:53] on sait plutôt des questions
+[42:54] relative à ma machine
+[42:56] parce que je devais passer
+[42:59] la checker pour voir si il y a
+[43:01] respecté les normes cyber sécurité
+[43:03] qui sont demandées
+[43:05] et pour le TGCC
+[43:07] c'était pas le cas et en fait vu qu'on a une signature
+[43:10] à 3 parties
+[43:11] forcément s'il y en a un qui part en vacances
+[43:13] qui est en congé
+[43:14] ou alors qui a
+[43:17] une charge de travail
+[43:18] forcément ça va créer du délais
+[43:21] il y a aussi la question de
+[43:23] portabilité et d'exécution
+[43:24] de l'application
+[43:27] propre donc ça c'est propre à l'application
+[43:29] moi ça m'a pris personnellement 6 mois
+[43:31] pour déployer ddf
+[43:33] sur la machine Gen Z
+[43:35] il faut savoir que c'était la première fois aussi
+[43:37] que je faisais
+[43:38] de la pratique sur un centre de calcul
+[43:40] et aussi que je faisais
+[43:42] du déploiement d'application
+[43:44] à cette envergure là
+[43:45] donc forcément ça explique les délais
+[43:49] mais c'est quand même
+[43:51] quelque chose à prendre en compte
+[43:51] et il faut assurer la maintenance en fait
+[43:54] parce qu'on va vouloir mettre à jour ddf
+[43:56] on va vouloir ajouter des nouvelles fonctionnalités
+[43:57] parce que les utilisateurs le demanderont
+[44:01] ça c'est un travail aussi
+[44:02] sur le long terme
+[44:05] il y a la question qui se pose aussi
+[44:06] c'est qu'est ce qui se passera
+[44:07] quand il y aura plus de financement
+[44:12] et plus de
+[44:14] potentiellement plus d'expertise
+[44:15] pour cela en fait ça demande quand même
+[44:17] pas mal d'expertise à plusieurs niveaux
+[44:19] il y a aussi
+[44:20] un travail à faire sur les allocations
+[44:23] de ressources
+[44:24] puisque par exemple
+[44:25] quand on veut exécuter ddf
+[44:28] avec un fichier de configuration
+[44:31] standard par défaut
+[44:32] ou un autre fichier de configuration
+[44:33] en fait le comportement de l'application va changer
+[44:35] et la consommation des ressources aussi
+[44:37] notamment au niveau de l'emprunt et mémoire
+[44:40] et en fait
+[44:41] il faut éviter le surdimensionnement
+[44:43] et en fait il faut avoir
+[44:46] un retour d'expérience
+[44:47] sur ces consommations de ressources
+[44:49] puisque
+[44:50] qui dit
+[44:54] surdimensionnement
+[44:56] dit déjà
+[44:58] un délai
+[44:59] ajouté puisque un temps d'exécution total
+[45:02] dans le monde HPC c'est
+[45:04] le temps d'allocation
+[45:05] qu'on doit prendre
+[45:07] pour avoir accès à une machine et le temps d'exécution
+[45:10] de l'application propre
+[45:11] sauf que plus on demande un allocation important
+[45:14] de la machine plus le temps
+[45:15] d'allocation va être important
+[45:17] et pour finir la question de cyber security
+[45:20] il faut savoir
+[45:22] que ddf a été
+[45:24] packaging
+[45:25] avec Singularity
+[45:28] donc a été mis sous conteneur
+[45:30] dans une boîte noire
+[45:31] et en fait il faut savoir que
+[45:34] quand
+[45:35] à l'hydrice je n'ai pas eu ce problème là mais au cinès
+[45:38] pour faire du déploiement
+[45:40] ddf
+[45:41] sur Ad Astra
+[45:42] je dois passer par le support
+[45:44] qui font une visualisation
+[45:47] ils font un scan du
+[45:51] du conteneur
+[45:52] et en fait ils m'ont souligné qu'il y avait des vulnérabilités critiques
+[45:55] il faut savoir que c'est
+[45:56] surtout lié à des paquets pitons qui ne sont pas mises à jour
+[45:58] mais ça faut savoir que
+[46:02] c'est aussi un travail
+[46:03] à part entière de porter les applications
+[46:07] de les mettre à jour
+[46:09] il faut gérer aussi
+[46:11] les conflits de version
+[46:13] ça c'est un travail
+[46:15] aussi très important
+[46:17] et
+[46:19] le second
+[46:20] c'est la spécificalité aussi
+[46:22] là j'avais eu
+[46:24] quelque chose
+[46:25] donc là c'était
+[46:27] OTGCC cette fois-ci
+[46:28] ou en fait
+[46:30] j'ai eu des tentatives de connexion avec une adresse IP
+[46:32] que je n'avais pas déclaré administrativement parlant
+[46:35] il faut savoir que dans ce cas
+[46:37] là c'était parce que j'utilisais le réseau CCFR
+[46:39] c'est le réseau qui interconnecte
+[46:41] les centres de tier 1 en France
+[46:42] donc avec le
+[46:44] OTGCC à l'hydrice et au cinès
+[46:46] il faut savoir que
+[46:48] je crois que c'est deux adresses
+[46:50] on a des adresses IP du coup
+[46:51] comme point de contact pour utiliser
+[46:53] le réseau dédié
+[46:55] et en fait il faut savoir que
+[46:57] j'avais bien couché la case
+[46:59] que j'allais utiliser sur le réseau
+[47:01] mais du coup
+[47:03] ils m'ont signalé que j'utilisais
+[47:05] des adresses IP non déclarées
+[47:06] mais j'avais bien indiqué que j'utilisais ce réseau
+[47:09] bref c'est pour dire que
+[47:11] même OTGCC on ne peut pas faire
+[47:13] de guide pool
+[47:14] en fait il faut spécifier
+[47:16] à chaque fois la source du répertoire
+[47:19] où on veut télécharger
+[47:22] et donner
+[47:22] donc chaque centre de calcul
+[47:24] à sa spécificité, à sa réglementation
+[47:27] et il faut faire
+[47:29] avec l'hydrice
+[47:30] c'était j'ai envie de dire
+[47:32] beaucoup plus simple que là avec
+[47:35] ADASTRA et OTGCC
+[47:36] mais chacun sa spécificité
+[47:39] et c'est pour ça que
+[47:41] HPC à ce service a vraiment
+[47:42] son intérêt je trouve
+[47:45] pour le déploiement
+[47:47] de workflow à large échelle
+[47:49] c'est qu'en fait il faut l'expertise
+[47:51] au niveau du déploiement sur les machines
+[47:53] et chacune à sa spécificité
+[47:56] voici les références
+[47:57] et merci pour votre écoute

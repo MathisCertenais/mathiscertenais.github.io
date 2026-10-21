@@ -375,6 +375,25 @@
   "title": "Contact | Mathis Certenais"
  },
  {
+  "path": "/accessibility",
+  "canonical": "/accessibility",
+  "page": "accessibility",
+  "title": "Accessibility | Mathis Certenais",
+  "description": "Accessibility statement for Mathis Certenais's portfolio: measures taken, audit method, known limitations, and how to report a problem.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "Accessibility statement for Mathis Certenais"
+ },
+ {
+  "canonical": "/fr/accessibility",
+  "description": "D\u00e9claration d'accessibilit\u00e9 du portfolio de Mathis Certenais : mesures prises, m\u00e9thode d'audit, limites connues et contact.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "D\u00e9claration d'accessibilit\u00e9 de Mathis Certenais",
+  "page": "accessibility",
+  "path": "/fr/accessibility",
+  "robots": "index, follow",
+  "title": "Accessibilit\u00e9 | Mathis Certenais"
+ },
+ {
   "path": "/work",
   "canonical": "/research",
   "page": "research",

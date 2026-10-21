@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#eef2f5" />
+    <script>
+      ;(() => {
+        try {
+          const stored = localStorage.getItem('mathis-personal-website:theme')
+          const theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light'
+          document.documentElement.dataset.theme = theme
+          document.documentElement.style.colorScheme = theme
+          document.querySelector('meta[name="theme-color"]').content =
+            theme === 'dark' ? '#15181c' : '#eef2f5'
+        } catch {
+          document.documentElement.dataset.theme = 'light'
+        }
+      })()
+    </script>
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Déclaration d'accessibilité du portfolio de Mathis Certenais : mesures prises, méthode d'audit, limites connues et contact." />
+    <meta property="og:title" content="Accessibilité | Mathis Certenais" />
+    <meta property="og:description" content="Déclaration d'accessibilité du portfolio de Mathis Certenais : mesures prises, méthode d'audit, limites connues et contact." />
+    <meta property="og:site_name" content="Mathis Certenais" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://mathiscertenais.com/images/mathis/social-card.png" />
+    <meta property="og:image:alt" content="Déclaration d'accessibilité de Mathis Certenais" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Accessibilité | Mathis Certenais" />
+    <meta name="twitter:description" content="Déclaration d'accessibilité du portfolio de Mathis Certenais : mesures prises, méthode d'audit, limites connues et contact." />
+    <meta name="twitter:image" content="https://mathiscertenais.com/images/mathis/social-card.png" />
+    <meta name="twitter:image:alt" content="Déclaration d'accessibilité de Mathis Certenais" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Accessibilité | Mathis Certenais</title>
+    <script type="module" crossorigin src="/assets/index-BKG4awF7.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-EbiTDSSB.css">
+    <meta property="og:url" content="https://mathiscertenais.com/fr/accessibility/" />
+    <link rel="canonical" href="https://mathiscertenais.com/fr/accessibility/" />
+      <link rel="alternate" hreflang="en" href="https://mathiscertenais.com/accessibility/" />
+    <link rel="alternate" hreflang="fr" href="https://mathiscertenais.com/fr/accessibility/" />
+    <link rel="alternate" hreflang="x-default" href="https://mathiscertenais.com/accessibility/" />
+  </head>
+  <body>
+    <div id="root"><main class="prerendered" id="main-content">
+      <p class="prerendered__label">Accessibilité</p>
+      <h1>Déclaration d’accessibilité</h1>
+      <p>Ce site vise le niveau AA des WCAG 2.1 et du RGAA 4.1. Il a fait l’objet d’un audit en octobre 2026, combinant des outils automatiques et des vérifications manuelles. Cette page décrit ce qui a été vérifié, ce qui reste à tester, et comment signaler un problème.</p>
+      <p class="prerendered__label">Notre approche</p>
+      <h2>L’accessibilité fait partie du travail, elle n’est pas un ajout.</h2>
+      <p>Le site repose sur du HTML sémantique, un focus visible, un lien d’évitement et des landmarks. Les couleurs ont été choisies pour respecter le contraste AA dans les thèmes clair et sombre.</p>
+      <p>Les vidéos proposent des sous-titres synchronisés lorsque la source le permet, et une alternative textuelle pour la démonstration muette. Les animations sont réduites si le visiteur le demande.</p>
+      <p class="prerendered__label">Vérifié</p>
+      <h2>Ce qui a été contrôlé.</h2>
+      <ul>
+        <li>Contraste du texte sur son fond, en thèmes clair et sombre (WCAG 1.4.3, AA).</li>
+        <li>Un seul h1 par page, aucune rupture de niveau de titre, et des landmarks étiquetés (WCAG 1.3.1, 2.4.1).</li>
+        <li>Accès au clavier, focus visible, lien d’évitement, et gestion du focus dans les menus et les dialogues (WCAG 2.1.1, 2.4.3, 2.4.7).</li>
+        <li>Champs de formulaire étiquetés et textes alternatifs descriptifs pour les images (WCAG 1.1.1, 3.3.2).</li>
+        <li>Reflow sans défilement horizontal à 320 px (WCAG 1.4.10).</li>
+        <li>Sous-titres pour l’entretien et le hackathon, transcription pour la démo MCP muette, et sous-titres natifs du webinaire PeerTube (WCAG 1.2.2).</li>
+        <li>Avertissement avant l’ouverture d’un nouvel onglet (RGAA 13.2).</li>
+      </ul>
+      <p class="prerendered__label">Limites connues</p>
+      <h2>Ce qui reste à tester ou à améliorer.</h2>
+      <ul>
+        <li>Une revue complète avec lecteur d’écran (VoiceOver, NVDA) n’a pas encore été réalisée.</li>
+        <li>Le zoom à 200 %, l’espacement du texte et la page sans CSS restent à vérifier.</li>
+        <li>Les contenus tiers (LinkedIn, PeerTube) ont leur propre accessibilité, que ce site ne maîtrise pas.</li>
+        <li>La transcription du webinaire est un brouillon automatique en cours de relecture.</li>
+      </ul>
+      <p class="prerendered__label">Audit</p>
+      <h2>Méthode et périmètre.</h2>
+      <p>Octobre 2026 — audit automatique avec axe-core (WCAG 2.1 A/AA) sur neuf routes, thèmes clair et sombre, desktop et mobile : aucune violation.</p>
+      <p>Les vérifications manuelles ont porté sur le contraste, la structure des titres, la navigation, les formulaires, les images, la langue, le reflow et l’avertissement de nouvel onglet. Il s’agit d’un audit partiel, pas d’une certification RGAA complète.</p>
+      <p class="prerendered__label">Contact</p>
+      <h2>Signaler un problème d’accessibilité.</h2>
+      <p><a href="mailto:mathiscertenais@gmail.com">mathiscertenais@gmail.com</a></p>
+    </main></div>
+  </body>
+</html>

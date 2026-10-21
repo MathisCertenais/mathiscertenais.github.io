@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#eef2f5" />
+    <script>
+      ;(() => {
+        try {
+          const stored = localStorage.getItem('mathis-personal-website:theme')
+          const theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light'
+          document.documentElement.dataset.theme = theme
+          document.documentElement.style.colorScheme = theme
+          document.querySelector('meta[name="theme-color"]').content =
+            theme === 'dark' ? '#15181c' : '#eef2f5'
+        } catch {
+          document.documentElement.dataset.theme = 'light'
+        }
+      })()
+    </script>
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Accessibility statement for Mathis Certenais's portfolio: measures taken, audit method, known limitations, and how to report a problem." />
+    <meta property="og:title" content="Accessibility | Mathis Certenais" />
+    <meta property="og:description" content="Accessibility statement for Mathis Certenais's portfolio: measures taken, audit method, known limitations, and how to report a problem." />
+    <meta property="og:site_name" content="Mathis Certenais" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://mathiscertenais.com/images/mathis/social-card.png" />
+    <meta property="og:image:alt" content="Accessibility statement for Mathis Certenais" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Accessibility | Mathis Certenais" />
+    <meta name="twitter:description" content="Accessibility statement for Mathis Certenais's portfolio: measures taken, audit method, known limitations, and how to report a problem." />
+    <meta name="twitter:image" content="https://mathiscertenais.com/images/mathis/social-card.png" />
+    <meta name="twitter:image:alt" content="Accessibility statement for Mathis Certenais" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Accessibility | Mathis Certenais</title>
+    <script type="module" crossorigin src="/assets/index-BKG4awF7.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-EbiTDSSB.css">
+    <meta property="og:url" content="https://mathiscertenais.com/accessibility/" />
+    <link rel="canonical" href="https://mathiscertenais.com/accessibility/" />
+      <link rel="alternate" hreflang="en" href="https://mathiscertenais.com/accessibility/" />
+    <link rel="alternate" hreflang="fr" href="https://mathiscertenais.com/fr/accessibility/" />
+    <link rel="alternate" hreflang="x-default" href="https://mathiscertenais.com/accessibility/" />
+  </head>
+  <body>
+    <div id="root"><main class="prerendered" id="main-content">
+      <p class="prerendered__label">Accessibility</p>
+      <h1>Accessibility statement</h1>
+      <p>This site aims to meet level AA of WCAG 2.1 and the French RGAA 4.1. It was audited in October 2026 with automated tooling and manual checks. This page describes what has been verified, what remains to be tested, and how to report a problem.</p>
+      <p class="prerendered__label">Our approach</p>
+      <h2>Accessibility is part of the work, not an afterthought.</h2>
+      <p>The site uses semantic HTML, visible focus, a skip link and landmarks. Colour tokens were chosen to pass AA contrast in both the light and dark themes.</p>
+      <p>Videos provide synchronized captions where the source allows it, and a text alternative for the silent demo. Motion is reduced when the visitor asks for it.</p>
+      <p class="prerendered__label">Verified</p>
+      <h2>What has been checked.</h2>
+      <ul>
+        <li>Contrast of text against its background, in light and dark themes (WCAG 1.4.3, AA).</li>
+        <li>A single h1 per page, no skipped heading levels, and labelled landmarks (WCAG 1.3.1, 2.4.1).</li>
+        <li>Keyboard access, visible focus, a skip link, and focus management in menus and dialogs (WCAG 2.1.1, 2.4.3, 2.4.7).</li>
+        <li>Form fields with associated labels, and descriptive alternative text for images (WCAG 1.1.1, 3.3.2).</li>
+        <li>Reflow without horizontal scrolling at 320 px (WCAG 1.4.10).</li>
+        <li>Captions for the interview and the hackathon, a transcript for the silent MCP demo, and native captions on the PeerTube webinar (WCAG 1.2.2).</li>
+        <li>A warning before opening a new tab (RGAA 13.2).</li>
+      </ul>
+      <p class="prerendered__label">Known limitations</p>
+      <h2>What remains to be tested or improved.</h2>
+      <ul>
+        <li>A full screen-reader review (VoiceOver, NVDA) has not yet been carried out.</li>
+        <li>Zoom at 200 %, text spacing, and the page without CSS remain to be checked.</li>
+        <li>Third-party content (LinkedIn, PeerTube) has its own accessibility, which this site does not control.</li>
+        <li>The webinar transcript is an automatic draft and is being reviewed.</li>
+      </ul>
+      <p class="prerendered__label">Audit</p>
+      <h2>Method and scope.</h2>
+      <p>October 2026 — automated audit with axe-core (WCAG 2.1 A/AA) across nine routes, light and dark themes, desktop and mobile: no violations.</p>
+      <p>Manual checks covered contrast, heading structure, navigation, forms, images, language, reflow and the new-tab warning. This is a partial audit, not a full RGAA certification.</p>
+      <p class="prerendered__label">Contact</p>
+      <h2>Report an accessibility problem.</h2>
+      <p><a href="mailto:mathiscertenais@gmail.com">mathiscertenais@gmail.com</a></p>
+    </main></div>
+  </body>
+</html>
