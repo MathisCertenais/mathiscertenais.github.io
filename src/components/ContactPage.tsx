@@ -189,12 +189,13 @@ export function ContactPage() {
           ) : null}
         </form>
 
-        <div className="contact-card">
-          <p className="section-label">{strings.pages.cardLabel}</p>
-          <h2>{strings.pages.cardHeading}</h2>
-          <p className="contact-card__intro">
-            {strings.pages.cardIntro}
-          </p>
+        {/*
+          Kept out of the visible page but still in the document: the print and
+          social export (`pnpm card:pdf`, `card:jpg`, `social:png`) capture the
+          card from this markup. `display: none` on screen keeps it off the
+          contact page while the print stylesheet still finds it.
+        */}
+        <div aria-hidden="true" className="contact-card">
           <div className="contact-card__frame">
             <BusinessCard />
           </div>

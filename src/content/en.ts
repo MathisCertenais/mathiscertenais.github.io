@@ -240,6 +240,8 @@ export interface VideoItem {
   id: string
   image: string
   kind: VideoKind
+  /** Short title used on small screens, where the full title is too long. */
+  shortTitle: string
   src: string
   title: string
 }
@@ -248,6 +250,7 @@ export const videoItems: VideoItem[] = [
   {
     id: 'eclat-interview',
     title: 'Interview: At the Heart of Data Logistics for Radio Astronomy',
+    shortTitle: 'Interview',
     description: 'An ECLAT interview about Mathis’s path, doctoral research, and multidisciplinary work.',
     kind: 'video',
     src: 'https://eclat-lab.fr/wp-content/uploads/2025/09/ECLAT-interview-matthis-2025-Website-v3.mp4',
@@ -257,6 +260,7 @@ export const videoItems: VideoItem[] = [
   {
     id: 'hpc-service-webinar',
     title: 'Webinar: HPC Application Services for Radio Astronomy',
+    shortTitle: 'Webinar',
     description: 'A webinar on data logistics, intensive imaging, and large-scale workflow orchestration.',
     kind: 'iframe',
     src: 'https://astrotube.obspm.fr/videos/embed/35dTv8mmaSdm36uEFtCnZz',
@@ -266,6 +270,7 @@ export const videoItems: VideoItem[] = [
   {
     id: 'astronomy-hackathon',
     title: 'Event: International Hackathon for Radio Astronomy',
+    shortTitle: 'Hackathon',
     description: 'Highlights from a collaborative ECLAT research event in Rennes.',
     kind: 'video',
     src: 'https://eclat-lab.fr/wp-content/uploads/2026/04/ECLAT-hackathon-Rennes-2026.mp4',
@@ -275,6 +280,7 @@ export const videoItems: VideoItem[] = [
   {
     id: 'mcp-demo-video',
     title: 'Demo: MCP Server Exposing the Structured Knowledge Map of the DDF Pipeline Software',
+    shortTitle: 'MCP demo',
     description: 'Demo of the MCP server exposing the software ontology for DDF Pipeline.',
     kind: 'video',
     src: '/images/mathis/videos/ddf-mcp-demo.mp4',

@@ -235,7 +235,6 @@ function createFallbacks(content, t, href) {
   const {
     aboutPage,
     articleItems,
-    businessCard,
     contactPage,
     expertise,
     identity,
@@ -478,16 +477,7 @@ function renderContact() {
         `<a href="mailto:${escapeHtml(identity.email)}">${escapeHtml(identity.email)}</a>`,
         `<a href="${escapeHtml(identity.linkedin)}" rel="noreferrer" target="_blank">LinkedIn</a>`,
       ])}
-      ${p(
-        t.contactRoutes,
-      )}
-      ${h2(t.cardHeading)}
-      ${list([
-        escapeHtml(businessCard.affiliation),
-        `${escapeHtml(businessCard.phone)} — <a href="${escapeHtml(businessCard.phoneHref)}">${t.callLink}</a>`,
-        `<a href="${escapeHtml(businessCard.website)}">${escapeHtml(businessCard.websiteLabel)}</a>`,
-      ])}
-      ${p(t.qrNote)}
+      ${p(t.contactRoutes)}
     </main>`
 }
 

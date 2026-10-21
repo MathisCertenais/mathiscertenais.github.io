@@ -1,4 +1,5 @@
-import type { ReactNode } from 'react'
+import { useEffect, useId, useRef, useState, type ReactNode } from 'react'
+import { createPortal } from 'react-dom'
 import { useLanguage } from '../language/LanguageProvider'
 import type { ArticleBlock } from '../content'
 import { ArrowIcon } from './Icons'
@@ -38,7 +39,13 @@ function renderInline(text: string): ReactNode[] {
   return nodes
 }
 
-function ArticleBlocks({ blocks }: { blocks: ArticleBlock[] }) {
+function ArticleBlocks({
+  blocks,
+  onZoom,
+}: {
+  blocks: ArticleBlock[]
+  onZoom: (image: ArticlePreview) => void
+}) {
   return (
     <>
       {blocks.map((block, index) => {
@@ -66,13 +73,84 @@ function ArticleBlocks({ blocks }: { blocks: ArticleBlock[] }) {
           case 'figure':
             return (
               <figure className="article-figure" key={index}>
-                <img alt={block.alt} loading="lazy" src={block.image} />
+                <button
+                  className="article-figure__zoom"
+                  onClick={() => onZoom({ alt: block.alt, caption: block.caption, src: block.image })}
+                  type="button"
+                >
+                  <img alt={block.alt} loading="lazy" src={block.image} />
+                </button>
                 {block.caption ? <figcaption>{renderInline(block.caption)}</figcaption> : null}
               </figure>
             )
         }
       })}
     </>
+  )
+}
+
+interface ArticlePreview {
+  alt: string
+  caption?: string
+  src: string
+}
+
+function FigureLightbox({ onClose, preview }: { onClose: () => void; preview: ArticlePreview }) {
+  const closeButtonRef = useRef<HTMLButtonElement>(null)
+  const titleId = useId()
+
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow
+    const appRoot = document.getElementById('root')
+    const previousInert = appRoot?.inert ?? false
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        onClose()
+      }
+    }
+
+    document.body.style.overflow = 'hidden'
+    if (appRoot) appRoot.inert = true
+    const frame = window.requestAnimationFrame(() => closeButtonRef.current?.focus())
+    window.addEventListener('keydown', onKeyDown)
+
+    return () => {
+      window.cancelAnimationFrame(frame)
+      document.body.style.overflow = previousOverflow
+      if (appRoot) appRoot.inert = previousInert
+      window.removeEventListener('keydown', onKeyDown)
+    }
+  }, [onClose])
+
+  return createPortal(
+    <div
+      aria-labelledby={preview.caption ? titleId : undefined}
+      aria-modal="true"
+      className="figure-lightbox"
+      onMouseDown={(event) => {
+        if (event.currentTarget === event.target) onClose()
+      }}
+      role="dialog"
+    >
+      <button
+        aria-label="Close image"
+        className="figure-lightbox__close"
+        onClick={onClose}
+        ref={closeButtonRef}
+        type="button"
+      >
+        ×
+      </button>
+      <figure className="figure-lightbox__figure">
+        <img alt={preview.alt} src={preview.src} />
+        {preview.caption ? (
+          <figcaption id={titleId}>{renderInline(preview.caption)}</figcaption>
+        ) : null}
+      </figure>
+    </div>,
+    document.body,
   )
 }
 
@@ -95,6 +173,7 @@ export function WritingPage() {
 export function ArticlePage({ articleId }: { articleId: string }) {
   const { content, getArticle, localeHref, strings } = useLanguage()
   const { articleItems, videoItems } = content
+  const [preview, setPreview] = useState<ArticlePreview | null>(null)
   const article = getArticle(articleId)
   if (!article) return null
   const video =
@@ -139,7 +218,7 @@ export function ArticlePage({ articleId }: { articleId: string }) {
             </div>
           ) : (
             <>
-              <ArticleBlocks blocks={article.body} />
+              <ArticleBlocks blocks={article.body} onZoom={setPreview} />
 
               {video ? (
                 <figure className="article-media">
@@ -190,6 +269,8 @@ export function ArticlePage({ articleId }: { articleId: string }) {
             </a>
           ))}
       </nav>
+
+      {preview ? <FigureLightbox onClose={() => setPreview(null)} preview={preview} /> : null}
     </main>
   )
 }

@@ -46,7 +46,10 @@ export function SiteFooter() {
       <div className="footer-cta section">
         <div>
           <p className="section-label">{t.footer.ctaLabel}</p>
-          <h2>{t.footer.ctaTitle}</h2>
+          <h2>
+            <span className="footer-cta__title-full">{t.footer.ctaTitle}</span>
+            <span className="footer-cta__title-short">{t.footer.ctaTitleShort}</span>
+          </h2>
         </div>
         <div className="footer-cta__actions">
           <a className="button button--primary" href={localeHref('/contact')}>

@@ -228,25 +228,29 @@ export const researchApplications = {
  * adresse, vignette, type, source — est hérité de l'entrée anglaise, pour qu'il
  * ne puisse pas diverger.
  */
-const videoTranslations: Record<string, { description: string; title: string }> = {
+const videoTranslations: Record<string, { description: string; shortTitle: string; title: string }> = {
   'astronomy-hackathon': {
     description: 'Les temps forts d’un événement de recherche collaboratif d’ECLAT à Rennes.',
+    shortTitle: 'Hackathon',
     title: 'Événement : hackathon international de radioastronomie',
   },
   'eclat-interview': {
     description:
       'Un entretien ECLAT sur le parcours de Mathis, sa recherche doctorale et son travail multidisciplinaire.',
+    shortTitle: 'Entretien',
     title: 'Entretien : au cœur de la logistique des données pour la radioastronomie',
   },
   'hpc-service-webinar': {
     description:
       'Un webinaire sur la logistique des données, l’imagerie intensive et l’orchestration de workflows à grande échelle.',
+    shortTitle: 'Webinaire',
     title:
       'Webinaire : les services applicatifs de calcul haute performance pour la radioastronomie',
   },
   'mcp-demo-video': {
     description:
       'Démonstration du serveur MCP qui expose l’ontologie logicielle du DDF Pipeline.',
+    shortTitle: 'Démo MCP',
     title:
       'Démonstration : un serveur MCP qui expose la carte de connaissances structurée du logiciel DDF Pipeline',
   },

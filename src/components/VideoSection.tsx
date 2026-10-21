@@ -103,7 +103,10 @@ export function VideoSection({ heading, showAllLink = true }: VideoSectionProps)
                   <PlayIcon />
                 </span>
               </span>
-              <span className="video-card__title">{video.title}</span>
+              <span className="video-card__title">
+                <span className="video-card__title-full">{video.title}</span>
+                <span className="video-card__title-short">{video.shortTitle}</span>
+              </span>
             </button>
           ))}
         </div>
