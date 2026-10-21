@@ -118,6 +118,7 @@ export const locales = {
     },
     theme: { toDark: 'Switch to dark mode', toLight: 'Switch to light mode' },
     writing: { allInsights: 'All insights' },
+    a11y: { newTab: 'opens in new tab' },
   },
   fr: {
     fallbacks: {
@@ -229,6 +230,7 @@ export const locales = {
     },
     theme: { toDark: 'Passer en mode sombre', toLight: 'Passer en mode clair' },
     writing: { allInsights: 'Tous les articles' },
+    a11y: { newTab: 'nouvel onglet' },
   },
 } as const
 

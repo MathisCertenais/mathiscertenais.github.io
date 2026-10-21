@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom'
 import { useLanguage } from '../language/LanguageProvider'
 import type { VideoItem } from '../content'
 import { ArrowIcon, PlayIcon } from './Icons'
+import { NewTabHint } from './NewTabHint'
 
 interface VideoSectionProps {
   heading?: string
@@ -163,6 +164,7 @@ export function VideoSection({ heading, showAllLink = true }: VideoSectionProps)
                   </div>
                   <a href={activeVideo.externalHref} rel="noreferrer" target="_blank">
                     View source ↗
+                    <NewTabHint label={strings.a11y.newTab} />
                   </a>
                 </div>
               </div>
