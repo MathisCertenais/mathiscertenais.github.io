@@ -2173,7 +2173,7 @@ figure {
   line-height: 1.55;
 }
 
-.article-figure__zoom {
+.figure-zoom {
   display: block;
   width: 100%;
   padding: 0;
@@ -2183,7 +2183,7 @@ figure {
   cursor: zoom-in;
 }
 
-.article-figure__zoom:focus-visible {
+.figure-zoom:focus-visible {
   outline: 2px solid var(--link);
   outline-offset: 4px;
   border-radius: var(--radius-lg);

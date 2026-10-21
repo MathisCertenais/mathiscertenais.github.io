@@ -1,10 +1,16 @@
+import { useState } from 'react'
 import { useLanguage } from '../language/LanguageProvider'
 import { ArrowIcon } from './Icons'
+import { ImageLightbox, type ImagePreview } from './ImageLightbox'
 import { NewTabHint } from './NewTabHint'
 import { PageHero } from './PageHero'
 
+const SKA_CHAIN_ALT =
+  'Diagram of the SKA processing chain: antennas in Australia and South Africa feed on-site pre-processing, then supercomputers in Perth and Cape Town, whose science products are replicated across an international storage network'
+
 export function ResearchPage() {
   const { content, localeHref, strings } = useLanguage()
+  const [preview, setPreview] = useState<ImagePreview | null>(null)
   const {
     researchApplications,
     researchCase,
@@ -25,7 +31,7 @@ export function ResearchPage() {
       <PageHero
         eyebrow={researchFeature.heading}
         illustration={{
-          alt: 'Diagram of the SKA processing chain: antennas in Australia and South Africa feed on-site pre-processing, then supercomputers in Perth and Cape Town, whose science products are replicated across an international storage network',
+          alt: SKA_CHAIN_ALT,
           ratio: '2 / 1',
           src: '/images/mathis/ska-processing-chain.webp',
         }}
@@ -109,11 +115,19 @@ export function ResearchPage() {
           </div>
         </div>
         <figure className="detail-figure">
-          <img
-            alt="Diagram of the SKA processing chain: antennas in Australia and South Africa feed on-site pre-processing, then supercomputers in Perth and Cape Town, whose science products are replicated across an international storage network"
-            loading="lazy"
-            src="/images/mathis/ska-processing-chain.webp"
-          />
+          <button
+            className="figure-zoom"
+            onClick={() =>
+              setPreview({
+                alt: SKA_CHAIN_ALT,
+                caption: strings.pages.skaCaption,
+                src: '/images/mathis/ska-processing-chain.webp',
+              })
+            }
+            type="button"
+          >
+            <img alt={SKA_CHAIN_ALT} loading="lazy" src="/images/mathis/ska-processing-chain.webp" />
+          </button>
           <figcaption>
             {strings.pages.skaCaption}
           </figcaption>
@@ -175,6 +189,16 @@ export function ResearchPage() {
           </a>
         </div>
       </section>
+
+      {preview ? (
+        <ImageLightbox
+          alt={preview.alt}
+          caption={preview.caption}
+          closeLabel={strings.a11y.closeImage}
+          onClose={() => setPreview(null)}
+          src={preview.src}
+        />
+      ) : null}
     </main>
   )
 }
