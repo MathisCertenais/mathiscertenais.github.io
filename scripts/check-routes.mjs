@@ -253,7 +253,7 @@ function isTextFile(pathname) {
 }
 
 function collectLocalAssets(text, target) {
-  for (const match of text.matchAll(/(?<![A-Za-z0-9:])\/(?:assets|files|images)\/[^"'`\\\s)>,]+/g)) {
+  for (const match of text.matchAll(/(?<![A-Za-z0-9:])\/(?:assets|captions|files|images)\/[^"'`\\\s)>,]+/g)) {
     const pathname = match[0].split(/[?#]/)[0]
     if (!pathname.endsWith('/')) target.add(pathname)
   }
