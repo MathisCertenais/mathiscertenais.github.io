@@ -135,7 +135,6 @@ export function SiteHeader({ currentPath = '/' }: SiteHeaderProps) {
       <header className="site-header">
         <div className="site-header__inner">
           <a
-            aria-label={t.header.brandHome}
             className="brand"
             href={localeHref('/')}
             onClick={closeMenu}

@@ -88,7 +88,6 @@ export function VideoSection({ heading, showAllLink = true }: VideoSectionProps)
         <div className="video-grid video-grid--research">
           {videoItems.map((video) => (
             <button
-              aria-label={`Play ${video.title}`}
               className="video-card"
               key={video.id}
               onClick={(event) => {
@@ -104,6 +103,7 @@ export function VideoSection({ heading, showAllLink = true }: VideoSectionProps)
                 </span>
               </span>
               <span className="video-card__title">
+                <span className="visually-hidden">Play: </span>
                 <span className="video-card__title-full">{video.title}</span>
                 <span className="video-card__title-short">{video.shortTitle}</span>
               </span>
