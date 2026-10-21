@@ -68,7 +68,7 @@ export function SiteFooter() {
 
       <div className="footer-links section">
         <div className="footer-brand">
-          <a aria-label={t.footer.brandHome} className="footer-wordmark" href={localeHref('/')}>
+          <a className="footer-wordmark" href={localeHref('/')}>
             <span aria-hidden="true">M.</span> Mathis Certenais
           </a>
           <p>{t.footer.description}</p>

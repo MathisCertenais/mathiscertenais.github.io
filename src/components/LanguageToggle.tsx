@@ -15,7 +15,6 @@ export function LanguageToggle({ className, tabIndex }: LanguageToggleProps) {
 
   return (
     <button
-      aria-label={strings.language.aria}
       className={['language-toggle', className].filter(Boolean).join(' ')}
       data-language={language}
       lang={language === 'fr' ? 'en' : 'fr'}
@@ -43,6 +42,7 @@ export function LanguageToggle({ className, tabIndex }: LanguageToggleProps) {
       type="button"
     >
       {strings.language.code}
+      <span className="visually-hidden"> — {strings.language.aria}</span>
     </button>
   )
 }
