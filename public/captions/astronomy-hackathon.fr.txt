@@ -1,0 +1,27 @@
+Transcription — Hackathon international de radioastronomie (ECLAT)
+
+
+[00:00] Nous voulons construire un pipeline qui peut être utilisé par différents instruments
+[00:06] et qui va incorporer différents outils, incluant DDFacet.
+[00:11] L'objectif de cet événement, c'est de rassembler des personnes de France,
+[00:15] d'Afrique du Sud et aussi d'Angleterre, pour en fait pendant une semaine travailler sur deux sujets.
+[00:21] Pour une première partie, travailler sur la portabilité du logiciel,
+[00:24] de traitement de données appelé DDF, pouvoir l'installer sur différentes machines, différents systèmes.
+[00:29] L'idée c'est de construire un pipeline plus complexe qui peut être utilisé par différents instruments,
+[00:36] et aussi d'une prochaine génération d'instruments, qui incluent le SKA.
+[00:42] La première initiative, c'était de faire les essais sur Jean Zay, sur le centre Jean Zay.
+[00:46] Et là en fait, on a réussi à porter l'installation sur une seconde machine française qui est Adastra,
+[00:53] qui est hébergée au CINES, et du coup une machine qui se situe en Angleterre, à Hertfordshire.
+[00:59] Même chez notre partenaire industriel, Bull, qui travaille aussi au projet RIMS.
+[01:05] C'est un logiciel qui va générer des spectres dynamiques qui permettent de faire de la détection d'événements rares.
+[01:13] Et l'objectif, nous de notre côté, c'est d'apporter un réseau et des services associés à ce logiciel.
+[01:29] Vous pourriez être capable d'apporter cette information à l'arrivée, même si ça a été généré par des personnes différentes.
+[01:38] Et la bonne chose sur ces hackathons, c'est que c'est très collaboratif.
+[01:43] Les gens disent que peut-être que quelqu'un m'aide avec ça et quelqu'un d'autre peut dire,
+[01:46] « Oui, je sais ça. »
+[01:47] « Laisse-moi juste faire ça. »
+[01:49] « Ok, je l'ai fait maintenant. »
+[01:50] « Allez voir si ça fonctionne. »
+[01:53] Nous avons toujours ces petites interactions où nous résolvons tous nos problèmes.
+[01:56] C'est la nature des choses.
+[01:58] J'espère que je vais résoudre les problèmes des gens, mais aussi que je vais apprendre des solutions à mes problèmes.
