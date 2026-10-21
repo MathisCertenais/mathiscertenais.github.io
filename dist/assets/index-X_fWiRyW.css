@@ -730,7 +730,7 @@ button:hover .cta-arrow {
   padding: 0;
   overflow: hidden;
   flex-direction: column;
-  border: 1px solid var(--border);
+  border: 1px solid color-mix(in srgb, var(--text-dark) 16%, transparent);
   border-radius: var(--radius-lg);
   color: var(--text-dark);
   background: var(--surface-card);
@@ -801,9 +801,14 @@ button:hover .cta-arrow {
   display: block;
   min-height: 80px;
   padding: 16px 16px 20px;
+  border-top: 1px solid var(--border);
   font-size: 13px;
   font-weight: 500;
   line-height: 19.59375px;
+}
+
+.video-card__title-short {
+  display: none;
 }
 
 .video-modal {
@@ -1026,6 +1031,10 @@ button:hover .cta-arrow {
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: -0.03em;
+}
+
+.footer-cta__title-short {
+  display: none;
 }
 
 .footer-cta__actions {
@@ -2134,6 +2143,89 @@ figure {
   line-height: 1.55;
 }
 
+.article-figure__zoom {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  cursor: zoom-in;
+}
+
+.article-figure__zoom:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 4px;
+  border-radius: var(--radius-lg);
+}
+
+.figure-lightbox {
+  position: fixed;
+  z-index: 10000;
+  inset: 0;
+  display: flex;
+  padding: 5vh 24px;
+  align-items: center;
+  justify-content: center;
+  background: rgba(20, 20, 19, 0.85);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: modal-fade 160ms ease-out;
+}
+
+.figure-lightbox__figure {
+  display: flex;
+  max-width: min(1040px, 100%);
+  max-height: 90vh;
+  margin: 0;
+  flex-direction: column;
+  gap: 12px;
+  animation: modal-rise 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.figure-lightbox__figure img {
+  width: auto;
+  max-width: 100%;
+  max-height: 78vh;
+  margin-inline: auto;
+  border-radius: var(--radius-lg);
+  background: var(--surface-card-solid);
+  object-fit: contain;
+}
+
+.figure-lightbox__figure figcaption {
+  max-width: 720px;
+  margin-inline: auto;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.figure-lightbox__close {
+  position: fixed;
+  z-index: 2;
+  top: 18px;
+  right: 18px;
+  display: flex;
+  width: 40px;
+  height: 40px;
+  padding: 0 0 3px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  color: white;
+  background: rgba(255, 255, 255, 0.14);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.figure-lightbox__close:hover {
+  background: rgba(255, 255, 255, 0.26);
+}
+
 .article-source {
   margin-top: 40px;
 }
@@ -2764,7 +2856,7 @@ figure {
 }
 
 .contact-card {
-  display: flex;
+  display: none;
   grid-column: 1 / -1;
   flex-direction: column;
   gap: 16px;
@@ -2992,6 +3084,10 @@ figure {
   display: none !important;
 }
 
+.share-capture .contact-card {
+  display: block !important;
+}
+
 .share-capture .share-card {
   display: block;
 }
@@ -3136,6 +3232,10 @@ figure {
   .contact-layout {
     display: block;
     padding: 0;
+  }
+
+  .contact-card {
+    display: block;
   }
 
   .contact-card > .section-label,
@@ -4381,5 +4481,65 @@ figure {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+}
+
+/* Small screens (phones) ------------------------------------------------ */
+
+@media (max-width: 640px) {
+  /* One video per line, with the short title instead of the full one. */
+  .video-grid,
+  .video-grid--research {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .video-card__title-full {
+    display: none;
+  }
+
+  .video-card__title-short {
+    display: inline;
+  }
+
+  /* The footer call-to-action drops to a shorter question on phones. */
+  .footer-cta__title-full {
+    display: none;
+  }
+
+  .footer-cta__title-short {
+    display: inline;
+  }
+
+  /* The thesis title is long, so it shrinks rather than stacking into a wall. */
+  .research-feature__title {
+    font-size: 24px;
+    line-height: 1.28;
+  }
+
+  .page-hero--with-landscape-art h1 {
+    font-size: 30px;
+    line-height: 1.16;
+  }
+}
+
+/* Justified body copy ------------------------------------------------ */
+
+/* Long-form prose reads as a printed page on wide screens: justified text with
+   language-aware hyphenation. Narrow screens keep the default left alignment,
+   where justified text would leave rivers of whitespace. */
+@media (min-width: 769px) {
+  .article-prose > p:not(.article-source),
+  .article-prose li,
+  .profile-story__copy p,
+  .research-story__copy p,
+  .research-methods__copy p,
+  .research-feature__lead,
+  .section-intro,
+  .page-hero__intro,
+  .videos-section__intro,
+  .contact-details > p:not(.section-label) {
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
   }
 }

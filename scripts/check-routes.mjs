@@ -120,7 +120,7 @@ const prerenderedFallbacks = {
   '/videos': ['Research, explained in context.', 'Watch & listen'],
   '/about': ['Building infrastructure through collaboration.', 'Working principles'],
   '/resume': ['arXiv:2509.03075', 'Relevant certifications'],
-  '/contact': ['Let’s connect the systems.', 'The card I hand out.'],
+  '/contact': ['Let’s connect the systems.', 'Start a conversation.'],
   '/fr': ['Logistique des données', 'En bref'],
   '/fr/research': [
     'Ce que la thèse mesure',
@@ -131,7 +131,7 @@ const prerenderedFallbacks = {
   '/fr/videos': ['La recherche, expliquée en contexte.', 'À regarder et à écouter'],
   '/fr/about': ['Construire des infrastructures par la collaboration.', 'Principes de travail'],
   '/fr/resume': ['Certifications pertinentes', 'Interventions sélectionnées'],
-  '/fr/contact': ['Relions les systèmes.', 'La carte que je distribue.'],
+  '/fr/contact': ['Relions les systèmes.', 'Commençons par un message.'],
 }
 
 const PRERENDERED_MIN_CHARACTERS = 300
@@ -148,7 +148,7 @@ const prerenderedMinLinks = {
   '/videos': 3,
   '/about': 1,
   '/resume': 1,
-  '/contact': 3,
+  '/contact': 2,
 }
 
 const PRERENDERED_ARTICLE_MIN_LINKS = 3

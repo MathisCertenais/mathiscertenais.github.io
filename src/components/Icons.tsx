@@ -71,7 +71,7 @@ export function MenuIcon({ open }: { open: boolean }) {
 
 export function PlayIcon() {
   return (
-    <svg aria-hidden="true" height="56" viewBox="0 0 56 56" width="56">
+    <svg aria-hidden="true" height="40" viewBox="0 0 56 56" width="40">
       <circle cx="28" cy="28" fill="rgba(255,255,255,.94)" r="27" />
       <path d="m23 18 16 10-16 10V18Z" fill="#31527d" />
     </svg>
