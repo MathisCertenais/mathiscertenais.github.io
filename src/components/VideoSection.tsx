@@ -183,6 +183,17 @@ export function VideoSection({ heading, showAllLink = true }: VideoSectionProps)
                     <p>{activeVideo.transcript}</p>
                   </details>
                 ) : null}
+                {activeVideo.transcriptHref && !activeVideo.transcript ? (
+                  <a
+                    className="video-transcript-link"
+                    href={activeVideo.transcriptHref}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    {strings.pages.transcript} <ArrowIcon external />
+                    <NewTabHint label={strings.a11y.newTab} />
+                  </a>
+                ) : null}
               </div>
             </div>,
             document.body,

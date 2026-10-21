@@ -100,6 +100,11 @@ export function SiteFooter() {
           </nav>
         ))}
       </div>
+
+      <div className="footer-legal section">
+        <a href={localeHref('/accessibility')}>{t.footer.accessibility}</a>
+        <span>{t.footer.accessibilityNote}</span>
+      </div>
     </footer>
   )
 }

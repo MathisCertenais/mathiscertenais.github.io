@@ -36,6 +36,7 @@ export const sourceLinks = {
   eclatPartners: 'https://eclat-lab.fr/en/partners/',
   eclatWorkshop: 'https://eclat-lab.fr/en/technical-workshop-2025-and-hackathon/',
   eclatWebinar: 'https://eclat-lab.fr/webinaire-hpc-as-a-service-for-radio-astronomy/',
+  astrotubeWebinar: 'https://astrotube.obspm.fr/w/35dTv8mmaSdm36uEFtCnZz',
   linkedin: identity.linkedin,
   numpex: 'https://numpex.org/data-logistics-for-radio-astronomy/',
   numpexYoungpex: 'https://numpex.org/youngpex/',
@@ -258,6 +259,8 @@ export interface VideoItem {
   title: string
   /** Text alternative shown in a collapsible block, for silent or spoken media. */
   transcript?: string
+  /** Long transcript hosted as a file, for media too long to inline. */
+  transcriptHref?: string
 }
 
 export const videoItems: VideoItem[] = [
@@ -280,7 +283,8 @@ export const videoItems: VideoItem[] = [
     description: 'A webinar on data logistics, intensive imaging, and large-scale workflow orchestration.',
     kind: 'iframe',
     src: 'https://astrotube.obspm.fr/videos/embed/35dTv8mmaSdm36uEFtCnZz',
-    externalHref: sourceLinks.eclatWebinar,
+    externalHref: sourceLinks.astrotubeWebinar,
+    transcriptHref: '/captions/astrotube-webinar.fr.txt',
     image: '/images/mathis/videos/webinar.webp',
   },
   {
@@ -1690,6 +1694,57 @@ export const resumePage = {
 export const contactPage = {
   intro:
     'Mathis is based in Rennes, France and works across computer science, HPC, and radio astronomy.',
+} as const
+
+export const accessibilityPage = {
+  eyebrow: 'Accessibility',
+  title: 'Accessibility statement',
+  intro:
+    'This site aims to meet level AA of WCAG 2.1 and the French RGAA 4.1. It was audited in October 2026 with automated tooling and manual checks. This page describes what has been verified, what remains to be tested, and how to report a problem.',
+  approach: {
+    label: 'Our approach',
+    heading: 'Accessibility is part of the work, not an afterthought.',
+    paragraphs: [
+      'The site uses semantic HTML, visible focus, a skip link and landmarks. Colour tokens were chosen to pass AA contrast in both the light and dark themes.',
+      'Videos provide synchronized captions where the source allows it, and a text alternative for the silent demo. Motion is reduced when the visitor asks for it.',
+    ],
+  },
+  verified: {
+    label: 'Verified',
+    heading: 'What has been checked.',
+    items: [
+      'Contrast of text against its background, in light and dark themes (WCAG 1.4.3, AA).',
+      'A single h1 per page, no skipped heading levels, and labelled landmarks (WCAG 1.3.1, 2.4.1).',
+      'Keyboard access, visible focus, a skip link, and focus management in menus and dialogs (WCAG 2.1.1, 2.4.3, 2.4.7).',
+      'Form fields with associated labels, and descriptive alternative text for images (WCAG 1.1.1, 3.3.2).',
+      'Reflow without horizontal scrolling at 320 px (WCAG 1.4.10).',
+      'Captions for the interview and the hackathon, a transcript for the silent MCP demo, and native captions on the PeerTube webinar (WCAG 1.2.2).',
+      'A warning before opening a new tab (RGAA 13.2).',
+    ],
+  },
+  limitations: {
+    label: 'Known limitations',
+    heading: 'What remains to be tested or improved.',
+    items: [
+      'A full screen-reader review (VoiceOver, NVDA) has not yet been carried out.',
+      'Zoom at 200 %, text spacing, and the page without CSS remain to be checked.',
+      'Third-party content (LinkedIn, PeerTube) has its own accessibility, which this site does not control.',
+      'The webinar transcript is an automatic draft and is being reviewed.',
+    ],
+  },
+  audit: {
+    label: 'Audit',
+    heading: 'Method and scope.',
+    paragraphs: [
+      'October 2026 — automated audit with axe-core (WCAG 2.1 A/AA) across nine routes, light and dark themes, desktop and mobile: no violations.',
+      'Manual checks covered contrast, heading structure, navigation, forms, images, language, reflow and the new-tab warning. This is a partial audit, not a full RGAA certification.',
+    ],
+  },
+  contact: {
+    label: 'Contact',
+    heading: 'Report an accessibility problem.',
+    text: 'If you encounter a barrier, write to',
+  },
 } as const
 
 /**

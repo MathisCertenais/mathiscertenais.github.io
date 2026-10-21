@@ -204,6 +204,17 @@ export function ArticlePage({ articleId }: { articleId: string }) {
                       <p>{video.transcript}</p>
                     </details>
                   ) : null}
+                  {video.transcriptHref && !video.transcript ? (
+                    <a
+                      className="video-transcript-link"
+                      href={video.transcriptHref}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      {strings.pages.transcript} <ArrowIcon external />
+                      <NewTabHint label={strings.a11y.newTab} />
+                    </a>
+                  ) : null}
                 </figure>
               ) : null}
 
