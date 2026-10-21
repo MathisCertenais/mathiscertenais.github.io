@@ -1,0 +1,73 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:06.600
+Nous voulons construire un pipeline qui peut être utilisé par différents instruments
+
+00:00:06.600 --> 00:00:11.560
+et qui va incorporer différents outils, incluant DDFacet.
+
+00:00:11.560 --> 00:00:15.840
+L'objectif de cet événement, c'est de rassembler des personnes de France,
+
+00:00:15.840 --> 00:00:21.040
+d'Afrique du Sud et aussi d'Angleterre, pour en fait pendant une semaine travailler sur deux sujets.
+
+00:00:21.040 --> 00:00:24.240
+Pour une première partie, travailler sur la portabilité du logiciel,
+
+00:00:24.240 --> 00:00:29.840
+de traitement de données appelé DDF, pouvoir l'installer sur différentes machines, différents systèmes.
+
+00:00:29.840 --> 00:00:36.120
+L'idée c'est de construire un pipeline plus complexe qui peut être utilisé par différents instruments,
+
+00:00:36.120 --> 00:00:42.000
+et aussi d'une prochaine génération d'instruments, qui incluent le SKA.
+
+00:00:42.000 --> 00:00:46.840
+La première initiative, c'était de faire les essais sur Jean Zay, sur le centre Jean Zay.
+
+00:00:46.840 --> 00:00:53.840
+Et là en fait, on a réussi à porter l'installation sur une seconde machine française qui est Adastra,
+
+00:00:53.840 --> 00:00:59.800
+qui est hébergée au CINES, et du coup une machine qui se situe en Angleterre, à Hertfordshire.
+
+00:00:59.800 --> 00:01:05.800
+Même chez notre partenaire industriel, Bull, qui travaille aussi au projet RIMS.
+
+00:01:05.800 --> 00:01:13.800
+C'est un logiciel qui va générer des spectres dynamiques qui permettent de faire de la détection d'événements rares.
+
+00:01:13.800 --> 00:01:19.800
+Et l'objectif, nous de notre côté, c'est d'apporter un réseau et des services associés à ce logiciel.
+
+00:01:29.800 --> 00:01:38.800
+Vous pourriez être capable d'apporter cette information à l'arrivée, même si ça a été généré par des personnes différentes.
+
+00:01:38.800 --> 00:01:43.800
+Et la bonne chose sur ces hackathons, c'est que c'est très collaboratif.
+
+00:01:43.800 --> 00:01:46.800
+Les gens disent que peut-être que quelqu'un m'aide avec ça et quelqu'un d'autre peut dire,
+
+00:01:46.800 --> 00:01:47.800
+« Oui, je sais ça. »
+
+00:01:47.800 --> 00:01:49.800
+« Laisse-moi juste faire ça. »
+
+00:01:49.800 --> 00:01:50.800
+« Ok, je l'ai fait maintenant. »
+
+00:01:50.800 --> 00:01:52.800
+« Allez voir si ça fonctionne. »
+
+00:01:53.800 --> 00:01:56.800
+Nous avons toujours ces petites interactions où nous résolvons tous nos problèmes.
+
+00:01:56.800 --> 00:01:58.800
+C'est la nature des choses.
+
+00:01:58.800 --> 00:02:05.800
+J'espère que je vais résoudre les problèmes des gens, mais aussi que je vais apprendre des solutions à mes problèmes.

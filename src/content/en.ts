@@ -289,6 +289,7 @@ export const videoItems: VideoItem[] = [
     shortTitle: 'Hackathon',
     description: 'Highlights from a collaborative ECLAT research event in Rennes.',
     kind: 'video',
+    captions: [{ src: '/captions/astronomy-hackathon.fr.vtt', lang: 'fr', label: 'Français' }],
     src: 'https://eclat-lab.fr/wp-content/uploads/2026/04/ECLAT-hackathon-Rennes-2026.mp4',
     externalHref: sourceLinks.eclatHackathon,
     image: '/images/mathis/international-hackathon-for-astronomy/cover.webp',
