@@ -131,6 +131,17 @@
     margin: 0;
   }
 
+  /* Long technical terms and headings must never force horizontal scrolling:
+     a word that cannot fit wraps mid-word instead of spilling past the viewport. */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    overflow-wrap: break-word;
+  }
+
   ul {
     padding: 0;
     list-style: none;
@@ -222,6 +233,12 @@
 .desktop-nav--secondary {
   flex-shrink: 0;
   justify-self: end;
+  gap: 4px;
+}
+
+.desktop-nav__links {
+  display: flex;
+  align-items: center;
   gap: 4px;
 }
 

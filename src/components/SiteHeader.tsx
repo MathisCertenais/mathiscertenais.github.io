@@ -160,29 +160,28 @@ export function SiteHeader({ currentPath = '/' }: SiteHeaderProps) {
             ))}
           </nav>
 
-          <nav
-            aria-label={t.header.navigationSecondary}
-            className="desktop-nav desktop-nav--secondary"
-          >
-            {secondaryLinks.map((link) => (
-              <a
-                aria-label={
-                  link.external ? t.header.onLinkedin : undefined
-                }
-                aria-current={linkIsCurrent(link.href, currentPath) ? 'page' : undefined}
-                className="nav-link-muted"
-                href={localeHref(link.href)}
-                key={link.key}
-                rel={link.external ? 'noreferrer' : undefined}
-                target={link.external ? '_blank' : undefined}
-              >
-                {t.nav[link.key]}
-                {link.external ? <ExternalLinkIcon /> : null}
-              </a>
-            ))}
+          <div className="desktop-nav desktop-nav--secondary">
+            <nav aria-label={t.header.navigationSecondary} className="desktop-nav__links">
+              {secondaryLinks.map((link) => (
+                <a
+                  aria-label={
+                    link.external ? t.header.onLinkedin : undefined
+                  }
+                  aria-current={linkIsCurrent(link.href, currentPath) ? 'page' : undefined}
+                  className="nav-link-muted"
+                  href={localeHref(link.href)}
+                  key={link.key}
+                  rel={link.external ? 'noreferrer' : undefined}
+                  target={link.external ? '_blank' : undefined}
+                >
+                  {t.nav[link.key]}
+                  {link.external ? <ExternalLinkIcon /> : null}
+                </a>
+              ))}
+            </nav>
             <ThemeToggle className="theme-toggle--desktop" />
             <LanguageToggle className="language-toggle--desktop" />
-          </nav>
+          </div>
 
           <ThemeToggle className="theme-toggle--mobile" tabIndex={isOpen ? -1 : 0} />
           <LanguageToggle className="language-toggle--mobile" tabIndex={isOpen ? -1 : 0} />
