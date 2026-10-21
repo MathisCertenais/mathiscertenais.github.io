@@ -267,6 +267,8 @@ export const videoItems: VideoItem[] = [
     shortTitle: 'Interview',
     description: 'An ECLAT interview about Mathis’s path, doctoral research, and multidisciplinary work.',
     kind: 'video',
+    // WebVTT exported from the LinkedIn post's caption track.
+    captions: [{ src: '/captions/eclat-interview.en.vtt', lang: 'en', label: 'English' }],
     src: 'https://eclat-lab.fr/wp-content/uploads/2025/09/ECLAT-interview-matthis-2025-Website-v3.mp4',
     externalHref: sourceLinks.eclatInterview,
     image: '/images/mathis/videos/interview.webp',
