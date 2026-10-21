@@ -1311,9 +1311,9 @@ export const accessibilityPage = {
     items: [
       'Contraste du texte sur son fond, en thèmes clair et sombre (WCAG 1.4.3, AA).',
       'Un seul h1 par page, aucune rupture de niveau de titre, et des landmarks étiquetés (WCAG 1.3.1, 2.4.1).',
-      'Accès au clavier, focus visible, lien d’évitement, et gestion du focus dans les menus et les dialogues (WCAG 2.1.1, 2.4.3, 2.4.7).',
-      'Champs de formulaire étiquetés et textes alternatifs descriptifs pour les images (WCAG 1.1.1, 3.3.2).',
-      'Reflow sans défilement horizontal à 320 px (WCAG 1.4.10).',
+      'Accès au clavier, focus visible, lien d’évitement, page actuelle marquée par aria-current, et gestion du focus dans les menus et les dialogues (WCAG 2.1.1, 2.4.3, 2.4.7).',
+      'Champs de formulaire étiquetés, obligatoires indiqués, messages d’erreur en ligne et région de statut, avec des textes alternatifs descriptifs pour les images (WCAG 1.1.1, 3.3.1, 3.3.2, 3.3.3).',
+      'Reflow sans défilement horizontal à 320 px, texte à 200 % et espacement du texte WCAG (WCAG 1.4.10, 1.4.12).',
       'Sous-titres pour l’entretien et le hackathon, transcription pour la démo MCP muette, et sous-titres natifs du webinaire PeerTube (WCAG 1.2.2).',
       'Avertissement avant l’ouverture d’un nouvel onglet (RGAA 13.2).',
     ],
@@ -1323,7 +1323,7 @@ export const accessibilityPage = {
     heading: 'Ce qui reste à tester ou à améliorer.',
     items: [
       'Une revue complète avec lecteur d’écran (VoiceOver, NVDA) n’a pas encore été réalisée.',
-      'Le zoom à 200 %, l’espacement du texte et la page sans CSS restent à vérifier.',
+      'Le zoom navigateur à 200 % et une revue complète avec lecteur d’écran restent à valider manuellement.',
       'Les contenus tiers (LinkedIn, PeerTube) ont leur propre accessibilité, que ce site ne maîtrise pas.',
       'La transcription du webinaire est un brouillon automatique en cours de relecture.',
     ],
@@ -1333,7 +1333,7 @@ export const accessibilityPage = {
     heading: 'Méthode et périmètre.',
     paragraphs: [
       'Octobre 2026 — audit automatique avec axe-core (WCAG 2.1 A/AA) sur neuf routes, thèmes clair et sombre, desktop et mobile : aucune violation.',
-      'Les vérifications manuelles ont porté sur le contraste, la structure des titres, la navigation, les formulaires, les images, la langue, le reflow et l’avertissement de nouvel onglet. Il s’agit d’un audit partiel, pas d’une certification RGAA complète.',
+      'Les vérifications manuelles ont porté sur le contraste, la structure des titres, la navigation, les formulaires (champs obligatoires, erreurs en ligne, focus), les images, la langue, le reflow, le texte à 200 %, l’espacement du texte et l’avertissement de nouvel onglet. Il s’agit d’un audit partiel, pas d’une certification RGAA complète.',
     ],
   },
   contact: {

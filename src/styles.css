@@ -2884,16 +2884,35 @@ figure {
   background: var(--surface-card);
 }
 
-.contact-form label {
+.contact-form__field {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.contact-form label > span {
+.contact-form__field > label {
   color: var(--text-mid);
   font-size: 13px;
   font-weight: 500;
+}
+
+.contact-form__required {
+  color: var(--accent);
+}
+
+.contact-form__error {
+  color: #7a3035;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+:root[data-theme='dark'] .contact-form__error {
+  color: #efc6ca;
+}
+
+.contact-form__note {
+  color: var(--text-light);
+  font-size: 12px;
 }
 
 .contact-form input,

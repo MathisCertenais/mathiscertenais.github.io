@@ -7,6 +7,9 @@ import { PageHero } from './PageHero'
 
 type FormStatus = 'error' | 'idle' | 'sending' | 'success'
 
+type FormField = 'email' | 'message' | 'name'
+type FormErrors = Partial<Record<FormField, string>>
+
 /**
  * Where a submitted message actually goes.
  *
@@ -49,12 +52,34 @@ export function ContactPage() {
   const [status, setStatus] = useState<FormStatus>('idle')
   const [statusMessage, setStatusMessage] = useState('')
   const [mailtoHref, setMailtoHref] = useState<string | null>(null)
+  const [errors, setErrors] = useState<FormErrors>({})
+
+  const clearError = (field: FormField) => {
+    setErrors((current) => (current[field] ? { ...current, [field]: undefined } : current))
+  }
 
   const submitForm = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const form = event.currentTarget
-    if (!form.reportValidity()) return
+    const data = new FormData(form)
+    const name = readField(data, 'name')
+    const replyTo = readField(data, 'email')
+    const message = readField(data, 'message')
+    const nextErrors: FormErrors = {}
 
+    if (!name) nextErrors.name = strings.pages.errorRequired
+    if (!replyTo) nextErrors.email = strings.pages.errorRequired
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(replyTo)) nextErrors.email = strings.pages.errorEmail
+    if (!message) nextErrors.message = strings.pages.errorRequired
+
+    if (Object.keys(nextErrors).length > 0) {
+      setErrors(nextErrors)
+      const firstField = (['name', 'email', 'message'] as const).find((field) => nextErrors[field])
+      if (firstField) form.querySelector<HTMLElement>(`[name="${firstField}"]`)?.focus()
+      return
+    }
+
+    setErrors({})
     void sendForm(form)
   }
 
@@ -150,19 +175,76 @@ export function ContactPage() {
           </a>
         </div>
 
-        <form className="contact-form" onSubmit={submitForm}>
-          <label>
-            <span>{strings.pages.formName}</span>
-            <input autoComplete="name" name="name" required type="text" />
-          </label>
-          <label>
-            <span>{strings.pages.formEmail}</span>
-            <input autoComplete="email" name="email" required type="email" />
-          </label>
-          <label>
-            <span>{strings.pages.formMessage}</span>
-            <textarea name="message" required rows={7} />
-          </label>
+        <form className="contact-form" noValidate onSubmit={submitForm}>
+          <div className="contact-form__field">
+            <label htmlFor="contact-name">
+              {strings.pages.formName}{' '}
+              <span aria-hidden="true" className="contact-form__required">
+                *
+              </span>
+            </label>
+            <input
+              aria-describedby={errors.name ? 'contact-name-error' : undefined}
+              aria-invalid={errors.name ? true : undefined}
+              autoComplete="name"
+              id="contact-name"
+              name="name"
+              onChange={() => clearError('name')}
+              required
+              type="text"
+            />
+            {errors.name ? (
+              <p className="contact-form__error" id="contact-name-error">
+                {errors.name}
+              </p>
+            ) : null}
+          </div>
+          <div className="contact-form__field">
+            <label htmlFor="contact-email">
+              {strings.pages.formEmail}{' '}
+              <span aria-hidden="true" className="contact-form__required">
+                *
+              </span>
+            </label>
+            <input
+              aria-describedby={errors.email ? 'contact-email-error' : undefined}
+              aria-invalid={errors.email ? true : undefined}
+              autoComplete="email"
+              id="contact-email"
+              name="email"
+              onChange={() => clearError('email')}
+              required
+              type="email"
+            />
+            {errors.email ? (
+              <p className="contact-form__error" id="contact-email-error">
+                {errors.email}
+              </p>
+            ) : null}
+          </div>
+          <div className="contact-form__field">
+            <label htmlFor="contact-message">
+              {strings.pages.formMessage}{' '}
+              <span aria-hidden="true" className="contact-form__required">
+                *
+              </span>
+            </label>
+            <textarea
+              aria-describedby={errors.message ? 'contact-message-error' : undefined}
+              aria-invalid={errors.message ? true : undefined}
+              id="contact-message"
+              name="message"
+              onChange={() => clearError('message')}
+              required
+              rows={7}
+            />
+            {errors.message ? (
+              <p className="contact-form__error" id="contact-message-error">
+                {errors.message}
+              </p>
+            ) : null}
+          </div>
+          <p className="contact-form__note">{strings.pages.requiredNote}</p>
           {/*
             Honeypot. Off-screen and out of the tab order, so no visitor reaches
             it; its label is deliberately untranslated because no visitor reads
