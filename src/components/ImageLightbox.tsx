@@ -28,6 +28,7 @@ export function ImageLightbox({ alt, caption, closeLabel, onClose, src }: ImageL
     const previousOverflow = document.body.style.overflow
     const appRoot = document.getElementById('root')
     const previousInert = appRoot?.inert ?? false
+    const trigger = document.activeElement instanceof HTMLElement ? document.activeElement : null
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -46,6 +47,7 @@ export function ImageLightbox({ alt, caption, closeLabel, onClose, src }: ImageL
       document.body.style.overflow = previousOverflow
       if (appRoot) appRoot.inert = previousInert
       window.removeEventListener('keydown', onKeyDown)
+      window.requestAnimationFrame(() => trigger?.focus())
     }
   }, [onClose])
 

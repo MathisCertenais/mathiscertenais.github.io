@@ -37,9 +37,15 @@
 
 Sur les critères **effectivement évalués**, aucune non-conformité n'a été détectée. Le taux de conformité sur les 106 critères du RGAA ne peut pas être annoncé tant que les tests manuels restants n'ont pas été réalisés. Il s'agit donc d'un **audit partiel**, pas d'une certification.
 
-## Tests manuels restants
+## Tests manuels réalisés
 
-1. Revue complète avec lecteur d'écran (VoiceOver, NVDA) sur les parcours principaux.
-2. Zoom navigateur à 200 % (au-delà du test de taille de police).
-3. Page sans CSS.
-4. Relecture de la transcription du webinaire et validation des contenus tiers (PeerTube).
+- **Arbre d'accessibilité et clavier** : skip-link, `aria-current` FR/EN, focus dans les menus et dialogues, focus rendu au déclencheur, formulaire annoncé (`aria-invalid`, `aria-describedby`). Une session VoiceOver/NVDA réelle reste recommandée.
+- **Zoom 200 % / 400 %** : 720×450, 640×400 et 320×256, sur 10 routes — aucun débordement horizontal ni contenu tronqué.
+- **Sans CSS** : 8 routes — aucune perte de contenu (textes, titres, liens et champs identiques). Le menu mobile, la carte de visite et le champ anti-bot deviennent visibles, sans perte d'information.
+- **Transcription du webinaire** : noms propres et termes techniques relus (Mathis Certenais, IRISA, CINES, IDRIS, TGCC, Adastra, SURFsara, LOFAR, NumPEx, ECLAT, Bull, Karl Jansky). Validation humaine recommandée.
+
+## Tests restants
+
+- Session réelle avec lecteur d'écran (VoiceOver, NVDA).
+- Validation humaine de la transcription.
+- Vérification des contenus tiers (PeerTube).
