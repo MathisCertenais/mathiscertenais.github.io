@@ -1,6 +1,6 @@
+import { useId } from 'react'
 import { useLanguage } from '../language/LanguageProvider'
-
-const NAME_ID = 'business-card-name'
+import { NewTabHint } from './NewTabHint'
 
 type CardVariant = 'page' | 'share'
 
@@ -17,13 +17,14 @@ type CardVariant = 'page' | 'share'
  * plate below it, so it does not follow the light and dark theme tokens.
  */
 export function BusinessCard({ variant = 'page' }: { variant?: CardVariant }) {
-  const { content } = useLanguage()
+  const { content, strings } = useLanguage()
   const { businessCard, identity } = content
   const isShare = variant === 'share'
+  const nameId = useId()
 
   return (
     <article
-      aria-labelledby={NAME_ID}
+      aria-labelledby={nameId}
       className={`business-card${isShare ? ' business-card--share' : ''}`}
     >
       <img
@@ -34,7 +35,7 @@ export function BusinessCard({ variant = 'page' }: { variant?: CardVariant }) {
         width={960}
       />
       <div className="business-card__identity">
-        <p className="business-card__name" id={NAME_ID}>
+        <p className="business-card__name" id={nameId}>
           {identity.name}
         </p>
         <p className="business-card__role">{businessCard.affiliation}</p>
@@ -57,6 +58,7 @@ export function BusinessCard({ variant = 'page' }: { variant?: CardVariant }) {
               <li>
                 <a href={identity.linkedin} rel="noreferrer" target="_blank">
                   {businessCard.linkedinLabel}
+                  <NewTabHint label={strings.a11y.newTab} />
                 </a>
               </li>
             </>

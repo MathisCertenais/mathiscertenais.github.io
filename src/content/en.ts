@@ -1715,9 +1715,9 @@ export const accessibilityPage = {
     items: [
       'Contrast of text against its background, in light and dark themes (WCAG 1.4.3, AA).',
       'A single h1 per page, no skipped heading levels, and labelled landmarks (WCAG 1.3.1, 2.4.1).',
-      'Keyboard access, visible focus, a skip link, and focus management in menus and dialogs (WCAG 2.1.1, 2.4.3, 2.4.7).',
-      'Form fields with associated labels, and descriptive alternative text for images (WCAG 1.1.1, 3.3.2).',
-      'Reflow without horizontal scrolling at 320 px (WCAG 1.4.10).',
+      'Keyboard access, visible focus, a skip link, the current page marked with aria-current, and focus management in menus and dialogs (WCAG 2.1.1, 2.4.3, 2.4.7).',
+      'Form fields with associated labels, required indicators, inline error messages and a status region, plus descriptive alternative text for images (WCAG 1.1.1, 3.3.1, 3.3.2, 3.3.3).',
+      'Reflow without horizontal scrolling at 320 px, 200 % text and the WCAG text-spacing settings (WCAG 1.4.10, 1.4.12).',
       'Captions for the interview and the hackathon, a transcript for the silent MCP demo, and native captions on the PeerTube webinar (WCAG 1.2.2).',
       'A warning before opening a new tab (RGAA 13.2).',
     ],
@@ -1727,7 +1727,7 @@ export const accessibilityPage = {
     heading: 'What remains to be tested or improved.',
     items: [
       'A full screen-reader review (VoiceOver, NVDA) has not yet been carried out.',
-      'Zoom at 200 %, text spacing, and the page without CSS remain to be checked.',
+      'Browser zoom (200 %) and a full screen-reader review remain to be validated manually.',
       'Third-party content (LinkedIn, PeerTube) has its own accessibility, which this site does not control.',
       'The webinar transcript is an automatic draft and is being reviewed.',
     ],
@@ -1737,7 +1737,7 @@ export const accessibilityPage = {
     heading: 'Method and scope.',
     paragraphs: [
       'October 2026 — automated audit with axe-core (WCAG 2.1 A/AA) across nine routes, light and dark themes, desktop and mobile: no violations.',
-      'Manual checks covered contrast, heading structure, navigation, forms, images, language, reflow and the new-tab warning. This is a partial audit, not a full RGAA certification.',
+      'Manual checks covered contrast, heading structure, navigation, forms (required fields, inline errors, focus), images, language, reflow, 200 % text, text spacing and the new-tab warning. This is a partial audit, not a full RGAA certification.',
     ],
   },
   contact: {

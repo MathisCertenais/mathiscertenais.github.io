@@ -24,18 +24,26 @@ interface SiteHeaderProps {
 }
 
 function linkIsCurrent(href: string, currentPath: string) {
-  if (href === '/') return currentPath === '/'
+  // French routes live under /fr; compare them against the unlocalized href.
+  const path =
+    currentPath === '/fr' || currentPath === '/fr/'
+      ? '/'
+      : currentPath.startsWith('/fr/')
+        ? currentPath.slice(3)
+        : currentPath
+
+  if (href === '/') return path === '/'
   if (href === '/research') {
-    return currentPath.startsWith('/research') || currentPath.startsWith('/work')
+    return path.startsWith('/research') || path.startsWith('/work')
   }
   if (href === '/insights') {
     return (
-      currentPath.startsWith('/insights') ||
-      currentPath.startsWith('/writing') ||
-      currentPath.startsWith('/articles')
+      path.startsWith('/insights') ||
+      path.startsWith('/writing') ||
+      path.startsWith('/articles')
     )
   }
-  return currentPath === href || currentPath.startsWith(`${href}/`)
+  return path === href || path.startsWith(`${href}/`)
 }
 
 export function SiteHeader({ currentPath = '/' }: SiteHeaderProps) {
@@ -225,6 +233,7 @@ export function SiteHeader({ currentPath = '/' }: SiteHeaderProps) {
           <div className="mobile-menu__secondary">
             {secondaryLinks.map((link) => (
               <a
+                aria-current={linkIsCurrent(link.href, currentPath) ? 'page' : undefined}
                 href={localeHref(link.href)}
                 key={link.key}
                 onClick={closeMenu}
