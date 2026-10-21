@@ -234,7 +234,19 @@ export const researchApplications = {
 
 export type VideoKind = 'iframe' | 'video'
 
+export interface VideoCaption {
+  /** WebVTT file served from this origin (put it in public/captions/). */
+  src: string
+  /** BCP 47 language code, e.g. "fr" or "en". */
+  lang: string
+  /** Label shown in the player's caption menu. */
+  label: string
+  default?: boolean
+}
+
 export interface VideoItem {
+  /** Synchronised captions. Omit for silent demos, where none are needed. */
+  captions?: VideoCaption[]
   description: string
   externalHref: string
   id: string
@@ -244,6 +256,8 @@ export interface VideoItem {
   shortTitle: string
   src: string
   title: string
+  /** Text alternative shown in a collapsible block, for silent or spoken media. */
+  transcript?: string
 }
 
 export const videoItems: VideoItem[] = [
@@ -286,6 +300,10 @@ export const videoItems: VideoItem[] = [
     src: '/images/mathis/videos/ddf-mcp-demo.mp4',
     externalHref: '/writing/mcp-server-software-ontology',
     image: '/images/mathis/mcp-server-software-ontology/cover.webp',
+    // The clip is silent: no captions are needed, but a text description of what
+    // the screen shows keeps the demo accessible to people who cannot see it.
+    transcript:
+      'This demo has no spoken commentary. A researcher types a natural-language question into an assistant connected to the MCP server — for example, “How can I change the image size in pixels?”. The server searches the structured knowledge map of the DDF Pipeline and returns the most relevant parameter nodes: image.imsize (integer, default 20000, “Image size in pixels”), image.cellsize (float, default 1.5, “Pixel size in arcsec”), machine.NCPU_DDF (CPUs, auto-selected when unset) and masking.tgss_radius (default 8.0). Every answer is anchored in the software’s real codebase, so no parameter is invented.',
   },
 ]
 

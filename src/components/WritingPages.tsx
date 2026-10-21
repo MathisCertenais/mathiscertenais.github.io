@@ -184,10 +184,26 @@ export function ArticlePage({ articleId }: { articleId: string }) {
                       preload="metadata"
                       src={video.src}
                     >
+                      {video.captions?.map((caption) => (
+                        <track
+                          default={caption.default}
+                          key={caption.src}
+                          kind="captions"
+                          label={caption.label}
+                          src={caption.src}
+                          srcLang={caption.lang}
+                        />
+                      ))}
                       Your browser does not support the video element.
                     </video>
                   )}
                   <figcaption>{video.description}</figcaption>
+                  {video.transcript ? (
+                    <details className="video-transcript">
+                      <summary>{strings.pages.transcript}</summary>
+                      <p>{video.transcript}</p>
+                    </details>
+                  ) : null}
                 </figure>
               ) : null}
 

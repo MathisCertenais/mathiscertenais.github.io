@@ -228,7 +228,10 @@ export const researchApplications = {
  * adresse, vignette, type, source — est hérité de l'entrée anglaise, pour qu'il
  * ne puisse pas diverger.
  */
-const videoTranslations: Record<string, { description: string; shortTitle: string; title: string }> = {
+const videoTranslations: Record<
+  string,
+  { description: string; shortTitle: string; title: string; transcript?: string }
+> = {
   'astronomy-hackathon': {
     description: 'Les temps forts d’un événement de recherche collaboratif d’ECLAT à Rennes.',
     shortTitle: 'Hackathon',
@@ -253,6 +256,8 @@ const videoTranslations: Record<string, { description: string; shortTitle: strin
     shortTitle: 'Démo MCP',
     title:
       'Démonstration : un serveur MCP qui expose la carte de connaissances structurée du logiciel DDF Pipeline',
+    transcript:
+      'Cette démonstration ne comporte pas de commentaire parlé. Une question en langage naturel est saisie dans un assistant connecté au serveur MCP — par exemple « Comment changer la taille de l’image en pixels ? ». Le serveur interroge la carte de connaissances structurée du DDF Pipeline et renvoie les nœuds de paramètres les plus pertinents : image.imsize (entier, valeur par défaut 20000, « Image size in pixels »), image.cellsize (flottant, 1.5, « Pixel size in arcsec »), machine.NCPU_DDF (processeurs, sélectionné automatiquement si non renseigné) et masking.tgss_radius (8.0). Chaque réponse est ancrée dans le code réel du logiciel : aucun paramètre n’est inventé.',
   },
 }
 
