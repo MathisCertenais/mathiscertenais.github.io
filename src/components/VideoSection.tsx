@@ -153,6 +153,16 @@ export function VideoSection({ heading, showAllLink = true }: VideoSectionProps)
                       poster={activeVideo.image}
                       src={activeVideo.src}
                     >
+                      {activeVideo.captions?.map((caption) => (
+                        <track
+                          default={caption.default}
+                          key={caption.src}
+                          kind="captions"
+                          label={caption.label}
+                          src={caption.src}
+                          srcLang={caption.lang}
+                        />
+                      ))}
                       Your browser does not support the video element.
                     </video>
                   )}
@@ -167,6 +177,12 @@ export function VideoSection({ heading, showAllLink = true }: VideoSectionProps)
                     <NewTabHint label={strings.a11y.newTab} />
                   </a>
                 </div>
+                {activeVideo.transcript ? (
+                  <details className="video-transcript">
+                    <summary>{strings.pages.transcript}</summary>
+                    <p>{activeVideo.transcript}</p>
+                  </details>
+                ) : null}
               </div>
             </div>,
             document.body,

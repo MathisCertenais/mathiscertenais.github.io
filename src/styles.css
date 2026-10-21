@@ -825,6 +825,8 @@ button:hover .cta-arrow {
 .video-modal__panel {
   width: min(440px, 43.875vh);
   max-width: 100%;
+  max-height: 90dvh;
+  overflow-y: auto;
   animation: modal-rise 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -887,6 +889,32 @@ button:hover .cta-arrow {
   color: white;
   font-size: 13px;
   font-weight: 500;
+}
+
+/* Collapsible text alternative under a video (RGAA 4.1). */
+.video-transcript {
+  margin-top: 16px;
+  color: var(--text-mid);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.video-transcript summary {
+  color: var(--text-dark);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.video-transcript p {
+  margin-top: 8px;
+}
+
+.video-modal .video-transcript {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.video-modal .video-transcript summary {
+  color: white;
 }
 
 @keyframes modal-fade {

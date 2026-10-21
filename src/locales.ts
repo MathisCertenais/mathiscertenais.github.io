@@ -76,6 +76,7 @@ export const locales = {
       exploreResearchArea: 'Explore the research area',
       allVideos: 'All videos',
       videosIntro: 'Interviews, webinars, and research events exploring scientific data logistics, HPC, and radio astronomy. Select a video to watch it here.',
+      transcript: 'Transcript',
     },
     footer: {
       brandHome: 'Mathis Certenais — Home',
@@ -189,6 +190,7 @@ export const locales = {
       exploreResearchArea: 'Explorer le domaine de recherche',
       allVideos: 'Toutes les vidéos',
       videosIntro: 'Entretiens, webinaires et événements de recherche autour de la logistique des données scientifiques, du calcul intensif et de la radioastronomie. Choisissez une vidéo pour la regarder ici.',
+      transcript: 'Transcription',
     },
     footer: {
       brandHome: 'Mathis Certenais — accueil',
