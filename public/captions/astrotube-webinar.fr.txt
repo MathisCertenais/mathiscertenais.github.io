@@ -1,31 +1,31 @@
 Transcription — Webinaire ECLAT « HPC as a Service for Radio Astronomy »
-Source : astrotube.obspm.fr — sous-titres automatiques, à relire.
+Source : astrotube.obspm.fr — transcription automatique, noms propres et termes techniques relus ; validation humaine recommandée.
 
 [00:01] Et donc bonjour à tous, merci d'être là pour ce nouveau webinaire.
-[00:06] Et aujourd'hui, on a qu'à Ymatis Sertenet qui fait sa thèse, à l'Irisa.
-[00:12] Vas-y, Matis.
+[00:06] Et aujourd'hui, on a qu'à Mathis Certenais qui fait sa thèse, à l'IRISA.
+[00:12] Vas-y, Mathis.
 [00:14] Bonjour à tous, merci pour la présentation et pour l'invitation et merci aux participants d'être là.
-[00:22] Moi, c'est Ymatis Sertenet, donc je travaille en tant que doctorant à l'Université de Rennes et à l'Irisa
-[00:28] sur les sujets relatifs à l'informatique et plus spécifiquement sur les sujets du calcul de performance.
+[00:22] Moi, c'est Mathis Certenais, donc je travaille en tant que doctorant à l'Université de Rennes et à l'IRISA
+[00:28] sur les sujets relatifs à l'informatique et plus spécifiquement sur les sujets du calcul de haute performance.
 [00:35] Et mon cas d'usage, c'est la radioastronomie.
 [00:37] Donc aujourd'hui, je vais vous faire une présentation qui mélange les deux mondes avec un cas pratique.
 [00:43] Mais avant ça, je vais vous faire vraiment un contexte général sur la radioastronomie
-[00:48] et les centres de calcul de performance et comment les deux évoluent ensemble.
+[00:48] et les centres de calcul de haute performance et comment les deux évoluent ensemble.
 [00:54] Si on reprend des années en arrière, mais plusieurs décennies en arrière même,
 [01:00] les communautés indigènes du coup observaient le ciel pour la navigation, pour la planification d'agriculture
 [01:10] jusqu'à leur pratique religieuse et spirituelle.
 [01:14] Et on a fait après cela des premières grandes découvertes relatifs au Supernova, au Galaxy, etc.
 [01:25] Et jusqu'à l'invention plus récemment du premier télescope dans les débuts des années 1800
-[01:32] et en 1932, la création du premier radio-télescope par Carl Jenski.
-[01:39] Et tout cela pour dire qu'aujourd'hui les astronomes collègent des données des objets célestes
+[01:32] et en 1932, la création du premier radiotélescope par Karl Jansky.
+[01:39] Et tout cela pour dire qu'aujourd'hui les astronomes collectent des données des objets célestes
 [01:47] en utilisant des télescopes qui sont soit sur Terre comme dans les airs, dans l'espace.
 [01:56] On voit en haut à droite l'astrolabe qui était un instrument de navigation.
 [02:02] Et en bas, ce n'est pas le même cas d'usage, mais c'est le James Webb.
 [02:08] On voit une évolution, autant au niveau matériel, de conception au niveau de la conception,
 [02:15] mais aussi en usage et qu'est-ce qu'on observe à la fin, quel est le cas d'usage.
 [02:21] Et moi je vais me concentrer plutôt sur la radio-astronomie, c'est notre cas d'usage.
-[02:26] Donc brièvement pour expliquer comment ça marche un radio-télescope.
-[02:29] Vous avez en fait un réseau d'antennes qui va fonctionner par père.
+[02:26] Donc brièvement pour expliquer comment ça marche un radiotélescope.
+[02:29] Vous avez en fait un réseau d'antennes qui va fonctionner par paire.
 [02:33] L'objectif reste même c'est d'observer le ciel et de collecter des informations issues des sources radio,
 [02:42] des sources qui émettent en radio fréquence.
 [02:46] Ces pères d'antennes vont observer le ciel et le corrélateur, juste en bas,
@@ -193,7 +193,7 @@ Source : astrotube.obspm.fr — sous-titres automatiques, à relire.
 [12:33] on va avoir les centres de tier 1
 [12:35] donc là qui sont
 [12:37] les machines qui sont hébergées
-[12:38] au Cinesse, à Liderice et au TGCC
+[12:38] au CINES, à l'IDRIS et au TGCC
 [12:40] donc là on peut voir 2 des 3 machines
 [12:43] donc la première qui est Gensais
 [12:45] la seconde à Dastra qui a Montpellier
@@ -210,9 +210,9 @@ Source : astrotube.obspm.fr — sous-titres automatiques, à relire.
 [13:13] la presse relise entre
 [13:15] du coup le contrat signé évident
 [13:17] AMD
-[13:17] et qui est maintenant bulle
+[13:17] et qui est maintenant Bull
 [13:20] mais le contrat été signé au nom
-[13:22] d'évident
+[13:22] d'Eviden
 [13:22] où il y a justement
 [13:25] ces cités
 [13:26] les questions d'efficacité énergétique
@@ -258,7 +258,7 @@ Source : astrotube.obspm.fr — sous-titres automatiques, à relire.
 [14:47] des nœuds de intera de mémoire
 [14:49] et on a aussi
 [14:52] un 2x400 GB
-[14:54] de chez bulle le bxv3
+[14:54] de chez Bull le bxv3
 [14:57] et pour au final
 [14:59] avoir aussi une partition
 [15:00] scalaire de 100 000 coeurs
@@ -298,7 +298,7 @@ Source : astrotube.obspm.fr — sous-titres automatiques, à relire.
 [16:09] et comment en fait on fait les nerfs entre les deux
 [16:11] c'est les initiatives
 [16:12] et les initiatives je commencer
-[16:15] par le programme français NUMPEX
+[16:15] par le programme français NumPEx
 [16:17] qui est un programme
 [16:18] que j'ai intégré
 [16:20] dans le contexte de ma thèse
@@ -310,7 +310,7 @@ Source : astrotube.obspm.fr — sous-titres automatiques, à relire.
 [16:32] les futures machines avec SCA
 [16:34] notamment à Disroco
 [16:36] et
-[16:39] NUMPEX contribue
+[16:39] NumPEx contribue
 [16:40] à travers ces cinq projets
 [16:42] à préparer les futurs utilisateurs
 [16:44] les scientifiques et les industriels
@@ -574,7 +574,7 @@ Source : astrotube.obspm.fr — sous-titres automatiques, à relire.
 [25:23] un outil de traitement
 [25:24] donné en radio astronomie qui a été initialement
 [25:27] défini pour
-[25:29] le radio télescope lofar
+[25:29] le radio télescope LOFAR
 [25:31] pour faire des surveys notamment
 [25:33] c'est une application composite
 [25:35] qui intègre un outil de calibration qui s'appelle KillMS
@@ -585,7 +585,7 @@ Source : astrotube.obspm.fr — sous-titres automatiques, à relire.
 [25:46] et on peut voir
 [25:48] juste en bas
 [25:49] les différentes étapes
-[25:51] de ddf
+[25:51] de DDF
 [25:52] on va avoir la préparation des données qui
 [25:54] est composée du téléchargement
 [25:57] de la décompression des données
@@ -703,7 +703,7 @@ Source : astrotube.obspm.fr — sous-titres automatiques, à relire.
 [29:36] des données qui sont sourcées ici
 [29:39] du traitement qui va s'effectuer
 [29:42] sur ce centre HPC
-[29:43] avec le logiciel ddf
+[29:43] avec le logiciel DDF
 [29:46] et la publication
 [29:48] sur un centre de
 [29:50] visualisation ça peut être par exemple
@@ -736,7 +736,7 @@ Source : astrotube.obspm.fr — sous-titres automatiques, à relire.
 [30:42] qui va être nécessaire pour traiter par exemple
 [30:43] une partie du jeu donné
 [30:46] et commencer à faire le traitement
-[30:47] de ddf
+[30:47] de DDF
 [30:49] et ensuite on va avoir justement
 [30:51] 2 pulsantes de calcul
 [30:53] on va avoir une poussée
@@ -762,7 +762,7 @@ Source : astrotube.obspm.fr — sous-titres automatiques, à relire.
 [31:30] ou Apple store
 [31:31] ou Android store
 [31:32] ou en fait le développeur
-[31:34] par exemple de ddf ou ddf a7
+[31:34] par exemple de DDF ou DDF a7
 [31:38] WSkin etc
 [31:39] va publier son application
 [31:40] en tant que micro service sur ce service là
@@ -845,7 +845,7 @@ Source : astrotube.obspm.fr — sous-titres automatiques, à relire.
 [34:13] les règles zdr
 [34:15] ça c'est des discussions qu'on a eu
 [34:17] avec les responsables de sécurité
-[34:18] notamment à l'hydrice avec l'hydrice
+[34:18] notamment à l'IDRIS avec l'IDRIS
 [34:21] en fait c'est
 [34:25] il faut
 [34:26] je vais l'expliquer juste après il y aura un cas concret
@@ -954,7 +954,7 @@ Source : astrotube.obspm.fr — sous-titres automatiques, à relire.
 [37:54] sur sa machine
 [37:54] et son jeu donné peut être sur un centre
 [37:57] d'archivage comme EOS
-[38:00] ou surfsara etc
+[38:00] ou SURFsara etc
 [38:02] et tout ça c'est le buffer fmr
 [38:04] qui va s'occuper de la logistique
 [38:06] et de l'autre côté le centre HPC
@@ -994,7 +994,7 @@ Source : astrotube.obspm.fr — sous-titres automatiques, à relire.
 [39:14] en fait l'utilisateur quand il veut
 [39:16] lui c'est du launch and forget
 [39:17] il lance son expérimentation
-[39:19] il prend son café ou plutôt pour ddf
+[39:19] il prend son café ou plutôt pour DDF
 [39:22] il part en vacances et il revient
 [39:25] et derrière
 [39:26] si ça fait 4 jours qu'il est parti
@@ -1018,7 +1018,7 @@ Source : astrotube.obspm.fr — sous-titres automatiques, à relire.
 [40:01] pour simplifier la logistique et l'automatiser
 [40:05] là c'est un cas d'usage
 [40:06] de HPC software as a service
-[40:09] avec ddf
+[40:09] avec DDF
 [40:10] ça reprend
 [40:11] exactement le concept que je vous ai expliqué
 [40:14] mais il se connecte
@@ -1103,7 +1103,7 @@ Source : astrotube.obspm.fr — sous-titres automatiques, à relire.
 [42:45] parce que
 [42:46] en fonction de la demande
 [42:48] les délais sont variables
-[42:50] ça m'avait pris un mois et demi pour l'hydrice et le CNES
+[42:50] ça m'avait pris un mois et demi pour l'IDRIS et le CNES
 [42:53] on sait plutôt des questions
 [42:54] relative à ma machine
 [42:56] parce que je devais passer
@@ -1123,7 +1123,7 @@ Source : astrotube.obspm.fr — sous-titres automatiques, à relire.
 [43:24] de l'application
 [43:27] propre donc ça c'est propre à l'application
 [43:29] moi ça m'a pris personnellement 6 mois
-[43:31] pour déployer ddf
+[43:31] pour déployer DDF
 [43:33] sur la machine Gen Z
 [43:35] il faut savoir que c'était la première fois aussi
 [43:37] que je faisais
@@ -1135,7 +1135,7 @@ Source : astrotube.obspm.fr — sous-titres automatiques, à relire.
 [43:49] mais c'est quand même
 [43:51] quelque chose à prendre en compte
 [43:51] et il faut assurer la maintenance en fait
-[43:54] parce qu'on va vouloir mettre à jour ddf
+[43:54] parce qu'on va vouloir mettre à jour DDF
 [43:56] on va vouloir ajouter des nouvelles fonctionnalités
 [43:57] parce que les utilisateurs le demanderont
 [44:01] ça c'est un travail aussi
@@ -1151,7 +1151,7 @@ Source : astrotube.obspm.fr — sous-titres automatiques, à relire.
 [44:20] un travail à faire sur les allocations
 [44:23] de ressources
 [44:24] puisque par exemple
-[44:25] quand on veut exécuter ddf
+[44:25] quand on veut exécuter DDF
 [44:28] avec un fichier de configuration
 [44:31] standard par défaut
 [44:32] ou un autre fichier de configuration
@@ -1179,16 +1179,16 @@ Source : astrotube.obspm.fr — sous-titres automatiques, à relire.
 [45:15] d'allocation va être important
 [45:17] et pour finir la question de cyber security
 [45:20] il faut savoir
-[45:22] que ddf a été
+[45:22] que DDF a été
 [45:24] packaging
 [45:25] avec Singularity
 [45:28] donc a été mis sous conteneur
 [45:30] dans une boîte noire
 [45:31] et en fait il faut savoir que
 [45:34] quand
-[45:35] à l'hydrice je n'ai pas eu ce problème là mais au cinès
+[45:35] à l'IDRIS je n'ai pas eu ce problème là mais au CINES
 [45:38] pour faire du déploiement
-[45:40] ddf
+[45:40] DDF
 [45:41] sur Ad Astra
 [45:42] je dois passer par le support
 [45:44] qui font une visualisation
@@ -1211,7 +1211,7 @@ Source : astrotube.obspm.fr — sous-titres automatiques, à relire.
 [46:22] là j'avais eu
 [46:24] quelque chose
 [46:25] donc là c'était
-[46:27] OTGCC cette fois-ci
+[46:27] TGCC cette fois-ci
 [46:28] ou en fait
 [46:30] j'ai eu des tentatives de connexion avec une adresse IP
 [46:32] que je n'avais pas déclaré administrativement parlant
@@ -1220,7 +1220,7 @@ Source : astrotube.obspm.fr — sous-titres automatiques, à relire.
 [46:39] c'est le réseau qui interconnecte
 [46:41] les centres de tier 1 en France
 [46:42] donc avec le
-[46:44] OTGCC à l'hydrice et au cinès
+[46:44] TGCC à l'IDRIS et au CINES
 [46:46] il faut savoir que
 [46:48] je crois que c'est deux adresses
 [46:50] on a des adresses IP du coup
@@ -1234,7 +1234,7 @@ Source : astrotube.obspm.fr — sous-titres automatiques, à relire.
 [47:05] des adresses IP non déclarées
 [47:06] mais j'avais bien indiqué que j'utilisais ce réseau
 [47:09] bref c'est pour dire que
-[47:11] même OTGCC on ne peut pas faire
+[47:11] même TGCC on ne peut pas faire
 [47:13] de guide pool
 [47:14] en fait il faut spécifier
 [47:16] à chaque fois la source du répertoire
@@ -1243,10 +1243,10 @@ Source : astrotube.obspm.fr — sous-titres automatiques, à relire.
 [47:22] donc chaque centre de calcul
 [47:24] à sa spécificité, à sa réglementation
 [47:27] et il faut faire
-[47:29] avec l'hydrice
+[47:29] avec l'IDRIS
 [47:30] c'était j'ai envie de dire
 [47:32] beaucoup plus simple que là avec
-[47:35] ADASTRA et OTGCC
+[47:35] Adastra et TGCC
 [47:36] mais chacun sa spécificité
 [47:39] et c'est pour ça que
 [47:41] HPC à ce service a vraiment

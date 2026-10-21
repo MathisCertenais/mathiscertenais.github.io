@@ -1718,7 +1718,7 @@ export const accessibilityPage = {
       'Keyboard access, visible focus, a skip link, the current page marked with aria-current, and focus management in menus and dialogs (WCAG 2.1.1, 2.4.3, 2.4.7).',
       'Form fields with associated labels, required indicators, inline error messages and a status region, plus descriptive alternative text for images (WCAG 1.1.1, 3.3.1, 3.3.2, 3.3.3).',
       'Reflow without horizontal scrolling at 320 px, 200 % text and the WCAG text-spacing settings (WCAG 1.4.10, 1.4.12).',
-      'Captions for the interview and the hackathon, a transcript for the silent MCP demo, and native captions on the PeerTube webinar (WCAG 1.2.2).',
+      'Captions for the interview and the hackathon, a text alternative for the silent MCP demo, native captions on the PeerTube webinar, and a transcript link for the webinar (WCAG 1.2.2).',
       'A warning before opening a new tab (RGAA 13.2).',
     ],
   },
@@ -1729,7 +1729,7 @@ export const accessibilityPage = {
       'A full screen-reader review (VoiceOver, NVDA) has not yet been carried out.',
       'Browser zoom (200 %) and a full screen-reader review remain to be validated manually.',
       'Third-party content (LinkedIn, PeerTube) has its own accessibility, which this site does not control.',
-      'The webinar transcript is an automatic draft and is being reviewed.',
+      'The webinar transcript is automatic; proper nouns and technical terms have been reviewed, but a human validation is still recommended.',
     ],
   },
   audit: {

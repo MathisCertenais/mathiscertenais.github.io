@@ -1314,7 +1314,7 @@ export const accessibilityPage = {
       'Accès au clavier, focus visible, lien d’évitement, page actuelle marquée par aria-current, et gestion du focus dans les menus et les dialogues (WCAG 2.1.1, 2.4.3, 2.4.7).',
       'Champs de formulaire étiquetés, obligatoires indiqués, messages d’erreur en ligne et région de statut, avec des textes alternatifs descriptifs pour les images (WCAG 1.1.1, 3.3.1, 3.3.2, 3.3.3).',
       'Reflow sans défilement horizontal à 320 px, texte à 200 % et espacement du texte WCAG (WCAG 1.4.10, 1.4.12).',
-      'Sous-titres pour l’entretien et le hackathon, transcription pour la démo MCP muette, et sous-titres natifs du webinaire PeerTube (WCAG 1.2.2).',
+      'Sous-titres pour l’entretien et le hackathon, alternative textuelle pour la démo MCP muette, sous-titres natifs du webinaire PeerTube, et lien vers sa transcription (WCAG 1.2.2).',
       'Avertissement avant l’ouverture d’un nouvel onglet (RGAA 13.2).',
     ],
   },
@@ -1325,7 +1325,7 @@ export const accessibilityPage = {
       'Une revue complète avec lecteur d’écran (VoiceOver, NVDA) n’a pas encore été réalisée.',
       'Le zoom navigateur à 200 % et une revue complète avec lecteur d’écran restent à valider manuellement.',
       'Les contenus tiers (LinkedIn, PeerTube) ont leur propre accessibilité, que ce site ne maîtrise pas.',
-      'La transcription du webinaire est un brouillon automatique en cours de relecture.',
+      'La transcription du webinaire est automatique ; les noms propres et termes techniques ont été relus, mais une validation humaine reste recommandée.',
     ],
   },
   audit: {
