@@ -194,7 +194,12 @@ const linkParagraph = (href, text) =>
 
 function list(items, ordered = false) {
   const tag = ordered ? 'ol' : 'ul'
-  return `<${tag}>\n${items.map((item) => `        <li>${item}</li>`).join('\n')}\n      </${tag}>`
+  const entries = items.map((item) => {
+    const html = String(item)
+    // Article lists arrive already wrapped in <li>; do not nest them.
+    return html.startsWith('<li') ? `        ${html}` : `        <li>${html}</li>`
+  })
+  return `<${tag}>\n${entries.join('\n')}\n      </${tag}>`
 }
 
 /** A chapter of the research narrative: label, heading, paragraphs. */
@@ -215,7 +220,7 @@ function articleBlock(block) {
           const text = typeof item === 'string' ? item : item.text
           const id = typeof item === 'string' || !item.id ? '' : ` id="${escapeHtml(item.id)}"`
           return `<li${id}>${inline(text)}</li>`
-        }).map((item) => item.replace(/^<li/, '<li')),
+        }),
         block.ordered,
       )
     case 'figure':

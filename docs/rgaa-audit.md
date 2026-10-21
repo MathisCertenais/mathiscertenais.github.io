@@ -1,51 +1,65 @@
-# Audit RGAA 4.1 — portfolio Mathis Certenais
+# Audit RGAA 4.1.2 — portfolio Mathis Certenais
 
 **Date :** 22 octobre 2026
-**Périmètre :** 10 routes canoniques (FR/EN), thèmes clair et sombre, desktop et mobile, plus les états vidéo (modale, article).
-**Méthode :** axe-core (WCAG 2.1 A/AA), scripts Playwright (structure, clavier, reflow, texte à 200 %, espacement du texte) et vérifications manuelles ciblées.
+**Référentiel :** RGAA 4.1.2 (106 critères, 13 thématiques), source officielle DINUM.
+**Périmètre :** 10 routes canoniques (FR/EN), thèmes clair et sombre, desktop et mobile, états vidéo (modale, article).
+**Méthode :** axe-core (WCAG 2.1 A/AA), validateur HTML Nu (vnu), scripts Playwright (structure, clavier, reflow, 200 %, espacement, sans CSS) et vérifications manuelles.
 
-## Résultat synthétique
+## Résultat
+
+| Statut | Critères |
+| --- | ---: |
+| Conformes (C) | 77 |
+| Non conformes (NC) | 0 |
+| Non applicables (NA) | 27 |
+| À vérifier | 2 |
+| **Applicables (C + NC + à vérifier)** | **79** |
+| **Taux de conformité (C / applicables)** | **97,5 %** |
+| Taux sur les critères évalués (C / (C + NC)) | **100 %** |
+| Couverture (applicables / 106) | 74,5 % |
+
+Les 2 critères en attente sont **4.5 et 4.6** (audiodescription synchronisée des médias pré-enregistrés) : l'audiodescription des diapositives du webinaire doit être validée ou déclarée non nécessaire.
+
+## Détail par thématique
+
+| Thème | C | NC | NA | À vérifier |
+| --- | ---: | ---: | ---: | ---: |
+| 1. Images | 6 | 0 | 3 | 0 |
+| 2. Cadres | 2 | 0 | 0 | 0 |
+| 3. Couleurs | 3 | 0 | 0 | 0 |
+| 4. Multimédia | 7 | 0 | 4 | 2 |
+| 5. Tableaux | 0 | 0 | 8 | 0 |
+| 6. Liens | 2 | 0 | 0 | 0 |
+| 7. Scripts | 5 | 0 | 0 | 0 |
+| 8. Éléments obligatoires | 9 | 0 | 1 | 0 |
+| 9. Structuration | 4 | 0 | 0 | 0 |
+| 10. Présentation | 14 | 0 | 0 | 0 |
+| 11. Formulaires | 8 | 0 | 5 | 0 |
+| 12. Navigation | 8 | 0 | 3 | 0 |
+| 13. Consultation | 9 | 0 | 3 | 0 |
+| **Total** | **77** | **0** | **27** | **2** |
+
+## Critères non applicables (27)
+
+1.4, 1.5, 1.8 (CAPTCHA et images texte), 4.8 à 4.10 et 4.12 (médias non temporels),
+5.1 à 5.8 (aucun tableau), 8.10 (aucun changement de sens de lecture),
+11.5 à 11.8 et 11.12 (aucun regroupement de champs ni liste de choix, pas de modification de données),
+12.3 à 12.5 (pas de plan du site ni de moteur de recherche),
+13.4 à 13.6 (aucun document bureautique en téléchargement, aucun contenu cryptique).
+
+## Preuves principales
 
 - **axe-core : 0 violation** sur les routes auditées, dans les deux thèmes et aux deux viewports.
-- **Aucun débordement horizontal** à 320 px, à 200 % de texte, ni avec les réglages d'espacement WCAG.
-- **Contraste AA** vérifié dans les deux thèmes (texte, liens, boutons, états du formulaire).
-- **Structure :** un seul `h1` par page, aucune rupture de niveau, landmarks étiquetés, `lang` correct.
-- **Navigation :** lien d'évitement, `aria-current` sur la page courante (FR/EN), ordre de tabulation logique, gestion du focus dans les menus et dialogues.
-- **Formulaires :** étiquettes associées, champs obligatoires indiqués, erreurs en ligne avec `aria-invalid` / `aria-describedby`, focus sur le premier champ invalide, suggestion pour l'email.
-- **Vidéos :** sous-titres (interview, hackathon), transcription (démo MCP muette), sous-titres natifs PeerTube (webinaire).
-- **Liens `target="_blank"` :** avertissement textuel pour les lecteurs d'écran.
+- **Validateur Nu : 0 erreur** sur les pages validées (index, contact, accessibilité, recherche, deux articles, contact FR).
+- **Contraste AA** vérifié dans les deux thèmes, y compris les composants d'interface (bordure des champs).
+- **Reflow** : aucun débordement horizontal à 320 px, 200 % de texte ni avec l'espacement WCAG.
+- **Clavier / lecteur d'écran** : skip-link, `aria-current` FR/EN, focus rendu au déclencheur après fermeture des dialogues, formulaire annoncé (`aria-invalid`, `aria-describedby`).
+- **Formulaires** : étiquettes, obligatoires indiqués, erreurs en ligne, suggestion email, `autocomplete`.
+- **Vidéos** : sous-titres et transcriptions (entretien, hackathon, webinaire), alternative textuelle pour la démo MCP muette, CC natif PeerTube.
+- **Sans CSS** : aucune perte de contenu sur 8 routes.
 
-## Scorecard par thème
+## Validation humaine restante
 
-| Thème | Statut | Preuves / réserves |
-| --- | --- | --- |
-| 1. Images | Conforme (périmètre) | `alt` présents, images décoratives `alt=""`, SVG `aria-hidden` |
-| 2. Cadres | Conforme | `iframe` avec `title` |
-| 3. Couleurs | Conforme | contraste AA des tokens, information non portée par la couleur seule |
-| 4. Multimédia | Partiel | sous-titres/transcriptions ; le webinaire dépend des CC PeerTube ; relecture de la transcription en cours |
-| 5. Tableaux | Non applicable | aucun tableau de données |
-| 6. Liens | Conforme | liens explicites et cohérents, avertissement nouvel onglet (13.2) |
-| 7. Scripts | Conforme (périmètre) | clavier, pas de piège, focus géré, changements d'état annoncés |
-| 8. Éléments obligatoires | Conforme | doctype, `lang`, `title`, charset, identifiants uniques |
-| 9. Structuration | Conforme | titres, landmarks, listes |
-| 10. Présentation | Conforme (périmètre) | reflow, 200 %, espacement du texte, focus visible ; page sans CSS non testée |
-| 11. Formulaires | Conforme (périmètre) | étiquettes, obligatoires, erreurs en ligne, suggestion email |
-| 12. Navigation | Conforme | deux systèmes de navigation, lien d'évitement, `aria-current`, ordre logique |
-| 13. Consultation | Partiel | 13.2 fait ; zoom navigateur 200 % et lecteur d'écran à valider |
-
-## Taux de conformité
-
-Sur les critères **effectivement évalués**, aucune non-conformité n'a été détectée. Le taux de conformité sur les 106 critères du RGAA ne peut pas être annoncé tant que les tests manuels restants n'ont pas été réalisés. Il s'agit donc d'un **audit partiel**, pas d'une certification.
-
-## Tests manuels réalisés
-
-- **Arbre d'accessibilité et clavier** : skip-link, `aria-current` FR/EN, focus dans les menus et dialogues, focus rendu au déclencheur, formulaire annoncé (`aria-invalid`, `aria-describedby`). Une session VoiceOver/NVDA réelle reste recommandée.
-- **Zoom 200 % / 400 %** : 720×450, 640×400 et 320×256, sur 10 routes — aucun débordement horizontal ni contenu tronqué.
-- **Sans CSS** : 8 routes — aucune perte de contenu (textes, titres, liens et champs identiques). Le menu mobile, la carte de visite et le champ anti-bot deviennent visibles, sans perte d'information.
-- **Transcription du webinaire** : noms propres et termes techniques relus (Mathis Certenais, IRISA, CINES, IDRIS, TGCC, Adastra, SURFsara, LOFAR, NumPEx, ECLAT, Bull, Karl Jansky). Validation humaine recommandée.
-
-## Tests restants
-
-- Session réelle avec lecteur d'écran (VoiceOver, NVDA).
-- Validation humaine de la transcription.
-- Vérification des contenus tiers (PeerTube).
+- Audiodescription du webinaire (critères 4.5 et 4.6) : à valider ou déclarer non nécessaire.
+- Session réelle avec lecteur d'écran (VoiceOver, NVDA) : l'arbre d'accessibilité et le clavier ont été testés, mais une session vocale réelle reste recommandée.
+- Relecture finale de la transcription du webinaire (noms propres et termes techniques déjà corrigés).

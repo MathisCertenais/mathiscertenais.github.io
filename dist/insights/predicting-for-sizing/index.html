@@ -39,8 +39,8 @@
     <meta name="twitter:image:alt" content="Predicting for sizing on supercomputers" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <title>Predicting for Sizing: Teaching Supercomputers Their Own Execution Footprint | Mathis Certenais</title>
-    <script type="module" crossorigin src="/assets/index-5OM74sXm.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-B1yQ_lbm.css">
+    <script type="module" crossorigin src="/assets/index-DQGS86ON.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BF0WNh_t.css">
     <meta property="og:url" content="https://mathiscertenais.com/insights/predicting-for-sizing/" />
     <link rel="canonical" href="https://mathiscertenais.com/insights/predicting-for-sizing/" />
       <link rel="alternate" hreflang="en" href="https://mathiscertenais.com/insights/predicting-for-sizing/" />
@@ -62,20 +62,20 @@
       <h2>Why Guessing Is So Expensive</h2>
       <p>The difficulty is not a lack of experience — it is a lack of predictability. DDF Pipeline runs vary along <strong>several dimensions at once</strong>, and a single change can move the resource footprint by an order of magnitude:</p>
       <ul>
-        <li><li><strong>Application parameters.</strong> The output image resolution can ranges from <strong>5,000×5,000 to 20,000×20,000 pixels</strong>, pulling peak memory from <strong>~10 GB to ~400 GB</strong>.</li></li>
-        <li><li><strong>Input data volume.</strong> From hundreds of megabytes to several gigabytes, stretching runtime from <strong>minutes to several days</strong> on a single node.</li></li>
-        <li><li><strong>Data structure.</strong> Between <strong>1 and 24 frequency sub-bands</strong>, each of which changes how the workload scales — and how energy-efficient it is — across the allocated nodes.</li></li>
+        <li><strong>Application parameters.</strong> The output image resolution can ranges from <strong>5,000×5,000 to 20,000×20,000 pixels</strong>, pulling peak memory from <strong>~10 GB to ~400 GB</strong>.</li>
+        <li><strong>Input data volume.</strong> From hundreds of megabytes to several gigabytes, stretching runtime from <strong>minutes to several days</strong> on a single node.</li>
+        <li><strong>Data structure.</strong> Between <strong>1 and 24 frequency sub-bands</strong>, each of which changes how the workload scales — and how energy-efficient it is — across the allocated nodes.</li>
       </ul>
       <p>Add a <strong>multi-site dimension</strong> and the problem compounds. In cross-facility workflows, resource sizing drives task placement decisions: disk space, queue wait times, and where a job can go all depend on the footprint you predict. Hardware constraints differ from site to site — <strong>768 GB per node</strong> on Adastra, <strong>192 GB of memory per node</strong> on Jean Zay, <strong>228 GB per node</strong> on Joliot-Curie — so a configuration that fits one machine may be hopeless on another.</p>
       <p>The configuration space is simply <strong>too large to test exhaustively</strong>. This is not a problem you can solve once: it demands a model that <strong>keeps learning</strong> as executions accumulate.</p>
       <h2>What We Need to Succeed</h2>
       <p>Building a continuous-learning predictor is a team effort across five pieces, each developed by a different specialist and designed to fit together:</p>
       <ol>
-        <li><li><strong>Structured knowledge map</strong> — a description of the supercomputer-specific runtime environment, mapped onto SLURM metrics.</li></li>
-        <li><li><strong>Job Performance Indicators Set, JoPInS</strong> — the structure containing the measurements of the formal descriptor applications jobs performance indicator relative to their executions.</li></li>
-        <li><li><strong>Monitoring plugin</strong> — the collector that captures evidence from real jobs.</li></li>
-        <li><li><strong>Database</strong> — the central store where all executions accumulate in the JoPInS format.</li></li>
-        <li><li><strong>Machine learning exposed as HAPS</strong> — a model trained by application version and by runtime environment, with access to HPC resources and applications for its continuous learning.</li></li>
+        <li><strong>Structured knowledge map</strong> — a description of the supercomputer-specific runtime environment, mapped onto SLURM metrics.</li>
+        <li><strong>Job Performance Indicators Set, JoPInS</strong> — the structure containing the measurements of the formal descriptor applications jobs performance indicator relative to their executions.</li>
+        <li><strong>Monitoring plugin</strong> — the collector that captures evidence from real jobs.</li>
+        <li><strong>Database</strong> — the central store where all executions accumulate in the JoPInS format.</li>
+        <li><strong>Machine learning exposed as HAPS</strong> — a model trained by application version and by runtime environment, with access to HPC resources and applications for its continuous learning.</li>
       </ol>
       <h3>Step one — A structured knowledge map of the runtime environment</h3>
       <p>Before we can predict, we must be able to <strong>describe</strong>. The structured knowledge map (or ontology) formalizes the supercomputer-specific runtime environment in which jobs execute. Its value lies in the mapping: aligning the <strong>job structured knowledge map</strong> with the raw <strong>SLURM metrics</strong> so that a conceptual description — “this job needed a large-memory node” — becomes a measurable, comparable quantity.</p>

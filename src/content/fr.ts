@@ -1314,7 +1314,7 @@ export const accessibilityPage = {
       'Accès au clavier, focus visible, lien d’évitement, page actuelle marquée par aria-current, et gestion du focus dans les menus et les dialogues (WCAG 2.1.1, 2.4.3, 2.4.7).',
       'Champs de formulaire étiquetés, obligatoires indiqués, messages d’erreur en ligne et région de statut, avec des textes alternatifs descriptifs pour les images (WCAG 1.1.1, 3.3.1, 3.3.2, 3.3.3).',
       'Reflow sans défilement horizontal à 320 px, texte à 200 % et espacement du texte WCAG (WCAG 1.4.10, 1.4.12).',
-      'Sous-titres pour l’entretien et le hackathon, alternative textuelle pour la démo MCP muette, sous-titres natifs du webinaire PeerTube, et lien vers sa transcription (WCAG 1.2.2).',
+      'Sous-titres et transcriptions pour l’entretien, le hackathon et le webinaire, alternative textuelle pour la démo MCP muette, et sous-titres natifs du lecteur PeerTube (WCAG 1.2.2).',
       'Avertissement avant l’ouverture d’un nouvel onglet (RGAA 13.2).',
     ],
   },
@@ -1322,8 +1322,8 @@ export const accessibilityPage = {
     label: 'Limites connues',
     heading: 'Ce qui reste à tester ou à améliorer.',
     items: [
-      'Une revue complète avec lecteur d’écran (VoiceOver, NVDA) n’a pas encore été réalisée.',
       'Le zoom navigateur à 200 % et une revue complète avec lecteur d’écran restent à valider manuellement.',
+      'L’audiodescription des diapositives du webinaire reste à valider.',
       'Les contenus tiers (LinkedIn, PeerTube) ont leur propre accessibilité, que ce site ne maîtrise pas.',
       'La transcription du webinaire est automatique ; les noms propres et termes techniques ont été relus, mais une validation humaine reste recommandée.',
     ],
@@ -1334,6 +1334,7 @@ export const accessibilityPage = {
     paragraphs: [
       'Octobre 2026 — audit automatique avec axe-core (WCAG 2.1 A/AA) sur neuf routes, thèmes clair et sombre, desktop et mobile : aucune violation.',
       'Les vérifications manuelles ont porté sur le contraste, la structure des titres, la navigation, les formulaires (champs obligatoires, erreurs en ligne, focus), les images, la langue, le reflow, le texte à 200 %, l’espacement du texte et l’avertissement de nouvel onglet. Il s’agit d’un audit partiel, pas d’une certification RGAA complète.',
+      'Sur les 79 critères applicables du RGAA 4.1.2, 77 sont conformes et 2 restent à valider (audiodescription du webinaire) : taux de conformité de 97,5 %. 27 critères ne s’appliquent pas.',
     ],
   },
   contact: {

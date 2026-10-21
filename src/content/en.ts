@@ -272,6 +272,7 @@ export const videoItems: VideoItem[] = [
     kind: 'video',
     // WebVTT exported from the LinkedIn post's caption track.
     captions: [{ src: '/captions/eclat-interview.en.vtt', lang: 'en', label: 'English' }],
+    transcriptHref: '/captions/eclat-interview.en.txt',
     src: 'https://eclat-lab.fr/wp-content/uploads/2025/09/ECLAT-interview-matthis-2025-Website-v3.mp4',
     externalHref: sourceLinks.eclatInterview,
     image: '/images/mathis/videos/interview.webp',
@@ -294,6 +295,7 @@ export const videoItems: VideoItem[] = [
     description: 'Highlights from a collaborative ECLAT research event in Rennes.',
     kind: 'video',
     captions: [{ src: '/captions/astronomy-hackathon.fr.vtt', lang: 'fr', label: 'Français' }],
+    transcriptHref: '/captions/astronomy-hackathon.fr.txt',
     src: 'https://eclat-lab.fr/wp-content/uploads/2026/04/ECLAT-hackathon-Rennes-2026.mp4',
     externalHref: sourceLinks.eclatHackathon,
     image: '/images/mathis/international-hackathon-for-astronomy/cover.webp',
@@ -1718,7 +1720,7 @@ export const accessibilityPage = {
       'Keyboard access, visible focus, a skip link, the current page marked with aria-current, and focus management in menus and dialogs (WCAG 2.1.1, 2.4.3, 2.4.7).',
       'Form fields with associated labels, required indicators, inline error messages and a status region, plus descriptive alternative text for images (WCAG 1.1.1, 3.3.1, 3.3.2, 3.3.3).',
       'Reflow without horizontal scrolling at 320 px, 200 % text and the WCAG text-spacing settings (WCAG 1.4.10, 1.4.12).',
-      'Captions for the interview and the hackathon, a text alternative for the silent MCP demo, native captions on the PeerTube webinar, and a transcript link for the webinar (WCAG 1.2.2).',
+      'Captions and transcripts for the interview, the hackathon and the webinar, a text alternative for the silent MCP demo, and native captions on the PeerTube player (WCAG 1.2.2).',
       'A warning before opening a new tab (RGAA 13.2).',
     ],
   },
@@ -1726,8 +1728,8 @@ export const accessibilityPage = {
     label: 'Known limitations',
     heading: 'What remains to be tested or improved.',
     items: [
-      'A full screen-reader review (VoiceOver, NVDA) has not yet been carried out.',
       'Browser zoom (200 %) and a full screen-reader review remain to be validated manually.',
+      'Audio description of the webinar slides remains to be validated.',
       'Third-party content (LinkedIn, PeerTube) has its own accessibility, which this site does not control.',
       'The webinar transcript is automatic; proper nouns and technical terms have been reviewed, but a human validation is still recommended.',
     ],
@@ -1738,6 +1740,7 @@ export const accessibilityPage = {
     paragraphs: [
       'October 2026 — automated audit with axe-core (WCAG 2.1 A/AA) across nine routes, light and dark themes, desktop and mobile: no violations.',
       'Manual checks covered contrast, heading structure, navigation, forms (required fields, inline errors, focus), images, language, reflow, 200 % text, text spacing and the new-tab warning. This is a partial audit, not a full RGAA certification.',
+      'On the 79 applicable RGAA 4.1.2 criteria, 77 are compliant and 2 remain to be validated (audio description for the webinar): a 97.5 % compliance rate. 27 criteria do not apply.',
     ],
   },
   contact: {

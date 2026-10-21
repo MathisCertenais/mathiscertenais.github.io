@@ -1,0 +1,56 @@
+Transcript — Interview with Mathis Certenais (ECLAT)
+
+
+[00:00] Data logistics, the work we do in my team,
+[00:03] is designing tools
+[00:06] and radio astronomy
+[00:08] for us is a playground for experimentation.
+[00:11] You could see it as designing
+[00:14] a beach rake, a shovel, a bucket,
+[00:17] and our sandbox is ECLAT,
+[00:20] we're going to play with the sand to build things and see if they stand up.
+[00:25] My name is Mathis Certenais, I'm 25 years old,
+[00:28] and I joined ESIR, an engineering school in Rennes.
+[00:32] After that, I decided to do a double degree in Canada
+[00:35] for a year on subjects related to artificial intelligence,
+[00:39] the cloud and more advanced computer science concepts.
+[00:42] After that, I came back to Brittany to work on
+[00:46] a project related to logistics.
+[00:50] These questions didn't necessarily arise before
+[00:53] because everyone did it on their own.
+[00:55] We collected the data, processed it
+[00:58] and analysed it locally.
+[01:01] But with the new generation of radio telescopes,
+[01:04] we're going to have an explosion in data volumes
+[01:07] and we need to adapt and integrate this new imaging technique into supercomputers
+[01:20] and, above all,
+[01:25] distribute the processing of these information
+[01:27] flows across different architectures infrastructures
+[01:31] in order to answer questions a
+[01:33] and solve problems
+[01:37] related to this much larger flow of information.
+[01:40] The objective of ECLAT is to design cyber-physical systems,
+[01:43] the workflows,
+[01:47] for the radio astronomy of tomorrow,
+[01:50] in particular the SKAO.
+[01:58] NumPEx brings together
+[02:01] five groups of engineers,
+[02:04] PhD and researchers working on
+[02:07] the digital issues of tomorrow.
+[02:12] And Youngpex
+[02:16] brings together all young people to work
+[02:20] on topics
+[02:22] that are very relevant to our generation.
+[02:25] questions qu'on va devoir répondre pour pour les nous de
+[02:28] We've focused on two topics:
+[02:30] energy footprint issues.
+[02:33] How we're going to do research
+[02:36] in an eco-responsible way.
+[02:39] And the second thing
+[02:42] is multidisciplinarity.
+[02:45] It's a time in your life
+[02:49] when you specialise in a subject.
+[02:52] I find the human side of it really incredible.
+[02:55] Joining a team with specialists
+[02:58] and working within ECLAT with people
+[03:02] who have completely different backgrounds.
