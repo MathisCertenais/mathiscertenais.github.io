@@ -3,5 +3,14 @@
   // The portfolio has its own orchestrator: .opencode/agents/orchestrator.md
   // The generic specialists (developer, ui, quality, security, writer, scientist,
   // architect, marketing) are global and read this repository's AGENTS.md.
-  "default_agent": "orchestrator"
+  "default_agent": "orchestrator",
+  "agents": {
+    // Verifying a citation needs the paper, not a memory of it.
+    "scientist": {
+      "permissions": [
+        { "action": "webfetch", "resource": "*", "effect": "allow" },
+        { "action": "websearch", "resource": "*", "effect": "allow" }
+      ]
+    }
+  }
 }

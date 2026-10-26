@@ -27,8 +27,18 @@ trap 'rm -f "$log"' EXIT
 # production origin, so checking it against a build without one would always fail.
 origin="https://$(cat "$root/public/CNAME")"
 
+# The project pins Node in .nvmrc; the interactive shell may default to a newer
+# runtime. Prefer the pinned version when fnm is available.
+node_version=$(cat "$root/.nvmrc" 2>/dev/null || true)
+if command -v fnm >/dev/null 2>&1 && [ -n "$node_version" ]; then
+  check_command="fnm exec --using=$node_version pnpm"
+  echo "[pre-push] node $(fnm exec --using="$node_version" node -v 2>/dev/null || echo "$node_version")"
+else
+  check_command="pnpm"
+fi
+
 echo "[pre-push] pnpm check, rebuilding dist for $origin"
-if ! VITE_SITE_URL="$origin" pnpm check >"$log" 2>&1; then
+if ! VITE_SITE_URL="$origin" $check_command check >"$log" 2>&1; then
   echo "[pre-push] pnpm check failed:" >&2
   tail -25 "$log" >&2
   exit 1
