@@ -138,7 +138,13 @@ export function ArticlePage({ articleId }: { articleId: string }) {
         </header>
 
         <div className="article-cover section">
-          <img alt={article.imageAlt} src={article.image} />
+          <button
+            className="figure-zoom"
+            onClick={() => setPreview({ alt: article.imageAlt, src: article.image })}
+            type="button"
+          >
+            <img alt={article.imageAlt} src={article.image} />
+          </button>
           <p className="section-label article-cover__meta">
             {article.category} · {article.date}
             {article.body.length > 0

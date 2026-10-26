@@ -336,7 +336,7 @@ const articleTranslations: Record<
   },
   'webinar-hpc-applications-as-a-service': {
     category: 'Webinaire',
-    date: '26 février 2026',
+    date: '13 février 2026',
     description:
       'Ce webinaire prend la radioastronomie comme exemple pour montrer comment les services applicatifs de calcul haute performance peuvent gérer les données scientifiques, accélérer l’imagerie et accompagner les instruments de nouvelle génération comme le SKA, à travers des architectures et des outils pensés pour les workflows inter-sites.',
     imageAlt:

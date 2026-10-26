@@ -123,18 +123,24 @@ that cover the same ground in one task.
 | A fact, a citation or a number in an article or `/research` | `research` — primary sources, captured as a note |
 | `GLOSSARY.md`, an ADR, project vocabulary | `domain-modeling` |
 | Editing `AGENTS.md` or an agent prompt | `writing-for-agents` |
+| Shaping an article from raw notes | `writing-fragments` (explore), then `writing-shape` or `writing-beats` (exploit) |
+| A decision that must leave a glossary/ADR trace | `grill-with-docs` |
+| Handing a long session to another agent | `handoff` |
+| Improving the agent setup after a batch | `retro` |
+| Unsure which flow fits | `ask-matt` |
+| A module whose interface must deepen | `codebase-design`, then `improve-codebase-architecture` |
 | Writing a PR body | `pr` |
 | A design question that needs code, not an argument | `prototype` |
 
 Not used here: `scaffold-exercises`, `game-development`, `wizard`, `migrate-to-shoehorn`,
 `setup-pre-commit` and `git-guardrails-claude-code` (this repo already has its pre-push hook),
-`report`, `opencode` (configuration questions only). The wider Matt Pocock set installed in
-`~/.agents/skills` — `ask-matt`, `handoff`, `grill-with-docs`, `to-spec`, `to-tickets`, `triage`,
-`wayfinder`, `retro`, `teach` — is not exposed to OpenCode; do not call it from here. Those files
-set `disable-model-invocation: true`, which OpenCode reads as `opencode/autoinvoke: false`:
-registered but never advertised. To advertise one, copy its directory into
-`~/.config/opencode/skills/` and replace that flag with `metadata: { opencode/autoinvoke: true }`;
-the copy wins by precedence and the upstream checkout stays untouched.
+`report`, `opencode` (configuration questions only), `setup-ts-deep-modules` (one-off setup), and
+the issue-tracker flow `to-spec` / `to-tickets` / `triage` / `wayfinder` / `to-questionnaire`.
+
+The wider set is installed in `~/.agents/skills` with `disable-model-invocation: true`, which
+OpenCode reads as `opencode/autoinvoke: false`. The ones this repo wants are copied into
+`~/.config/opencode/skills/` with `metadata: { opencode/autoinvoke: true }`, so they are
+advertised without touching the upstream checkout.
 
 ## The team
 
