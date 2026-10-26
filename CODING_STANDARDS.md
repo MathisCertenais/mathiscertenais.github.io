@@ -99,15 +99,3 @@ conformance beyond it.
   `VITE_SITE_URL=https://mathiscertenais.com pnpm check`.
 - The pre-push hook enforces the same three conditions as CI: checks pass, the working tree is
   clean (except `tasks/`), and `dist/` matches a fresh build.
-- Never weaken a check to make it pass. If a rule is wrong, change it deliberately, with the
-  reason in the diff.
-
-## Git
-
-- One logical change per commit. Format: `[feat] …`, `fix(scope): …`, `a11y(scope): …`,
-  `docs: …`, `content: …`, `test(scope): …`, `chore(scope): …`.
-- The body explains **why**, not what the diff already says. Cite the check that proves it.
-- Never commit `.env*`, `tasks/`, generated exports of the business card (`.pdf`, `.jpg`,
-  `.png`), or the two root `.mp4` files.
-- Do not rewrite published history, force-push a shared branch, or amend a commit that has been
-  pushed.

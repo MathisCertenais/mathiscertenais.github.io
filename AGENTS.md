@@ -5,9 +5,10 @@ as static files from GitHub Pages. It presents verified work in high-performance
 scientific data logistics, cross-facility workflows and radio astronomy, in English and French,
 with accessibility (RGAA 4.1 / WCAG 2.2 AA) treated as a product requirement.
 
-Read this file before planning anything. It overrides an agent's general habits. The rules a
-reviewer enforces are in `CODING_STANDARDS.md`; the vocabulary is in `GLOSSARY.md`; the
-accessibility state is in `docs/rgaa-audit.md`.
+Read this file before planning anything. Shared engineering and delegation rules live in
+`~/.config/opencode/standards/` and are loaded globally; this file adds only what is specific to
+this repository. The rules a reviewer enforces are in `CODING_STANDARDS.md`; the vocabulary is
+in `GLOSSARY.md`; the accessibility state is in `docs/rgaa-audit.md`.
 
 ## Commands
 
@@ -81,16 +82,10 @@ refuses a committed `dist/` that differs from that build. Bypass only with
 - **Dependencies**: React, Vite and the dev toolchain are the budget. No CSS framework, no UI
   kit, no router library, no state library. A new dependency needs an explicit decision from the
   user, with what it buys and what it locks in.
-- **Secrets**: never read, print, commit or invent `.env*`. `VITE_WEB3FORMS_KEY` is public by
-  design (it ships in the bundle); it still comes from the environment, never from a guess.
+- **`VITE_WEB3FORMS_KEY` is public by design** — it ships in the bundle — but it still comes
+  from the environment, never from a guess.
 - **Scratch**: `tasks/` is never committed. The two ~120 MB `.mp4` files at the repository root
   are source material — never open, read or move them; the site references rendered derivatives.
-- **No push, tag, release or deploy without explicit approval.** A local build and a diff are
-  not a release.
-- **The scientist uses the internet.** A claim, a formula or a citation is checked against the
-  primary source with `webfetch` — the paper, the institution's page, the official agenda — not
-  against a search snippet. Record the URL next to every claim it supports; a claim without a
-  reachable source is marked unverified.
 - **A UI change is verified in a browser, not in your head.** `node scripts/browser-check.mjs
   --serve <url> --expect "<text>" --out /tmp/<name>.png` renders the built page in the Chromium
   already installed on this machine and prints the checks. Paste the command and its `ok`/`FAIL`
@@ -107,40 +102,6 @@ spelling (`analyse`, `specialising`, `colour`) — match the existing text. Fren
 and keeps institutional names (IRISA, NumPEx, ECLAT, SKA, LOFAR, GENCI, CINES, IDRIS, TGCC)
 unchanged. The AI-lab article is the reference for a long piece: interview structure, a claim
 per paragraph, numbers that can be checked.
-
-## Skills
-
-The Matt Pocock skills are installed globally. Load one when the task matches; do not load two
-that cover the same ground in one task.
-
-| Task | Skill |
-| --- | --- |
-| Before a design or a structural decision | `grilling` |
-| Reviewing a branch, a PR or work in progress | `code-review` (Standards + Spec, two parallel reviews) |
-| A bug, a crash, a performance regression | `diagnosing-bugs` |
-| `src/content/readingTime.ts`, `src/routing.ts`, `scripts/*.mjs` | `tdd` with `node --test` only; the repo has no test framework and does not need one |
-| Any user-visible change | `browser-automation`, through `scripts/browser-check.mjs` |
-| A fact, a citation or a number in an article or `/research` | `research` — primary sources, captured as a note |
-| `GLOSSARY.md`, an ADR, project vocabulary | `domain-modeling` |
-| Editing `AGENTS.md` or an agent prompt | `writing-for-agents` |
-| Shaping an article from raw notes | `writing-fragments` (explore), then `writing-shape` or `writing-beats` (exploit) |
-| A decision that must leave a glossary/ADR trace | `grill-with-docs` |
-| Handing a long session to another agent | `handoff` |
-| Improving the agent setup after a batch | `retro` |
-| Unsure which flow fits | `ask-matt` |
-| A module whose interface must deepen | `codebase-design`, then `improve-codebase-architecture` |
-| Writing a PR body | `pr` |
-| A design question that needs code, not an argument | `prototype` |
-
-Not used here: `scaffold-exercises`, `game-development`, `wizard`, `migrate-to-shoehorn`,
-`setup-pre-commit` and `git-guardrails-claude-code` (this repo already has its pre-push hook),
-`report`, `opencode` (configuration questions only), `setup-ts-deep-modules` (one-off setup), and
-the issue-tracker flow `to-spec` / `to-tickets` / `triage` / `wayfinder` / `to-questionnaire`.
-
-The wider set is installed in `~/.agents/skills` with `disable-model-invocation: true`, which
-OpenCode reads as `opencode/autoinvoke: false`. The ones this repo wants are copied into
-`~/.config/opencode/skills/` with `metadata: { opencode/autoinvoke: true }`, so they are
-advertised without touching the upstream checkout.
 
 ## The team
 
