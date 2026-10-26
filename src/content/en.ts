@@ -1480,7 +1480,7 @@ export const articleItems: ArticleItem[] = [
       },
     ],
     image: '/images/mathis/videos/webinar.webp',
-    imageAlt: 'Mathis presenting "HPC as a Service for Radio Astronomy: A Practical Case Study with the DDF Pipeline" during the webinar',
+    imageAlt: 'The webinar announcement card: “HPC as a Service for Radio Astronomy: A Practical Case Study with the DDF Software”, with the ECLAT logo and a portrait of Mathis Certenais',
     href: '/insights/webinar-hpc-applications-as-a-service',
     sourceHref: sourceLinks.eclatWebinar,
   },
