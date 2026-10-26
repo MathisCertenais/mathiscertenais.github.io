@@ -338,6 +338,14 @@ const articleTranslations: Record<
       'Dans les coulisses de YoungPEx, le groupe de travail de NumPEx qui relie les jeunes chercheurs du programme français exascale — sa première assemblée générale à Toulouse, ses ateliers sur l’empreinte environnementale du calcul intensif et sur les inégalités dans la recherche, et la suite.',
     title: 'YoungPEx : la nouvelle génération du numérique pour l’exascale',
   },
+  'ai-lab-virtual-running-coach': {
+    category: 'Projet personnel',
+    date: '26 octobre 2026',
+    description:
+      'Dans ce blog de projet personnel, Mathis Certenais raconte comment une blessure au genou et un dossier de fichiers GPS sont devenus un coach de course virtuel open source — et pourquoi le véritable produit est la méthode derrière lui : un orchestrateur, huit agents spécialisés et une suite de tests qui refuse de laisser un chiffre mentir.',
+    title:
+      'Comment j’ai créé un laboratoire d’IA pour lancer mon coach de course virtuel open source',
+  },
 }
 
 /**

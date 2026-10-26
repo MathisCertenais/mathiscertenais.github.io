@@ -10,6 +10,9 @@ coverage
 playwright-report
 test-results
 
+# Scratch article source supplied with a writing brief; the published copy lives in src/content.
+CASE_STUDY.md
+
 # Business card: the local design mock-up and the print exports ($ pnpm card:pdf, card:jpg)
 mathis-certenais-card.png
 mathis-certenais-card.pdf

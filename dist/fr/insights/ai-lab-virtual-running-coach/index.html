@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#eef2f5" />
+    <script>
+      ;(() => {
+        try {
+          const stored = localStorage.getItem('mathis-personal-website:theme')
+          const theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light'
+          document.documentElement.dataset.theme = theme
+          document.documentElement.style.colorScheme = theme
+          document.querySelector('meta[name="theme-color"]').content =
+            theme === 'dark' ? '#15181c' : '#eef2f5'
+        } catch {
+          document.documentElement.dataset.theme = 'light'
+        }
+      })()
+    </script>
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Dans ce blog de projet personnel, Mathis Certenais raconte comment une blessure au genou et un dossier de fichiers GPS sont devenus un coach de course virtuel open source — et pourquoi le véritable produit est la méthode derrière lui : un orchestrateur, huit agents spécialisés et une suite de tests qui refuse de laisser un chiffre mentir." />
+    <meta property="og:title" content="Comment j’ai créé un laboratoire d’IA pour lancer mon coach de course virtuel open source | Mathis Certenais" />
+    <meta property="og:description" content="Dans ce blog de projet personnel, Mathis Certenais raconte comment une blessure au genou et un dossier de fichiers GPS sont devenus un coach de course virtuel open source — et pourquoi le véritable produit est la méthode derrière lui : un orchestrateur, huit agents spécialisés et une suite de tests qui refuse de laisser un chiffre mentir." />
+    <meta property="og:site_name" content="Mathis Certenais" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://mathiscertenais.com/images/mathis/social-card.png" />
+    <meta property="og:image:alt" content="Mathis Certenais — Comment j’ai créé un laboratoire d’IA pour lancer mon coach de course virtuel open source" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Comment j’ai créé un laboratoire d’IA pour lancer mon coach de course virtuel open source | Mathis Certenais" />
+    <meta name="twitter:description" content="Dans ce blog de projet personnel, Mathis Certenais raconte comment une blessure au genou et un dossier de fichiers GPS sont devenus un coach de course virtuel open source — et pourquoi le véritable produit est la méthode derrière lui : un orchestrateur, huit agents spécialisés et une suite de tests qui refuse de laisser un chiffre mentir." />
+    <meta name="twitter:image" content="https://mathiscertenais.com/images/mathis/social-card.png" />
+    <meta name="twitter:image:alt" content="Mathis Certenais — Comment j’ai créé un laboratoire d’IA pour lancer mon coach de course virtuel open source" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Comment j’ai créé un laboratoire d’IA pour lancer mon coach de course virtuel open source | Mathis Certenais</title>
+    <script type="module" crossorigin src="/assets/index-DCXEpbOQ.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BF0WNh_t.css">
+    <meta property="og:url" content="https://mathiscertenais.com/fr/insights/ai-lab-virtual-running-coach/" />
+    <link rel="canonical" href="https://mathiscertenais.com/fr/insights/ai-lab-virtual-running-coach/" />
+      <link rel="alternate" hreflang="en" href="https://mathiscertenais.com/insights/ai-lab-virtual-running-coach/" />
+    <link rel="alternate" hreflang="fr" href="https://mathiscertenais.com/fr/insights/ai-lab-virtual-running-coach/" />
+    <link rel="alternate" hreflang="x-default" href="https://mathiscertenais.com/insights/ai-lab-virtual-running-coach/" />
+  </head>
+  <body>
+    <div id="root"><main class="prerendered" id="main-content">
+      <p class="prerendered__label">Projet personnel · 26 octobre 2026</p>
+      <h1>Comment j’ai créé un laboratoire d’IA pour lancer mon coach de course virtuel open source</h1>
+      <p>Dans ce blog de projet personnel, Mathis Certenais raconte comment une blessure au genou et un dossier de fichiers GPS sont devenus un coach de course virtuel open source — et pourquoi le véritable produit est la méthode derrière lui : un orchestrateur, huit agents spécialisés et une suite de tests qui refuse de laisser un chiffre mentir.</p>
+      <figure class="prerendered__figure">
+        <img alt="The coaching panel of Open Running Coach in dark theme, showing training load, fitness and form on the demo dataset." src="/images/mathis/ai-lab-virtual-running-coach/cover.webp" />
+      </figure>
+      <h2>The interview</h2>
+      <h3>You’re a runner first. Where does this start?</h3>
+      <p>I’m an amateur runner. I started like most people: running became fashionable, so I tried it. What kept me going is how practical it is — you put on your shoes, you walk out of your door, and you run.</p>
+      <p>I increased the distance gradually, and then I hit a wall at 10 km: pain. A physiotherapist for exercises, an X-ray, an ultrasound, a sports doctor, and finally a diagnosis — <strong>femoropatellar syndrome</strong>. Nothing dramatic, but enough to understand that I had to pay attention to what I was doing.</p>
+      <h3>So you started collecting data. What went wrong?</h3>
+      <p>I began recording my runs with <a href="https://f-droid.org/en/packages/de.dennisguse.opentracks.playstore/" rel="noreferrer" target="_blank">OpenTracks</a>, an open-source mobile sport tracker that respects your privacy. The files piled up, and I had neither the time nor the knowledge to analyse them.</p>
+      <p>A GPS file is not an insight. It is a very precise record of something I did not understand.</p>
+      <h3>What did you want instead?</h3>
+      <p>A <strong>virtual coach</strong> grounded in the literature, computing my own indicators from my own data: <strong>VO2max, intensity distribution, training load, injury signals</strong>. Then I enriched it with what actually surrounds a run — nutrition, a stretching and strength programme, and daily step count, which matters a lot in my case: the sedentary days are exactly when the knee complains.</p>
+      <p>And AI on top, to make that data speak: training strategy, stretching for race preparation, race-time predictions.</p>
+      <h3>You keep saying “the sensor is the watch, the phone is the transport, the laptop is the brain”. What does that mean?</h3>
+      <p>It is the architecture, in one sentence.</p>
+      <p>The watch records. The phone moves the file. The <strong>laptop does the thinking</strong> — and it keeps the data. No account, no cloud, no telemetry: the application runs on 127.0.0.1, reads files from a folder, and writes to a SQLite database next to it.</p>
+      <p>I was looking for performance. But performance starts with analysing what happens on the ground, and that analysis had to belong to me.</p>
+      <h3>What is an “AI lab”, concretely?</h3>
+      <p>Not a model. A way of working.</p>
+      <p>The environment is <strong>OpenCode</strong>. In it, one <strong>orchestrator</strong> talks to me, plans, and dispatches. Around it, eight specialists with disjoint ownership: <strong>developer, architect, UI, quality control, scientist, marketing, security, writer</strong>. They load the engineering skills from <a href="https://www.aihero.dev/skills-grill-me" rel="noreferrer" target="_blank">mattpocock/skills</a> when a task matches one — grilling before a design decision, test-driven development, code review against a written standard.</p>
+      <p>The part that makes it an organisation rather than a prompt collection is the permissions. The quality agent <strong>cannot edit files</strong>. Neither can the architect or the security reviewer. A reviewer that can fix what it finds stops being a reviewer.</p>
+      <h3>Why specialists instead of one large prompt?</h3>
+      <p>Because a single agent will do everything, badly, and never tell you.</p>
+      <p>Two agents that do not talk to each other produce two vocabularies, two data models and two visual languages. That is the failure mode I wanted to design out: the scientist disagrees with the marketer, the quality agent disagrees with the developer, and I arbitrate. That disagreement is the product.</p>
+      <h3>What is open source, and what do you sell?</h3>
+      <p>The code is <strong>AGPL-3.0</strong> on <a href="https://github.com/MathisCertenais/open-running-coach" rel="noreferrer" target="_blank">GitHub</a>. It is free, it runs on your machine, and it will stay that way.</p>
+      <p>What I sell is not the binary. It is the capacity to take an idea to a working proof of concept: the agent organisation, the research discipline, the tests, the documentation, the release. This application is the case study; your project is the next one.</p>
+      <h3>How can you manage an AI lab, economically?</h3>
+      <p><strong>Everything an agent does costs context</strong>, so the first management decision is not which model to use. It is what you put in front of it.</p>
+      <p>Start with the price, because it decides the architecture. On OpenCode Zen, per million tokens:</p>
+      <ul>
+        <li><strong>DeepSeek V4.1 Flash</strong> — input $0.30, output $1.20, cache read $0.006.</li>
+        <li><strong>DeepSeek V4 Pro</strong> — input $1.74, output $3.48, cache read $0.145.</li>
+      </ul>
+      <p>A realistic session — 40 turns, about 40k tokens of context, 1k of output per turn — sends roughly <strong>1.6 million input tokens</strong>:</p>
+      <ul>
+        <li><strong>Flash</strong> — $0.53 with no cache; <strong>$0.10</strong> at 90% cached.</li>
+        <li><strong>Pro</strong> — $2.92 with no cache; <strong>$0.63</strong> at 90% cached.</li>
+      </ul>
+      <p>Read the two scenarios again. An input token costs $0.30 per million when the model has never seen it, and $0.006 when it comes from the cache: <strong>fifty times less</strong>. The number that matters is therefore not the price of the model, it is the number of cache misses. Anything that rewrites the beginning of the conversation — editing the system prompt, reordering the project instructions, reloading a skill mid-task — throws the cache away and silently moves you from the cached scenario to the uncached one.</p>
+      <p>So the rule is: <strong>Flash for the worker, Pro for the architect.</strong> Ten cents for the session that writes the tests, sixty for the one that decides the structure.</p>
+      <p>The answer to “how do you run this” is four tools, each doing one thing.</p>
+      <p><strong>herdr</strong> is the building. A terminal multiplexer made for agents: panes, tabs, sessions, one git worktree per experiment, and a sidebar that says which agent is working, idle or blocked. It does not run the AI; it gives it a place to run.</p>
+      <p><strong>OpenCode</strong> is the team. One orchestrator and eight native sub-agents — the developer, architect, UI, quality, scientist, marketing, security and writer described above. It is where the work is decomposed.</p>
+      <p><strong>Pi</strong> is the lone contractor. A minimal harness: short system prompt, few tools, no sub-agents, cheap to run. That minimalism is the point — it is where I want a precise, bounded task and nothing else in the context.</p>
+      <p><strong>Fresh</strong> is my desk. A terminal editor, in a pane next to the agents, for reading the diff and correcting by hand.</p>
+      <p>That is the whole management model: spend the expensive model on the decisions, the cheap one on the execution, and keep the context stable enough that the cache keeps paying. Everything else is ergonomics.</p>
+      <h3>What’s next?</h3>
+      <p>Two things, in order.</p>
+      <p><strong>Validation.</strong> The injury module has a base rate, an export for a physiotherapist and a place to record their verdict — but it has never been tested against one real episode and one clinician’s reading. That is the next hour of work, and it is not code.</p>
+      <p><strong>Reach.</strong> The app is import-only by design: the watch records, the app thinks. Making that transport disappear is not really a feature problem. It is the problem I work on every day in my thesis — <strong>data logistics</strong>: data is produced at the edge, it has to reach a place where it can be processed, with no central authority, no silent duplication and a clear answer to who owns the copy. Here the instrument is a watch and the compute is a laptop. At IRISA it is a radio telescope and a supercomputer, and the questions are identical: what moves, when does it move, what is copied twice, and what happens when a transfer dies halfway.</p>
+      <p>The rest is already in the repository: an open-source virtual running coach, 324 tests, seven architecture decisions, ten research notes with citations, and eleven read-only tools the coach can call to answer questions about my own data.</p>
+      <p>That is the direction I want to take this project — not more features, but the same logistics reasoning applied at a smaller scale, in the open. The research behind it is here: <a href="https://mathiscertenais.com/research/" rel="noreferrer" target="_blank">mathiscertenais.com/research</a>.</p>
+      <h2>Source</h2>
+      <ul>
+        <li><a href="https://github.com/MathisCertenais/open-running-coach" rel="noreferrer" target="_blank">The project on GitHub</a></li>
+        <li><a href="https://www.runnerbreizh.fr/coureur.php?CoureurNom=CERTENAIS&amp;CoureurPrenom=Mathis" rel="noreferrer" target="_blank">My runner profile</a></li>
+        <li><a href="https://www.aihero.dev/skills-grill-me" rel="noreferrer" target="_blank">The engineering skills used to build it</a></li>
+      </ul>
+      <h2>Keep reading</h2>
+      <ul>
+        <li><a href="https://mathiscertenais.com/insights/" rel="noreferrer" target="_blank">All entries</a></li>
+        <li><a href="https://mathiscertenais.com/research/" rel="noreferrer" target="_blank">The research</a></li>
+        <li><a href="https://mathiscertenais.com/contact/" rel="noreferrer" target="_blank">Get in touch</a></li>
+      </ul>
+      
+      <h2>Poursuivre la lecture</h2>
+      <ul>
+        <li><a href="/fr/insights/">Tous les articles</a></li>
+        <li><a href="/fr/research/">La recherche</a></li>
+        <li><a href="/fr/contact/">Get in touch</a></li>
+      </ul>
+    </main></div>
+  </body>
+</html>

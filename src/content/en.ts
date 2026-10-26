@@ -325,6 +325,7 @@ export type ArticleId =
   | 'rennes-hackathon-for-astronomy'
   | 'exascale-astronomy-cybersecurity'
   | 'mcp-server-software-ontology'
+  | 'ai-lab-virtual-running-coach'
 
 export type ArticleListItem = string | { id?: string; text: string }
 
@@ -1575,6 +1576,244 @@ export const articleItems: ArticleItem[] = [
     image: '/images/mathis/rennes-hackathon/rennes-hackathon-front.webp',
     imageAlt: 'Participants in the hackathon in Rennes',
     href: '/insights/rennes-hackathon-for-astronomy',
+  },
+  {
+    id: 'ai-lab-virtual-running-coach',
+    number: '09',
+    category: 'Side project',
+    date: 'October 26, 2026',
+    title:
+      'How I Created an AI Lab to Launch My Open-Source Virtual Running Coach',
+    description:
+      'In this side-project blog, Mathis Certenais explains how a knee injury and a folder of GPS files became an open-source virtual running coach — and why the real product is the method behind it: one orchestrator, eight specialist agents, and a test suite that refuses to let a number lie.',
+    body: [
+      {
+        type: 'heading',
+        level: 2,
+        text: 'The interview',
+      },
+      {
+        type: 'heading',
+        level: 3,
+        text: 'You’re a runner first. Where does this start?',
+      },
+      {
+        type: 'paragraph',
+        text: 'I’m an amateur runner. I started like most people: running became fashionable, so I tried it. What kept me going is how practical it is — you put on your shoes, you walk out of your door, and you run.',
+      },
+      {
+        type: 'paragraph',
+        text: 'I increased the distance gradually, and then I hit a wall at 10 km: pain. A physiotherapist for exercises, an X-ray, an ultrasound, a sports doctor, and finally a diagnosis — **femoropatellar syndrome**. Nothing dramatic, but enough to understand that I had to pay attention to what I was doing.',
+      },
+      {
+        type: 'heading',
+        level: 3,
+        text: 'So you started collecting data. What went wrong?',
+      },
+      {
+        type: 'paragraph',
+        text: 'I began recording my runs with [OpenTracks](https://f-droid.org/en/packages/de.dennisguse.opentracks.playstore/), an open-source mobile sport tracker that respects your privacy. The files piled up, and I had neither the time nor the knowledge to analyse them.',
+      },
+      {
+        type: 'paragraph',
+        text: 'A GPS file is not an insight. It is a very precise record of something I did not understand.',
+      },
+      {
+        type: 'heading',
+        level: 3,
+        text: 'What did you want instead?',
+      },
+      {
+        type: 'paragraph',
+        text: 'A **virtual coach** grounded in the literature, computing my own indicators from my own data: **VO2max, intensity distribution, training load, injury signals**. Then I enriched it with what actually surrounds a run — nutrition, a stretching and strength programme, and daily step count, which matters a lot in my case: the sedentary days are exactly when the knee complains.',
+      },
+      {
+        type: 'paragraph',
+        text: 'And AI on top, to make that data speak: training strategy, stretching for race preparation, race-time predictions.',
+      },
+      {
+        type: 'heading',
+        level: 3,
+        text: 'You keep saying “the sensor is the watch, the phone is the transport, the laptop is the brain”. What does that mean?',
+      },
+      {
+        type: 'paragraph',
+        text: 'It is the architecture, in one sentence.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The watch records. The phone moves the file. The **laptop does the thinking** — and it keeps the data. No account, no cloud, no telemetry: the application runs on 127.0.0.1, reads files from a folder, and writes to a SQLite database next to it.',
+      },
+      {
+        type: 'paragraph',
+        text: 'I was looking for performance. But performance starts with analysing what happens on the ground, and that analysis had to belong to me.',
+      },
+      {
+        type: 'heading',
+        level: 3,
+        text: 'What is an “AI lab”, concretely?',
+      },
+      {
+        type: 'paragraph',
+        text: 'Not a model. A way of working.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The environment is **OpenCode**. In it, one **orchestrator** talks to me, plans, and dispatches. Around it, eight specialists with disjoint ownership: **developer, architect, UI, quality control, scientist, marketing, security, writer**. They load the engineering skills from [mattpocock/skills](https://www.aihero.dev/skills-grill-me) when a task matches one — grilling before a design decision, test-driven development, code review against a written standard.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The part that makes it an organisation rather than a prompt collection is the permissions. The quality agent **cannot edit files**. Neither can the architect or the security reviewer. A reviewer that can fix what it finds stops being a reviewer.',
+      },
+      {
+        type: 'heading',
+        level: 3,
+        text: 'Why specialists instead of one large prompt?',
+      },
+      {
+        type: 'paragraph',
+        text: 'Because a single agent will do everything, badly, and never tell you.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Two agents that do not talk to each other produce two vocabularies, two data models and two visual languages. That is the failure mode I wanted to design out: the scientist disagrees with the marketer, the quality agent disagrees with the developer, and I arbitrate. That disagreement is the product.',
+      },
+      {
+        type: 'heading',
+        level: 3,
+        text: 'What is open source, and what do you sell?',
+      },
+      {
+        type: 'paragraph',
+        text: 'The code is **AGPL-3.0** on [GitHub](https://github.com/MathisCertenais/open-running-coach). It is free, it runs on your machine, and it will stay that way.',
+      },
+      {
+        type: 'paragraph',
+        text: 'What I sell is not the binary. It is the capacity to take an idea to a working proof of concept: the agent organisation, the research discipline, the tests, the documentation, the release. This application is the case study; your project is the next one.',
+      },
+      {
+        type: 'heading',
+        level: 3,
+        text: 'How can you manage an AI lab, economically?',
+      },
+      {
+        type: 'paragraph',
+        text: '**Everything an agent does costs context**, so the first management decision is not which model to use. It is what you put in front of it.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Start with the price, because it decides the architecture. On OpenCode Zen, per million tokens:',
+      },
+      {
+        type: 'list',
+        ordered: false,
+        items: [
+          '**DeepSeek V4.1 Flash** — input $0.30, output $1.20, cache read $0.006.',
+          '**DeepSeek V4 Pro** — input $1.74, output $3.48, cache read $0.145.',
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'A realistic session — 40 turns, about 40k tokens of context, 1k of output per turn — sends roughly **1.6 million input tokens**:',
+      },
+      {
+        type: 'list',
+        ordered: false,
+        items: [
+          '**Flash** — $0.53 with no cache; **$0.10** at 90% cached.',
+          '**Pro** — $2.92 with no cache; **$0.63** at 90% cached.',
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'Read the two scenarios again. An input token costs $0.30 per million when the model has never seen it, and $0.006 when it comes from the cache: **fifty times less**. The number that matters is therefore not the price of the model, it is the number of cache misses. Anything that rewrites the beginning of the conversation — editing the system prompt, reordering the project instructions, reloading a skill mid-task — throws the cache away and silently moves you from the cached scenario to the uncached one.',
+      },
+      {
+        type: 'paragraph',
+        text: 'So the rule is: **Flash for the worker, Pro for the architect.** Ten cents for the session that writes the tests, sixty for the one that decides the structure.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The answer to “how do you run this” is four tools, each doing one thing.',
+      },
+      {
+        type: 'paragraph',
+        text: '**herdr** is the building. A terminal multiplexer made for agents: panes, tabs, sessions, one git worktree per experiment, and a sidebar that says which agent is working, idle or blocked. It does not run the AI; it gives it a place to run.',
+      },
+      {
+        type: 'paragraph',
+        text: '**OpenCode** is the team. One orchestrator and eight native sub-agents — the developer, architect, UI, quality, scientist, marketing, security and writer described above. It is where the work is decomposed.',
+      },
+      {
+        type: 'paragraph',
+        text: '**Pi** is the lone contractor. A minimal harness: short system prompt, few tools, no sub-agents, cheap to run. That minimalism is the point — it is where I want a precise, bounded task and nothing else in the context.',
+      },
+      {
+        type: 'paragraph',
+        text: '**Fresh** is my desk. A terminal editor, in a pane next to the agents, for reading the diff and correcting by hand.',
+      },
+      {
+        type: 'paragraph',
+        text: 'That is the whole management model: spend the expensive model on the decisions, the cheap one on the execution, and keep the context stable enough that the cache keeps paying. Everything else is ergonomics.',
+      },
+      {
+        type: 'heading',
+        level: 3,
+        text: 'What’s next?',
+      },
+      {
+        type: 'paragraph',
+        text: 'Two things, in order.',
+      },
+      {
+        type: 'paragraph',
+        text: '**Validation.** The injury module has a base rate, an export for a physiotherapist and a place to record their verdict — but it has never been tested against one real episode and one clinician’s reading. That is the next hour of work, and it is not code.',
+      },
+      {
+        type: 'paragraph',
+        text: '**Reach.** The app is import-only by design: the watch records, the app thinks. Making that transport disappear is not really a feature problem. It is the problem I work on every day in my thesis — **data logistics**: data is produced at the edge, it has to reach a place where it can be processed, with no central authority, no silent duplication and a clear answer to who owns the copy. Here the instrument is a watch and the compute is a laptop. At IRISA it is a radio telescope and a supercomputer, and the questions are identical: what moves, when does it move, what is copied twice, and what happens when a transfer dies halfway.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The rest is already in the repository: an open-source virtual running coach, 324 tests, seven architecture decisions, ten research notes with citations, and eleven read-only tools the coach can call to answer questions about my own data.',
+      },
+      {
+        type: 'paragraph',
+        text: 'That is the direction I want to take this project — not more features, but the same logistics reasoning applied at a smaller scale, in the open. The research behind it is here: [mathiscertenais.com/research](https://mathiscertenais.com/research/).',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        text: 'Source',
+      },
+      {
+        type: 'list',
+        ordered: false,
+        items: [
+          '[The project on GitHub](https://github.com/MathisCertenais/open-running-coach)',
+          '[My runner profile](https://www.runnerbreizh.fr/coureur.php?CoureurNom=CERTENAIS&CoureurPrenom=Mathis)',
+          '[The engineering skills used to build it](https://www.aihero.dev/skills-grill-me)',
+        ],
+      },
+      {
+        type: 'heading',
+        level: 2,
+        text: 'Keep reading',
+      },
+      {
+        type: 'list',
+        ordered: false,
+        items: [
+          '[All entries](https://mathiscertenais.com/insights/)',
+          '[The research](https://mathiscertenais.com/research/)',
+          '[Get in touch](https://mathiscertenais.com/contact/)',
+        ],
+      },
+    ],
+    image: '/images/mathis/ai-lab-virtual-running-coach/cover.webp',
+    imageAlt:
+      'The coaching panel of Open Running Coach in dark theme, showing training load, fitness and form on the demo dataset.',
+    href: '/insights/ai-lab-virtual-running-coach',
   },
 ]
 

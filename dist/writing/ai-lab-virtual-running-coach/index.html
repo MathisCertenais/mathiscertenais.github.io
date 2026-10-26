@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#eef2f5" />
+    <script>
+      ;(() => {
+        try {
+          const stored = localStorage.getItem('mathis-personal-website:theme')
+          const theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light'
+          document.documentElement.dataset.theme = theme
+          document.documentElement.style.colorScheme = theme
+          document.querySelector('meta[name="theme-color"]').content =
+            theme === 'dark' ? '#15181c' : '#eef2f5'
+        } catch {
+          document.documentElement.dataset.theme = 'light'
+        }
+      })()
+    </script>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="In this side-project blog, Mathis Certenais explains how a knee injury and a folder of GPS files became an open-source virtual running coach — and why the real product is the method behind it: one orchestrator, eight specialist agents, and a test suite that refuses to let a number lie." />
+    <meta property="og:title" content="How I Created an AI Lab to Launch My Open-Source Virtual Running Coach | Mathis Certenais" />
+    <meta property="og:description" content="In this side-project blog, Mathis Certenais explains how a knee injury and a folder of GPS files became an open-source virtual running coach — and why the real product is the method behind it: one orchestrator, eight specialist agents, and a test suite that refuses to let a number lie." />
+    <meta property="og:site_name" content="Mathis Certenais" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://mathiscertenais.com/images/mathis/social-card.png" />
+    <meta property="og:image:alt" content="The coaching panel of Open Running Coach" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How I Created an AI Lab to Launch My Open-Source Virtual Running Coach | Mathis Certenais" />
+    <meta name="twitter:description" content="In this side-project blog, Mathis Certenais explains how a knee injury and a folder of GPS files became an open-source virtual running coach — and why the real product is the method behind it: one orchestrator, eight specialist agents, and a test suite that refuses to let a number lie." />
+    <meta name="twitter:image" content="https://mathiscertenais.com/images/mathis/social-card.png" />
+    <meta name="twitter:image:alt" content="The coaching panel of Open Running Coach" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>How I Created an AI Lab to Launch My Open-Source Virtual Running Coach | Mathis Certenais</title>
+    <script type="module" crossorigin src="/assets/index-DCXEpbOQ.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BF0WNh_t.css">
+    <meta property="og:url" content="https://mathiscertenais.com/insights/ai-lab-virtual-running-coach/" />
+    <link rel="canonical" href="https://mathiscertenais.com/insights/ai-lab-virtual-running-coach/" />
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

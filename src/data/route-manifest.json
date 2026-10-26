@@ -299,6 +299,35 @@
   "title": "Astronomie exascale contre cybers\u00e9curit\u00e9 | Mathis Certenais"
  },
  {
+  "path": "/insights/ai-lab-virtual-running-coach",
+  "canonical": "/insights/ai-lab-virtual-running-coach",
+  "page": "article:ai-lab-virtual-running-coach",
+  "title": "How I Created an AI Lab to Launch My Open-Source Virtual Running Coach | Mathis Certenais",
+  "description": "In this side-project blog, Mathis Certenais explains how a knee injury and a folder of GPS files became an open-source virtual running coach — and why the real product is the method behind it: one orchestrator, eight specialist agents, and a test suite that refuses to let a number lie.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "The coaching panel of Open Running Coach"
+ },
+ {
+  "path": "/writing/ai-lab-virtual-running-coach",
+  "canonical": "/insights/ai-lab-virtual-running-coach",
+  "page": "article:ai-lab-virtual-running-coach",
+  "title": "How I Created an AI Lab to Launch My Open-Source Virtual Running Coach | Mathis Certenais",
+  "description": "In this side-project blog, Mathis Certenais explains how a knee injury and a folder of GPS files became an open-source virtual running coach — and why the real product is the method behind it: one orchestrator, eight specialist agents, and a test suite that refuses to let a number lie.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "The coaching panel of Open Running Coach",
+  "robots": "noindex, follow"
+ },
+ {
+  "canonical": "/fr/insights/ai-lab-virtual-running-coach",
+  "description": "Dans ce blog de projet personnel, Mathis Certenais raconte comment une blessure au genou et un dossier de fichiers GPS sont devenus un coach de course virtuel open source — et pourquoi le véritable produit est la méthode derrière lui : un orchestrateur, huit agents spécialisés et une suite de tests qui refuse de laisser un chiffre mentir.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "Mathis Certenais — Comment j’ai créé un laboratoire d’IA pour lancer mon coach de course virtuel open source",
+  "page": "article:ai-lab-virtual-running-coach",
+  "path": "/fr/insights/ai-lab-virtual-running-coach",
+  "robots": "index, follow",
+  "title": "Comment j’ai créé un laboratoire d’IA pour lancer mon coach de course virtuel open source | Mathis Certenais"
+ },
+ {
   "path": "/videos",
   "canonical": "/videos",
   "page": "videos",

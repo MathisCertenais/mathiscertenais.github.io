@@ -43,7 +43,7 @@ so the research is legible from the portfolio root without visiting `/research`.
 Canonical sections include:
 
 - `/research`
-- `/insights` and eight article pages
+- `/insights` and nine article pages
 - `/videos`, `/about`, `/resume`, and `/contact`
 
 Legacy portfolio URLs remain available as `noindex, follow` compatibility aliases. Each alias
@@ -98,7 +98,7 @@ publicly readable there.
 
 `public/robots.txt` allows crawling and points at the sitemap. `sitemap.xml` is not committed: the
 build writes it from `src/data/route-manifest.json`, listing only the canonical routes that are
-meant to be indexed — today 15 of them. The 23 legacy aliases (`noindex, follow`) are deliberately
+meant to be indexed — today 34 of them. The 33 legacy aliases (`noindex, follow`) are deliberately
 left out, because asking Google to index a noindex page sends a contradictory signal. `pnpm check:dist` fails if the sitemap and the manifest ever disagree.
 
 Both the sitemap and the Open Graph URLs need an absolute origin, which comes from
