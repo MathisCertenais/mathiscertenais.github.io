@@ -31,6 +31,35 @@ export function navigate(href: string, replace = false) {
   window.dispatchEvent(new Event('app:navigate'))
 }
 
+/**
+ * The offset of a navigation that must not send the reader back to the top,
+ * recorded here and consumed by the route effect in `App`. In memory on purpose:
+ * the value describes one navigation in the running tab, not a page state worth
+ * surviving a reload.
+ */
+let preservedScrollY: number | null = null
+
+/**
+ * The same page under another address: switching language keeps the reader where
+ * they were reading, so the offset is recorded before the route changes and the
+ * route effect restores it instead of scrolling to the top.
+ */
+export function navigatePreservingScroll(href: string) {
+  preservedScrollY = window.scrollY
+  navigate(href)
+}
+
+/**
+ * Reads and clears the offset. Clearing happens on every call, whether the
+ * reader ends up needing it or not: an offset that is never restored must not
+ * leak into the next navigation and displace a page the reader did not ask for.
+ */
+export function takePreservedScroll(): number | null {
+  const scrollY = preservedScrollY
+  preservedScrollY = null
+  return scrollY
+}
+
 export function useAppLocation() {
   const [location, setLocation] = useState<AppLocation>(readLocation)
 

@@ -11,7 +11,7 @@ import {
 } from 'react'
 import { contentByLanguage, type SiteContent } from '../content'
 import { locales, type Language } from '../locales'
-import { navigate } from '../routing'
+import { navigatePreservingScroll } from '../routing'
 
 export const LANGUAGE_STORAGE_KEY = 'mathis-personal-website:language'
 
@@ -101,12 +101,13 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
     setLanguage(next)
 
     // The URL carries the language, so a French page can be shared as such:
-    // /research becomes /fr/research, and back.
+    // /research becomes /fr/research, and back. It is the same page, so the
+    // reader keeps their scroll position and their focus on the toggle.
     const current = window.location.pathname
     const bare = /^\/fr(\/|$)/.test(current) ? current.replace(/^\/fr/, '') || '/' : current
     const target = localizedHref(bare, next)
 
-    if (target !== current) navigate(target)
+    if (target !== current) navigatePreservingScroll(target)
   }, [language, setLanguage])
 
   const content = contentByLanguage[language]
