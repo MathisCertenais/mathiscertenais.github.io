@@ -74,6 +74,12 @@ export const locales = {
       whereThisContinues: 'Where this continues',
       reasoningPublic: 'The reasoning is written up in public.',
       readNotes: 'Read research notes',
+      readingTime: 'min read',
+      inpexTalk: 'Presented at the InPEx 2025 workshop, Kanagawa, 15–17 April 2025:',
+      inpexSlides: 'SKA — slides',
+      inpexWorkshop: 'workshop programme',
+      skaAlt:
+        'Diagram of the SKA processing chain: antennas in Australia and South Africa feed on-site pre-processing, then supercomputers in Perth and Cape Town, whose science products are replicated across an international storage network',
       publications: 'Publications',
       getInTouch: 'Get in touch',
       exploreResearchArea: 'Explore the research area',
@@ -124,7 +130,11 @@ export const locales = {
     },
     theme: { toDark: 'Switch to dark mode', toLight: 'Switch to light mode' },
     writing: { allInsights: 'All insights' },
-    a11y: { newTab: 'opens in new tab', closeImage: 'Close image' },
+    a11y: {
+      newTab: 'opens in new tab',
+      closeImage: 'Close image',
+      openFigure: 'Enlarge figure',
+    },
   },
   fr: {
     fallbacks: {
@@ -193,6 +203,12 @@ export const locales = {
       whereThisContinues: 'Où cela se poursuit',
       reasoningPublic: 'Le raisonnement est publié.',
       readNotes: 'Lire les notes de recherche',
+      readingTime: 'min de lecture',
+      inpexTalk: 'Présenté à l’atelier InPEx 2025, Kanagawa, 15-17 avril 2025 :',
+      inpexSlides: 'SKA — diapositives',
+      inpexWorkshop: 'programme de l’atelier',
+      skaAlt:
+        'Schéma de la chaîne de traitement du SKA : les antennes en Australie et en Afrique du Sud alimentent un prétraitement sur site, puis des supercalculateurs à Perth et au Cap, dont les produits scientifiques sont répliqués sur un réseau de stockage international',
       publications: 'Publications',
       getInTouch: 'Me contacter',
       exploreResearchArea: 'Explorer le domaine de recherche',
@@ -242,7 +258,11 @@ export const locales = {
     },
     theme: { toDark: 'Passer en mode sombre', toLight: 'Passer en mode clair' },
     writing: { allInsights: 'Tous les articles' },
-    a11y: { newTab: 'nouvel onglet', closeImage: 'Fermer l’image' },
+    a11y: {
+      newTab: 'nouvel onglet',
+      closeImage: 'Fermer l’image',
+      openFigure: 'Agrandir la figure',
+    },
   },
 } as const
 

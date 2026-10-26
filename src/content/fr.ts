@@ -20,9 +20,9 @@ import type { ArticleBlock } from './en.ts'
  * SKA, LOFAR, GENCI, CINES, IDRIS, TGCC) et les titres d'œuvres restent
  * inchangés.
  *
- * Les corps des huit articles ne sont pas encore traduits : ils sont empruntés
- * au module anglais, et leurs routes françaises n'existent pas encore. C'est le
- * prochain lot de la campagne.
+ * Les neuf corps d’articles sont traduits. Celui de la cybersécurité reste
+ * composé — les blocs traduits ouvrent le texte, la fin vient encore de
+ * l’anglais — et sa bibliographie reste en anglais pour de bon.
  */
 
 export const identity = {
@@ -61,6 +61,8 @@ export const sourceLinks = {
   linkedin: identity.linkedin,
   numpex: 'https://numpex.org/data-logistics-for-radio-astronomy/',
   numpexYoungpex: 'https://numpex.org/youngpex/',
+  inpexWorkshop: 'https://inpex.science/workshop/2025-inpex-workshop/',
+  inpexSlides: 'https://inpex.science/wp-content/uploads/sites/5/2025/04/25A6391.pdf',
 } as const
 
 export const proofPoints: ProofPoint[] = [
@@ -268,20 +270,21 @@ export const videoItems: VideoItem[] = englishVideos.map((video) => ({
 }))
 
 /**
- * Les huit articles. Titre, chapeau, rubrique et date sont traduits ; le corps
- * est encore celui de la version anglaise et les adresses pointent vers elle,
- * parce que les routes françaises n'existent pas avant le prochain lot. Le
- * reste — numéro, image, texte alternatif, source — est hérité de l'anglais.
+ * Les neuf articles. Titre, chapeau, rubrique, date et texte alternatif de la
+ * vignette sont traduits ; le corps vient de `articleBodies` quand il existe.
+ * Le reste — numéro, image, source — est hérité de l'anglais.
  */
 const articleTranslations: Record<
   string,
-  { category: string; date: string; description: string; title: string }
+  { category: string; date: string; description: string; imageAlt?: string; title: string }
 > = {
   'eclat-interview': {
     category: 'Entretien',
     date: 'Septembre 2025',
     description:
       'Dans cet entretien pour ECLAT, Mathis Certenais raconte son parcours depuis une école d’ingénieurs à Rennes jusqu’à la recherche doctorale sur la logistique des données — et pourquoi la multidisciplinarité est la clé de la radioastronomie de demain.',
+    imageAlt:
+      'L’entretien ECLAT avec Mathis Certenais sur la logistique des données pour la radioastronomie.',
     title: 'Entretien : au cœur de la logistique des données pour la radioastronomie',
   },
   'exascale-astronomy-cybersecurity': {
@@ -289,6 +292,7 @@ const articleTranslations: Record<
     date: '13 septembre 2026',
     description:
       'Comment un modèle d’accès par service peut ouvrir les supercalculateurs nationaux français à la radioastronomie sans compromettre la cybersécurité.',
+    imageAlt: 'Le radiotélescope Square Kilometre Array.',
     title:
       'Astronomie exascale contre cybersécurité : ouvrir les supercalculateurs français à la communauté radioastronomique',
   },
@@ -297,6 +301,8 @@ const articleTranslations: Record<
     date: '1er avril 2026',
     description:
       'Un événement de recherche qui réunit informaticiens et astrophysiciens de France, d’Angleterre et d’Afrique du Sud autour des défis techniques communs aux données de la radioastronomie.',
+    imageAlt:
+      'Les participants au hackathon international DDF Pipeline et RIMS à Rennes.',
     title: 'Hackathon international de radioastronomie',
   },
   'mcp-server-software-ontology': {
@@ -304,6 +310,8 @@ const articleTranslations: Record<
     date: '16 septembre 2026',
     description:
       'Voyez la documentation de votre logiciel scientifique comme un wiki interactif. Un serveur MCP qui transforme des centaines de paramètres de configuration complexes en réponses en langage naturel pour les chercheurs et les ingénieurs de la communauté.',
+    imageAlt:
+      'Une conversation entre un chercheur et un assistant IA au sujet des paramètres d’un logiciel scientifique.',
     title:
       'Faire parler un logiciel scientifique : un serveur MCP qui explique ses propres paramètres',
   },
@@ -312,6 +320,8 @@ const articleTranslations: Record<
     date: '23 septembre 2026',
     description:
       'Un modèle prédictif à apprentissage continu qui estime le temps d’exécution, la mémoire et l’énergie des applications scientifiques sur supercalculateur — pour que les chercheurs dimensionnent leurs allocations au lieu de deviner.',
+    imageAlt:
+      'Une illustration conceptuelle qui oppose la phase initiale, où l’on devine, à la clarté offerte par un modèle à apprentissage continu.',
     title:
       'Prédire pour dimensionner : apprendre aux supercalculateurs leur propre empreinte d’exécution',
   },
@@ -320,6 +330,7 @@ const articleTranslations: Record<
     date: '1er octobre 2025',
     description:
       'Un événement de recherche technique qui réunit informaticiens et astrophysiciens pour s’attaquer aux défis de la radioastronomie.',
+    imageAlt: 'Les participants au hackathon de Rennes.',
     title:
       'Des supercalculateurs aux travaux pratiques : renforcer la communauté par le partage des savoirs',
   },
@@ -328,6 +339,8 @@ const articleTranslations: Record<
     date: '26 février 2026',
     description:
       'Ce webinaire prend la radioastronomie comme exemple pour montrer comment les services applicatifs de calcul haute performance peuvent gérer les données scientifiques, accélérer l’imagerie et accompagner les instruments de nouvelle génération comme le SKA, à travers des architectures et des outils pensés pour les workflows inter-sites.',
+    imageAlt:
+      'Mathis Certenais sur le visuel du webinaire « HPC as a Service for Radio Astronomy: A Practical Case Study with the DDF Software ».',
     title:
       'Webinaire : les services applicatifs de calcul haute performance pour la radioastronomie',
   },
@@ -336,6 +349,8 @@ const articleTranslations: Record<
     date: '12 octobre 2026',
     description:
       'Dans les coulisses de YoungPEx, le groupe de travail de NumPEx qui relie les jeunes chercheurs du programme français exascale — sa première assemblée générale à Toulouse, ses ateliers sur l’empreinte environnementale du calcul intensif et sur les inégalités dans la recherche, et la suite.',
+    imageAlt:
+      'Photo de groupe des participants de YoungPEx dans le hall de l’INP-ENSEEIHT, à Toulouse.',
     title: 'YoungPEx : la nouvelle génération du numérique pour l’exascale',
   },
   'ai-lab-virtual-running-coach': {
@@ -343,6 +358,8 @@ const articleTranslations: Record<
     date: '26 octobre 2026',
     description:
       'Dans ce blog de projet personnel, Mathis Certenais raconte comment une blessure au genou et un dossier de fichiers GPS sont devenus un coach de course virtuel open source — et pourquoi le véritable produit est la méthode derrière lui : un orchestrateur, huit agents spécialisés et une suite de tests qui refuse de laisser un chiffre mentir.',
+    imageAlt:
+      'La page d’accueil de Coach Running en thème sombre : les chiffres de charge d’entraînement, de forme et de VO2max, le panneau « Ask your coach », le programme de la semaine et les courses récentes.',
     title:
       'Comment j’ai créé un laboratoire d’IA pour lancer mon coach de course virtuel open source',
   },
@@ -393,6 +410,189 @@ const articleBodies: Record<string, ArticleBlock[]> = {
     {
       type: 'paragraph',
       text: 'Ces événements techniques sont essentiels pour rassembler notre communauté, nous aligner sur des objectifs partagés et les transformer en réalité. Pendant ce hackathon, nous avons validé le déploiement du DDF Pipeline sur les supercalculateurs de tous les partenaires, ce qui clôt cette version stable et nous permet de nous consacrer aux nouvelles fonctionnalités. Pour RIMS, cette rencontre internationale a permis de finaliser collectivement l’architecture distribuée générale entre la France, l’Afrique du Sud et le Royaume-Uni, de nous accorder sur les conditions d’usage et de livrer une preuve de concept validant l’idée.',
+    },
+  ],
+  'ai-lab-virtual-running-coach': [
+    { type: 'heading', level: 2, text: 'L’entretien' },
+    { type: 'heading', level: 3, text: 'Vous êtes d’abord coureur. Où cela commence-t-il ?' },
+    {
+      type: 'paragraph',
+      text: 'Je suis un coureur amateur. J’ai commencé comme la plupart des gens : la course est devenue à la mode, alors j’ai essayé. Ce qui m’a accroché, c’est son côté pratique — on met ses chaussures, on passe la porte et on court.',
+    },
+    {
+      type: 'paragraph',
+      text: 'J’ai augmenté la distance progressivement, puis je me suis heurté à un mur à 10 km : la douleur. Un kinésithérapeute pour des exercices, une radiographie, une échographie, un médecin du sport, et enfin un diagnostic — le **syndrome fémoro-patellaire**. Rien de dramatique, mais assez pour comprendre qu’il fallait que je fasse attention à ce que je faisais.',
+    },
+    {
+      type: 'heading',
+      level: 3,
+      text: 'Vous avez donc commencé à collecter des données. Qu’est-ce qui n’a pas marché ?',
+    },
+    {
+      type: 'paragraph',
+      text: 'J’ai commencé à enregistrer mes courses avec [OpenTracks](https://f-droid.org/en/packages/de.dennisguse.opentracks.playstore/), un traqueur sportif mobile open source qui respecte votre vie privée. Les fichiers se sont accumulés, et je n’avais ni le temps ni les connaissances pour les analyser.',
+    },
+    {
+      type: 'paragraph',
+      text: 'Un fichier GPS n’est pas une connaissance. C’est le relevé précis de quelque chose que je ne comprenais pas.',
+    },
+    { type: 'heading', level: 3, text: 'Que vouliez-vous à la place ?' },
+    {
+      type: 'paragraph',
+      text: 'Un **coach virtuel** appuyé sur la littérature, qui calcule mes propres indicateurs à partir de mes propres données : **VO2max, répartition de l’intensité, charge d’entraînement, signaux de blessure**. Je l’ai ensuite enrichi avec ce qui entoure réellement une course — la nutrition, un programme d’étirements et de renforcement, et le nombre de pas quotidien, qui compte beaucoup dans mon cas : les journées sédentaires sont exactement celles où le genou proteste.',
+    },
+    {
+      type: 'paragraph',
+      text: 'Et l’IA par-dessus, pour faire parler ces données : stratégie d’entraînement, étirements de préparation à la course, prédictions de temps de course.',
+    },
+    {
+      type: 'heading',
+      level: 3,
+      text: 'Vous ne cessez de répéter que « le capteur, c’est la montre, le téléphone, c’est le transport, l’ordinateur portable, c’est le cerveau ». Qu’est-ce que cela veut dire ?',
+    },
+    { type: 'paragraph', text: 'C’est l’architecture, en une phrase.' },
+    {
+      type: 'paragraph',
+      text: 'La montre enregistre. Le téléphone déplace le fichier. L’**ordinateur portable pense** — et il conserve les données. Pas de compte, pas de cloud, pas de télémétrie : l’application tourne sur 127.0.0.1, lit des fichiers dans un dossier et écrit dans une base SQLite à côté.',
+    },
+    {
+      type: 'paragraph',
+      text: 'Je cherchais la performance. Mais la performance commence par l’analyse de ce qui se passe sur le terrain, et cette analyse devait m’appartenir.',
+    },
+    { type: 'heading', level: 3, text: 'Qu’est-ce qu’un « laboratoire d’IA », concrètement ?' },
+    { type: 'paragraph', text: 'Pas un modèle. Une façon de travailler.' },
+    {
+      type: 'paragraph',
+      text: 'L’environnement, c’est **OpenCode**. Dedans, un **orchestrateur** me parle, planifie et répartit le travail. Autour, huit spécialistes aux périmètres disjoints : **développeur, architecte, UI, contrôle qualité, scientifique, marketing, sécurité, rédaction**. Ils chargent les compétences d’ingénierie de [mattpocock/skills](https://www.aihero.dev/skills-grill-me) quand une tâche en réclame une — le questionnement serré avant une décision de conception, le développement piloté par les tests, la revue de code contre un standard écrit.',
+    },
+    {
+      type: 'paragraph',
+      text: 'Ce qui en fait une organisation plutôt qu’une collection de prompts, ce sont les permissions. L’agent qualité **ne peut pas modifier de fichier**. L’architecte ni le relecteur de sécurité non plus. Un relecteur qui peut corriger ce qu’il trouve cesse d’être un relecteur.',
+    },
+    { type: 'heading', level: 3, text: 'Pourquoi des spécialistes plutôt qu’un seul grand prompt ?' },
+    {
+      type: 'paragraph',
+      text: 'Parce qu’un agent unique fera tout, mal, et ne vous le dira jamais.',
+    },
+    {
+      type: 'paragraph',
+      text: 'Deux agents qui ne se parlent pas produisent deux vocabulaires, deux modèles de données et deux langages visuels. C’est le mode de défaillance que je voulais écarter dès la conception : le scientifique n’est pas d’accord avec le marketing, l’agent qualité n’est pas d’accord avec le développeur, et j’arbitre. Ce désaccord, c’est le produit.',
+    },
+    {
+      type: 'heading',
+      level: 3,
+      text: 'Qu’est-ce qui est open source, et qu’est-ce que vous vendez ?',
+    },
+    {
+      type: 'paragraph',
+      text: 'Le code est sous **AGPL-3.0** sur [GitHub](https://github.com/MathisCertenais/open-running-coach). Il est libre, il tourne sur votre machine, et il le restera.',
+    },
+    {
+      type: 'paragraph',
+      text: 'Ce que je vends, ce n’est pas le binaire. C’est la capacité de mener une idée jusqu’à une preuve de concept qui fonctionne : l’organisation d’agents, la discipline de recherche, les tests, la documentation, la mise en production. Cette application est l’étude de cas ; votre projet est le suivant.',
+    },
+    {
+      type: 'heading',
+      level: 3,
+      text: 'Comment gérer un laboratoire d’IA sur le plan économique ?',
+    },
+    {
+      type: 'paragraph',
+      text: '**Tout ce que fait un agent coûte du contexte**, donc la première décision de gestion n’est pas le choix du modèle. C’est ce qu’on lui met devant les yeux.',
+    },
+    {
+      type: 'paragraph',
+      text: 'Commencez par le prix, car c’est lui qui décide de l’architecture. Sur OpenCode Zen, par million de tokens :',
+    },
+    {
+      type: 'list',
+      ordered: false,
+      items: [
+        '**DeepSeek V4.1 Flash** — entrée $0.30, sortie $1.20, lecture du cache $0.006.',
+        '**DeepSeek V4 Pro** — entrée $1.74, sortie $3.48, lecture du cache $0.145.',
+      ],
+    },
+    {
+      type: 'paragraph',
+      text: 'Une session réaliste — 40 tours, environ 40k tokens de contexte, 1k de sortie par tour — envoie à peu près **1,6 million de tokens d’entrée** :',
+    },
+    {
+      type: 'list',
+      ordered: false,
+      items: [
+        '**Flash** — $0.53 sans cache ; **$0.10** avec 90 % de cache.',
+        '**Pro** — $2.92 sans cache ; **$0.63** avec 90 % de cache.',
+      ],
+    },
+    {
+      type: 'paragraph',
+      text: 'Relisez les deux scénarios. Un token d’entrée coûte $0.30 par million quand le modèle ne l’a jamais vu, et $0.006 quand il vient du cache : **cinquante fois moins**. Le chiffre qui compte n’est donc pas le prix du modèle, c’est le nombre de défauts de cache. Tout ce qui réécrit le début de la conversation — modifier le prompt système, réordonner les instructions du projet, recharger une compétence en cours de tâche — jette le cache et vous fait passer, sans bruit, du scénario avec cache à celui sans cache.',
+    },
+    {
+      type: 'paragraph',
+      text: 'La règle est donc : **Flash pour l’exécutant, Pro pour l’architecte.** Dix cents pour la session qui écrit les tests, soixante pour celle qui décide de la structure.',
+    },
+    {
+      type: 'paragraph',
+      text: 'La réponse à « comment faites-vous tourner tout ça » tient en quatre outils, chacun faisant une seule chose.',
+    },
+    {
+      type: 'paragraph',
+      text: '**herdr** est le bâtiment. Un multiplexeur de terminal conçu pour les agents : des panneaux, des onglets, des sessions, un worktree git par expérience, et une barre latérale qui indique quel agent travaille, attend ou est bloqué. Il ne fait pas tourner l’IA ; il lui donne un endroit où tourner.',
+    },
+    {
+      type: 'paragraph',
+      text: '**OpenCode**, c’est l’équipe. Un orchestrateur et huit sous-agents natifs — le développeur, l’architecte, l’UI, la qualité, le scientifique, le marketing, la sécurité et la rédaction décrits plus haut. C’est là que le travail se décompose.',
+    },
+    {
+      type: 'paragraph',
+      text: '**Pi** est le prestataire seul. Un harnais minimal : prompt système court, peu d’outils, pas de sous-agents, peu coûteux à exécuter. Ce minimalisme est le but — c’est là que je veux une tâche précise et bornée, et rien d’autre dans le contexte.',
+    },
+    {
+      type: 'paragraph',
+      text: '**Fresh** est mon bureau. Un éditeur en terminal, dans un panneau à côté des agents, pour lire le diff et corriger à la main.',
+    },
+    {
+      type: 'paragraph',
+      text: 'Voilà tout le modèle de gestion : dépenser le modèle cher sur les décisions, le bon marché sur l’exécution, et garder le contexte assez stable pour que le cache continue de payer. Le reste, c’est de l’ergonomie.',
+    },
+    { type: 'heading', level: 3, text: 'Et ensuite ?' },
+    { type: 'paragraph', text: 'Deux choses, dans l’ordre.' },
+    {
+      type: 'paragraph',
+      text: '**Validation.** Le module de blessure a un taux de base, un export pour un kinésithérapeute et un endroit où consigner son verdict — mais il n’a jamais été confronté à un épisode réel ni à la lecture d’un clinicien. C’est la prochaine heure de travail, et ce n’est pas du code.',
+    },
+    {
+      type: 'paragraph',
+      text: '**Portée.** L’application est en import seul par conception : la montre enregistre, l’application pense. Faire disparaître ce transport n’est pas vraiment un problème de fonctionnalité. C’est le problème sur lequel je travaille tous les jours dans ma thèse — la **logistique des données** : les données sont produites en périphérie, elles doivent rejoindre un endroit où elles peuvent être traitées, sans autorité centrale, sans duplication silencieuse et avec une réponse claire à la question de qui possède la copie. Ici, l’instrument est une montre et le calcul un ordinateur portable. À l’IRISA, c’est un radiotélescope et un supercalculateur, et les questions sont identiques : qu’est-ce qui se déplace, quand se déplace-t-il, qu’est-ce qui est copié deux fois, et que se passe-t-il quand un transfert meurt en route.',
+    },
+    {
+      type: 'paragraph',
+      text: 'Le reste est déjà dans le dépôt : un coach de course virtuel open source, 324 tests, sept décisions d’architecture, dix notes de recherche avec citations, et onze outils en lecture seule que le coach peut appeler pour répondre à des questions sur mes propres données.',
+    },
+    {
+      type: 'paragraph',
+      text: 'C’est la direction que je veux donner à ce projet — pas plus de fonctionnalités, mais le même raisonnement logistique appliqué à plus petite échelle, à ciel ouvert. La recherche derrière est ici : [mathiscertenais.com/research](https://mathiscertenais.com/research/).',
+    },
+    { type: 'heading', level: 2, text: 'Sources' },
+    {
+      type: 'list',
+      ordered: false,
+      items: [
+        '[Le projet sur GitHub](https://github.com/MathisCertenais/open-running-coach)',
+        '[Mon profil de coureur](https://www.runnerbreizh.fr/coureur.php?CoureurNom=CERTENAIS&CoureurPrenom=Mathis)',
+        '[Les compétences d’ingénierie utilisées pour le construire](https://www.aihero.dev/skills-grill-me)',
+      ],
+    },
+    { type: 'heading', level: 2, text: 'Pour aller plus loin' },
+    {
+      type: 'list',
+      ordered: false,
+      items: [
+        '[Tous les articles](https://mathiscertenais.com/insights/)',
+        '[La recherche](https://mathiscertenais.com/research/)',
+        '[Me contacter](https://mathiscertenais.com/contact/)',
+      ],
     },
   ],
 }

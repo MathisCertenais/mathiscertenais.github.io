@@ -14,14 +14,40 @@ interface PageHeroProps {
     ratio?: string
     src: string
   }
+  /**
+   * Accessible name for the zoom action — "Enlarge figure". The image alt
+   * follows it, so the button says what it does and what it opens.
+   */
+  illustrationActionLabel?: string
   intro: string
+  /**
+   * Makes the hero art open a larger view. Without it the art stays a plain
+   * image, which is what every other page expects.
+   */
+  onIllustrationActivate?: () => void
   title: string
 }
 
-export function PageHero({ actions, eyebrow, illustration, intro, title }: PageHeroProps) {
+export function PageHero({
+  actions,
+  eyebrow,
+  illustration,
+  illustrationActionLabel,
+  intro,
+  onIllustrationActivate,
+  title,
+}: PageHeroProps) {
   const ratio = illustration?.ratio
   const [ratioWidth, ratioHeight] = ratio?.split('/').map(parseFloat) ?? []
   const isLandscape = ratioWidth > ratioHeight
+  const art = illustration ? (
+    <img
+      alt={illustration.alt}
+      className="page-hero__art"
+      src={illustration.src}
+      style={ratio ? ({ '--hero-art-ratio': ratio } as CSSProperties) : undefined}
+    />
+  ) : null
 
   return (
     <section
@@ -35,14 +61,22 @@ export function PageHero({ actions, eyebrow, illustration, intro, title }: PageH
         <p className="page-hero__intro">{intro}</p>
         {actions ? <div className="page-hero__actions">{actions}</div> : null}
       </div>
-      {illustration ? (
-        <img
-          alt={illustration.alt}
-          className="page-hero__art"
-          src={illustration.src}
-          style={ratio ? ({ '--hero-art-ratio': ratio } as CSSProperties) : undefined}
-        />
-      ) : null}
+      {illustration && onIllustrationActivate ? (
+        <button
+          aria-label={
+            illustrationActionLabel
+              ? `${illustrationActionLabel} — ${illustration.alt}`
+              : illustration.alt
+          }
+          className="figure-zoom"
+          onClick={onIllustrationActivate}
+          type="button"
+        >
+          {art}
+        </button>
+      ) : (
+        art
+      )}
     </section>
   )
 }

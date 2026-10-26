@@ -39,8 +39,8 @@
     <meta name="twitter:image:alt" content="Predicting for sizing on supercomputers" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <title>Predicting for Sizing: Teaching Supercomputers Their Own Execution Footprint | Mathis Certenais</title>
-    <script type="module" crossorigin src="/assets/index-C_ODPAms.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-BF0WNh_t.css">
+    <script type="module" crossorigin src="/assets/index-foX6TYP8.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-cCQfjwUk.css">
     <meta property="og:url" content="https://mathiscertenais.com/insights/predicting-for-sizing/" />
     <link rel="canonical" href="https://mathiscertenais.com/insights/predicting-for-sizing/" />
       <link rel="alternate" hreflang="en" href="https://mathiscertenais.com/insights/predicting-for-sizing/" />
@@ -49,12 +49,12 @@
   </head>
   <body>
     <div id="root"><main class="prerendered" id="main-content">
-      <p class="prerendered__label">Research note · September 23, 2026</p>
       <h1>Predicting for Sizing: Teaching Supercomputers Their Own Execution Footprint</h1>
       <p>A continuous-learning predictive model that estimates the execution time, memory, and energy of scientific applications on supercomputers — so researchers can size their allocations instead of guessing.</p>
       <figure class="prerendered__figure">
         <img alt="A conceptual illustration contrasting the initial phase of &quot;guessing&quot; with the clarity offered by a continuous learning model." src="/images/mathis/predicting-for-sizing/cover.webp" />
       </figure>
+      <p class="prerendered__label prerendered__label--cover">Research note · September 23, 2026 · 5 min read</p>
       <h2>The Sizing Problem</h2>
       <p>Every scientific campaign on a supercomputer begins with a <strong>bet</strong>. How many nodes? How much memory? How long will this run take? For the <strong>DDF Pipeline</strong> — the self-calibration and imaging software behind the <strong>LOFAR</strong> radio telescope — the stakes are enormous: the latest LoTSS (LOFAR Two-metre Sky Survey) data release alone consumed <strong>16 million core-hours</strong>. And behind every one of those hours hides a sizing decision made, more often than not, in the dark.</p>
       <p>The astronomers who use DDF Pipeline are scientists, not HPC experts. They allocate their project’s precious computing hours through <strong>SLURM</strong>, a scheduler that asks them to state their needs up front (--time, --cpus-per-task, --mem) and then enforces a <strong>fairness policy</strong> that rewards projects which consume less than they were granted. Over-allocate and you waste resources, lose priority, and wait in longer queues; under-allocate and your job simply fails. Translating scientific parameters into correct sizing is a guessing game with real costs on both sides.</p>

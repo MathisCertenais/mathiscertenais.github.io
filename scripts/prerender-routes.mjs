@@ -5,6 +5,7 @@ import { loadEnv } from 'vite'
 import { locales } from '../src/locales.ts'
 import * as contentEn from '../src/content/en.ts'
 import * as contentFr from '../src/content/fr.ts'
+import { readingTimeMinutes } from '../src/content/readingTime.ts'
 
 const projectRoot = fileURLToPath(new URL('..', import.meta.url))
 const distRoot = join(projectRoot, 'dist')
@@ -187,6 +188,17 @@ const p = (text) => `<p>${inline(text)}</p>`
 const link = (href, text, external = false) =>
   `<a href="${escapeHtml(href)}"${external ? ' rel="noreferrer" target="_blank"' : ''}>${escapeHtml(text)}</a>`
 
+/**
+ * The metadata line of an article — category, date, reading time — in the
+ * language of the shell being written. A note with no body has no reading time
+ * to announce, exactly as the article page hides it.
+ */
+function articleMeta(article, t, className = 'prerendered__label') {
+  const parts = [article.category, article.date]
+  if (article.body.length > 0) parts.push(`${readingTimeMinutes(article)} ${t.readingTime}`)
+  return `<p class="${className}">${escapeHtml(parts.join(' · '))}</p>`
+}
+
 /** A paragraph whose whole content is a link. `p()` escapes, so the anchor is
     built here rather than passed through it. */
 const linkParagraph = (href, text) =>
@@ -291,6 +303,9 @@ function renderResearch() {
         ),
       )}
       ${chapter(researchCase)}
+      ${p(
+        `${t.inpexTalk} [${t.inpexSlides}](${sourceLinks.inpexSlides}) · [${t.inpexWorkshop}](${sourceLinks.inpexWorkshop})`,
+      )}
       ${chapter(researchContribution)}
       ${chapter(researchApplications)}
       ${h2(t.thesisOutro)}
@@ -358,7 +373,7 @@ function renderWriting() {
       ${list(
         articleItems.map((article) =>
           [
-            label(`${article.category} · ${article.date}`),
+            articleMeta(article, t),
             h3(article.title),
             p(article.description),
             linkParagraph(href(article.href), `${t.readArticle} ${article.title}`),
@@ -372,12 +387,12 @@ function renderArticle(article) {
   const blocks = article.body.map(articleBlock).filter(Boolean)
 
   return `<main class="prerendered" id="main-content">
-      ${label(`${article.category} · ${article.date}`)}
       ${h1(article.title)}
       ${p(article.description)}
       <figure class="prerendered__figure">
         <img alt="${escapeHtml(article.imageAlt)}" src="${escapeHtml(article.image)}" />
       </figure>
+      ${articleMeta(article, t, 'prerendered__label prerendered__label--cover')}
       ${blocks.join('\n      ')}
       ${
         article.sourceHref

@@ -5,9 +5,6 @@ import { ImageLightbox, type ImagePreview } from './ImageLightbox'
 import { NewTabHint } from './NewTabHint'
 import { PageHero } from './PageHero'
 
-const SKA_CHAIN_ALT =
-  'Diagram of the SKA processing chain: antennas in Australia and South Africa feed on-site pre-processing, then supercomputers in Perth and Cape Town, whose science products are replicated across an international storage network'
-
 export function ResearchPage() {
   const { content, localeHref, strings } = useLanguage()
   const [preview, setPreview] = useState<ImagePreview | null>(null)
@@ -31,11 +28,19 @@ export function ResearchPage() {
       <PageHero
         eyebrow={researchFeature.heading}
         illustration={{
-          alt: SKA_CHAIN_ALT,
+          alt: strings.pages.skaAlt,
           ratio: '2 / 1',
           src: '/images/mathis/ska-processing-chain.webp',
         }}
+        illustrationActionLabel={strings.a11y.openFigure}
         intro={researchThesis.summary}
+        onIllustrationActivate={() =>
+          setPreview({
+            alt: strings.pages.skaAlt,
+            caption: strings.pages.skaCaption,
+            src: '/images/mathis/ska-processing-chain.webp',
+          })
+        }
         title={researchThesis.title}
       />
 
@@ -119,14 +124,14 @@ export function ResearchPage() {
             className="figure-zoom"
             onClick={() =>
               setPreview({
-                alt: SKA_CHAIN_ALT,
+                alt: strings.pages.skaAlt,
                 caption: strings.pages.skaCaption,
                 src: '/images/mathis/ska-processing-chain.webp',
               })
             }
             type="button"
           >
-            <img alt={SKA_CHAIN_ALT} loading="lazy" src="/images/mathis/ska-processing-chain.webp" />
+            <img alt={strings.pages.skaAlt} loading="lazy" src="/images/mathis/ska-processing-chain.webp" />
           </button>
           <figcaption>
             {strings.pages.skaCaption}
@@ -147,6 +152,18 @@ export function ResearchPage() {
             {strings.pages.arxivPaper} <ArrowIcon external />
             <NewTabHint label={strings.a11y.newTab} />
           </a>
+          <p className="research-story__talk">
+            {strings.pages.inpexTalk}{' '}
+            <a href={sourceLinks.inpexSlides} rel="noreferrer" target="_blank">
+              {strings.pages.inpexSlides} <ArrowIcon external />
+              <NewTabHint label={strings.a11y.newTab} />
+            </a>
+            {' · '}
+            <a href={sourceLinks.inpexWorkshop} rel="noreferrer" target="_blank">
+              {strings.pages.inpexWorkshop} <ArrowIcon external />
+              <NewTabHint label={strings.a11y.newTab} />
+            </a>
+          </p>
         </div>
       </section>
 

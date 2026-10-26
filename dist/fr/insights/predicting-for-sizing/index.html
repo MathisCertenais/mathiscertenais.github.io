@@ -39,8 +39,8 @@
     <meta name="twitter:image:alt" content="Mathis Certenais — Prédire pour dimensionner : apprendre aux supercalculateurs leur propre empreinte d’exécution" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <title>Prédire pour dimensionner : apprendre aux supercalculateurs leur propre empreinte d’exécution | Mathis Certenais</title>
-    <script type="module" crossorigin src="/assets/index-C_ODPAms.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-BF0WNh_t.css">
+    <script type="module" crossorigin src="/assets/index-foX6TYP8.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-cCQfjwUk.css">
     <meta property="og:url" content="https://mathiscertenais.com/fr/insights/predicting-for-sizing/" />
     <link rel="canonical" href="https://mathiscertenais.com/fr/insights/predicting-for-sizing/" />
       <link rel="alternate" hreflang="en" href="https://mathiscertenais.com/insights/predicting-for-sizing/" />
@@ -49,12 +49,12 @@
   </head>
   <body>
     <div id="root"><main class="prerendered" id="main-content">
-      <p class="prerendered__label">Note de recherche · 23 septembre 2026</p>
       <h1>Prédire pour dimensionner : apprendre aux supercalculateurs leur propre empreinte d’exécution</h1>
       <p>Un modèle prédictif à apprentissage continu qui estime le temps d’exécution, la mémoire et l’énergie des applications scientifiques sur supercalculateur — pour que les chercheurs dimensionnent leurs allocations au lieu de deviner.</p>
       <figure class="prerendered__figure">
-        <img alt="A conceptual illustration contrasting the initial phase of &quot;guessing&quot; with the clarity offered by a continuous learning model." src="/images/mathis/predicting-for-sizing/cover.webp" />
+        <img alt="Une illustration conceptuelle qui oppose la phase initiale, où l’on devine, à la clarté offerte par un modèle à apprentissage continu." src="/images/mathis/predicting-for-sizing/cover.webp" />
       </figure>
+      <p class="prerendered__label prerendered__label--cover">Note de recherche · 23 septembre 2026 · 5 min de lecture</p>
       <h2>Le problème du dimensionnement</h2>
       <p>Toute campagne scientifique sur un supercalculateur commence par un <strong>pari</strong>. Combien de nœuds ? Combien de mémoire ? Combien de temps l’exécution va-t-elle durer ? Pour le <strong>DDF Pipeline</strong> — le logiciel d’auto-calibration et d’imagerie du radiotélescope <strong>LOFAR</strong> — l’enjeu est considérable : la dernière publication de données LoTSS (LOFAR Two-metre Sky Survey) a consommé à elle seule <strong>16 millions d’heures de calcul</strong>. Et derrière chacune de ces heures se cache une décision de dimensionnement prise, le plus souvent, à l’aveugle.</p>
       <p>Les astronomes qui utilisent le DDF Pipeline sont des scientifiques, pas des spécialistes du calcul intensif. Ils allouent les précieuses heures de calcul de leur projet par l’intermédiaire de <strong>SLURM</strong>, un ordonnanceur qui leur demande de déclarer leurs besoins à l’avance (--time, --cpus-per-task, --mem) puis applique une <strong>politique d’équité</strong> qui récompense les projets consommant moins que ce qui leur a été accordé. Surdimensionnez, et vous gaspillez des ressources, perdez de la priorité et attendez plus longtemps dans les files ; sous-dimensionnez, et votre tâche échoue. Traduire des paramètres scientifiques en dimensionnement correct relève du jeu de devinettes, avec un coût réel des deux côtés.</p>
