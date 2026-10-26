@@ -1616,7 +1616,7 @@ export const articleItems: ArticleItem[] = [
       },
       {
         type: 'paragraph',
-        text: 'A GPS file is not an insight. It is a very precise record of something I did not understand.',
+        text: 'A GPS file is not an insight. It is a precise record of something I did not understand.',
       },
       {
         type: 'heading',
