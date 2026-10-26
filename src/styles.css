@@ -1889,6 +1889,20 @@ figure {
   box-shadow: 0 24px 60px -42px var(--text-dark);
 }
 
+/* Where the hero art is zoomable the button becomes the grid item, so it takes
+   over the alignment and the width cap the image used to own. The button itself
+   is borderless: the art keeps the frame it has on the pages where it is not
+   interactive, and only the focus ring is added. */
+.page-hero .figure-zoom {
+  width: 100%;
+  max-width: var(--hero-art-max, 430px);
+  justify-self: end;
+}
+
+.page-hero .figure-zoom .page-hero__art {
+  max-width: none;
+}
+
 /* Research pages --------------------------------------------------------- */
 
 .detail-hero {
@@ -2074,10 +2088,6 @@ figure {
   text-align: center;
 }
 
-.article-hero .section-label {
-  margin-bottom: 24px;
-}
-
 .article-hero > p:last-child {
   max-width: 720px;
   margin: 28px auto 0;
@@ -2097,6 +2107,19 @@ figure {
   border-radius: var(--radius-xl);
   background: var(--surface-card-solid);
   object-fit: cover;
+}
+
+/* The reading time sits under the cover, in the label style the article hero
+   already uses for its category and date. The section keeps its own bottom
+   padding, so the line reads as a caption rather than a new block. */
+.prerendered__label--cover {
+  text-align: center;
+}
+
+.article-cover__meta {
+  margin-top: 16px;
+  margin-bottom: 0;
+  text-align: center;
 }
 
 .article-prose {
@@ -3600,6 +3623,19 @@ figure {
   font-weight: 500;
 }
 
+/* The InPEx reference is a sentence with two sources inside it, not a
+   call-to-action: it keeps the paragraph's own type and flow. */
+.research-story__copy .research-story__talk {
+  margin-top: 24px;
+}
+
+.research-story__copy .research-story__talk a {
+  display: inline;
+  margin-top: 0;
+  font-size: inherit;
+  font-weight: 500;
+}
+
 .research-figures {
   background: var(--surface);
   border-top: 1px solid var(--border);
@@ -4138,6 +4174,16 @@ figure {
   .page-hero__art {
     width: min(100%, 420px);
     align-self: center;
+  }
+
+  .page-hero .figure-zoom {
+    width: min(100%, 420px);
+    max-width: 100%;
+    align-self: center;
+  }
+
+  .page-hero .figure-zoom .page-hero__art {
+    width: 100%;
   }
 
   .home-section {

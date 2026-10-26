@@ -1,4 +1,5 @@
 import { useLanguage } from '../language/LanguageProvider'
+import { readingTimeMinutes } from '../content/readingTime'
 import { ArrowIcon } from './Icons'
 
 interface WritingSectionProps {
@@ -29,6 +30,12 @@ export function WritingSection({ heading, showAllLink = true }: WritingSectionPr
             <span className="article-row__copy">
               <span className="article-row__category">
                 {article.category} · {article.date}
+                {article.body.length > 0 ? (
+                  <>
+                    {' · '}
+                    {readingTimeMinutes(article)} {strings.pages.readingTime}
+                  </>
+                ) : null}
               </span>
               <span className="article-row__title">{article.title}</span>
               <span className="article-row__description">{article.description}</span>

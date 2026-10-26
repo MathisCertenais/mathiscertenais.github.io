@@ -40,6 +40,8 @@ export const sourceLinks = {
   linkedin: identity.linkedin,
   numpex: 'https://numpex.org/data-logistics-for-radio-astronomy/',
   numpexYoungpex: 'https://numpex.org/youngpex/',
+  inpexWorkshop: 'https://inpex.science/workshop/2025-inpex-workshop/',
+  inpexSlides: 'https://inpex.science/wp-content/uploads/sites/5/2025/04/25A6391.pdf',
 } as const
 
 export type ProofKind = 'community' | 'mentor' | 'speaker'
@@ -1616,7 +1618,7 @@ export const articleItems: ArticleItem[] = [
       },
       {
         type: 'paragraph',
-        text: 'A GPS file is not an insight. It is a precise record of something I did not understand.',
+        text: 'A GPS file is not an insight. It is a very precise record of something I did not understand.',
       },
       {
         type: 'heading',
@@ -1810,9 +1812,9 @@ export const articleItems: ArticleItem[] = [
         ],
       },
     ],
-    image: '/images/mathis/ai-lab-virtual-running-coach/cover.webp',
+    image: '/images/mathis/ai-lab-virtual-running-coach/landing-page.webp',
     imageAlt:
-      'The coaching panel of Open Running Coach in dark theme, showing training load, fitness and form on the demo dataset.',
+      'The Coach Running home page in dark theme: training load, form and VO2max figures, the Ask your coach panel, the week’s schedule and recent runs.',
     href: '/insights/ai-lab-virtual-running-coach',
   },
 ]

@@ -1,6 +1,7 @@
 import { useState, type ReactNode } from 'react'
 import { useLanguage } from '../language/LanguageProvider'
 import type { ArticleBlock } from '../content'
+import { readingTimeMinutes } from '../content/readingTime'
 import { ArrowIcon } from './Icons'
 import { ImageLightbox, type ImagePreview } from './ImageLightbox'
 import { NewTabHint } from './NewTabHint'
@@ -132,15 +133,18 @@ export function ArticlePage({ articleId }: { articleId: string }) {
     <main className="article-page" id="main-content" tabIndex={-1}>
       <article>
         <header className="article-hero section">
-          <p className="section-label">
-            {article.category} · {article.date}
-          </p>
           <h1>{article.title}</h1>
           <p>{article.description}</p>
         </header>
 
         <div className="article-cover section">
           <img alt={article.imageAlt} src={article.image} />
+          <p className="section-label article-cover__meta">
+            {article.category} · {article.date}
+            {article.body.length > 0
+              ? ` · ${readingTimeMinutes(article)} ${strings.pages.readingTime}`
+              : ''}
+          </p>
         </div>
 
         <div className="article-prose section">
