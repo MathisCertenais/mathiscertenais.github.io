@@ -1304,240 +1304,8 @@ export const articleItems: ArticleItem[] = [
   },
 
   {
-    id: 'mcp-server-software-ontology',
-    number: '05',
-    category: 'Research note',
-    date: 'September 16, 2026',
-    title:
-      'Make Scientific Software Speak: An MCP Server That Explains Its Own Parameters',
-    description:
-      'Think of your scientific software documentation as an interactive wiki. An MCP server that transforms hundreds of complex configuration settings into natural-language answers for researchers and engineers in the community.',
-    body: [
-      {
-        type: 'heading',
-        level: 2,
-        text: 'The Silent Software Problem',
-      },
-      {
-        type: 'paragraph',
-        text: 'Behind every complex scientific application lies a **labyrinth of configuration parameters** — often understood only by a handful of main developers. This is particularly true for the **DDF Pipeline**, a self-calibration and imaging software designed for the **LOFAR** (Low Frequency Array) radio telescope. Here, a single run involves **hundreds of configuration parameters**, and changing just one can alter weeks of computing costs or the final scientific result.',
-      },
-      {
-        type: 'figure',
-        image: '/images/mathis/mcp-server-software-ontology/ddf-sourcecode.webp',
-        alt: 'Screenshot of the DDF Pipeline source code repository',
-        caption: 'The DDF Pipeline source code — today, the only place where the meaning of these hundreds of parameters truly lives.',
-      },
-      {
-        type: 'paragraph',
-        text: 'For the developers who maintain the software, these settings are familiar companions. For the community who use it, they are a challenge. The “right” configuration is never **fixed**: it depends on the **volume of input data**, the **computing system** that will perform the processing, and, above all, the **user’s specific needs**. **Documentation alone cannot capture this context.** As a result, this critical knowledge rarely leaves the source code — [github.com/mhardcastle/ddf-pipeline](https://github.com/mhardcastle/ddf-pipeline) — leaving powerful software inaccessible to those who need it most.',
-      },
-      {
-        type: 'paragraph',
-        text: 'Our approach flips the script. Instead of asking users to memorize hundreds of settings, we build a **conversational interface for the code itself**. We structure the application’s parameter space into a searchable knowledge base, embed it, and expose it through an **MCP** (Model Context Protocol) server. **This transforms the software from a silent tool into an explainable assistant** that researchers can simply ask.',
-      },
-      {
-        type: 'heading',
-        level: 2,
-        text: 'The Case Study: What the Parameters Really Control',
-      },
-      {
-        type: 'paragraph',
-        text: 'The DDF Pipeline turns LOFAR observations into wide-field sky surveys. Its outputs are the images that illustrate astronomy papers — and every one of them carries the fingerprint of the parameter decisions made upstream: pixel scale, restoring beam, masking, compression, CPU allocation. The figures below come from **LoTSS-DR3**, a data release produced with the very software whose parameters we set out to explain.',
-      },
-      {
-        type: 'figure',
-        image: '/images/mathis/mcp-server-software-ontology/ddf-survey.webp',
-        alt: 'Re-projection of the LoTSS-DR3 mosaic images and corresponding RMS image',
-        caption: 'Top: re-projection of the LoTSS-DR3 mosaic images. Bottom: the corresponding RMS image. The yellow and blue outlines show the LoTSS-DR1 and LoTSS-DR2 areas, covering 2% and 27% of the northern sky, respectively; the black outline shows the LoTSS-DR3 coverage of 88%. The small grey dots mark the 3168 LoTSS pointings, of which 2551 are included in this release. Source: [LoTSS Data Release 3](https://ui.adsabs.harvard.edu/abs/2026A%26A...707A.198S/abstract)',
-      },
-      {
-        type: 'figure',
-        image: '/images/mathis/mcp-server-software-ontology/ddf-image.webp',
-        alt: 'Example 45-deg2 region of the extragalactic sky from LoTSS-DR3',
-        caption: 'Example 45-deg2 region of the extragalactic sky from LoTSS-DR3 — typically around 30,000 sources detected above 4.5×RMS. Prominent are the radio galaxies NGC 315 (bottom) and 3C 31 (lower centre left), and the spiral galaxy M 31 (top).',
-      },
-      {
-        type: 'figure',
-        image: '/images/mathis/mcp-server-software-ontology/ddf-supernova.webp',
-        alt: 'Region of the Galactic plane with the highest density of known supernova remnants in LoTSS-DR3',
-        caption: 'Region of the Galactic plane with the highest density of known supernova remnants in LoTSS-DR3: 190 deg2 centred at a Galactic longitude of 43.5°, including G054.4-00.3, G049.2-00.7, G043.9+01.6, G039.7-02.0, and G034.7-00.4.',
-      },
-      {
-        type: 'paragraph',
-        text: 'These images are the stakes. Every pixel in them is conditioned by parameters that today only a few maintainers fully master.',
-      },
-      {
-        type: 'heading',
-        level: 2,
-        text: 'The Solution: Giving the Software a Voice',
-      },
-      {
-        type: 'paragraph',
-        text: 'How do we teach an AI about our software? We don’t just feed it raw code. We build a structured knowledge map (or ontology) of the parameter space. Think of it as giving the AI a precise **table of contents** and a **technical glossary** for the software. This ensures it never hallucinates a parameter that doesn’t exist, since every answer is based on the actual codebase.',
-      },
-      {
-        type: 'heading',
-        level: 3,
-        text: 'Step one — Structure the Knowledge',
-      },
-      {
-        type: 'paragraph',
-        text: 'Building this structured map is a **multidisciplinary exercise** . We work with developers to represent the application faithfully, and with end-users to keep it legible. The key information is harvested from the codebase and converted into a standardized format (Turtle/TTL) that machines can understand.',
-      },
-      {
-        type: 'figure',
-        image: '/images/mathis/mcp-server-software-ontology/ddf-ontology.webp',
-        alt: 'Visualization of the DDF Pipeline knowledge structure',
-        caption: 'Visualization of the DDF Pipeline knowledge structure: parameters grouped into sections, with their data types, default values, units, and descriptions.',
-      },
-      {
-        type: 'paragraph',
-        text: 'This structured data is then turned into a **vector database** — a representation that a lightweight embedding model (here, all-MiniLM-L6-v2) can search in natural language.',
-      },
-      {
-        type: 'heading',
-        level: 3,
-        text: 'Step two — Expose it through MCP',
-      },
-      {
-        type: 'paragraph',
-        text: '**MCP**, the Model Context Protocol, is the open standard that lets AI assistants such as Claude Code and OpenCode connect to external tools and data sources. It becomes the bridge between researchers and this knowledge base: the server hosts the embedding model, communicates with the database, and exposes a REST API that answers natural-language queries with the main nodes of the structure.',
-      },
-      {
-        type: 'figure',
-        image: '/images/mathis/mcp-server-software-ontology/mcp-swagger.webp',
-        alt: 'API documentation of the MCP server exposing the knowledge base',
-        caption: 'The MCP server’s API documentation: query the knowledge base in natural language, receive structured nodes in return.',
-      },
-      {
-        type: 'paragraph',
-        text: 'Ask "How can I change the image size in pixels?" and the server answers with ranked nodes drawn from the structure:',
-      },
-      {
-        type: 'list',
-        ordered: false,
-        items: [
-          '**image.imsize** — section **image**, data type **int**, default **20000**, "Image size in pixels", unit **pixel**.',
-          '**image.cellsize** — data type **float**, default **1.5**, "Pixel size in arcsec", unit **arcsec**.',
-          '**machine.NCPU_DDF** — "Number of CPUs to use for DDF", **auto-selected** when left unset.',
-          '**masking.tgss_radius** — "TGSS mask radius in pixels", default **8.0**, unit **pixel**.',
-        ],
-      },
-      {
-        type: 'paragraph',
-        text: 'No guesswork and no hallucinated parameters: every answer is anchored in the real codebase, through this structured knowledge.',
-      },
-      {
-        type: 'heading',
-        level: 3,
-        text: 'Step three — A sovereign conversational interface',
-      },
-      {
-        type: 'paragraph',
-        text: 'The final piece is the interface where researchers actually ask. We use **Ragarenn**, a sovereign platform hosting large language models accessed through the **eduGAIN** identity federation — a setup designed for **data privacy**, where nothing leaves a trusted perimeter. It exposes a standard OpenAI-compatible API, and we connect **OpenCode** (or Claude Code) to both the model and the MCP server, so the conversation happens inside the coding interface researchers already use.',
-      },
-      {
-        type: 'heading',
-        level: 2,
-        text: 'The Result: From Documentation to Dialogue',
-      },
-      {
-        type: 'paragraph',
-        text: 'Connect the MCP server to your interface of choice and the software finally answers for itself. The decisive strength is **modularity**.',
-      },
-      {
-        type: 'paragraph',
-        text: 'You can operate in a **strict mode**, where the model answers only from the real information contained in the structured knowledge base. In this mode, if a parameter isn’t defined in the map, the AI won’t invent it. Every parameter it mentions truly exists in the code.',
-      },
-      {
-        type: 'paragraph',
-        text: 'Alternatively, you can enrich those grounded answers with a **web-connected model** to bring in additional external context (like best practices from similar projects). Both modes share the same critical guarantee: **the source of truth is the software itself, not the AI’s training data.**',
-      },
-      {
-        type: 'paragraph',
-        text: 'Documentation assumes a reader who is willing to dig through pages of text. This system assumes a conversation. By exposing the hidden parameter space of scientific software as something an AI can read and explain, we turn a silent tool into a colleague who knows the codebase — and let scientists spend their time looking at the sky, not at the parameters.',
-      },
-    ],
-    image: '/images/mathis/mcp-server-software-ontology/cover.webp',
-    imageAlt: 'A conversation between a researcher and an AI assistant about scientific software parameters',
-    href: '/insights/mcp-server-software-ontology',
-    sourceHref: 'https://github.com/mhardcastle/ddf-pipeline',
-  },
-
-  {
-    id: 'international-hackathon-for-astronomy',
-    number: '06',
-    category: 'Collaboration',
-    date: 'April 1, 2026',
-    title: 'International Hackathon for Radio Astronomy',
-    description:
-      'A research event bringing together computer scientists and astrophysicists from France, England, and South Africa to address the shared technical challenges of radio astronomical data.',
-    body: [
-      {
-        type: 'paragraph',
-        text: 'Scientific software becomes more useful when the people who build infrastructure and the people who interpret astronomical data can work on the same problems together.',
-      },
-      {
-        type: 'heading',
-        level: 2,
-        text: 'What are the goals of this hackathon?',
-      },
-      {
-        type: 'paragraph',
-        text: 'The international hackathon in Rennes created space for that collaboration: participants worked during one week to create a participatory research network called RIMS Network and to continue work on the DDF Pipeline data-processing software.',
-      },
-      {
-        type: 'paragraph',
-        text: 'RIMS Network is a distributed storage system that hosts dynamic spectra and their metadata for studying rare events. It enables collaborative data production and can be accessed by users via a web service.',
-      },
-      {
-        type: 'paragraph',
-        text: 'For the DDF Pipeline, we worked on portability of the parallel version: it is now installed and running on the French supercomputers Jean Zay hosted at the Institut du Développement et des Ressources en Informatique Scientifique (IDRIS), Adastra at the Centre Informatique National de l`Enseignement Supérieur (CINES), at the University of Hertfordshire (UK), and with our industry partner Bull.',
-      },
-      {
-        type: 'heading',
-        level: 2,
-        text: 'What is the benefit of this international collaboration?',
-      },
-      {
-        type: 'paragraph',
-        text: 'These technical events are crucial for bringing our community together to align on shared goals and turn them into reality. During this hackathon, we successfully validated the deployment of the DDF Pipeline on the supercomputers of all participating partners, finalizing this stable version so we can now focus on developing new features. For RIMS, this international gathering allowed us to collectively finalize the general distributed architecture across France, South Africa, and the UK, as well as agree on usage conditions and deliver a proof-of-concept to validate the core idea.',
-      },
-    ],
-    image: '/images/mathis/international-hackathon-for-astronomy/cover.webp',
-    imageAlt: 'Participants in the international DDF Pipeline and RIMS hackathon in Rennes',
-    href: '/insights/international-hackathon-for-astronomy',
-    sourceHref: sourceLinks.eclatHackathon,
-  },
-
-  {
-    id: 'webinar-hpc-applications-as-a-service',
-    number: '07',
-    category: 'Webinar',
-    date: 'February 13, 2026',
-    title: 'Webinar: HPC Application Services for Radio Astronomy',
-    description:
-      'This webinar uses radio astronomy to demonstrate how HPC Application Services can manage scientific data, accelerate imaging, and support next-generation instruments such as the SKA through architectures and tools for cross-facility workflows.',
-    body: [
-      {
-        type: 'paragraph',
-        text: 'Radio-astronomy applications increasingly need the throughput, fast I/O, and parallelism of national supercomputers. Accessing those machines, however, still requires operational knowledge that many domain researchers should not need to reproduce for every run.',
-      },
-      {
-        type: 'paragraph',
-        text: 'This webinar presents HPC applications as a service through a practical DDF Pipeline scenario. The focus is on integrating scientific data logistics, intensive imaging, and distributed workflow orchestration while keeping the researcher-facing interface understandable.',
-      },
-    ],
-    image: '/images/mathis/videos/webinar.webp',
-    imageAlt: 'The webinar announcement card: “HPC as a Service for Radio Astronomy: A Practical Case Study with the DDF Software”, with the ECLAT logo and a portrait of Mathis Certenais',
-    href: '/insights/webinar-hpc-applications-as-a-service',
-    sourceHref: sourceLinks.eclatWebinar,
-  },
-
-  {
     id: 'ai-lab-virtual-running-coach',
-    number: '08',
+    number: '05',
     category: 'Side project',
     date: 'October 26, 2026',
     title:
@@ -1775,6 +1543,238 @@ export const articleItems: ArticleItem[] = [
   },
 
   {
+    id: 'mcp-server-software-ontology',
+    number: '06',
+    category: 'Research note',
+    date: 'September 16, 2026',
+    title:
+      'Make Scientific Software Speak: An MCP Server That Explains Its Own Parameters',
+    description:
+      'Think of your scientific software documentation as an interactive wiki. An MCP server that transforms hundreds of complex configuration settings into natural-language answers for researchers and engineers in the community.',
+    body: [
+      {
+        type: 'heading',
+        level: 2,
+        text: 'The Silent Software Problem',
+      },
+      {
+        type: 'paragraph',
+        text: 'Behind every complex scientific application lies a **labyrinth of configuration parameters** — often understood only by a handful of main developers. This is particularly true for the **DDF Pipeline**, a self-calibration and imaging software designed for the **LOFAR** (Low Frequency Array) radio telescope. Here, a single run involves **hundreds of configuration parameters**, and changing just one can alter weeks of computing costs or the final scientific result.',
+      },
+      {
+        type: 'figure',
+        image: '/images/mathis/mcp-server-software-ontology/ddf-sourcecode.webp',
+        alt: 'Screenshot of the DDF Pipeline source code repository',
+        caption: 'The DDF Pipeline source code — today, the only place where the meaning of these hundreds of parameters truly lives.',
+      },
+      {
+        type: 'paragraph',
+        text: 'For the developers who maintain the software, these settings are familiar companions. For the community who use it, they are a challenge. The “right” configuration is never **fixed**: it depends on the **volume of input data**, the **computing system** that will perform the processing, and, above all, the **user’s specific needs**. **Documentation alone cannot capture this context.** As a result, this critical knowledge rarely leaves the source code — [github.com/mhardcastle/ddf-pipeline](https://github.com/mhardcastle/ddf-pipeline) — leaving powerful software inaccessible to those who need it most.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Our approach flips the script. Instead of asking users to memorize hundreds of settings, we build a **conversational interface for the code itself**. We structure the application’s parameter space into a searchable knowledge base, embed it, and expose it through an **MCP** (Model Context Protocol) server. **This transforms the software from a silent tool into an explainable assistant** that researchers can simply ask.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        text: 'The Case Study: What the Parameters Really Control',
+      },
+      {
+        type: 'paragraph',
+        text: 'The DDF Pipeline turns LOFAR observations into wide-field sky surveys. Its outputs are the images that illustrate astronomy papers — and every one of them carries the fingerprint of the parameter decisions made upstream: pixel scale, restoring beam, masking, compression, CPU allocation. The figures below come from **LoTSS-DR3**, a data release produced with the very software whose parameters we set out to explain.',
+      },
+      {
+        type: 'figure',
+        image: '/images/mathis/mcp-server-software-ontology/ddf-survey.webp',
+        alt: 'Re-projection of the LoTSS-DR3 mosaic images and corresponding RMS image',
+        caption: 'Top: re-projection of the LoTSS-DR3 mosaic images. Bottom: the corresponding RMS image. The yellow and blue outlines show the LoTSS-DR1 and LoTSS-DR2 areas, covering 2% and 27% of the northern sky, respectively; the black outline shows the LoTSS-DR3 coverage of 88%. The small grey dots mark the 3168 LoTSS pointings, of which 2551 are included in this release. Source: [LoTSS Data Release 3](https://ui.adsabs.harvard.edu/abs/2026A%26A...707A.198S/abstract)',
+      },
+      {
+        type: 'figure',
+        image: '/images/mathis/mcp-server-software-ontology/ddf-image.webp',
+        alt: 'Example 45-deg2 region of the extragalactic sky from LoTSS-DR3',
+        caption: 'Example 45-deg2 region of the extragalactic sky from LoTSS-DR3 — typically around 30,000 sources detected above 4.5×RMS. Prominent are the radio galaxies NGC 315 (bottom) and 3C 31 (lower centre left), and the spiral galaxy M 31 (top).',
+      },
+      {
+        type: 'figure',
+        image: '/images/mathis/mcp-server-software-ontology/ddf-supernova.webp',
+        alt: 'Region of the Galactic plane with the highest density of known supernova remnants in LoTSS-DR3',
+        caption: 'Region of the Galactic plane with the highest density of known supernova remnants in LoTSS-DR3: 190 deg2 centred at a Galactic longitude of 43.5°, including G054.4-00.3, G049.2-00.7, G043.9+01.6, G039.7-02.0, and G034.7-00.4.',
+      },
+      {
+        type: 'paragraph',
+        text: 'These images are the stakes. Every pixel in them is conditioned by parameters that today only a few maintainers fully master.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        text: 'The Solution: Giving the Software a Voice',
+      },
+      {
+        type: 'paragraph',
+        text: 'How do we teach an AI about our software? We don’t just feed it raw code. We build a structured knowledge map (or ontology) of the parameter space. Think of it as giving the AI a precise **table of contents** and a **technical glossary** for the software. This ensures it never hallucinates a parameter that doesn’t exist, since every answer is based on the actual codebase.',
+      },
+      {
+        type: 'heading',
+        level: 3,
+        text: 'Step one — Structure the Knowledge',
+      },
+      {
+        type: 'paragraph',
+        text: 'Building this structured map is a **multidisciplinary exercise** . We work with developers to represent the application faithfully, and with end-users to keep it legible. The key information is harvested from the codebase and converted into a standardized format (Turtle/TTL) that machines can understand.',
+      },
+      {
+        type: 'figure',
+        image: '/images/mathis/mcp-server-software-ontology/ddf-ontology.webp',
+        alt: 'Visualization of the DDF Pipeline knowledge structure',
+        caption: 'Visualization of the DDF Pipeline knowledge structure: parameters grouped into sections, with their data types, default values, units, and descriptions.',
+      },
+      {
+        type: 'paragraph',
+        text: 'This structured data is then turned into a **vector database** — a representation that a lightweight embedding model (here, all-MiniLM-L6-v2) can search in natural language.',
+      },
+      {
+        type: 'heading',
+        level: 3,
+        text: 'Step two — Expose it through MCP',
+      },
+      {
+        type: 'paragraph',
+        text: '**MCP**, the Model Context Protocol, is the open standard that lets AI assistants such as Claude Code and OpenCode connect to external tools and data sources. It becomes the bridge between researchers and this knowledge base: the server hosts the embedding model, communicates with the database, and exposes a REST API that answers natural-language queries with the main nodes of the structure.',
+      },
+      {
+        type: 'figure',
+        image: '/images/mathis/mcp-server-software-ontology/mcp-swagger.webp',
+        alt: 'API documentation of the MCP server exposing the knowledge base',
+        caption: 'The MCP server’s API documentation: query the knowledge base in natural language, receive structured nodes in return.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Ask "How can I change the image size in pixels?" and the server answers with ranked nodes drawn from the structure:',
+      },
+      {
+        type: 'list',
+        ordered: false,
+        items: [
+          '**image.imsize** — section **image**, data type **int**, default **20000**, "Image size in pixels", unit **pixel**.',
+          '**image.cellsize** — data type **float**, default **1.5**, "Pixel size in arcsec", unit **arcsec**.',
+          '**machine.NCPU_DDF** — "Number of CPUs to use for DDF", **auto-selected** when left unset.',
+          '**masking.tgss_radius** — "TGSS mask radius in pixels", default **8.0**, unit **pixel**.',
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'No guesswork and no hallucinated parameters: every answer is anchored in the real codebase, through this structured knowledge.',
+      },
+      {
+        type: 'heading',
+        level: 3,
+        text: 'Step three — A sovereign conversational interface',
+      },
+      {
+        type: 'paragraph',
+        text: 'The final piece is the interface where researchers actually ask. We use **Ragarenn**, a sovereign platform hosting large language models accessed through the **eduGAIN** identity federation — a setup designed for **data privacy**, where nothing leaves a trusted perimeter. It exposes a standard OpenAI-compatible API, and we connect **OpenCode** (or Claude Code) to both the model and the MCP server, so the conversation happens inside the coding interface researchers already use.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        text: 'The Result: From Documentation to Dialogue',
+      },
+      {
+        type: 'paragraph',
+        text: 'Connect the MCP server to your interface of choice and the software finally answers for itself. The decisive strength is **modularity**.',
+      },
+      {
+        type: 'paragraph',
+        text: 'You can operate in a **strict mode**, where the model answers only from the real information contained in the structured knowledge base. In this mode, if a parameter isn’t defined in the map, the AI won’t invent it. Every parameter it mentions truly exists in the code.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Alternatively, you can enrich those grounded answers with a **web-connected model** to bring in additional external context (like best practices from similar projects). Both modes share the same critical guarantee: **the source of truth is the software itself, not the AI’s training data.**',
+      },
+      {
+        type: 'paragraph',
+        text: 'Documentation assumes a reader who is willing to dig through pages of text. This system assumes a conversation. By exposing the hidden parameter space of scientific software as something an AI can read and explain, we turn a silent tool into a colleague who knows the codebase — and let scientists spend their time looking at the sky, not at the parameters.',
+      },
+    ],
+    image: '/images/mathis/mcp-server-software-ontology/cover.webp',
+    imageAlt: 'A conversation between a researcher and an AI assistant about scientific software parameters',
+    href: '/insights/mcp-server-software-ontology',
+    sourceHref: 'https://github.com/mhardcastle/ddf-pipeline',
+  },
+
+  {
+    id: 'international-hackathon-for-astronomy',
+    number: '07',
+    category: 'Collaboration',
+    date: 'April 1, 2026',
+    title: 'International Hackathon for Radio Astronomy',
+    description:
+      'A research event bringing together computer scientists and astrophysicists from France, England, and South Africa to address the shared technical challenges of radio astronomical data.',
+    body: [
+      {
+        type: 'paragraph',
+        text: 'Scientific software becomes more useful when the people who build infrastructure and the people who interpret astronomical data can work on the same problems together.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        text: 'What are the goals of this hackathon?',
+      },
+      {
+        type: 'paragraph',
+        text: 'The international hackathon in Rennes created space for that collaboration: participants worked during one week to create a participatory research network called RIMS Network and to continue work on the DDF Pipeline data-processing software.',
+      },
+      {
+        type: 'paragraph',
+        text: 'RIMS Network is a distributed storage system that hosts dynamic spectra and their metadata for studying rare events. It enables collaborative data production and can be accessed by users via a web service.',
+      },
+      {
+        type: 'paragraph',
+        text: 'For the DDF Pipeline, we worked on portability of the parallel version: it is now installed and running on the French supercomputers Jean Zay hosted at the Institut du Développement et des Ressources en Informatique Scientifique (IDRIS), Adastra at the Centre Informatique National de l`Enseignement Supérieur (CINES), at the University of Hertfordshire (UK), and with our industry partner Bull.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        text: 'What is the benefit of this international collaboration?',
+      },
+      {
+        type: 'paragraph',
+        text: 'These technical events are crucial for bringing our community together to align on shared goals and turn them into reality. During this hackathon, we successfully validated the deployment of the DDF Pipeline on the supercomputers of all participating partners, finalizing this stable version so we can now focus on developing new features. For RIMS, this international gathering allowed us to collectively finalize the general distributed architecture across France, South Africa, and the UK, as well as agree on usage conditions and deliver a proof-of-concept to validate the core idea.',
+      },
+    ],
+    image: '/images/mathis/international-hackathon-for-astronomy/cover.webp',
+    imageAlt: 'Participants in the international DDF Pipeline and RIMS hackathon in Rennes',
+    href: '/insights/international-hackathon-for-astronomy',
+    sourceHref: sourceLinks.eclatHackathon,
+  },
+
+  {
+    id: 'webinar-hpc-applications-as-a-service',
+    number: '08',
+    category: 'Webinar',
+    date: 'February 13, 2026',
+    title: 'Webinar: HPC Application Services for Radio Astronomy',
+    description:
+      'This webinar uses radio astronomy to demonstrate how HPC Application Services can manage scientific data, accelerate imaging, and support next-generation instruments such as the SKA through architectures and tools for cross-facility workflows.',
+    body: [
+      {
+        type: 'paragraph',
+        text: 'Radio-astronomy applications increasingly need the throughput, fast I/O, and parallelism of national supercomputers. Accessing those machines, however, still requires operational knowledge that many domain researchers should not need to reproduce for every run.',
+      },
+      {
+        type: 'paragraph',
+        text: 'This webinar presents HPC applications as a service through a practical DDF Pipeline scenario. The focus is on integrating scientific data logistics, intensive imaging, and distributed workflow orchestration while keeping the researcher-facing interface understandable.',
+      },
+    ],
+    image: '/images/mathis/videos/webinar.webp',
+    imageAlt: 'The webinar announcement card: “HPC as a Service for Radio Astronomy: A Practical Case Study with the DDF Software”, with the ECLAT logo and a portrait of Mathis Certenais',
+    href: '/insights/webinar-hpc-applications-as-a-service',
+    sourceHref: sourceLinks.eclatWebinar,
+  },
+
+  {
     id: 'rennes-hackathon-for-astronomy',
     number: '09',
     category: 'Collaboration',
@@ -1824,7 +1824,6 @@ export const articleItems: ArticleItem[] = [
     imageAlt: 'Participants in the hackathon in Rennes',
     href: '/insights/rennes-hackathon-for-astronomy',
   },
-
 ]
 
 export const profileTimeline = [
