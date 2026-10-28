@@ -39,7 +39,7 @@
     <meta name="twitter:image:alt" content="The coaching panel of Open Running Coach" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <title>How I Created an AI Lab to Launch My Open-Source Virtual Running Coach | Mathis Certenais</title>
-    <script type="module" crossorigin src="/assets/index-B2kprSzj.js"></script>
+    <script type="module" crossorigin src="/assets/index-Ilv7dcsf.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-cCQfjwUk.css">
     <meta property="og:url" content="https://mathiscertenais.com/insights/ai-lab-virtual-running-coach/" />
     <link rel="canonical" href="https://mathiscertenais.com/insights/ai-lab-virtual-running-coach/" />
@@ -54,7 +54,7 @@
       <figure class="prerendered__figure">
         <img alt="The Coach Running home page in dark theme: training load, form and VO2max figures, the Ask your coach panel, the week’s schedule and recent runs." src="/images/mathis/ai-lab-virtual-running-coach/landing-page.webp" />
       </figure>
-      <p class="prerendered__label prerendered__label--cover">Side project · October 26, 2026 · 6 min read</p>
+      <p class="prerendered__label prerendered__label--cover">Side project · October 26, 2026 · 7 min read</p>
       <h2>The interview</h2>
       <h3>You’re a runner first. Where does this start?</h3>
       <p>I’m an amateur runner. I started like most people: running became fashionable, so I tried it. What kept me going is how practical it is — you put on your shoes, you walk out of your door, and you run.</p>
@@ -65,6 +65,10 @@
       <h3>What did you want instead?</h3>
       <p>A <strong>virtual coach</strong> grounded in the literature, computing my own indicators from my own data: <strong>VO2max, intensity distribution, training load, injury signals</strong>. Then I enriched it with what actually surrounds a run — nutrition, a stretching and strength programme, and daily step count, which matters a lot in my case: the sedentary days are exactly when the knee complains.</p>
       <p>And AI on top, to make that data speak: training strategy, stretching for race preparation, race-time predictions.</p>
+      <h3>So what does the coach actually hand a physiotherapist?</h3>
+      <p>One exported report, generated locally from the database, covering the ten weeks to 19 October 2026: 25 runs, 168.8 km, 16 h 55 of moving time, 4 013 m of elevation. It carries the load figures — chronic load 12.8, acute load 3.0, form 9.8 — the intensity distribution against the 80/10/10 target, what I reported about pain, the strength and mobility sessions with their perceived effort, and the mileage on each pair of shoes.</p>
+      <p>That is the point of the export. In a consultation I bring what I remember from the day before, and nobody remembers ten weeks of training. The report brings the numbers, and the felt effort I logged session by session as it was felt — not reconstructed three weeks later around a knee that hurts today. The physiotherapist and I read the same file.</p>
+      <p class="prerendered__caption">The report for the physiotherapist, covering 10 August to 19 October 2026 and generated on 27 October 2026. It ends on the caveat that matters: correlation is not causation — these are patterns to discuss with a professional, not a diagnosis.</p>
       <h3>You keep saying “the sensor is the watch, the phone is the transport, the laptop is the brain”. What does that mean?</h3>
       <p>It is the architecture, in one sentence.</p>
       <p>The watch records. The phone moves the file. The <strong>laptop does the thinking</strong> — and it keeps the data. No account, no cloud, no telemetry: the application runs on 127.0.0.1, reads files from a folder, and writes to a SQLite database next to it.</p>

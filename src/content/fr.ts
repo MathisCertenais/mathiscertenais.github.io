@@ -445,6 +445,22 @@ const articleBodies: Record<string, ArticleBlock[]> = {
       type: 'paragraph',
       text: 'Et l’IA par-dessus, pour faire parler ces données : stratégie d’entraînement, étirements de préparation à la course, prédictions de temps de course.',
     },
+    { type: 'heading', level: 3, text: 'Concrètement, que remet le coach à un kinésithérapeute ?' },
+    {
+      type: 'paragraph',
+      text: 'Un rapport exporté, généré localement depuis la base, qui couvre les dix semaines jusqu’au 19 octobre 2026 : 25 courses, 168,8 km, 16 h 55 de temps en mouvement, 4 013 m de dénivelé. Il porte les indicateurs de charge — charge chronique 12,8, charge aiguë 3,0, forme 9,8 —, la répartition de l’intensité face à la cible 80/10/10, ce que j’ai signalé comme douleur, les séances de renforcement et de mobilité avec leur effort perçu, et le kilométrage de chaque paire de chaussures.',
+    },
+    {
+      type: 'paragraph',
+      text: 'C’est tout l’intérêt de l’export. En consultation, j’apporte ce dont je me souviens de la veille, et personne ne se souvient de dix semaines d’entraînement. Le rapport, lui, apporte les chiffres et le ressenti que j’avais consigné séance après séance, sur le moment — pas reconstruit trois semaines plus tard autour d’un genou qui fait mal aujourd’hui. Le kinésithérapeute et moi lisons le même fichier.',
+    },
+    {
+      type: 'figure',
+      image: '/images/mathis/ai-lab-virtual-running-coach/training-report.webp',
+      alt: 'Le rapport d’entraînement généré par l’application pour le kinésithérapeute : un résumé de 25 courses, 168,8 km, 16 h 55 de temps en mouvement et 4 013 m de dénivelé, puis une charge chronique de 12,8, une charge aiguë de 3,0 et une forme de 9,8 ; la répartition de l’intensité à 62,5 % facile, 12,0 % modérée et 25,5 % difficile face à la cible 80/10/10 ; une surveillance des blessures qui ne signale aucune douleur ; un tableau de six séances récentes de renforcement et de mobilité avec leur effort perçu, du haut du corps à RPE 6 jusqu’à une consultation du genou à RPE 2 ; le kilométrage de trois paires de chaussures ; et une note finale rappelant que corrélation n’est pas causalité.',
+      caption:
+        'Le rapport destiné au kinésithérapeute, du 10 août au 19 octobre 2026, généré le 27 octobre 2026. Il se termine sur la réserve qui compte : corrélation n’est pas causalité — ce sont des motifs à discuter avec un professionnel, pas un diagnostic.',
+    },
     {
       type: 'heading',
       level: 3,
