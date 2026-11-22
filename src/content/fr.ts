@@ -63,6 +63,7 @@ export const sourceLinks = {
   numpexYoungpex: 'https://numpex.org/youngpex/',
   inpexWorkshop: 'https://inpex.science/workshop/2025-inpex-workshop/',
   inpexSlides: 'https://inpex.science/wp-content/uploads/sites/5/2025/04/25A6391.pdf',
+  sc26Paper: 'https://doi.ieeecomputersociety.org/10.1109/SCW72768.2026.00093',
 } as const
 
 export const proofPoints: ProofPoint[] = [
@@ -1220,7 +1221,7 @@ const cybersecurityTranslated: ArticleBlock[] = [
   },
   {
     type: 'paragraph',
-    text: 'Pour la communauté de la radioastronomie, l’accès à ces machines est bloqué — non par un manque de matériel, mais par un conflit systémique entre la collaboration scientifique et la sécurité nationale. C’est la tension que le travail présenté aux **ateliers SC26** entreprend de résoudre : comment permettre à une communauté scientifique de partager une application commune sur les systèmes français de calcul intensif sans enfreindre les règles de responsabilité sur lesquelles ces systèmes reposent.',
+    text: 'Pour la communauté de la radioastronomie, l’accès à ces machines est bloqué — non par un manque de matériel, mais par un conflit systémique entre la collaboration scientifique et la sécurité nationale. C’est la tension que le travail présenté aux **ateliers SC26** entreprend de résoudre : comment permettre à une communauté scientifique de partager une application commune sur les systèmes français de calcul intensif sans enfreindre les règles de responsabilité sur lesquelles ces systèmes reposent. L’article complet est publié à l’adresse [DOI 10.1109/SCW72768.2026.00093](https://doi.ieeecomputersociety.org/10.1109/SCW72768.2026.00093).',
   },
   {
     type: 'paragraph',

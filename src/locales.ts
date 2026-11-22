@@ -81,6 +81,7 @@ export const locales = {
       skaAlt:
         'Diagram of the SKA processing chain: antennas in Australia and South Africa feed on-site pre-processing, then supercomputers in Perth and Cape Town, whose science products are replicated across an international storage network',
       publications: 'Publications',
+      sc26Paper: 'SC26 paper',
       getInTouch: 'Get in touch',
       exploreResearchArea: 'Explore the research area',
       allVideos: 'All videos',
@@ -210,6 +211,7 @@ export const locales = {
       skaAlt:
         'Schéma de la chaîne de traitement du SKA : les antennes en Australie et en Afrique du Sud alimentent un prétraitement sur site, puis des supercalculateurs à Perth et au Cap, dont les produits scientifiques sont répliqués sur un réseau de stockage international',
       publications: 'Publications',
+      sc26Paper: 'Article SC26',
       getInTouch: 'Me contacter',
       exploreResearchArea: 'Explorer le domaine de recherche',
       allVideos: 'Toutes les vidéos',

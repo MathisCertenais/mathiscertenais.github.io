@@ -42,6 +42,7 @@ export const sourceLinks = {
   numpexYoungpex: 'https://numpex.org/youngpex/',
   inpexWorkshop: 'https://inpex.science/workshop/2025-inpex-workshop/',
   inpexSlides: 'https://inpex.science/wp-content/uploads/sites/5/2025/04/25A6391.pdf',
+  sc26Paper: 'https://doi.ieeecomputersociety.org/10.1109/SCW72768.2026.00093',
 } as const
 
 export type ProofKind = 'community' | 'mentor' | 'speaker'
@@ -376,7 +377,7 @@ export const articleItems: ArticleItem[] = [
       },
       {
         type: 'paragraph',
-        text: 'For the radio astronomy community, the path to these machines is blocked — not by a lack of hardware, but by a systemic conflict between scientific collaboration and national security. This is the tension the work we present at the **SC26 Workshops** sets out to resolve: how to let a scientific community share a common application across French HPC systems without breaking the accountability rules those systems are built on.',
+        text: 'For the radio astronomy community, the path to these machines is blocked — not by a lack of hardware, but by a systemic conflict between scientific collaboration and national security. This is the tension the work we present at the **SC26 Workshops** sets out to resolve: how to let a scientific community share a common application across French HPC systems without breaking the accountability rules those systems are built on. The full paper is published at [DOI 10.1109/SCW72768.2026.00093](https://doi.ieeecomputersociety.org/10.1109/SCW72768.2026.00093).',
       },
       {
         type: 'paragraph',

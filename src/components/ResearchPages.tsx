@@ -201,6 +201,10 @@ export function ResearchPage() {
             {strings.pages.publications} <ArrowIcon external />
             <NewTabHint label={strings.a11y.newTab} />
           </a>
+          <a className="button button--secondary" href={sourceLinks.sc26Paper} rel="noreferrer" target="_blank">
+            {strings.pages.sc26Paper} <ArrowIcon external />
+            <NewTabHint label={strings.a11y.newTab} />
+          </a>
           <a className="button button--secondary" href={localeHref('/contact')}>
             {strings.pages.getInTouch} <ArrowIcon />
           </a>
