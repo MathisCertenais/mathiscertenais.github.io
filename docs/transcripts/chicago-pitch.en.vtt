@@ -1,0 +1,68 @@
+WEBVTT
+
+00:00:00.050 --> 00:00:03.430
+Hello everyone, today I'm in Chicago
+
+00:00:03.450 --> 00:00:07.810
+and I presented my work at the Supercomputing Conference
+
+00:00:07.830 --> 00:00:12.910
+about enabling radio astronomy to use French supercomputers.
+
+00:00:13.420 --> 00:00:18.590
+So, next generation radio telescopes such as the SKA
+
+00:00:18.610 --> 00:00:22.310
+will produce exascale volumes of data
+
+00:00:22.330 --> 00:00:26.950
+that needs national HPC centres to process it.
+
+00:00:26.970 --> 00:00:31.640
+And astrophysicians [sic] traditionally use
+
+00:00:31.660 --> 00:00:35.740
+local clusters with shared access models.
+
+00:00:35.760 --> 00:00:39.720
+So they have one account for multiple users.
+
+00:00:40.020 --> 00:00:43.500
+And at the other hand [sic], French supercomputers
+
+00:00:43.520 --> 00:00:47.180
+are classified as strategic national assets.
+
+00:00:47.360 --> 00:00:50.200
+And the cybersecurity regulations
+
+00:00:50.220 --> 00:00:53.540
+imposed one account per person.
+
+00:00:53.560 --> 00:00:56.940
+So we move today this friction
+
+00:00:56.960 --> 00:01:02.080
+by exposing scientific applications as a service.
+
+00:01:02.100 --> 00:01:04.620
+So this is the next fix for astronomy.
+
+00:01:04.700 --> 00:01:08.300
+And today, astronomers from South Africa,
+
+00:01:08.320 --> 00:01:11.500
+England and France can connect through our website,
+
+00:01:11.660 --> 00:01:14.440
+select the scientific application they want to use
+
+00:01:14.460 --> 00:01:17.760
+to study galaxies, pulsars, black holes.
+
+00:01:17.840 --> 00:01:22.380
+They can tweak applicative parameters and hit on play and that's it.
+
+00:01:22.400 --> 00:01:25.580
+They don't have to worry about HPC complexity.
+

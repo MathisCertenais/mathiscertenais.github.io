@@ -1,0 +1,25 @@
+Transcription — Pitch recorded in Chicago (Supercomputing Conference)
+Automatic transcription (Whisper large-v3, cross-checked against a second model), re-read by hand. Wording kept as spoken; [sic] marks a slip in the original. One word is unclear on the recording: “next fix” (62 s).
+
+[00:00] Hello everyone, today I'm in Chicago
+[00:03] and I presented my work at the Supercomputing Conference
+[00:07] about enabling radio astronomy to use French supercomputers.
+[00:13] So, next generation radio telescopes such as the SKA
+[00:18] will produce exascale volumes of data
+[00:22] that needs national HPC centres to process it.
+[00:26] And astrophysicians [sic] traditionally use
+[00:31] local clusters with shared access models.
+[00:35] So they have one account for multiple users.
+[00:40] And at the other hand [sic], French supercomputers
+[00:43] are classified as strategic national assets.
+[00:47] And the cybersecurity regulations
+[00:50] imposed one account per person.
+[00:53] So we move today this friction
+[00:56] by exposing scientific applications as a service.
+[01:02] So this is the next fix for astronomy.
+[01:04] And today, astronomers from South Africa,
+[01:08] England and France can connect through our website,
+[01:11] select the scientific application they want to use
+[01:14] to study galaxies, pulsars, black holes.
+[01:17] They can tweak applicative parameters and hit on play and that's it.
+[01:22] They don't have to worry about HPC complexity.

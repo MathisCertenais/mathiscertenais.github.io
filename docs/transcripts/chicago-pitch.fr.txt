@@ -1,0 +1,25 @@
+Transcription — Pitch enregistré à Chicago (Supercomputing Conference)
+Transcription automatique (Whisper large-v3), traduite de l'anglais et révisée avec l'auteur. Le français est une adaptation de la prise de parole, pas un mot à mot.
+
+[00:00] Bonjour à toutes et à tous, aujourd'hui je suis à Chicago
+[00:03] et j'ai présenté mon travail à la Supercomputing Conference
+[00:07] sur la possibilité pour la radioastronomie d'utiliser les supercalculateurs français.
+[00:13] Alors, les radiotélescopes de nouvelle génération comme le SKA
+[00:18] vont produire des volumes de données à l'échelle exascale
+[00:22] que les centres nationaux de calcul haute performance doivent traiter.
+[00:26] Et les astrophysiciens utilisent traditionnellement
+[00:31] des clusters locaux avec des modèles d'accès partagés.
+[00:35] Un seul compte pour plusieurs utilisateurs.
+[00:40] Et à l'inverse, les supercalculateurs français
+[00:43] sont classés comme des actifs nationaux stratégiques.
+[00:47] Et les règles de cybersécurité
+[00:50] imposent un compte par personne.
+[00:53] Donc on lève aujourd'hui cette friction
+[00:56] en exposant les applications scientifiques en tant que service.
+[01:02] C'est le Netflix de l'astronomie.
+[01:04] Et aujourd'hui, des astronomes d'Afrique du Sud,
+[01:08] d'Angleterre et de France peuvent se connecter via notre site,
+[01:11] choisir l'application qu'ils veulent utiliser
+[01:14] pour étudier les galaxies, les pulsars, les trous noirs.
+[01:17] Ils règlent les paramètres et appuient sur play. Et c'est tout.
+[01:22] Ils n'ont plus à se soucier de la complexité du calcul.

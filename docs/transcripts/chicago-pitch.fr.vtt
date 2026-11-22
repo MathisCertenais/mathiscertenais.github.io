@@ -1,0 +1,68 @@
+WEBVTT
+
+00:00:00.050 --> 00:00:03.430
+Bonjour à toutes et à tous, aujourd'hui je suis à Chicago
+
+00:00:03.450 --> 00:00:07.810
+et j'ai présenté mon travail à la Supercomputing Conference
+
+00:00:07.830 --> 00:00:12.910
+sur la possibilité pour la radioastronomie d'utiliser les supercalculateurs français.
+
+00:00:13.420 --> 00:00:18.590
+Alors, les radiotélescopes de nouvelle génération comme le SKA
+
+00:00:18.610 --> 00:00:22.310
+vont produire des volumes de données à l'échelle exascale
+
+00:00:22.330 --> 00:00:26.950
+que les centres nationaux de calcul haute performance doivent traiter.
+
+00:00:26.970 --> 00:00:31.640
+Et les astrophysiciens utilisent traditionnellement
+
+00:00:31.660 --> 00:00:35.740
+des clusters locaux avec des modèles d'accès partagés.
+
+00:00:35.760 --> 00:00:39.720
+Un seul compte pour plusieurs utilisateurs.
+
+00:00:40.020 --> 00:00:43.500
+Et à l'inverse, les supercalculateurs français
+
+00:00:43.520 --> 00:00:47.180
+sont classés comme des actifs nationaux stratégiques.
+
+00:00:47.360 --> 00:00:50.200
+Et les règles de cybersécurité
+
+00:00:50.220 --> 00:00:53.540
+imposent un compte par personne.
+
+00:00:53.560 --> 00:00:56.940
+Donc on lève aujourd'hui cette friction
+
+00:00:56.960 --> 00:01:02.080
+en exposant les applications scientifiques en tant que service.
+
+00:01:02.100 --> 00:01:04.620
+C'est le Netflix de l'astronomie.
+
+00:01:04.700 --> 00:01:08.300
+Et aujourd'hui, des astronomes d'Afrique du Sud,
+
+00:01:08.320 --> 00:01:11.500
+d'Angleterre et de France peuvent se connecter via notre site,
+
+00:01:11.660 --> 00:01:14.440
+choisir l'application qu'ils veulent utiliser
+
+00:01:14.460 --> 00:01:17.760
+pour étudier les galaxies, les pulsars, les trous noirs.
+
+00:01:17.840 --> 00:01:22.380
+Ils règlent les paramètres et appuient sur play. Et c'est tout.
+
+00:01:22.400 --> 00:01:25.580
+Ils n'ont plus à se soucier de la complexité du calcul.
+
