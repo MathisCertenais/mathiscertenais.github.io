@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#eef2f5" />
+    <script>
+      ;(() => {
+        try {
+          const stored = localStorage.getItem('mathis-personal-website:theme')
+          const theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light'
+          document.documentElement.dataset.theme = theme
+          document.documentElement.style.colorScheme = theme
+          document.querySelector('meta[name="theme-color"]').content =
+            theme === 'dark' ? '#15181c' : '#eef2f5'
+        } catch {
+          document.documentElement.dataset.theme = 'light'
+        }
+      })()
+    </script>
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Notes from SC26 in Chicago: Europe’s exascale machines as one pooled infrastructure, the SKA as the workload that tests it, and why access rules decide which science crosses a border." />
+    <meta property="og:title" content="From Jean Zay to JUPITER: Europe’s Exascale Ambition at SC26 | Mathis Certenais" />
+    <meta property="og:description" content="Notes from SC26 in Chicago: Europe’s exascale machines as one pooled infrastructure, the SKA as the workload that tests it, and why access rules decide which science crosses a border." />
+    <meta property="og:site_name" content="Mathis Certenais" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://mathiscertenais.com/images/mathis/social-card.png" />
+    <meta property="og:image:alt" content="Europe’s exascale ambition at SC26" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="From Jean Zay to JUPITER: Europe’s Exascale Ambition at SC26 | Mathis Certenais" />
+    <meta name="twitter:description" content="Notes from SC26 in Chicago: Europe’s exascale machines as one pooled infrastructure, the SKA as the workload that tests it, and why access rules decide which science crosses a border." />
+    <meta name="twitter:image" content="https://mathiscertenais.com/images/mathis/social-card.png" />
+    <meta name="twitter:image:alt" content="Europe’s exascale ambition at SC26" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>From Jean Zay to JUPITER: Europe’s Exascale Ambition at SC26 | Mathis Certenais</title>
+    <script type="module" crossorigin src="/assets/index-CznlsZ5-.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-cCQfjwUk.css">
+    <meta property="og:url" content="https://mathiscertenais.com/insights/sc26-europe/" />
+    <link rel="canonical" href="https://mathiscertenais.com/insights/sc26-europe/" />
+      <link rel="alternate" hreflang="en" href="https://mathiscertenais.com/insights/sc26-europe/" />
+    <link rel="alternate" hreflang="fr" href="https://mathiscertenais.com/fr/insights/sc26-europe/" />
+    <link rel="alternate" hreflang="x-default" href="https://mathiscertenais.com/insights/sc26-europe/" />
+  </head>
+  <body>
+    <div id="root"><main class="prerendered" id="main-content">
+      <h1>From Jean Zay to JUPITER: Europe’s Exascale Ambition at SC26</h1>
+      <p>Notes from SC26 in Chicago: Europe’s exascale machines as one pooled infrastructure, the SKA as the workload that tests it, and why access rules decide which science crosses a border.</p>
+      <figure class="prerendered__figure">
+        <img alt="Mathis Certenais with colleagues from BSC, Jülich and PSNC at SC26 in Chicago. Photo: SC26 Chicago Conference Photos." src="/images/mathis/sc26-europe/group-photo.webp" />
+      </figure>
+      <p class="prerendered__label prerendered__label--cover">Event · November 22, 2026 · 3 min read</p>
+      <p>SC26 ran from 15 to 20 November at McCormick Place in Chicago. The International Conference for High Performance Computing, Networking, Storage, and Analysis is the 39th edition of a series that began in 1988, and <a href="https://sc26.supercomputing.org" rel="noreferrer" target="_blank">its official site</a> calls it “the largest gathering in high performance computing”. SC26 drew 24,000 attendees this year.</p>
+      <p>Europe was easy to find in that crowd, but not on a single stand. The French presence was four machines: Jean Zay at IDRIS, Adastra at CINES and Joliot-Curie at TGCC, plus Alice Recoque, the exascale system now being installed at TGCC. Beside that group, BSC brought MareNostrum 5, Jülich brought JUPITER and PSNC came from Poznań. Four countries, four funding lines, one table.</p>
+      <h2>The Machine No Single State Would Buy</h2>
+      <p>The EuroHPC Joint Undertaking exists for that reason. It pools national and European investment so that Europe can order machines at a scale no member state would justify alone. JUPITER, at Forschungszentrum Jülich, is the first result of that logic at the top of the range: Europe’s first exascale supercomputer, operational since 5 September 2025, and fifth on the November 2026 TOP500.</p>
+      <p>The point of pooling is not only the price. A machine of this class carries a security perimeter and a governance regime, and that is the part that does not travel easily.</p>
+      <p class="prerendered__caption">JUPITER, Europe’s first exascale supercomputer. Credit: © Forschungszentrum Jülich / Sascha Kreklau.</p>
+      <p>MareNostrum 5 at the Barcelona Supercomputing Center is the generation before it. It is a pre-exascale EuroHPC system with a peak of 314 Pflops, more than 200 PB of storage and a 400 PB archive, supplied by Bull SAS (Atos) and co-funded at €151.41 M by the Joint Undertaking with Spain, Portugal and Turkey. In June 2022 the Joint Undertaking described it as a machine that “paves the way toward exascale”; Mateo Valero, director of BSC, read the same decision as “technological sovereignty for the EU’s member states”.</p>
+      <p class="prerendered__caption">MareNostrum 5 at BSC. Credit: BSC.</p>
+      <p>France’s contribution is a network rather than one site. GENCI coordinates the national infrastructure: Jean Zay at IDRIS, Adastra at CINES, Joliot-Curie at TGCC, with Alice Recoque being installed at TGCC as the next exascale step. PSNC in Poznań was the Polish partner at the table, and Poland was selected as a EuroHPC host country in June 2022.</p>
+      <h2>SKA Is the Stress Case</h2>
+      <p>The SKA will produce around 700 PB of science-ready data a year. No centre can absorb that alone, so the processing has to be spread over machines of exactly this kind. The DDF Pipeline already runs on Jean Zay and on Adastra; it is developed with the ECLAT joint laboratory and exercised on LOFAR data, LOFAR being an SKA precursor.</p>
+      <p>A workflow crossing Jean Zay, Adastra and an exascale machine is a data-logistics problem before it is a scientific one: which site holds the input, which link carries it, who is allowed to read it, and how each result is traced back to the person responsible for it. Every one of those questions has an owner in a different country. A node that is faster but cannot accept the data is not a candidate.</p>
+      <p class="prerendered__caption">Jean Zay. Credit: CNRS, Cyril Frésillon.</p>
+      <h2>Sovereignty Is Both the Reason and the Constraint</h2>
+      <p>Europe builds its own machines because the alternative is dependence, and the same decision makes them national strategic assets. In France the centres operate under the framework protecting the Nation’s scientific and technical potential, known as the PPST, and the sensitive parts of their infrastructure are classified as zones à régime restrictif (ZRR). Access is nominative, traced, and attached to a person.</p>
+      <p>A telescope whose data crosses borders therefore meets a computing regime built to govern precisely that crossing. Read security as a barrier and the discussion ends there. Read it as an enabler and the question becomes how access is granted. In the model I work on, the identity of the user is decoupled from the identity of the executor: a maintainer holds a named service account limited to one validated application and a whitelist of authorised users, and every job carries an owner. The centre keeps its traceability; the astronomer no longer has to administer a supercomputer. The full argument is in <a href="/insights/exascale-astronomy-cybersecurity" rel="noreferrer" target="_blank">the paper I presented at the SC26 workshops</a>.</p>
+      <p class="prerendered__caption">Representatives of France (Jean Zay, Adastra, Joliot-Curie, Alice Recoque), Spain (MareNostrum 5), Germany (JUPITER) and Poland (PSNC).</p>
+      
+      <h2>Keep reading</h2>
+      <ul>
+        <li><a href="/insights/">All entries</a></li>
+        <li><a href="/research/">The research</a></li>
+        <li><a href="/contact/">Get in touch</a></li>
+      </ul>
+    </main></div>
+  </body>
+</html>

@@ -328,6 +328,7 @@ export type ArticleId =
   | 'exascale-astronomy-cybersecurity'
   | 'mcp-server-software-ontology'
   | 'ai-lab-virtual-running-coach'
+  | 'sc26-europe'
 
 export type ArticleListItem = string | { id?: string; text: string }
 
@@ -838,8 +839,91 @@ export const articleItems: ArticleItem[] = [
   },
 
   {
-    id: 'predicting-for-sizing',
+    id: 'sc26-europe',
     number: '02',
+    category: 'Event',
+    date: 'November 22, 2026',
+    title: 'From Jean Zay to JUPITER: Europe’s Exascale Ambition at SC26',
+    description:
+      'Notes from SC26 in Chicago: Europe’s exascale machines as one pooled infrastructure, the SKA as the workload that tests it, and why access rules decide which science crosses a border.',
+    href: '/insights/sc26-europe',
+    image: '/images/mathis/sc26-europe/group-photo.webp',
+    imageAlt: 'Mathis Certenais with colleagues from BSC, Jülich and PSNC at SC26 in Chicago. Photo: SC26 Chicago Conference Photos.',
+    body: [
+      {
+        type: 'paragraph',
+        text: 'SC26 ran from 15 to 20 November at McCormick Place in Chicago. The International Conference for High Performance Computing, Networking, Storage, and Analysis is the 39th edition of a series that began in 1988, and [its official site](https://sc26.supercomputing.org) calls it “the largest gathering in high performance computing”. SC26 drew 24,000 attendees this year.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Europe was easy to find in that crowd, but not on a single stand. The French presence was four machines: Jean Zay at IDRIS, Adastra at CINES and Joliot-Curie at TGCC, plus Alice Recoque, the exascale system now being installed at TGCC. Beside that group, BSC brought MareNostrum 5, Jülich brought JUPITER and PSNC came from Poznań. Four countries, four funding lines, one table.',
+      },
+      { type: 'heading', level: 2, text: 'The Machine No Single State Would Buy' },
+      {
+        type: 'paragraph',
+        text: 'The EuroHPC Joint Undertaking exists for that reason. It pools national and European investment so that Europe can order machines at a scale no member state would justify alone. JUPITER, at Forschungszentrum Jülich, is the first result of that logic at the top of the range: Europe’s first exascale supercomputer, operational since 5 September 2025, and fifth on the November 2026 TOP500.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The point of pooling is not only the price. A machine of this class carries a security perimeter and a governance regime, and that is the part that does not travel easily.',
+      },
+      {
+        type: 'figure',
+        image: '/images/mathis/sc26-europe/jupiter.webp',
+        alt: 'The JUPITER supercomputer at Forschungszentrum Jülich',
+        caption:
+          'JUPITER, Europe’s first exascale supercomputer. Credit: © Forschungszentrum Jülich / Sascha Kreklau.',
+      },
+      {
+        type: 'paragraph',
+        text: 'MareNostrum 5 at the Barcelona Supercomputing Center is the generation before it. It is a pre-exascale EuroHPC system with a peak of 314 Pflops, more than 200 PB of storage and a 400 PB archive, supplied by Bull SAS (Atos) and co-funded at €151.41 M by the Joint Undertaking with Spain, Portugal and Turkey. In June 2022 the Joint Undertaking described it as a machine that “paves the way toward exascale”; Mateo Valero, director of BSC, read the same decision as “technological sovereignty for the EU’s member states”.',
+      },
+      {
+        type: 'figure',
+        image: '/images/mathis/sc26-europe/marenostrum5.webp',
+        alt: 'The MareNostrum 5 supercomputer at the Barcelona Supercomputing Center',
+        caption: 'MareNostrum 5 at BSC. Credit: BSC.',
+      },
+      {
+        type: 'paragraph',
+        text: 'France’s contribution is a network rather than one site. GENCI coordinates the national infrastructure: Jean Zay at IDRIS, Adastra at CINES, Joliot-Curie at TGCC, with Alice Recoque being installed at TGCC as the next exascale step. PSNC in Poznań was the Polish partner at the table, and Poland was selected as a EuroHPC host country in June 2022.',
+      },
+      { type: 'heading', level: 2, text: 'SKA Is the Stress Case' },
+      {
+        type: 'paragraph',
+        text: 'The SKA will produce around 700 PB of science-ready data a year. No centre can absorb that alone, so the processing has to be spread over machines of exactly this kind. The DDF Pipeline already runs on Jean Zay and on Adastra; it is developed with the ECLAT joint laboratory and exercised on LOFAR data, LOFAR being an SKA precursor.',
+      },
+      {
+        type: 'paragraph',
+        text: 'A workflow crossing Jean Zay, Adastra and an exascale machine is a data-logistics problem before it is a scientific one: which site holds the input, which link carries it, who is allowed to read it, and how each result is traced back to the person responsible for it. Every one of those questions has an owner in a different country. A node that is faster but cannot accept the data is not a candidate.',
+      },
+      {
+        type: 'figure',
+        image: '/images/mathis/exascale-astronomy/jean-zay.webp',
+        alt: 'The Jean Zay supercomputer at IDRIS. Credit: CNRS, Cyril Frésillon.',
+        caption: 'Jean Zay. Credit: CNRS, Cyril Frésillon.',
+      },
+      { type: 'heading', level: 2, text: 'Sovereignty Is Both the Reason and the Constraint' },
+      {
+        type: 'paragraph',
+        text: 'Europe builds its own machines because the alternative is dependence, and the same decision makes them national strategic assets. In France the centres operate under the framework protecting the Nation’s scientific and technical potential, known as the PPST, and the sensitive parts of their infrastructure are classified as zones à régime restrictif (ZRR). Access is nominative, traced, and attached to a person.',
+      },
+      {
+        type: 'paragraph',
+        text: 'A telescope whose data crosses borders therefore meets a computing regime built to govern precisely that crossing. Read security as a barrier and the discussion ends there. Read it as an enabler and the question becomes how access is granted. In the model I work on, the identity of the user is decoupled from the identity of the executor: a maintainer holds a named service account limited to one validated application and a whitelist of authorised users, and every job carries an owner. The centre keeps its traceability; the astronomer no longer has to administer a supercomputer. The full argument is in [the paper I presented at the SC26 workshops](/insights/exascale-astronomy-cybersecurity).',
+      },
+      {
+        type: 'figure',
+        image: '/images/mathis/sc26-europe/group-photo.webp',
+        alt: 'Mathis Certenais with colleagues from BSC, Jülich and PSNC at SC26 in Chicago. Photo: SC26 Chicago Conference Photos.',
+        caption: 'Representatives of France (Jean Zay, Adastra, Joliot-Curie, Alice Recoque), Spain (MareNostrum 5), Germany (JUPITER) and Poland (PSNC).',
+      },
+    ],
+  },
+
+  {
+    id: 'predicting-for-sizing',
+    number: '03',
     category: 'Research note',
     date: 'September 23, 2026',
     title:
@@ -989,7 +1073,7 @@ export const articleItems: ArticleItem[] = [
 
   {
     id: 'eclat-interview',
-    number: '03',
+    number: '04',
     category: 'Interview',
     date: 'September 2025',
     title: 'Interview: At the Heart of Data Logistics for Radio Astronomy',
@@ -1086,7 +1170,7 @@ export const articleItems: ArticleItem[] = [
 
   {
     id: 'youngpex',
-    number: '04',
+    number: '05',
     category: 'Community',
     date: 'October 12, 2026',
     title: 'YoungPEx: The New Generation of Digital for Exascale',
@@ -1305,7 +1389,7 @@ export const articleItems: ArticleItem[] = [
 
   {
     id: 'ai-lab-virtual-running-coach',
-    number: '05',
+    number: '06',
     category: 'Side project',
     date: 'October 26, 2026',
     title:
@@ -1564,7 +1648,7 @@ export const articleItems: ArticleItem[] = [
 
   {
     id: 'mcp-server-software-ontology',
-    number: '06',
+    number: '07',
     category: 'Research note',
     date: 'September 16, 2026',
     title:
@@ -1726,7 +1810,7 @@ export const articleItems: ArticleItem[] = [
 
   {
     id: 'international-hackathon-for-astronomy',
-    number: '07',
+    number: '08',
     category: 'Collaboration',
     date: 'April 1, 2026',
     title: 'International Hackathon for Radio Astronomy',
@@ -1772,7 +1856,7 @@ export const articleItems: ArticleItem[] = [
 
   {
     id: 'webinar-hpc-applications-as-a-service',
-    number: '08',
+    number: '09',
     category: 'Webinar',
     date: 'February 13, 2026',
     title: 'Webinar: HPC Application Services for Radio Astronomy',
@@ -1796,7 +1880,7 @@ export const articleItems: ArticleItem[] = [
 
   {
     id: 'rennes-hackathon-for-astronomy',
-    number: '09',
+    number: '10',
     category: 'Collaboration',
     date: 'October 1, 2025',
     title: 'From Supercomputers to Tutorials: Strengthening Our Community Through Shared Expertise ',

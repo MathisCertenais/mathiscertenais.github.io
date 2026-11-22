@@ -31,6 +31,7 @@ const requiredCanonicalPaths = new Set([
   '/insights/exascale-astronomy-cybersecurity',
   '/insights/mcp-server-software-ontology',
   '/insights/ai-lab-virtual-running-coach',
+  '/insights/sc26-europe',
 ])
 
 const requiredLegacyPaths = new Set([
@@ -44,6 +45,7 @@ const requiredLegacyPaths = new Set([
   '/writing/exascale-astronomy-cybersecurity',
   '/writing/mcp-server-software-ontology',
   '/writing/ai-lab-virtual-running-coach',
+  '/writing/sc26-europe',
   '/articles',
   '/articles/ai-will-revolutionize-accessibility',
   '/articles/attitudinal-and-behavioral-research',
@@ -81,6 +83,7 @@ const allowedPages = new Set([
   'article:exascale-astronomy-cybersecurity',
   'article:mcp-server-software-ontology',
   'article:ai-lab-virtual-running-coach',
+  'article:sc26-europe',
   'contact',
   'home',
   'research',

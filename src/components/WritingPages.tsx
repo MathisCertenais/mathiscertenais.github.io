@@ -29,10 +29,21 @@ function renderInline(text: string, newTabLabel?: string): ReactNode[] {
       )
     } else {
       const opening = token.indexOf('](')
+      const href = token.slice(opening + 2, -1)
+      // Only an http(s) address leaves the site. A site-relative link stays in
+      // the tab and goes through the client router, so it gets no new-tab
+      // warning and no `target`: the reader follows it like the "More insights"
+      // links beside the article.
+      const leavesSite = /^https?:\/\//i.test(href) || href.startsWith('//')
       nodes.push(
-        <a href={token.slice(opening + 2, -1)} key={key} rel="noreferrer" target="_blank">
+        <a
+          href={href}
+          key={key}
+          rel={leavesSite ? 'noreferrer' : undefined}
+          target={leavesSite ? '_blank' : undefined}
+        >
           {token.slice(1, opening)}
-          {newTabLabel ? <NewTabHint label={newTabLabel} /> : null}
+          {leavesSite && newTabLabel ? <NewTabHint label={newTabLabel} /> : null}
         </a>,
       )
     }
@@ -46,10 +57,12 @@ function ArticleBlocks({
   blocks,
   newTabLabel,
   onZoom,
+  zoomLabel,
 }: {
   blocks: ArticleBlock[]
   newTabLabel?: string
   onZoom: (image: ImagePreview) => void
+  zoomLabel: string
 }) {
   return (
     <>
@@ -79,6 +92,7 @@ function ArticleBlocks({
             return (
               <figure className="article-figure" key={index}>
                 <button
+                  aria-label={`${zoomLabel} — ${block.alt}`}
                   className="figure-zoom"
                   onClick={() => onZoom({ alt: block.alt, caption: block.caption, src: block.image })}
                   type="button"
@@ -139,6 +153,7 @@ export function ArticlePage({ articleId }: { articleId: string }) {
 
         <div className="article-cover section">
           <button
+            aria-label={`${strings.a11y.openFigure} — ${article.imageAlt}`}
             className="figure-zoom"
             onClick={() => setPreview({ alt: article.imageAlt, src: article.image })}
             type="button"
@@ -173,6 +188,7 @@ export function ArticlePage({ articleId }: { articleId: string }) {
                 blocks={article.body}
                 newTabLabel={strings.a11y.newTab}
                 onZoom={setPreview}
+                zoomLabel={strings.a11y.openFigure}
               />
 
               {video ? (

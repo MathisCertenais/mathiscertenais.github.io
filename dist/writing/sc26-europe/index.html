@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#eef2f5" />
+    <script>
+      ;(() => {
+        try {
+          const stored = localStorage.getItem('mathis-personal-website:theme')
+          const theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light'
+          document.documentElement.dataset.theme = theme
+          document.documentElement.style.colorScheme = theme
+          document.querySelector('meta[name="theme-color"]').content =
+            theme === 'dark' ? '#15181c' : '#eef2f5'
+        } catch {
+          document.documentElement.dataset.theme = 'light'
+        }
+      })()
+    </script>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="Notes from SC26 in Chicago: Europe’s exascale machines as one pooled infrastructure, the SKA as the workload that tests it, and why access rules decide which science crosses a border." />
+    <meta property="og:title" content="From Jean Zay to JUPITER: Europe’s Exascale Ambition at SC26 | Mathis Certenais" />
+    <meta property="og:description" content="Notes from SC26 in Chicago: Europe’s exascale machines as one pooled infrastructure, the SKA as the workload that tests it, and why access rules decide which science crosses a border." />
+    <meta property="og:site_name" content="Mathis Certenais" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://mathiscertenais.com/images/mathis/social-card.png" />
+    <meta property="og:image:alt" content="Europe’s exascale ambition at SC26" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="From Jean Zay to JUPITER: Europe’s Exascale Ambition at SC26 | Mathis Certenais" />
+    <meta name="twitter:description" content="Notes from SC26 in Chicago: Europe’s exascale machines as one pooled infrastructure, the SKA as the workload that tests it, and why access rules decide which science crosses a border." />
+    <meta name="twitter:image" content="https://mathiscertenais.com/images/mathis/social-card.png" />
+    <meta name="twitter:image:alt" content="Europe’s exascale ambition at SC26" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>From Jean Zay to JUPITER: Europe’s Exascale Ambition at SC26 | Mathis Certenais</title>
+    <script type="module" crossorigin src="/assets/index-CznlsZ5-.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-cCQfjwUk.css">
+    <meta property="og:url" content="https://mathiscertenais.com/insights/sc26-europe/" />
+    <link rel="canonical" href="https://mathiscertenais.com/insights/sc26-europe/" />
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

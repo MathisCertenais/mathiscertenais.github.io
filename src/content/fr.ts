@@ -270,7 +270,7 @@ export const videoItems: VideoItem[] = englishVideos.map((video) => ({
 }))
 
 /**
- * Les neuf articles. Titre, chapeau, rubrique, date et texte alternatif de la
+ * Les dix articles. Titre, chapeau, rubrique, date et texte alternatif de la
  * vignette sont traduits ; le corps vient de `articleBodies` quand il existe.
  * Le reste — numéro, image, source — est hérité de l'anglais.
  */
@@ -334,6 +334,15 @@ const articleTranslations: Record<
     title:
       'Des supercalculateurs aux travaux pratiques : renforcer la communauté par le partage des savoirs',
   },
+  'sc26-europe': {
+    category: 'Événement',
+    date: '22 novembre 2026',
+    description:
+      'Notes depuis SC26, à Chicago : les machines exascale européennes comme une infrastructure mise en commun, le SKA comme charge de travail qui l’éprouve, et pourquoi les règles d’accès décident quelle science traverse une frontière.',
+    imageAlt:
+      'Mathis Certenais avec des collègues du BSC, de Jülich et du PSNC à SC26, à Chicago. Crédit : SC26 Chicago Conference Photos.',
+    title: 'De Jean Zay à JUPITER\u00a0: l’ambition exascale de l’Europe à SC26',
+  },
   'webinar-hpc-applications-as-a-service': {
     category: 'Webinaire',
     date: '13 février 2026',
@@ -370,6 +379,76 @@ const articleTranslations: Record<
  * quitte cette dépendance en même temps que sa traduction arrive.
  */
 const articleBodies: Record<string, ArticleBlock[]> = {
+  'sc26-europe': [
+    {
+      type: 'paragraph',
+      text: 'SC26 s’est tenu du 15 au 20 novembre au McCormick Place, à Chicago. La International Conference for High Performance Computing, Networking, Storage, and Analysis en est à sa 39e édition, dans une série commencée en 1988, et [son site officiel](https://sc26.supercomputing.org) la présente comme « the largest gathering in high performance computing ». SC26 a réuni 24 000 personnes cette année.',
+    },
+    {
+      type: 'paragraph',
+      text: 'L’Europe était facile à trouver dans cette foule, mais pas sur un seul stand. La présence française tenait en quatre machines : Jean Zay à l’IDRIS, Adastra au CINES et Joliot-Curie au TGCC, plus Alice Recoque, le système exascale en cours d’installation au TGCC. À côté, le BSC amenait MareNostrum 5, Jülich amenait JUPITER et le PSNC venait de Poznań. Quatre pays, quatre lignes de financement, une même table.',
+    },
+    { type: 'heading', level: 2, text: 'La machine qu’aucun État ne financerait seul' },
+    {
+      type: 'paragraph',
+      text: 'L’entreprise commune EuroHPC existe pour cette raison. Elle met en commun les investissements nationaux et européens pour commander des machines à une échelle qu’aucun État membre ne justifierait seul. JUPITER, au Forschungszentrum Jülich, est le premier résultat de cette logique au sommet de la gamme : le premier supercalculateur exascale d’Europe, en service depuis le 5 septembre 2025, et cinquième du TOP500 de novembre 2026.',
+    },
+    {
+      type: 'paragraph',
+      text: 'Mutualiser ne sert pas qu’à payer moins cher. Une machine de cette classe arrive avec un périmètre de sécurité et un régime de gouvernance, et c’est cette partie-là qui passe mal les frontières.',
+    },
+    {
+      type: 'figure',
+      image: '/images/mathis/sc26-europe/jupiter.webp',
+      alt: 'Le supercalculateur JUPITER au Forschungszentrum Jülich',
+      caption:
+        'JUPITER, le premier supercalculateur exascale d’Europe. Crédit : © Forschungszentrum Jülich / Sascha Kreklau.',
+    },
+    {
+      type: 'paragraph',
+      text: 'MareNostrum 5, au Barcelona Supercomputing Center, appartient à la génération précédente. C’est un système EuroHPC pré-exascale, d’une puissance de pointe de 314 Pflops, avec plus de 200 pétaoctets de stockage et 400 pétaoctets d’archive, fourni par Bull SAS (Atos) et cofinancé à hauteur de 151,41 M€ par l’entreprise commune avec l’Espagne, le Portugal et la Turquie. En juin 2022, l’entreprise commune le présentait comme une machine qui « paves the way toward exascale » ; Mateo Valero, directeur du BSC, lisait la même décision comme une « technological sovereignty for the EU’s member states ».',
+    },
+    {
+      type: 'figure',
+      image: '/images/mathis/sc26-europe/marenostrum5.webp',
+      alt: 'Le supercalculateur MareNostrum 5 au Barcelona Supercomputing Center',
+      caption: 'MareNostrum 5 au BSC. Crédit : BSC.',
+    },
+    {
+      type: 'paragraph',
+      text: 'La contribution française est un réseau plutôt qu’un site. GENCI coordonne l’infrastructure nationale : Jean Zay à l’IDRIS, Adastra au CINES, Joliot-Curie au TGCC, et Alice Recoque, la prochaine machine exascale française, en cours d’installation au TGCC. Le PSNC, à Poznań, était le partenaire polonais à la table, et la Pologne a été retenue comme pays hôte d’EuroHPC en juin 2022.',
+    },
+    { type: 'heading', level: 2, text: 'Le SKA comme cas de contrainte' },
+    {
+      type: 'paragraph',
+      text: 'Le SKA produira de l’ordre de 700 pétaoctets de données prêtes pour la science chaque année. Aucun centre ne peut absorber cela seul, donc le traitement doit se répartir sur des machines de ce type. Le DDF Pipeline tourne déjà sur Jean Zay et sur Adastra ; il est développé avec le laboratoire commun ECLAT et éprouvé sur des données LOFAR, LOFAR étant un précurseur du SKA.',
+    },
+    {
+      type: 'paragraph',
+      text: 'Un workflow qui traverse Jean Zay, Adastra et une machine exascale est un problème de logistique des données avant d’être un problème scientifique : quel site détient l’entrée, quelle liaison la transporte, qui a le droit de la lire, et comment chaque résultat est rattaché à la personne qui en répond. Chacune de ces questions a un responsable dans un pays différent. Un nœud plus rapide mais incapable d’accepter les données n’est pas un candidat.',
+    },
+    {
+      type: 'figure',
+      image: '/images/mathis/exascale-astronomy/jean-zay.webp',
+      alt: 'Le supercalculateur Jean Zay, à l’IDRIS. Crédit : CNRS, Cyril Frésillon.',
+      caption: 'Jean Zay. Crédit : CNRS, Cyril Frésillon.',
+    },
+    { type: 'heading', level: 2, text: 'La souveraineté est à la fois la raison et la contrainte' },
+    {
+      type: 'paragraph',
+      text: 'L’Europe construit ses propres machines parce que l’alternative est la dépendance, et la même décision en fait des actifs stratégiques nationaux. En France, les centres relèvent du cadre de protection du potentiel scientifique et technique de la Nation (PPST), et les parties sensibles de leur infrastructure sont classées en zones à régime restrictif (ZRR). L’accès y est nominatif, tracé et rattaché à une personne.',
+    },
+    {
+      type: 'paragraph',
+      text: 'Un télescope dont les données traversent les frontières rencontre donc un régime de calcul construit pour encadrer précisément cette traversée. Poser la sécurité comme une barrière clôt le débat. La poser comme un levier déplace la question : comment l’accès est-il accordé ? Dans le modèle sur lequel je travaille, l’identité de l’utilisateur est découplée de celle de l’exécutant : un mainteneur détient un compte de service nommé, limité à une application validée, avec une liste blanche d’utilisateurs autorisés, et chaque tâche porte un responsable. Le centre conserve sa traçabilité ; l’astronome n’a plus à administrer un supercalculateur. L’argument complet est dans [l’article présenté aux ateliers SC26](/fr/insights/exascale-astronomy-cybersecurity).',
+    },
+    {
+      type: 'figure',
+      image: '/images/mathis/sc26-europe/group-photo.webp',
+      alt: 'Mathis Certenais avec des collègues du BSC, de Jülich et du PSNC à SC26, à Chicago. Crédit : SC26 Chicago Conference Photos.',
+      caption: 'Représentants de la France (Jean Zay, Adastra, Joliot-Curie, Alice Recoque), de l’Espagne (MareNostrum 5), de l’Allemagne (JUPITER) et de la Pologne (PSNC).',
+    },
+  ],
   'webinar-hpc-applications-as-a-service': [
     {
       type: 'paragraph',

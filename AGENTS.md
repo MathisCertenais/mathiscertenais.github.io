@@ -52,7 +52,7 @@ refuses a committed `dist/` that differs from that build. Bypass only with
   `date`, `title`, `description`, `href`, `image`, `imageAlt`, `body`, optional `sourceHref`
   and `status`. `ArticleId` is a closed union: a new article means a new id there, a new entry
   in `articleItems`, French metadata in `articleTranslations`, and manifest routes.
-- Nine articles exist, all with French bodies. A new article means its English body in
+- Ten articles exist, all with French bodies. A new article means its English body in
   `articleItems`, French metadata in `articleTranslations`, a French body in `articleBodies`, and
   the manifest routes — not a fallback to the English prose.
 - `body` blocks are `paragraph`, `heading` (level 2 or 3), `list`, and link variants. Inline
