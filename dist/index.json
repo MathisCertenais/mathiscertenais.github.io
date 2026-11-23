@@ -1,0 +1,79 @@
+{
+  "schema": "site-metadata@1",
+  "kind": "page",
+  "id": "home",
+  "language": "en",
+  "canonical": "https://mathiscertenais.com/",
+  "translations": {
+    "en": "https://mathiscertenais.com/",
+    "fr": "https://mathiscertenais.com/fr/"
+  },
+  "title": "Mathis Certenais' Portfolio",
+  "description": "Mathis Certenais is a computer scientist and PhD researcher working on HPC, data logistics, and cross-facility scientific workflows.",
+  "aiSummary": "Mathis Certenais is a doctoral researcher at IRISA and Université de Rennes, working on scientific data logistics for radio astronomy. The site gathers his thesis work on workflows that cross instruments, national supercomputers and research storage, eleven written entries in English and French, recorded talks, and a research profile built only from sources it names.",
+  "authors": [
+    {
+      "name": "Mathis Certenais",
+      "url": "https://mathiscertenais.com/"
+    }
+  ],
+  "dateModified": null,
+  "keywords": [
+    "high-performance computing",
+    "scientific data logistics",
+    "cross-facility workflows",
+    "radio astronomy",
+    "exascale",
+    "research portfolio"
+  ],
+  "entities": [
+    {
+      "name": "Mathis Certenais",
+      "type": "Person",
+      "sameAs": "https://www.linkedin.com/in/mathiscertenais"
+    },
+    {
+      "name": "IRISA",
+      "type": "Organization"
+    },
+    {
+      "name": "Université de Rennes",
+      "type": "Organization"
+    },
+    {
+      "name": "NumPEx",
+      "type": "Organization",
+      "sameAs": "https://numpex.org/"
+    },
+    {
+      "name": "ECLAT",
+      "type": "Organization",
+      "sameAs": "https://eclat-lab.fr/"
+    },
+    {
+      "name": "DDF Pipeline",
+      "type": "SoftwareApplication",
+      "sameAs": "https://github.com/mhardcastle/ddf-pipeline"
+    },
+    {
+      "name": "LOFAR",
+      "type": "Thing"
+    },
+    {
+      "name": "SKA",
+      "type": "Thing"
+    },
+    {
+      "name": "GENCI",
+      "type": "Organization",
+      "sameAs": "https://www.genci.fr/connaitre-genci/notre-ecosysteme"
+    }
+  ],
+  "citations": [],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "image": {
+    "url": "https://mathiscertenais.com/images/mathis/social-card.png",
+    "alt": "Mathis Certenais — HPC and scientific workflows"
+  },
+  "schemaType": "WebSite"
+}

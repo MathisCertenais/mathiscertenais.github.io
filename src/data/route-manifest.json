@@ -357,6 +357,35 @@
   "title": "Comment j’ai créé un laboratoire d’IA pour lancer mon coach de course virtuel open source | Mathis Certenais"
  },
  {
+  "path": "/insights/autonomous-science-agentic-ai",
+  "canonical": "/insights/autonomous-science-agentic-ai",
+  "page": "article:autonomous-science-agentic-ai",
+  "title": "Autonomous Science and Agentic AI: The Agent Plans, the Scientist Signs | Mathis Certenais",
+  "description": "Agentic AI can plan an experiment, compile it into jobs and run it across three supercomputers. On French machines the plan still needs a human signature \u2014 and the framework that enforces it is the argument.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "A diagram of the framework: a task board with dependent task cards, a single signature line with a plan hash, and an execution plan mapped to TGCC, IDRIS and CINES."
+ },
+ {
+  "path": "/writing/autonomous-science-agentic-ai",
+  "canonical": "/insights/autonomous-science-agentic-ai",
+  "page": "article:autonomous-science-agentic-ai",
+  "title": "Autonomous Science and Agentic AI: The Agent Plans, the Scientist Signs | Mathis Certenais",
+  "description": "Agentic AI can plan an experiment, compile it into jobs and run it across three supercomputers. On French machines the plan still needs a human signature \u2014 and the framework that enforces it is the argument.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "A diagram of the framework: a task board with dependent task cards, a single signature line with a plan hash, and an execution plan mapped to TGCC, IDRIS and CINES.",
+  "robots": "noindex, follow"
+ },
+ {
+  "canonical": "/fr/insights/autonomous-science-agentic-ai",
+  "description": "L\u2019IA agentique peut planifier une exp\u00e9rience, la traduire en jobs et l\u2019ex\u00e9cuter sur trois supercalculateurs. Sur les machines fran\u00e7aises, le plan exige encore une signature humaine \u2014 et le cadre qui l\u2019impose est l\u2019argument.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "Un sch\u00e9ma du cadre : un tableau de t\u00e2ches avec des cartes d\u00e9pendantes, une ligne de signature unique avec l\u2019empreinte du plan, et un plan d\u2019ex\u00e9cution r\u00e9parti sur TGCC, IDRIS et CINES.",
+  "page": "article:autonomous-science-agentic-ai",
+  "path": "/fr/insights/autonomous-science-agentic-ai",
+  "robots": "index, follow",
+  "title": "Science autonome et IA agentique : l\u2019agent planifie, le scientifique signe | Mathis Certenais"
+ },
+ {
   "path": "/videos",
   "canonical": "/videos",
   "page": "videos",

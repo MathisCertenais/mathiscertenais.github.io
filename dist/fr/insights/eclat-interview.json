@@ -1,0 +1,168 @@
+{
+  "schema": "site-metadata@1",
+  "kind": "article",
+  "id": "eclat-interview",
+  "language": "fr",
+  "canonical": "https://mathiscertenais.com/fr/insights/eclat-interview/",
+  "translations": {
+    "en": "https://mathiscertenais.com/insights/eclat-interview/",
+    "fr": "https://mathiscertenais.com/fr/insights/eclat-interview/"
+  },
+  "title": "Entretien : au cœur de la logistique des données pour la radioastronomie | Mathis Certenais",
+  "description": "Dans cet entretien pour ECLAT, Mathis Certenais raconte son parcours depuis une école d’ingénieurs à Rennes jusqu’à la recherche doctorale sur la logistique des données.",
+  "aiSummary": "Un entretien ECLAT dans lequel Mathis Certenais raconte son parcours, de l’ESIR à Rennes et d’un double diplôme à l’UQAC jusqu’à l’ingénierie de recherche à l’IRISA, puis à une thèse sur les systèmes de systèmes collaboratifs. Il y explique ce que devient la logistique des données quand les instruments produisent plus qu’un site ne peut absorber, pourquoi ECLAT associe informaticiens et astrophysiciens, et ce que YoungPEx apporte à NumPEx.",
+  "authors": [
+    {
+      "name": "Mathis Certenais",
+      "url": "https://mathiscertenais.com/"
+    }
+  ],
+  "datePublished": "2025-09",
+  "dateModified": "2025-09-01",
+  "category": "Entretien",
+  "genre": "Entretien",
+  "keywords": [
+    "entretien",
+    "ECLAT",
+    "logistique des données",
+    "radioastronomie",
+    "multidisciplinarité",
+    "NumPEx",
+    "recherche doctorale",
+    "SKA"
+  ],
+  "entities": [
+    {
+      "name": "ECLAT",
+      "type": "Organization",
+      "sameAs": "https://eclat-lab.fr/"
+    },
+    {
+      "name": "IRISA",
+      "type": "Organization"
+    },
+    {
+      "name": "NumPEx",
+      "type": "Organization",
+      "sameAs": "https://numpex.org/"
+    },
+    {
+      "name": "YoungPEx",
+      "type": "Organization",
+      "sameAs": "https://numpex.org/youngpex/"
+    },
+    {
+      "name": "SKA",
+      "type": "Thing"
+    },
+    {
+      "name": "ESIR",
+      "type": "Organization"
+    },
+    {
+      "name": "UQAC",
+      "type": "Organization"
+    }
+  ],
+  "citations": [
+    {
+      "id": "eclat-interview",
+      "kind": "url",
+      "value": "https://eclat-lab.fr/en/at-the-heart-of-data-logistics-for-astronomy-interview-with-mathis/",
+      "title": "Interview: At the Heart of Data Logistics for Radio Astronomy",
+      "url": "https://eclat-lab.fr/en/at-the-heart-of-data-logistics-for-astronomy-interview-with-mathis/"
+    }
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "sourceHref": "https://eclat-lab.fr/en/at-the-heart-of-data-logistics-for-astronomy-interview-with-mathis/",
+  "image": {
+    "url": "https://mathiscertenais.com/images/mathis/social-card.png",
+    "alt": "Mathis Certenais — Entretien : au cœur de la logistique des données pour la radioastronomie"
+  },
+  "readingTimeMinutes": 3,
+  "bodyFormat": "article-blocks@1",
+  "contentHash": "sha256:bef52e7910d3525c3b781ae9163f0335885e8c75ba290bd678d2ec93c80a9e99",
+  "body": [
+    {
+      "type": "paragraph",
+      "text": "Dans cet entretien pour ECLAT, Mathis Certenais — doctorant à l’IRISA spécialisé en logistique des données — raconte son parcours, sa recherche sur les flux d’information du calcul exascale et l’importance de la multidisciplinarité pour la radioastronomie de demain."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "L’entretien"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Pour commencer, pouvez-vous vous présenter et nous parler un peu de votre parcours ?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Je m’appelle Mathis Certenais, j’ai 25 ans. J’ai rejoint l’ESIR, une école d’ingénieurs à Rennes, et j’ai suivi en parallèle un double diplôme d’un an à l’UQAC, au Canada. Ce cursus portait sur l’intelligence artificielle, les objets connectés, l’informatique en nuage et la programmation pour architectures parallèles. De retour en Bretagne, j’ai travaillé au laboratoire IRISA comme ingénieur sur des sujets d’intelligence artificielle, en particulier les grands modèles de langue et la génération augmentée par recherche. Aujourd’hui, je poursuis dans la même équipe en tant que doctorant, sur un sujet lié aux systèmes de systèmes collaboratifs pour la logistique des données scientifiques."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Qu’est-ce que la logistique des données, exactement, et pourquoi est-elle cruciale pour la radioastronomie aujourd’hui ?"
+    },
+    {
+      "type": "paragraph",
+      "text": "La **logistique des données** désigne la gestion des flux d’information produits par les instruments scientifiques et les simulations complexes. Elle est indispensable pour passer à l’échelle dans le contexte du calcul exascale. Auparavant, chaque institution gérait ces flux en interne : les données étaient collectées, traitées et analysées localement. Avec la nouvelle génération de radiotélescopes, le volume d’information explose. Il faut donc concevoir cette logistique au sein des workflows, mais aussi intégrer les techniques d’imagerie sur les machines de calcul intensif et répartir le traitement de ces flux entre différentes infrastructures."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Parlons d’ECLAT. Quelle est sa raison d’être ?"
+    },
+    {
+      "type": "paragraph",
+      "text": "L’objectif premier d’ECLAT est de concevoir des systèmes cyber-physiques, autrement dit des workflows, pour la radioastronomie de demain, et de répondre ainsi aux besoins du **Square Kilometer Array (SKA)**, un radiotélescope de nouvelle génération. Pour nous, la radioastronomie est un formidable terrain d’essai pour nos outils de logistique des données. C’est un peu comme concevoir des outils — un râteau, une bêche, un seau : le laboratoire ECLAT est notre bac à sable pour construire ensemble et voir ce qui tient."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "D’où vient cette collaboration ?"
+    },
+    {
+      "type": "paragraph",
+      "text": "J’ai découvert ECLAT en lisant un [article du CNRS](https://www.cnrs.fr/fr/actualite/eclat-lalliance-science-industrie-qui-repousse-les-limites-de-lobservation-astronomique) sur ce laboratoire commun qui unit science et industrie pour repousser les limites de l’observation astronomique. Nous les avons contactés, puis nous nous sommes présentés à l’inauguration du laboratoire commun."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Comment gérez-vous la collaboration avec d’autres disciplines ?"
+    },
+    {
+      "type": "paragraph",
+      "text": "La force d’ECLAT est de réunir des profils très divers — des informaticiens comme moi, des astrophysiciens, des ingénieurs, des chercheurs — pour s’attaquer aux défis de la recherche astrophysique de demain. Nous travaillons main dans la main, en co-développement, pour comprendre leurs sujets et adapter nos outils techniques, tout en veillant à ce que le produit final, une image du ciel par exemple, reste cohérent et scientifiquement valide. Cette approche **multidisciplinaire** est la clé : il s’agit de sortir de notre zone de confort pour innover ensemble."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "ECLAT implique aussi des partenaires privés. Y voyez-vous un avantage ?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Oui, tout à fait. Dans ECLAT, il y a des partenaires publics et privés, mais personnellement, nous ne faisons aucune différence. Tout le monde est là pour la science, avec des objectifs personnels mais aussi, et surtout, des objectifs communs : faire avancer la science et relever les défis de la radioastronomie de demain. Cet écosystème complet est nécessaire pour y parvenir."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Vous participez au projet NumPEx. Pouvez-vous nous en dire plus ?"
+    },
+    {
+      "type": "paragraph",
+      "text": "NumPEx est un programme français qui fait avancer les enjeux informatiques de demain : le numérique pour l’exascale. Je suis actif au sein de **YoungPEx** comme membre du comité, un rassemblement de tous les jeunes impliqués dans NumPEx qui travaillent sur des questions touchant notre génération. Nous nous penchons notamment sur l’empreinte énergétique, la manière de mener une recherche respectueuse de l’environnement, la multidisciplinarité dans la recherche scientifique, l’acceptabilité du calcul haute performance dans la société et l’usage de l’IA dans nos travaux."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Cela vaut-il la peine de faire une thèse ?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Une thèse, c’est avant tout un **choix de vie**. Il faut une certaine indépendance, parce que nous décidons de nos journées, et bien sûr un minimum de passion pour son sujet. Ce que je trouve incroyable, c’est l’humain et l’échange de savoirs. Travailler avec des spécialistes de domaines aussi différents que les astrophysiciens est une occasion unique d’apprendre des sujets très pointus."
+    }
+  ]
+}

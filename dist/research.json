@@ -1,0 +1,103 @@
+{
+  "schema": "site-metadata@1",
+  "kind": "page",
+  "id": "research",
+  "language": "en",
+  "canonical": "https://mathiscertenais.com/research/",
+  "translations": {
+    "en": "https://mathiscertenais.com/research/",
+    "fr": "https://mathiscertenais.com/fr/research/"
+  },
+  "title": "Research | Mathis Certenais",
+  "description": "PhD research on scientific data logistics: modelling, optimising and governing cross-facility workflows across national supercomputers and research storage, grounded in radio astronomy.",
+  "aiSummary": "The thesis, “Collaborative System of Systems for Scientific Data Logistics”, treats governance and security as constraints of the same rank as capacity and cost. It sets out five perspectives — modelling, multi-criteria optimisation, sovereignty, provenance and usability — and tests them on the DDF Pipeline, whose runtime fell from 68.8 hours on one node to 8.7 hours on 24.",
+  "authors": [
+    {
+      "name": "Mathis Certenais",
+      "url": "https://mathiscertenais.com/"
+    }
+  ],
+  "dateModified": null,
+  "keywords": [
+    "scientific data logistics",
+    "cross-facility workflows",
+    "exascale",
+    "governance and security",
+    "provenance and FAIR",
+    "HPC as a service",
+    "radio astronomy",
+    "DDF Pipeline"
+  ],
+  "entities": [
+    {
+      "name": "IRISA",
+      "type": "Organization"
+    },
+    {
+      "name": "Université de Rennes",
+      "type": "Organization"
+    },
+    {
+      "name": "NumPEx",
+      "type": "Organization",
+      "sameAs": "https://numpex.org/"
+    },
+    {
+      "name": "ECLAT",
+      "type": "Organization",
+      "sameAs": "https://eclat-lab.fr/"
+    },
+    {
+      "name": "GENCI",
+      "type": "Organization",
+      "sameAs": "https://www.genci.fr/connaitre-genci/notre-ecosysteme"
+    },
+    {
+      "name": "CINES",
+      "type": "Organization",
+      "sameAs": "https://www.genci.fr/centre-informatique-national-de-lenseignement-superieur-cines"
+    },
+    {
+      "name": "IDRIS",
+      "type": "Organization",
+      "sameAs": "http://www.idris.fr/"
+    },
+    {
+      "name": "TGCC",
+      "type": "Organization",
+      "sameAs": "https://www-hpc.cea.fr/fr/TGCC.html"
+    },
+    {
+      "name": "Alice Recoque",
+      "type": "Thing"
+    },
+    {
+      "name": "DDF Pipeline",
+      "type": "SoftwareApplication",
+      "sameAs": "https://github.com/mhardcastle/ddf-pipeline"
+    },
+    {
+      "name": "LOFAR",
+      "type": "Thing"
+    },
+    {
+      "name": "SKA",
+      "type": "Thing"
+    },
+    {
+      "name": "SURFsara",
+      "type": "Organization"
+    },
+    {
+      "name": "EOSC",
+      "type": "Organization"
+    }
+  ],
+  "citations": [],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "image": {
+    "url": "https://mathiscertenais.com/images/mathis/social-card.png",
+    "alt": "Mathis Certenais research"
+  },
+  "schemaType": "WebPage"
+}

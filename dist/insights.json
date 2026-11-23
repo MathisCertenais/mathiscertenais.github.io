@@ -1,0 +1,70 @@
+{
+  "schema": "site-metadata@1",
+  "kind": "page",
+  "id": "writing",
+  "language": "en",
+  "canonical": "https://mathiscertenais.com/insights/",
+  "translations": {
+    "en": "https://mathiscertenais.com/insights/",
+    "fr": "https://mathiscertenais.com/fr/insights/"
+  },
+  "title": "Insights & Updates | Mathis Certenais",
+  "description": "Research notes, webinars, and events spanning HPC, data logistics, and radio astronomy.",
+  "aiSummary": "Eleven entries, each published in English and French: the paper presented at the SC26 workshops on opening French supercomputers to radio astronomy, research notes on predicting job footprints and on exposing software parameters through an MCP server, plus reports from hackathons, a webinar and SC26 in Chicago. Categories run from Publication and Research note to Interview, Webinar, Event, Community, Collaboration and Side project.",
+  "authors": [
+    {
+      "name": "Mathis Certenais",
+      "url": "https://mathiscertenais.com/"
+    }
+  ],
+  "dateModified": null,
+  "keywords": [
+    "research notes",
+    "high-performance computing",
+    "radio astronomy",
+    "webinars",
+    "research events",
+    "scientific software"
+  ],
+  "entities": [
+    {
+      "name": "Mathis Certenais",
+      "type": "Person",
+      "sameAs": "https://www.linkedin.com/in/mathiscertenais"
+    },
+    {
+      "name": "IRISA",
+      "type": "Organization"
+    },
+    {
+      "name": "ECLAT",
+      "type": "Organization",
+      "sameAs": "https://eclat-lab.fr/"
+    },
+    {
+      "name": "NumPEx",
+      "type": "Organization",
+      "sameAs": "https://numpex.org/"
+    },
+    {
+      "name": "DDF Pipeline",
+      "type": "SoftwareApplication",
+      "sameAs": "https://github.com/mhardcastle/ddf-pipeline"
+    },
+    {
+      "name": "LOFAR",
+      "type": "Thing"
+    },
+    {
+      "name": "SKA",
+      "type": "Thing"
+    }
+  ],
+  "citations": [],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "image": {
+    "url": "https://mathiscertenais.com/images/mathis/social-card.png",
+    "alt": "Insights and updates from Mathis Certenais"
+  },
+  "schemaType": "CollectionPage"
+}

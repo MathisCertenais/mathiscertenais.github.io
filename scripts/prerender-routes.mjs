@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto'
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -6,6 +7,14 @@ import { locales } from '../src/locales.ts'
 import * as contentEn from '../src/content/en.ts'
 import * as contentFr from '../src/content/fr.ts'
 import { readingTimeMinutes } from '../src/content/readingTime.ts'
+import {
+  buildAllRouteMetadata,
+  buildRouteMetadata,
+  jsonPathFor,
+  renderJsonLd,
+  renderLlmsTxt,
+  renderMetadataFile,
+} from '../src/content/siteMetadata.ts'
 
 const projectRoot = fileURLToPath(new URL('..', import.meta.url))
 const distRoot = join(projectRoot, 'dist')
@@ -15,6 +24,9 @@ const manifest = JSON.parse(
 const template = await readFile(join(distRoot, 'index.html'), 'utf8')
 const configuredSiteUrl = loadEnv('production', projectRoot, '').VITE_SITE_URL?.trim()
 const siteUrl = configuredSiteUrl?.replace(/\/$/, '')
+const metadataOptions = {
+  hash: (value) => createHash('sha256').update(value).digest('hex'),
+}
 
 if (!Array.isArray(manifest)) {
   throw new TypeError('src/data/route-manifest.json must contain an array of routes.')
@@ -608,6 +620,16 @@ function renderMetadata(entry) {
     throw new TypeError(`The indexable route ${entry.path} has no prerendered fallback.`)
   }
 
+  // Canonical routes carry one JSON-LD graph; aliases and the 404 do not.
+  if (entry.path === entry.canonical && entry.page) {
+    const jsonLd = renderJsonLd(buildRouteMetadata(entry.path, metadataOptions))
+    html = replaceOrInsert(
+      html,
+      /<script\b[^>]*\bid=["']page-jsonld["'][^>]*>[\s\S]*?<\/script>/i,
+      `<script id="page-jsonld" type="application/ld+json">\n${jsonLd}\n</script>`,
+    )
+  }
+
   return `${html.trim()}\n`
 }
 
@@ -642,6 +664,23 @@ await writeFile(
   }),
 )
 
+// The machine-readable artifacts: one record per canonical route and the index
+// that lists them. Both use `site.origin`, not the deploy origin, so the files
+// are identical whether or not VITE_SITE_URL is configured.
+const routeMetadata = buildAllRouteMetadata(metadataOptions)
+for (const record of routeMetadata) {
+  const destination = join(
+    distRoot,
+    ...jsonPathFor(record.path).split('/').filter(Boolean),
+  )
+  await mkdir(dirname(destination), { recursive: true })
+  await writeFile(destination, renderMetadataFile(record))
+}
+await writeFile(join(distRoot, 'llms.txt'), renderLlmsTxt(routeMetadata))
+
+console.log(
+  `Wrote ${routeMetadata.length} site-metadata@1 files and dist/llms.txt.`,
+)
 console.log(`Prerendered metadata shells for ${manifest.length} routes plus 404.html.`)
 
 // A sitemap needs absolute URLs, so it is only written when the deployed origin

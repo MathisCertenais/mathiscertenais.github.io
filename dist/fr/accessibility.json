@@ -1,0 +1,63 @@
+{
+  "schema": "site-metadata@1",
+  "kind": "page",
+  "id": "accessibility",
+  "language": "fr",
+  "canonical": "https://mathiscertenais.com/fr/accessibility/",
+  "translations": {
+    "en": "https://mathiscertenais.com/accessibility/",
+    "fr": "https://mathiscertenais.com/fr/accessibility/"
+  },
+  "title": "Accessibilité | Mathis Certenais",
+  "description": "Déclaration d'accessibilité du portfolio de Mathis Certenais : mesures prises, méthode d'audit, limites connues et contact.",
+  "aiSummary": "La déclaration liste ce que l’audit d’octobre 2026 a vérifié — contrastes, structure des titres, parcours au clavier, formulaires, adaptation à la largeur et sous-titres — et ce qui reste à faire : une revue manuelle avec lecteur d’écran et l’audiodescription du webinaire. Sur les 79 critères RGAA 4.1 applicables, 77 sont conformes, et la page parle d’un audit partiel, non d’une certification.",
+  "authors": [
+    {
+      "name": "Mathis Certenais",
+      "url": "https://mathiscertenais.com/"
+    }
+  ],
+  "dateModified": null,
+  "keywords": [
+    "accessibilité",
+    "RGAA 4.1",
+    "WCAG AA",
+    "audit",
+    "sous-titres",
+    "navigation au clavier"
+  ],
+  "entities": [
+    {
+      "name": "Mathis Certenais",
+      "type": "Person",
+      "sameAs": "https://www.linkedin.com/in/mathiscertenais"
+    },
+    {
+      "name": "RGAA",
+      "type": "Thing"
+    },
+    {
+      "name": "WCAG",
+      "type": "Thing"
+    },
+    {
+      "name": "axe-core",
+      "type": "SoftwareApplication"
+    },
+    {
+      "name": "PeerTube",
+      "type": "SoftwareApplication"
+    },
+    {
+      "name": "LinkedIn",
+      "type": "Organization"
+    }
+  ],
+  "citations": [],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "image": {
+    "url": "https://mathiscertenais.com/images/mathis/social-card.png",
+    "alt": "Déclaration d'accessibilité de Mathis Certenais"
+  },
+  "schemaType": "WebPage"
+}

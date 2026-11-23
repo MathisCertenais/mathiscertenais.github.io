@@ -1,0 +1,71 @@
+{
+  "schema": "site-metadata@1",
+  "kind": "page",
+  "id": "about",
+  "language": "fr",
+  "canonical": "https://mathiscertenais.com/fr/about/",
+  "translations": {
+    "en": "https://mathiscertenais.com/about/",
+    "fr": "https://mathiscertenais.com/fr/about/"
+  },
+  "title": "À propos | Mathis Certenais",
+  "description": "Un informaticien breton qui travaille à la croisée du calcul haute performance, de la logistique des données et de la radioastronomie.",
+  "aiSummary": "La page retrace le parcours : études d’ingénieur à l’ESIR, un an de double diplôme à l’UQAC, puis ingénierie de recherche sur les modèles de langue à l’IRISA, avant le doctorat au sein de NumPEx et du laboratoire commun ECLAT. Elle énonce trois principes de travail, dont celui que la complexité appartient à l’arrière d’une interface utile et que la recherche doit rester responsable.",
+  "authors": [
+    {
+      "name": "Mathis Certenais",
+      "url": "https://mathiscertenais.com/"
+    }
+  ],
+  "dateModified": null,
+  "keywords": [
+    "profil de recherche",
+    "multidisciplinarité",
+    "calcul haute performance",
+    "radioastronomie",
+    "IRISA",
+    "Université de Rennes",
+    "NumPEx",
+    "ECLAT"
+  ],
+  "entities": [
+    {
+      "name": "Mathis Certenais",
+      "type": "Person",
+      "sameAs": "https://www.linkedin.com/in/mathiscertenais"
+    },
+    {
+      "name": "IRISA",
+      "type": "Organization"
+    },
+    {
+      "name": "Université de Rennes",
+      "type": "Organization"
+    },
+    {
+      "name": "NumPEx",
+      "type": "Organization",
+      "sameAs": "https://numpex.org/"
+    },
+    {
+      "name": "ECLAT",
+      "type": "Organization",
+      "sameAs": "https://eclat-lab.fr/"
+    },
+    {
+      "name": "ESIR",
+      "type": "Organization"
+    },
+    {
+      "name": "UQAC",
+      "type": "Organization"
+    }
+  ],
+  "citations": [],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "image": {
+    "url": "https://mathiscertenais.com/images/mathis/social-card.png",
+    "alt": "Mathis Certenais — À propos"
+  },
+  "schemaType": "ProfilePage"
+}

@@ -1,0 +1,56 @@
+{
+  "schema": "site-metadata@1",
+  "kind": "page",
+  "id": "videos",
+  "language": "en",
+  "canonical": "https://mathiscertenais.com/videos/",
+  "translations": {
+    "en": "https://mathiscertenais.com/videos/",
+    "fr": "https://mathiscertenais.com/fr/videos/"
+  },
+  "title": "Videos | Mathis Certenais",
+  "description": "Interviews, webinars, and research-event videos about HPC, data logistics, and radio astronomy.",
+  "aiSummary": "Four recordings: an ECLAT interview on data logistics, a webinar on HPC application services for radio astronomy, highlights from an international hackathon in Rennes, and a silent demo of the MCP server for the DDF Pipeline. Each carries captions or a text alternative, and the two long talks are hosted outside this site.",
+  "authors": [
+    {
+      "name": "Mathis Certenais",
+      "url": "https://mathiscertenais.com/"
+    }
+  ],
+  "dateModified": null,
+  "keywords": [
+    "ECLAT interview",
+    "HPC webinar",
+    "hackathon",
+    "captions and transcripts",
+    "radio astronomy"
+  ],
+  "entities": [
+    {
+      "name": "Mathis Certenais",
+      "type": "Person",
+      "sameAs": "https://www.linkedin.com/in/mathiscertenais"
+    },
+    {
+      "name": "ECLAT",
+      "type": "Organization",
+      "sameAs": "https://eclat-lab.fr/"
+    },
+    {
+      "name": "DDF Pipeline",
+      "type": "SoftwareApplication",
+      "sameAs": "https://github.com/mhardcastle/ddf-pipeline"
+    },
+    {
+      "name": "SKA",
+      "type": "Thing"
+    }
+  ],
+  "citations": [],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "image": {
+    "url": "https://mathiscertenais.com/images/mathis/social-card.png",
+    "alt": "Videos featuring Mathis Certenais"
+  },
+  "schemaType": "CollectionPage"
+}

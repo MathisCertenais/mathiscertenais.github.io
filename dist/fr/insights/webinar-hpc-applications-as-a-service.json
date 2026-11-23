@@ -1,0 +1,81 @@
+{
+  "schema": "site-metadata@1",
+  "kind": "article",
+  "id": "webinar-hpc-applications-as-a-service",
+  "language": "fr",
+  "canonical": "https://mathiscertenais.com/fr/insights/webinar-hpc-applications-as-a-service/",
+  "translations": {
+    "en": "https://mathiscertenais.com/insights/webinar-hpc-applications-as-a-service/",
+    "fr": "https://mathiscertenais.com/fr/insights/webinar-hpc-applications-as-a-service/"
+  },
+  "title": "Webinaire : les services applicatifs de calcul haute performance pour la radioastronomie | Mathis Certenais",
+  "description": "Un webinaire sur la logistique des données, l’imagerie intensive et l’orchestration de chaînes de traitement à grande échelle.",
+  "aiSummary": "Un webinaire qui présente les applications scientifiques comme service à travers le cas du DDF Pipeline : comment logistique des données, imagerie intensive et orchestration de workflows s’articulent quand la machine est un supercalculateur national. Le point de départ : un chercheur du domaine ne devrait pas avoir à reproduire un savoir opérationnel à chaque exécution, et l’interface doit rester compréhensible pour un astronome.",
+  "authors": [
+    {
+      "name": "Mathis Certenais",
+      "url": "https://mathiscertenais.com/"
+    }
+  ],
+  "datePublished": "2026-02-13",
+  "dateModified": "2026-02-13",
+  "category": "Webinaire",
+  "genre": "Webinaire",
+  "keywords": [
+    "webinaire",
+    "calcul intensif comme service",
+    "DDF Pipeline",
+    "radioastronomie",
+    "SKA",
+    "orchestration de workflows",
+    "logistique des données"
+  ],
+  "entities": [
+    {
+      "name": "DDF Pipeline",
+      "type": "SoftwareApplication",
+      "sameAs": "https://github.com/mhardcastle/ddf-pipeline"
+    },
+    {
+      "name": "SKA",
+      "type": "Thing"
+    },
+    {
+      "name": "HPC Application Services",
+      "type": "Thing"
+    },
+    {
+      "name": "ECLAT",
+      "type": "Organization",
+      "sameAs": "https://eclat-lab.fr/"
+    }
+  ],
+  "citations": [
+    {
+      "id": "eclat-webinar",
+      "kind": "url",
+      "value": "https://eclat-lab.fr/webinaire-hpc-as-a-service-for-radio-astronomy/",
+      "title": "HPC as a Service for Radio Astronomy: A Practical Case Study with the DDF Software",
+      "url": "https://eclat-lab.fr/webinaire-hpc-as-a-service-for-radio-astronomy/"
+    }
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "sourceHref": "https://eclat-lab.fr/webinaire-hpc-as-a-service-for-radio-astronomy/",
+  "image": {
+    "url": "https://mathiscertenais.com/images/mathis/social-card.png",
+    "alt": "Mathis Certenais — Webinaire : les services applicatifs de calcul haute performance pour la radioastronomie"
+  },
+  "readingTimeMinutes": 1,
+  "bodyFormat": "article-blocks@1",
+  "contentHash": "sha256:5d948383ba15661e9425e52c315d2ce87d88fa20472dcfbd4e411e474ced2ae8",
+  "body": [
+    {
+      "type": "paragraph",
+      "text": "Les applications de radioastronomie ont de plus en plus besoin du débit, des entrées-sorties rapides et du parallélisme des supercalculateurs nationaux. Accéder à ces machines exige toutefois des connaissances opérationnelles que de nombreux chercheurs de leur domaine ne devraient pas avoir à reproduire à chaque exécution."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ce webinaire présente les applications de calcul intensif comme un service, à travers un scénario concret autour du DDF Pipeline. L’accent est mis sur l’intégration de la logistique des données scientifiques, de l’imagerie intensive et de l’orchestration de workflows distribués, tout en gardant compréhensible l’interface offerte aux chercheurs."
+    }
+  ]
+}

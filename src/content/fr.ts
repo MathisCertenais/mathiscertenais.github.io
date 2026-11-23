@@ -77,13 +77,18 @@ export const proofPoints: ProofPoint[] = [
     kind: 'mentor',
     title: 'Travaux publiés',
     description:
-      'Auteur d’un article complet intitulé « Enabling Radio Astronomy to Use French Supercomputers », accepté à la Supercomputing Conference.',
+      'Auteur d’un article évalué par les pairs intitulé « Enabling Radio Astronomy to Use French Supercomputers », publié à la Supercomputing Conference.',
+    links: [{ href: sourceLinks.sc26Paper, label: 'Article IEEE' }],
   },
   {
     kind: 'speaker',
     title: 'Collaboration scientifique',
     description:
       'Travaille pour le programme de recherche NumPEx « Digital for Exascale » et le laboratoire commun ECLAT à la conception des futurs workflows de la radioastronomie.',
+    links: [
+      { href: 'https://eclat-lab.fr/en/', label: 'ECLAT' },
+      { href: 'https://numpex.org/', label: 'NumPEx' },
+    ],
   },
 ]
 
@@ -271,7 +276,7 @@ export const videoItems: VideoItem[] = englishVideos.map((video) => ({
 }))
 
 /**
- * Les dix articles. Titre, chapeau, rubrique, date et texte alternatif de la
+ * Les onze articles. Titre, chapeau, rubrique, date et texte alternatif de la
  * vignette sont traduits ; le corps vient de `articleBodies` quand il existe.
  * Le reste — numéro, image, source — est hérité de l'anglais.
  */
@@ -372,6 +377,15 @@ const articleTranslations: Record<
       'La page d’accueil de Coach Running en thème sombre : les chiffres de charge d’entraînement, de forme et de VO2max, le panneau « Ask your coach », le programme de la semaine et les courses récentes.',
     title:
       'Comment j’ai créé un laboratoire d’IA pour lancer mon coach de course virtuel open source',
+  },
+  'autonomous-science-agentic-ai': {
+    category: 'Note de recherche',
+    date: '23 novembre 2026',
+    description:
+      'L’IA agentique peut planifier une expérience, la traduire en jobs et l’exécuter sur trois supercalculateurs. Sur les machines françaises, le plan exige encore une signature humaine — et le cadre qui l’impose est l’argument.',
+    imageAlt:
+      'Un schéma du cadre : un tableau de tâches avec des cartes dépendantes, une ligne de signature unique avec l’empreinte du plan, et un plan d’exécution réparti sur TGCC, IDRIS et CINES.',
+    title: 'Science autonome et IA agentique : l’agent planifie, le scientifique signe',
   },
 }
 
@@ -1199,6 +1213,38 @@ Object.assign(articleBodies, {
       type: 'paragraph',
       text: 'La page officielle de YoungPEx est sur [numpex.org/youngpex](https://numpex.org/youngpex/), et la première assemblée générale dispose de son propre compte rendu et de ses diapositives sur [numpex.org/the-first-youngpex-general-meeting](https://numpex.org/the-first-youngpex-general-meeting/).',
     },
+  ],
+  'autonomous-science-agentic-ai': [
+    { type: 'paragraph', text: 'La science autonome se raconte comme une boucle : un agent propose une expérience, un robot l’exécute, un modèle lit le résultat et propose le suivant. Des morceaux existent : des agents qui décomposent une expérience, des ordonnanceurs qui acceptent un plan produit par une machine, des installations avec une API. La question n’est plus si la boucle se ferme, mais qui répond.' },
+    { type: 'paragraph', text: 'Le laboratoire n’est pas une salle : EOSC, quelques grappes locales, trois supercalculateurs français — Adastra au CINES, Jean Zay à l’IDRIS, Joliot-Curie au TGCC. Sur EOSC et les grappes, un agent planifie, soumet et lit ; sur les trois machines françaises, il s’arrête sur une invite qui demande à un humain de confirmer, afin de prendre la responsabilité de l’exécution.' },
+    { type: 'heading', level: 2, text: 'Ce que veut dire autonome quand la machine est un actif national' },
+    { type: 'paragraph', text: 'En France, un supercalculateur est un actif stratégique national. Les centres relèvent du cadre de protection du potentiel scientifique et technique de la Nation, le PPST, et leurs parties sensibles sont classées en zones à régime restrictif, les ZRR. L’accès est nominatif, la responsabilité personnelle et non délégable, la circulation dans la zone est tracée.' },
+    { type: 'paragraph', text: 'Un agent n’a pas d’existence dans ce régime : il agit avec les droits du compte qui l’a lancé et ne peut pas être la personne nommée qui répond d’un job. « Autonome » y fait donc deux métiers : sur EOSC ou une grappe locale, une boucle sans personne dans la salle ; sur les trois machines françaises, une autonomie plus étroite.' },
+    { type: 'heading', level: 2, text: 'L’agent écrit le tableau des tâches' },
+    { type: 'paragraph', text: 'Le premier artefact demandé à un agent n’est ni du code ni un prompt, mais un tableau de tâches. Prenez une expérience — [SIESTA](https://docs.siesta-project.org/projects/siesta/), un code de structure électronique et de dynamique moléculaire ab initio ; [GROMACS](https://www.gromacs.org/), un code de dynamique moléculaire ; [CP2K](https://www.cp2k.org/), un code de chimie quantique et de simulation atomistique ; ou le [DDF Pipeline](https://github.com/mhardcastle/ddf-pipeline), la chaîne d’imagerie radio de LOFAR : l’agent la décompose en tâches, avec entrées, sorties, ressources, centre et déplacements de données.' },
+    { type: 'paragraph', text: 'Les dépendances sont explicites : une tâche qui a besoin de la sortie d’une autre ne peut pas être ordonnancée avant que cette sortie existe, et une tâche qui déplace des données nomme le sens. La sortie est un plan, pas un prompt : chaque ligne s’y vérifie contre une ressource, un chemin ou un script.' },
+    { type: 'paragraph', text: 'Un prompt se lit ; un tableau s’audite. La revue vérifie que le graphe se referme, que chaque transfert a un outil et un initiateur conformes à son sens, et qu’aucune tâche n’exige des droits absents du compte. Le tableau est l’unité de revue, le plan l’unité d’approbation.' },
+    { type: 'heading', level: 2, text: 'Une signature pour le plan' },
+    { type: 'paragraph', text: 'Le scientifique signe une fois, pour le plan ; le framework exécute. Cette bibliothèque utilise [remotemanager](https://gitlab.com/ljbeal/remotemanager) pour permettre à l’agent d’exécution de lancer des tâches sur une machine distante, via SSH. Une signature est demandée par l’utilisateur lorsque la tâche est exécutée sur un des supercalculateurs français, via un TTY — TeleTypeWriter, c’est-à-dire un terminal interactif.' },
+    { type: 'paragraph', text: 'Le parallèle avec [le laboratoire d’IA](/fr/insights/ai-lab-virtual-running-coach) est exact : l’agent qualité ne peut pas modifier de fichier, parce qu’un relecteur qui peut corriger ce qu’il trouve cesse d’être un relecteur. Ici, le planificateur ne peut pas approuver son propre plan.' },
+    { type: 'heading', level: 2, text: 'Le framework compile, puis exécute' },
+    { type: 'paragraph', text: 'L’approbation couvre le plan ; l’exécution réclame un job. Le compilateur traduit chaque tâche dans la forme acceptée par son centre : centre, ordonnanceur, file ou partition, modules, déplacement des données. Jean Zay et Adastra prennent sbatch ; Irene, ccc_msub avec SLURM en dessous. Le même plan, deux scripts de soumission selon le centre.' },
+    { type: 'paragraph', text: 'Trois garde-fous bornent l’exécution autonome : un refus par défaut, dont la liste d’autorisation recalcule chaque commande et la compare à l’identique ; une analyse du corps des scripts pour repérer les formes destructrices ; un niveau de risque par action — lecture seule (read_only), modification (mutating), soumission (job_submitting). Un plan qui ne fait qu’inspecter ne peut donc pas soumettre.' },
+    { type: 'paragraph', text: 'Autour de la porte, des sous-agents se partagent des rôles distincts : exécution, contrôle, sécurité, qualité. L’humain approuve ; il n’opère pas. C’est la séparation des pouvoirs du laboratoire d’IA, transposée à un ordonnanceur plutôt qu’à un dépôt.' },
+    { type: 'heading', level: 2, text: 'Pourquoi les supercalculateurs français sont la limite' },
+    { type: 'paragraph', text: 'Sur une machine française, je garde un humain dans la boucle deux fois : avant l’exécution pour le plan, pendant pour le contrôle qualité et la surveillance. La première est la signature ; la seconde vérifie que le job fait ce que le plan annonçait — seule façon d’honorer la traçabilité dans la file.' },
+    { type: 'paragraph', text: 'Sur EOSC et les grappes locales, le régime diffère, et l’autonomie peut être plus complète : le plan tourne sans personne éveillée, parce que les règles qui rendent une personne nommée responsable de chaque soumission ne sont pas les mêmes. Question de gouvernance, pas de capacité.' },
+    { type: 'paragraph', text: 'Pour les machines françaises, je n’emploie pas le mot autonome. Je parle d’autonomie supervisée : la porte contrôle ce qui est soumis, pas ce que le job fait une fois lancé. Un job soumis tourne avec tous les droits de l’utilisateur, et aucune invite d’approbation ne le suit dans la file.' },
+    { type: 'heading', level: 2, text: 'Ce que déplace réellement une exécution inter-sites' },
+    { type: 'paragraph', text: 'Un workflow sur une seule machine est un problème d’ordonnancement ; le mien traverse des centres, et la difficulté devient la liaison : les données passent par CCFR, et le transfert n’est pas symétrique.' },
+    { type: 'paragraph', text: 'L’outil et l’initiateur appartiennent au sens du transfert. Quand le CINES est la source, le CINES tire avec rsync ; quand l’IDRIS envoie vers le CINES, l’IDRIS pousse avec ccfr_cp. Le script soumis est celui de la destination ; dans l’autre sens, le transfert ne fonctionne pas.' },
+    { type: 'paragraph', text: 'Un transfert vérifié consigne une arrivée. Le workflow en sept étapes — envoi, lancement, suivi, transfert, lancement, suivi, rapatriement — donne un plan et une approbation par étape.' },
+    { type: 'heading', level: 2, text: 'Étude de cas : exécution intercentre avec l’application SIESTA' },
+    { type: 'paragraph', text: 'Un workflow réparti entre plusieurs centres (cross-facility workflow), selon [la littérature](https://ieeexplore.ieee.org/document/9671421/), est un ensemble de tâches issues d’une expérimentation, exécutées sur une infrastructure hétérogène et distribuée.' },
+    { type: 'paragraph', text: 'J’ai mené une expérimentation avec SIESTA, où le processus d’exécution a été opéré sur les trois supercalculateurs. Une exécution de référence a été effectuée sur un seul centre de calcul pour certifier la qualité du produit final.' },
+    { type: 'paragraph', text: 'Cela permet de découper l’expérimentation en tâches plus petites, et donc d’être plus flexible vis-à-vis des temps d’allocation machine. Il faut garder en tête que cela s’applique bien dans un contexte où il n’y a pas un grand volume de données à déplacer.' },
+    { type: 'heading', level: 2, text: 'Le dernier kilomètre est une signature' },
+    { type: 'paragraph', text: 'Le dernier kilomètre de la science autonome est une signature, et un laboratoire autonome a encore besoin d’un conducteur nommé. L’agent doit rendre le plan assez lisible pour être signé : dépendances refermées, ressources justifiées, transferts nommés avec leur sens. L’humain signe, puis surveille. Entre ces deux actes, tout peut être automatisé. Les actes, non.' },
   ],
 })
 

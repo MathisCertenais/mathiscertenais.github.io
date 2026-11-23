@@ -1,0 +1,192 @@
+{
+  "schema": "site-metadata@1",
+  "kind": "article",
+  "id": "sc26-europe",
+  "language": "en",
+  "canonical": "https://mathiscertenais.com/insights/sc26-europe/",
+  "translations": {
+    "en": "https://mathiscertenais.com/insights/sc26-europe/",
+    "fr": "https://mathiscertenais.com/fr/insights/sc26-europe/"
+  },
+  "title": "From Jean Zay to JUPITER: Europe’s Exascale Ambition at SC26 | Mathis Certenais",
+  "description": "Notes from SC26 in Chicago: Europe’s exascale machines as one pooled infrastructure, the SKA as the workload that tests it, and why access rules decide which science crosses a border.",
+  "aiSummary": "Notes from SC26 in Chicago, where France, Spain, Germany and Poland shared one table: Jean Zay, Adastra, Joliot-Curie and Alice Recoque, MareNostrum 5, JUPITER and PSNC. The argument is that pooling investment buys the machine but not the access regime, and that the SKA, at roughly 700 PB of science-ready data a year, is the workload that tests it. Sovereignty is both why Europe builds these systems and the constraint on who may use them.",
+  "authors": [
+    {
+      "name": "Mathis Certenais",
+      "url": "https://mathiscertenais.com/"
+    }
+  ],
+  "datePublished": "2026-11-22",
+  "dateModified": "2026-11-22",
+  "category": "Event",
+  "genre": "Event",
+  "keywords": [
+    "SC26",
+    "exascale",
+    "EuroHPC",
+    "JUPITER",
+    "MareNostrum 5",
+    "SKA",
+    "sovereignty",
+    "high-performance computing",
+    "radio astronomy"
+  ],
+  "entities": [
+    {
+      "name": "SC26",
+      "type": "Event",
+      "sameAs": "https://sc26.supercomputing.org"
+    },
+    {
+      "name": "EuroHPC Joint Undertaking",
+      "type": "Organization"
+    },
+    {
+      "name": "JUPITER",
+      "type": "Thing"
+    },
+    {
+      "name": "Forschungszentrum Jülich",
+      "type": "Organization"
+    },
+    {
+      "name": "MareNostrum 5",
+      "type": "Thing"
+    },
+    {
+      "name": "Barcelona Supercomputing Center",
+      "type": "Organization"
+    },
+    {
+      "name": "PSNC",
+      "type": "Organization"
+    },
+    {
+      "name": "GENCI",
+      "type": "Organization",
+      "sameAs": "https://www.genci.fr/connaitre-genci/notre-ecosysteme"
+    },
+    {
+      "name": "Jean Zay",
+      "type": "Thing"
+    },
+    {
+      "name": "Adastra",
+      "type": "Thing"
+    },
+    {
+      "name": "Joliot-Curie",
+      "type": "Thing"
+    },
+    {
+      "name": "Alice Recoque",
+      "type": "Thing"
+    },
+    {
+      "name": "SKA",
+      "type": "Thing"
+    },
+    {
+      "name": "LOFAR",
+      "type": "Thing"
+    }
+  ],
+  "citations": [
+    {
+      "id": "sc26-site",
+      "kind": "url",
+      "value": "https://sc26.supercomputing.org",
+      "url": "https://sc26.supercomputing.org"
+    }
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "image": {
+    "url": "https://mathiscertenais.com/images/mathis/social-card.png",
+    "alt": "Europe’s exascale ambition at SC26"
+  },
+  "readingTimeMinutes": 3,
+  "bodyFormat": "article-blocks@1",
+  "contentHash": "sha256:08c81a9dfe98ae633b2e590feb3a501f6468ec8b8f86d8c6bf10ab3f2f1c8e48",
+  "body": [
+    {
+      "type": "paragraph",
+      "text": "SC26 ran from 15 to 20 November at McCormick Place in Chicago. The International Conference for High Performance Computing, Networking, Storage, and Analysis is the 39th edition of a series that began in 1988, and [its official site](https://sc26.supercomputing.org) calls it “the largest gathering in high performance computing”. SC26 drew 24,000 attendees this year."
+    },
+    {
+      "type": "paragraph",
+      "text": "Europe was easy to find in that crowd, but not on a single stand. The French presence was four machines: Jean Zay at IDRIS, Adastra at CINES and Joliot-Curie at TGCC, plus Alice Recoque, the exascale system now being installed at TGCC. Beside that group, BSC brought MareNostrum 5, Jülich brought JUPITER and PSNC came from Poznań. Four countries, four funding lines, one table."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Machine No Single State Would Buy"
+    },
+    {
+      "type": "paragraph",
+      "text": "The EuroHPC Joint Undertaking exists for that reason. It pools national and European investment so that Europe can order machines at a scale no member state would justify alone. JUPITER, at Forschungszentrum Jülich, is the first result of that logic at the top of the range: Europe’s first exascale supercomputer, operational since 5 September 2025, and fifth on the November 2026 TOP500."
+    },
+    {
+      "type": "paragraph",
+      "text": "The point of pooling is not only the price. A machine of this class carries a security perimeter and a governance regime, and that is the part that does not travel easily."
+    },
+    {
+      "type": "figure",
+      "image": "/images/mathis/sc26-europe/jupiter.webp",
+      "alt": "The JUPITER supercomputer at Forschungszentrum Jülich",
+      "caption": "JUPITER, Europe’s first exascale supercomputer. Credit: © Forschungszentrum Jülich / Sascha Kreklau."
+    },
+    {
+      "type": "paragraph",
+      "text": "MareNostrum 5 at the Barcelona Supercomputing Center is the generation before it. It is a pre-exascale EuroHPC system with a peak of 314 Pflops, more than 200 PB of storage and a 400 PB archive, supplied by Bull SAS (Atos) and co-funded at €151.41 M by the Joint Undertaking with Spain, Portugal and Turkey. In June 2022 the Joint Undertaking described it as a machine that “paves the way toward exascale”; Mateo Valero, director of BSC, read the same decision as “technological sovereignty for the EU’s member states”."
+    },
+    {
+      "type": "figure",
+      "image": "/images/mathis/sc26-europe/marenostrum5.webp",
+      "alt": "The MareNostrum 5 supercomputer at the Barcelona Supercomputing Center",
+      "caption": "MareNostrum 5 at BSC. Credit: BSC."
+    },
+    {
+      "type": "paragraph",
+      "text": "France’s contribution is a network rather than one site. GENCI coordinates the national infrastructure: Jean Zay at IDRIS, Adastra at CINES, Joliot-Curie at TGCC, with Alice Recoque being installed at TGCC as the next exascale step. PSNC in Poznań was the Polish partner at the table, and Poland was selected as a EuroHPC host country in June 2022."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "SKA Is the Stress Case"
+    },
+    {
+      "type": "paragraph",
+      "text": "The SKA will produce around 700 PB of science-ready data a year. No centre can absorb that alone, so the processing has to be spread over machines of exactly this kind. The DDF Pipeline already runs on Jean Zay and on Adastra; it is developed with the ECLAT joint laboratory and exercised on LOFAR data, LOFAR being an SKA precursor."
+    },
+    {
+      "type": "paragraph",
+      "text": "A workflow crossing Jean Zay, Adastra and an exascale machine is a data-logistics problem before it is a scientific one: which site holds the input, which link carries it, who is allowed to read it, and how each result is traced back to the person responsible for it. Every one of those questions has an owner in a different country. A node that is faster but cannot accept the data is not a candidate."
+    },
+    {
+      "type": "figure",
+      "image": "/images/mathis/exascale-astronomy/jean-zay.webp",
+      "alt": "The Jean Zay supercomputer at IDRIS. Credit: CNRS, Cyril Frésillon.",
+      "caption": "Jean Zay. Credit: CNRS, Cyril Frésillon."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Sovereignty Is Both the Reason and the Constraint"
+    },
+    {
+      "type": "paragraph",
+      "text": "Europe builds its own machines because the alternative is dependence, and the same decision makes them national strategic assets. In France the centres operate under the framework protecting the Nation’s scientific and technical potential, known as the PPST, and the sensitive parts of their infrastructure are classified as zones à régime restrictif (ZRR). Access is nominative, traced, and attached to a person."
+    },
+    {
+      "type": "paragraph",
+      "text": "A telescope whose data crosses borders therefore meets a computing regime built to govern precisely that crossing. Read security as a barrier and the discussion ends there. Read it as an enabler and the question becomes how access is granted. In the model I work on, the identity of the user is decoupled from the identity of the executor: a maintainer holds a named service account limited to one validated application and a whitelist of authorised users, and every job carries an owner. The centre keeps its traceability; the astronomer no longer has to administer a supercomputer. The full argument is in [the paper I presented at the SC26 workshops](/insights/exascale-astronomy-cybersecurity)."
+    },
+    {
+      "type": "figure",
+      "image": "/images/mathis/sc26-europe/group-photo.webp",
+      "alt": "Mathis Certenais with colleagues from BSC, Jülich and PSNC at SC26 in Chicago. Photo: SC26 Chicago Conference Photos.",
+      "caption": "Representatives of France (Jean Zay, Adastra, Joliot-Curie, Alice Recoque), Spain (MareNostrum 5), Germany (JUPITER) and Poland (PSNC)."
+    }
+  ]
+}

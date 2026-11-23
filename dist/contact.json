@@ -1,0 +1,50 @@
+{
+  "schema": "site-metadata@1",
+  "kind": "page",
+  "id": "contact",
+  "language": "en",
+  "canonical": "https://mathiscertenais.com/contact/",
+  "translations": {
+    "en": "https://mathiscertenais.com/contact/",
+    "fr": "https://mathiscertenais.com/fr/contact/"
+  },
+  "title": "Contact | Mathis Certenais",
+  "description": "Contact Mathis Certenais about HPC, scientific workflows, research, and collaboration.",
+  "aiSummary": "The contact page gives an email address, a LinkedIn profile and a business card carrying the IRISA and Université de Rennes affiliation, printed from the same markup the page displays. It is the route for research questions and collaboration proposals.",
+  "authors": [
+    {
+      "name": "Mathis Certenais",
+      "url": "https://mathiscertenais.com/"
+    }
+  ],
+  "dateModified": null,
+  "keywords": [
+    "contact",
+    "collaboration",
+    "research",
+    "Rennes",
+    "business card"
+  ],
+  "entities": [
+    {
+      "name": "Mathis Certenais",
+      "type": "Person",
+      "sameAs": "https://www.linkedin.com/in/mathiscertenais"
+    },
+    {
+      "name": "IRISA",
+      "type": "Organization"
+    },
+    {
+      "name": "Université de Rennes",
+      "type": "Organization"
+    }
+  ],
+  "citations": [],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "image": {
+    "url": "https://mathiscertenais.com/images/mathis/social-card.png",
+    "alt": "Contact Mathis Certenais"
+  },
+  "schemaType": "ContactPage"
+}

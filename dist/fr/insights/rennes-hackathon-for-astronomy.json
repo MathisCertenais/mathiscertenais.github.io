@@ -1,0 +1,118 @@
+{
+  "schema": "site-metadata@1",
+  "kind": "article",
+  "id": "rennes-hackathon-for-astronomy",
+  "language": "fr",
+  "canonical": "https://mathiscertenais.com/fr/insights/rennes-hackathon-for-astronomy/",
+  "translations": {
+    "en": "https://mathiscertenais.com/insights/rennes-hackathon-for-astronomy/",
+    "fr": "https://mathiscertenais.com/fr/insights/rennes-hackathon-for-astronomy/"
+  },
+  "title": "Des supercalculateurs aux travaux pratiques | Mathis Certenais",
+  "description": "Un événement de recherche technique qui réunit informaticiens et astrophysiciens pour s’attaquer aux défis de la radioastronomie.",
+  "aiSummary": "Un hackathon technique à Rennes avec deux objectifs : installer le DDF Pipeline via Spack sur des supercalculateurs, et écrire des tutoriels pour DDFacet afin que les astronomes puissent s’en servir. Un ingénieur de Bull s’est installé avec l’équipe pour configurer Spack au lieu d’envoyer de la documentation, ce qui a laissé l’équipe capable d’entretenir elle-même l’installation.",
+  "authors": [
+    {
+      "name": "Mathis Certenais",
+      "url": "https://mathiscertenais.com/"
+    }
+  ],
+  "datePublished": "2025-10-01",
+  "dateModified": "2025-10-01",
+  "category": "Collaboration",
+  "genre": "Collaboration",
+  "keywords": [
+    "hackathon",
+    "Spack",
+    "DDF Pipeline",
+    "DDFacet",
+    "tutoriels",
+    "Bull",
+    "LOFAR",
+    "radioastronomie"
+  ],
+  "entities": [
+    {
+      "name": "DDF Pipeline",
+      "type": "SoftwareApplication",
+      "sameAs": "https://github.com/mhardcastle/ddf-pipeline"
+    },
+    {
+      "name": "Spack",
+      "type": "SoftwareApplication"
+    },
+    {
+      "name": "DDFacet",
+      "type": "SoftwareApplication",
+      "sameAs": "https://github.com/saopicc/DDFacet"
+    },
+    {
+      "name": "Bull",
+      "type": "Organization"
+    },
+    {
+      "name": "LOFAR",
+      "type": "Thing"
+    },
+    {
+      "name": "ECLAT",
+      "type": "Organization",
+      "sameAs": "https://eclat-lab.fr/"
+    }
+  ],
+  "citations": [
+    {
+      "id": "ddfacet-tutorials",
+      "kind": "url",
+      "value": "https://hackmd.io/l8fw0PYRQv6dm9i6KpZWPA",
+      "title": "Tutorials for DDFacet",
+      "url": "https://hackmd.io/l8fw0PYRQv6dm9i6KpZWPA"
+    }
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "image": {
+    "url": "https://mathiscertenais.com/images/mathis/social-card.png",
+    "alt": "Mathis Certenais — Des supercalculateurs aux travaux pratiques"
+  },
+  "readingTimeMinutes": 1,
+  "bodyFormat": "article-blocks@1",
+  "contentHash": "sha256:604a5c2af6a4b015c54fce05e89759f0a26bb1bbf1d6768b5adce9b378a0ddef",
+  "body": [
+    {
+      "type": "paragraph",
+      "text": "On parle souvent de code et de données, mais le meilleur de notre hackathon, ce sont les personnes. C’était l’occasion d’apprendre les uns des autres et de résoudre des problèmes difficiles en face à face. En radioastronomie, les outils sont complexes. Les aborder ensemble permet de mieux les maîtriser."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Maîtriser Spack avec l’aide d’un partenaire industriel"
+    },
+    {
+      "type": "paragraph",
+      "text": "L’un de nos objectifs principaux était de faire tourner sans accroc notre logiciel de traitement de données, DDF Pipeline, sur les supercalculateurs grâce à Spack. Spack est un outil puissant pour gérer les logiciels sur les machines de calcul intensif, mais sa prise en main est rude et sa configuration délicate."
+    },
+    {
+      "type": "paragraph",
+      "text": "Notre partenaire chez Bull est venu nous aider. Plutôt que de nous envoyer de la documentation, son ingénieur s’est installé avec nous et nous a montré précisément comment configurer Spack pour nos machines. Cet accompagnement a transformé un obstacle technique en un processus clair et maîtrisable. Nous n’avons pas seulement installé un logiciel : nous avons appris à le maintenir nous-mêmes."
+    },
+    {
+      "type": "figure",
+      "image": "/images/mathis/rennes-hackathon/rennes-hackathon-back.webp",
+      "alt": "Participants écoutant une présentation",
+      "caption": "Participants écoutant Cyril Tasse présenter les résultats d’un relevé du ciel obtenu en traitant les données du radiotélescope Low Frequency Array (LOFAR) avec le DDF Pipeline. Crédit : Jacques Tissot."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Aider les participants avec des tutoriels"
+    },
+    {
+      "type": "paragraph",
+      "text": "Nous nous sommes aussi occupés des utilisateurs. Un bon code ne sert à rien si personne ne sait s’en servir. Pendant l’événement, nous avons écrit des [tutoriels détaillés pour DDFacet](https://hackmd.io/l8fw0PYRQv6dm9i6KpZWPA), le logiciel d’imagerie de notre pipeline."
+    },
+    {
+      "type": "paragraph",
+      "text": "Écrire ces guides, c’était une affaire de clarté et de simplicité. Nous voulions expliquer non seulement les étapes, mais la logique qui les sous-tend. En produisant cette documentation, nous facilitons l’usage de nos outils par d’autres astronomes. Ce soutien dépasse le hackathon et aide la communauté au sens large."
+    }
+  ]
+}

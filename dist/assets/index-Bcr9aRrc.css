@@ -466,6 +466,15 @@
   margin-top: 28px;
 }
 
+/* Direct contact, between the introduction and the proof strip. */
+.hero__contact {
+  display: flex;
+  padding-block: 8px 24px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 24px;
+}
+
 .button {
   display: inline-flex;
   padding: 12px 24px;
@@ -1347,6 +1356,10 @@ button:hover .cta-arrow {
     justify-content: center;
   }
 
+  .hero__contact {
+    justify-content: center;
+  }
+
   .hero__portrait {
     position: static;
     order: 1;
@@ -1839,6 +1852,14 @@ figure {
   font-size: 12px;
   font-weight: 300;
   line-height: 1.55;
+}
+
+.proof-item__links {
+  display: flex;
+  margin-top: 6px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 16px;
 }
 
 .footer-wordmark {
@@ -2919,15 +2940,27 @@ figure {
   line-height: 1.7;
 }
 
-.contact-details > a {
+/* Direct-contact link: the reference is the pair under `.contact-details`, and
+   the same class carries it into the hero, the proof strip and the phone-only
+   contact row. */
+.contact-details > a,
+.contact-link {
   display: flex;
   width: fit-content;
-  margin-top: 12px;
   align-items: center;
   gap: 6px;
   color: var(--link);
   font-size: 15px;
   font-weight: 500;
+}
+
+.contact-details > a {
+  margin-top: 12px;
+}
+
+/* Phone-only contact row above the contact page hero. */
+.contact-top {
+  display: none;
 }
 
 .contact-form {
@@ -4493,6 +4526,23 @@ figure {
 
   .contact-details {
     padding-top: 0;
+  }
+
+  /* The same links open the page instead, above the hero. */
+  .contact-top {
+    display: flex;
+    padding-top: 88px;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 24px;
+  }
+
+  .contact-top + .page-hero {
+    padding-top: 24px;
+  }
+
+  .contact-details > a {
+    display: none;
   }
 
   .contact-form {

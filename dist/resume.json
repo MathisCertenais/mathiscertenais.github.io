@@ -1,0 +1,69 @@
+{
+  "schema": "site-metadata@1",
+  "kind": "page",
+  "id": "resume",
+  "language": "en",
+  "canonical": "https://mathiscertenais.com/resume/",
+  "translations": {
+    "en": "https://mathiscertenais.com/resume/",
+    "fr": "https://mathiscertenais.com/fr/resume/"
+  },
+  "title": "Research Profile | Mathis Certenais",
+  "description": "Verified research, education, publication, presentation, and expertise information for Mathis Certenais.",
+  "aiSummary": "The profile lists the doctoral research at IRISA and Université de Rennes, the arXiv preprint describing the DDF Pipeline, two ECLAT presentations and two EOSC Association certificates. Every item is drawn from a source the page names — the supplied website, the LinkedIn profile or public institutional pages.",
+  "authors": [
+    {
+      "name": "Mathis Certenais",
+      "url": "https://mathiscertenais.com/"
+    }
+  ],
+  "dateModified": null,
+  "keywords": [
+    "research profile",
+    "publications",
+    "presentations",
+    "certifications",
+    "expertise",
+    "doctoral research"
+  ],
+  "entities": [
+    {
+      "name": "Mathis Certenais",
+      "type": "Person",
+      "sameAs": "https://www.linkedin.com/in/mathiscertenais"
+    },
+    {
+      "name": "IRISA",
+      "type": "Organization"
+    },
+    {
+      "name": "Université de Rennes",
+      "type": "Organization"
+    },
+    {
+      "name": "NumPEx",
+      "type": "Organization",
+      "sameAs": "https://numpex.org/"
+    },
+    {
+      "name": "ECLAT",
+      "type": "Organization",
+      "sameAs": "https://eclat-lab.fr/"
+    },
+    {
+      "name": "EOSC Association",
+      "type": "Organization"
+    },
+    {
+      "name": "arXiv",
+      "type": "Thing"
+    }
+  ],
+  "citations": [],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "image": {
+    "url": "https://mathiscertenais.com/images/mathis/social-card.png",
+    "alt": "Research profile for Mathis Certenais"
+  },
+  "schemaType": "ProfilePage"
+}

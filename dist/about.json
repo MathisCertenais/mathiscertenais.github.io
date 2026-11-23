@@ -1,0 +1,71 @@
+{
+  "schema": "site-metadata@1",
+  "kind": "page",
+  "id": "about",
+  "language": "en",
+  "canonical": "https://mathiscertenais.com/about/",
+  "translations": {
+    "en": "https://mathiscertenais.com/about/",
+    "fr": "https://mathiscertenais.com/fr/about/"
+  },
+  "title": "About | Mathis Certenais",
+  "description": "Background, research themes, and collaborative approach of computer scientist Mathis Certenais.",
+  "aiSummary": "The page follows the route from engineering studies at ESIR and a one-year double degree at UQAC to research engineering on language models at IRISA, then to the doctorate within NumPEx and the ECLAT joint laboratory. It states three working principles, among them that complexity belongs behind a useful interface and that research should remain responsible.",
+  "authors": [
+    {
+      "name": "Mathis Certenais",
+      "url": "https://mathiscertenais.com/"
+    }
+  ],
+  "dateModified": null,
+  "keywords": [
+    "research profile",
+    "multidisciplinarity",
+    "high-performance computing",
+    "radio astronomy",
+    "IRISA",
+    "Université de Rennes",
+    "NumPEx",
+    "ECLAT"
+  ],
+  "entities": [
+    {
+      "name": "Mathis Certenais",
+      "type": "Person",
+      "sameAs": "https://www.linkedin.com/in/mathiscertenais"
+    },
+    {
+      "name": "IRISA",
+      "type": "Organization"
+    },
+    {
+      "name": "Université de Rennes",
+      "type": "Organization"
+    },
+    {
+      "name": "NumPEx",
+      "type": "Organization",
+      "sameAs": "https://numpex.org/"
+    },
+    {
+      "name": "ECLAT",
+      "type": "Organization",
+      "sameAs": "https://eclat-lab.fr/"
+    },
+    {
+      "name": "ESIR",
+      "type": "Organization"
+    },
+    {
+      "name": "UQAC",
+      "type": "Organization"
+    }
+  ],
+  "citations": [],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "image": {
+    "url": "https://mathiscertenais.com/images/mathis/social-card.png",
+    "alt": "About Mathis Certenais"
+  },
+  "schemaType": "ProfilePage"
+}

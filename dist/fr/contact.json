@@ -1,0 +1,50 @@
+{
+  "schema": "site-metadata@1",
+  "kind": "page",
+  "id": "contact",
+  "language": "fr",
+  "canonical": "https://mathiscertenais.com/fr/contact/",
+  "translations": {
+    "en": "https://mathiscertenais.com/contact/",
+    "fr": "https://mathiscertenais.com/fr/contact/"
+  },
+  "title": "Contact | Mathis Certenais",
+  "description": "Écrire à Mathis Certenais, chercheur en informatique à l’IRISA et à l’Université de Rennes.",
+  "aiSummary": "La page de contact donne une adresse électronique, un profil LinkedIn et une carte de visite portant l’affiliation IRISA et Université de Rennes, imprimée depuis le balisage même que la page affiche. C’est le point d’entrée pour les questions de recherche et les propositions de collaboration.",
+  "authors": [
+    {
+      "name": "Mathis Certenais",
+      "url": "https://mathiscertenais.com/"
+    }
+  ],
+  "dateModified": null,
+  "keywords": [
+    "contact",
+    "collaboration",
+    "recherche",
+    "Rennes",
+    "carte de visite"
+  ],
+  "entities": [
+    {
+      "name": "Mathis Certenais",
+      "type": "Person",
+      "sameAs": "https://www.linkedin.com/in/mathiscertenais"
+    },
+    {
+      "name": "IRISA",
+      "type": "Organization"
+    },
+    {
+      "name": "Université de Rennes",
+      "type": "Organization"
+    }
+  ],
+  "citations": [],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "image": {
+    "url": "https://mathiscertenais.com/images/mathis/social-card.png",
+    "alt": "Mathis Certenais — Contact"
+  },
+  "schemaType": "ContactPage"
+}

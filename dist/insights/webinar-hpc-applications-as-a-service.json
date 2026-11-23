@@ -1,0 +1,81 @@
+{
+  "schema": "site-metadata@1",
+  "kind": "article",
+  "id": "webinar-hpc-applications-as-a-service",
+  "language": "en",
+  "canonical": "https://mathiscertenais.com/insights/webinar-hpc-applications-as-a-service/",
+  "translations": {
+    "en": "https://mathiscertenais.com/insights/webinar-hpc-applications-as-a-service/",
+    "fr": "https://mathiscertenais.com/fr/insights/webinar-hpc-applications-as-a-service/"
+  },
+  "title": "Webinar: HPC Applications as a Service | Mathis Certenais",
+  "description": "A webinar connecting radio-astronomy workloads with high-performance computing services.",
+  "aiSummary": "A webinar that walks through HPC applications as a service using the DDF Pipeline as its case: how data logistics, intensive imaging and workflow orchestration fit together when the machine is a national supercomputer. The premise is that a domain researcher should not have to reproduce operational knowledge for every run, and that the interface has to stay understandable to an astronomer.",
+  "authors": [
+    {
+      "name": "Mathis Certenais",
+      "url": "https://mathiscertenais.com/"
+    }
+  ],
+  "datePublished": "2026-02-13",
+  "dateModified": "2026-02-13",
+  "category": "Webinar",
+  "genre": "Webinar",
+  "keywords": [
+    "webinar",
+    "HPC as a service",
+    "DDF Pipeline",
+    "radio astronomy",
+    "SKA",
+    "workflow orchestration",
+    "data logistics"
+  ],
+  "entities": [
+    {
+      "name": "DDF Pipeline",
+      "type": "SoftwareApplication",
+      "sameAs": "https://github.com/mhardcastle/ddf-pipeline"
+    },
+    {
+      "name": "SKA",
+      "type": "Thing"
+    },
+    {
+      "name": "HPC Application Services",
+      "type": "Thing"
+    },
+    {
+      "name": "ECLAT",
+      "type": "Organization",
+      "sameAs": "https://eclat-lab.fr/"
+    }
+  ],
+  "citations": [
+    {
+      "id": "eclat-webinar",
+      "kind": "url",
+      "value": "https://eclat-lab.fr/webinaire-hpc-as-a-service-for-radio-astronomy/",
+      "title": "HPC as a Service for Radio Astronomy: A Practical Case Study with the DDF Software",
+      "url": "https://eclat-lab.fr/webinaire-hpc-as-a-service-for-radio-astronomy/"
+    }
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "sourceHref": "https://eclat-lab.fr/webinaire-hpc-as-a-service-for-radio-astronomy/",
+  "image": {
+    "url": "https://mathiscertenais.com/images/mathis/social-card.png",
+    "alt": "HPC Applications as a Service webinar"
+  },
+  "readingTimeMinutes": 1,
+  "bodyFormat": "article-blocks@1",
+  "contentHash": "sha256:eb6c7a4a2ef42223526b260471d993ff0f5d6f0064f0d224c7bd7af020a2caaf",
+  "body": [
+    {
+      "type": "paragraph",
+      "text": "Radio-astronomy applications increasingly need the throughput, fast I/O, and parallelism of national supercomputers. Accessing those machines, however, still requires operational knowledge that many domain researchers should not need to reproduce for every run."
+    },
+    {
+      "type": "paragraph",
+      "text": "This webinar presents HPC applications as a service through a practical DDF Pipeline scenario. The focus is on integrating scientific data logistics, intensive imaging, and distributed workflow orchestration while keeping the researcher-facing interface understandable."
+    }
+  ]
+}

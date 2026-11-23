@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#eef2f5" />
+    <script>
+      ;(() => {
+        try {
+          const stored = localStorage.getItem('mathis-personal-website:theme')
+          const theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light'
+          document.documentElement.dataset.theme = theme
+          document.documentElement.style.colorScheme = theme
+          document.querySelector('meta[name="theme-color"]').content =
+            theme === 'dark' ? '#15181c' : '#eef2f5'
+        } catch {
+          document.documentElement.dataset.theme = 'light'
+        }
+      })()
+    </script>
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="L’IA agentique peut planifier une expérience, la traduire en jobs et l’exécuter sur trois supercalculateurs. Sur les machines françaises, le plan exige encore une signature humaine — et le cadre qui l’impose est l’argument." />
+    <meta property="og:title" content="Science autonome et IA agentique : l’agent planifie, le scientifique signe | Mathis Certenais" />
+    <meta property="og:description" content="L’IA agentique peut planifier une expérience, la traduire en jobs et l’exécuter sur trois supercalculateurs. Sur les machines françaises, le plan exige encore une signature humaine — et le cadre qui l’impose est l’argument." />
+    <meta property="og:site_name" content="Mathis Certenais" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://mathiscertenais.com/images/mathis/social-card.png" />
+    <meta property="og:image:alt" content="Un schéma du cadre : un tableau de tâches avec des cartes dépendantes, une ligne de signature unique avec l’empreinte du plan, et un plan d’exécution réparti sur TGCC, IDRIS et CINES." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Science autonome et IA agentique : l’agent planifie, le scientifique signe | Mathis Certenais" />
+    <meta name="twitter:description" content="L’IA agentique peut planifier une expérience, la traduire en jobs et l’exécuter sur trois supercalculateurs. Sur les machines françaises, le plan exige encore une signature humaine — et le cadre qui l’impose est l’argument." />
+    <meta name="twitter:image" content="https://mathiscertenais.com/images/mathis/social-card.png" />
+    <meta name="twitter:image:alt" content="Un schéma du cadre : un tableau de tâches avec des cartes dépendantes, une ligne de signature unique avec l’empreinte du plan, et un plan d’exécution réparti sur TGCC, IDRIS et CINES." />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Science autonome et IA agentique : l’agent planifie, le scientifique signe | Mathis Certenais</title>
+    <script type="module" crossorigin src="/assets/index-DEk6VfIj.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Bcr9aRrc.css">
+    <meta property="og:url" content="https://mathiscertenais.com/fr/insights/autonomous-science-agentic-ai/" />
+    <link rel="canonical" href="https://mathiscertenais.com/fr/insights/autonomous-science-agentic-ai/" />
+      <link rel="alternate" hreflang="en" href="https://mathiscertenais.com/insights/autonomous-science-agentic-ai/" />
+    <link rel="alternate" hreflang="fr" href="https://mathiscertenais.com/fr/insights/autonomous-science-agentic-ai/" />
+    <link rel="alternate" hreflang="x-default" href="https://mathiscertenais.com/insights/autonomous-science-agentic-ai/" />
+    <script id="page-jsonld" type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://mathiscertenais.com/#person",
+      "name": "Mathis Certenais",
+      "url": "https://mathiscertenais.com/",
+      "sameAs": [
+        "https://www.linkedin.com/in/mathiscertenais",
+        "https://orcid.org/0009-0005-0659-5951",
+        "https://hal.science/cv/mathiscertenais",
+        "https://scholar.google.com/citations?user=94DSd4gAAAAJ&hl=en"
+      ],
+      "affiliation": [
+        {
+          "@type": "Organization",
+          "name": "IRISA",
+          "url": "https://irisa.fr/"
+        },
+        {
+          "@type": "Organization",
+          "name": "Université de Rennes",
+          "url": "https://www.univ-rennes.fr/"
+        }
+      ],
+      "email": "mailto:mathiscertenais@gmail.com"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://mathiscertenais.com/#website",
+      "url": "https://mathiscertenais.com/",
+      "name": "Mathis Certenais",
+      "inLanguage": [
+        "en",
+        "fr"
+      ],
+      "publisher": {
+        "@id": "https://mathiscertenais.com/#person"
+      }
+    },
+    {
+      "@type": "Article",
+      "@id": "https://mathiscertenais.com/fr/insights/autonomous-science-agentic-ai/#article",
+      "headline": "Science autonome et IA agentique : l’agent planifie, le scientifique signe",
+      "description": "L’IA agentique peut planifier une expérience, la traduire en jobs et l’exécuter sur trois supercalculateurs. Sur les machines françaises, le plan exige encore une signature humaine — et le cadre qui l’impose est l’argument.",
+      "inLanguage": "fr",
+      "datePublished": "2026-11-23",
+      "dateModified": "2026-11-23",
+      "author": {
+        "@id": "https://mathiscertenais.com/#person"
+      },
+      "publisher": {
+        "@id": "https://mathiscertenais.com/#person"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://mathiscertenais.com/images/mathis/social-card.png",
+        "caption": "Un schéma du cadre : un tableau de tâches avec des cartes dépendantes, une ligne de signature unique avec l’empreinte du plan, et un plan d’exécution réparti sur TGCC, IDRIS et CINES."
+      },
+      "url": "https://mathiscertenais.com/fr/insights/autonomous-science-agentic-ai/",
+      "mainEntityOfPage": {
+        "@id": "https://mathiscertenais.com/fr/insights/autonomous-science-agentic-ai/"
+      },
+      "isPartOf": {
+        "@id": "https://mathiscertenais.com/#website"
+      },
+      "keywords": [
+        "IA agentique",
+        "science autonome",
+        "workflows scientifiques",
+        "humain dans la boucle",
+        "PPST",
+        "ZRR",
+        "exascale",
+        "workflows inter-sites"
+      ],
+      "genre": "Note de recherche",
+      "citation": [
+        {
+          "@type": "CreativeWork",
+          "identifier": "https://ieeexplore.ieee.org/document/9671421/",
+          "url": "https://ieeexplore.ieee.org/document/9671421/",
+          "name": "Enabling discovery data science through cross-facility workflows"
+        }
+      ],
+      "about": [
+        {
+          "@type": "Organization",
+          "name": "IRISA"
+        },
+        {
+          "@type": "Organization",
+          "name": "GENCI"
+        },
+        {
+          "@type": "Organization",
+          "name": "IDRIS"
+        },
+        {
+          "@type": "Organization",
+          "name": "CINES"
+        },
+        {
+          "@type": "Organization",
+          "name": "TGCC"
+        },
+        {
+          "@type": "Organization",
+          "name": "EOSC"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "SIESTA"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "CP2K"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "GROMACS"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "DDF Pipeline"
+        },
+        {
+          "@type": "Thing",
+          "name": "PPST"
+        },
+        {
+          "@type": "Thing",
+          "name": "ZRR"
+        }
+      ],
+      "license": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  ]
+}
+</script>
+  </head>
+  <body>
+    <div id="root"><main class="prerendered" id="main-content">
+      <h1>Science autonome et IA agentique : l’agent planifie, le scientifique signe</h1>
+      <p>L’IA agentique peut planifier une expérience, la traduire en jobs et l’exécuter sur trois supercalculateurs. Sur les machines françaises, le plan exige encore une signature humaine — et le cadre qui l’impose est l’argument.</p>
+      <figure class="prerendered__figure">
+        <img alt="Un schéma du cadre : un tableau de tâches avec des cartes dépendantes, une ligne de signature unique avec l’empreinte du plan, et un plan d’exécution réparti sur TGCC, IDRIS et CINES." src="/images/mathis/autonomous-science/cover.svg" />
+      </figure>
+      <p class="prerendered__label prerendered__label--cover">Note de recherche · 23 novembre 2026 · 5 min de lecture</p>
+      <p>La science autonome se raconte comme une boucle : un agent propose une expérience, un robot l’exécute, un modèle lit le résultat et propose le suivant. Des morceaux existent : des agents qui décomposent une expérience, des ordonnanceurs qui acceptent un plan produit par une machine, des installations avec une API. La question n’est plus si la boucle se ferme, mais qui répond.</p>
+      <p>Le laboratoire n’est pas une salle : EOSC, quelques grappes locales, trois supercalculateurs français — Adastra au CINES, Jean Zay à l’IDRIS, Joliot-Curie au TGCC. Sur EOSC et les grappes, un agent planifie, soumet et lit ; sur les trois machines françaises, il s’arrête sur une invite qui demande à un humain de confirmer, afin de prendre la responsabilité de l’exécution.</p>
+      <h2>Ce que veut dire autonome quand la machine est un actif national</h2>
+      <p>En France, un supercalculateur est un actif stratégique national. Les centres relèvent du cadre de protection du potentiel scientifique et technique de la Nation, le PPST, et leurs parties sensibles sont classées en zones à régime restrictif, les ZRR. L’accès est nominatif, la responsabilité personnelle et non délégable, la circulation dans la zone est tracée.</p>
+      <p>Un agent n’a pas d’existence dans ce régime : il agit avec les droits du compte qui l’a lancé et ne peut pas être la personne nommée qui répond d’un job. « Autonome » y fait donc deux métiers : sur EOSC ou une grappe locale, une boucle sans personne dans la salle ; sur les trois machines françaises, une autonomie plus étroite.</p>
+      <h2>L’agent écrit le tableau des tâches</h2>
+      <p>Le premier artefact demandé à un agent n’est ni du code ni un prompt, mais un tableau de tâches. Prenez une expérience — <a href="https://docs.siesta-project.org/projects/siesta/" rel="noreferrer" target="_blank">SIESTA</a>, un code de structure électronique et de dynamique moléculaire ab initio ; <a href="https://www.gromacs.org/" rel="noreferrer" target="_blank">GROMACS</a>, un code de dynamique moléculaire ; <a href="https://www.cp2k.org/" rel="noreferrer" target="_blank">CP2K</a>, un code de chimie quantique et de simulation atomistique ; ou le <a href="https://github.com/mhardcastle/ddf-pipeline" rel="noreferrer" target="_blank">DDF Pipeline</a>, la chaîne d’imagerie radio de LOFAR : l’agent la décompose en tâches, avec entrées, sorties, ressources, centre et déplacements de données.</p>
+      <p>Les dépendances sont explicites : une tâche qui a besoin de la sortie d’une autre ne peut pas être ordonnancée avant que cette sortie existe, et une tâche qui déplace des données nomme le sens. La sortie est un plan, pas un prompt : chaque ligne s’y vérifie contre une ressource, un chemin ou un script.</p>
+      <p>Un prompt se lit ; un tableau s’audite. La revue vérifie que le graphe se referme, que chaque transfert a un outil et un initiateur conformes à son sens, et qu’aucune tâche n’exige des droits absents du compte. Le tableau est l’unité de revue, le plan l’unité d’approbation.</p>
+      <h2>Une signature pour le plan</h2>
+      <p>Le scientifique signe une fois, pour le plan ; le framework exécute. Cette bibliothèque utilise <a href="https://gitlab.com/ljbeal/remotemanager" rel="noreferrer" target="_blank">remotemanager</a> pour permettre à l’agent d’exécution de lancer des tâches sur une machine distante, via SSH. Une signature est demandée par l’utilisateur lorsque la tâche est exécutée sur un des supercalculateurs français, via un TTY — TeleTypeWriter, c’est-à-dire un terminal interactif.</p>
+      <p>Le parallèle avec <a href="/fr/insights/ai-lab-virtual-running-coach" rel="noreferrer" target="_blank">le laboratoire d’IA</a> est exact : l’agent qualité ne peut pas modifier de fichier, parce qu’un relecteur qui peut corriger ce qu’il trouve cesse d’être un relecteur. Ici, le planificateur ne peut pas approuver son propre plan.</p>
+      <h2>Le framework compile, puis exécute</h2>
+      <p>L’approbation couvre le plan ; l’exécution réclame un job. Le compilateur traduit chaque tâche dans la forme acceptée par son centre : centre, ordonnanceur, file ou partition, modules, déplacement des données. Jean Zay et Adastra prennent sbatch ; Irene, ccc_msub avec SLURM en dessous. Le même plan, deux scripts de soumission selon le centre.</p>
+      <p>Trois garde-fous bornent l’exécution autonome : un refus par défaut, dont la liste d’autorisation recalcule chaque commande et la compare à l’identique ; une analyse du corps des scripts pour repérer les formes destructrices ; un niveau de risque par action — lecture seule (read_only), modification (mutating), soumission (job_submitting). Un plan qui ne fait qu’inspecter ne peut donc pas soumettre.</p>
+      <p>Autour de la porte, des sous-agents se partagent des rôles distincts : exécution, contrôle, sécurité, qualité. L’humain approuve ; il n’opère pas. C’est la séparation des pouvoirs du laboratoire d’IA, transposée à un ordonnanceur plutôt qu’à un dépôt.</p>
+      <h2>Pourquoi les supercalculateurs français sont la limite</h2>
+      <p>Sur une machine française, je garde un humain dans la boucle deux fois : avant l’exécution pour le plan, pendant pour le contrôle qualité et la surveillance. La première est la signature ; la seconde vérifie que le job fait ce que le plan annonçait — seule façon d’honorer la traçabilité dans la file.</p>
+      <p>Sur EOSC et les grappes locales, le régime diffère, et l’autonomie peut être plus complète : le plan tourne sans personne éveillée, parce que les règles qui rendent une personne nommée responsable de chaque soumission ne sont pas les mêmes. Question de gouvernance, pas de capacité.</p>
+      <p>Pour les machines françaises, je n’emploie pas le mot autonome. Je parle d’autonomie supervisée : la porte contrôle ce qui est soumis, pas ce que le job fait une fois lancé. Un job soumis tourne avec tous les droits de l’utilisateur, et aucune invite d’approbation ne le suit dans la file.</p>
+      <h2>Ce que déplace réellement une exécution inter-sites</h2>
+      <p>Un workflow sur une seule machine est un problème d’ordonnancement ; le mien traverse des centres, et la difficulté devient la liaison : les données passent par CCFR, et le transfert n’est pas symétrique.</p>
+      <p>L’outil et l’initiateur appartiennent au sens du transfert. Quand le CINES est la source, le CINES tire avec rsync ; quand l’IDRIS envoie vers le CINES, l’IDRIS pousse avec ccfr_cp. Le script soumis est celui de la destination ; dans l’autre sens, le transfert ne fonctionne pas.</p>
+      <p>Un transfert vérifié consigne une arrivée. Le workflow en sept étapes — envoi, lancement, suivi, transfert, lancement, suivi, rapatriement — donne un plan et une approbation par étape.</p>
+      <h2>Étude de cas : exécution intercentre avec l’application SIESTA</h2>
+      <p>Un workflow réparti entre plusieurs centres (cross-facility workflow), selon <a href="https://ieeexplore.ieee.org/document/9671421/" rel="noreferrer" target="_blank">la littérature</a>, est un ensemble de tâches issues d’une expérimentation, exécutées sur une infrastructure hétérogène et distribuée.</p>
+      <p>J’ai mené une expérimentation avec SIESTA, où le processus d’exécution a été opéré sur les trois supercalculateurs. Une exécution de référence a été effectuée sur un seul centre de calcul pour certifier la qualité du produit final.</p>
+      <p>Cela permet de découper l’expérimentation en tâches plus petites, et donc d’être plus flexible vis-à-vis des temps d’allocation machine. Il faut garder en tête que cela s’applique bien dans un contexte où il n’y a pas un grand volume de données à déplacer.</p>
+      <h2>Le dernier kilomètre est une signature</h2>
+      <p>Le dernier kilomètre de la science autonome est une signature, et un laboratoire autonome a encore besoin d’un conducteur nommé. L’agent doit rendre le plan assez lisible pour être signé : dépendances refermées, ressources justifiées, transferts nommés avec leur sens. L’humain signe, puis surveille. Entre ces deux actes, tout peut être automatisé. Les actes, non.</p>
+      
+      <h2>Poursuivre la lecture</h2>
+      <ul>
+        <li><a href="/fr/insights/">Tous les articles</a></li>
+        <li><a href="/fr/research/">La recherche</a></li>
+        <li><a href="/fr/contact/">Get in touch</a></li>
+      </ul>
+    </main></div>
+  </body>
+</html>

@@ -2,7 +2,7 @@ import { useState, type FormEvent } from 'react'
 import { useLanguage } from '../language/LanguageProvider'
 import { ArrowIcon } from './Icons'
 import { BusinessCard } from './BusinessCard'
-import { NewTabHint } from './NewTabHint'
+import { ContactLinks } from './ContactLinks'
 import { PageHero } from './PageHero'
 
 type FormStatus = 'error' | 'idle' | 'sending' | 'success'
@@ -155,6 +155,13 @@ export function ContactPage() {
 
   return (
     <main id="main-content" tabIndex={-1}>
+      {/* On phones the details column sits far below the form, so the two
+          direct-contact links open the page instead. Hidden on wide screens,
+          where `.contact-details` already shows the same links. */}
+      <div className="contact-top section">
+        <ContactLinks />
+      </div>
+
       <PageHero
         eyebrow="Contact"
         intro={strings.pages.contactRoutes}
@@ -166,13 +173,7 @@ export function ContactPage() {
           <p className="section-label">{strings.pages.directContact}</p>
           <h2>{strings.pages.contactStart}</h2>
           <p>{contactPage.intro}</p>
-          <a href={`mailto:${identity.email}`}>
-            {identity.email} <ArrowIcon external />
-          </a>
-          <a href={identity.linkedin} rel="noreferrer" target="_blank">
-            LinkedIn <ArrowIcon external />
-            <NewTabHint label={strings.a11y.newTab} />
-          </a>
+          <ContactLinks />
         </div>
 
         <form className="contact-form" noValidate onSubmit={submitForm}>

@@ -1,0 +1,70 @@
+{
+  "schema": "site-metadata@1",
+  "kind": "page",
+  "id": "writing",
+  "language": "fr",
+  "canonical": "https://mathiscertenais.com/fr/insights/",
+  "translations": {
+    "en": "https://mathiscertenais.com/insights/",
+    "fr": "https://mathiscertenais.com/fr/insights/"
+  },
+  "title": "Articles et actualités | Mathis Certenais",
+  "description": "Notes de recherche, webinaires et événements autour du calcul haute performance, de la logistique des données et de la radioastronomie.",
+  "aiSummary": "Onze entrées, publiées en anglais et en français : l’article présenté aux ateliers SC26 sur l’ouverture des supercalculateurs français à la radioastronomie, des notes de recherche sur la prédiction de l’empreinte des tâches et sur l’exposition des paramètres logiciels via MCP, ainsi que des comptes rendus de hackathons, d’un webinaire et de SC26 à Chicago. Les rubriques vont de Publication et Note de recherche à Entretien, Webinaire, Événement, Communauté, Collaboration et Projet personnel.",
+  "authors": [
+    {
+      "name": "Mathis Certenais",
+      "url": "https://mathiscertenais.com/"
+    }
+  ],
+  "dateModified": null,
+  "keywords": [
+    "notes de recherche",
+    "calcul haute performance",
+    "radioastronomie",
+    "webinaires",
+    "événements de recherche",
+    "logiciels scientifiques"
+  ],
+  "entities": [
+    {
+      "name": "Mathis Certenais",
+      "type": "Person",
+      "sameAs": "https://www.linkedin.com/in/mathiscertenais"
+    },
+    {
+      "name": "IRISA",
+      "type": "Organization"
+    },
+    {
+      "name": "ECLAT",
+      "type": "Organization",
+      "sameAs": "https://eclat-lab.fr/"
+    },
+    {
+      "name": "NumPEx",
+      "type": "Organization",
+      "sameAs": "https://numpex.org/"
+    },
+    {
+      "name": "DDF Pipeline",
+      "type": "SoftwareApplication",
+      "sameAs": "https://github.com/mhardcastle/ddf-pipeline"
+    },
+    {
+      "name": "LOFAR",
+      "type": "Thing"
+    },
+    {
+      "name": "SKA",
+      "type": "Thing"
+    }
+  ],
+  "citations": [],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "image": {
+    "url": "https://mathiscertenais.com/images/mathis/social-card.png",
+    "alt": "Mathis Certenais — Articles et actualités"
+  },
+  "schemaType": "CollectionPage"
+}

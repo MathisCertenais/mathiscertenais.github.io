@@ -1,0 +1,117 @@
+{
+  "schema": "site-metadata@1",
+  "kind": "article",
+  "id": "international-hackathon-for-astronomy",
+  "language": "en",
+  "canonical": "https://mathiscertenais.com/insights/international-hackathon-for-astronomy/",
+  "translations": {
+    "en": "https://mathiscertenais.com/insights/international-hackathon-for-astronomy/",
+    "fr": "https://mathiscertenais.com/fr/insights/international-hackathon-for-astronomy/"
+  },
+  "title": "International Hackathon for Astronomy | Mathis Certenais",
+  "description": "A collaborative research event joining computer scientists and astrophysicists around shared technical challenges.",
+  "aiSummary": "A one-week hackathon in Rennes that brought computer scientists and astrophysicists from France, England and South Africa onto two shared objects: RIMS Network, a distributed store for dynamic spectra and their metadata, and the DDF Pipeline. By the end the parallel pipeline ran on Jean Zay at IDRIS, Adastra at CINES, the University of Hertfordshire and with the industry partner Bull, while RIMS had a general architecture across the three countries and a proof of concept.",
+  "authors": [
+    {
+      "name": "Mathis Certenais",
+      "url": "https://mathiscertenais.com/"
+    }
+  ],
+  "datePublished": "2026-04-01",
+  "dateModified": "2026-04-01",
+  "category": "Collaboration",
+  "genre": "Collaboration",
+  "keywords": [
+    "hackathon",
+    "RIMS Network",
+    "DDF Pipeline",
+    "radio astronomy",
+    "international collaboration",
+    "IDRIS",
+    "CINES",
+    "University of Hertfordshire"
+  ],
+  "entities": [
+    {
+      "name": "RIMS Network",
+      "type": "Thing"
+    },
+    {
+      "name": "DDF Pipeline",
+      "type": "SoftwareApplication",
+      "sameAs": "https://github.com/mhardcastle/ddf-pipeline"
+    },
+    {
+      "name": "IDRIS",
+      "type": "Organization",
+      "sameAs": "http://www.idris.fr/"
+    },
+    {
+      "name": "CINES",
+      "type": "Organization",
+      "sameAs": "https://www.genci.fr/centre-informatique-national-de-lenseignement-superieur-cines"
+    },
+    {
+      "name": "University of Hertfordshire",
+      "type": "Organization"
+    },
+    {
+      "name": "Bull",
+      "type": "Organization"
+    },
+    {
+      "name": "ECLAT",
+      "type": "Organization",
+      "sameAs": "https://eclat-lab.fr/"
+    }
+  ],
+  "citations": [
+    {
+      "id": "eclat-hackathon",
+      "kind": "url",
+      "value": "https://eclat-lab.fr/en/international-hackathon-in-rennes-on-ddfacet-and-rims/",
+      "url": "https://eclat-lab.fr/en/international-hackathon-in-rennes-on-ddfacet-and-rims/"
+    }
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "sourceHref": "https://eclat-lab.fr/en/international-hackathon-in-rennes-on-ddfacet-and-rims/",
+  "image": {
+    "url": "https://mathiscertenais.com/images/mathis/social-card.png",
+    "alt": "International Hackathon for Astronomy"
+  },
+  "readingTimeMinutes": 1,
+  "bodyFormat": "article-blocks@1",
+  "contentHash": "sha256:b3026433002aa5849a562a0d86b2d1ca5f52032702a1fb5bfe3a6d5e0820d9dd",
+  "body": [
+    {
+      "type": "paragraph",
+      "text": "Scientific software becomes more useful when the people who build infrastructure and the people who interpret astronomical data can work on the same problems together."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "What are the goals of this hackathon?"
+    },
+    {
+      "type": "paragraph",
+      "text": "The international hackathon in Rennes created space for that collaboration: participants worked during one week to create a participatory research network called RIMS Network and to continue work on the DDF Pipeline data-processing software."
+    },
+    {
+      "type": "paragraph",
+      "text": "RIMS Network is a distributed storage system that hosts dynamic spectra and their metadata for studying rare events. It enables collaborative data production and can be accessed by users via a web service."
+    },
+    {
+      "type": "paragraph",
+      "text": "For the DDF Pipeline, we worked on portability of the parallel version: it is now installed and running on the French supercomputers Jean Zay hosted at the Institut du Développement et des Ressources en Informatique Scientifique (IDRIS), Adastra at the Centre Informatique National de l`Enseignement Supérieur (CINES), at the University of Hertfordshire (UK), and with our industry partner Bull."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "What is the benefit of this international collaboration?"
+    },
+    {
+      "type": "paragraph",
+      "text": "These technical events are crucial for bringing our community together to align on shared goals and turn them into reality. During this hackathon, we successfully validated the deployment of the DDF Pipeline on the supercomputers of all participating partners, finalizing this stable version so we can now focus on developing new features. For RIMS, this international gathering allowed us to collectively finalize the general distributed architecture across France, South Africa, and the UK, as well as agree on usage conditions and deliver a proof-of-concept to validate the core idea."
+    }
+  ]
+}

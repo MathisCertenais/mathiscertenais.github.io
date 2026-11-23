@@ -1,4 +1,4 @@
-import routes from './data/route-manifest.json'
+import routes from './data/route-manifest.json' with { type: 'json' }
 
 export interface RouteEntry {
   canonical: string

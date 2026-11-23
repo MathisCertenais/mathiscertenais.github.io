@@ -1,0 +1,79 @@
+{
+  "schema": "site-metadata@1",
+  "kind": "page",
+  "id": "home",
+  "language": "fr",
+  "canonical": "https://mathiscertenais.com/fr/",
+  "translations": {
+    "en": "https://mathiscertenais.com/",
+    "fr": "https://mathiscertenais.com/fr/"
+  },
+  "title": "Portfolio de Mathis Certenais",
+  "description": "Mathis Certenais est chercheur en informatique et doctorant, spécialisé en calcul haute performance, logistique des données et chaînes de traitement scientifiques.",
+  "aiSummary": "Mathis Certenais est chercheur doctoral à l’IRISA et à l’Université de Rennes ; il travaille sur la logistique des données scientifiques pour la radioastronomie. Le site rassemble sa thèse sur les workflows qui traversent instruments, supercalculateurs nationaux et stockage de la recherche, onze articles en anglais et en français, des interventions enregistrées et un profil de recherche limité à des sources citées.",
+  "authors": [
+    {
+      "name": "Mathis Certenais",
+      "url": "https://mathiscertenais.com/"
+    }
+  ],
+  "dateModified": null,
+  "keywords": [
+    "calcul haute performance",
+    "logistique des données scientifiques",
+    "workflows répartis entre plusieurs centres",
+    "radioastronomie",
+    "exascale",
+    "portfolio de recherche"
+  ],
+  "entities": [
+    {
+      "name": "Mathis Certenais",
+      "type": "Person",
+      "sameAs": "https://www.linkedin.com/in/mathiscertenais"
+    },
+    {
+      "name": "IRISA",
+      "type": "Organization"
+    },
+    {
+      "name": "Université de Rennes",
+      "type": "Organization"
+    },
+    {
+      "name": "NumPEx",
+      "type": "Organization",
+      "sameAs": "https://numpex.org/"
+    },
+    {
+      "name": "ECLAT",
+      "type": "Organization",
+      "sameAs": "https://eclat-lab.fr/"
+    },
+    {
+      "name": "DDF Pipeline",
+      "type": "SoftwareApplication",
+      "sameAs": "https://github.com/mhardcastle/ddf-pipeline"
+    },
+    {
+      "name": "LOFAR",
+      "type": "Thing"
+    },
+    {
+      "name": "SKA",
+      "type": "Thing"
+    },
+    {
+      "name": "GENCI",
+      "type": "Organization",
+      "sameAs": "https://www.genci.fr/connaitre-genci/notre-ecosysteme"
+    }
+  ],
+  "citations": [],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "image": {
+    "url": "https://mathiscertenais.com/images/mathis/social-card.png",
+    "alt": "Mathis Certenais — Portfolio de Mathis Certenais"
+  },
+  "schemaType": "WebSite"
+}

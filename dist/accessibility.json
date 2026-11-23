@@ -1,0 +1,63 @@
+{
+  "schema": "site-metadata@1",
+  "kind": "page",
+  "id": "accessibility",
+  "language": "en",
+  "canonical": "https://mathiscertenais.com/accessibility/",
+  "translations": {
+    "en": "https://mathiscertenais.com/accessibility/",
+    "fr": "https://mathiscertenais.com/fr/accessibility/"
+  },
+  "title": "Accessibility | Mathis Certenais",
+  "description": "Accessibility statement for Mathis Certenais's portfolio: measures taken, audit method, known limitations, and how to report a problem.",
+  "aiSummary": "The statement lists what the October 2026 audit verified — contrast, heading structure, keyboard path, forms, reflow and captions — and what remains: a manual screen-reader review and audio description for the webinar. On the 79 applicable RGAA 4.1 criteria it reports 77 compliant, and calls the result a partial audit rather than a certification.",
+  "authors": [
+    {
+      "name": "Mathis Certenais",
+      "url": "https://mathiscertenais.com/"
+    }
+  ],
+  "dateModified": null,
+  "keywords": [
+    "accessibility",
+    "RGAA 4.1",
+    "WCAG AA",
+    "audit",
+    "captions",
+    "keyboard navigation"
+  ],
+  "entities": [
+    {
+      "name": "Mathis Certenais",
+      "type": "Person",
+      "sameAs": "https://www.linkedin.com/in/mathiscertenais"
+    },
+    {
+      "name": "RGAA",
+      "type": "Thing"
+    },
+    {
+      "name": "WCAG",
+      "type": "Thing"
+    },
+    {
+      "name": "axe-core",
+      "type": "SoftwareApplication"
+    },
+    {
+      "name": "PeerTube",
+      "type": "SoftwareApplication"
+    },
+    {
+      "name": "LinkedIn",
+      "type": "Organization"
+    }
+  ],
+  "citations": [],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "image": {
+    "url": "https://mathiscertenais.com/images/mathis/social-card.png",
+    "alt": "Accessibility statement for Mathis Certenais"
+  },
+  "schemaType": "WebPage"
+}

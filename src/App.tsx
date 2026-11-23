@@ -4,7 +4,7 @@ import { PortfolioPage } from './components/PortfolioPage'
 import { SiteFooter } from './components/SiteFooter'
 import { SiteHeader } from './components/SiteHeader'
 import { takePreservedScroll, useAppLocation } from './routing'
-import { applyPageMetadata, notFoundMetadata } from './metadata'
+import { applyPageMetadata, applyStructuredData, notFoundMetadata } from './metadata'
 import { getRouteEntry } from './routeManifest'
 
 function App() {
@@ -27,6 +27,7 @@ function App() {
     } else {
       applyPageMetadata({ ...notFoundMetadata, path: location.pathname })
     }
+    applyStructuredData(route ? route.path : location.pathname)
   }, [location.pathname, route])
 
   useEffect(() => {

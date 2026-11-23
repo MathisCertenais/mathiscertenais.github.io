@@ -1,9 +1,19 @@
+import { createHash } from 'node:crypto'
 import { access, readFile, readdir } from 'node:fs/promises'
 import { basename, extname, join, relative, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { loadEnv } from 'vite'
 import { articleItems } from '../src/content/en.ts'
 import { articleItems as frenchArticles } from '../src/content/fr.ts'
+import { articleRecords, pageRecords, site } from '../src/content/siteRecords.ts'
+import {
+  buildAllRouteMetadata,
+  buildRouteMetadata,
+  jsonPathFor,
+  renderLlmsTxt,
+  renderMetadataFile,
+  schemaTypeFor,
+} from '../src/content/siteMetadata.ts'
 
 const projectRoot = fileURLToPath(new URL('..', import.meta.url))
 const manifestPath = join(projectRoot, 'src', 'data', 'route-manifest.json')
@@ -12,6 +22,8 @@ const sourceRoot = join(projectRoot, 'src')
 const distRoot = join(projectRoot, 'dist')
 const includeDist = process.argv.includes('--dist')
 const issues = []
+const sha256 = (value) => createHash('sha256').update(value).digest('hex')
+const metadataOptions = { hash: sha256 }
 
 const requiredCanonicalPaths = new Set([
   '/',
@@ -32,6 +44,7 @@ const requiredCanonicalPaths = new Set([
   '/insights/mcp-server-software-ontology',
   '/insights/ai-lab-virtual-running-coach',
   '/insights/sc26-europe',
+  '/insights/autonomous-science-agentic-ai',
 ])
 
 const requiredLegacyPaths = new Set([
@@ -46,6 +59,7 @@ const requiredLegacyPaths = new Set([
   '/writing/mcp-server-software-ontology',
   '/writing/ai-lab-virtual-running-coach',
   '/writing/sc26-europe',
+  '/writing/autonomous-science-agentic-ai',
   '/articles',
   '/articles/ai-will-revolutionize-accessibility',
   '/articles/attitudinal-and-behavioral-research',
@@ -84,6 +98,7 @@ const allowedPages = new Set([
   'article:mcp-server-software-ontology',
   'article:ai-lab-virtual-running-coach',
   'article:sc26-europe',
+  'article:autonomous-science-agentic-ai',
   'contact',
   'home',
   'research',
@@ -377,6 +392,479 @@ async function auditSearchFiles(manifest, siteUrl) {
   }
 }
 
+function sentenceCount(text) {
+  return text.split(/(?<=[.!?])\s+/).filter(Boolean).length
+}
+
+function checkSummary(label, summary, descriptions = []) {
+  for (const language of ['en', 'fr']) {
+    const value = summary[language]
+    if (typeof value !== 'string') {
+      issues.push(`${label}: missing ${language} aiSummary`)
+      continue
+    }
+    if (value.length < 80 || value.length > 700) {
+      issues.push(`${label}: ${language} aiSummary is ${value.length} characters`)
+    }
+    const sentences = sentenceCount(value)
+    if (sentences < 2 || sentences > 3) {
+      issues.push(`${label}: ${language} aiSummary has ${sentences} sentences`)
+    }
+    for (const description of descriptions) {
+      if (description && value.trim() === description.trim()) {
+        issues.push(`${label}: ${language} aiSummary repeats a description`)
+      }
+    }
+  }
+  if (summary.en?.trim() === summary.fr?.trim()) {
+    issues.push(`${label}: aiSummary is identical in both languages`)
+  }
+}
+
+function checkKeywords(label, keywords) {
+  for (const language of ['en', 'fr']) {
+    const list = keywords[language]
+    if (!Array.isArray(list) || list.length < 3 || list.length > 12) {
+      issues.push(`${label}: ${language} keyword count ${list?.length}`)
+      continue
+    }
+    const seen = new Set()
+    for (const keyword of list) {
+      const key = keyword.trim().toLowerCase()
+      if (!key) issues.push(`${label}: empty ${language} keyword`)
+      if (seen.has(key)) issues.push(`${label}: duplicate ${language} keyword ${keyword}`)
+      seen.add(key)
+    }
+  }
+}
+
+function checkEntities(label, entities, contentText) {
+  const seen = new Set()
+  for (const entity of entities) {
+    if (seen.has(entity.name)) issues.push(`${label}: duplicate entity ${entity.name}`)
+    seen.add(entity.name)
+    if (!entity.name.trim()) issues.push(`${label}: empty entity name`)
+    if (entity.sameAs && !contentText.includes(entity.sameAs)) {
+      issues.push(`${label}: entity ${entity.name} sameAs is not in src/content: ${entity.sameAs}`)
+    }
+  }
+}
+
+function checkCitations(label, citations, english, french) {
+  const ids = new Set()
+  const values = new Set()
+  const haystack = [
+    JSON.stringify(english.body),
+    english.sourceHref ?? '',
+    french ? JSON.stringify(french.body) : '',
+    french?.sourceHref ?? '',
+  ].join(' ')
+
+  for (const citation of citations) {
+    if (ids.has(citation.id)) issues.push(`${label}: duplicate citation id ${citation.id}`)
+    ids.add(citation.id)
+    if (values.has(citation.value)) {
+      issues.push(`${label}: duplicate citation value ${citation.value}`)
+    }
+    values.add(citation.value)
+
+    if (citation.kind === 'doi' && !/^10\.\d{4,9}\/\S+$/.test(citation.value)) {
+      issues.push(`${label}: malformed DOI ${citation.value}`)
+    }
+    if (citation.kind === 'arxiv' && !/^\d{4}\.\d{4,5}(?:v\d+)?$/.test(citation.value)) {
+      issues.push(`${label}: malformed arXiv identifier ${citation.value}`)
+    }
+    if (citation.kind === 'url' && !/^https:\/\/\S+$/.test(citation.value)) {
+      issues.push(`${label}: malformed citation URL ${citation.value}`)
+    }
+    if (!haystack.includes(citation.value)) {
+      issues.push(`${label}: citation ${citation.id} is not in the body or sourceHref`)
+    }
+  }
+}
+
+function checkLicense(label, license) {
+  if (license !== null && !/^https:\/\/\S+$/.test(license)) {
+    issues.push(`${label}: license must be null or an absolute https URL`)
+  }
+}
+
+function collectIds(value) {
+  const ids = []
+  if (Array.isArray(value)) {
+    for (const item of value) ids.push(...collectIds(item))
+  } else if (value && typeof value === 'object') {
+    for (const [key, child] of Object.entries(value)) {
+      if (key === '@id' && typeof child === 'string') ids.push(child)
+      else ids.push(...collectIds(child))
+    }
+  }
+  return ids
+}
+
+async function auditMetadataSources(manifest) {
+  const canonicalEntries = manifest.filter((entry) => entry.path === entry.canonical)
+  const canonicalPaths = new Set(canonicalEntries.map((entry) => entry.path))
+
+  const recordsByPath = new Map()
+  for (const entry of canonicalEntries) {
+    try {
+      recordsByPath.set(entry.path, buildRouteMetadata(entry.path, metadataOptions))
+    } catch (error) {
+      issues.push(`No site metadata for ${entry.path}: ${error.message}`)
+    }
+  }
+  for (const path of canonicalPaths) {
+    if (!recordsByPath.has(path)) issues.push(`Missing site metadata record: ${path}`)
+  }
+
+  for (const entry of canonicalEntries) {
+    const record = recordsByPath.get(entry.path)
+    if (!record || !entry.ogImage) continue
+    const expectedImage = new URL(entry.ogImage, `${site.origin}/`).href
+    if (record.image.url !== expectedImage) {
+      issues.push(`${entry.path}: image url ${record.image.url} should be ${expectedImage}`)
+    }
+    if (record.image.alt !== entry.ogImageAlt) {
+      issues.push(`${entry.path}: image alt does not match the manifest`)
+    }
+  }
+
+  for (const article of articleItems) {
+    if (!articleRecords[article.id]) issues.push(`Missing article record: ${article.id}`)
+  }
+  for (const id of Object.keys(articleRecords)) {
+    if (!articleItems.some((article) => article.id === id)) {
+      issues.push(`Article record has no article: ${id}`)
+    }
+  }
+
+  for (const entry of canonicalEntries) {
+    try {
+      schemaTypeFor(entry.page)
+    } catch (error) {
+      issues.push(`schemaTypeFor(${entry.page}): ${error.message}`)
+    }
+  }
+
+  const contentFiles = await listFiles(join(sourceRoot, 'content'))
+  const contentText = (
+    await Promise.all(
+      contentFiles
+        .filter((file) => file.endsWith('.ts'))
+        .map((file) => readFile(file, 'utf8')),
+    )
+  ).join('\n')
+
+  const englishById = new Map(articleItems.map((article) => [article.id, article]))
+  const frenchById = new Map(frenchArticles.map((article) => [article.id, article]))
+
+  for (const [id, record] of Object.entries(articleRecords)) {
+    const english = englishById.get(id)
+    const french = frenchById.get(id)
+    if (!english) {
+      issues.push(`Article record ${id} has no English article`)
+      continue
+    }
+    checkSummary(
+      `article ${id}`,
+      record.aiSummary,
+      [english.description, french?.description].filter(Boolean),
+    )
+    checkKeywords(`article ${id}`, record.keywords)
+    checkEntities(`article ${id}`, record.entities, contentText)
+    checkCitations(`article ${id}`, record.citations, english, french)
+    checkLicense(
+      `article ${id}`,
+      record.license === undefined ? site.license : record.license,
+    )
+    for (const language of ['en', 'fr']) {
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(record.dateModified[language])) {
+        issues.push(
+          `article ${id}: invalid ${language} dateModified ${record.dateModified[language]}`,
+        )
+      }
+    }
+  }
+
+  for (const page of pageRecords) {
+    checkSummary(`page ${page.path}`, page.aiSummary)
+    checkKeywords(`page ${page.path}`, page.keywords)
+    checkEntities(`page ${page.path}`, page.entities, contentText)
+    checkLicense(`page ${page.path}`, site.license)
+    for (const language of ['en', 'fr']) {
+      const date = page.dateModified[language]
+      if (date !== null && !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+        issues.push(`page ${page.path}: invalid ${language} dateModified ${date}`)
+      }
+    }
+  }
+
+  for (const record of recordsByPath.values()) {
+    if (record.kind === 'article') {
+      if (!/^\d{4}-\d{2}(-\d{2})?$/.test(record.datePublished || '')) {
+        issues.push(`${record.path}: invalid datePublished ${record.datePublished}`)
+      }
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(record.dateModified || '')) {
+        issues.push(`${record.path}: invalid dateModified ${record.dateModified}`)
+      } else if (record.datePublished && record.dateModified < record.datePublished) {
+        issues.push(`${record.path}: dateModified precedes datePublished`)
+      }
+    } else if (
+      record.dateModified !== null &&
+      !/^\d{4}-\d{2}-\d{2}$/.test(record.dateModified)
+    ) {
+      issues.push(`${record.path}: invalid dateModified ${record.dateModified}`)
+    }
+
+    try {
+      const text = renderMetadataFile(record)
+      const parsed = JSON.parse(text)
+      if (`${JSON.stringify(parsed, null, 2)}\n` !== text) {
+        issues.push(`${record.path}: metadata record does not round-trip through JSON`)
+      }
+      if (text.charCodeAt(0) === 0xfeff) {
+        issues.push(`${record.path}: metadata record has a BOM`)
+      }
+    } catch (error) {
+      issues.push(`${record.path}: metadata record is not JSON: ${error.message}`)
+    }
+  }
+
+  const cname = (await readFile(join(publicRoot, 'CNAME'), 'utf8')).trim()
+  let originHost = ''
+  try {
+    originHost = new URL(site.origin).host
+  } catch {
+    issues.push(`site.origin is not a URL: ${site.origin}`)
+  }
+  if (originHost !== cname) {
+    issues.push(`site.origin ${site.origin} does not match public/CNAME ${cname}`)
+  }
+  if (!site.origin.startsWith('https://')) issues.push('site.origin must use https')
+
+  for (const record of recordsByPath.values()) {
+    if (record.language !== 'fr') continue
+    const englishPath = record.path === '/fr' ? '/' : record.path.slice(3)
+    if (!canonicalPaths.has(englishPath)) {
+      issues.push(`French canonical ${record.path} has no English twin ${englishPath}`)
+    }
+  }
+}
+
+async function auditMetadataOutput(manifest) {
+  const records = buildAllRouteMetadata(metadataOptions)
+  const recordsByPath = new Map(records.map((record) => [record.path, record]))
+  const canonicalEntries = manifest.filter((entry) => entry.path === entry.canonical)
+
+  for (const entry of manifest) {
+    const destination = routeDestination(distRoot, entry.path)
+    if (!(await pathExists(destination))) continue
+    const html = await readFile(destination, 'utf8')
+    const tags = [...html.matchAll(/<script\b[^>]*\bid=["']page-jsonld["'][^>]*>/gi)]
+
+    if (entry.path !== entry.canonical) {
+      if (tags.length > 0) issues.push(`Legacy alias ${entry.path} carries JSON-LD`)
+      continue
+    }
+
+    if (tags.length !== 1) {
+      issues.push(`Canonical route ${entry.path} carries ${tags.length} page-jsonld scripts`)
+      continue
+    }
+
+    const match =
+      /<script\b[^>]*\bid=["']page-jsonld["'][^>]*>([\s\S]*?)<\/script>/i.exec(html)
+    if (!match) {
+      issues.push(`page-jsonld in ${entry.path} has no parseable body`)
+      continue
+    }
+    const raw = match[1]
+    if (/<\/script/i.test(raw)) {
+      issues.push(`page-jsonld in ${entry.path} contains </script>`)
+    }
+
+    let parsed
+    try {
+      parsed = JSON.parse(raw)
+    } catch (error) {
+      issues.push(`page-jsonld in ${entry.path} is not JSON: ${error.message}`)
+      continue
+    }
+    if (!Array.isArray(parsed['@graph'])) {
+      issues.push(`page-jsonld in ${entry.path} has no @graph array`)
+      continue
+    }
+
+    const record = recordsByPath.get(entry.path)
+    if (!record) {
+      issues.push(`No expected metadata record for ${entry.path}`)
+      continue
+    }
+
+    const node = parsed['@graph'].find(
+      (item) => item && typeof item === 'object' && item['@type'] === record.schemaType,
+    )
+    if (!node) {
+      issues.push(`page-jsonld in ${entry.path} lacks @type ${record.schemaType}`)
+    } else {
+      if (node.url !== record.canonical) {
+        issues.push(
+          `page-jsonld url in ${entry.path} is ${node.url}, expected ${record.canonical}`,
+        )
+      }
+      if (node.inLanguage !== record.language) {
+        issues.push(
+          `page-jsonld inLanguage in ${entry.path} is ${node.inLanguage}, expected ${record.language}`,
+        )
+      }
+    }
+
+    for (const id of collectIds(parsed)) {
+      if (!/^https:\/\//.test(id)) {
+        issues.push(`page-jsonld in ${entry.path} has a relative @id: ${id}`)
+      }
+    }
+  }
+
+  const notFoundPath = join(distRoot, '404.html')
+  if (await pathExists(notFoundPath)) {
+    const html = await readFile(notFoundPath, 'utf8')
+    if (/page-jsonld/.test(html)) issues.push('dist/404.html carries JSON-LD')
+  }
+
+  const expectedJsonPaths = new Set()
+  for (const entry of canonicalEntries) {
+    const record = recordsByPath.get(entry.path)
+    if (!record) continue
+    const jsonPath = jsonPathFor(entry.path)
+    expectedJsonPaths.add(jsonPath)
+    const file = join(distRoot, ...jsonPath.split('/').filter(Boolean))
+    if (!(await pathExists(file))) {
+      issues.push(`Missing metadata file: ${jsonPath}`)
+      continue
+    }
+    const text = await readFile(file, 'utf8')
+    if (text !== renderMetadataFile(record)) {
+      issues.push(`Metadata file ${jsonPath} does not match the builder`)
+    }
+    if (text.charCodeAt(0) === 0xfeff) issues.push(`Metadata file ${jsonPath} has a BOM`)
+
+    let parsed
+    try {
+      parsed = JSON.parse(text)
+    } catch (error) {
+      issues.push(`Metadata file ${jsonPath} is not JSON: ${error.message}`)
+      continue
+    }
+
+    if (parsed.schema !== 'site-metadata@1') {
+      issues.push(`Metadata file ${jsonPath} has schema ${parsed.schema}`)
+    }
+    if (parsed.kind !== record.kind) {
+      issues.push(`Metadata file ${jsonPath} has kind ${parsed.kind}`)
+    }
+    if (parsed.language !== record.language) {
+      issues.push(`Metadata file ${jsonPath} has language ${parsed.language}`)
+    }
+    if (parsed.canonical !== record.canonical) {
+      issues.push(`Metadata file ${jsonPath} has canonical ${parsed.canonical}`)
+    }
+    if (
+      parsed.translations?.en !== record.translations.en ||
+      parsed.translations?.fr !== record.translations.fr
+    ) {
+      issues.push(`Metadata file ${jsonPath} has incorrect translations`)
+    }
+    if (parsed.title !== record.title) {
+      issues.push(`Metadata file ${jsonPath} has incorrect title`)
+    }
+    if (parsed.description !== record.description) {
+      issues.push(`Metadata file ${jsonPath} has incorrect description`)
+    }
+    if (parsed.aiSummary !== record.aiSummary) {
+      issues.push(`Metadata file ${jsonPath} has incorrect aiSummary`)
+    }
+    if (parsed.dateModified !== record.dateModified) {
+      issues.push(`Metadata file ${jsonPath} has incorrect dateModified`)
+    }
+    if (!Array.isArray(parsed.authors)) issues.push(`Metadata file ${jsonPath} has no authors`)
+    if (!Array.isArray(parsed.keywords)) issues.push(`Metadata file ${jsonPath} has no keywords`)
+    if (!Array.isArray(parsed.entities)) issues.push(`Metadata file ${jsonPath} has no entities`)
+    if (!Array.isArray(parsed.citations)) {
+      issues.push(`Metadata file ${jsonPath} has no citations`)
+    }
+    if (parsed.license !== record.license) {
+      issues.push(`Metadata file ${jsonPath} has incorrect license`)
+    }
+    if (
+      parsed.image?.url !== record.image.url ||
+      parsed.image?.alt !== record.image.alt
+    ) {
+      issues.push(`Metadata file ${jsonPath} has incorrect image`)
+    }
+
+    if (record.kind === 'article') {
+      if (parsed.bodyFormat !== 'article-blocks@1') {
+        issues.push(`Metadata file ${jsonPath} has no bodyFormat`)
+      }
+      if (!Array.isArray(parsed.body)) issues.push(`Metadata file ${jsonPath} has no body`)
+      if (parsed.readingTimeMinutes !== record.article?.readingTimeMinutes) {
+        issues.push(`Metadata file ${jsonPath} has incorrect readingTimeMinutes`)
+      }
+      if (
+        parsed.category !== record.article?.category ||
+        parsed.genre !== record.article?.category
+      ) {
+        issues.push(`Metadata file ${jsonPath} has incorrect category or genre`)
+      }
+      if (parsed.contentHash !== `sha256:${sha256(JSON.stringify(parsed.body))}`) {
+        issues.push(`Metadata file ${jsonPath} has an incorrect contentHash`)
+      }
+    } else if (parsed.schemaType !== record.schemaType) {
+      issues.push(`Metadata file ${jsonPath} has incorrect schemaType`)
+    }
+  }
+
+  const llmsPath = join(distRoot, 'llms.txt')
+  if (!(await pathExists(llmsPath))) {
+    issues.push('Missing dist/llms.txt')
+  } else {
+    const text = await readFile(llmsPath, 'utf8')
+    if (!text.endsWith('\n') || text.endsWith('\n\n')) {
+      issues.push('dist/llms.txt must end with exactly one newline')
+    }
+    if (text !== renderLlmsTxt(records)) {
+      issues.push('dist/llms.txt does not match the builder')
+    }
+    for (const entry of canonicalEntries) {
+      const record = recordsByPath.get(entry.path)
+      if (!record) continue
+      const canonicalCount = text.split(`${record.canonical})`).length - 1
+      if (canonicalCount !== 1) {
+        issues.push(`llms.txt lists ${record.canonical} ${canonicalCount} times`)
+      }
+      const jsonUrl = `${site.origin}${jsonPathFor(entry.path)}`
+      const jsonCount = text.split(`${jsonUrl})`).length - 1
+      if (jsonCount !== 1) {
+        issues.push(`llms.txt lists ${jsonUrl} ${jsonCount} times`)
+      }
+    }
+    for (const entry of manifest) {
+      if (entry.path === entry.canonical) continue
+      if (text.includes(`${site.origin}${entry.path}`)) {
+        issues.push(`llms.txt lists the legacy alias ${entry.path}`)
+      }
+    }
+  }
+
+  const jsonFiles = (await listFiles(distRoot)).filter((file) => file.endsWith('.json'))
+  for (const file of jsonFiles) {
+    const publicPath = `/${relative(distRoot, file).split(sep).join('/')}`
+    if (!expectedJsonPaths.has(publicPath)) issues.push(`Orphan JSON file in dist: ${publicPath}`)
+  }
+}
+
 async function auditBuiltRoutes(manifest, siteUrl) {
   const builtAssetReferences = new Set()
   await auditTextTree(distRoot, 'dist', builtAssetReferences)
@@ -518,6 +1006,7 @@ async function auditBuiltRoutes(manifest, siteUrl) {
     }
   }
 
+  await auditMetadataOutput(manifest)
   if (siteUrl) await auditSearchFiles(manifest, siteUrl)
 }
 
@@ -604,6 +1093,7 @@ for (const rule of forbiddenContent) {
   if (rule.pattern.test(indexSource)) issues.push(`Found ${rule.label} in index.html`)
 }
 await auditTextTree(sourceRoot, 'source', referencedAssets)
+await auditMetadataSources(manifest)
 
 const portfolioPageSource = await readFile(join(sourceRoot, 'components', 'PortfolioPage.tsx'), 'utf8')
 for (const marker of [

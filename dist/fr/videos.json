@@ -1,0 +1,56 @@
+{
+  "schema": "site-metadata@1",
+  "kind": "page",
+  "id": "videos",
+  "language": "fr",
+  "canonical": "https://mathiscertenais.com/fr/videos/",
+  "translations": {
+    "en": "https://mathiscertenais.com/videos/",
+    "fr": "https://mathiscertenais.com/fr/videos/"
+  },
+  "title": "Vidéos | Mathis Certenais",
+  "description": "Entretiens, webinaires et événements de recherche collaboratifs issus du travail de Mathis avec ECLAT et la communauté radioastronomique.",
+  "aiSummary": "Quatre enregistrements : un entretien ECLAT sur la logistique des données, un webinaire sur les services applicatifs de calcul haute performance pour la radioastronomie, les temps forts d’un hackathon international à Rennes et une démonstration muette du serveur MCP du DDF Pipeline. Chacun dispose de sous-titres ou d’une alternative textuelle, et les deux interventions longues sont hébergées hors de ce site.",
+  "authors": [
+    {
+      "name": "Mathis Certenais",
+      "url": "https://mathiscertenais.com/"
+    }
+  ],
+  "dateModified": null,
+  "keywords": [
+    "entretien ECLAT",
+    "webinaire de calcul haute performance",
+    "hackathon",
+    "sous-titres et transcriptions",
+    "radioastronomie"
+  ],
+  "entities": [
+    {
+      "name": "Mathis Certenais",
+      "type": "Person",
+      "sameAs": "https://www.linkedin.com/in/mathiscertenais"
+    },
+    {
+      "name": "ECLAT",
+      "type": "Organization",
+      "sameAs": "https://eclat-lab.fr/"
+    },
+    {
+      "name": "DDF Pipeline",
+      "type": "SoftwareApplication",
+      "sameAs": "https://github.com/mhardcastle/ddf-pipeline"
+    },
+    {
+      "name": "SKA",
+      "type": "Thing"
+    }
+  ],
+  "citations": [],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "image": {
+    "url": "https://mathiscertenais.com/images/mathis/social-card.png",
+    "alt": "Mathis Certenais — Vidéos"
+  },
+  "schemaType": "CollectionPage"
+}

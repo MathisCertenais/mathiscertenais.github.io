@@ -1,0 +1,616 @@
+{
+  "schema": "site-metadata@1",
+  "kind": "article",
+  "id": "exascale-astronomy-cybersecurity",
+  "language": "fr",
+  "canonical": "https://mathiscertenais.com/fr/insights/exascale-astronomy-cybersecurity/",
+  "translations": {
+    "en": "https://mathiscertenais.com/insights/exascale-astronomy-cybersecurity/",
+    "fr": "https://mathiscertenais.com/fr/insights/exascale-astronomy-cybersecurity/"
+  },
+  "title": "Astronomie exascale contre cybersécurité | Mathis Certenais",
+  "description": "Comment un modèle d’accès par service peut ouvrir les supercalculateurs nationaux français à la radioastronomie sans compromettre la cybersécurité.",
+  "aiSummary": "En France, les supercalculateurs nationaux sont des actifs stratégiques enfermés dans des zones à régime restrictif : l’accès y est nominatif et la responsabilité ne se délègue pas, si bien qu’un logiciel communautaire ne peut pas s’exploiter depuis un compte partagé. L’article découple l’identité de l’utilisateur de celle de l’exécutant : un mainteneur détient un compte de service nommé, limité à une application validée, avec une liste blanche d’utilisateurs autorisés. Ainsi exécuté sur Jean Zay, le DDF Pipeline passe de 68,8 heures à 8,7 heures sur 24 nœuds ; le modèle attend encore une dérogation au régime ZRR.",
+  "authors": [
+    {
+      "name": "Mathis Certenais",
+      "url": "https://mathiscertenais.com/"
+    }
+  ],
+  "datePublished": "2026-09-13",
+  "dateModified": "2026-11-22",
+  "category": "Publication",
+  "genre": "Publication",
+  "keywords": [
+    "calcul haute performance",
+    "cybersécurité",
+    "ZRR",
+    "PPST",
+    "radioastronomie",
+    "SKA",
+    "calcul intensif comme service",
+    "workflows scientifiques",
+    "GENCI"
+  ],
+  "entities": [
+    {
+      "name": "SKA",
+      "type": "Thing"
+    },
+    {
+      "name": "LOFAR",
+      "type": "Thing"
+    },
+    {
+      "name": "GENCI",
+      "type": "Organization",
+      "sameAs": "https://www.genci.fr/connaitre-genci/notre-ecosysteme"
+    },
+    {
+      "name": "CINES",
+      "type": "Organization",
+      "sameAs": "https://www.genci.fr/centre-informatique-national-de-lenseignement-superieur-cines"
+    },
+    {
+      "name": "IDRIS",
+      "type": "Organization",
+      "sameAs": "http://www.idris.fr/"
+    },
+    {
+      "name": "TGCC",
+      "type": "Organization",
+      "sameAs": "https://www-hpc.cea.fr/fr/TGCC.html"
+    },
+    {
+      "name": "ANSSI",
+      "type": "Organization"
+    },
+    {
+      "name": "SURFsara",
+      "type": "Organization"
+    },
+    {
+      "name": "ECLAT",
+      "type": "Organization",
+      "sameAs": "https://eclat-lab.fr/"
+    },
+    {
+      "name": "Alice Recoque",
+      "type": "Thing"
+    },
+    {
+      "name": "SC26",
+      "type": "Event"
+    },
+    {
+      "name": "DDF Pipeline",
+      "type": "SoftwareApplication",
+      "sameAs": "https://github.com/mhardcastle/ddf-pipeline"
+    },
+    {
+      "name": "DDFacet",
+      "type": "SoftwareApplication",
+      "sameAs": "https://github.com/saopicc/DDFacet"
+    },
+    {
+      "name": "killMS",
+      "type": "SoftwareApplication",
+      "sameAs": "https://github.com/saopicc/killMS"
+    }
+  ],
+  "citations": [
+    {
+      "id": "sc26-paper",
+      "kind": "doi",
+      "value": "10.1109/SCW72768.2026.00093",
+      "title": "Enabling Radio Astronomy to Use French Supercomputers",
+      "url": "https://doi.org/10.1109/SCW72768.2026.00093"
+    },
+    {
+      "id": "arxiv-2509-03075",
+      "kind": "arxiv",
+      "value": "2509.03075",
+      "title": "A description of the radio astronomy data processing tool DDF Pipeline",
+      "url": "https://arxiv.org/abs/2509.03075"
+    },
+    {
+      "id": "ddf-pipeline-repo",
+      "kind": "url",
+      "value": "https://github.com/mhardcastle/ddf-pipeline",
+      "title": "DDF Pipeline source code",
+      "url": "https://github.com/mhardcastle/ddf-pipeline"
+    },
+    {
+      "id": "ddfacet-repo",
+      "kind": "url",
+      "value": "https://github.com/saopicc/DDFacet",
+      "title": "DDFacet source code",
+      "url": "https://github.com/saopicc/DDFacet"
+    },
+    {
+      "id": "killms-repo",
+      "kind": "url",
+      "value": "https://github.com/saopicc/killMS",
+      "title": "killMS source code",
+      "url": "https://github.com/saopicc/killMS"
+    }
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "image": {
+    "url": "https://mathiscertenais.com/images/mathis/social-card.png",
+    "alt": "Mathis Certenais — Astronomie exascale contre cybersécurité"
+  },
+  "readingTimeMinutes": 19,
+  "bodyFormat": "article-blocks@1",
+  "contentHash": "sha256:9496d9b397984bac7b6a21bddaf415ef8b987da6567cb3ccd339a5e929fca3e1",
+  "body": [
+    {
+      "type": "paragraph",
+      "text": "Les radiotélescopes de nouvelle génération, comme le **Square Kilometre Array** (SKA) [1], produiront des **volumes de données exascale** qu’aucune grappe locale ne peut absorber. Les traiter exige les architectures parallèles des systèmes nationaux de calcul haute performance (HPC) — et en France, cela signifie les machines coordonnées par **GENCI** [2] : Adastra au **CINES** [3], Jean Zay à l’**IDRIS** [4] et Joliot-Curie au **TGCC** [5], où le premier supercalculateur exascale français, Alice Recoque, est en cours d’installation."
+    },
+    {
+      "type": "figure",
+      "image": "/images/mathis/exascale-astronomy/ska.webp",
+      "alt": "Le radiotélescope Square Kilometre Array. Crédit : SKAO.",
+      "caption": "Le radiotélescope Square Kilometre Array. Crédit : SKAO."
+    },
+    {
+      "type": "paragraph",
+      "text": "Pour la communauté de la radioastronomie, l’accès à ces machines est bloqué — non par un manque de matériel, mais par un conflit systémique entre la collaboration scientifique et la sécurité nationale. C’est la tension que le travail présenté aux **ateliers SC26** entreprend de résoudre : comment permettre à une communauté scientifique de partager une application commune sur les systèmes français de calcul intensif sans enfreindre les règles de responsabilité sur lesquelles ces systèmes reposent. L’article complet est publié à l’adresse [DOI 10.1109/SCW72768.2026.00093](https://doi.ieeecomputersociety.org/10.1109/SCW72768.2026.00093)."
+    },
+    {
+      "type": "paragraph",
+      "text": "Le problème n’est pas nouveau. Le **Low-Frequency Array (LOFAR)** [6] est un réseau européen de radiotélescopes et un précurseur du SKA ; la plateforme **LOFAR as a service** [7] a démontré la viabilité d’une approche par portail pour l’accès à la demande aux ressources de calcul. Elle permet à la communauté radioastronomique de traiter des données LOFAR par des workflows dédiés, déployés sur des infrastructures de données et de calcul distribuées co-localisées avec les sites de l’archive à long terme de LOFAR, dont **SURFsara**, l’e-infrastructure nationale néerlandaise [8]. Mais ce modèle a été conçu pour des environnements de grille et ne tenait pas compte des exigences de responsabilité imposées par la réglementation de cybersécurité liée au statut ZRR."
+    },
+    {
+      "type": "paragraph",
+      "text": "Des travaux empiriques récents [9] identifient les obstacles à l’usage du calcul intensif en radioastronomie — accessibilité limitée, systèmes hétérogènes, lacunes dans l’expertise du calcul avancé et complexité logicielle croissante. Bien que cette étude porte sur le calcul commercial dans un contexte australien, ces obstacles valent aussi pour les infrastructures nationales financées publiquement ; et dans l’écosystème français, les règles de cybersécurité supplémentaires imposées par la ZRR creusent encore l’écart entre la pratique de la radioastronomie et les modèles d’exploitation du calcul intensif."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "La friction : la science face à la ZRR"
+    },
+    {
+      "type": "paragraph",
+      "text": "En France, parce que les supercalculateurs sont classés **actifs stratégiques nationaux**, les centres de calcul qui les hébergent opèrent dans le cadre français de protection du potentiel scientifique et technique de la Nation (**PPST**) [10]. Établi par la réglementation française et détaillé dans des recommandations publiées par l’**ANSSI** [11], ce cadre vise à prévenir la perte, le sabotage ou l’appropriation de connaissances et de technologies sensibles par des puissances étrangères ou des acteurs malveillants. Les **règles d’accès de GENCI** [12] précisent comment ces exigences se traduisent dans les conditions générales d’accès aux ressources nationales de calcul intensif."
+    },
+    {
+      "type": "paragraph",
+      "text": "Pour appliquer le PPST, un centre de calcul — ou une partie de son infrastructure — est classé **zone à régime restrictif (ZRR)** par arrêté ministériel [13]. La ZRR place des barrières d’accès physiques et logiques autour des ressources sensibles et impose un ensemble de restrictions opérationnelles à leur usage :"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "**Accès nominatif** — l’accès est accordé individuellement à une personne nommée, ce qui signifie que chaque utilisateur du calcul intensif doit déployer, configurer et maintenir sa propre pile applicative.",
+        "**Responsabilité personnelle** — l’accès est lié à une personne précise, si bien qu’un usage délégué ou partagé d’un même compte est incompatible avec le régime.",
+        "**Traçabilité** — les accès physiques et logiques, ainsi que toute circulation à l’intérieur de la ZRR, doivent être réglementés et tracés.",
+        "**Transferts de données contrôlés** — la divulgation ou le transfert d’informations à des tiers non autorisés doit être évalué et traçable."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "À ces contraintes réglementaires s’ajoutent les contraintes ordinaires des supercalculateurs partagés : l’ordonnancement SLURM [14], des limites de temps d’exécution de **24 heures sur Adastra, 100 heures sur Jean Zay et 72 heures sur Joliot-Curie**, et un accès à Internet restreint aux nœuds de connexion. Ensemble, elles rendent les applications portées par la communauté — un workflow unique, maintenu par quelques experts et utilisé par des dizaines de chercheurs — très difficiles à exploiter sur les machines françaises."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Le résultat est un cauchemar de passage à l’échelle.** Là où un modèle communautaire repose sur quelques experts pour maintenir un workflow destiné à des dizaines de chercheurs, la règle du nominatif oblige **chaque chercheur** à déployer, configurer et maintenir lui-même toute la pile sur chaque supercalculateur qu’il utilise. Chaque centre exigeant sa propre inscription nominative, la charge se multiplie à chaque machine."
+    },
+    {
+      "type": "figure",
+      "image": "/images/mathis/exascale-astronomy/jean-zay.webp",
+      "alt": "Le supercalculateur Jean Zay. Crédit : CNRS, Cyril Frésillon.",
+      "caption": "Le supercalculateur Jean Zay. Crédit : CNRS, Cyril Frésillon."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Pourquoi les solutions existantes ne conviennent pas"
+    },
+    {
+      "type": "paragraph",
+      "text": "Plusieurs familles d’outils répondent déjà à une partie de ce problème, mais aucune ne satisfait l’exigence de responsabilité personnelle de la ZRR tout en servant une communauté entière :"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "**Les systèmes de gestion de workflows** comme Pegasus [15], Nextflow [16] ou Snakemake [17] orchestrent des graphes acycliques dirigés sur le nuage et le calcul intensif, et savent soumettre via un ordonnanceur local. Mais ils restent, par nature, des **moteurs par utilisateur** : chacun installe, configure et maintient sa propre instance sous un compte nominatif, et le déploiement n’est jamais exposé comme un service partagé et exploité.",
+        "**Les portails web et les passerelles scientifiques** [18], [19] masquent la complexité du calcul intensif derrière une interface et satisfont l’accès nominatif en associant chaque utilisateur du portail à son propre compte — mais ils ne suppriment pas la charge opérationnelle : chaque utilisateur déploie et maintient toujours la pile applicative scientifique.",
+        "**Les intergiciels de l’ère des grilles** comme GlideinWMS [20], PanDA [21] ou DIRAC [22] combinent une exécution pilotée par des pilotes avec des identités d’organisation virtuelle — des certificats mandataires à durée limitée émis par VOMS [23]. L’incompatibilité avec la ZRR tient à l’**identité exécutante** — une accréditation collective — et non au mode de distribution par tirage lui-même.",
+        "**Les couches d’accès programmatique** comme Globus Compute (à l’origine funcX) [24] et FirecREST [25] sont les plus proches de notre approche : elles exposent des API pour soumettre et surveiller des tâches sur des supercalculateurs distants. Dans leurs déploiements standard, cependant, elles authentifient les utilisateurs individuellement et associent chaque tâche à l’identité de calcul de l’utilisateur demandeur — et n’offrent aucun catalogue centralisé d’applications scientifiques validées, exposé comme un service communautaire."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "La ZRR exige **la responsabilité personnelle et la traçabilité de chaque action** effectuée sur le système. La règle selon laquelle l’utilisateur et l’exécutant doivent être la même identité est une façon de satisfaire cette exigence — et elle interdit aujourd’hui à un compte de calcul intensif d’exécuter des tâches pour le compte d’un tiers."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "La « question Globus » : pourquoi ne pas utiliser les standards existants ?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Pour de nombreux chercheurs, surtout aux États-Unis, Globus est la référence pour le transfert de données et la gestion des identités en calcul intensif, et il semble être la réponse évidente. Alors pourquoi Globus n’est-il pas utilisé dans les centres français soumis au PPST et au régime ZRR ?"
+    },
+    {
+      "type": "paragraph",
+      "text": "La réponse tient à l’externalisation des métadonnées opérationnelles."
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "**L’infrastructure** : les services Globus sont hébergés sur Amazon Web Services et exploités par Globus, tandis que les points de stockage et de calcul restent exploités par les organisations abonnées.",
+        "**Ce qui est stocké** [26] : les fichiers de recherche ne sont pas partagés avec Globus, mais ses services conservent des informations liées aux tâches, des accréditations temporaires, des noms de fichiers et des chemins de répertoires.",
+        "**Le mandat français** : tout accès logique à des informations protégées par le régime PPST est strictement soumis à autorisation du ministère de tutelle. Externaliser ces métadonnées opérationnelles peut soulever des questions de conformité PPST et ZRR — y compris une exposition potentielle à des procédures judiciaires américaines au titre du **18 U.S.C. § 2713** [27]. Au moment de la rédaction, nous n’avons trouvé aucun point de terminaison Globus Compute exploité par un centre national français de calcul intensif qui soit documenté publiquement."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "En bref : là où Globus offre la commodité d’une orchestration dans le nuage, la ZRR exige un contrôle souverain sur les données opérationnelles. C’est précisément pourquoi notre approche ne repose pas sur Globus : elle s’appuie sur un cadre existant pour les applications scientifiques comme service, composé de **microservices applicatifs** (AM) pour le déploiement des applications et de **tampons éphémères** (EB) pour la logistique de données transitoires — offrant des fonctionnalités comparables à Globus tout en restant conforme au droit français de sécurité nationale."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "La solution : les applications scientifiques comme service"
+    },
+    {
+      "type": "paragraph",
+      "text": "Pour combler cet écart, nous proposons de **découpler l’identité de l’utilisateur de l’identité de l’exécutant**, dans un cadre qui expose les applications scientifiques comme un service [28]. Plutôt que de forcer chaque astronome à devenir administrateur de système de calcul intensif, nous mutualisons l’usage des supercalculateurs autour d’un petit ensemble de rôles précis :"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "**Les utilisateurs** sont identifiés par une fédération d’authentification reconnue (par exemple **EduGAIN**), peuvent être temporaires et n’ont pas besoin de connaître les systèmes de calcul intensif.",
+        "**Les mainteneurs** sont des experts du calcul intensif issus de la communauté scientifique : ils déploient les applications scientifiques et leur environnement d’exécution sur un supercalculateur cible et assument la responsabilité opérationnelle des tâches qui y sont exécutées. Leur responsabilité est découplée du développement : ils n’ont pas besoin d’appartenir au projet qui écrit le logiciel, mais ils valident chaque version qu’ils déploient.",
+        "**Un compte de service nommé** est un compte de calcul intensif détenu par un mainteneur, par lequel les utilisateurs soumettent des tâches sans détenir d’accréditation individuelle. Le limiter à une seule application scientifique prédéfinie simplifie l’audit pour le service de cybersécurité du centre.",
+        "**Une liste blanche d’utilisateurs** est définie pour chaque compte de service nommé. Tenue par le mainteneur, elle recense les utilisateurs autorisés à utiliser les ressources du compte, ce qui satisfait l’exigence de la ZRR en matière de transferts de données contrôlés.",
+        "**Une tâche** est la soumission de données à traiter avec un logiciel fixe et préinstallé. Une fois soumise, elle est tirée et exécutée automatiquement par l’environnement d’exécution du mainteneur, ce qui attribue la responsabilité de l’exécution au mainteneur et satisfait ainsi l’exigence de responsabilité personnelle de la ZRR."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "La dérogation nécessaire est étroite : autoriser le mainteneur à exécuter des tâches qui traitent des données soumises par un tiers, ce tiers étant identifié par une fédération d’authentification. Cette proposition est actuellement en discussion avec les acteurs français de la sécurité du calcul intensif."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "L’architecture : comment cela fonctionne"
+    },
+    {
+      "type": "paragraph",
+      "text": "Le cadre constitue un **point d’entrée unique** pour lancer des tâches d’applications scientifiques sur les supercalculateurs, sans accès direct aux centres sous-jacents. Il enveloppe des workflows complexes dans un service fluide :"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "**Microservices applicatifs (AM)** [29] — le catalogue des applications scientifiques disponibles, exposées comme des microservices. AM orchestre l’exécution via des entités de tâche et d’environnement d’exécution ; la soumission et l’exécution étant découplées, les utilisateurs n’ont pas besoin d’une connexion permanente, ce qui permet une expérience **de type « lancer et oublier »** pour des tâches qui peuvent durer plusieurs jours.",
+        "**Tampons éphémères (EB)** [30] — une couche de logistique de données transitoire offrant un stockage temporaire et un point d’échange entre les utilisateurs et les systèmes de calcul intensif. Ils ne sont pas obligatoires, mais facilitent les transferts et sont accessibles avec une simple identité d’utilisateur.",
+        "**L’exécutant** — un script Python (runner.py), lancé par un mainteneur, qui interroge périodiquement AM pour les tâches en attente et les exécute sur le système cible par SSH [31], [32]. Cette conception **par tirage** — plutôt qu’un service web poussant les tâches dans la zone sécurisée — satisfait les exigences de responsabilité et de traçabilité, et fait respecter la liste blanche avant toute exécution."
+      ]
+    },
+    {
+      "type": "figure",
+      "image": "/images/mathis/exascale-astronomy/architecture.webp",
+      "alt": "L’architecture des applications scientifiques comme service : utilisateurs et développeurs, l’API avec ses microservices applicatifs et ses tampons éphémères, les mainteneurs, et les centres de calcul, chacun sous son propre domaine de gouvernance.",
+      "caption": "Architecture des applications scientifiques comme service. Chaque acteur opère sous un domaine de gouvernance distinct — les utilisateurs et développeurs sous la politique de leur laboratoire, l’API sous celle de l’IRISA, et les centres de calcul sous leur politique interne et la réglementation ZRR — tandis que les mainteneurs se situent à l’intersection de l’API et de chaque centre."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Le cycle de vie d’une tâche"
+    },
+    {
+      "type": "paragraph",
+      "text": "Du point de vue de l’utilisateur, une tâche globale est un objet unique à suivre de la soumission à l’achèvement :"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "**Authentification** — l’utilisateur s’authentifie auprès de l’API AM et reçoit en retour un client authentifié.",
+        "**Choix de l’application** — l’utilisateur liste les applications disponibles, éventuellement filtrées par nom, puis demande le contrat de l’application choisie, qui décrit les entrées et sorties attendues.",
+        "**Soumission d’une tâche globale** — à partir de ce contrat, l’utilisateur prépare la tâche localement, décrit ses entrées en JSON et la soumet. L’API l’enregistre pour exécution.",
+        "**Boucle de suivi** — l’utilisateur interroge l’état de la tâche globale après la soumission, sans attendre le début de l’exécution.",
+        "**Tâche de l’exécutant** — pendant ce temps, l’exécutant du mainteneur prend la tâche en attente, la marque comme en cours, prépare le répertoire de travail, met en place les entrées et soumet une tâche à SLURM.",
+        "**Tâche SLURM** — la tâche globale et la tâche SLURM sont distinctes : la première est gérée par l’API AM, la seconde par l’ordonnanceur qui exécute le calcul. L’exécutant surveille la tâche SLURM jusqu’à sa fin, puis collecte les résultats.",
+        "**Récupération des sorties** — l’exécutant réécrit les résultats collectés dans l’API et marque la tâche globale comme achevée ; l’utilisateur télécharge alors les sorties par l’API, sans jamais se connecter au système de calcul."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Les quatre durées de vie sont **imbriquées** : la tâche SLURM s’exécute dans la tâche de l’exécutant, elle-même dans la tâche globale, que l’utilisateur suit."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Preuve de concept : le DDF Pipeline sur Jean Zay"
+    },
+    {
+      "type": "paragraph",
+      "text": "Nous avons instancié cette architecture avec le **DDF Pipeline** [33], [34], une application de radioastronomie portée par la communauté, dont l’empreinte mémoire, les exécutions de plusieurs jours et la dépendance à des jeux de données LOFAR externes en font un cas de test exigeant pour les supercalculateurs français soumis au régime ZRR."
+    },
+    {
+      "type": "paragraph",
+      "text": "Le DDF Pipeline est une application composite intégrant **DDFacet** [35], un logiciel d’imagerie par facettes dépendant de la direction, et **killMS** [36], un logiciel de calibration pour l’interférométrie radio. Elle traite des Measurement Sets (MS), un format normalisé pour les visibilités d’interféromètre, et produit des images du ciel au format FITS. À l’origine application à mémoire partagée sur processeurs, elle requiert environ **400 Go de RAM** pour traiter des jeux de données LOFAR : une exécution représentative sur 24 fichiers MS d’entrée — 38,72 Go compressés — a produit **594 Go de sortie** après **68,8 heures** sur un seul nœud [37]."
+    },
+    {
+      "type": "paragraph",
+      "text": "La mémoire par nœud détermine ce qui peut tourner où : **Adastra** [38] offre 768 Go par nœud et convient bien au pipeline, **Jean Zay** [39] dispose de 192 Go par nœud et impose de limiter la taille de l’image du ciel générée (les partitions GPU dotées d’au moins 512 Go peuvent aussi être utilisées), et **Joliot-Curie** [40] offre 228 Go par nœud — avec seulement 7 nœuds à grande mémoire suffisants. Une configuration qui tient sur une machine peut être impossible sur une autre."
+    },
+    {
+      "type": "paragraph",
+      "text": "Pour nous préparer aux volumes de données du SKA, nous avons co-développé une **version parallèle** du DDF Pipeline avec des partenaires du **laboratoire commun ECLAT** [41], en intégrant la parallélisation multi-cœur et multi-nœud de DDFacet [42] à une implémentation parallèle de killMS. C’est la version utilisée pour les résultats ci-dessous."
+    },
+    {
+      "type": "figure",
+      "image": "/images/mathis/exascale-astronomy/ddf-workflow.webp",
+      "alt": "Le workflow du DDF Pipeline : télécharger les données, exécuter le pipeline, déposer les résultats",
+      "caption": "Le workflow du DDF Pipeline — trois étapes, chacune exposée comme un microservice distinct."
+    },
+    {
+      "type": "paragraph",
+      "text": "Une expérience complète s’exprime en trois étapes, chacune étant un microservice spécifique :"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "**Télécharger les données** — les entrées sont des fichiers MS donnés par chemin local ou URL, un supercalculateur cible et son identifiant. Le microservice vérifie la compatibilité avec le supercalculateur en s’assurant que le domaine de l’URL figure dans la liste blanche attribuée au compte de service nommé ; les chemins locaux sont mis en place par les tampons éphémères. La sortie est un identifiant de tâche globale.",
+        "**Exécuter le DDF Pipeline** — les entrées sont un fichier de configuration ou des options précises (par exemple la taille de l’image) et l’identifiant de tâche globale. Le microservice valide la configuration et l’accès aux données d’entrée, prépare le répertoire d’exécution et soumet une tâche à SLURM, en renvoyant l’identifiant de tâche globale pour que l’utilisateur puisse suivre son état.",
+        "**Déposer les résultats** — les entrées sont la destination (chemin local ou URL) et l’identifiant de tâche globale. Le microservice dépose les données par les tampons éphémères pour un chemin local, ou par l’API pour un dépôt distant."
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Les résultats"
+    },
+    {
+      "type": "paragraph",
+      "text": "Le workflow a été mis à l’épreuve sur le supercalculateur Jean Zay pour valider l’architecture. Nous avons mesuré trois choses : où les données peuvent résider, comment le pipeline passe à l’échelle, et ce que coûte la couche de service."
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "**Accès aux données** — pour le jeu de données d’intégration de 8 heures LOFAR LoTSS L234026, **SURFsara** a offert le meilleur débit de téléchargement moyen (**137,9 Mo/s**, mais avec la variabilité la plus forte), devant **EOSC** [43] (51,85 Mo/s) et **CNRS Drive** (52,36 Mo/s). Le dépôt a favorisé EOSC (**28,73 Mo/s**, coefficient de variation 34,3 %) face à CNRS Drive (13,81 Mo/s, 84,7 %), ce qui fait de SURFsara et EOSC les points de terminaison viables pour cette expérience.",
+        "**Passage à l’échelle** — le temps écoulé est passé de **68,8 heures sur 1 nœud à 8,7 heures sur 24 nœuds** (≈7,9× d’accélération), en passant par 14,4 heures sur 6 nœuds et 10,2 heures sur 12 nœuds. L’utilisation moyenne des processeurs a chuté de 63,5 % à 31 %, principalement parce que les étapes de déconvolution de DDFacet, non parallélisées, limitent l’efficacité du passage à l’échelle — leur parallélisation est en cours.",
+        "**Surcoût du service** — la soumission d’une tâche par l’API n’a ajouté que **0,25 à 0,96 seconde** pour des configurations de 0 (référence), 1 et 5 tampons éphémères. C’est négligeable face à des exécutions qui vont de plusieurs heures à plusieurs jours."
+      ]
+    },
+    {
+      "type": "figure",
+      "image": "/images/mathis/exascale-astronomy/sequence-diagram.webp",
+      "alt": "Diagramme de séquence d’une tâche globale : l’utilisateur s’authentifie, choisit une application, soumet la tâche et la suit, tandis que l’exécutant du mainteneur la tire, la soumet à SLURM et récupère les résultats.",
+      "caption": "Diagramme de séquence de la soumission d’une tâche. Les quatre durées de vie sont imbriquées : la tâche SLURM (gris) s’exécute dans la tâche de l’exécutant (jaune), elle-même dans la tâche globale (bleu) suivie par l’utilisateur (violet)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "La suite : au-delà de la preuve de concept"
+    },
+    {
+      "type": "paragraph",
+      "text": "La limitation centrale de ce travail n’est pas technique mais **réglementaire** : le découplage proposé exige une dérogation formelle à une interdiction explicite de la ZRR, et son acceptation par les autorités françaises de sécurité du calcul intensif reste la prochaine étape vers un déploiement complet."
+    },
+    {
+      "type": "paragraph",
+      "text": "Exploiter le DDF Pipeline comme un service sur une infrastructure nationale a également fait apparaître trois conséquences pratiques :"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "**Qualité de service** — SLURM priorise les comptes dont l’usage récent est faible. Tous les utilisateurs accédant aux ressources par un compte unique, cela crée des délais d’allocation importants : la politique de partage équitable du compte de service nommé devra donc être adaptée.",
+        "**Stockage** — une seule exécution génère des centaines de gigaoctets, alors que les quotas des supercalculateurs sont limités. Les résultats doivent être transférés vers une source externe et les répertoires de travail nettoyés après chaque exécution, ce qui limite aussi le nombre de tâches menées en parallèle et motive la répartition des tâches entre plusieurs systèmes de calcul.",
+        "**Reproductibilité** — la reproductibilité étape par étape est irréaliste pour des pipelines qui produisent des centaines de gigaoctets de produits intermédiaires par exécution. Nous visons plutôt la **reproductibilité du workflow entier**, en conservant les références des entrées, les paramètres d’exécution et les spécifications de l’environnement."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Des exécutions du DDF Pipeline entre centres, **entre Jean Zay et Adastra**, ont été validées, ce qui motive l’intégration future d’un déploiement inter-sites [44] dans le cadre EB/AM. Le modèle du compte de service nommé reste en discussion avec les acteurs français du calcul intensif, et les travaux à venir étendront le déploiement à d’autres supercalculateurs français — **Adastra et Joliot-Curie**."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Conclusion"
+    },
+    {
+      "type": "paragraph",
+      "text": "La sécurité devrait être un levier pour la science, pas une barrière. En passant d’un modèle d’« accès utilisateur » à un modèle d’« accès par service » — et en séparant l’identité de l’utilisateur de celle de l’exécutant — nous pouvons concilier les exigences de responsabilité de la ZRR avec la façon dont les communautés scientifiques travaillent réellement, et ouvrir les supercalculateurs français à la communauté de radioastronomie qui en a le plus besoin."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Références"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        {
+          "id": "ref-1",
+          "text": "P. E. Dewdney, P. J. Hall, R. T. Schilizzi, and T. J. L. W. Lazio, [“The Square Kilometre Array,”](https://ieeexplore.ieee.org/abstract/document/5136190) Proc. IEEE, vol. 97, no. 8, pp. 1482–1496, Aug. 2009."
+        },
+        {
+          "id": "ref-2",
+          "text": "GENCI, [“Grand Equipement National de Calcul Intensif (GENCI).”](https://www.genci.fr/connaitre-genci/notre-ecosysteme)"
+        },
+        {
+          "id": "ref-3",
+          "text": "CINES, [“Centre Informatique National de l’Enseignement Supérieur (CINES).”](https://www.genci.fr/centre-informatique-national-de-lenseignement-superieur-cines)"
+        },
+        {
+          "id": "ref-4",
+          "text": "CNRS, [“Institut du Développement et des Ressources en Informatique Scientifique (IDRIS).”](http://www.idris.fr/)"
+        },
+        {
+          "id": "ref-5",
+          "text": "CEA, [“Très Grand Centre de Calcul (TGCC).”](https://www-hpc.cea.fr/fr/TGCC.html)"
+        },
+        {
+          "id": "ref-6",
+          "text": "M. P. van Haarlem, M. W. Wise, A. W. Gunst, G. Heald, J. P. McKean, J. W. T. Hessels, et al., [“LOFAR: The LOw-Frequency ARray,”](https://www.aanda.org/articles/aa/abs/2013/08/aa20873-12/aa20873-12.html) Astron. Astrophys., vol. 556, p. A2, Aug. 2013."
+        },
+        {
+          "id": "ref-7",
+          "text": "A. P. Mechev, J. B. R. Oonk, A. Plaat, A. Danezi, and T. W. Shimwell, [“Building LOFAR as a Service,”](https://www.aspbooks.org/a/volumes/article_details/?paper_id=39335) in Proc. Astronomical Data Anal. Softw. Syst. XXVIII (ADASS), vol. 523, San Francisco, CA, USA: Astronomical Society of the Pacific, 2019, p. 677."
+        },
+        {
+          "id": "ref-8",
+          "text": "J. Templon and J. Bot, [“The Dutch National e-Infrastructure,”](https://pos.sissa.it/270/020) in Proc. Int. Symp. Grids Clouds (ISGC 2016), vol. 270, Taipei, Taiwan: SISSA Medialab, Jan. 2017, p. 020."
+        },
+        {
+          "id": "ref-9",
+          "text": "I. P. Kemp, S. J. Tingay, S. D. Midgely, and D. A. Mitchell, [“Experiences of commercial supercomputing in radio astronomy data processing,”](https://www.sciencedirect.com/science/article/pii/S2213133725000861) Astron. Comput., vol. 54, p. 101013, Jan. 2026."
+        },
+        {
+          "id": "ref-10",
+          "text": "Légifrance, [“Protection du Potentiel Scientifique et Technique (PPST),”](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000049535465) Décret n° 2024-430 du 14 mai 2024."
+        },
+        {
+          "id": "ref-11",
+          "text": "ANSSI, [“Protection du Potentiel Scientifique et Technique de la Nation (PPST),”](https://cyber.gouv.fr/reglementation/cybersecurite-systemes-dinformation/protection-information-sensible-diffusion-restreinte/protection-du-potentiel-scientifique-et-technique-de-la-nation-ppst/) Agence nationale de la sécurité des systèmes d’information."
+        },
+        {
+          "id": "ref-12",
+          "text": "GENCI, [“Modalités d’accès aux ressources nationales,”](https://www.genci.fr/sites/default/files/brique/fichier/09-2023/Modalitesdacces_1.pdf) Réf. CD230106, version 1.15, May 2023."
+        },
+        {
+          "id": "ref-13",
+          "text": "Légifrance, [“Zones à Régime Restrictif (ZRR),”](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000024750719/) Code pénal, Art. R413-5-1, 2025."
+        },
+        {
+          "id": "ref-14",
+          "text": "A. B. Yoo, M. A. Jette, and M. Grondona, [“SLURM: Simple Linux Utility for Resource Management,”](https://link.springer.com/chapter/10.1007/10968987_3) in Proc. Workshop Job Scheduling Strategies for Parallel Processing (JSSPP), vol. 2862, Berlin, Germany: Springer, Jun. 2003, pp. 44–60."
+        },
+        {
+          "id": "ref-15",
+          "text": "E. Deelman et al., [“The Evolution of the Pegasus Workflow Management Software,”](https://ieeexplore.ieee.org/abstract/document/8725518) Comput. Sci. Eng., vol. 21, no. 4, pp. 22–36, Jul. 2019."
+        },
+        {
+          "id": "ref-16",
+          "text": "P. Di Tommaso, M. Chatzou, E. W. Floden, P. P. Barja, E. Palumbo, and C. Notredame, [“Nextflow enables reproducible computational workflows,”](https://www.nature.com/articles/nbt.3820) Nat. Biotechnol., vol. 35, no. 4, pp. 316–319, Apr. 2017."
+        },
+        {
+          "id": "ref-17",
+          "text": "J. Köster and S. Rahmann, [“Snakemake—a scalable bioinformatics workflow engine,”](https://doi.org/10.1093/bioinformatics/bts480) Bioinformatics, vol. 28, no. 19, pp. 2520–2522, Oct. 2012."
+        },
+        {
+          "id": "ref-18",
+          "text": "P. Calegari, M. Levrier, and P. Balczynski, [“Web Portals for High-performance Computing: A Survey,”](https://dl.acm.org/doi/10.1145/3197385) ACM Trans. Web, vol. 13, no. 1, pp. 5:1–5:36, Feb. 2019."
+        },
+        {
+          "id": "ref-19",
+          "text": "M. Barker et al., [“The global impact of science gateways, virtual research environments and virtual laboratories,”](https://www.sciencedirect.com/science/article/pii/S0167739X18314018) Future Generation Computer Systems, vol. 95, pp. 240–248, Jun. 2019."
+        },
+        {
+          "id": "ref-20",
+          "text": "I. Sfiligoi, [“glideinWMS—a generic pilot-based workload management system,”](https://doi.org/10.1088/1742-6596/119/6/062044) J. Phys.: Conf. Ser., vol. 119, no. 6, p. 062044, Jul. 2008."
+        },
+        {
+          "id": "ref-21",
+          "text": "T. Maeno, [“PanDA: distributed production and distributed analysis system for ATLAS,”](https://doi.org/10.1088/1742-6596/119/6/062036) J. Phys.: Conf. Ser., vol. 119, no. 6, p. 062036, Jul. 2008."
+        },
+        {
+          "id": "ref-22",
+          "text": "A. Casajus, R. Graciani, S. Paterson, A. Tsaregorodtsev, and LHCb DIRAC Collaboration, [“DIRAC pilot framework and the DIRAC Workload Management System,”](https://doi.org/10.1088/1742-6596/219/6/062049) J. Phys.: Conf. Ser., vol. 219, no. 6, p. 062049, Apr. 2010."
+        },
+        {
+          "id": "ref-23",
+          "text": "R. Alfieri et al., [“From gridmap-file to VOMS: managing authorization in a Grid environment,”](https://www.sciencedirect.com/science/article/pii/S0167739X04001682) Future Gener. Comput. Syst., vol. 21, no. 4, pp. 549–558, Apr. 2005."
+        },
+        {
+          "id": "ref-24",
+          "text": "R. Chard et al., [“funcX: A Federated Function Serving Fabric for Science,”](https://dl.acm.org/doi/10.1145/3369583.3392683) in Proc. 29th Int. Symp. High-Perform. Parallel Distrib. Comput. (HPDC ’20), Stockholm, Sweden, Jun. 2020, pp. 65–76."
+        },
+        {
+          "id": "ref-25",
+          "text": "F. A. Cruz et al., [“FirecREST: a RESTful API to HPC systems,”](https://ieeexplore.ieee.org/abstract/document/9308083) in Proc. IEEE/ACM Int. Workshop Interoperability Supercomput. Cloud Technol. (SuperCompCloud), Nov. 2020, pp. 21–26."
+        },
+        {
+          "id": "ref-26",
+          "text": "Globus, [“High Assurance Security Overview,”](https://docs.globus.org/guides/overviews/security/high-assurance-overview/) Globus documentation, University of Chicago."
+        },
+        {
+          "id": "ref-27",
+          "text": "U.S. Code, [“Required preservation and disclosure of communications and records,”](https://www.law.cornell.edu/uscode/text/18/2713) 18 U.S.C. 2713, Legal Information Institute, Cornell Law School, Mar. 2018."
+        },
+        {
+          "id": "ref-28",
+          "text": "L. Morin, F. Bodin, and G. Nyastikor, [“HPC Software as a Service: A Flexible Approach to Data Logistics,”](https://exatow.fenix.rudi-univ-rennes1.fr/storage/download/7c1d28c2-e963-45e4-b677-4253dfca0e0e) presented at the 3rd Int. Workshop on Scalable Compute Continuum (WSCC 2025), Dresden, Germany, Aug. 2025."
+        },
+        {
+          "id": "ref-29",
+          "text": "L. Morin and G. Nyastikor, [“Application Microservices (AM),”](https://ebservice.aqmo.org/docs/ui) Online API documentation."
+        },
+        {
+          "id": "ref-30",
+          "text": "L. Morin and G. Nyastikor, [“Ephemeral Buffers (EB),”](https://ebuffer.aqmo.org/docs/ui) Online API documentation."
+        },
+        {
+          "id": "ref-31",
+          "text": "CINES, [“Adastra supercomputer user documentation.”](https://dci.dci-gitlab.cines.fr/webextranet/user_support/index.html)"
+        },
+        {
+          "id": "ref-32",
+          "text": "IDRIS, [“SSH access to the Jean Zay supercomputer.”](http://www.idris.fr/docs/jean-zay/gestion-compte/connexion-ssh/)"
+        },
+        {
+          "id": "ref-33",
+          "text": "C. Tasse et al., [“The LOFAR Two-meter Sky Survey: Deep Fields Data Release 1 - I. Direction-dependent calibration and imaging,”](https://www.aanda.org/articles/aa/abs/2021/04/aa38804-20/aa38804-20.html) Astron. Astrophys., vol. 648, p. A1, Apr. 2021."
+        },
+        {
+          "id": "ref-34",
+          "text": "M. Hardcastle, T. Shimwell, C. Tasse, and W. Williams, [“DDF Pipeline source code,”](https://github.com/mhardcastle/ddf-pipeline) GitHub repository."
+        },
+        {
+          "id": "ref-35",
+          "text": "C. Tasse, [“DDFacet source code: A facet-based radio imaging package,”](https://github.com/saopicc/DDFacet) GitHub repository."
+        },
+        {
+          "id": "ref-36",
+          "text": "C. Tasse, [“killMS source code: A Wirtinger-based direction-dependent radio interferometric calibration package,”](https://github.com/saopicc/killMS) GitHub repository."
+        },
+        {
+          "id": "ref-37",
+          "text": "M. Certenais, F. Bodin, and L. Morin, [“A description of the radio astronomy data processing tool DDF Pipeline,”](https://arxiv.org/abs/2509.03075) arXiv:2509.03075, Sep. 2025."
+        },
+        {
+          "id": "ref-38",
+          "text": "CINES, [“Adastra supercomputer architecture.”](https://dci.dci-gitlab.cines.fr/webextranet/architecture/index.html)"
+        },
+        {
+          "id": "ref-39",
+          "text": "IDRIS-CNRS, [“Jean Zay supercomputer architecture.”](http://www.idris.fr/docs/jean-zay/jean-zay/jean-zay-hardware)"
+        },
+        {
+          "id": "ref-40",
+          "text": "TGCC-CEA, [“TGCC Public Documentation,”](https://www-hpc.cea.fr/tgcc-public/en/latex/tgcc-public.pdf) Sep. 2026."
+        },
+        {
+          "id": "ref-41",
+          "text": "ECLAT, [“Extreme Computing Lab for Astronomical Telescopes (ECLAT).”](https://eclat-lab.fr/)"
+        },
+        {
+          "id": "ref-42",
+          "text": "N. Monnier et al., [“Multi-core multi-node parallelization of the radio interferometric imaging pipeline DDFacet,”](https://ieeexplore.ieee.org/document/9919239) in Proc. IEEE Workshop Signal Process. Syst. (SiPS), Rennes, France, Nov. 2022, pp. 1–6."
+        },
+        {
+          "id": "ref-43",
+          "text": "P. Budroni, J.-C. Burgelman, and M. Schouppe, [“Architectures of Knowledge: The European Open Science Cloud,”](https://doi.org/10.1515/abitech-2019-2006) ABI Technik, vol. 39, no. 2, pp. 130–141, Jul. 2019."
+        },
+        {
+          "id": "ref-44",
+          "text": "K. B. Antypas et al., [“Enabling discovery data science through cross-facility workflows,”](https://ieeexplore.ieee.org/document/9671421/) in Proc. IEEE Int. Conf. Big Data (Big Data), Orlando, FL, USA, Dec. 2021, pp. 3671–3680."
+        }
+      ]
+    }
+  ]
+}

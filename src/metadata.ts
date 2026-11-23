@@ -1,3 +1,6 @@
+import { buildRouteMetadata, renderJsonLd } from './content/siteMetadata'
+import { getRouteEntry } from './routeManifest'
+
 export interface PageMetadata {
   canonicalPath?: string
   description: string
@@ -100,6 +103,26 @@ export function applyPageMetadata(metadata: PageMetadata) {
     removePropertyMeta('og:image:alt')
     removeNamedMeta('twitter:image:alt')
   }
+}
+
+/**
+ * Replace the structured-data block with the one for the canonical route.
+ * Aliases and the not-found page carry none, so navigating to them removes the
+ * previous block rather than leaving a stale claim in the head.
+ */
+export function applyStructuredData(pathname: string) {
+  document.querySelectorAll<HTMLScriptElement>('script#page-jsonld').forEach((script) => {
+    script.remove()
+  })
+
+  const route = getRouteEntry(pathname)
+  if (!route || route.path !== route.canonical) return
+
+  const script = document.createElement('script')
+  script.id = 'page-jsonld'
+  script.type = 'application/ld+json'
+  script.textContent = renderJsonLd(buildRouteMetadata(route.path))
+  document.head.append(script)
 }
 
 export const homeMetadata: PageMetadata = {

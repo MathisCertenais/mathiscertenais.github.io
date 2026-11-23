@@ -50,6 +50,8 @@ export type ProofKind = 'community' | 'mentor' | 'speaker'
 export interface ProofPoint {
   description: string
   kind: ProofKind
+  /** Outbound sources that back the claim, shown under the description. */
+  links?: { href: string; label: string }[]
   title: string
 }
 
@@ -63,13 +65,18 @@ export const proofPoints: ProofPoint[] = [
     kind: 'mentor',
     title: 'Published Work',
     description:
-      "Author of a full paper titled “Enabling Radio Astronomy to Use French Supercomputers,“ accepted for the Supercomputing Conference",
+      "Author of a peer-reviewed paper titled “Enabling Radio Astronomy to Use French Supercomputers,” published at the Supercomputing Conference",
+    links: [{ href: sourceLinks.sc26Paper, label: 'IEEE article' }],
   },
   {
     kind: 'speaker',
     title: 'Scientific Collaboration',
     description:
       'Working for the NumPEx "Digital for Exascale" research program and the ECLAT joint laboratory to co-design future radio astronomy workflows',
+    links: [
+      { href: 'https://eclat-lab.fr/en/', label: 'ECLAT' },
+      { href: 'https://numpex.org/', label: 'NumPEx' },
+    ],
   },
 ]
 
@@ -330,6 +337,7 @@ export type ArticleId =
   | 'mcp-server-software-ontology'
   | 'ai-lab-virtual-running-coach'
   | 'sc26-europe'
+  | 'autonomous-science-agentic-ai'
 
 export type ArticleListItem = string | { id?: string; text: string }
 
@@ -840,8 +848,55 @@ export const articleItems: ArticleItem[] = [
   },
 
   {
-    id: 'sc26-europe',
+    id: 'autonomous-science-agentic-ai',
     number: '02',
+    category: 'Research note',
+    date: 'November 23, 2026',
+    title:
+      'Autonomous Science and Agentic AI: The Agent Plans, the Scientist Signs',
+    description:
+      'Agentic AI can plan an experiment, compile it into jobs and run it across three supercomputers. On French machines the plan still needs a human signature — and the framework that enforces it is the argument.',
+    body: [
+      { type: 'paragraph', text: 'The pitch for autonomous science is a loop: an agent proposes an experiment, a robot executes it, a model reads the result and proposes the next one. Parts exist — agents that decompose an experiment, schedulers that accept a machine-written plan, facilities with an API. The question is no longer whether the loop closes, but who answers when it does.' },
+      { type: 'paragraph', text: 'The laboratory is not a room: EOSC, a handful of local clusters, three French supercomputers — Adastra at CINES, Jean Zay at IDRIS, Joliot-Curie at TGCC. On the first two an agent plans, submits and reads the result. On the three French machines it stops at a prompt that asks a human to confirm, and to take responsibility for the execution.' },
+      { type: 'heading', level: 2, text: 'What autonomy means when the machine is a national asset' },
+      { type: 'paragraph', text: 'In France a supercomputer is a national strategic asset. The centres operate under the framework for the protection of the Nation’s scientific and technical potential, the PPST, and their sensitive parts are classified as zones à régime restrictif, ZRR. Access is nominative, responsibility is personal and non-delegable, and movement inside the zone is traced.' },
+      { type: 'paragraph', text: 'An agent has no standing in that regime: it acts with the rights of the account that launched it, and it cannot be the named person who answers for a job. So “autonomous” does two jobs in one word — on EOSC or a local cluster, a loop with nobody in the room; on Adastra, Jean Zay and Joliot-Curie, a narrower autonomy.' },
+      { type: 'heading', level: 2, text: 'The agent writes the task board' },
+      { type: 'paragraph', text: 'The first artefact I ask an agent for is not code and not a prompt, but a task board. Take an experiment — [SIESTA](https://docs.siesta-project.org/projects/siesta/), an electronic-structure and ab initio molecular-dynamics code; [GROMACS](https://www.gromacs.org/), a molecular-dynamics code; [CP2K](https://www.cp2k.org/), a quantum-chemistry and atomistic-simulation code; or the [DDF Pipeline](https://github.com/mhardcastle/ddf-pipeline), the LOFAR radio-imaging chain — and the agent decomposes it into tasks, each with its inputs, outputs, resources, centre and data movement.' },
+      { type: 'paragraph', text: 'Dependencies are explicit: a task that needs another’s output cannot be scheduled before that output exists, and a task that moves data names the direction. The output is a plan, not a prompt — a document whose every line checks against a resource, a path or a script.' },
+      { type: 'paragraph', text: 'A prompt can only be read; a board can be audited. The review checks that the graph closes, that each transfer’s tool and initiator match its direction, and that no task needs rights the account lacks. The board is the unit of review; the plan is the unit of approval.' },
+      { type: 'heading', level: 2, text: 'One signature for the plan' },
+      { type: 'paragraph', text: 'The scientist signs once, for the plan; the framework executes. This library uses [remotemanager](https://gitlab.com/ljbeal/remotemanager) to let the execution agent run tasks on a remote machine over SSH. A signature is requested from the user when the task runs on one of the French supercomputers, through a TTY — TeleTypeWriter, an interactive terminal.' },
+      { type: 'paragraph', text: 'The parallel with [the AI lab](/insights/ai-lab-virtual-running-coach) is exact. There, the quality agent cannot edit files, because a reviewer that can fix what it finds stops being a reviewer. Here the planner cannot approve its own plan.' },
+      { type: 'heading', level: 2, text: 'The framework compiles, then executes' },
+      { type: 'paragraph', text: 'Approval covers the plan; execution needs a job. The compiler turns each task into the form its centre accepts: centre, scheduler, queue or partition, modules, data movement. Jean Zay and Adastra take sbatch; Irene takes ccc_msub with SLURM underneath. The same plan, two submission scripts, one per centre.' },
+      { type: 'paragraph', text: 'Three guardrails bound autonomous execution. A deny-by-default allow-list re-renders each command and compares it exactly with what policy permits. Job bodies are linted for destructive forms. Every action carries a risk level — read-only, mutating or job-submitting — so a plan that only inspects cannot submit.' },
+      { type: 'paragraph', text: 'Around the gate, subagents take distinct roles: execution, control, security, quality. The human approves; the human does not operate. It is the separation of powers of the AI lab, applied to a scheduler rather than a repository.' },
+      { type: 'heading', level: 2, text: 'Why the French supercomputers are the limit' },
+      { type: 'paragraph', text: 'On a French machine I keep a person in the loop twice: before execution, for the plan, and during execution, for quality control and surveillance. The first is the signature; the second checks the job does what the plan said — the only way to honour traceability once the job holds a queue slot.' },
+      { type: 'paragraph', text: 'On EOSC and local clusters the regime is different, and autonomy can be fuller: the plan can run with nobody awake, because the rules that make a named person answerable for each submission differ. That is governance, not capability.' },
+      { type: 'paragraph', text: 'So for the French machines I do not use the word autonomous. I use supervised autonomy: the gate controls what is submitted, not what the job does once it runs. A submitted job runs with the user’s full rights, and no approval prompt follows it into the queue. That describes half a system.' },
+      { type: 'heading', level: 2, text: 'What a cross-facility run actually moves' },
+      { type: 'paragraph', text: 'A workflow on one machine is a scheduling problem; mine crosses centres, and the difficulty is the link. Data moves between the three French machines over CCFR, and the transfer is not symmetric.' },
+      { type: 'paragraph', text: 'The tool and the initiator belong to the direction. When CINES is the source, CINES pulls with rsync. When IDRIS sends to CINES, IDRIS pushes with ccfr_cp. The script submitted is the destination’s; written the other way round, the transfer does not work.' },
+      { type: 'paragraph', text: 'A verified transfer records an arrival. In the seven-step workflow — upload, launch, monitor, transfer, launch, monitor, download — each step gets one plan and one approval.' },
+      { type: 'heading', level: 2, text: 'Case study: cross-centre execution with SIESTA' },
+      { type: 'paragraph', text: 'A cross-facility workflow, as [the literature](https://ieeexplore.ieee.org/document/9671421/) defines it, is a set of tasks from an experiment executed on a heterogeneous, distributed infrastructure.' },
+      { type: 'paragraph', text: 'I ran an experiment with SIESTA, where the execution process was operated on the three supercomputers. A reference execution was performed on a single computing centre to certify the quality of the final product.' },
+      { type: 'paragraph', text: 'This allows the experiment to be split into smaller tasks, and therefore to be more flexible with machine allocation times. It should be kept in mind that this applies well in a context where there is not a large volume of data to move.' },
+      { type: 'heading', level: 2, text: 'The last mile is a signature' },
+      { type: 'paragraph', text: 'The last mile of autonomous science is a signature, and a self-driving lab still needs a named driver. The agent must make the plan legible enough to sign: dependencies closed, resources justified, transfers named with their direction. The human signs, then watches. Between those two acts, everything can be automated. The acts cannot.' },
+    ],
+    image: '/images/mathis/autonomous-science/cover.svg',
+    imageAlt:
+      'A diagram of the framework: a task board with dependent task cards, a single signature line with a plan hash, and an execution plan mapped to TGCC, IDRIS and CINES.',
+    href: '/insights/autonomous-science-agentic-ai',
+  },
+
+  {
+    id: 'sc26-europe',
+    number: '03',
     category: 'Event',
     date: 'November 22, 2026',
     title: 'From Jean Zay to JUPITER: Europe’s Exascale Ambition at SC26',
@@ -924,7 +979,7 @@ export const articleItems: ArticleItem[] = [
 
   {
     id: 'predicting-for-sizing',
-    number: '03',
+    number: '04',
     category: 'Research note',
     date: 'September 23, 2026',
     title:
@@ -1074,7 +1129,7 @@ export const articleItems: ArticleItem[] = [
 
   {
     id: 'eclat-interview',
-    number: '04',
+    number: '05',
     category: 'Interview',
     date: 'September 2025',
     title: 'Interview: At the Heart of Data Logistics for Radio Astronomy',
@@ -1171,7 +1226,7 @@ export const articleItems: ArticleItem[] = [
 
   {
     id: 'youngpex',
-    number: '05',
+    number: '06',
     category: 'Community',
     date: 'October 12, 2026',
     title: 'YoungPEx: The New Generation of Digital for Exascale',
@@ -1390,7 +1445,7 @@ export const articleItems: ArticleItem[] = [
 
   {
     id: 'ai-lab-virtual-running-coach',
-    number: '06',
+    number: '07',
     category: 'Side project',
     date: 'October 26, 2026',
     title:
@@ -1649,7 +1704,7 @@ export const articleItems: ArticleItem[] = [
 
   {
     id: 'mcp-server-software-ontology',
-    number: '07',
+    number: '08',
     category: 'Research note',
     date: 'September 16, 2026',
     title:
@@ -1811,7 +1866,7 @@ export const articleItems: ArticleItem[] = [
 
   {
     id: 'international-hackathon-for-astronomy',
-    number: '08',
+    number: '09',
     category: 'Collaboration',
     date: 'April 1, 2026',
     title: 'International Hackathon for Radio Astronomy',
@@ -1857,7 +1912,7 @@ export const articleItems: ArticleItem[] = [
 
   {
     id: 'webinar-hpc-applications-as-a-service',
-    number: '09',
+    number: '10',
     category: 'Webinar',
     date: 'February 13, 2026',
     title: 'Webinar: HPC Application Services for Radio Astronomy',
@@ -1881,7 +1936,7 @@ export const articleItems: ArticleItem[] = [
 
   {
     id: 'rennes-hackathon-for-astronomy',
-    number: '10',
+    number: '11',
     category: 'Collaboration',
     date: 'October 1, 2025',
     title: 'From Supercomputers to Tutorials: Strengthening Our Community Through Shared Expertise ',

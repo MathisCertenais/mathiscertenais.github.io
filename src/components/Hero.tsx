@@ -1,5 +1,7 @@
 import { useLanguage } from '../language/LanguageProvider'
+import { ContactLinks } from './ContactLinks'
 import { ArrowIcon, ProofIcon } from './Icons'
+import { NewTabHint } from './NewTabHint'
 
 export function Hero() {
   const { content, localeHref, strings } = useLanguage()
@@ -35,6 +37,10 @@ export function Hero() {
               {strings.pages.viewProfile} <ArrowIcon />
             </a>
           </div>
+
+          <div className="hero__contact">
+            <ContactLinks />
+          </div>
         </div>
 
         <img
@@ -55,6 +61,22 @@ export function Hero() {
             <div>
               <h2>{proof.title}</h2>
               <p>{proof.description}</p>
+              {proof.links?.length ? (
+                <div className="proof-item__links">
+                  {proof.links.map((link) => (
+                    <a
+                      className="contact-link"
+                      href={link.href}
+                      key={link.href}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      {link.label} <ArrowIcon external />
+                      <NewTabHint label={strings.a11y.newTab} />
+                    </a>
+                  ))}
+                </div>
+              ) : null}
             </div>
           </article>
         ))}
