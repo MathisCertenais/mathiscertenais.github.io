@@ -45,6 +45,7 @@ const requiredCanonicalPaths = new Set([
   '/insights/ai-lab-virtual-running-coach',
   '/insights/sc26-europe',
   '/insights/autonomous-science-agentic-ai',
+  '/insights/astra-ddf-pipeline',
 ])
 
 const requiredLegacyPaths = new Set([
@@ -60,6 +61,7 @@ const requiredLegacyPaths = new Set([
   '/writing/ai-lab-virtual-running-coach',
   '/writing/sc26-europe',
   '/writing/autonomous-science-agentic-ai',
+  '/writing/astra-ddf-pipeline',
   '/articles',
   '/articles/ai-will-revolutionize-accessibility',
   '/articles/attitudinal-and-behavioral-research',
@@ -99,6 +101,7 @@ const allowedPages = new Set([
   'article:ai-lab-virtual-running-coach',
   'article:sc26-europe',
   'article:autonomous-science-agentic-ai',
+  'article:astra-ddf-pipeline',
   'contact',
   'home',
   'research',

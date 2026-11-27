@@ -387,6 +387,16 @@ const articleTranslations: Record<
       'Un schéma du cadre : un tableau de tâches avec des cartes dépendantes, une ligne de signature unique avec l’empreinte du plan, et un plan d’exécution réparti sur TGCC, IDRIS et CINES.',
     title: 'Science autonome et IA agentique : l’agent planifie, le scientifique signe',
   },
+  'astra-ddf-pipeline': {
+    category: 'Note de recherche',
+    date: '26 novembre 2026',
+    description:
+      'Comment le DDF Pipeline est en train d’être consolidé en logiciel prêt pour la production du SRCNet français, vu côté informatique : ce qu’une exécution consomme, ce qu’elle produit et comment elle passe à l’échelle.',
+    imageAlt:
+      'Profilage de l’utilisation CPU de l’exécution MPI du DDF Pipeline sur 24 nœuds (960 CPU) sur la partition cpu de Jean Zay, achevée en 8,7 heures sur un jeu de données LOFAR de 8 heures d’intégration, à 31 % d’utilisation CPU moyenne.',
+    title:
+      'Préparer les logiciels du SKA sur les supercalculateurs français : le DDF Pipeline',
+  },
 }
 
 /**
@@ -1245,6 +1255,92 @@ Object.assign(articleBodies, {
     { type: 'paragraph', text: 'Cela permet de découper l’expérimentation en tâches plus petites, et donc d’être plus flexible vis-à-vis des temps d’allocation machine. Il faut garder en tête que cela s’applique bien dans un contexte où il n’y a pas un grand volume de données à déplacer.' },
     { type: 'heading', level: 2, text: 'Le dernier kilomètre est une signature' },
     { type: 'paragraph', text: 'Le dernier kilomètre de la science autonome est une signature, et un laboratoire autonome a encore besoin d’un conducteur nommé. L’agent doit rendre le plan assez lisible pour être signé : dépendances refermées, ressources justifiées, transferts nommés avec leur sens. L’humain signe, puis surveille. Entre ces deux actes, tout peut être automatisé. Les actes, non.' },
+  ],
+  'astra-ddf-pipeline': [
+    { type: 'heading', level: 2, text: 'Une application, un cas d’usage' },
+    {
+      type: 'paragraph',
+      text: '[ECLAT](https://eclat-lab.fr/en/), l’Extreme Computing Lab for Astronomical Telescopes, est un laboratoire commun et un centre d’excellence du calcul haute performance et de l’intelligence artificielle appliqués à l’instrumentation astronomique. Il réunit seize laboratoires et équipes, parmi lesquels le CNRS, Inria, Eviden, l’OCA et l’Observatoire de Paris.',
+    },
+    {
+      type: 'paragraph',
+      text: '[ASTRA](https://numpex-astra-e5d484.padcpages.obspm.fr/), le projet ANR–NumPEx « Alliance for Scalable Techniques in Radio Astronomy », se situe un niveau au-dessus du logiciel. Dirigé par Marc-Antoine Miville-Deschênes au LPENS, il prépare les fondations technologiques du centre régional SKA français. Le DDF Pipeline est une application scientifique à l’intérieur d’un cas d’usage d’ASTRA — celui des relevés radio du continuum à grand champ, « Widefield Radio Continuum Surveys ».',
+    },
+    { type: 'heading', level: 2, text: 'Le workflow, lu comme de la logistique de données' },
+    {
+      type: 'paragraph',
+      text: 'Les cinq étapes qui transforment un pointé LOFAR en catalogue exploitable forment, lues par un informaticien, une chaîne de volumes de données qui circulent entre les sites :',
+    },
+    {
+      type: 'list',
+      ordered: true,
+      items: [
+        '**La calibration indépendante de la direction et le flagging** s’exécutent sur les sites de l’archive à long terme de LOFAR — Amsterdam, Jülich et Poznań — où vivent les données brutes. La compression Dysco réduit un pointé de 8 heures à environ 50 Go.',
+        '**La calibration et l’imagerie dépendantes de la direction (DDE)** exécutent le [DDF Pipeline](https://github.com/mhardcastle/ddf-pipeline) — [killMS](https://github.com/saopicc/killMS) pour la calibration, [DDFacet](https://github.com/saopicc/DDFacet) pour l’imagerie — principalement à l’University of Hertfordshire, avec des volumes plus faibles à Bologne, Leyde et Hambourg.',
+        '**Les produits archivés** totalisent environ 120 Go par jeu de données de 8 heures, conservés sur le stockage SURF aux Pays-Bas.',
+        '**La polarisation et la synthèse RM** font tourner [pyrmsynth](https://github.com/mrbell/pyrmsynth) sur environ 35 Go de FITS Stokes Q et U par champ de 16 deg². Le signal de polarisation est transformé de Fourier le long de l’axe des fréquences pour retrouver, pour chaque ligne de visée, la mesure de rotation de Faraday — le champ magnétique entre la source et le télescope.',
+        '**Les catalogues de sources** recensent 4 millions de sources.',
+      ],
+    },
+    {
+      type: 'paragraph',
+      text: 'Le cas grand champ est celui où les volumes cessent d’être une séquence pour devenir un débit. Le projet ASTRA annonce 250 Po de données brutes accumulées sur 25 000 heures d’observation à travers 3 168 centres de pointé, chacun observé 8 à 12 heures, nourrissant 250 publications sur cinq ans — et, pour l’ère SKA qu’il prépare, un débit attendu d’environ 2 To par heure d’observation. Le DDF Pipeline traite LoTSS en routine depuis 2016.',
+    },
+    { type: 'heading', level: 2, text: 'Ce qu’une exécution consomme et produit' },
+    {
+      type: 'paragraph',
+      text: 'Le profilage de [arXiv 2509.03075](https://arxiv.org/abs/2509.03075) lit le pipeline comme un budget de ressources. Une exécution représentative part de 24 archives tar de Measurement Sets : 38,72 Go compressés, 134,4 Go une fois décompressés. Elle produit 594 Go au total, dont les 15 images représentent environ 17,92 Go — 11 en pleine résolution à 1,575 Go chacune et 4 en basse résolution à 0,148 Go chacune.',
+    },
+    {
+      type: 'paragraph',
+      text: 'La boucle compte deux étages : 120 appels à killMS et 19 appels à DDFacet, pour une sortie par défaut de 20 000×20 000 pixels à 1,5 seconde d’arc. Sur la machine de profilage — un HPE ProLiant DL385 Gen10 Plus doté de deux processeurs AMD EPYC 7543 à 32 cœurs, de 512 Go de RAM et de 50 % de mémoire partagée — un seul nœud met 68,87 heures. Ce temps se répartit à 53,40 % pour killMS, 33,87 % pour DDFacet, et les 12,09 % restants dans des étapes que le profileur n’a pas étiquetées — probablement des sous-étapes de DDFacet ou de killMS plutôt qu’un temps mort.',
+    },
+    {
+      type: 'heading',
+      level: 2,
+      text: 'L’exécution parallèle mesurée',
+    },
+    {
+      type: 'paragraph',
+      text: 'La version parallèle a tourné sur la partition cpu de Jean Zay — 24 nœuds, 960 CPU — sur un jeu de données LOFAR de 8 heures d’intégration, comme le rapporte [l’article SC26](https://doi.ieeecomputersociety.org/10.1109/SCW72768.2026.00093). Elle s’est achevée en 8,7 heures, soit environ 7,9× plus vite que les 68,8 heures sur un seul nœud, à 31 % d’utilisation CPU moyenne et 24,3 % d’utilisation mémoire.',
+    },
+    {
+      type: 'paragraph',
+      text: 'Huit heures d’observation traitées en 8,7 heures, c’est un ratio proche de 1:1 entre le temps d’observation du radiotélescope et son traitement. Ce ratio compte pour le SKA : à mesure que les volumes grossissent, le traitement doit suivre le rythme de l’observation, et le stockage devient lui-même un budget.',
+    },
+    { type: 'paragraph', text: 'Le passage à l’échelle, d’un nœud à vingt-quatre :' },
+    {
+      type: 'list',
+      ordered: true,
+      items: [
+        '**1 nœud** — 68,8 heures.',
+        '**24 nœuds** — 8,7 heures, à 31 % de CPU et 24,3 % de mémoire en moyenne.',
+        '**Accélération** — ≈ 7,9×.',
+      ],
+    },
+    {
+      type: 'figure',
+      image: '/images/mathis/astra-ddf-pipeline/cpu-usage-24-nodes.webp',
+      alt: 'Utilisation CPU de l’exécution MPI du DDF Pipeline sur 24 nœuds (960 CPU), partition cpu de Jean Zay.',
+      caption: 'Utilisation CPU sur l’exécution de 8,7 heures et 24 nœuds, partition cpu de Jean Zay — 31 % en moyenne.',
+    },
+    {
+      type: 'figure',
+      image: '/images/mathis/astra-ddf-pipeline/power-usage-24-nodes.webp',
+      alt: 'Consommation électrique de l’exécution MPI du DDF Pipeline sur 24 nœuds (960 CPU), partition cpu de Jean Zay.',
+      caption: 'Consommation électrique sur l’exécution de 8,7 heures et 24 nœuds, partition cpu de Jean Zay.',
+    },
+    {
+      type: 'figure',
+      image: '/images/mathis/astra-ddf-pipeline/cpu-mem-usage-24-nodes.webp',
+      alt: 'Utilisation CPU et mémoire de l’exécution MPI du DDF Pipeline sur 24 nœuds (960 CPU), partition cpu de Jean Zay.',
+      caption: 'Utilisation CPU et mémoire sur l’exécution de 8,7 heures et 24 nœuds, partition cpu de Jean Zay.',
+    },
+    { type: 'heading', level: 2, text: 'Vers la production' },
+    {
+      type: 'paragraph',
+      text: 'Pour rendre le DDF Pipeline prêt pour la production du traitement des données du SKA, des efforts ont été menés sur la documentation, des corrections de robustesse multi-nœuds, des tests unitaires et des tests d’intégration sur les supercalculateurs français.',
+    },
   ],
 })
 

@@ -386,6 +386,35 @@
   "title": "Science autonome et IA agentique : l\u2019agent planifie, le scientifique signe | Mathis Certenais"
  },
  {
+  "path": "/insights/astra-ddf-pipeline",
+  "canonical": "/insights/astra-ddf-pipeline",
+  "page": "article:astra-ddf-pipeline",
+  "title": "Preparing SKA Software on French Supercomputers: The DDF Pipeline | Mathis Certenais",
+  "description": "How the DDF Pipeline is being hardened into production-ready FR SRCNet software, from a computer-science view: what a run consumes, what it produces, and how it scales.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "The DDF Pipeline, read as a computer scientist"
+ },
+ {
+  "path": "/writing/astra-ddf-pipeline",
+  "canonical": "/insights/astra-ddf-pipeline",
+  "page": "article:astra-ddf-pipeline",
+  "title": "Preparing SKA Software on French Supercomputers: The DDF Pipeline | Mathis Certenais",
+  "description": "How the DDF Pipeline is being hardened into production-ready FR SRCNet software, from a computer-science view: what a run consumes, what it produces, and how it scales.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "The DDF Pipeline, read as a computer scientist",
+  "robots": "noindex, follow"
+ },
+ {
+  "canonical": "/fr/insights/astra-ddf-pipeline",
+  "description": "Comment le DDF Pipeline est en train d\u2019\u00eatre consolid\u00e9 en logiciel pr\u00eat pour la production du SRCNet fran\u00e7ais, vu c\u00f4t\u00e9 informatique : ce qu\u2019une ex\u00e9cution consomme, ce qu\u2019elle produit et comment elle passe \u00e0 l\u2019\u00e9chelle.",
+  "ogImage": "/images/mathis/social-card.png",
+  "ogImageAlt": "Le DDF Pipeline, lu c\u00f4t\u00e9 informatique",
+  "page": "article:astra-ddf-pipeline",
+  "path": "/fr/insights/astra-ddf-pipeline",
+  "robots": "index, follow",
+  "title": "Pr\u00e9parer les logiciels du SKA sur les supercalculateurs fran\u00e7ais : le DDF Pipeline | Mathis Certenais"
+ },
+ {
   "path": "/videos",
   "canonical": "/videos",
   "page": "videos",

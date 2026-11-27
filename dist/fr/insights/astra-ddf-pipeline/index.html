@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#eef2f5" />
+    <script>
+      ;(() => {
+        try {
+          const stored = localStorage.getItem('mathis-personal-website:theme')
+          const theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light'
+          document.documentElement.dataset.theme = theme
+          document.documentElement.style.colorScheme = theme
+          document.querySelector('meta[name="theme-color"]').content =
+            theme === 'dark' ? '#15181c' : '#eef2f5'
+        } catch {
+          document.documentElement.dataset.theme = 'light'
+        }
+      })()
+    </script>
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Comment le DDF Pipeline est en train d’être consolidé en logiciel prêt pour la production du SRCNet français, vu côté informatique : ce qu’une exécution consomme, ce qu’elle produit et comment elle passe à l’échelle." />
+    <meta property="og:title" content="Préparer les logiciels du SKA sur les supercalculateurs français : le DDF Pipeline | Mathis Certenais" />
+    <meta property="og:description" content="Comment le DDF Pipeline est en train d’être consolidé en logiciel prêt pour la production du SRCNet français, vu côté informatique : ce qu’une exécution consomme, ce qu’elle produit et comment elle passe à l’échelle." />
+    <meta property="og:site_name" content="Mathis Certenais" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://mathiscertenais.com/images/mathis/social-card.png" />
+    <meta property="og:image:alt" content="Le DDF Pipeline, lu côté informatique" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Préparer les logiciels du SKA sur les supercalculateurs français : le DDF Pipeline | Mathis Certenais" />
+    <meta name="twitter:description" content="Comment le DDF Pipeline est en train d’être consolidé en logiciel prêt pour la production du SRCNet français, vu côté informatique : ce qu’une exécution consomme, ce qu’elle produit et comment elle passe à l’échelle." />
+    <meta name="twitter:image" content="https://mathiscertenais.com/images/mathis/social-card.png" />
+    <meta name="twitter:image:alt" content="Le DDF Pipeline, lu côté informatique" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Préparer les logiciels du SKA sur les supercalculateurs français : le DDF Pipeline | Mathis Certenais</title>
+    <script type="module" crossorigin src="/assets/index-BaFHJBHB.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Bcr9aRrc.css">
+    <meta property="og:url" content="https://mathiscertenais.com/fr/insights/astra-ddf-pipeline/" />
+    <link rel="canonical" href="https://mathiscertenais.com/fr/insights/astra-ddf-pipeline/" />
+      <link rel="alternate" hreflang="en" href="https://mathiscertenais.com/insights/astra-ddf-pipeline/" />
+    <link rel="alternate" hreflang="fr" href="https://mathiscertenais.com/fr/insights/astra-ddf-pipeline/" />
+    <link rel="alternate" hreflang="x-default" href="https://mathiscertenais.com/insights/astra-ddf-pipeline/" />
+    <script id="page-jsonld" type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://mathiscertenais.com/#person",
+      "name": "Mathis Certenais",
+      "url": "https://mathiscertenais.com/",
+      "sameAs": [
+        "https://www.linkedin.com/in/mathiscertenais",
+        "https://orcid.org/0009-0005-0659-5951",
+        "https://hal.science/cv/mathiscertenais",
+        "https://scholar.google.com/citations?user=94DSd4gAAAAJ&hl=en"
+      ],
+      "affiliation": [
+        {
+          "@type": "Organization",
+          "name": "IRISA",
+          "url": "https://irisa.fr/"
+        },
+        {
+          "@type": "Organization",
+          "name": "Université de Rennes",
+          "url": "https://www.univ-rennes.fr/"
+        }
+      ],
+      "email": "mailto:mathiscertenais@gmail.com"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://mathiscertenais.com/#website",
+      "url": "https://mathiscertenais.com/",
+      "name": "Mathis Certenais",
+      "inLanguage": [
+        "en",
+        "fr"
+      ],
+      "publisher": {
+        "@id": "https://mathiscertenais.com/#person"
+      }
+    },
+    {
+      "@type": "Article",
+      "@id": "https://mathiscertenais.com/fr/insights/astra-ddf-pipeline/#article",
+      "headline": "Préparer les logiciels du SKA sur les supercalculateurs français : le DDF Pipeline",
+      "description": "Comment le DDF Pipeline est en train d’être consolidé en logiciel prêt pour la production du SRCNet français, vu côté informatique : ce qu’une exécution consomme, ce qu’elle produit et comment elle passe à l’échelle.",
+      "inLanguage": "fr",
+      "datePublished": "2026-11-26",
+      "dateModified": "2026-11-26",
+      "author": {
+        "@id": "https://mathiscertenais.com/#person"
+      },
+      "publisher": {
+        "@id": "https://mathiscertenais.com/#person"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://mathiscertenais.com/images/mathis/social-card.png",
+        "caption": "Le DDF Pipeline, lu côté informatique"
+      },
+      "url": "https://mathiscertenais.com/fr/insights/astra-ddf-pipeline/",
+      "mainEntityOfPage": {
+        "@id": "https://mathiscertenais.com/fr/insights/astra-ddf-pipeline/"
+      },
+      "isPartOf": {
+        "@id": "https://mathiscertenais.com/#website"
+      },
+      "keywords": [
+        "calcul haute performance",
+        "DDF Pipeline",
+        "SKA",
+        "LOFAR",
+        "ASTRA",
+        "radioastronomie",
+        "MPI",
+        "profilage",
+        "ECLAT"
+      ],
+      "genre": "Note de recherche",
+      "citation": [
+        {
+          "@type": "CreativeWork",
+          "identifier": "2509.03075",
+          "url": "https://arxiv.org/abs/2509.03075",
+          "name": "A description of the radio astronomy data processing tool DDF Pipeline"
+        },
+        {
+          "@type": "CreativeWork",
+          "identifier": "10.1109/SCW72768.2026.00093",
+          "url": "https://doi.org/10.1109/SCW72768.2026.00093",
+          "name": "Enabling Radio Astronomy to Use French Supercomputers"
+        },
+        {
+          "@type": "CreativeWork",
+          "identifier": "https://github.com/mhardcastle/ddf-pipeline",
+          "url": "https://github.com/mhardcastle/ddf-pipeline",
+          "name": "DDF Pipeline source code"
+        },
+        {
+          "@type": "CreativeWork",
+          "identifier": "https://numpex-astra-e5d484.padcpages.obspm.fr/",
+          "url": "https://numpex-astra-e5d484.padcpages.obspm.fr/"
+        }
+      ],
+      "about": [
+        {
+          "@type": "Organization",
+          "name": "ASTRA",
+          "sameAs": "https://numpex-astra-e5d484.padcpages.obspm.fr/"
+        },
+        {
+          "@type": "Organization",
+          "name": "ECLAT",
+          "sameAs": "https://eclat-lab.fr/"
+        },
+        {
+          "@type": "Organization",
+          "name": "NumPEx",
+          "sameAs": "https://numpex.org/"
+        },
+        {
+          "@type": "Thing",
+          "name": "SKA"
+        },
+        {
+          "@type": "Thing",
+          "name": "LOFAR"
+        },
+        {
+          "@type": "Thing",
+          "name": "LoTSS"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "DDF Pipeline",
+          "sameAs": "https://github.com/mhardcastle/ddf-pipeline"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "DDFacet",
+          "sameAs": "https://github.com/saopicc/DDFacet"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "killMS",
+          "sameAs": "https://github.com/saopicc/killMS"
+        },
+        {
+          "@type": "Thing",
+          "name": "Jean Zay"
+        },
+        {
+          "@type": "Organization",
+          "name": "GENCI",
+          "sameAs": "https://www.genci.fr/connaitre-genci/notre-ecosysteme"
+        },
+        {
+          "@type": "Organization",
+          "name": "IRISA"
+        }
+      ],
+      "license": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  ]
+}
+</script>
+  </head>
+  <body>
+    <div id="root"><main class="prerendered" id="main-content">
+      <h1>Préparer les logiciels du SKA sur les supercalculateurs français : le DDF Pipeline</h1>
+      <p>Comment le DDF Pipeline est en train d’être consolidé en logiciel prêt pour la production du SRCNet français, vu côté informatique : ce qu’une exécution consomme, ce qu’elle produit et comment elle passe à l’échelle.</p>
+      <figure class="prerendered__figure">
+        <img alt="Profilage de l’utilisation CPU de l’exécution MPI du DDF Pipeline sur 24 nœuds (960 CPU) sur la partition cpu de Jean Zay, achevée en 8,7 heures sur un jeu de données LOFAR de 8 heures d’intégration, à 31 % d’utilisation CPU moyenne." src="/images/mathis/astra-ddf-pipeline/cpu-usage-24-nodes.webp" />
+      </figure>
+      <p class="prerendered__label prerendered__label--cover">Note de recherche · 26 novembre 2026 · 4 min de lecture</p>
+      <h2>Une application, un cas d’usage</h2>
+      <p><a href="https://eclat-lab.fr/en/" rel="noreferrer" target="_blank">ECLAT</a>, l’Extreme Computing Lab for Astronomical Telescopes, est un laboratoire commun et un centre d’excellence du calcul haute performance et de l’intelligence artificielle appliqués à l’instrumentation astronomique. Il réunit seize laboratoires et équipes, parmi lesquels le CNRS, Inria, Eviden, l’OCA et l’Observatoire de Paris.</p>
+      <p><a href="https://numpex-astra-e5d484.padcpages.obspm.fr/" rel="noreferrer" target="_blank">ASTRA</a>, le projet ANR–NumPEx « Alliance for Scalable Techniques in Radio Astronomy », se situe un niveau au-dessus du logiciel. Dirigé par Marc-Antoine Miville-Deschênes au LPENS, il prépare les fondations technologiques du centre régional SKA français. Le DDF Pipeline est une application scientifique à l’intérieur d’un cas d’usage d’ASTRA — celui des relevés radio du continuum à grand champ, « Widefield Radio Continuum Surveys ».</p>
+      <h2>Le workflow, lu comme de la logistique de données</h2>
+      <p>Les cinq étapes qui transforment un pointé LOFAR en catalogue exploitable forment, lues par un informaticien, une chaîne de volumes de données qui circulent entre les sites :</p>
+      <ol>
+        <li><strong>La calibration indépendante de la direction et le flagging</strong> s’exécutent sur les sites de l’archive à long terme de LOFAR — Amsterdam, Jülich et Poznań — où vivent les données brutes. La compression Dysco réduit un pointé de 8 heures à environ 50 Go.</li>
+        <li><strong>La calibration et l’imagerie dépendantes de la direction (DDE)</strong> exécutent le <a href="https://github.com/mhardcastle/ddf-pipeline" rel="noreferrer" target="_blank">DDF Pipeline</a> — <a href="https://github.com/saopicc/killMS" rel="noreferrer" target="_blank">killMS</a> pour la calibration, <a href="https://github.com/saopicc/DDFacet" rel="noreferrer" target="_blank">DDFacet</a> pour l’imagerie — principalement à l’University of Hertfordshire, avec des volumes plus faibles à Bologne, Leyde et Hambourg.</li>
+        <li><strong>Les produits archivés</strong> totalisent environ 120 Go par jeu de données de 8 heures, conservés sur le stockage SURF aux Pays-Bas.</li>
+        <li><strong>La polarisation et la synthèse RM</strong> font tourner <a href="https://github.com/mrbell/pyrmsynth" rel="noreferrer" target="_blank">pyrmsynth</a> sur environ 35 Go de FITS Stokes Q et U par champ de 16 deg². Le signal de polarisation est transformé de Fourier le long de l’axe des fréquences pour retrouver, pour chaque ligne de visée, la mesure de rotation de Faraday — le champ magnétique entre la source et le télescope.</li>
+        <li><strong>Les catalogues de sources</strong> recensent 4 millions de sources.</li>
+      </ol>
+      <p>Le cas grand champ est celui où les volumes cessent d’être une séquence pour devenir un débit. Le projet ASTRA annonce 250 Po de données brutes accumulées sur 25 000 heures d’observation à travers 3 168 centres de pointé, chacun observé 8 à 12 heures, nourrissant 250 publications sur cinq ans — et, pour l’ère SKA qu’il prépare, un débit attendu d’environ 2 To par heure d’observation. Le DDF Pipeline traite LoTSS en routine depuis 2016.</p>
+      <h2>Ce qu’une exécution consomme et produit</h2>
+      <p>Le profilage de <a href="https://arxiv.org/abs/2509.03075" rel="noreferrer" target="_blank">arXiv 2509.03075</a> lit le pipeline comme un budget de ressources. Une exécution représentative part de 24 archives tar de Measurement Sets : 38,72 Go compressés, 134,4 Go une fois décompressés. Elle produit 594 Go au total, dont les 15 images représentent environ 17,92 Go — 11 en pleine résolution à 1,575 Go chacune et 4 en basse résolution à 0,148 Go chacune.</p>
+      <p>La boucle compte deux étages : 120 appels à killMS et 19 appels à DDFacet, pour une sortie par défaut de 20 000×20 000 pixels à 1,5 seconde d’arc. Sur la machine de profilage — un HPE ProLiant DL385 Gen10 Plus doté de deux processeurs AMD EPYC 7543 à 32 cœurs, de 512 Go de RAM et de 50 % de mémoire partagée — un seul nœud met 68,87 heures. Ce temps se répartit à 53,40 % pour killMS, 33,87 % pour DDFacet, et les 12,09 % restants dans des étapes que le profileur n’a pas étiquetées — probablement des sous-étapes de DDFacet ou de killMS plutôt qu’un temps mort.</p>
+      <h2>L’exécution parallèle mesurée</h2>
+      <p>La version parallèle a tourné sur la partition cpu de Jean Zay — 24 nœuds, 960 CPU — sur un jeu de données LOFAR de 8 heures d’intégration, comme le rapporte <a href="https://doi.ieeecomputersociety.org/10.1109/SCW72768.2026.00093" rel="noreferrer" target="_blank">l’article SC26</a>. Elle s’est achevée en 8,7 heures, soit environ 7,9× plus vite que les 68,8 heures sur un seul nœud, à 31 % d’utilisation CPU moyenne et 24,3 % d’utilisation mémoire.</p>
+      <p>Huit heures d’observation traitées en 8,7 heures, c’est un ratio proche de 1:1 entre le temps d’observation du radiotélescope et son traitement. Ce ratio compte pour le SKA : à mesure que les volumes grossissent, le traitement doit suivre le rythme de l’observation, et le stockage devient lui-même un budget.</p>
+      <p>Le passage à l’échelle, d’un nœud à vingt-quatre :</p>
+      <ol>
+        <li><strong>1 nœud</strong> — 68,8 heures.</li>
+        <li><strong>24 nœuds</strong> — 8,7 heures, à 31 % de CPU et 24,3 % de mémoire en moyenne.</li>
+        <li><strong>Accélération</strong> — ≈ 7,9×.</li>
+      </ol>
+      <p class="prerendered__caption">Utilisation CPU sur l’exécution de 8,7 heures et 24 nœuds, partition cpu de Jean Zay — 31 % en moyenne.</p>
+      <p class="prerendered__caption">Consommation électrique sur l’exécution de 8,7 heures et 24 nœuds, partition cpu de Jean Zay.</p>
+      <p class="prerendered__caption">Utilisation CPU et mémoire sur l’exécution de 8,7 heures et 24 nœuds, partition cpu de Jean Zay.</p>
+      <h2>Vers la production</h2>
+      <p>Pour rendre le DDF Pipeline prêt pour la production du traitement des données du SKA, des efforts ont été menés sur la documentation, des corrections de robustesse multi-nœuds, des tests unitaires et des tests d’intégration sur les supercalculateurs français.</p>
+      <h2>Source</h2><p><a href="https://numpex-astra-e5d484.padcpages.obspm.fr/">Publication d’origine</a></p>
+      <h2>Poursuivre la lecture</h2>
+      <ul>
+        <li><a href="/fr/insights/">Tous les articles</a></li>
+        <li><a href="/fr/research/">La recherche</a></li>
+        <li><a href="/fr/contact/">Get in touch</a></li>
+      </ul>
+    </main></div>
+  </body>
+</html>

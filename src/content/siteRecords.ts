@@ -152,8 +152,8 @@ export const pageRecords: PageRecord[] = [
       },
     ],
     aiSummary: {
-      en: 'Mathis Certenais is a doctoral researcher at IRISA and Université de Rennes, working on scientific data logistics for radio astronomy. The site gathers his thesis work on workflows that cross instruments, national supercomputers and research storage, eleven written entries in English and French, recorded talks, and a research profile built only from sources it names.',
-      fr: 'Mathis Certenais est chercheur doctoral à l’IRISA et à l’Université de Rennes ; il travaille sur la logistique des données scientifiques pour la radioastronomie. Le site rassemble sa thèse sur les workflows qui traversent instruments, supercalculateurs nationaux et stockage de la recherche, onze articles en anglais et en français, des interventions enregistrées et un profil de recherche limité à des sources citées.',
+      en: 'Mathis Certenais is a doctoral researcher at IRISA and Université de Rennes, working on scientific data logistics for radio astronomy. The site gathers his thesis work on workflows that cross instruments, national supercomputers and research storage, twelve written entries in English and French, recorded talks, and a research profile built only from sources it names.',
+      fr: 'Mathis Certenais est chercheur doctoral à l’IRISA et à l’Université de Rennes ; il travaille sur la logistique des données scientifiques pour la radioastronomie. Le site rassemble sa thèse sur les workflows qui traversent instruments, supercalculateurs nationaux et stockage de la recherche, douze articles en anglais et en français, des interventions enregistrées et un profil de recherche limité à des sources citées.',
     },
     dateModified: noPageDate,
   },
@@ -250,8 +250,8 @@ export const pageRecords: PageRecord[] = [
       { name: 'SKA', type: 'Thing' },
     ],
     aiSummary: {
-      en: 'Eleven entries, each published in English and French: the paper presented at the SC26 workshops on opening French supercomputers to radio astronomy, research notes on predicting job footprints and on exposing software parameters through an MCP server, plus reports from hackathons, a webinar and SC26 in Chicago. Categories run from Publication and Research note to Interview, Webinar, Event, Community, Collaboration and Side project.',
-      fr: 'Onze entrées, publiées en anglais et en français : l’article présenté aux ateliers SC26 sur l’ouverture des supercalculateurs français à la radioastronomie, des notes de recherche sur la prédiction de l’empreinte des tâches et sur l’exposition des paramètres logiciels via MCP, ainsi que des comptes rendus de hackathons, d’un webinaire et de SC26 à Chicago. Les rubriques vont de Publication et Note de recherche à Entretien, Webinaire, Événement, Communauté, Collaboration et Projet personnel.',
+      en: 'Twelve entries, each published in English and French: the paper presented at the SC26 workshops on opening French supercomputers to radio astronomy, research notes on predicting job footprints and on exposing software parameters through an MCP server, plus reports from hackathons, a webinar and SC26 in Chicago. Categories run from Publication and Research note to Interview, Webinar, Event, Community, Collaboration and Side project.',
+      fr: 'Douze entrées, publiées en anglais et en français : l’article présenté aux ateliers SC26 sur l’ouverture des supercalculateurs français à la radioastronomie, des notes de recherche sur la prédiction de l’empreinte des tâches et sur l’exposition des paramètres logiciels via MCP, ainsi que des comptes rendus de hackathons, d’un webinaire et de SC26 à Chicago. Les rubriques vont de Publication et Note de recherche à Entretien, Webinaire, Événement, Communauté, Collaboration et Projet personnel.',
     },
     dateModified: noPageDate,
   },
@@ -1111,6 +1111,100 @@ export const articleRecords: Record<ArticleId, ArticleRecord> = {
     aiSummary: {
       en: 'The article describes a framework where an agent turns an experiment into a task board with explicit dependencies, the scientist signs the plan once, and the framework compiles it into jobs across TGCC, IDRIS and CINES. It argues that on French supercomputers the signature is not a formality but the legal act that assigns responsibility under PPST/ZRR, so the human stays in the loop before and during execution. The closing case study splits a SIESTA experiment across the three centres, with a single-centre reference run to check the product.',
       fr: 'L’article décrit un cadre où un agent transforme une expérience en tableau de tâches aux dépendances explicites, où le scientifique signe le plan une fois, et où le framework le compile en jobs sur TGCC, IDRIS et CINES. Il soutient que, sur les supercalculateurs français, la signature n’est pas une formalité mais l’acte juridique qui attribue la responsabilité au titre du PPST et de la ZRR : l’humain reste donc dans la boucle avant et pendant l’exécution. L’étude de cas finale répartit une expérience SIESTA sur les trois centres, avec une exécution de référence sur un seul centre pour contrôler le produit.',
+    },
+  },
+
+  'astra-ddf-pipeline': {
+    id: 'astra-ddf-pipeline',
+    schemaType: 'Article',
+    dateModified: { en: '2026-11-26', fr: '2026-11-26' },
+    authors: [mathis],
+    keywords: {
+      en: [
+        'high-performance computing',
+        'DDF Pipeline',
+        'SKA',
+        'LOFAR',
+        'ASTRA',
+        'radio astronomy',
+        'MPI',
+        'profiling',
+        'ECLAT',
+      ],
+      fr: [
+        'calcul haute performance',
+        'DDF Pipeline',
+        'SKA',
+        'LOFAR',
+        'ASTRA',
+        'radioastronomie',
+        'MPI',
+        'profilage',
+        'ECLAT',
+      ],
+    },
+    citations: [
+      {
+        id: 'arxiv-2509-03075',
+        kind: 'arxiv',
+        value: '2509.03075',
+        title: 'A description of the radio astronomy data processing tool DDF Pipeline',
+      },
+      {
+        id: 'sc26-paper',
+        kind: 'doi',
+        value: '10.1109/SCW72768.2026.00093',
+        title: 'Enabling Radio Astronomy to Use French Supercomputers',
+      },
+      {
+        id: 'ddf-pipeline-repo',
+        kind: 'url',
+        value: 'https://github.com/mhardcastle/ddf-pipeline',
+        title: 'DDF Pipeline source code',
+      },
+      {
+        id: 'astra-site',
+        kind: 'url',
+        value: 'https://numpex-astra-e5d484.padcpages.obspm.fr/',
+      },
+    ],
+    entities: [
+      {
+        name: 'ASTRA',
+        type: 'Organization',
+        sameAs: 'https://numpex-astra-e5d484.padcpages.obspm.fr/',
+      },
+      { name: 'ECLAT', type: 'Organization', sameAs: 'https://eclat-lab.fr/' },
+      { name: 'NumPEx', type: 'Organization', sameAs: 'https://numpex.org/' },
+      { name: 'SKA', type: 'Thing' },
+      { name: 'LOFAR', type: 'Thing' },
+      { name: 'LoTSS', type: 'Thing' },
+      {
+        name: 'DDF Pipeline',
+        type: 'SoftwareApplication',
+        sameAs: 'https://github.com/mhardcastle/ddf-pipeline',
+      },
+      {
+        name: 'DDFacet',
+        type: 'SoftwareApplication',
+        sameAs: 'https://github.com/saopicc/DDFacet',
+      },
+      {
+        name: 'killMS',
+        type: 'SoftwareApplication',
+        sameAs: 'https://github.com/saopicc/killMS',
+      },
+      { name: 'Jean Zay', type: 'Thing' },
+      {
+        name: 'GENCI',
+        type: 'Organization',
+        sameAs: 'https://www.genci.fr/connaitre-genci/notre-ecosysteme',
+      },
+      { name: 'IRISA', type: 'Organization' },
+    ],
+    aiSummary: {
+      en: 'The article locates the DDF Pipeline inside the collaboration hardening it: ECLAT, the joint laboratory for HPC and AI applied to astronomical instrumentation, and ASTRA, the ANR–NumPEx project preparing the French SKA Regional Centre. Read as data logistics, the workflow moves a pointing through five steps, from LOFAR archive sites to a catalogue of four million sources; read as a resource budget, one run consumes 38.72 GB compressed and produces 594 GB in 68.8 hours. The parallel version cuts that to 8.7 hours on 24 Jean Zay nodes at 31 % CPU.',
+      fr: 'L’article situe le DDF Pipeline dans la collaboration qui le consolide : ECLAT, le laboratoire commun du calcul haute performance et de l’IA appliqués à l’instrumentation astronomique, et ASTRA, le projet ANR–NumPEx qui prépare le centre régional SKA français. Lu comme une logistique de données, le workflow fait traverser un pointé en cinq étapes, des sites d’archive de LOFAR jusqu’à un catalogue de quatre millions de sources ; lu comme un budget de ressources, une exécution consomme 38,72 Go compressés et produit 594 Go en 68,8 heures. La version parallèle ramène ce temps à 8,7 heures sur 24 nœuds de Jean Zay à 31 % de CPU.',
     },
   },
 }

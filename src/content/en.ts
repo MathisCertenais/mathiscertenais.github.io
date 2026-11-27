@@ -338,6 +338,7 @@ export type ArticleId =
   | 'ai-lab-virtual-running-coach'
   | 'sc26-europe'
   | 'autonomous-science-agentic-ai'
+  | 'astra-ddf-pipeline'
 
 export type ArticleListItem = string | { id?: string; text: string }
 
@@ -1983,6 +1984,126 @@ export const articleItems: ArticleItem[] = [
     image: '/images/mathis/rennes-hackathon/rennes-hackathon-front.webp',
     imageAlt: 'Participants in the hackathon in Rennes',
     href: '/insights/rennes-hackathon-for-astronomy',
+  },
+
+  {
+    id: 'astra-ddf-pipeline',
+    number: '12',
+    category: 'Research note',
+    date: 'November 26, 2026',
+    title: 'Preparing SKA Software on French Supercomputers: The DDF Pipeline',
+    description:
+      'How the DDF Pipeline is being hardened into production-ready FR SRCNet software, from a computer-science view: what a run consumes, what it produces, and how it scales.',
+    body: [
+      {
+        type: 'heading',
+        level: 2,
+        text: 'One application, one use case',
+      },
+      {
+        type: 'paragraph',
+        text: '[ECLAT](https://eclat-lab.fr/en/), the Extreme Computing Lab for Astronomical Telescopes, is a joint laboratory and a centre of excellence for high-performance computing and artificial intelligence applied to astronomical instrumentation. It brings together sixteen laboratories and teams, including CNRS, Inria, Eviden, the OCA and the Observatoire de Paris.',
+      },
+      {
+        type: 'paragraph',
+        text: '[ASTRA](https://numpex-astra-e5d484.padcpages.obspm.fr/), the ANR–NumPEx project “Alliance for Scalable Techniques in Radio Astronomy”, sits one layer above the software. Led by Marc-Antoine Miville-Deschênes at LPENS, it prepares the technological foundation of the French SKA Regional Centre. The DDF Pipeline is one scientific application inside one ASTRA use case — the Widefield Radio Continuum Surveys case.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        text: 'The workflow, read as data logistics',
+      },
+      {
+        type: 'paragraph',
+        text: 'The five steps that turn a LOFAR pointing into a science-ready catalogue are, read as a computer scientist, a chain of data volumes moving between sites:',
+      },
+      {
+        type: 'list',
+        ordered: true,
+        items: [
+          '**Direction-independent calibration and flagging** runs on the LOFAR Long-Term Archive sites — Amsterdam, Jülich and Poznań — where the raw data live. Dysco compression shrinks an 8-hour pointing to roughly 50 GB.',
+          '**Direction-dependent (DDE) calibration and imaging** runs the [DDF Pipeline](https://github.com/mhardcastle/ddf-pipeline) — [killMS](https://github.com/saopicc/killMS) for calibration, [DDFacet](https://github.com/saopicc/DDFacet) for imaging — mostly at the University of Hertfordshire, with smaller volumes at Bologna, Leiden and Hamburg.',
+          '**Archived products** total about 120 GB per 8-hour dataset, held on SURF storage in the Netherlands.',
+          '**Polarisation and RM-synthesis** run [pyrmsynth](https://github.com/mrbell/pyrmsynth) over about 35 GB of Stokes Q and U FITS per 16 deg² field. The polarisation signal is Fourier-transformed along the frequency axis to recover, for each line of sight, the Faraday rotation measure — the magnetic field between the source and the telescope.',
+          '**Source catalogues** list 4 million sources.',
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'The widefield case is where the volumes stop being a sequence and become a rate. The ASTRA project states 250 PB of raw data accumulated from 25,000 hours of observations across 3,168 pointing centres, each observed for 8 to 12 hours, feeding 250 publications over five years — and, for the SKA era it is preparing for, an expected data rate of about 2 TB per observation hour. The DDF Pipeline has processed LoTSS routinely since 2016.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        text: 'What one run consumes and produces',
+      },
+      {
+        type: 'paragraph',
+        text: 'The profiling in [arXiv 2509.03075](https://arxiv.org/abs/2509.03075) reads the pipeline as a resource budget. One representative run starts from 24 MeasurementSet tar-archives: 38.72 GB compressed, 134.4 GB once decompressed. It produces 594 GB in total, of which the 15 images amount to about 17.92 GB — 11 full-resolution at 1.575 GB each and 4 low-resolution at 0.148 GB each.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The loop is two-stage: 120 killMS calls and 19 DDFacet calls, at a default output of 20,000×20,000 pixels at 1.5 arcsec. On the profiling machine — an HPE ProLiant DL385 Gen10 Plus with two AMD EPYC 7543 32-core processors and 512 GB of RAM, half of it configured as shared memory — a single node takes 68.87 hours. That time splits 53.40 % to killMS, 33.87 % to DDFacet, and the remaining 12.09 % across steps the profiler did not label — most likely DDFacet or killMS sub-stages rather than idle time.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        text: 'The measured parallel run',
+      },
+      {
+        type: 'paragraph',
+        text: 'The parallel version ran on the Jean Zay cpu partition — 24 nodes, 960 CPUs — over an 8-hour integration LOFAR dataset, as reported in [the SC26 paper](https://doi.ieeecomputersociety.org/10.1109/SCW72768.2026.00093). It finished in 8.7 hours, about 7.9× faster than the 68.8-hour single node, at 31 % mean CPU usage and 24.3 % memory usage.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Eight hours of observation processed in 8.7 hours is close to a 1:1 ratio between telescope time and processing time. That ratio matters for the SKA: as the volumes grow, processing has to keep pace with observation, and storage itself becomes a budget.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The scaling, from one node to twenty-four:',
+      },
+      {
+        type: 'list',
+        ordered: true,
+        items: [
+          '**1 node** — 68.8 hours.',
+          '**24 nodes** — 8.7 hours, at 31 % mean CPU and 24.3 % memory.',
+          '**Speedup** — ≈ 7.9×.',
+        ],
+      },
+      {
+        type: 'figure',
+        image: '/images/mathis/astra-ddf-pipeline/cpu-usage-24-nodes.webp',
+        alt: 'CPU usage of the DDF Pipeline MPI run on 24 nodes (960 CPUs), Jean Zay cpu partition.',
+        caption: 'CPU usage across the 8.7-hour, 24-node run on the Jean Zay cpu partition — a 31 % mean.',
+      },
+      {
+        type: 'figure',
+        image: '/images/mathis/astra-ddf-pipeline/power-usage-24-nodes.webp',
+        alt: 'Power usage of the DDF Pipeline MPI run on 24 nodes (960 CPUs), Jean Zay cpu partition.',
+        caption: 'Power usage across the 8.7-hour, 24-node run on the Jean Zay cpu partition.',
+      },
+      {
+        type: 'figure',
+        image: '/images/mathis/astra-ddf-pipeline/cpu-mem-usage-24-nodes.webp',
+        alt: 'CPU and memory usage of the DDF Pipeline MPI run on 24 nodes (960 CPUs), Jean Zay cpu partition.',
+        caption: 'CPU and memory usage across the 8.7-hour, 24-node run on the Jean Zay cpu partition.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        text: 'Hardening toward production',
+      },
+      {
+        type: 'paragraph',
+        text: 'To make the DDF Pipeline ready for production processing of SKA data, effort has gone into documentation, multi-node robustness fixes, unit tests, and integration testing on the French supercomputers.',
+      },
+    ],
+    image: '/images/mathis/astra-ddf-pipeline/cpu-usage-24-nodes.webp',
+    imageAlt:
+      'Profiling of CPU usage of the DDF Pipeline MPI run on 24 nodes (960 CPUs) on the Jean Zay cpu partition, completed in 8.7 hours on an 8-hour integration LOFAR dataset, at 31 % average CPU usage.',
+    href: '/insights/astra-ddf-pipeline',
+    sourceHref: 'https://numpex-astra-e5d484.padcpages.obspm.fr/',
   },
 ]
 
